@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809D1946D02C0018EF5A /* AppDelegate.swift */; };
+		843580A01946D02C0018EF5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809F1946D02C0018EF5A /* ViewController.swift */; };
+		843580A31946D02C0018EF5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843580A11946D02C0018EF5A /* Main.storyboard */; };
+		843580A51946D02C0018EF5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843580A41946D02C0018EF5A /* Images.xcassets */; };
+		843580B11946D02C0018EF5A /* KanjiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843580B01946D02C0018EF5A /* KanjiAppTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		843580AB1946D02C0018EF5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843580901946D02C0018EF5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843580971946D02C0018EF5A;
+			remoteInfo = KanjiApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		843580981946D02C0018EF5A /* KanjiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8435809C1946D02C0018EF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8435809D1946D02C0018EF5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8435809F1946D02C0018EF5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		843580A21946D02C0018EF5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		843580A41946D02C0018EF5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		843580AA1946D02C0018EF5A /* KanjiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanjiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		843580AF1946D02C0018EF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843580B01946D02C0018EF5A /* KanjiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiAppTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		843580951946D02C0018EF5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843580A71946D02C0018EF5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8435808F1946D02C0018EF5A = {
+			isa = PBXGroup;
+			children = (
+				8435809A1946D02C0018EF5A /* KanjiApp */,
+				843580AD1946D02C0018EF5A /* KanjiAppTests */,
+				843580991946D02C0018EF5A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		843580991946D02C0018EF5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				843580981946D02C0018EF5A /* KanjiApp.app */,
+				843580AA1946D02C0018EF5A /* KanjiAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8435809A1946D02C0018EF5A /* KanjiApp */ = {
+			isa = PBXGroup;
+			children = (
+				8435809D1946D02C0018EF5A /* AppDelegate.swift */,
+				8435809F1946D02C0018EF5A /* ViewController.swift */,
+				843580A11946D02C0018EF5A /* Main.storyboard */,
+				843580A41946D02C0018EF5A /* Images.xcassets */,
+				8435809B1946D02C0018EF5A /* Supporting Files */,
+			);
+			path = KanjiApp;
+			sourceTree = "<group>";
+		};
+		8435809B1946D02C0018EF5A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8435809C1946D02C0018EF5A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		843580AD1946D02C0018EF5A /* KanjiAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				843580B01946D02C0018EF5A /* KanjiAppTests.swift */,
+				843580AE1946D02C0018EF5A /* Supporting Files */,
+			);
+			path = KanjiAppTests;
+			sourceTree = "<group>";
+		};
+		843580AE1946D02C0018EF5A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				843580AF1946D02C0018EF5A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		843580971946D02C0018EF5A /* KanjiApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843580B41946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiApp" */;
+			buildPhases = (
+				843580941946D02C0018EF5A /* Sources */,
+				843580951946D02C0018EF5A /* Frameworks */,
+				843580961946D02C0018EF5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KanjiApp;
+			productName = KanjiApp;
+			productReference = 843580981946D02C0018EF5A /* KanjiApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		843580A91946D02C0018EF5A /* KanjiAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843580B71946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiAppTests" */;
+			buildPhases = (
+				843580A61946D02C0018EF5A /* Sources */,
+				843580A71946D02C0018EF5A /* Frameworks */,
+				843580A81946D02C0018EF5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				843580AC1946D02C0018EF5A /* PBXTargetDependency */,
+			);
+			name = KanjiAppTests;
+			productName = KanjiAppTests;
+			productReference = 843580AA1946D02C0018EF5A /* KanjiAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		843580901946D02C0018EF5A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Sky;
+				TargetAttributes = {
+					843580971946D02C0018EF5A = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					843580A91946D02C0018EF5A = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 843580971946D02C0018EF5A;
+					};
+				};
+			};
+			buildConfigurationList = 843580931946D02C0018EF5A /* Build configuration list for PBXProject "KanjiApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8435808F1946D02C0018EF5A;
+			productRefGroup = 843580991946D02C0018EF5A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				843580971946D02C0018EF5A /* KanjiApp */,
+				843580A91946D02C0018EF5A /* KanjiAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		843580961946D02C0018EF5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843580A31946D02C0018EF5A /* Main.storyboard in Resources */,
+				843580A51946D02C0018EF5A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843580A81946D02C0018EF5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		843580941946D02C0018EF5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843580A01946D02C0018EF5A /* ViewController.swift in Sources */,
+				8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843580A61946D02C0018EF5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843580B11946D02C0018EF5A /* KanjiAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		843580AC1946D02C0018EF5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843580971946D02C0018EF5A /* KanjiApp */;
+			targetProxy = 843580AB1946D02C0018EF5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		843580A11946D02C0018EF5A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				843580A21946D02C0018EF5A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		843580B21946D02C0018EF5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		843580B31946D02C0018EF5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		843580B51946D02C0018EF5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = KanjiApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		843580B61946D02C0018EF5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = KanjiApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		843580B81946D02C0018EF5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KanjiApp.app/KanjiApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KanjiAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		843580B91946D02C0018EF5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KanjiApp.app/KanjiApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KanjiAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		843580931946D02C0018EF5A /* Build configuration list for PBXProject "KanjiApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843580B21946D02C0018EF5A /* Debug */,
+				843580B31946D02C0018EF5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843580B41946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843580B51946D02C0018EF5A /* Debug */,
+				843580B61946D02C0018EF5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		843580B71946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843580B81946D02C0018EF5A /* Debug */,
+				843580B91946D02C0018EF5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 843580901946D02C0018EF5A /* Project object */;
+}
