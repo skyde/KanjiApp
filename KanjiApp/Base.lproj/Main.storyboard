@@ -51,6 +51,64 @@
             </objects>
             <point key="canvasLocation" x="831" y="141"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="dK5-2E-j8c">
+            <objects>
+                <viewController id="0Qw-vB-Dz0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IeJ-Ih-FUi"/>
+                        <viewControllerLayoutGuide type="bottom" id="fgT-1q-DR6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gGW-jN-h0G">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJL-7n-Z73">
+                                <rect key="frame" x="188" y="161" width="105" height="57"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Review">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="BAp-rf-y9r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYL-gT-Z35">
+                                <rect key="frame" x="180" y="214" width="121" height="74"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Main Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-4p-0HB">
+                                <rect key="frame" x="164" y="100" width="153.5" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4r-Uq-ZI4">
+                                <rect key="frame" x="180" y="279" width="121" height="74"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Help">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="bYL-gT-Z35" secondAttribute="centerX" id="Ckb-kX-UGH"/>
+                            <constraint firstAttribute="centerX" secondItem="bJL-7n-Z73" secondAttribute="centerX" id="E5p-kN-uj9"/>
+                            <constraint firstAttribute="centerX" secondItem="VE0-4p-0HB" secondAttribute="centerX" id="e8n-9s-Btz"/>
+                            <constraint firstAttribute="centerX" secondItem="R4r-Uq-ZI4" secondAttribute="centerX" id="gyK-gE-hjo"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ba4-Cg-B4h"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1r-b9-dad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="737"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ncU-t9-GRN">
             <objects>
@@ -62,7 +120,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eTZ-fh-XzS"/>
+                        <segue destination="0Qw-vB-Dz0" kind="relationship" relationship="rootViewController" id="t9b-ER-EvY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBB-jh-03q" userLabel="First Responder" sceneMemberID="firstResponder"/>
