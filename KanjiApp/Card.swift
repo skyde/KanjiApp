@@ -10,24 +10,44 @@ import Foundation
 import UIKit
 
 class Card {
-    init(_ kanji: String, _ hiragana: String, _ definition: String, _ exampleEnglish: String, _ exampleJapanese: String, _ pitchAccent: Int) {
+    init(kanji: String, index: Int, hiragana: String, definition: String, exampleEnglish: String, exampleJapanese: String, soundWord: String, soundDefinition: String, definitionOther: String, usageAmount: Int, usageAmountOther: Int, pitchAccentText: String, pitchAccent: Int, otherExampleSentences: String) {
         self.kanji = kanji;
+        self.index = index;
         self.hiragana = hiragana;
         self.definition = definition;
         self.exampleEnglish = exampleEnglish;
         self.exampleJapanese = exampleJapanese;
+        self.soundWord = soundWord;
+        self.soundDefinition = soundDefinition;
+        self.definitionOther = definitionOther;
+        self.usageAmount = usageAmount;
+        self.usageAmountOther = usageAmountOther;
+        self.pitchAccentText = pitchAccentText;
         self.pitchAccent = pitchAccent;
+        self.otherExampleSentences = otherExampleSentences;
         
         self.interval = 0.0
         self.font = "Helvetica";
     }
     
     let kanji = ""
+    let index = 0
     let hiragana = ""
     let definition = ""
     let exampleEnglish = ""
     let exampleJapanese = ""
+    let soundWord = ""
+    let soundDefinition = ""
+    let definitionOther = ""
+    let usageAmount = 0
+    let usageAmountOther = 0
+    let pitchAccentText = ""
     let pitchAccent = 0
+    let otherExampleSentences = ""
+    
+    
+    
+    //let definition = ""
     
     var interval = 0.0
     let font = ""
@@ -55,13 +75,13 @@ class Card {
         
         value.beginEditing()
         
-        value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 60))
+        value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
         
         value.addBreak(5)
         
-        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 20))
+        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 22))
         
-        value.addBreak(15)
+        value.addBreak(20)
         
         value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24))
         
@@ -73,31 +93,7 @@ class Card {
         
         //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
         
-        var color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        
-        switch pitchAccent
-        {
-            case 1:
-                color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
-            
-            case 2:
-                color = UIColor(red: 0, green: 0.5625, blue: 0.9375, alpha: 1)
-            
-            case 3:
-                color = UIColor(red: 1.0 / 16.0, green: 1.0 / 11.0, blue: 0, alpha: 1)
-            
-            case 4:
-                color = UIColor(red: 1, green: 6.0 / 16.0, blue: 0, alpha: 1)
-            
-            case 5:
-                color = UIColor(red: 9.0 / 16.0, green: 0, blue: 9.0 / 16.0, alpha: 1)
-            
-            case 6:
-                color = UIColor(red: 9.0 / 16.0, green: 9.0 / 16.0, blue: 9.0 / 16.0, alpha: 1)
-            
-            default:
-                color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        }
+        var color = colorForPitchAccent(pitchAccent)
         
         value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
         
@@ -106,6 +102,37 @@ class Card {
         
         return value
     }
+    }
+    
+    func colorForPitchAccent(pitchAccent: Int) -> UIColor
+    {
+        var color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        switch pitchAccent
+            {
+        case 1:
+            color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
+            
+        case 2:
+            color = UIColor(red: 0, green: 0.5625, blue: 0.9375, alpha: 1)
+            
+        case 3:
+            color = UIColor(red: 1.0 / 16.0, green: 1.0 / 11.0, blue: 0, alpha: 1)
+            
+        case 4:
+            color = UIColor(red: 1, green: 6.0 / 16.0, blue: 0, alpha: 1)
+            
+        case 5:
+            color = UIColor(red: 9.0 / 16.0, green: 0, blue: 9.0 / 16.0, alpha: 1)
+            
+        case 6:
+            color = UIColor(red: 9.0 / 16.0, green: 9.0 / 16.0, blue: 9.0 / 16.0, alpha: 1)
+            
+        default:
+            color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+        
+        return color
     }
 }
 
