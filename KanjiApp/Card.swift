@@ -45,8 +45,6 @@ class Card {
     let pitchAccent = 0
     let otherExampleSentences = ""
     
-    
-    
     //let definition = ""
     
     var interval = 0.0
@@ -83,13 +81,15 @@ class Card {
         
         value.addBreak(20)
         
-        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24))
+        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true)
         
         value.addBreak(5)
         
         value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
         
         value.addBreak(10)
+        
+        value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
         
         //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
         
@@ -108,8 +108,7 @@ class Card {
     {
         var color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
-        switch pitchAccent
-            {
+        switch pitchAccent {
         case 1:
             color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
             
@@ -145,8 +144,25 @@ extension NSMutableAttributedString {
         }
     }
     
-    func addAttributedText(var text: String, _ attributeName: String, _ object: AnyObject, breakLine: Bool = true)
+    func addAttributedText(var text: String, _ attributeName: String, _ object: AnyObject, breakLine: Bool = true, processAttributes: Bool = false)
     {
+        var bolds: NSRange[] = []
+        
+        if processAttributes
+        {
+            var furiganaOpen = text.componentsSeparatedByString("]")
+            
+            text = ""
+            for item in furiganaOpen
+            {
+                text += item.componentsSeparatedByString("[")[0]
+            }
+            
+            text = removeFromString(text, "<b>")
+            text = removeFromString(text, "</b>")
+            text = removeFromString(text, " ")
+        }
+        
         if breakLine
         {
             text += "\n"
@@ -156,6 +172,19 @@ extension NSMutableAttributedString {
         var range: NSRange = NSMakeRange(existingLength, countElements(text))
         self.mutableString.appendString(text)
         self.addAttribute(attributeName, value: object, range: range)
+    }
+    
+    func removeFromString(var value: String, _ remove: String) -> String
+    {
+        var items = value.componentsSeparatedByString(remove)
+        
+        value = ""
+        for item in items
+        {
+            value += item
+        }
+        
+        return value
     }
 }
 
