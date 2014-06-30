@@ -12,11 +12,14 @@ enum CoreDataEntities {
 }
 
 enum MyObjectPropertyList {
-    case name
+    case kanji
+    case interval
     func description() -> String {
         switch self {
-        case .name:
-            return "name"
+        case .kanji:
+            return "kanji"
+        case .interval:
+            return "interval"
         }
     }
 }
@@ -24,7 +27,9 @@ enum MyObjectPropertyList {
 @objc(MyObject)
 class MyObject: NSManagedObject {
     
-    @NSManaged var name: String
+    //@NSManaged var name: String
+    @NSManaged var kanji: String
+    @NSManaged var definition: Double
     
     //
     //// CREATE CLASS OBJECT
@@ -47,7 +52,13 @@ class MyObject: NSManagedObject {
             } else if matches.count ==  0 {
                 let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
                 var myObject : MyObject = MyObject(entity: entityDescription, insertIntoManagedObjectContext: context)
-                myObject.name = value
+                
+                switch propertyName {
+                    case .kanji:
+                            myObject.kanji = value
+                    default:
+                        return myObject
+                }
                 return myObject
             }
             else {
@@ -118,8 +129,8 @@ func printFetchedArrayList (myarray:AnyObject[]) {
         println("Has \(myarray.count) object")
         for myobject : AnyObject in myarray {
             var anObject = myobject as MyObject
-            var thename = anObject.name
-            println(thename)
+            var thekanji = anObject.kanji
+            println(thekanji)
         }
     }
     else {

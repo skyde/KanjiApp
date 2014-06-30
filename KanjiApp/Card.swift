@@ -11,23 +11,27 @@ import UIKit
 
 class Card {
     init(kanji: String, index: Int, hiragana: String, definition: String, exampleEnglish: String, exampleJapanese: String, soundWord: String, soundDefinition: String, definitionOther: String, usageAmount: Int, usageAmountOther: Int, pitchAccentText: String, pitchAccent: Int, otherExampleSentences: String) {
-        self.kanji = kanji;
-        self.index = index;
-        self.hiragana = hiragana;
-        self.definition = definition;
-        self.exampleEnglish = exampleEnglish;
-        self.exampleJapanese = exampleJapanese;
-        self.soundWord = soundWord;
-        self.soundDefinition = soundDefinition;
-        self.definitionOther = definitionOther;
-        self.usageAmount = usageAmount;
-        self.usageAmountOther = usageAmountOther;
-        self.pitchAccentText = pitchAccentText;
-        self.pitchAccent = pitchAccent;
-        self.otherExampleSentences = otherExampleSentences;
+        self.kanji = kanji
+        self.index = index
+        self.hiragana = hiragana
+        self.definition = definition
+        self.exampleEnglish = exampleEnglish
+        self.exampleJapanese = exampleJapanese
+        self.soundWord = soundWord
+        self.soundDefinition = soundDefinition
+        self.definitionOther = definitionOther
+        self.usageAmount = usageAmount
+        self.usageAmountOther = usageAmountOther
+        self.pitchAccentText = pitchAccentText
+        self.pitchAccent = pitchAccent
+        self.otherExampleSentences = otherExampleSentences
         
         self.interval = 0.0
-        self.font = "Helvetica";
+        self.font = "Helvetica"
+        self.answersEasy = 0
+        self.answersNormal = 0
+        self.answersHard = 0
+        self.answersForgot = 0
     }
     
     let kanji = ""
@@ -47,6 +51,10 @@ class Card {
     
     //let definition = ""
     
+    var answersEasy = 0
+    var answersNormal = 0
+    var answersHard = 0
+    var answersForgot = 0
     var interval = 0.0
     let font = ""
     

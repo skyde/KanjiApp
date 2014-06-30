@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAg-gG-zsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="-387"/>
+            <point key="canvasLocation" x="776" y="1195"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ArA-e1-Ybj">
@@ -71,7 +71,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffR-2U-j5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="-384"/>
+            <point key="canvasLocation" x="1263" y="141"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="qc6-ma-QfM">
+            <objects>
+                <tableViewController id="NjT-mP-Tvu" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VtM-pg-yQm">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="kHh-qj-6Mp">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kHh-qj-6Mp" id="pne-eW-Adb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NjT-mP-Tvu" id="sP5-6f-cdB"/>
+                            <outlet property="delegate" destination="NjT-mP-Tvu" id="0vL-do-Bay"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9t2-eI-HAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1263" y="672"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="g4F-v6-fxA">
@@ -194,7 +221,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYL-gT-Z35">
-                                <rect key="frame" x="179" y="281" width="121" height="74"/>
+                                <rect key="frame" x="178" y="339" width="121" height="74"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Settings">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -210,7 +237,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4r-Uq-ZI4">
-                                <rect key="frame" x="180" y="347" width="121" height="74"/>
+                                <rect key="frame" x="172" y="406" width="121" height="74"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Help">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -219,9 +246,20 @@
                                     <segue destination="WJg-s7-l0A" kind="show" id="Bit-co-KhL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ExC-qe-ZpV">
+                                <rect key="frame" x="179" y="283" width="120" height="57"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="My Words">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NjT-mP-Tvu" kind="show" id="nte-Wo-bpV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ExC-qe-ZpV" secondAttribute="centerX" id="7bD-n8-US2"/>
                             <constraint firstAttribute="centerX" secondItem="bYL-gT-Z35" secondAttribute="centerX" id="Ckb-kX-UGH"/>
                             <constraint firstAttribute="centerX" secondItem="bJL-7n-Z73" secondAttribute="centerX" id="E5p-kN-uj9"/>
                             <constraint firstAttribute="centerX" secondItem="VE0-4p-0HB" secondAttribute="centerX" id="e8n-9s-Btz"/>
