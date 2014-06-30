@@ -5,6 +5,116 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="HuP-C6-bcx">
+            <objects>
+                <viewController id="WJg-s7-l0A" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Cy-o7-HGC"/>
+                        <viewControllerLayoutGuide type="bottom" id="QWD-Sh-Lkx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="en6-ao-DFD">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="oHP-hZ-xbb">
+                                <rect key="frame" x="88" y="128" width="335" height="350"/>
+                                <string key="text">Kanji App is a flashcard app with the purpose of helping learners master Japanese Kanji. This app uses a SRS (Spaced Repition System) in order to show kanji cards back to you at the most efficient interval - a SRS will should you back a kanji card just before you are about to forget it, therefore not wasting time reviewing cards that are already well reviewed. Good luck and learn lots : D</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-oQ-Ch1">
+                                <rect key="frame" x="164" y="89" width="153.5" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oHP-hZ-xbb" secondAttribute="trailing" constant="55" id="JGp-Zt-FHx"/>
+                            <constraint firstItem="oHP-hZ-xbb" firstAttribute="leading" secondItem="en6-ao-DFD" secondAttribute="leading" constant="50" id="Keb-jP-AFl"/>
+                            <constraint firstAttribute="centerX" secondItem="5dO-oQ-Ch1" secondAttribute="centerX" id="Z6m-bT-Wks"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAg-gG-zsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="-387"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ArA-e1-Ybj">
+            <objects>
+                <viewController id="AUA-lJ-Ybg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HVh-kx-skf"/>
+                        <viewControllerLayoutGuide type="bottom" id="sEM-nr-pvY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S47-NU-zvF">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kww-NB-Kg6">
+                                <rect key="frame" x="169" y="91.5" width="153.5" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="kww-NB-Kg6" secondAttribute="centerX" id="D7L-Yz-d5c"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffR-2U-j5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="-384"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="g4F-v6-fxA">
+            <objects>
+                <viewController id="akh-dF-ywx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4w0-mO-3W7"/>
+                        <viewControllerLayoutGuide type="bottom" id="FPM-f4-yTJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Es-ua-AMv">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IU-Bu-vzs">
+                                <rect key="frame" x="164" y="111" width="153.5" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSo-p9-V5e">
+                                <rect key="frame" x="164" y="194" width="153.5" height="29.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tmy-w7-s0h">
+                                <rect key="frame" x="181" y="229" width="118" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="tmy-w7-s0h" secondAttribute="centerX" id="QGm-aH-ZfO"/>
+                            <constraint firstAttribute="centerX" secondItem="1IU-Bu-vzs" secondAttribute="centerX" id="atm-q2-5QL"/>
+                            <constraint firstAttribute="centerX" secondItem="jSo-p9-V5e" secondAttribute="centerX" id="f18-xB-T7R"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fu6-ge-Z3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="141"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +159,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="831" y="141"/>
+            <point key="canvasLocation" x="776" y="141"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dK5-2E-j8c">
@@ -73,12 +183,25 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="BAp-rf-y9r"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxw-md-c0j">
+                                <rect key="frame" x="179" y="222" width="120" height="57"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Add Words">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="AUA-lJ-Ybg" kind="show" id="rGM-yM-bUD"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYL-gT-Z35">
-                                <rect key="frame" x="180" y="214" width="121" height="74"/>
+                                <rect key="frame" x="179" y="281" width="121" height="74"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Settings">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="akh-dF-ywx" kind="show" id="GVp-ij-eQ9"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Main Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-4p-0HB">
                                 <rect key="frame" x="164" y="100" width="153.5" height="47.5"/>
@@ -87,11 +210,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4r-Uq-ZI4">
-                                <rect key="frame" x="180" y="279" width="121" height="74"/>
+                                <rect key="frame" x="180" y="347" width="121" height="74"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Help">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="WJg-s7-l0A" kind="show" id="Bit-co-KhL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,6 +226,7 @@
                             <constraint firstAttribute="centerX" secondItem="bJL-7n-Z73" secondAttribute="centerX" id="E5p-kN-uj9"/>
                             <constraint firstAttribute="centerX" secondItem="VE0-4p-0HB" secondAttribute="centerX" id="e8n-9s-Btz"/>
                             <constraint firstAttribute="centerX" secondItem="R4r-Uq-ZI4" secondAttribute="centerX" id="gyK-gE-hjo"/>
+                            <constraint firstAttribute="centerX" secondItem="Kxw-md-c0j" secondAttribute="centerX" id="wv0-r6-Pbw"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -107,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1r-b9-dad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831" y="737"/>
+            <point key="canvasLocation" x="776" y="672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ncU-t9-GRN">
@@ -125,7 +252,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBB-jh-03q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="217" y="677"/>
+            <point key="canvasLocation" x="258" y="672"/>
         </scene>
     </scenes>
 </document>

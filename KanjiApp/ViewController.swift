@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
     var due: Card[]
     
     var isFront: Bool = true;
+    
+    var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
     init(coder aDecoder: NSCoder!) {
         self.deck = []
@@ -28,7 +31,18 @@ class ViewController: UIViewController {
         
         super.init(coder: aDecoder)
         
+        //InitCoreData()
+        
         self.due = LoadAllCards("AllCards");
+    }
+    
+    func InitCoreData()
+    {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context: NSManagedObjectContext = appDelegate.managedObjectContext
+        let entityName: String = "MyObject"
+        let myEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
+        var myObject = MyObject(entity: myEntityDescription, insertIntoManagedObjectContext: context)
     }
     
     func LoadAllCards(filename: String) -> Card[]
@@ -105,13 +119,6 @@ class ViewController: UIViewController {
         return value
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        updateText()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -136,5 +143,60 @@ class ViewController: UIViewController {
         else {
             outputText.attributedText = due[0].back
         }
+    }
+    
+    func makeEntityAction () {
+        println("-- Make action --")
+//        
+//        let value:String = self.myTextField.text
+//        var myObject : MyObject = MyObject.createMyObject(MyObjectPropertyList.name, value : value, context: self.managedObjectContext)!
+//        saveContext(self.managedObjectContext)
+    }
+    
+    func fetchObjectAction () {
+        println("-- Fetch action --")
+        
+//        if let myTotalarray = myGeneralFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.name, self.managedObjectContext) {
+//            printFetchedArrayList(myTotalarray)
+//        }
+//        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.name, "Bill", self.managedObjectContext) {
+//            println("(--  --)")
+//            printFetchedArrayList(mySinglearray)
+//        }
+        
+    }
+    
+    //
+    //// LOAD & SAVE
+    //
+    
+    func loadContext () {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context: NSManagedObjectContext = appDelegate.managedObjectContext
+        self.managedObjectContext = context
+    }
+    
+    func saveContext (context: NSManagedObjectContext) {
+        var error: NSError? = nil
+        context.save(&error)
+    }
+    
+    //
+    //// LOAD
+    //
+    
+    func myLoad () {
+        loadContext ()
+        println("Loaded Context")
+    }
+    
+    //
+    //// Life Cycle
+    //
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myLoad ()
+        updateText()
     }
 }

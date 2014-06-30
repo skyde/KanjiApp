@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842878A8196113A50060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */; };
+		842878AA19611E230060BDD1 /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878A919611E230060BDD1 /* MyObject.swift */; };
 		8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809D1946D02C0018EF5A /* AppDelegate.swift */; };
 		843580A01946D02C0018EF5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809F1946D02C0018EF5A /* ViewController.swift */; };
 		843580A31946D02C0018EF5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843580A11946D02C0018EF5A /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		842878A7196113A50060BDD1 /* KanjiApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiApp.xcdatamodel; sourceTree = "<group>"; };
+		842878A919611E230060BDD1 /* MyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObject.swift; sourceTree = "<group>"; };
 		843580981946D02C0018EF5A /* KanjiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435809C1946D02C0018EF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8435809D1946D02C0018EF5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,10 +88,12 @@
 				8435809D1946D02C0018EF5A /* AppDelegate.swift */,
 				84E03A82195D21CF00F871D6 /* AllCards.txt */,
 				844C368C195A017300BC32F3 /* Card.swift */,
+				842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */,
 				8435809F1946D02C0018EF5A /* ViewController.swift */,
 				843580A11946D02C0018EF5A /* Main.storyboard */,
 				843580A41946D02C0018EF5A /* Images.xcassets */,
 				8435809B1946D02C0018EF5A /* Supporting Files */,
+				842878A919611E230060BDD1 /* MyObject.swift */,
 			);
 			path = KanjiApp;
 			sourceTree = "<group>";
@@ -218,8 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				843580A01946D02C0018EF5A /* ViewController.swift in Sources */,
+				842878AA19611E230060BDD1 /* MyObject.swift in Sources */,
 				844C368D195A017300BC32F3 /* Card.swift in Sources */,
 				8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */,
+				842878A8196113A50060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +429,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				842878A7196113A50060BDD1 /* KanjiApp.xcdatamodel */,
+			);
+			currentVersion = 842878A7196113A50060BDD1 /* KanjiApp.xcdatamodel */;
+			path = KanjiApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 843580901946D02C0018EF5A /* Project object */;
 }
