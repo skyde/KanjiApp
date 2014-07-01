@@ -1,21 +1,14 @@
 import UIKit
 import CoreData
 
-enum CoreDataEntities {
-    case MyObject
-    func description() -> String {
-        switch self {
-        case .MyObject:
-            return "MyObject"
-        }
-    }
-}
-
 enum MyObjectPropertyList {
+    case name
     case kanji
     case interval
     func description() -> String {
         switch self {
+        case .name:
+            return "name"
         case .kanji:
             return "kanji"
         case .interval:
@@ -27,7 +20,7 @@ enum MyObjectPropertyList {
 @objc(MyObject)
 class MyObject: NSManagedObject {
     
-    //@NSManaged var name: String
+    @NSManaged var name: String
     @NSManaged var kanji: String
     @NSManaged var definition: Double
     
@@ -41,30 +34,51 @@ class MyObject: NSManagedObject {
             
             let entityName = "MyObject"
             let request : NSFetchRequest = NSFetchRequest(entityName: entityName)
+            
+            
+            println("printRequest")
+            
+            println(request)
+            
             request.returnsObjectsAsFaults = false
             request.predicate = NSPredicate(format: "\(propertyType) = %@", value)
             var error: NSError? = nil
-            var matches: NSArray = context.executeFetchRequest(request, error: &error)
             
-            if (matches.count > 1) {
-                // handle error
-                return matches[0] as? MyObject
-            } else if matches.count ==  0 {
-                let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
-                var myObject : MyObject = MyObject(entity: entityDescription, insertIntoManagedObjectContext: context)
-                
-                switch propertyName {
-                    case .kanji:
-                            myObject.kanji = value
-                    default:
-                        return myObject
-                }
-                return myObject
-            }
-            else {
-                println(matches[0])
-                return matches[0] as? MyObject
-            }
+            println("context\(context)")
+            println("PS Coord\(context.persistentStoreCoordinator)")
+            
+            // TODO
+            // persistentStoreCoordinator is nil - source of bug
+            
+            
+//            NSLog(@"Context: %@",context);
+//            NSLog(@"PS Coord : %@",context.persistentStoreCoordinator);
+//            NSLog(@"MOM : %@", context.persistentStoreCoordinator.managedObjectModel);
+//            NSLog(@"Entities : %@",[[context.persistentStoreCoordinator.managedObjectModel entities] valueForKey:@"name"]);
+            
+//            var matches: NSArray = context.executeFetchRequest(request, error: &error)
+//            
+//            println(error)
+//
+//            if (matches.count > 1) {
+//                // handle error
+//                return matches[0] as? MyObject
+//            } else if matches.count ==  0 {
+//                let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
+//                var myObject : MyObject = MyObject(entity: entityDescription, insertIntoManagedObjectContext: context)
+//                
+//                switch propertyName {
+//                    case .kanji:
+//                            myObject.kanji = value
+//                    default:
+//                        return myObject
+//                }
+//                return myObject
+//            }
+//            else {
+//                println(matches[0])
+//                return matches[0] as? MyObject
+//            }
         }
         return nil
     }

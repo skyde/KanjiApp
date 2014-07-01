@@ -9,6 +9,16 @@
 import UIKit
 import CoreData
 
+enum CoreDataEntities {
+    case MyObject
+    func description() -> String {
+        switch self {
+        case .MyObject:
+            return "MyObject"
+        }
+    }
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var outputText: UILabel
@@ -31,9 +41,9 @@ class ViewController: UIViewController {
         
         super.init(coder: aDecoder)
         
-        //InitCoreData()
+        InitCoreData()
         println("run init")
-        //makeEntityAction()
+        makeEntityAction()
         //fetchObjectAction()
         
         self.due = LoadAllCards("AllCards");
@@ -151,9 +161,11 @@ class ViewController: UIViewController {
     func makeEntityAction () {
         println("-- Make action --")
         
-        let value:String = "例_ExampleKanji"
-        var myObject : MyObject = MyObject.createMyObject(MyObjectPropertyList.kanji, value : value, context: self.managedObjectContext)!
-        saveContext(self.managedObjectContext)
+        let value = "例_ExampleKanji"
+        var t = MyObjectPropertyList.kanji
+//        let test = self.managedObjectContext
+        var myObject = MyObject.createMyObject(MyObjectPropertyList.kanji, value : value, context: self.managedObjectContext)//!
+//        saveContext(self.managedObjectContext)
     }
     
     func fetchObjectAction () {

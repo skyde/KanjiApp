@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		842878A8196113A50060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */; };
 		842878AA19611E230060BDD1 /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878A919611E230060BDD1 /* MyObject.swift */; };
+		842878D5196287780060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */; };
 		8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809D1946D02C0018EF5A /* AppDelegate.swift */; };
 		843580A01946D02C0018EF5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809F1946D02C0018EF5A /* ViewController.swift */; };
 		843580A31946D02C0018EF5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843580A11946D02C0018EF5A /* Main.storyboard */; };
@@ -224,10 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				843580A01946D02C0018EF5A /* ViewController.swift in Sources */,
+				842878D5196287780060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
 				842878AA19611E230060BDD1 /* MyObject.swift in Sources */,
 				844C368D195A017300BC32F3 /* Card.swift in Sources */,
 				8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */,
-				842878A8196113A50060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
