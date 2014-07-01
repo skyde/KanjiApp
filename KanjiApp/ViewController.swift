@@ -33,9 +33,9 @@ class ViewController: UIViewController {
     init(coder aDecoder: NSCoder!) {
         self.deck = []
         
-//        self.due = [Card("挨拶", "あいさつ", "a greeting", "She greeted him with a smile.", "彼女は笑顔で挨拶した。", 1),
-//            Card("報告", "ほうこく", "report", "There's a report about yesterday's meeting.", "昨日の会議について報告があります。", 0),
-//            Card("繊細", "せんさい", "delicate; fine", "She is a very delicate person.", "彼女はとても繊細な人です", 0)]
+        //        self.due = [Card("挨拶", "あいさつ", "a greeting", "She greeted him with a smile.", "彼女は笑顔で挨拶した。", 1),
+        //            Card("報告", "ほうこく", "report", "There's a report about yesterday's meeting.", "昨日の会議について報告があります。", 0),
+        //            Card("繊細", "せんさい", "delicate; fine", "She is a very delicate person.", "彼女はとても繊細な人です", 0)]
         
         self.due = []
         
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         InitCoreData()
         println("run init")
         makeEntityAction()
-        //fetchObjectAction()
+        fetchObjectAction()
         
         self.due = LoadAllCards("AllCards");
     }
@@ -56,6 +56,8 @@ class ViewController: UIViewController {
         let entityName: String = "MyObject"
         let myEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
         var myObject = MyObject(entity: myEntityDescription, insertIntoManagedObjectContext: context)
+        
+        self.managedObjectContext.persistentStoreCoordinator = appDelegate.persistentStoreCoordinator
     }
     
     func LoadAllCards(filename: String) -> Card[]
@@ -96,36 +98,36 @@ class ViewController: UIViewController {
                     otherExampleSentences: items[13])
                 
                 value += add
-//                let kanji = ""
-//                let index = 0
-//                let hiragana = ""
-//                let definition = ""
-//                let exampleEnglish = ""
-//                let exampleJapanese = ""
-//                let soundWord = ""
-//                let soundDefinition = ""
-//                let definitionOther = ""
-//                let usageAmount = 0
-//                let usageAmountOther = 0
-//                let pitchAccentText = 0
-//                let pitchAccent = 0
-//                let otherExampleSentences = 0
-
-//                var i: Int = 0
-//                for item in )
-//                {
-//                    println(item)
-//                    println("\n")
-//                    
-//                    switch i
-//                    {
-//                        case 0:
-//                        
-//                        
-//                    }
-//                    
-//                    i++
-//                }
+                //                let kanji = ""
+                //                let index = 0
+                //                let hiragana = ""
+                //                let definition = ""
+                //                let exampleEnglish = ""
+                //                let exampleJapanese = ""
+                //                let soundWord = ""
+                //                let soundDefinition = ""
+                //                let definitionOther = ""
+                //                let usageAmount = 0
+                //                let usageAmountOther = 0
+                //                let pitchAccentText = 0
+                //                let pitchAccent = 0
+                //                let otherExampleSentences = 0
+                
+                //                var i: Int = 0
+                //                for item in )
+                //                {
+                //                    println(item)
+                //                    println("\n")
+                //
+                //                    switch i
+                //                    {
+                //                        case 0:
+                //
+                //
+                //                    }
+                //
+                //                    i++
+                //                }
             }
         }
         
@@ -136,7 +138,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func onTap () {
         if(!isFront && due.count > 1)
         {
@@ -161,11 +163,11 @@ class ViewController: UIViewController {
     func makeEntityAction () {
         println("-- Make action --")
         
-        let value = "例_ExampleKanji"
-        var t = MyObjectPropertyList.kanji
-//        let test = self.managedObjectContext
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let value = "ExKanji2"
+        
         var myObject = MyObject.createMyObject(MyObjectPropertyList.kanji, value : value, context: self.managedObjectContext)//!
-//        saveContext(self.managedObjectContext)
+                saveContext(self.managedObjectContext)
     }
     
     func fetchObjectAction () {

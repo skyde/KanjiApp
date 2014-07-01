@@ -7,53 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		842878AA19611E230060BDD1 /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878A919611E230060BDD1 /* MyObject.swift */; };
-		842878D5196287780060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */; };
-		8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809D1946D02C0018EF5A /* AppDelegate.swift */; };
-		843580A01946D02C0018EF5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435809F1946D02C0018EF5A /* ViewController.swift */; };
-		843580A31946D02C0018EF5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843580A11946D02C0018EF5A /* Main.storyboard */; };
-		843580A51946D02C0018EF5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843580A41946D02C0018EF5A /* Images.xcassets */; };
-		843580B11946D02C0018EF5A /* KanjiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843580B01946D02C0018EF5A /* KanjiAppTests.swift */; };
-		844C368D195A017300BC32F3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C368C195A017300BC32F3 /* Card.swift */; };
-		84E03A83195D21CF00F871D6 /* AllCards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84E03A82195D21CF00F871D6 /* AllCards.txt */; };
+		842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878E4196341B10060BDD1 /* AppDelegate.swift */; };
+		842878E8196341B10060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */; };
+		842878EA196341B10060BDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878E9196341B10060BDD1 /* ViewController.swift */; };
+		842878ED196341B10060BDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842878EB196341B10060BDD1 /* Main.storyboard */; };
+		842878EF196341B10060BDD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842878EE196341B10060BDD1 /* Images.xcassets */; };
+		842878FB196341B10060BDD1 /* KanjiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878FA196341B10060BDD1 /* KanjiAppTests.swift */; };
+		84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */; };
+		84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2C196350E200FB7FEF /* AllCards.txt */; };
+		84F3AA2F196350EA00FB7FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA2E196350EA00FB7FEF /* Card.swift */; };
+		84F3AA33196351E300FB7FEF /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA32196351E300FB7FEF /* MyObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		843580AB1946D02C0018EF5A /* PBXContainerItemProxy */ = {
+		842878F5196341B10060BDD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 843580901946D02C0018EF5A /* Project object */;
+			containerPortal = 842878D7196341B10060BDD1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 843580971946D02C0018EF5A;
+			remoteGlobalIDString = 842878DE196341B10060BDD1;
 			remoteInfo = KanjiApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		842878A7196113A50060BDD1 /* KanjiApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiApp.xcdatamodel; sourceTree = "<group>"; };
-		842878A919611E230060BDD1 /* MyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObject.swift; sourceTree = "<group>"; };
-		843580981946D02C0018EF5A /* KanjiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8435809C1946D02C0018EF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8435809D1946D02C0018EF5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8435809F1946D02C0018EF5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		843580A21946D02C0018EF5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		843580A41946D02C0018EF5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		843580AA1946D02C0018EF5A /* KanjiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanjiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		843580AF1946D02C0018EF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		843580B01946D02C0018EF5A /* KanjiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiAppTests.swift; sourceTree = "<group>"; };
-		843580BA1946D04E0018EF5A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		844C368C195A017300BC32F3 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		84E03A82195D21CF00F871D6 /* AllCards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllCards.txt; sourceTree = "<group>"; };
+		842878DF196341B10060BDD1 /* KanjiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842878E3196341B10060BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842878E4196341B10060BDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		842878E7196341B10060BDD1 /* KanjiApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiApp.xcdatamodel; sourceTree = "<group>"; };
+		842878E9196341B10060BDD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		842878EC196341B10060BDD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		842878EE196341B10060BDD1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		842878F4196341B10060BDD1 /* KanjiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanjiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		842878F9196341B10060BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842878FA196341B10060BDD1 /* KanjiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiAppTests.swift; sourceTree = "<group>"; };
+		84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AllCards copy.txt"; sourceTree = "<group>"; };
+		84F3AA2C196350E200FB7FEF /* AllCards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllCards.txt; sourceTree = "<group>"; };
+		84F3AA2E196350EA00FB7FEF /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		84F3AA32196351E300FB7FEF /* MyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		843580951946D02C0018EF5A /* Frameworks */ = {
+		842878DC196341B10060BDD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		843580A71946D02C0018EF5A /* Frameworks */ = {
+		842878F1196341B10060BDD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,62 +64,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8435808F1946D02C0018EF5A = {
+		842878D6196341B10060BDD1 = {
 			isa = PBXGroup;
 			children = (
-				8435809A1946D02C0018EF5A /* KanjiApp */,
-				843580AD1946D02C0018EF5A /* KanjiAppTests */,
-				843580991946D02C0018EF5A /* Products */,
+				842878E1196341B10060BDD1 /* KanjiApp */,
+				842878F7196341B10060BDD1 /* KanjiAppTests */,
+				842878E0196341B10060BDD1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		843580991946D02C0018EF5A /* Products */ = {
+		842878E0196341B10060BDD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				843580981946D02C0018EF5A /* KanjiApp.app */,
-				843580AA1946D02C0018EF5A /* KanjiAppTests.xctest */,
+				842878DF196341B10060BDD1 /* KanjiApp.app */,
+				842878F4196341B10060BDD1 /* KanjiAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8435809A1946D02C0018EF5A /* KanjiApp */ = {
+		842878E1196341B10060BDD1 /* KanjiApp */ = {
 			isa = PBXGroup;
 			children = (
-				843580BA1946D04E0018EF5A /* MyPlayground.playground */,
-				8435809D1946D02C0018EF5A /* AppDelegate.swift */,
-				84E03A82195D21CF00F871D6 /* AllCards.txt */,
-				844C368C195A017300BC32F3 /* Card.swift */,
-				842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */,
-				8435809F1946D02C0018EF5A /* ViewController.swift */,
-				843580A11946D02C0018EF5A /* Main.storyboard */,
-				843580A41946D02C0018EF5A /* Images.xcassets */,
-				8435809B1946D02C0018EF5A /* Supporting Files */,
-				842878A919611E230060BDD1 /* MyObject.swift */,
+				84F3AA32196351E300FB7FEF /* MyObject.swift */,
+				84F3AA2E196350EA00FB7FEF /* Card.swift */,
+				84F3AA2C196350E200FB7FEF /* AllCards.txt */,
+				84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */,
+				842878E4196341B10060BDD1 /* AppDelegate.swift */,
+				842878EB196341B10060BDD1 /* Main.storyboard */,
+				842878E9196341B10060BDD1 /* ViewController.swift */,
+				842878EE196341B10060BDD1 /* Images.xcassets */,
+				842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */,
+				842878E2196341B10060BDD1 /* Supporting Files */,
 			);
 			path = KanjiApp;
 			sourceTree = "<group>";
 		};
-		8435809B1946D02C0018EF5A /* Supporting Files */ = {
+		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8435809C1946D02C0018EF5A /* Info.plist */,
+				842878E3196341B10060BDD1 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		843580AD1946D02C0018EF5A /* KanjiAppTests */ = {
+		842878F7196341B10060BDD1 /* KanjiAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				843580B01946D02C0018EF5A /* KanjiAppTests.swift */,
-				843580AE1946D02C0018EF5A /* Supporting Files */,
+				842878FA196341B10060BDD1 /* KanjiAppTests.swift */,
+				842878F8196341B10060BDD1 /* Supporting Files */,
 			);
 			path = KanjiAppTests;
 			sourceTree = "<group>";
 		};
-		843580AE1946D02C0018EF5A /* Supporting Files */ = {
+		842878F8196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				843580AF1946D02C0018EF5A /* Info.plist */,
+				842878F9196341B10060BDD1 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -126,13 +127,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		843580971946D02C0018EF5A /* KanjiApp */ = {
+		842878DE196341B10060BDD1 /* KanjiApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 843580B41946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiApp" */;
+			buildConfigurationList = 842878FE196341B10060BDD1 /* Build configuration list for PBXNativeTarget "KanjiApp" */;
 			buildPhases = (
-				843580941946D02C0018EF5A /* Sources */,
-				843580951946D02C0018EF5A /* Frameworks */,
-				843580961946D02C0018EF5A /* Resources */,
+				842878DB196341B10060BDD1 /* Sources */,
+				842878DC196341B10060BDD1 /* Frameworks */,
+				842878DD196341B10060BDD1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -140,46 +141,46 @@
 			);
 			name = KanjiApp;
 			productName = KanjiApp;
-			productReference = 843580981946D02C0018EF5A /* KanjiApp.app */;
+			productReference = 842878DF196341B10060BDD1 /* KanjiApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		843580A91946D02C0018EF5A /* KanjiAppTests */ = {
+		842878F3196341B10060BDD1 /* KanjiAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 843580B71946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiAppTests" */;
+			buildConfigurationList = 84287901196341B10060BDD1 /* Build configuration list for PBXNativeTarget "KanjiAppTests" */;
 			buildPhases = (
-				843580A61946D02C0018EF5A /* Sources */,
-				843580A71946D02C0018EF5A /* Frameworks */,
-				843580A81946D02C0018EF5A /* Resources */,
+				842878F0196341B10060BDD1 /* Sources */,
+				842878F1196341B10060BDD1 /* Frameworks */,
+				842878F2196341B10060BDD1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				843580AC1946D02C0018EF5A /* PBXTargetDependency */,
+				842878F6196341B10060BDD1 /* PBXTargetDependency */,
 			);
 			name = KanjiAppTests;
 			productName = KanjiAppTests;
-			productReference = 843580AA1946D02C0018EF5A /* KanjiAppTests.xctest */;
+			productReference = 842878F4196341B10060BDD1 /* KanjiAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		843580901946D02C0018EF5A /* Project object */ = {
+		842878D7196341B10060BDD1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Sky;
 				TargetAttributes = {
-					843580971946D02C0018EF5A = {
+					842878DE196341B10060BDD1 = {
 						CreatedOnToolsVersion = 6.0;
 					};
-					843580A91946D02C0018EF5A = {
+					842878F3196341B10060BDD1 = {
 						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 843580971946D02C0018EF5A;
+						TestTargetID = 842878DE196341B10060BDD1;
 					};
 				};
 			};
-			buildConfigurationList = 843580931946D02C0018EF5A /* Build configuration list for PBXProject "KanjiApp" */;
+			buildConfigurationList = 842878DA196341B10060BDD1 /* Build configuration list for PBXProject "KanjiApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -187,29 +188,30 @@
 				en,
 				Base,
 			);
-			mainGroup = 8435808F1946D02C0018EF5A;
-			productRefGroup = 843580991946D02C0018EF5A /* Products */;
+			mainGroup = 842878D6196341B10060BDD1;
+			productRefGroup = 842878E0196341B10060BDD1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				843580971946D02C0018EF5A /* KanjiApp */,
-				843580A91946D02C0018EF5A /* KanjiAppTests */,
+				842878DE196341B10060BDD1 /* KanjiApp */,
+				842878F3196341B10060BDD1 /* KanjiAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		843580961946D02C0018EF5A /* Resources */ = {
+		842878DD196341B10060BDD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E03A83195D21CF00F871D6 /* AllCards.txt in Resources */,
-				843580A31946D02C0018EF5A /* Main.storyboard in Resources */,
-				843580A51946D02C0018EF5A /* Images.xcassets in Resources */,
+				84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */,
+				84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */,
+				842878ED196341B10060BDD1 /* Main.storyboard in Resources */,
+				842878EF196341B10060BDD1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		843580A81946D02C0018EF5A /* Resources */ = {
+		842878F2196341B10060BDD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -219,41 +221,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		843580941946D02C0018EF5A /* Sources */ = {
+		842878DB196341B10060BDD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843580A01946D02C0018EF5A /* ViewController.swift in Sources */,
-				842878D5196287780060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
-				842878AA19611E230060BDD1 /* MyObject.swift in Sources */,
-				844C368D195A017300BC32F3 /* Card.swift in Sources */,
-				8435809E1946D02C0018EF5A /* AppDelegate.swift in Sources */,
+				842878EA196341B10060BDD1 /* ViewController.swift in Sources */,
+				84F3AA33196351E300FB7FEF /* MyObject.swift in Sources */,
+				842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */,
+				842878E8196341B10060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
+				84F3AA2F196350EA00FB7FEF /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		843580A61946D02C0018EF5A /* Sources */ = {
+		842878F0196341B10060BDD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843580B11946D02C0018EF5A /* KanjiAppTests.swift in Sources */,
+				842878FB196341B10060BDD1 /* KanjiAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		843580AC1946D02C0018EF5A /* PBXTargetDependency */ = {
+		842878F6196341B10060BDD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 843580971946D02C0018EF5A /* KanjiApp */;
-			targetProxy = 843580AB1946D02C0018EF5A /* PBXContainerItemProxy */;
+			target = 842878DE196341B10060BDD1 /* KanjiApp */;
+			targetProxy = 842878F5196341B10060BDD1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		843580A11946D02C0018EF5A /* Main.storyboard */ = {
+		842878EB196341B10060BDD1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				843580A21946D02C0018EF5A /* Base */,
+				842878EC196341B10060BDD1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -261,7 +263,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		843580B21946D02C0018EF5A /* Debug */ = {
+		842878FC196341B10060BDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -304,7 +306,7 @@
 			};
 			name = Debug;
 		};
-		843580B31946D02C0018EF5A /* Release */ = {
+		842878FD196341B10060BDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -340,7 +342,7 @@
 			};
 			name = Release;
 		};
-		843580B51946D02C0018EF5A /* Debug */ = {
+		842878FF196341B10060BDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -351,7 +353,7 @@
 			};
 			name = Debug;
 		};
-		843580B61946D02C0018EF5A /* Release */ = {
+		84287900196341B10060BDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -362,7 +364,7 @@
 			};
 			name = Release;
 		};
-		843580B81946D02C0018EF5A /* Debug */ = {
+		84287902196341B10060BDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KanjiApp.app/KanjiApp";
@@ -382,7 +384,7 @@
 			};
 			name = Debug;
 		};
-		843580B91946D02C0018EF5A /* Release */ = {
+		84287903196341B10060BDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KanjiApp.app/KanjiApp";
@@ -401,29 +403,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		843580931946D02C0018EF5A /* Build configuration list for PBXProject "KanjiApp" */ = {
+		842878DA196341B10060BDD1 /* Build configuration list for PBXProject "KanjiApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				843580B21946D02C0018EF5A /* Debug */,
-				843580B31946D02C0018EF5A /* Release */,
+				842878FC196341B10060BDD1 /* Debug */,
+				842878FD196341B10060BDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		843580B41946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiApp" */ = {
+		842878FE196341B10060BDD1 /* Build configuration list for PBXNativeTarget "KanjiApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				843580B51946D02C0018EF5A /* Debug */,
-				843580B61946D02C0018EF5A /* Release */,
+				842878FF196341B10060BDD1 /* Debug */,
+				84287900196341B10060BDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		843580B71946D02C0018EF5A /* Build configuration list for PBXNativeTarget "KanjiAppTests" */ = {
+		84287901196341B10060BDD1 /* Build configuration list for PBXNativeTarget "KanjiAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				843580B81946D02C0018EF5A /* Debug */,
-				843580B91946D02C0018EF5A /* Release */,
+				84287902196341B10060BDD1 /* Debug */,
+				84287903196341B10060BDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -431,17 +433,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		842878A6196113A50060BDD1 /* KanjiApp.xcdatamodeld */ = {
+		842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				842878A7196113A50060BDD1 /* KanjiApp.xcdatamodel */,
+				842878E7196341B10060BDD1 /* KanjiApp.xcdatamodel */,
 			);
-			currentVersion = 842878A7196113A50060BDD1 /* KanjiApp.xcdatamodel */;
+			currentVersion = 842878E7196341B10060BDD1 /* KanjiApp.xcdatamodel */;
 			path = KanjiApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 843580901946D02C0018EF5A /* Project object */;
+	rootObject = 842878D7196341B10060BDD1 /* Project object */;
 }

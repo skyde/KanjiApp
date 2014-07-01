@@ -2,7 +2,7 @@
 //  KanjiAppTests.swift
 //  KanjiAppTests
 //
-//  Created by Sky on 2014-06-10.
+//  Created by Sky on 2014-07-01.
 //  Copyright (c) 2014 Sky. All rights reserved.
 //
 
