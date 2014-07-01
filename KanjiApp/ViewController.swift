@@ -10,11 +10,11 @@ import UIKit
 import CoreData
 
 enum CoreDataEntities {
-    case MyObject
+    case Card
     func description() -> String {
         switch self {
-        case .MyObject:
-            return "MyObject"
+        case .Card:
+            return "Card"
         }
     }
 }
@@ -46,93 +46,93 @@ class ViewController: UIViewController {
         makeEntityAction()
         fetchObjectAction()
         
-        self.due = LoadAllCards("AllCards");
+        //self.due = LoadAllCards("AllCards");
     }
     
     func InitCoreData()
     {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context: NSManagedObjectContext = appDelegate.managedObjectContext
-        let entityName: String = "MyObject"
+        let entityName: String = "Card"
         let myEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
-        var myObject = MyObject(entity: myEntityDescription, insertIntoManagedObjectContext: context)
+        var card = Card(entity: myEntityDescription, insertIntoManagedObjectContext: context)
         
         self.managedObjectContext.persistentStoreCoordinator = appDelegate.persistentStoreCoordinator
     }
-    
-    func LoadAllCards(filename: String) -> Card[]
-    {
-        let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
-        var possibleContent = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
-        
-        var value: Card[] = []
-        
-        if let content = possibleContent {
-            var deck = content.componentsSeparatedByString("\n")
-            
-            for deckItem in deck
-            {
-                var items = deckItem.componentsSeparatedByString("\t")
-                
-                var index: Int = items[1].toInt()!
-                var pitchAccent = 0
-                if var p = items[12].toInt()
-                {
-                    pitchAccent = p
-                }
-                
-                var add: Card = Card(
-                    kanji: items[0],
-                    index: index,
-                    hiragana: items[2],
-                    definition: items[3],
-                    exampleEnglish: items[4],
-                    exampleJapanese: items[5],
-                    soundWord: items[6],
-                    soundDefinition: items[7],
-                    definitionOther: items[8],
-                    usageAmount: items[9].toInt()!,
-                    usageAmountOther: 0,
-                    pitchAccentText: items[11],
-                    pitchAccent: pitchAccent,
-                    otherExampleSentences: items[13])
-                
-                value += add
-                //                let kanji = ""
-                //                let index = 0
-                //                let hiragana = ""
-                //                let definition = ""
-                //                let exampleEnglish = ""
-                //                let exampleJapanese = ""
-                //                let soundWord = ""
-                //                let soundDefinition = ""
-                //                let definitionOther = ""
-                //                let usageAmount = 0
-                //                let usageAmountOther = 0
-                //                let pitchAccentText = 0
-                //                let pitchAccent = 0
-                //                let otherExampleSentences = 0
-                
-                //                var i: Int = 0
-                //                for item in )
-                //                {
-                //                    println(item)
-                //                    println("\n")
-                //
-                //                    switch i
-                //                    {
-                //                        case 0:
-                //
-                //
-                //                    }
-                //
-                //                    i++
-                //                }
-            }
-        }
-        
-        return value
-    }
+//    
+//    func LoadAllCards(filename: String) -> Card[]
+//    {
+//        let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
+//        var possibleContent = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+//        
+//        var value: Card[] = []
+//        
+//        if let content = possibleContent {
+//            var deck = content.componentsSeparatedByString("\n")
+//            
+//            for deckItem in deck
+//            {
+//                var items = deckItem.componentsSeparatedByString("\t")
+//                
+//                var index: Int = items[1].toInt()!
+//                var pitchAccent = 0
+//                if var p = items[12].toInt()
+//                {
+//                    pitchAccent = p
+//                }
+//                
+//                var add: Card = Card(
+//                    kanji: items[0],
+//                    index: index,
+//                    hiragana: items[2],
+//                    definition: items[3],
+//                    exampleEnglish: items[4],
+//                    exampleJapanese: items[5],
+//                    soundWord: items[6],
+//                    soundDefinition: items[7],
+//                    definitionOther: items[8],
+//                    usageAmount: items[9].toInt()!,
+//                    usageAmountOther: 0,
+//                    pitchAccentText: items[11],
+//                    pitchAccent: pitchAccent,
+//                    otherExampleSentences: items[13])
+//                
+//                value += add
+//                //                let kanji = ""
+//                //                let index = 0
+//                //                let hiragana = ""
+//                //                let definition = ""
+//                //                let exampleEnglish = ""
+//                //                let exampleJapanese = ""
+//                //                let soundWord = ""
+//                //                let soundDefinition = ""
+//                //                let definitionOther = ""
+//                //                let usageAmount = 0
+//                //                let usageAmountOther = 0
+//                //                let pitchAccentText = 0
+//                //                let pitchAccent = 0
+//                //                let otherExampleSentences = 0
+//                
+//                //                var i: Int = 0
+//                //                for item in )
+//                //                {
+//                //                    println(item)
+//                //                    println("\n")
+//                //
+//                //                    switch i
+//                //                    {
+//                //                        case 0:
+//                //
+//                //
+//                //                    }
+//                //
+//                //                    i++
+//                //                }
+//            }
+//        }
+//        
+//        return value
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -152,24 +152,24 @@ class ViewController: UIViewController {
     
     func updateText()
     {
-        if(isFront) {
-            outputText.attributedText = due[0].front
-        }
-        else {
-            outputText.attributedText = due[0].back
-        }
+//        if(isFront) {
+//            outputText.attributedText = due[0].front
+//        }
+//        else {
+//            outputText.attributedText = due[0].back
+//        }
     }
     
     func makeEntityAction () {
         println("-- Make action --")
         
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let value = "例　ExKanji with interval of 77"
+        let value = "例　ExKanji with interval of 22"
         
-        var myObject = MyObject.createMyObject(MyObjectPropertyList.kanji, value : value, context: self.managedObjectContext)!
+        var card = Card.createCard(CardProperties.kanji, value : value, context: self.managedObjectContext)!
         
-        myObject.interval = 77
-        myObject.name = "Test Name"
+        card.interval = 22
+        card.name = "Test Name 2"
         
         saveContext(self.managedObjectContext)
         //saveContext(appDelegate.managedObjectContext)
@@ -178,22 +178,22 @@ class ViewController: UIViewController {
     func fetchObjectAction () {
         println("-- Fetch action --")
         
-        if let allCards = myGeneralFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.kanji, self.managedObjectContext) {
+        if let allCards = myGeneralFetchRequest(CoreDataEntities.Card, CardProperties.kanji, self.managedObjectContext) {
             printFetchedArrayList(allCards)
             
-            for item in allCards
+            for item : AnyObject in allCards
             {
-                var cast = item as MyObject
+                var card = item as Card
                 
-                if cast.name != nil {
-                    println("name = \(cast.name)")
+                if card.name != nil {
+                    println("name = \(card.name)")
                 }
                 //                }
-                println("kanji = \(cast.kanji)")
-                println("interval = \(cast.interval)")
+                println("kanji = \(card.kanji)")
+                println("interval = \(card.interval)")
             }
         }
-//        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.kanji, "Bill", self.managedObjectContext) {
+//        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.Card, CardProperties.kanji, "Bill", self.managedObjectContext) {
 //            println("(--  --)")
 //            printFetchedArrayList(mySinglearray)
 //        }

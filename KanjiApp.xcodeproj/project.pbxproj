@@ -15,8 +15,8 @@
 		842878FB196341B10060BDD1 /* KanjiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878FA196341B10060BDD1 /* KanjiAppTests.swift */; };
 		84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */; };
 		84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2C196350E200FB7FEF /* AllCards.txt */; };
-		84F3AA2F196350EA00FB7FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA2E196350EA00FB7FEF /* Card.swift */; };
-		84F3AA33196351E300FB7FEF /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA32196351E300FB7FEF /* MyObject.swift */; };
+		84F3AA2F196350EA00FB7FEF /* Card2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA2E196350EA00FB7FEF /* Card2.swift */; };
+		84F3AA33196351E300FB7FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA32196351E300FB7FEF /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +42,8 @@
 		842878FA196341B10060BDD1 /* KanjiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiAppTests.swift; sourceTree = "<group>"; };
 		84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AllCards copy.txt"; sourceTree = "<group>"; };
 		84F3AA2C196350E200FB7FEF /* AllCards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllCards.txt; sourceTree = "<group>"; };
-		84F3AA2E196350EA00FB7FEF /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		84F3AA32196351E300FB7FEF /* MyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObject.swift; sourceTree = "<group>"; };
+		84F3AA2E196350EA00FB7FEF /* Card2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card2.swift; sourceTree = "<group>"; };
+		84F3AA32196351E300FB7FEF /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,8 @@
 		842878E1196341B10060BDD1 /* KanjiApp */ = {
 			isa = PBXGroup;
 			children = (
-				84F3AA32196351E300FB7FEF /* MyObject.swift */,
-				84F3AA2E196350EA00FB7FEF /* Card.swift */,
+				84F3AA32196351E300FB7FEF /* Card.swift */,
+				84F3AA2E196350EA00FB7FEF /* Card2.swift */,
 				84F3AA2C196350E200FB7FEF /* AllCards.txt */,
 				84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */,
 				842878E4196341B10060BDD1 /* AppDelegate.swift */,
@@ -226,10 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				842878EA196341B10060BDD1 /* ViewController.swift in Sources */,
-				84F3AA33196351E300FB7FEF /* MyObject.swift in Sources */,
+				84F3AA33196351E300FB7FEF /* Card.swift in Sources */,
 				842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */,
 				842878E8196341B10060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
-				84F3AA2F196350EA00FB7FEF /* Card.swift in Sources */,
+				84F3AA2F196350EA00FB7FEF /* Card2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
