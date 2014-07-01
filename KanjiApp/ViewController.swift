@@ -169,7 +169,7 @@ class ViewController: UIViewController {
         var card = Card.createCard(CardProperties.kanji, value : value, context: self.managedObjectContext)!
         
         card.interval = 22
-        card.name = "Test Name 2"
+        card.definition = "Test Definition"
         
         saveContext(self.managedObjectContext)
         //saveContext(appDelegate.managedObjectContext)
@@ -185,8 +185,8 @@ class ViewController: UIViewController {
             {
                 var card = item as Card
                 
-                if card.name != nil {
-                    println("name = \(card.name)")
+                if card.definition != nil {
+                    println("definition = \(card.definition)")
                 }
                 //                }
                 println("kanji = \(card.kanji)")
