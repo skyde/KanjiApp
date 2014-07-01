@@ -164,22 +164,39 @@ class ViewController: UIViewController {
         println("-- Make action --")
         
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let value = "ExKanji2"
+        let value = "例　ExKanji with interval of 77"
         
-        var myObject = MyObject.createMyObject(MyObjectPropertyList.kanji, value : value, context: self.managedObjectContext)//!
-                saveContext(self.managedObjectContext)
+        var myObject = MyObject.createMyObject(MyObjectPropertyList.kanji, value : value, context: self.managedObjectContext)!
+        
+        myObject.interval = 77
+        myObject.name = "Test Name"
+        
+        saveContext(self.managedObjectContext)
+        //saveContext(appDelegate.managedObjectContext)
     }
     
     func fetchObjectAction () {
         println("-- Fetch action --")
         
-        if let myTotalarray = myGeneralFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.kanji, self.managedObjectContext) {
-            printFetchedArrayList(myTotalarray)
+        if let allCards = myGeneralFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.kanji, self.managedObjectContext) {
+            printFetchedArrayList(allCards)
+            
+            for item in allCards
+            {
+                var cast = item as MyObject
+                
+                if cast.name != nil {
+                    println("name = \(cast.name)")
+                }
+                //                }
+                println("kanji = \(cast.kanji)")
+                println("interval = \(cast.interval)")
+            }
         }
-        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.kanji, "Bill", self.managedObjectContext) {
-            println("(--  --)")
-            printFetchedArrayList(mySinglearray)
-        }
+//        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.MyObject, MyObjectPropertyList.kanji, "Bill", self.managedObjectContext) {
+//            println("(--  --)")
+//            printFetchedArrayList(mySinglearray)
+//        }
         
     }
     

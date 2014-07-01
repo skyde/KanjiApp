@@ -22,7 +22,7 @@ class MyObject: NSManagedObject {
     
     @NSManaged var name: String
     @NSManaged var kanji: String
-    @NSManaged var definition: Double
+    @NSManaged var interval: NSNumber
     
     //
     //// CREATE CLASS OBJECT
@@ -34,11 +34,6 @@ class MyObject: NSManagedObject {
             
             let entityName = "MyObject"
             let request : NSFetchRequest = NSFetchRequest(entityName: entityName)
-            
-            
-            println("printRequest")
-            
-            println(request)
             
             request.returnsObjectsAsFaults = false
             request.predicate = NSPredicate(format: "\(propertyType) = %@", value)
@@ -137,8 +132,8 @@ func printFetchedArrayList (myarray:AnyObject[]) {
         println("Has \(myarray.count) object")
         for myobject : AnyObject in myarray {
             var anObject = myobject as MyObject
-            var thekanji = anObject.kanji
-            println(thekanji)
+            //var thekanji = anObject.kanji
+            //println(thekanji)
         }
     }
     else {
