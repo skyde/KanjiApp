@@ -91,13 +91,18 @@ class Card: NSManagedObject {
     @NSManaged var answersForgot: NSNumber
     @NSManaged var interval: NSNumber
     
-    let font = "Helvetica"
     
     var front: NSAttributedString {
     get {
+        let font = "Helvetica"
+//        println("front")
         var value = NSMutableAttributedString()
 
         value.beginEditing()
+        
+        println("front\(kanji)")
+//        println("font\(font)")
+//        kanji = "/(kanji)"
 
         for char in kanji
         {
@@ -112,8 +117,11 @@ class Card: NSManagedObject {
 
     var back: NSAttributedString {
     get {
+        let font = "Helvetica"
         var value = NSMutableAttributedString()
-
+        
+        println("back\(kanji)")
+        
         value.beginEditing()
 
         value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
@@ -177,7 +185,7 @@ class Card: NSManagedObject {
         return color
     }
 
-
+    var matches: NSArray = []
     
     class func createCard (propertyName:CardProperties, value:String, context: NSManagedObjectContext) -> Card? {
         if !value.isEmpty {
@@ -192,12 +200,12 @@ class Card: NSManagedObject {
             
             var matches: NSArray = context.executeFetchRequest(request, error: &error)
             
-            println("Number of Matches \(matches.count)")
-            for match : AnyObject in matches
-            {
-                println("Fetch from Core Data /(match)")
-            }
-//            
+            //println("Number of Matches \(matches.count)")
+//            for match : AnyObject in matches
+//            {
+//                println("Fetch from Core Data /(match)")
+//            }
+//
 //            println(error)
 //
             if (matches.count > 1) {
@@ -260,6 +268,8 @@ extension NSMutableAttributedString {
         var existingLength: Int = self.mutableString.length
         var range: NSRange = NSMakeRange(existingLength, countElements(text))
         self.mutableString.appendString(text)
+        println("text = \(text) \(range)")
+        
         self.addAttribute(attributeName, value: object, range: range)
     }
     
@@ -280,7 +290,7 @@ extension NSMutableAttributedString {
 //// FETCH REQUESTS
 //
 
-func myGeneralFetchRequest (entity : CoreDataEntities,
+func fetchCardsGeneral (entity : CoreDataEntities,
     property : CardProperties,
     context : NSManagedObjectContext) -> AnyObject[]?{
         
@@ -302,11 +312,11 @@ func myGeneralFetchRequest (entity : CoreDataEntities,
         }
 }
 
-func myNameFetchRequest (entity : CoreDataEntities,
-    property : CardProperties,
+func fetchCards (property : CardProperties,
     value : String,
     context : NSManagedObjectContext) -> AnyObject[]? {
         
+        let entity = CoreDataEntities.Card
         let entityName = entity.description()
         let propertyName = property.description()
         
@@ -320,6 +330,37 @@ func myNameFetchRequest (entity : CoreDataEntities,
         
         if matches.count > 0 {
             return matches
+        }
+        else {
+            return nil
+        }
+}
+
+func fetchCardByKanji(kanji: String, context : NSManagedObjectContext) -> Card
+{
+    var value : AnyObject? = fetchCard(CardProperties.kanji, kanji, context)//self.managedObjectContext)
+    
+    return value as Card
+}
+
+func fetchCard (property : CardProperties,
+    value : String,
+    context : NSManagedObjectContext) -> AnyObject? {
+        
+        let entity = CoreDataEntities.Card
+        let entityName = entity.description()
+        let propertyName = property.description()
+        
+        let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "\(propertyName) = %@", value)
+        let sortDescriptor :NSSortDescriptor = NSSortDescriptor(key: propertyName, ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        var error: NSError? = nil
+        var matches: NSArray = context.executeFetchRequest(request, error: &error)
+        
+        if matches.count > 0 {
+            return matches[0]
         }
         else {
             return nil

@@ -176,7 +176,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
-                        <outlet property="outputText" destination="JNT-Jw-e1O" id="zEG-kp-3zQ"/>
+                        <outlet property="outputText" destination="JNT-Jw-e1O" id="Kkg-Lx-ysU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
