@@ -24,7 +24,6 @@ class GameMode: UIViewController {
     @IBOutlet var outputText: UILabel
     
     var due: String[]
-    
     var isFront: Bool = true;
     
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
@@ -136,7 +135,7 @@ class GameMode: UIViewController {
             outputText.attributedText = card.back
         }
     }
-//    
+  
 //    func makeEntityAction () {
 //        println("-- Make action --")
 //        
