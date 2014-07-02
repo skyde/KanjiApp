@@ -129,44 +129,10 @@ class ViewController: UIViewController {
                 saveContext(self.managedObjectContext)
                 
                 value += card
-                //                let kanji = ""
-                //                let index = 0
-                //                let hiragana = ""
-                //                let definition = ""
-                //                let exampleEnglish = ""
-                //                let exampleJapanese = ""
-                //                let soundWord = ""
-                //                let soundDefinition = ""
-                //                let definitionOther = ""
-                //                let usageAmount = 0
-                //                let usageAmountOther = 0
-                //                let pitchAccentText = 0
-                //                let pitchAccent = 0
-                //                let otherExampleSentences = 0
-                
-                //                var i: Int = 0
-                //                for item in )
-                //                {
-                //                    println(item)
-                //                    println("\n")
-                //
-                //                    switch i
-                //                    {
-                //                        case 0:
-                //
-                //
-                //                    }
-                //
-                //                    i++
-                //                }
             }
         }
         
-        //print(value.count(<#r: Range<I>#>))
-        
         saveContext(self.managedObjectContext)
-        
-        //return value
     }
     
     override func didReceiveMemoryWarning() {

@@ -95,15 +95,10 @@ class Card: NSManagedObject {
     var front: NSAttributedString {
     get {
         let font = "Helvetica"
-//        println("front")
         var value = NSMutableAttributedString()
 
         value.beginEditing()
         
-        println("front\(kanji)")
-//        println("font\(font)")
-//        kanji = "/(kanji)"
-
         for char in kanji
         {
             value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: 140))
@@ -119,8 +114,6 @@ class Card: NSManagedObject {
     get {
         let font = "Helvetica"
         var value = NSMutableAttributedString()
-        
-        println("back\(kanji)")
         
         value.beginEditing()
 
@@ -268,7 +261,6 @@ extension NSMutableAttributedString {
         var existingLength: Int = self.mutableString.length
         var range: NSRange = NSMakeRange(existingLength, countElements(text))
         self.mutableString.appendString(text)
-        println("text = \(text) \(range)")
         
         self.addAttribute(attributeName, value: object, range: range)
     }
