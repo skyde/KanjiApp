@@ -23,8 +23,6 @@ class GameMode: UIViewController {
     
     @IBOutlet var outputText: UILabel
     
-//    let deck: Card[]
-//    var due: Card[]
     var due: String[]
     
     var isFront: Bool = true;
@@ -32,44 +30,20 @@ class GameMode: UIViewController {
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
     init(coder aDecoder: NSCoder!) {
-//        self.deck = []
-        
-        //        self.due = [Card("挨拶", "あいさつ", "a greeting", "She greeted him with a smile.", "彼女は笑顔で挨拶した。", 1),
-        //            Card("報告", "ほうこく", "report", "There's a report about yesterday's meeting.", "昨日の会議について報告があります。", 0),
-        //            Card("繊細", "せんさい", "delicate; fine", "She is a very delicate person.", "彼女はとても繊細な人です", 0)]
-        
         self.due = []
-//        self.dueIDs = []
-        
         super.init(coder: aDecoder)
         
         initCoreData()
-        println("run init")
-        
         createDatabase("AllCards")
-        
-        //makeEntityAction()
         
         self.due = loadDatabase()
         println(self.due.count)
-        
-        
-//        for card in self.due {
-//            var loaded : AnyObject? = fetchCard(CardProperties.kanji, card, self.managedObjectContext)
-//            
-//            println("created kanji \(loaded)")
-//        }
-        
-        //self.due = LoadAllCards("AllCards");
     }
     
     func initCoreData()
     {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context: NSManagedObjectContext = appDelegate.managedObjectContext
-        let entityName: String = "Card"
-        let myEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
-        var card = Card(entity: myEntityDescription, insertIntoManagedObjectContext: context)
         
         self.managedObjectContext.persistentStoreCoordinator = appDelegate.persistentStoreCoordinator
     }
@@ -208,9 +182,10 @@ class GameMode: UIViewController {
         
     }
     
-    //
-    //// LOAD & SAVE
-    //
+    func saveContext (context: NSManagedObjectContext) {
+        var error: NSError? = nil
+        context.save(&error)
+    }
     
     func loadContext () {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -218,23 +193,10 @@ class GameMode: UIViewController {
         self.managedObjectContext = context
     }
     
-    func saveContext (context: NSManagedObjectContext) {
-        var error: NSError? = nil
-        context.save(&error)
-    }
-    
-    //
-    //// LOAD
-    //
-    
     func myLoad () {
         loadContext ()
         println("Loaded Context")
     }
-    
-    //
-    //// Life Cycle
-    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
