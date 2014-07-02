@@ -19,7 +19,7 @@ enum CoreDataEntities {
     }
 }
 
-class ViewController: UIViewController {
+class GameMode: UIViewController {
     
     @IBOutlet var outputText: UILabel
     
@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         
         self.due = loadDatabase()
         println(self.due.count)
+        
         
 //        for card in self.due {
 //            var loaded : AnyObject? = fetchCard(CardProperties.kanji, card, self.managedObjectContext)
@@ -238,6 +239,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myLoad ()
-        //updateText()
+        updateText()
     }
 }

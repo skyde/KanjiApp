@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="1184" y="716"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Deck View-->
         <scene sceneID="yXk-YT-iD0">
             <objects>
-                <tableViewController id="FjX-yY-Kqd" sceneMemberID="viewController">
+                <tableViewController id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jO6-5i-Yf0">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,10 +95,13 @@
                             <outlet property="delegate" destination="FjX-yY-Kqd" id="PMQ-rT-ora"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="jO6-5i-Yf0" id="hqI-Wo-ZQ7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184" y="1247"/>
+            <point key="canvasLocation" x="1268" y="1255"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pKX-2b-wxR">
@@ -141,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="179" y="716"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Mode-->
         <scene sceneID="Ty6-Va-CEw">
             <objects>
-                <viewController id="nGt-Uz-nIp" customClass="ViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nGt-Uz-nIp" customClass="GameMode" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jVi-UJ-ybY"/>
                         <viewControllerLayoutGuide type="bottom" id="4Ob-f4-4wS"/>
