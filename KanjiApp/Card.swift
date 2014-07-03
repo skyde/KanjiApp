@@ -125,9 +125,19 @@ class Card: NSManagedObject {
 
         value.beginEditing()
         
+        let baseSize = 150
+        
+        var size = baseSize * 2 / countElements(kanji)
+        
+        if size > baseSize
+        {
+            size = baseSize
+        }
+        
         for char in kanji
         {
-            value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: 140))
+            
+            value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))
         }
 
         value.endEditing()
