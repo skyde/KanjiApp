@@ -33,7 +33,7 @@ class DeckView: UIViewController, UITableViewDelegate, UITableViewDataSource {
             for item : AnyObject in allCards {
                 
                 var card = item as Card
-                items += card.kanji
+                items += "\(card.kanji) \(card.interval)"
             }
         }
 

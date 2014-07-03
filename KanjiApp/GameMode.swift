@@ -203,7 +203,7 @@ class GameMode: UIViewController {
     
     func advanceCard()
     {
-        if(!isFront && due.count > 1) {
+        if !isFront && due.count > 1 {
             due.removeAtIndex(0)
         }
         
@@ -214,7 +214,10 @@ class GameMode: UIViewController {
     
     @IBAction func onTap () {
         
-        dueCard.answerCard(.Normal)
+        if !isFront {
+            dueCard.answerCard(.Normal)
+        }
+        
         advanceCard()
     }
     
@@ -224,7 +227,7 @@ class GameMode: UIViewController {
             
             advanceCard()
             
-            if(!isFront)
+            if !isFront
             {
                 //var card: Card = fetchCardByKanji(due[0], self.managedObjectContext)
                 

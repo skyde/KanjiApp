@@ -317,7 +317,7 @@ func fetchCardsGeneral (entity : CoreDataEntities,
         
         let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
         request.returnsObjectsAsFaults = false
-        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: propertyName, ascending: true)
+        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: CardProperties.interval.description(), ascending: true)
         request.sortDescriptors = [sortDescriptor]
         var error: NSError? = nil
         var matches: NSArray = context.executeFetchRequest(request, error: &error)
