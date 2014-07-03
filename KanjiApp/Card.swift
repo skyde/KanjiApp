@@ -90,7 +90,33 @@ class Card: NSManagedObject {
     @NSManaged var answersHard: NSNumber
     @NSManaged var answersForgot: NSNumber
     @NSManaged var interval: NSNumber
+    @NSManaged var dueTime: NSNumber
+    @NSManaged var enabled: NSNumber
     
+    func answerCard(difficulty: AnswerDifficulty)
+    {
+        switch difficulty {
+        case .Easy:
+            println("Easy")
+            interval = 9
+        case .Normal:
+            println("Normal")
+            if interval.integerValue < 12
+            {
+                interval = interval.integerValue + 1
+            }
+        case .Hard:
+            println("Hard")
+            if interval.integerValue >= 1
+            {
+                interval = interval.integerValue - 1
+            }
+        case .Forgot:
+            println("Forgot")
+            interval = 1
+            
+        }
+    }
     
     var front: NSAttributedString {
     get {

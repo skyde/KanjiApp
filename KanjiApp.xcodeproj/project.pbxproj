@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		841390B719645CB6005958B9 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841390B619645CB6005958B9 /* DeckView.swift */; };
+		841390B91965074D005958B9 /* AnswerDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841390B81965074D005958B9 /* AnswerDifficulty.swift */; };
 		842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878E4196341B10060BDD1 /* AppDelegate.swift */; };
 		842878E8196341B10060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */; };
 		842878EA196341B10060BDD1 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878E9196341B10060BDD1 /* GameMode.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		841390B619645CB6005958B9 /* DeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
+		841390B81965074D005958B9 /* AnswerDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerDifficulty.swift; sourceTree = "<group>"; };
 		842878DF196341B10060BDD1 /* KanjiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842878E3196341B10060BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842878E4196341B10060BDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */,
 				842878E2196341B10060BDD1 /* Supporting Files */,
 				841390B619645CB6005958B9 /* DeckView.swift */,
+				841390B81965074D005958B9 /* AnswerDifficulty.swift */,
 			);
 			path = KanjiApp;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841390B91965074D005958B9 /* AnswerDifficulty.swift in Sources */,
 				842878EA196341B10060BDD1 /* GameMode.swift in Sources */,
 				84F3AA33196351E300FB7FEF /* Card.swift in Sources */,
 				842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */,

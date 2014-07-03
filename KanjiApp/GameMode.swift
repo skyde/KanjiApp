@@ -99,6 +99,7 @@ class GameMode: UIViewController {
                 card.answersHard = 0
                 card.answersForgot = 0
                 card.interval = 0
+                card.dueTime = 0
                 
                 saveContext(self.managedObjectContext)
                 
@@ -112,16 +113,6 @@ class GameMode: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func onTap () {
-        if(!isFront && due.count > 1) {
-            due.removeAtIndex(0)
-        }
-        
-        isFront = !isFront
-        
-        updateText()
     }
     
     func updateText() {
@@ -204,6 +195,47 @@ class GameMode: UIViewController {
         setupSwipeGestures()
     }
     
+    @IBAction func onTap () {
+        advanceCard()
+    }
+    
+    func advanceCard()
+    {
+        if(!isFront && due.count > 1) {
+            due.removeAtIndex(0)
+        }
+        
+        isFront = !isFront
+        
+        updateText()
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            advanceCard()
+            
+            if(!isFront)
+            {
+                var card: Card = fetchCardByKanji(due[0], self.managedObjectContext)
+                
+                switch swipeGesture.direction {
+                case UISwipeGestureRecognizerDirection.Right:
+                    println("Swiped right")
+                case UISwipeGestureRecognizerDirection.Down:
+                    println("Swiped down")
+                case UISwipeGestureRecognizerDirection.Up:
+                    println("Swiped Up")
+                case UISwipeGestureRecognizerDirection.Left:
+                    println("Swiped Left")
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
     func setupSwipeGestures(){
         var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
@@ -220,24 +252,5 @@ class GameMode: UIViewController {
         var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
-    }
-    
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.Right:
-                println("Swiped right")
-            case UISwipeGestureRecognizerDirection.Down:
-                println("Swiped down")
-            case UISwipeGestureRecognizerDirection.Up:
-                println("Swiped Up")
-            case UISwipeGestureRecognizerDirection.Left:
-                println("Swiped Left")
-            default:
-                break
-            }
-        }
     }
 }
