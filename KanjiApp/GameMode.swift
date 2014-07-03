@@ -24,6 +24,7 @@ class GameMode: UIViewController {
     @IBOutlet var outputText: UILabel
     
     var due: String[]
+//    var lastDue: String = ""
     var isFront: Bool = true;
     
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
@@ -33,6 +34,12 @@ class GameMode: UIViewController {
         return fetchCardByKanji(due[0], self.managedObjectContext)
     }
     }
+    
+//    var lastDueCard: Card {
+//    get {
+//        return fetchCardByKanji(lastDue, self.managedObjectContext)
+//    }
+//    }
     
     init(coder aDecoder: NSCoder!) {
         self.due = []
@@ -202,6 +209,7 @@ class GameMode: UIViewController {
     func advanceCard()
     {
         if !isFront && due.count > 1 {
+            
             due.removeAtIndex(0)
         }
         
@@ -210,44 +218,69 @@ class GameMode: UIViewController {
         updateText()
     }
     
+    func onInteract(interactType: InteractType, _ card: Card) {
+        
+        switch interactType {
+            
+        case .Tap:
+            card.answerCard(.Normal)
+            
+        case .SwipeRight:
+            println("Swiped right \(card.kanji)")
+            card.answerCard(.Hard)
+            due += due[0]
+            
+        case .SwipeLeft:
+            println("Swiped Left \(card.kanji)")
+            card.answerCard(.Forgot)
+            due += due[0]
+            
+        case .SwipeUp:
+            println("Swiped Up \(card.kanji)")
+            card.answerCard(.Easy)
+            
+        case .SwipeDown:
+            println("Swipe Down \(card.kanji)")
+        }
+        advanceCard()
+        
+        saveContext(self.managedObjectContext)
+    }
+    
     @IBAction func onTap () {
         
-        if !isFront {
-            dueCard.answerCard(.Normal)
-            saveContext(self.managedObjectContext)
-        }
+        onInteract(.Tap, dueCard)
         
-        advanceCard()
+//        if !isFront {
+//            lastDue = due[0]
+//        }
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             
-            advanceCard()
-            
-            if !isFront
-            {
-                //var card: Card = fetchCardByKanji(due[0], self.managedObjectContext)
+            if !isFront {
                 
                 switch swipeGesture.direction {
+                    
                 case UISwipeGestureRecognizerDirection.Right:
-                    println("Swiped right")
-                    dueCard.answerCard(.Hard)
+                    onInteract(.SwipeRight, dueCard)
+                    
                 case UISwipeGestureRecognizerDirection.Down:
-                    println("Swiped down")
+                    onInteract(.SwipeDown, dueCard)
+                    
                 case UISwipeGestureRecognizerDirection.Up:
-                    println("Swiped Up")
-                    dueCard.answerCard(.Easy)
+                    onInteract(.SwipeUp, dueCard)
+                    
                 case UISwipeGestureRecognizerDirection.Left:
-                    println("Swiped Left")
-                    dueCard.answerCard(.Forgot)
+                    onInteract(.SwipeLeft, dueCard)
+                    
                 default:
                     break
                 }
             }
         }
-        saveContext(self.managedObjectContext)
     }
     
     func setupSwipeGestures(){
