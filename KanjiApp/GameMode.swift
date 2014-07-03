@@ -28,6 +28,12 @@ class GameMode: UIViewController {
     
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
+    var dueCard: Card {
+    get {
+        return fetchCardByKanji(due[0], self.managedObjectContext)
+    }
+    }
+    
     init(coder aDecoder: NSCoder!) {
         self.due = []
         super.init(coder: aDecoder)
@@ -36,7 +42,7 @@ class GameMode: UIViewController {
         createDatabase("AllCards")
         
         self.due = loadDatabase()
-        println(self.due.count)
+        //println(self.due.count)
     }
     
     func initCoreData()
@@ -117,13 +123,13 @@ class GameMode: UIViewController {
     
     func updateText() {
         
-        var card = fetchCardByKanji(due[0], self.managedObjectContext)
+        //var card = fetchCardByKanji(due[0], self.managedObjectContext)
         
         if(isFront) {
-            outputText.attributedText = card.front
+            outputText.attributedText = dueCard.front
         }
         else {
-            outputText.attributedText = card.back
+            outputText.attributedText = dueCard.back
         }
     }
   
@@ -195,10 +201,6 @@ class GameMode: UIViewController {
         setupSwipeGestures()
     }
     
-    @IBAction func onTap () {
-        advanceCard()
-    }
-    
     func advanceCard()
     {
         if(!isFront && due.count > 1) {
@@ -210,6 +212,12 @@ class GameMode: UIViewController {
         updateText()
     }
     
+    @IBAction func onTap () {
+        
+        dueCard.answerCard(.Normal)
+        advanceCard()
+    }
+    
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -218,17 +226,20 @@ class GameMode: UIViewController {
             
             if(!isFront)
             {
-                var card: Card = fetchCardByKanji(due[0], self.managedObjectContext)
+                //var card: Card = fetchCardByKanji(due[0], self.managedObjectContext)
                 
                 switch swipeGesture.direction {
                 case UISwipeGestureRecognizerDirection.Right:
                     println("Swiped right")
+                    dueCard.answerCard(.Hard)
                 case UISwipeGestureRecognizerDirection.Down:
                     println("Swiped down")
                 case UISwipeGestureRecognizerDirection.Up:
                     println("Swiped Up")
+                    dueCard.answerCard(.Easy)
                 case UISwipeGestureRecognizerDirection.Left:
                     println("Swiped Left")
+                    dueCard.answerCard(.Forgot)
                 default:
                     break
                 }

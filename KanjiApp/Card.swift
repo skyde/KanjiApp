@@ -113,7 +113,7 @@ class Card: NSManagedObject {
             }
         case .Forgot:
             println("Forgot")
-            interval = 1
+            interval = interval.integerValue / 2
             
         }
     }
