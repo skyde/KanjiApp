@@ -28,7 +28,7 @@ class DeckView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         if let allCards = fetchCardsGeneral(CoreDataEntities.Card, CardProperties.kanji, self.managedObjectContext) {
-            printFetchedArrayList(allCards)
+            //printFetchedArrayList(allCards)
             
             for item : AnyObject in allCards {
                 

@@ -39,9 +39,15 @@ class GameMode: UIViewController {
         super.init(coder: aDecoder)
         
         initCoreData()
-        createDatabase("AllCards")
         
         self.due = loadDatabase()
+        
+        if self.due.count == 0
+        {
+            createDatabase("AllCards")
+            self.due = loadDatabase()
+        }
+        
         //println(self.due.count)
     }
     
@@ -107,7 +113,7 @@ class GameMode: UIViewController {
                 card.interval = 0
                 card.dueTime = 0
                 
-                saveContext(self.managedObjectContext)
+                //saveContext(self.managedObjectContext)
                 
                 value += card
             }
@@ -149,22 +155,14 @@ class GameMode: UIViewController {
 //    }
     
     func loadDatabase () -> String[] {
-        println("-- Fetch action --")
+        //println("-- Fetch action --")
         
         var values: String[] = []
         
         if let allCards = fetchCardsGeneral(CoreDataEntities.Card, CardProperties.kanji, self.managedObjectContext) {
-            printFetchedArrayList(allCards)
             
             for item : AnyObject in allCards {
                 var card = item as Card
-                
-//                if card.definition != nil {
-//                    println("definition = \(card.definition)")
-//                }
-//                //                }
-//                println("kanji = \(card.kanji)")
-//                println("interval = \(card.interval)")
                 
                 values += card.kanji
             }
@@ -216,6 +214,7 @@ class GameMode: UIViewController {
         
         if !isFront {
             dueCard.answerCard(.Normal)
+            saveContext(self.managedObjectContext)
         }
         
         advanceCard()
@@ -248,6 +247,7 @@ class GameMode: UIViewController {
                 }
             }
         }
+        saveContext(self.managedObjectContext)
     }
     
     func setupSwipeGestures(){

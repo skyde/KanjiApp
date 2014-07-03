@@ -389,16 +389,16 @@ func fetchCard (property : CardProperties,
 //// PRINT FETCH REQUEST
 //
 
-func printFetchedArrayList (myarray:AnyObject[]) {
-    if myarray.count > 0 {
-        println("Has \(myarray.count) object")
-        for card : AnyObject in myarray {
-            var anObject = card as Card
-            //var thekanji = anObject.kanji
-            //println(thekanji)
-        }
-    }
-    else {
-        println("empty fetch")
-    }
-}
+//func printFetchedArrayList (myarray:AnyObject[]) {
+//    if myarray.count > 0 {
+//        println("Has \(myarray.count) object")
+//        for card : AnyObject in myarray {
+//            var anObject = card as Card
+//            //var thekanji = anObject.kanji
+//            //println(thekanji)
+//        }
+//    }
+//    else {
+//        println("empty fetch")
+//    }
+//}
