@@ -249,7 +249,14 @@ class GameMode: UIViewController {
     
     @IBAction func onTap () {
         
-        onInteract(.Tap, dueCard)
+        if !isFront {
+            
+            onInteract(.Tap, dueCard)
+        }
+        else
+        {
+            advanceCard()
+        }
         
 //        if !isFront {
 //            lastDue = due[0]

@@ -103,17 +103,17 @@ class Card: NSManagedObject {
             println("Normal")
             if interval.integerValue < 12
             {
-                interval = interval.integerValue + 1
+                interval = interval.doubleValue + 1
             }
         case .Hard:
             println("Hard")
             if interval.integerValue >= 1
             {
-                interval = interval.integerValue - 1
+                interval = interval.doubleValue - 1
             }
         case .Forgot:
             println("Forgot")
-            interval = interval.integerValue / 2
+            interval = interval.doubleValue / 2
             
         }
     }
@@ -206,46 +206,38 @@ class Card: NSManagedObject {
 
     var matches: NSArray = []
     
-    class func createCard (propertyName:CardProperties, value:String, context: NSManagedObjectContext) -> Card? {
+    class func createCard (propertyName:CardProperties, value:String, context: NSManagedObjectContext, checkForExisting: Bool = true) -> Card? {
+        
+        let entityName = "Card"
+        
         if !value.isEmpty {
-            let propertyType = propertyName.description()
-            
-            let entityName = "Card"
-            let request : NSFetchRequest = NSFetchRequest(entityName: entityName)
-            
-            request.returnsObjectsAsFaults = false
-            request.predicate = NSPredicate(format: "\(propertyType) = %@", value)
-            var error: NSError? = nil
-            
-            var matches: NSArray = context.executeFetchRequest(request, error: &error)
-            
-            //println("Number of Matches \(matches.count)")
-//            for match : AnyObject in matches
-//            {
-//                println("Fetch from Core Data /(match)")
-//            }
-//
-//            println(error)
-//
-            if (matches.count > 1) {
-                // handle error
-                return matches[0] as? Card
-            } else if matches.count ==  0 {
-                let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
-                var card : Card = Card(entity: entityDescription, insertIntoManagedObjectContext: context)
+            if(checkForExisting)
+            {
+                let propertyType = propertyName.description()
                 
-                switch propertyName {
-                    case .kanji:
-                            card.kanji = value
-                    default:
-                        return card
+                let request : NSFetchRequest = NSFetchRequest(entityName: entityName)
+                
+                request.returnsObjectsAsFaults = false
+                request.predicate = NSPredicate(format: "\(propertyType) = %@", value)
+                var error: NSError? = nil
+                
+                var matches: NSArray = context.executeFetchRequest(request, error: &error)
+                
+                if (matches.count > 1) {
+                    return matches[0] as? Card
                 }
-                return card
             }
-            else {
-                println(matches[0])
-                return matches[0] as? Card
+            
+            let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
+            var card : Card = Card(entity: entityDescription, insertIntoManagedObjectContext: context)
+            
+            switch propertyName {
+                case .kanji:
+                        card.kanji = value
+                default:
+                    return card
             }
+            return card
         }
         return nil
     }
