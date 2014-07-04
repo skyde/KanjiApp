@@ -125,7 +125,7 @@ class Card: NSManagedObject {
 
         value.beginEditing()
         
-        let baseSize: Double = 160
+        let baseSize: Double = 200
         
         var size = baseSize * 2 / Double(countElements(kanji))
         
@@ -166,9 +166,9 @@ class Card: NSManagedObject {
 
         value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
 
-        value.addBreak(10)
+        value.addBreak(15)
         
-        value.addAttributedText(otherExampleSentences, NSFontAttributeName, UIFont(name: font, size: 20), processAttributes: true)
+        value.addAttributedText(otherExampleSentences, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
         
         value.addBreak(10)
         
@@ -282,6 +282,8 @@ extension NSMutableAttributedString {
             text = removeFromString(text, "<b>")
             text = removeFromString(text, "</b>")
             text = replaceInString(text, "<br>", "\n")
+            text = replaceInString(text, "&#39;", "'")
+            text = replaceInString(text, "&quot;", "\"")
             
             text = removeFromString(text, "<span style=\"font-size:20px\">")
             text = removeFromString(text, "</span>")

@@ -21,7 +21,7 @@ enum CoreDataEntities {
 
 class GameMode: UIViewController {
     
-    @IBOutlet var outputText: UILabel
+    @IBOutlet var outputText: UITextView
     
     var due: String[]
 //    var lastDue: String = ""
@@ -146,6 +146,8 @@ class GameMode: UIViewController {
         else {
             outputText.attributedText = dueCard.back
         }
+        
+        outputText.textAlignment = .Center
     }
   
 //    func makeEntityAction () {
