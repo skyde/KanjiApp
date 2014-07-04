@@ -35,6 +35,8 @@ class GameMode: UIViewController {
     }
     }
     
+    let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+    
 //    var lastDueCard: Card {
 //    get {
 //        return fetchCardByKanji(lastDue, self.managedObjectContext)

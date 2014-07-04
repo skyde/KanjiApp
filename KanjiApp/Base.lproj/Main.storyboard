@@ -156,31 +156,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEP-cb-CmC">
-                                <rect key="frame" x="0.0" y="63" width="480" height="417"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="JNT-Jw-e1O">
-                                        <rect key="frame" x="100" y="-64" width="280" height="528"/>
-                                        <string key="text">漢
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="tRy-ZB-SUX">
+                                <rect key="frame" x="100" y="6" width="280" height="528"/>
+                                <string key="text">漢
 字</string>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="180"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="-2" height="2"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="JNT-Jw-e1O" secondAttribute="centerX" id="DBe-eL-j9w"/>
-                                </constraints>
-                            </scrollView>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="180"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-2" height="2"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="yEP-cb-CmC" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Bbf-8b-7Nd"/>
-                            <constraint firstItem="yEP-cb-CmC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="DVH-ns-YUo"/>
-                            <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="yEP-cb-CmC" secondAttribute="bottom" id="PRR-aJ-D0z"/>
-                            <constraint firstAttribute="trailing" secondItem="yEP-cb-CmC" secondAttribute="trailing" id="dZa-ym-bb1"/>
+                            <constraint firstAttribute="centerX" secondItem="tRy-ZB-SUX" secondAttribute="centerX" id="F2c-jV-sAh"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <connections>
@@ -189,7 +178,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
-                        <outlet property="outputText" destination="JNT-Jw-e1O" id="Kkg-Lx-ysU"/>
+                        <outlet property="outputText" destination="tRy-ZB-SUX" id="oaj-Ox-3rf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>

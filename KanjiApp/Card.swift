@@ -125,9 +125,9 @@ class Card: NSManagedObject {
 
         value.beginEditing()
         
-        let baseSize = 150
+        let baseSize: Double = 160
         
-        var size = baseSize * 2 / countElements(kanji)
+        var size = baseSize * 2 / Double(countElements(kanji))
         
         if size > baseSize
         {
@@ -136,7 +136,6 @@ class Card: NSManagedObject {
         
         for char in kanji
         {
-            
             value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))
         }
 
@@ -161,14 +160,18 @@ class Card: NSManagedObject {
 
         value.addBreak(20)
 
-        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true)
+        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true, removeSpaces: true)
 
         value.addBreak(5)
 
         value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
 
         value.addBreak(10)
-
+        
+        value.addAttributedText(otherExampleSentences, NSFontAttributeName, UIFont(name: font, size: 20), processAttributes: true)
+        
+        value.addBreak(10)
+        
         value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
 
         //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
@@ -262,7 +265,7 @@ extension NSMutableAttributedString {
         }
     }
     
-    func addAttributedText(var text: String, _ attributeName: String, _ object: AnyObject, breakLine: Bool = true, processAttributes: Bool = false)
+    func addAttributedText(var text: String, _ attributeName: String, _ object: AnyObject, breakLine: Bool = true, processAttributes: Bool = false, removeSpaces: Bool = false)
     {
         var bolds: NSRange[] = []
         
@@ -278,6 +281,14 @@ extension NSMutableAttributedString {
             
             text = removeFromString(text, "<b>")
             text = removeFromString(text, "</b>")
+            text = replaceInString(text, "<br>", "\n")
+            
+            text = removeFromString(text, "<span style=\"font-size:20px\">")
+            text = removeFromString(text, "</span>")
+        }
+        
+        if removeSpaces
+        {
             text = removeFromString(text, " ")
         }
         
@@ -301,6 +312,21 @@ extension NSMutableAttributedString {
         for item in items
         {
             value += item
+        }
+        
+        return value
+    }
+    
+    func replaceInString(var value: String, _ remove: String, _ newValue: String) -> String
+    {
+        var items = value.componentsSeparatedByString(remove)
+        
+        value = ""
+        var spacer = ""
+        for item in items
+        {
+            value += spacer + item
+            spacer = newValue
         }
         
         return value
