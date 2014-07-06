@@ -120,12 +120,12 @@ class Card: NSManagedObject {
     
     var front: NSAttributedString {
     get {
-        let font = "Helvetica"
+        let font = "HiraKakuProN-W3"
         var value = NSMutableAttributedString()
 
         value.beginEditing()
         
-        let baseSize: Double = 200
+        let baseSize: Double = 210
         
         var size = baseSize * 2 / Double(countElements(kanji))
         
@@ -138,6 +138,16 @@ class Card: NSManagedObject {
         {
             value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))
         }
+        
+        var style = NSMutableParagraphStyle()
+        style.lineSpacing = -size * 0.3
+//        style.paragraphSpacing = 0
+//        style.lineSpacing = 0
+        //style.maximumLineHeight = size / 1.5
+        
+        var rangle = NSMakeRange(0, value.mutableString.length)
+        
+        value.addAttribute(NSParagraphStyleAttributeName, value: style, range: rangle)
 
         value.endEditing()
 
@@ -147,7 +157,7 @@ class Card: NSManagedObject {
 
     var back: NSAttributedString {
     get {
-        let font = "Helvetica"
+        let font = "HiraKakuProN-W3"
         var value = NSMutableAttributedString()
         
         value.beginEditing()
@@ -269,6 +279,16 @@ extension NSMutableAttributedString {
     {
         var bolds: NSRange[] = []
         
+        if removeSpaces
+        {
+            text = removeFromString(text, " ")
+        }
+        
+        if breakLine
+        {
+            text += "\n"
+        }
+        
         if processAttributes
         {
             var furiganaOpen = text.componentsSeparatedByString("]")
@@ -284,19 +304,32 @@ extension NSMutableAttributedString {
             text = replaceInString(text, "<br>", "\n")
             text = replaceInString(text, "&#39;", "'")
             text = replaceInString(text, "&quot;", "\"")
-            
             text = removeFromString(text, "<span style=\"font-size:20px\">")
             text = removeFromString(text, "</span>")
-        }
-        
-        if removeSpaces
-        {
-            text = removeFromString(text, " ")
-        }
-        
-        if breakLine
-        {
-            text += "\n"
+            
+//            var spanSizeOpen = text.componentsSeparatedByString("<span style=\"font-size:20px\">")
+//            text = ""
+//
+//            for item in spanSizeOpen
+//            {
+//                var itemSplit = item.componentsSeparatedByString("</span>")
+//                
+//                for var i = 0; i < countElements(itemSplit); i++
+//                {
+//                    var previousSize = countElements(text)
+//                    text += itemSplit[i]
+//
+//                    if i == 0
+//                    {
+//                        var color = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+//                        
+//                        println(self.mutableString)
+//                        
+//                        var range: NSRange = NSMakeRange(self.mutableString.length, 2)
+//                        self.addAttribute(NSBackgroundColorAttributeName, value: color, range: range)
+//                    }
+//                }
+//            }
         }
         
         var existingLength: Int = self.mutableString.length
