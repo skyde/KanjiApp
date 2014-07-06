@@ -156,45 +156,46 @@ class Card: NSManagedObject {
     }
 
     var back: NSAttributedString {
-    get {
-        let font = "HiraKakuProN-W3"
-        var value = NSMutableAttributedString()
-        
-        value.beginEditing()
+        get
+        {
+            let font = "HiraKakuProN-W3"
+            var value = NSMutableAttributedString()
+            
+            value.beginEditing()
 
-        value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
+            value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
 
-        value.addBreak(5)
+            value.addBreak(5)
 
-        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 22))
+            value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 22))
 
-        value.addBreak(20)
+            value.addBreak(20)
 
-        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true, removeSpaces: true)
+            value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true, removeSpaces: true)
 
-        value.addBreak(5)
+            value.addBreak(5)
 
-        value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
+            value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
 
-        value.addBreak(15)
-        
-        value.addAttributedText(otherExampleSentences, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
-        
-        value.addBreak(10)
-        
-        value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
+            value.addBreak(15)
+            
+            value.addAttributedText(otherExampleSentences, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
+            
+            value.addBreak(10)
+            
+            value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
 
-        //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
+            //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
 
-        var color = colorForPitchAccent(Int(pitchAccent))
+            var color = colorForPitchAccent(Int(pitchAccent))
 
-        value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
+            value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
 
 
-        value.endEditing()
+            value.endEditing()
 
-        return value
-    }
+            return value
+        }
     }
 
     func colorForPitchAccent(pitchAccent: Int) -> UIColor
@@ -424,8 +425,15 @@ func fetchCardByKanji(kanji: String, context : NSManagedObjectContext) -> Card
     return value as Card
 }
 
+func fetchCardByIndex(index: NSNumber, context : NSManagedObjectContext) -> Card
+{
+    var value : AnyObject? = fetchCard(CardProperties.index, index, context)//self.managedObjectContext)
+    
+    return value as Card
+}
+
 func fetchCard (property : CardProperties,
-    value : String,
+    value : NSObject,
     context : NSManagedObjectContext) -> AnyObject? {
         
         let entity = CoreDataEntities.Card

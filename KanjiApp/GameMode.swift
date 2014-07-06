@@ -23,7 +23,7 @@ class GameMode: UIViewController {
     
     @IBOutlet var outputText: UITextView
     
-    var due: String[]
+    var due: NSNumber[]
 //    var lastDue: String = ""
     var isFront: Bool = true;
     
@@ -31,7 +31,7 @@ class GameMode: UIViewController {
     
     var dueCard: Card {
     get {
-        return fetchCardByKanji(due[0], self.managedObjectContext)
+        return fetchCardByIndex(due[0], self.managedObjectContext)
     }
     }
     
@@ -53,7 +53,7 @@ class GameMode: UIViewController {
         
         if self.due.count == 0
         {
-            createDatabase("AllCards")
+            createDatabase("AllCards copy")
             self.due = loadDatabase()
         }
         
@@ -165,17 +165,17 @@ class GameMode: UIViewController {
 //        //saveContext(appDelegate.managedObjectContext)
 //    }
     
-    func loadDatabase () -> String[] {
+    func loadDatabase () -> NSNumber[] {
         //println("-- Fetch action --")
         
-        var values: String[] = []
+        var values: NSNumber[] = []
         
         if let allCards = fetchCardsGeneral(CoreDataEntities.Card, CardProperties.kanji, self.managedObjectContext) {
             
             for item : AnyObject in allCards {
                 var card = item as Card
                 
-                values += card.kanji
+                values += card.index
             }
         }
         

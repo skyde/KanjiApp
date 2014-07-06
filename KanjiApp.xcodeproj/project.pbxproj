@@ -35,6 +35,7 @@
 		841390B619645CB6005958B9 /* DeckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		841390B81965074D005958B9 /* AnswerDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerDifficulty.swift; sourceTree = "<group>"; };
 		841390BA1965D18C005958B9 /* InteractType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractType.swift; sourceTree = "<group>"; };
+		8416E4DC1969EDB00014B478 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		842878DF196341B10060BDD1 /* KanjiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842878E3196341B10060BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842878E4196341B10060BDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 				84F3AA2C196350E200FB7FEF /* AllCards.txt */,
 				84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */,
 				842878E4196341B10060BDD1 /* AppDelegate.swift */,
+				8416E4DC1969EDB00014B478 /* MyPlayground.playground */,
 				842878EB196341B10060BDD1 /* Main.storyboard */,
 				842878E9196341B10060BDD1 /* GameMode.swift */,
 				842878EE196341B10060BDD1 /* Images.xcassets */,

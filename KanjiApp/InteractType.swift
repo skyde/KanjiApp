@@ -8,8 +8,7 @@
 
 import Foundation
 
-enum InteractType
-{
+enum InteractType {
     case Tap
     case SwipeRight
     case SwipeLeft
