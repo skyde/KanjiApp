@@ -177,9 +177,23 @@ class Card: NSManagedObject {
 
             value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
 
-            value.addBreak(15)
+            value.addBreak(30)
             
-            value.addAttributedText(otherExampleSentences, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
+            for sentence in otherExampleSentences.componentsSeparatedByString("</span>")
+            {
+                var broken = sentence.componentsSeparatedByString("<span style=\"font-size:20px\">")
+                
+                for var i = 0; i < countElements(broken); i++
+                {
+                    var size: CGFloat = i == 0 ? 24 : 16
+                    var removeSpaces = i == 0 ? false : false
+                    //var breakLine = i == 0 ? false : true
+                    
+                    value.addAttributedText(broken[i], NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                }
+            }
+            
+//            value.addAttributedText(, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
             
             value.addBreak(10)
             
@@ -305,8 +319,6 @@ extension NSMutableAttributedString {
             text = replaceInString(text, "<br>", "\n")
             text = replaceInString(text, "&#39;", "'")
             text = replaceInString(text, "&quot;", "\"")
-            text = removeFromString(text, "<span style=\"font-size:20px\">")
-            text = removeFromString(text, "</span>")
             
 //            var spanSizeOpen = text.componentsSeparatedByString("<span style=\"font-size:20px\">")
 //            text = ""
