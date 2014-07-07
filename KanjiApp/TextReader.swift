@@ -12,5 +12,11 @@ import CoreData
 
 class TextReader: CustomUIViewController
 {
+    @IBOutlet var userText : UITextView
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
 }

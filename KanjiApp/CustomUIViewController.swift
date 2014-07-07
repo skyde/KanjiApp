@@ -14,7 +14,6 @@ enum CoreDataEntities {
 
 class CustomUIViewController : UIViewController
 {
-    
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
     func loadContext ()
@@ -30,6 +29,4 @@ class CustomUIViewController : UIViewController
         
         loadContext()
     }
-    
-
 }

@@ -142,7 +142,6 @@ class GameMode: CustomUIViewController {
 //    }
     
     func loadDatabase () -> NSNumber[] {
-        //println("-- Fetch action --")
         
         var values: NSNumber[] = []
         
@@ -160,7 +159,6 @@ class GameMode: CustomUIViewController {
 //            println("(--  --)")
 //            printFetchedArrayList(mySinglearray)
 //        }
-        
     }
     
     func saveContext (context: NSManagedObjectContext) {
