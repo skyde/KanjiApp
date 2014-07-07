@@ -9,25 +9,13 @@
 import UIKit
 import CoreData
 
-enum CoreDataEntities {
-    case Card
-    func description() -> String {
-        switch self {
-        case .Card:
-            return "Card"
-        }
-    }
-}
-
-class GameMode: UIViewController {
+class GameMode: CustomUIViewController {
     
     @IBOutlet var outputText: UITextView
     
     var due: NSNumber[]
 //    var lastDue: String = ""
     var isFront: Bool = true;
-    
-    var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
     var dueCard: Card {
     get {
@@ -47,8 +35,6 @@ class GameMode: UIViewController {
         self.due = []
         super.init(coder: aDecoder)
         
-        initCoreData()
-        
         self.due = loadDatabase()
         
         if self.due.count == 0
@@ -56,16 +42,6 @@ class GameMode: UIViewController {
             createDatabase("AllCards copy")
             self.due = loadDatabase()
         }
-        
-        //println(self.due.count)
-    }
-    
-    func initCoreData()
-    {
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context: NSManagedObjectContext = appDelegate.managedObjectContext
-        
-        self.managedObjectContext.persistentStoreCoordinator = appDelegate.persistentStoreCoordinator
     }
     
     func createDatabase(filename: String)
@@ -192,20 +168,8 @@ class GameMode: UIViewController {
         context.save(&error)
     }
     
-    func loadContext () {
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context: NSManagedObjectContext = appDelegate.managedObjectContext
-        self.managedObjectContext = context
-    }
-    
-    func myLoad () {
-        loadContext ()
-        println("Loaded Context")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        myLoad ()
         updateText()
         setupSwipeGestures()
     }

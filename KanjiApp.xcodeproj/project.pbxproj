@@ -16,6 +16,8 @@
 		842878ED196341B10060BDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842878EB196341B10060BDD1 /* Main.storyboard */; };
 		842878EF196341B10060BDD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842878EE196341B10060BDD1 /* Images.xcassets */; };
 		842878FB196341B10060BDD1 /* KanjiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878FA196341B10060BDD1 /* KanjiAppTests.swift */; };
+		846C9749196A4243001D013C /* TextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C9748196A4243001D013C /* TextReader.swift */; };
+		846C974B196A42A0001D013C /* CustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C974A196A42A0001D013C /* CustomUIViewController.swift */; };
 		84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */; };
 		84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2C196350E200FB7FEF /* AllCards.txt */; };
 		84F3AA33196351E300FB7FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA32196351E300FB7FEF /* Card.swift */; };
@@ -46,6 +48,8 @@
 		842878F4196341B10060BDD1 /* KanjiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanjiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842878F9196341B10060BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842878FA196341B10060BDD1 /* KanjiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiAppTests.swift; sourceTree = "<group>"; };
+		846C9748196A4243001D013C /* TextReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReader.swift; sourceTree = "<group>"; };
+		846C974A196A42A0001D013C /* CustomUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIViewController.swift; sourceTree = "<group>"; };
 		84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AllCards copy.txt"; sourceTree = "<group>"; };
 		84F3AA2C196350E200FB7FEF /* AllCards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllCards.txt; sourceTree = "<group>"; };
 		84F3AA32196351E300FB7FEF /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		842878E1196341B10060BDD1 /* KanjiApp */ = {
 			isa = PBXGroup;
 			children = (
+				846C974C196A435B001D013C /* Enums */,
 				84F3AA32196351E300FB7FEF /* Card.swift */,
 				84F3AA2C196350E200FB7FEF /* AllCards.txt */,
 				84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */,
@@ -101,8 +106,8 @@
 				842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */,
 				842878E2196341B10060BDD1 /* Supporting Files */,
 				841390B619645CB6005958B9 /* DeckView.swift */,
-				841390B81965074D005958B9 /* AnswerDifficulty.swift */,
-				841390BA1965D18C005958B9 /* InteractType.swift */,
+				846C9748196A4243001D013C /* TextReader.swift */,
+				846C974A196A42A0001D013C /* CustomUIViewController.swift */,
 			);
 			path = KanjiApp;
 			sourceTree = "<group>";
@@ -130,6 +135,15 @@
 				842878F9196341B10060BDD1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		846C974C196A435B001D013C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				841390B81965074D005958B9 /* AnswerDifficulty.swift */,
+				841390BA1965D18C005958B9 /* InteractType.swift */,
+			);
+			name = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,10 +250,12 @@
 				841390B91965074D005958B9 /* AnswerDifficulty.swift in Sources */,
 				842878EA196341B10060BDD1 /* GameMode.swift in Sources */,
 				84F3AA33196351E300FB7FEF /* Card.swift in Sources */,
+				846C9749196A4243001D013C /* TextReader.swift in Sources */,
 				842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */,
 				842878E8196341B10060BDD1 /* KanjiApp.xcdatamodeld in Sources */,
 				841390B719645CB6005958B9 /* DeckView.swift in Sources */,
 				841390BB1965D18C005958B9 /* InteractType.swift in Sources */,
+				846C974B196A42A0001D013C /* CustomUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

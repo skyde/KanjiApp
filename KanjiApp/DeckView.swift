@@ -2,27 +2,16 @@ import Foundation
 import UIKit
 import CoreData
 
-class DeckView: UIViewController, UITableViewDelegate, UITableViewDataSource
+class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var tableView: UITableView
     var items: NSNumber[] = []
-    
-    var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
-    
-    func loadContext ()
-    {
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context: NSManagedObjectContext = appDelegate.managedObjectContext
-        self.managedObjectContext = context
-    }
     
     init(coder aDecoder: NSCoder!)
     {
         super.init(coder: aDecoder)
         
         items = []
-        
-        loadContext()
     }
     
     override func viewDidLoad()
