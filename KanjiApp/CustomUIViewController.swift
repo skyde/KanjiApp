@@ -23,6 +23,10 @@ class CustomUIViewController : UIViewController
         self.managedObjectContext = context
     }
     
+    func isNavigationBarHidden() -> Bool {
+        return false
+    }
+    
     init(coder aDecoder: NSCoder!)
     {
         super.init(coder: aDecoder)
@@ -32,5 +36,11 @@ class CustomUIViewController : UIViewController
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController.navigationBarHidden = isNavigationBarHidden()
     }
 }

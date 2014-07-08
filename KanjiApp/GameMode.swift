@@ -171,7 +171,15 @@ class GameMode: CustomUIViewController {
         updateText()
         setupSwipeGestures()
         //navigationController.navigationBarHidden = true
-        //navigationController.hidesBarsOnTap = true
+        
+        navigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController.navigationBar.shadowImage = UIImage()
+        self.navigationController.navigationBar.translucent = true
+        self.navigationController.view.backgroundColor = UIColor.clearColor()//(red: 0, green: 0, blue: 0, alpha: 1)
+        //self.navigationController.navigationBar.setAlpha(0)
+        //self.edgesForExtendedLayout = UIRectEdge.None
+        //        navigationController.hidesBarsWhenVerticallyCompact = true
+        //self.navigationController.interactivePopGestureRecognizer.enabled = true
     }
     
     func advanceCard()
@@ -231,22 +239,27 @@ class GameMode: CustomUIViewController {
 //        }
     }
     
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    func respondToSwipeFromLeft(gesture: UIGestureRecognizer) {
         
-        println("respondToSwipeGesture")
         if let swipeGesture = gesture as? UIScreenEdgePanGestureRecognizer {
             
-            switch swipeGesture.edges {
-                
-            case UIRectEdge.Left:
-                println("swipeFromLeftEdge")
-                
-            default:
-                break
+            if swipeGesture.state == .Began
+            {
+                self.performSegueWithIdentifier("back", sender: self)
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        
+        if segue.identifier == "back" {
             
         }
-        else if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             
             if !isFront {
                 
@@ -288,9 +301,9 @@ class GameMode: CustomUIViewController {
 //        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
 //        self.view.addGestureRecognizer(swipeLeft)
 //        
-        var swipeFromLeftEdge = UIScreenEdgePanGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeFromLeftEdge.edges = UIRectEdge.Left
-        self.view.addGestureRecognizer(swipeFromLeftEdge)
+//        var swipeFromLeftEdge = UIScreenEdgePanGestureRecognizer(target: self, action: "respondToSwipeFromLeft:")
+//        swipeFromLeftEdge.edges = UIRectEdge.Left
+//        self.view.addGestureRecognizer(swipeFromLeftEdge)
         
 //        swipeFromLeftEdge.addTarget(self, action: "respondToSwipeGesture:")
 //        self.view.addGestureRecognizer(swipeFromLeftEdge)

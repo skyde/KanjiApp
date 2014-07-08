@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--CustomUI View Controller-->
+        <!--CustomUI View Controller - Help-->
         <scene sceneID="Rrw-Cv-8K4">
             <objects>
-                <viewController id="Y76-4p-BuB" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Help" id="Y76-4p-BuB" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pEk-jj-Juw"/>
                         <viewControllerLayoutGuide type="bottom" id="DPi-jM-E1R"/>
@@ -16,14 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZO-K6-mP6">
-                                <rect key="frame" x="164" y="89" width="154" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="UFC-vF-2A2">
-                                <rect key="frame" x="73" y="144" width="335" height="369"/>
+                                <rect key="frame" x="78" y="91" width="335" height="369"/>
                                 <string key="text">Kanji App is a flashcard app with the purpose of helping learners master Japanese Kanji. This app uses a SRS (Spaced Repition System) in order to show kanji cards back to you at the most efficient interval - a SRS will should you back a kanji card just before you are about to forget it, therefore not wasting time reviewing cards that are already well reviewed. Good luck and learn lots : D</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -34,7 +28,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="UFC-vF-2A2" secondAttribute="trailing" constant="10" id="39O-TQ-PaY"/>
                             <constraint firstItem="UFC-vF-2A2" firstAttribute="leading" secondItem="5Mg-a6-9Ev" secondAttribute="leading" constant="10" id="Z4J-1s-1sx"/>
-                            <constraint firstAttribute="centerX" secondItem="KZO-K6-mP6" secondAttribute="centerX" id="fFa-cs-7Rq"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -286,7 +279,7 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="697" y="716"/>
+            <point key="canvasLocation" x="681" y="716"/>
         </scene>
         <!--CustomUI View Controller - Main Menu-->
         <scene sceneID="ngR-aF-ckz">
