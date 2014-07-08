@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="697" y="1770"/>
         </scene>
-        <!--Text Reader-->
+        <!--Text Reader - Add Words-->
         <scene sceneID="60A-KG-9Sp">
             <objects>
-                <viewController id="TB3-d0-7EI" customClass="TextReader" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add Words" id="TB3-d0-7EI" customClass="TextReader" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQP-zl-NMR"/>
                         <viewControllerLayoutGuide type="bottom" id="lkb-sP-k49"/>
@@ -55,29 +55,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFA-VQ-RSk">
-                                <rect key="frame" x="6" y="425" width="80" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Paste">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZV-0u-vPQ">
-                                <rect key="frame" x="77" y="425" width="80" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Clear">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6d-qe-TfS">
-                                <rect key="frame" x="145" y="425" width="80" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Add All">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
-                                <rect key="frame" x="0.0" y="64" width="480" height="340"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
+                                <rect key="frame" x="0.0" y="64" width="480" height="44"/>
+                                <items>
+                                    <barButtonItem title="Add All" id="lrY-gL-Rp8"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OVl-Mh-6s1"/>
+                                    <barButtonItem title="Translate" id="eFd-XE-ezc"/>
+                                </items>
+                            </toolbar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
+                                <rect key="frame" x="0.0" y="108" width="480" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">相対性理論での空間
 
@@ -87,26 +74,46 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
+                                <rect key="frame" x="0.0" y="366" width="480" height="114"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="4ZP-ra-1Og"/>
+                            <constraint firstItem="Agp-3c-QiX" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="GwH-kz-efg"/>
+                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="OSG-mQ-QbP"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" constant="15" id="TSr-kS-i2m"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="l8d-ui-ogG"/>
+                            <constraint firstAttribute="trailing" secondItem="Agp-3c-QiX" secondAttribute="trailing" id="lIo-UP-SD1"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" constant="8" id="qDf-yJ-xLQ"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="xCf-Oh-TQc"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
+                        <outlet property="searchDisplayController" destination="rBh-Hy-dBn" id="Nda-Jc-fSD"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="rBh-Hy-dBn">
+                    <connections>
+                        <outlet property="delegate" destination="TB3-d0-7EI" id="e3u-BG-n92"/>
+                        <outlet property="searchContentsController" destination="TB3-d0-7EI" id="Rm7-3W-3wt"/>
+                        <outlet property="searchResultsDataSource" destination="TB3-d0-7EI" id="ASW-hv-Loh"/>
+                        <outlet property="searchResultsDelegate" destination="TB3-d0-7EI" id="w3V-Dy-nvv"/>
+                    </connections>
+                </searchDisplayController>
+                <barButtonItem title="Item" id="vmg-j4-bsY"/>
             </objects>
-            <point key="canvasLocation" x="1184" y="1770"/>
+            <point key="canvasLocation" x="1214" y="1770"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Add From List-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController id="njT-bO-QmB" sceneMemberID="viewController">
+                <viewController title="Add From List" id="njT-bO-QmB" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -182,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="1184" y="716"/>
         </scene>
-        <!--Deck View-->
+        <!--Deck View - My Words-->
         <scene sceneID="yXk-YT-iD0">
             <objects>
-                <tableViewController id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="My Words" id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jO6-5i-Yf0">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="1184" y="1247"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Settings-->
         <scene sceneID="pKX-2b-wxR">
             <objects>
-                <viewController id="1Aq-z8-1P3" sceneMemberID="viewController">
+                <viewController title="Settings" id="1Aq-z8-1P3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JYF-dt-dpX"/>
                         <viewControllerLayoutGuide type="bottom" id="dWD-8y-8GG"/>
@@ -224,12 +231,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdv-xw-7g8">
-                                <rect key="frame" x="164" y="111" width="154" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-3J-NV6">
                                 <rect key="frame" x="164" y="194" width="154" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -244,7 +245,6 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="p1H-mf-Il1" secondAttribute="centerX" id="7yc-jb-KQQ"/>
                             <constraint firstAttribute="centerX" secondItem="9wD-3J-NV6" secondAttribute="centerX" id="NXn-P3-VuM"/>
-                            <constraint firstAttribute="centerX" secondItem="qdv-xw-7g8" secondAttribute="centerX" id="rEb-cZ-zg0"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -298,13 +298,16 @@
                         <action selector="onTap" destination="nGt-Uz-nIp" id="ywM-iz-sfi"/>
                     </connections>
                 </tapGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="179-f8-LRN">
+                    <rectEdge key="edges" left="YES"/>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="697" y="716"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Main Menu-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
-                <viewController id="cUj-3S-BQf" sceneMemberID="viewController">
+                <viewController title="Main Menu" id="cUj-3S-BQf" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-Ed-cG9"/>
@@ -314,7 +317,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-AB-Hvt">
-                                <rect key="frame" x="188" y="163" width="105" height="57"/>
+                                <rect key="frame" x="188" y="88" width="105" height="57"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Review">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -324,7 +327,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msO-aN-3vh">
-                                <rect key="frame" x="164" y="223" width="152" height="57"/>
+                                <rect key="frame" x="155" y="204" width="152" height="57"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Add From List">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -334,7 +337,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoq-vc-9Ub">
-                                <rect key="frame" x="180" y="384" width="121" height="74"/>
+                                <rect key="frame" x="180" y="309" width="121" height="74"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Settings">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -344,7 +347,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKg-OC-deV">
-                                <rect key="frame" x="180" y="445" width="121" height="74"/>
+                                <rect key="frame" x="180" y="370" width="121" height="74"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Help">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -354,7 +357,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPj-pY-JTR">
-                                <rect key="frame" x="180" y="333" width="120" height="57"/>
+                                <rect key="frame" x="180" y="258" width="120" height="57"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="My Words">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -363,16 +366,10 @@
                                     <segue destination="FjX-yY-Kqd" kind="show" id="1Co-J8-WTa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Main Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIL-6v-faL">
-                                <rect key="frame" x="164" y="107" width="154" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a59-T1-faz">
-                                <rect key="frame" x="135" y="279" width="211" height="57"/>
+                                <rect key="frame" x="135" y="148" width="211" height="57"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Add Custom Words">
+                                <state key="normal" title="Add Words">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -386,7 +383,6 @@
                             <constraint firstAttribute="centerX" secondItem="qPj-pY-JTR" secondAttribute="centerX" id="O6x-Ls-eJI"/>
                             <constraint firstAttribute="centerX" secondItem="msO-aN-3vh" secondAttribute="centerX" id="eMH-lb-ahQ"/>
                             <constraint firstAttribute="centerX" secondItem="rKg-OC-deV" secondAttribute="centerX" id="fJI-qB-ZVP"/>
-                            <constraint firstAttribute="centerX" secondItem="lIL-6v-faL" secondAttribute="centerX" id="oLH-w0-XY9"/>
                             <constraint firstAttribute="centerX" secondItem="LuF-AB-Hvt" secondAttribute="centerX" id="prq-tl-tEZ"/>
                             <constraint firstAttribute="centerX" secondItem="Uoq-vc-9Ub" secondAttribute="centerX" id="z7f-Os-DKx"/>
                         </constraints>
@@ -398,16 +394,20 @@
             </objects>
             <point key="canvasLocation" x="697" y="1247"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Main Menu-->
         <scene sceneID="SLU-SY-3JO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrA-K3-cmd" sceneMemberID="viewController">
+                <navigationController title="Main Menu" automaticallyAdjustsScrollViewInsets="NO" id="WrA-K3-cmd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="J74-rl-PSv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gqo-I0-ThL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="QG9-qL-bAN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="cUj-3S-BQf" kind="relationship" relationship="rootViewController" id="dHd-m6-BdK"/>
                     </connections>

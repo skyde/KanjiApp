@@ -170,6 +170,7 @@ class GameMode: CustomUIViewController {
         super.viewDidLoad()
         updateText()
         setupSwipeGestures()
+        //navigationController.navigationBarHidden = true
     }
     
     func advanceCard()
