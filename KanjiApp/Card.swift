@@ -186,7 +186,7 @@ class Card: NSManagedObject {
                 for var i = 0; i < countElements(broken); i++
                 {
                     var size: CGFloat = i == 0 ? 24 : 16
-                    var removeSpaces = i == 0 ? false : false
+                    var removeSpaces = i == 0 ? true : false
                     //var breakLine = i == 0 ? false : true
                     
                     value.addAttributedText(broken[i], NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)

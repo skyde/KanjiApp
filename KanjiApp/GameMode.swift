@@ -171,6 +171,7 @@ class GameMode: CustomUIViewController {
         updateText()
         setupSwipeGestures()
         //navigationController.navigationBarHidden = true
+        //navigationController.hidesBarsOnTap = true
     }
     
     func advanceCard()
@@ -232,7 +233,20 @@ class GameMode: CustomUIViewController {
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+        println("respondToSwipeGesture")
+        if let swipeGesture = gesture as? UIScreenEdgePanGestureRecognizer {
+            
+            switch swipeGesture.edges {
+                
+            case UIRectEdge.Left:
+                println("swipeFromLeftEdge")
+                
+            default:
+                break
+            }
+            
+        }
+        else if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             
             if !isFront {
                 
@@ -258,20 +272,29 @@ class GameMode: CustomUIViewController {
     }
     
     func setupSwipeGestures(){
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(swipeRight)
+//        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+//        self.view.addGestureRecognizer(swipeRight)
+//        
+//        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+//        self.view.addGestureRecognizer(swipeDown)
+//        
+//        var swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+//        self.view.addGestureRecognizer(swipeUp)
+//        
+//        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+//        self.view.addGestureRecognizer(swipeLeft)
+//        
+//        var swipeFromLeftEdge = UIScreenEdgePanGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeFromLeftEdge.edges = UIRectEdge.Left
+//        self.view.addGestureRecognizer(swipeFromLeftEdge)
         
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-        self.view.addGestureRecognizer(swipeDown)
-        
-        var swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(swipeLeft)
+//        swipeFromLeftEdge.addTarget(self, action: "respondToSwipeGesture:")
+//        self.view.addGestureRecognizer(swipeFromLeftEdge)
     }
+    
+//    @IBOutlet var swipeFromLeftEdge : UIScreenEdgePanGestureRecognizer = nil
 }

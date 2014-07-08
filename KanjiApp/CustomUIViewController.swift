@@ -29,4 +29,8 @@ class CustomUIViewController : UIViewController
         
         loadContext()
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }
