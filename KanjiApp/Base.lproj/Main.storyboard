@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--CustomUI View Controller-->
         <scene sceneID="Rrw-Cv-8K4">
             <objects>
-                <viewController id="Y76-4p-BuB" sceneMemberID="viewController">
+                <viewController id="Y76-4p-BuB" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pEk-jj-Juw"/>
                         <viewControllerLayoutGuide type="bottom" id="DPi-jM-E1R"/>
@@ -46,16 +46,7 @@
         <!--Text Reader - Add Words-->
         <scene sceneID="60A-KG-9Sp">
             <objects>
-                <barButtonItem title="Item" id="vmg-j4-bsY"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="rBh-Hy-dBn">
-                    <connections>
-                        <outlet property="delegate" destination="TB3-d0-7EI" id="e3u-BG-n92"/>
-                        <outlet property="searchContentsController" destination="TB3-d0-7EI" id="Rm7-3W-3wt"/>
-                        <outlet property="searchResultsDataSource" destination="TB3-d0-7EI" id="ASW-hv-Loh"/>
-                        <outlet property="searchResultsDelegate" destination="TB3-d0-7EI" id="w3V-Dy-nvv"/>
-                    </connections>
-                </searchDisplayController>
                 <viewController title="Add Words" id="TB3-d0-7EI" customClass="TextReader" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQP-zl-NMR"/>
@@ -104,17 +95,16 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="rBh-Hy-dBn" id="Nda-Jc-fSD"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1184" y="1770"/>
+            <point key="canvasLocation" x="1178" y="1770"/>
         </scene>
-        <!--View Controller - Add From List-->
+        <!--CustomUI View Controller - Add From List-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController title="Add From List" id="njT-bO-QmB" sceneMemberID="viewController">
+                <viewController title="Add From List" id="njT-bO-QmB" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -213,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="1184" y="1247"/>
         </scene>
-        <!--View Controller - Settings-->
+        <!--CustomUI View Controller - Settings-->
         <scene sceneID="pKX-2b-wxR">
             <objects>
-                <viewController title="Settings" id="1Aq-z8-1P3" sceneMemberID="viewController">
+                <viewController title="Settings" id="1Aq-z8-1P3" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JYF-dt-dpX"/>
                         <viewControllerLayoutGuide type="bottom" id="dWD-8y-8GG"/>
@@ -298,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="697" y="716"/>
         </scene>
-        <!--View Controller - Main Menu-->
+        <!--CustomUI View Controller - Main Menu-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
-                <viewController title="Main Menu" id="cUj-3S-BQf" sceneMemberID="viewController">
+                <viewController title="Main Menu" id="cUj-3S-BQf" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-Ed-cG9"/>
