@@ -65,7 +65,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
                                 <items>
                                     <barButtonItem title="Add All" id="lrY-gL-Rp8"/>
@@ -73,10 +73,6 @@
                                     <barButtonItem title="Translate" id="eFd-XE-ezc"/>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
-                                <rect key="frame" x="0.0" y="278" width="480" height="202"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
                                 <rect key="frame" x="0.0" y="44" width="480" height="226"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,16 +84,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
+                                <rect key="frame" x="0.0" y="269" width="480" height="211"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="4ZP-ra-1Og"/>
+                            <constraint firstAttribute="bottom" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="Bpj-LX-g9i"/>
                             <constraint firstItem="Agp-3c-QiX" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="GwH-kz-efg"/>
-                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="OSG-mQ-QbP"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" constant="15" id="TSr-kS-i2m"/>
-                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="l8d-ui-ogG"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="WLh-Nq-MVk"/>
+                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="i0V-bY-AvJ"/>
                             <constraint firstAttribute="trailing" secondItem="Agp-3c-QiX" secondAttribute="trailing" id="lIo-UP-SD1"/>
-                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" constant="8" id="qDf-yJ-xLQ"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="Agp-3c-QiX" secondAttribute="bottom" constant="225" id="t8q-Wy-6lt"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="xCf-Oh-TQc"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -123,12 +123,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add From List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zup-V6-cnd">
-                                <rect key="frame" x="164" y="74" width="154" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-SU-KbW">
                                 <rect key="frame" x="179" y="163" width="123" height="29"/>
                                 <segments>
@@ -175,7 +169,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="jyf-iO-stE" secondAttribute="centerX" id="5kL-mS-Krl"/>
-                            <constraint firstAttribute="centerX" secondItem="zup-V6-cnd" secondAttribute="centerX" id="G7k-RU-1Tq"/>
                             <constraint firstAttribute="centerX" secondItem="V6N-aL-cjy" secondAttribute="centerX" id="LAi-rk-9Sy"/>
                             <constraint firstAttribute="centerX" secondItem="S8G-n1-biB" secondAttribute="centerX" id="euN-SR-SQt"/>
                             <constraint firstAttribute="centerX" secondItem="fwr-vc-Hvu" secondAttribute="centerX" id="kuT-vk-TmN"/>
