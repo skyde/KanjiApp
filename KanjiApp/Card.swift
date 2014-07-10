@@ -179,19 +179,74 @@ class Card: NSManagedObject {
 
             value.addBreak(30)
             
-            for sentence in otherExampleSentences.componentsSeparatedByString("</span>")
+//            var examples =
+//            NSMutableAttributedString.removeFromString()
+            
+//            for sentence in otherExampleSentences.componentsSeparatedByString("</span>")
+//            {
+//                var broken = sentence.componentsSeparatedByString("<span style=\"font-size:20px\">")
+//                
+//                for var i = 0; i < countElements(broken); i++
+//                {
+//                    var size: CGFloat = i == 0 ? 24 : 16
+//                    var removeSpaces = i == 0 ? true : false
+//                    //var breakLine = i == 0 ? false : true
+//                    
+//                    value.addAttributedText(broken[i], NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+//                }
+//            }
+            
+            var validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
+            var isJapanese = true
+            var text = ""
+            
+            var examples: String  = otherExampleSentences.removeTagsFromString(otherExampleSentences)
+            
+            println(examples)
+            
+            for item in examples
             {
-                var broken = sentence.componentsSeparatedByString("<span style=\"font-size:20px\">")
+                var test = String(item).componentsSeparatedByCharactersInSet(validChars)[0]
+                var isCurrentJapanese = test != ""
                 
-                for var i = 0; i < countElements(broken); i++
+                if isJapanese != isCurrentJapanese &&
+                    text != "" &&
+                    item != " " &&
+                    item != "　" &&
+                    item != "-" // &&
+//                    item != "[" &&
+//                    item != "]" &&
+//                    item != "<" &&
+//                    item != ">" &&
+//                    item != "/"
                 {
-                    var size: CGFloat = i == 0 ? 24 : 16
-                    var removeSpaces = i == 0 ? true : false
-                    //var breakLine = i == 0 ? false : true
+                    println(item)
                     
-                    value.addAttributedText(broken[i], NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                    var size: CGFloat = isJapanese ? 24 : 16
+                    var removeSpaces = isJapanese ? true : false
+                    var extraSpace: String = isJapanese ? "" : "\n"
+                    
+                    value.addAttributedText(text + "\n" + extraSpace, NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                    
+                    isJapanese = !isJapanese
+                    text = ""
                 }
+                
+                text += item
+                
+//                if isJapanese
+//                {
+//                }
             }
+//
+//            var p = ""
+//            var t = examples.componentsSeparatedByCharactersInSet(validChars)
+//            for item in t
+//            {
+//                p += item
+//            }
+//            
+//            println(p)
             
 //            value.addAttributedText(, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
             
@@ -210,6 +265,21 @@ class Card: NSManagedObject {
 
             return value
         }
+    }
+    
+    func getAsciiCharacterSet() -> NSCharacterSet
+    {
+        return NSCharacterSet.alphanumericCharacterSet()
+//        var asciiCharacters = NSMutableString(string)
+//        for NSInteger i = 32; i < 127; i++  {
+//            asciiCharacters.appendFormat("%c", i)
+//        }
+//        
+//        var nonAsciiCharacterSet = NSCharacterSet()
+//        
+//        test = [[test componentsSeparatedByCharactersInSet:nonAsciiCharacterSet] componentsJoinedByString:@""];
+//        
+//        NSLog(@"%@", test);
     }
 
     func colorForPitchAccent(pitchAccent: Int) -> UIColor
@@ -281,6 +351,59 @@ class Card: NSManagedObject {
     }
 }
 
+extension String {
+    
+    
+    func removeTagsFromString(var text: String) -> String
+    {
+        var furiganaOpen = text.componentsSeparatedByString("]")
+        
+        text = ""
+        for item in furiganaOpen
+        {
+            text += item.componentsSeparatedByString("[")[0]
+        }
+        
+        text = removeFromString(text, "<b>")
+        text = removeFromString(text, "</b>")
+        text = removeFromString(text, "</span>")
+        text = removeFromString(text, "<span style=\"font-size:20px\">")
+        text = replaceInString(text, "<br>", "")
+        text = replaceInString(text, "&#39;", "'")
+        text = replaceInString(text, "&quot;", "\"")
+        
+        return text
+    }
+    
+    func removeFromString(var value: String, _ remove: String) -> String
+    {
+        var items = value.componentsSeparatedByString(remove)
+        
+        value = ""
+        for item in items
+        {
+            value += item
+        }
+        
+        return value
+    }
+    
+    func replaceInString(var value: String, _ remove: String, _ newValue: String) -> String
+    {
+        var items = value.componentsSeparatedByString(remove)
+        
+        value = ""
+        var spacer = ""
+        for item in items
+        {
+            value += spacer + item
+            spacer = newValue
+        }
+        
+        return value
+    }
+}
+
 extension NSMutableAttributedString {
     func addBreak(size: CGFloat)
     {
@@ -296,7 +419,7 @@ extension NSMutableAttributedString {
         
         if removeSpaces
         {
-            text = removeFromString(text, " ")
+            text = text.removeFromString(text, " ")
         }
         
         if breakLine
@@ -306,20 +429,12 @@ extension NSMutableAttributedString {
         
         if processAttributes
         {
-            var furiganaOpen = text.componentsSeparatedByString("]")
             
-            text = ""
-            for item in furiganaOpen
-            {
-                text += item.componentsSeparatedByString("[")[0]
-            }
+            text = text.removeTagsFromString(text)
             
-            text = removeFromString(text, "<b>")
-            text = removeFromString(text, "</b>")
-            text = replaceInString(text, "<br>", "\n")
-            text = replaceInString(text, "&#39;", "'")
-            text = replaceInString(text, "&quot;", "\"")
-            
+            //            {
+            //                var broken = sentence.componentsSeparatedByString("")
+            //
 //            var spanSizeOpen = text.componentsSeparatedByString("<span style=\"font-size:20px\">")
 //            text = ""
 //
@@ -350,34 +465,6 @@ extension NSMutableAttributedString {
         self.mutableString.appendString(text)
         
         self.addAttribute(attributeName, value: object, range: range)
-    }
-    
-    func removeFromString(var value: String, _ remove: String) -> String
-    {
-        var items = value.componentsSeparatedByString(remove)
-        
-        value = ""
-        for item in items
-        {
-            value += item
-        }
-        
-        return value
-    }
-    
-    func replaceInString(var value: String, _ remove: String, _ newValue: String) -> String
-    {
-        var items = value.componentsSeparatedByString(remove)
-        
-        value = ""
-        var spacer = ""
-        for item in items
-        {
-            value += spacer + item
-            spacer = newValue
-        }
-        
-        return value
     }
 }
 //
