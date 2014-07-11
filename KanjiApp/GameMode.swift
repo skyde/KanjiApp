@@ -171,15 +171,6 @@ class GameMode: CustomUIViewController {
         updateText()
         setupSwipeGestures()
         //navigationController.navigationBarHidden = true
-        
-        navigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController.navigationBar.shadowImage = UIImage()
-        self.navigationController.navigationBar.translucent = true
-        self.navigationController.view.backgroundColor = UIColor.clearColor()//(red: 0, green: 0, blue: 0, alpha: 1)
-        //self.navigationController.navigationBar.setAlpha(0)
-        //self.edgesForExtendedLayout = UIRectEdge.None
-        //        navigationController.hidesBarsWhenVerticallyCompact = true
-        //self.navigationController.interactivePopGestureRecognizer.enabled = true
     }
     
     func advanceCard()
