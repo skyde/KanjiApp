@@ -20,7 +20,7 @@ class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
-        if let allCards = fetchCardsGeneral(CoreDataEntities.Card, CardProperties.index, self.managedObjectContext)
+        if let allCards = fetchCardsGeneral(CoreDataEntities.Card, self.managedObjectContext, CardProperties.index.description())
         {
             items = allCards.map { ($0 as Card).index }
         }

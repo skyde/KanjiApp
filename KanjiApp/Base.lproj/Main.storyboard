@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="1178" y="1770"/>
         </scene>
-        <!--CustomUI View Controller - Add From List-->
+        <!--Add From List - Add From List-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController title="Add From List" id="njT-bO-QmB" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add From List" id="njT-bO-QmB" customClass="AddFromList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -104,42 +104,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-SU-KbW">
-                                <rect key="frame" x="179" y="163" width="123" height="29"/>
+                                <rect key="frame" x="179" y="107" width="123" height="29"/>
                                 <segments>
                                     <segment title="4"/>
                                     <segment title="3"/>
                                     <segment title="2"/>
                                     <segment title="1"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onJlptLevelChanged:" destination="njT-bO-QmB" eventType="valueChanged" id="h6E-Hh-K4T"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="JLPT Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyf-iO-stE">
-                                <rect key="frame" x="198" y="134" width="85" height="21"/>
+                                <rect key="frame" x="201" y="78" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Only Kanji" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fba-gV-845">
-                                <rect key="frame" x="201" y="219" width="78" height="21"/>
+                                <rect key="frame" x="201" y="143" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwr-vc-Hvu">
-                                <rect key="frame" x="216" y="248" width="51" height="31"/>
+                                <rect key="frame" x="216" y="172" width="51" height="31"/>
+                                <connections>
+                                    <action selector="isOnlyKanjiChanged:" destination="njT-bO-QmB" eventType="valueChanged" id="fhD-j2-Aio"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8G-n1-biB">
-                                <rect key="frame" x="199" y="297" width="83" height="21"/>
+                                <rect key="frame" x="199" y="211" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Add Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-aL-cjy">
-                                <rect key="frame" x="189" y="326" width="102" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Add Amount" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-aL-cjy">
+                                <rect key="frame" x="189" y="240" width="102" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="addAmountChanged:" destination="njT-bO-QmB" eventType="valueChanged" id="8ak-hZ-Ayx"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Wd-Mj2">
-                                <rect key="frame" x="152" y="402" width="176" height="58"/>
+                                <rect key="frame" x="155" y="278" width="176" height="58"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -158,6 +167,12 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="addAmount" destination="V6N-aL-cjy" id="V1g-XS-x8v"/>
+                        <outlet property="addButton" destination="f1c-Wd-Mj2" id="qDA-jM-wgd"/>
+                        <outlet property="isOnlyKanji" destination="fwr-vc-Hvu" id="Zq8-dq-yL7"/>
+                        <outlet property="jlptLevel" destination="5fX-SU-KbW" id="8bH-qm-fm5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

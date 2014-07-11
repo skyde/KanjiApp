@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  KanjiApp
-//
-//  Created by Sky on 2014-06-10.
-//  Copyright (c) 2014 Sky. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
@@ -14,7 +6,6 @@ class GameMode: CustomUIViewController {
     @IBOutlet var outputText: UITextView
     
     var due: NSNumber[]
-//    var lastDue: String = ""
     var isFront: Bool = true;
     
     var dueCard: Card {
@@ -24,12 +15,6 @@ class GameMode: CustomUIViewController {
     }
     
     let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
-    
-//    var lastDueCard: Card {
-//    get {
-//        return fetchCardByKanji(lastDue, self.managedObjectContext)
-//    }
-//    }
     
     init(coder aDecoder: NSCoder!) {
         self.due = []
@@ -75,7 +60,7 @@ class GameMode: CustomUIViewController {
                 
                 let kanji = items[0]
                 
-                var card = Card.createCard(CardProperties.kanji, value : kanji, context: self.managedObjectContext)!
+                var card = Card.createCard(CoreDataEntities.Card.description(), propertyName: CardProperties.kanji, value : kanji, context: self.managedObjectContext)!
                 
                 card.index = index
                 card.hiragana = items[2]
@@ -145,7 +130,7 @@ class GameMode: CustomUIViewController {
         
         var values: NSNumber[] = []
         
-        if let allCards = fetchCardsGeneral(CoreDataEntities.Card, CardProperties.kanji, self.managedObjectContext) {
+        if let allCards = fetchCardsGeneral(CoreDataEntities.Card, self.managedObjectContext, CardProperties.kanji.description()) {
             
             for item : AnyObject in allCards {
                 var card = item as Card
@@ -159,11 +144,6 @@ class GameMode: CustomUIViewController {
 //            println("(--  --)")
 //            printFetchedArrayList(mySinglearray)
 //        }
-    }
-    
-    func saveContext (context: NSManagedObjectContext) {
-        var error: NSError? = nil
-        context.save(&error)
     }
     
     override func viewDidLoad() {
@@ -230,23 +210,23 @@ class GameMode: CustomUIViewController {
 //        }
     }
     
-    func respondToSwipeFromLeft(gesture: UIGestureRecognizer) {
-        
-        if let swipeGesture = gesture as? UIScreenEdgePanGestureRecognizer {
-            
-            if swipeGesture.state == .Began
-            {
-                self.performSegueWithIdentifier("back", sender: self)
-            }
-        }
-    }
+//    func respondToSwipeFromLeft(gesture: UIGestureRecognizer) {
+//        
+//        if let swipeGesture = gesture as? UIScreenEdgePanGestureRecognizer {
+//            
+//            if swipeGesture.state == .Began
+//            {
+//                self.performSegueWithIdentifier("back", sender: self)
+//            }
+//        }
+//    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        
-        if segue.identifier == "back" {
-            
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+//        
+//        if segue.identifier == "back" {
+//            
+//        }
+//    }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         

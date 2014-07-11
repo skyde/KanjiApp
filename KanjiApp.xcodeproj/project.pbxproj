@@ -22,6 +22,7 @@
 		84D6074B197068A2007706DE /* CoreDataEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6074A197068A2007706DE /* CoreDataEntities.swift */; };
 		84D6074D19706907007706DE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6074C19706907007706DE /* StringExtensions.swift */; };
 		84D6074F1970693C007706DE /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6074E1970693C007706DE /* NSMutableAttributedStringExtensions.swift */; };
+		84D6075119707A31007706DE /* AddFromList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6075019707A31007706DE /* AddFromList.swift */; };
 		84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */; };
 		84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2C196350E200FB7FEF /* AllCards.txt */; };
 		84F3AA33196351E300FB7FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA32196351E300FB7FEF /* Card.swift */; };
@@ -58,6 +59,7 @@
 		84D6074A197068A2007706DE /* CoreDataEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntities.swift; sourceTree = "<group>"; };
 		84D6074C19706907007706DE /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		84D6074E1970693C007706DE /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
+		84D6075019707A31007706DE /* AddFromList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFromList.swift; sourceTree = "<group>"; };
 		84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AllCards copy.txt"; sourceTree = "<group>"; };
 		84F3AA2C196350E200FB7FEF /* AllCards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllCards.txt; sourceTree = "<group>"; };
 		84F3AA32196351E300FB7FEF /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				84D6074A197068A2007706DE /* CoreDataEntities.swift */,
 				84D6074C19706907007706DE /* StringExtensions.swift */,
 				84D6074E1970693C007706DE /* NSMutableAttributedStringExtensions.swift */,
+				84D6075019707A31007706DE /* AddFromList.swift */,
 			);
 			path = KanjiApp;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				841390B719645CB6005958B9 /* DeckView.swift in Sources */,
 				841390BB1965D18C005958B9 /* InteractType.swift in Sources */,
 				846C974B196A42A0001D013C /* CustomUIViewController.swift in Sources */,
+				84D6075119707A31007706DE /* AddFromList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

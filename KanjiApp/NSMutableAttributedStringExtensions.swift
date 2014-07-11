@@ -68,12 +68,10 @@ extension NSMutableAttributedString {
 //// FETCH REQUESTS
 //
 
-func fetchCardsGeneral (entity : CoreDataEntities,
-    property : CardProperties,
-    context : NSManagedObjectContext) -> AnyObject[]?{
+func fetchCardsGeneral (entity : CoreDataEntities, context : NSManagedObjectContext, sortProperty : String, sortAscending: Bool = true) -> AnyObject[]?{
         
         let entityName = entity.description()
-        let propertyName = property.description()
+        //let propertyName = property.description()
         
         let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
         request.returnsObjectsAsFaults = false

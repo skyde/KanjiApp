@@ -72,12 +72,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/GameMode.swift"
-            timestampString = "426754746.432872"
+            timestampString = "426803733.090478"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "respondToSwipeGesture(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KanjiApp/AddFromList.swift"
+            timestampString = "426803678.742296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "init(coder:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

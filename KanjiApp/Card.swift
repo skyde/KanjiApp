@@ -179,23 +179,6 @@ class Card: NSManagedObject {
 
             value.addBreak(30)
             
-//            var examples =
-//            NSMutableAttributedString.removeFromString()
-            
-//            for sentence in otherExampleSentences.componentsSeparatedByString("</span>")
-//            {
-//                var broken = sentence.componentsSeparatedByString("<span style=\"font-size:20px\">")
-//                
-//                for var i = 0; i < countElements(broken); i++
-//                {
-//                    var size: CGFloat = i == 0 ? 24 : 16
-//                    var removeSpaces = i == 0 ? true : false
-//                    //var breakLine = i == 0 ? false : true
-//                    
-//                    value.addAttributedText(broken[i], NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
-//                }
-//            }
-            
             var validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
             var isJapanese = true
             var text = ""
@@ -223,12 +206,7 @@ class Card: NSManagedObject {
                     item != "6" &&
                     item != "7" &&
                     item != "8" &&
-                    item != "9" // &&
-//                    item != "[" &&
-//                    item != "]" &&
-//                    item != "<" &&
-//                    item != ">" &&
-//                    item != "/"
+                    item != "9"
                 {
                     if countElements(text) > 1
                     {
@@ -247,22 +225,7 @@ class Card: NSManagedObject {
                 {
                     text += item
                 }
-                
-//                if isJapanese
-//                {
-//                }
             }
-//
-//            var p = ""
-//            var t = examples.componentsSeparatedByCharactersInSet(validChars)
-//            for item in t
-//            {
-//                p += item
-//            }
-//            
-//            println(p)
-            
-//            value.addAttributedText(, NSFontAttributeName, UIFont(name: font, size: 18), processAttributes: true)
             
             value.addBreak(10)
             
@@ -280,21 +243,21 @@ class Card: NSManagedObject {
             return value
         }
     }
-    
-    func getAsciiCharacterSet() -> NSCharacterSet
-    {
-        return NSCharacterSet.alphanumericCharacterSet()
-//        var asciiCharacters = NSMutableString(string)
-//        for NSInteger i = 32; i < 127; i++  {
-//            asciiCharacters.appendFormat("%c", i)
-//        }
-//        
-//        var nonAsciiCharacterSet = NSCharacterSet()
-//        
-//        test = [[test componentsSeparatedByCharactersInSet:nonAsciiCharacterSet] componentsJoinedByString:@""];
-//        
-//        NSLog(@"%@", test);
-    }
+
+//    func getAsciiCharacterSet() -> NSCharacterSet
+//    {
+//        return NSCharacterSet.alphanumericCharacterSet()
+////        var asciiCharacters = NSMutableString(string)
+////        for NSInteger i = 32; i < 127; i++  {
+////            asciiCharacters.appendFormat("%c", i)
+////        }
+////        
+////        var nonAsciiCharacterSet = NSCharacterSet()
+////        
+////        test = [[test componentsSeparatedByCharactersInSet:nonAsciiCharacterSet] componentsJoinedByString:@""];
+////        
+////        NSLog(@"%@", test);
+//    }
 
     func colorForPitchAccent(pitchAccent: Int) -> UIColor
     {
@@ -328,9 +291,9 @@ class Card: NSManagedObject {
 
     var matches: NSArray = []
     
-    class func createCard (propertyName:CardProperties, value:String, context: NSManagedObjectContext, checkForExisting: Bool = true) -> Card? {
+    class func createCard (entityName: String, propertyName:CardProperties, value:String, context: NSManagedObjectContext, checkForExisting: Bool = true) -> Card? {
         
-        let entityName = "Card"
+        //let entityName = "Card"
         
         if !value.isEmpty {
             if(checkForExisting)
