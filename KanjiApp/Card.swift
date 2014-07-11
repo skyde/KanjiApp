@@ -244,7 +244,10 @@ class Card: NSManagedObject {
                     text = ""
                 }
                 
-                text += item
+                if !(text == "" && item == ".")
+                {
+                    text += item
+                }
                 
 //                if isJapanese
 //                {
