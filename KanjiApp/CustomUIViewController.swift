@@ -2,16 +2,6 @@ import Foundation
 import UIKit
 import CoreData
 
-enum CoreDataEntities {
-    case Card
-    func description() -> String {
-        switch self {
-        case .Card:
-            return "Card"
-        }
-    }
-}
-
 class CustomUIViewController : UIViewController
 {
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
