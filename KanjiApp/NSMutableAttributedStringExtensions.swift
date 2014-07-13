@@ -12,7 +12,7 @@ extension NSMutableAttributedString {
     
     func addAttributedText(var text: String, _ attributeName: String, _ object: AnyObject, breakLine: Bool = true, processAttributes: Bool = false, removeSpaces: Bool = false)
     {
-        var bolds: NSRange[] = []
+        var bolds: [NSRange] = []
         
         if removeSpaces
         {
@@ -68,7 +68,7 @@ extension NSMutableAttributedString {
 //// FETCH REQUESTS
 //
 
-func fetchCardsGeneral (entity : CoreDataEntities, context : NSManagedObjectContext, sortProperty : String, sortAscending: Bool = true) -> AnyObject[]?{
+func fetchCardsGeneral (entity : CoreDataEntities, context : NSManagedObjectContext, sortProperty : String, sortAscending: Bool = true) -> [AnyObject]?{
         
         let entityName = entity.description()
         //let propertyName = property.description()
@@ -90,7 +90,7 @@ func fetchCardsGeneral (entity : CoreDataEntities, context : NSManagedObjectCont
 
 func fetchCards (property : CardProperties,
     value : String,
-    context : NSManagedObjectContext) -> AnyObject[]? {
+    context : NSManagedObjectContext) -> [AnyObject]? {
         
         let entity = CoreDataEntities.Card
         let entityName = entity.description()

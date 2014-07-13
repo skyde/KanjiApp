@@ -21,6 +21,13 @@ class AddFromList: CustomUIViewController {
 //        
 //        saveContext(self.managedObjectContext)
     }
+    
+    override func saveContext(context: NSManagedObjectContext)
+    {
+        
+        
+        super.saveContext(context)
+    }
 //    @IBOutlet var onJlptLevelInteract : UISegmentedControl
     @IBAction func onJlptLevelChanged(sender : AnyObject) {
     }

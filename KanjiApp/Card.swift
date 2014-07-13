@@ -140,7 +140,7 @@ class Card: NSManagedObject {
         }
         
         var style = NSMutableParagraphStyle()
-        style.lineSpacing = -size * 0.3
+        style.lineSpacing = CGFloat(-size * 0.3)
 //        style.paragraphSpacing = 0
 //        style.lineSpacing = 0
         //style.maximumLineHeight = size / 1.5
@@ -291,7 +291,7 @@ class Card: NSManagedObject {
 
     var matches: NSArray = []
     
-    class func createCard (entityName: String, propertyName:CardProperties, value:String, context: NSManagedObjectContext, checkForExisting: Bool = true) -> Card? {
+    class func createEntity (entityName: String, propertyName:CardProperties, value:String, context: NSManagedObjectContext, checkForExisting: Bool = true) -> Card? {
         
         //let entityName = "Card"
         

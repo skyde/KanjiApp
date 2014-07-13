@@ -5,7 +5,7 @@ class GameMode: CustomUIViewController {
     
     @IBOutlet var outputText: UITextView
     
-    var due: NSNumber[]
+    var due: [NSNumber]
     var isFront: Bool = true;
     
     var dueCard: Card {
@@ -36,7 +36,7 @@ class GameMode: CustomUIViewController {
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
         var possibleContent = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
         
-        var value: Card[] = []
+        var value: [Card] = []
         
         if let content = possibleContent {
             var deck = content.componentsSeparatedByString("\n")
@@ -60,7 +60,7 @@ class GameMode: CustomUIViewController {
                 
                 let kanji = items[0]
                 
-                var card = Card.createCard(CoreDataEntities.Card.description(), propertyName: CardProperties.kanji, value : kanji, context: self.managedObjectContext)!
+                var card = Card.createEntity(CoreDataEntities.Card.description(), propertyName: CardProperties.kanji, value : kanji, context: self.managedObjectContext)!
                 
                 card.index = index
                 card.hiragana = items[2]
@@ -126,9 +126,9 @@ class GameMode: CustomUIViewController {
 //        //saveContext(appDelegate.managedObjectContext)
 //    }
     
-    func loadDatabase () -> NSNumber[] {
+    func loadDatabase () -> [NSNumber] {
         
-        var values: NSNumber[] = []
+        var values: [NSNumber] = []
         
         if let allCards = fetchCardsGeneral(CoreDataEntities.Card, self.managedObjectContext, CardProperties.kanji.description()) {
             
