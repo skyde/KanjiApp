@@ -1,8 +1,5 @@
-
-
-extension String {
-    
-    
+extension String
+{
     func removeTagsFromString(var text: String) -> String
     {
         var furiganaOpen = text.componentsSeparatedByString("]")

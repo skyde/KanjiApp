@@ -13,7 +13,8 @@ class CustomUIViewController : UIViewController
         self.managedObjectContext = context
     }
     
-    func isNavigationBarHidden() -> Bool {
+    func isNavigationBarHidden() -> Bool
+    {
         return false
     }
     

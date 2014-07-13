@@ -14,6 +14,7 @@ class AddFromList: CustomUIViewController {
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
+        var settings = Card.createEntity(CoreDataEntities.Settings, self.managedObjectContext)!
 //        if let settings = fetchCardsGeneral(CoreDataEntities.Settings, self.managedObjectContext, SettingsProperties.jlptLevel.description()) {
 //            
 //            //settings[0].

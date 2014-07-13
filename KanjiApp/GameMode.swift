@@ -60,7 +60,9 @@ class GameMode: CustomUIViewController {
                 
                 let kanji = items[0]
                 
-                var card = Card.createEntity(.Card, propertyName: .kanji, value : kanji, context: self.managedObjectContext)!
+                var card = Card.createEntity(CoreDataEntities.Card, self.managedObjectContext, property: CardProperties.kanji.description(), value : kanji)! as Card
+                
+                card.kanji = kanji
                 
                 card.index = index
                 card.hiragana = items[2]
