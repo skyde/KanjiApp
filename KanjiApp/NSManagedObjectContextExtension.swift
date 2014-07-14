@@ -3,6 +3,51 @@ import CoreData
 
 extension NSManagedObjectContext
 {
+    func createEntity<T: NSManagedObject> (entity: CoreDataEntities, property:EntityProperties? = nil, value:CVarArg = "") -> T?
+    {
+        //var matches: NSArray = []
+        
+        //        if !value.isEmpty
+        //        {
+        let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
+        
+        request.returnsObjectsAsFaults = false
+        
+        if let p = property
+        {
+            request.predicate = NSPredicate(format: "\(p.description()) = %@", value)
+        }
+        else
+        {
+            request.predicate = NSPredicate()
+        }
+        
+        var error: NSError? = nil
+        
+//        self.executeFetchRequest(NSManagedObjectContext))
+        
+        var matches: NSArray = self.executeFetchRequest(request, error: &error)
+        
+        if (matches.count > 1)
+        {
+            return matches[0] as? T
+        }
+        
+        let entityDescription = NSEntityDescription.entityForName(entity.description(), inManagedObjectContext: self)
+        
+        var card = T(entity: entityDescription, insertIntoManagedObjectContext: self)
+        
+        //            switch property {
+        //            case .kanji:
+        //                card.kanji = value
+        //            default:
+        //                return card
+        //            }
+        return card
+        //        }
+        //return nil
+    }
+    
     func fetchCardsGeneral (entity : CoreDataEntities, sortProperty : EntityProperties, sortAscending: Bool = true) -> [AnyObject]?{
         
         let entityName = entity.description()

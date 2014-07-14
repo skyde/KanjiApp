@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import CoreData
 
-
 class AddFromList: CustomUIViewController
 {
     //@IBOutlet var outputText: UITextView
@@ -13,7 +12,7 @@ class AddFromList: CustomUIViewController
     
     var settings: Settings {
     get {
-        return NSManagedObject.createEntity(.Settings, self.managedObjectContext, property: SettingsProperties.userName, value: "default")! as Settings;
+        return managedObjectContext.createEntity(.Settings, property: SettingsProperties.userName, value: "default")! as Settings;
     }
     }
 //    init(coder aDecoder: NSCoder!)
