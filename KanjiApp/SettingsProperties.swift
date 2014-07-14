@@ -1,6 +1,7 @@
 import Foundation
 
-enum SettingsProperties {
+enum SettingsProperties: EntityProperties {
+    case userName
     case cardAddAmount
     case jlptLevel
     case onlyStudyKanji
@@ -8,6 +9,8 @@ enum SettingsProperties {
     
     func description() -> String {
         switch self {
+        case .userName:
+            return "userName"
         case .cardAddAmount:
             return "cardAddAmount"
         case .jlptLevel:

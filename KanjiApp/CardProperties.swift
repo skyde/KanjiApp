@@ -1,14 +1,6 @@
-//
-//  CardProperties.swift
-//  KanjiApp
-//
-//  Created by Sky on 2014-07-13.
-//  Copyright (c) 2014 Sky. All rights reserved.
-//
-
 import Foundation
 
-enum CardProperties {
+enum CardProperties: EntityProperties {
     case kanji
     case index
     case hiragana
