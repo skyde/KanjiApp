@@ -10,7 +10,7 @@ class GameMode: CustomUIViewController {
     
     var dueCard: Card {
     get {
-        return fetchCardByIndex(due[0], self.managedObjectContext)
+        return managedObjectContext.fetchCardByIndex(due[0])
     }
     }
     
@@ -132,7 +132,7 @@ class GameMode: CustomUIViewController {
         
         var values: [NSNumber] = []
         
-        if let allCards = fetchCardsGeneral(CoreDataEntities.Card, self.managedObjectContext, CardProperties.kanji.description()) {
+        if let allCards = managedObjectContext.fetchCardsGeneral(CoreDataEntities.Card, sortProperty: CardProperties.kanji) {
             
             for item : AnyObject in allCards {
                 var card = item as Card
