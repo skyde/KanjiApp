@@ -3,7 +3,7 @@ import CoreData
 
 extension NSManagedObject
 {
-    class func createEntity (entityName: CoreDataEntities, _ context: NSManagedObjectContext, property:String? = nil, value:String = "") -> NSManagedObject?
+    class func createEntity<T: NSManagedObject> (entityName: CoreDataEntities, _ context: NSManagedObjectContext, property:String? = nil, value:String = "") -> T?
     {
         var matches: NSArray = []
         
@@ -24,12 +24,12 @@ extension NSManagedObject
             
             if (matches.count > 1)
             {
-                return matches[0] as? Card
+                return matches[0] as? T
             }
             
             let entityDescription = NSEntityDescription.entityForName(entityName.description(), inManagedObjectContext: context)
             
-            var card : Card = Card(entity: entityDescription, insertIntoManagedObjectContext: context)
+            var card = T(entity: entityDescription, insertIntoManagedObjectContext: context)
             
 //            switch property {
 //            case .kanji:
