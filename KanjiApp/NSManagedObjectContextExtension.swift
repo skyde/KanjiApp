@@ -3,7 +3,7 @@ import CoreData
 
 extension NSManagedObjectContext
 {
-    func createEntity<T: NSManagedObject> (entity: CoreDataEntities, property:EntityProperties? = nil, value:CVarArg = "") -> T?
+    func createEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "") -> T?
     {
         //var matches: NSArray = []
         
@@ -28,7 +28,7 @@ extension NSManagedObjectContext
         
         var matches: NSArray = self.executeFetchRequest(request, error: &error)
         
-        if (matches.count > 1)
+        if (matches.count > 0)
         {
             return matches[0] as? T
         }
@@ -48,20 +48,24 @@ extension NSManagedObjectContext
         //return nil
     }
     
-    func fetchCardsGeneral (entity : CoreDataEntities, sortProperty : EntityProperties, sortAscending: Bool = true) -> [AnyObject]?{
+    func fetchEntitiesGeneral (entity : CoreDataEntities, sortProperty : EntityProperties, sortAscending: Bool = true) -> [NSManagedObject]?{
         
         let entityName = entity.description()
         //let propertyName = property.description()
         
         let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
         request.returnsObjectsAsFaults = false
-        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: CardProperties.interval.description(), ascending: true)
+        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: true)
         request.sortDescriptors = [sortDescriptor]
         var error: NSError? = nil
         var matches: NSArray = self.executeFetchRequest(request, error: &error)
         
         if matches.count > 0 {
-            return matches
+//            if var castMatches is [NSManagedObject]
+//            {
+//                
+//            }
+            return matches as [NSManagedObject]
         }
         else {
             return nil
@@ -95,23 +99,23 @@ extension NSManagedObjectContext
 
     func fetchCardByKanji(kanji: String) -> Card
     {
-        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, propertyName: CardProperties.kanji.description(), value: kanji)
+        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)
         
         return value as Card
     }
 
     func fetchCardByIndex(index: NSNumber) -> Card
     {
-        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, propertyName: CardProperties.index.description(), value: index)
+        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.index, index)
         
         return value as Card
     }
 
-    func fetchEntity (entity : CoreDataEntities, propertyName : String, value : NSObject) -> AnyObject? {
+    func fetchEntity (entity : CoreDataEntities, _ property : EntityProperties, _ value : NSObject) -> AnyObject? {
         
         //let entity = CoreDataEntities.Card
         let entityName = entity.description()
-        //        let propertyName = property.description()
+        let propertyName = property.description()
         
         let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
         request.returnsObjectsAsFaults = false

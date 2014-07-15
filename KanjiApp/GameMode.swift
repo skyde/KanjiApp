@@ -60,7 +60,7 @@ class GameMode: CustomUIViewController {
                 
                 let kanji = items[0]
                 
-                var card = managedObjectContext.createEntity(CoreDataEntities.Card, property: CardProperties.kanji, value : kanji)! as Card
+                var card = managedObjectContext.createEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)! as Card
                 
                 card.kanji = kanji
                 
@@ -91,7 +91,7 @@ class GameMode: CustomUIViewController {
             }
         }
         
-        saveContext(self.managedObjectContext)
+        saveContext()
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,9 +132,9 @@ class GameMode: CustomUIViewController {
         
         var values: [NSNumber] = []
         
-        if let allCards = managedObjectContext.fetchCardsGeneral(CoreDataEntities.Card, sortProperty: CardProperties.kanji) {
+        if let allCards = managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Card, sortProperty: CardProperties.kanji) {
             
-            for item : AnyObject in allCards {
+            for item in allCards {
                 var card = item as Card
                 
                 values += card.index

@@ -40,8 +40,18 @@ class CustomUIViewController : UIViewController
         navigationController.navigationBarHidden = isNavigationBarHidden()
     }
     
-    func saveContext (context: NSManagedObjectContext) {
-        var error: NSError? = nil
-        context.save(&error)
+    func saveContext (_ context: NSManagedObjectContext? = nil)
+    {
+        if var c = context
+        {
+            var error: NSError? = nil
+            c.save(&error)
+        }
+        else
+        {
+            
+            var error: NSError? = nil
+            self.managedObjectContext.save(&error)
+        }
     }
 }

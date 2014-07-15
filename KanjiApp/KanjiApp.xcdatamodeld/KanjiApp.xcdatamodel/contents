@@ -25,8 +25,8 @@
         <attribute name="usageAmountOther" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="Settings" syncable="YES">
-        <attribute name="cardAddAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="jlptLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cardAddAmount" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="jlptLevel" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="onlyStudyKanji" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="volume" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>

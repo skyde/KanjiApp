@@ -12,11 +12,23 @@ class AddFromList: CustomUIViewController
     
     var settings: Settings {
     get {
-        return managedObjectContext.createEntity(.Settings, property: SettingsProperties.userName, value: "default")! as Settings;
+        println(managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Settings, sortProperty: SettingsProperties.userName))
+        
+        return managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default")! as Settings
+//        return
     }
     }
-//    init(coder aDecoder: NSCoder!)
-//    {
+    
+    init(coder aDecoder: NSCoder!)
+    {
+        super.init(coder: aDecoder)
+        
+        var settings = managedObjectContext.createEntity(.Settings, SettingsProperties.userName, "default")! as Settings
+        
+        settings.userName = "default"
+        
+        saveContext()
+    }
 //        super.init(coder: aDecoder)
 //        
 ////        if let settings = fetchCardsGeneral(CoreDataEntities.Settings, self.managedObjectContext, SettingsProperties.jlptLevel.description()) {
@@ -31,12 +43,14 @@ class AddFromList: CustomUIViewController
     {
         super.viewDidLoad()
         
-        //var settings = fetchSettings()
-        
-        println("settings.jlptLevel = \(settings.jlptLevel)")
-        println("addAmount = \(addAmount)")
-        
-        jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
+        println(managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Settings, sortProperty: SettingsProperties.userName)?.count)
+//
+//        //var settings = fetchSettings()
+//        
+//        println("settings.jlptLevel = \(settings.jlptLevel)")
+//        println("addAmount = \(addAmount)")
+//        
+//        jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
     }
     
 //    override func saveContext(context: NSManagedObjectContext)
@@ -48,11 +62,11 @@ class AddFromList: CustomUIViewController
 //    @IBOutlet var onJlptLevelInteract : UISegmentedControl
     @IBAction func onJlptLevelChanged(sender : AnyObject)
     {
-        settings.jlptLevel = jlptLevel.selectedSegmentIndex
+        settings.jlptLevel = 2//jlptLevel.selectedSegmentIndex
         
-        println(jlptLevel.selectedSegmentIndex)
+        println(settings.jlptLevel)
         
-        saveContext(self.managedObjectContext)
+        saveContext()
     }
     
     @IBAction func isOnlyKanjiChanged(sender : AnyObject)
