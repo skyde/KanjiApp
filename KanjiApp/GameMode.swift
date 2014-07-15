@@ -132,7 +132,7 @@ class GameMode: CustomUIViewController {
         
         var values: [NSNumber] = []
         
-        if let allCards = managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Card, sortProperty: CardProperties.kanji) {
+        if let allCards = managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Card, sortProperty: CardProperties.interval) {
             
             for item in allCards {
                 var card = item as Card
@@ -193,7 +193,7 @@ class GameMode: CustomUIViewController {
         }
         advanceCard()
         
-        saveContext(self.managedObjectContext)
+        saveContext()
     }
     
     @IBAction func onTap () {
