@@ -12,7 +12,7 @@ class AddFromList: CustomUIViewController
     
     var settings: Settings {
     get {
-        println(managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Settings, sortProperty: SettingsProperties.userName))
+//        println(managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Settings, sortProperty: SettingsProperties.userName))
         
         return managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default")! as Settings
 //        return
@@ -23,7 +23,7 @@ class AddFromList: CustomUIViewController
     {
         super.init(coder: aDecoder)
         
-        var settings = managedObjectContext.createEntity(.Settings, SettingsProperties.userName, "default")! as Settings
+        var settings = managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default")! as Settings
         
         settings.userName = "default"
         
@@ -50,7 +50,7 @@ class AddFromList: CustomUIViewController
 //        println("settings.jlptLevel = \(settings.jlptLevel)")
 //        println("addAmount = \(addAmount)")
 //        
-//        jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
+        jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
     }
     
 //    override func saveContext(context: NSManagedObjectContext)
@@ -62,7 +62,7 @@ class AddFromList: CustomUIViewController
 //    @IBOutlet var onJlptLevelInteract : UISegmentedControl
     @IBAction func onJlptLevelChanged(sender : AnyObject)
     {
-        settings.jlptLevel = 2//jlptLevel.selectedSegmentIndex
+        settings.jlptLevel = jlptLevel.selectedSegmentIndex
         
         println(settings.jlptLevel)
         

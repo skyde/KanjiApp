@@ -3,7 +3,7 @@ import CoreData
 
 extension NSManagedObjectContext
 {
-    func createEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "") -> T?
+    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "") -> T?
     {
         //var matches: NSArray = []
         
@@ -110,29 +110,29 @@ extension NSManagedObjectContext
         
         return value as Card
     }
-
-    func fetchEntity (entity : CoreDataEntities, _ property : EntityProperties, _ value : NSObject) -> AnyObject? {
-        
-        //let entity = CoreDataEntities.Card
-        let entityName = entity.description()
-        let propertyName = property.description()
-        
-        let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
-        request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "\(propertyName) = %@", value)
-        let sortDescriptor :NSSortDescriptor = NSSortDescriptor(key: propertyName, ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        var error: NSError? = nil
-        var matches: NSArray = self.executeFetchRequest(request, error: &error)
-        
-        if matches.count > 0 {
-            return matches[0]
-        }
-        else {
-            return nil
-        }
-    }
 }
+//    func fetchEntity (entity : CoreDataEntities, _ property : EntityProperties, _ value : NSObject) -> AnyObject? {
+//        
+//        //let entity = CoreDataEntities.Card
+//        let entityName = entity.description()
+//        let propertyName = property.description()
+//        
+//        let request :NSFetchRequest = NSFetchRequest(entityName: entityName)
+//        request.returnsObjectsAsFaults = false
+//        request.predicate = NSPredicate(format: "\(propertyName) = %@", value)
+//        let sortDescriptor :NSSortDescriptor = NSSortDescriptor(key: propertyName, ascending: true)
+//        request.sortDescriptors = [sortDescriptor]
+//        var error: NSError? = nil
+//        var matches: NSArray = self.executeFetchRequest(request, error: &error)
+//        
+//        if matches.count > 0 {
+//            return matches[0]
+//        }
+//        else {
+//            return nil
+//        }
+//    }
+//}
 //
 //// PRINT FETCH REQUEST
 //
