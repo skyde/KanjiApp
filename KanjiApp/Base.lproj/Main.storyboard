@@ -143,6 +143,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="addAmountChanged:" destination="njT-bO-QmB" eventType="valueChanged" id="8ak-hZ-Ayx"/>
+                                    <action selector="addAmountChanged:" destination="njT-bO-QmB" eventType="editingChanged" id="f9u-3r-GoQ"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Wd-Mj2">

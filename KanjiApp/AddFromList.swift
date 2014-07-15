@@ -10,22 +10,22 @@ class AddFromList: CustomUIViewController
     @IBOutlet var addAmount : UITextField
     @IBOutlet var addButton : UIButton
     
+//    @IBOutlet var addAmountPicker: UIPickerView
+    
     var settings: Settings {
     get {
-//        println(managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Settings, sortProperty: SettingsProperties.userName))
-        
         return managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default")! as Settings
-//        return
     }
     }
     
-    init(coder aDecoder: NSCoder!)
-    {
+    init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         var settings = managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default")! as Settings
         
         settings.userName = "default"
+        
+//        addAmountPicker.
         
         saveContext()
     }
@@ -43,38 +43,39 @@ class AddFromList: CustomUIViewController
     {
         super.viewDidLoad()
         
-        println(managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Settings, sortProperty: SettingsProperties.userName)?.count)
-//
-//        //var settings = fetchSettings()
-//        
-//        println("settings.jlptLevel = \(settings.jlptLevel)")
-//        println("addAmount = \(addAmount)")
-//        
         jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
+        isOnlyKanji.on = settings.onlyStudyKanji.boolValue
+        addAmount.text = settings.cardAddAmount.stringValue
     }
     
-//    override func saveContext(context: NSManagedObjectContext)
-//    {
-//        
-//        
-//        super.saveContext(context)
-//    }
-//    @IBOutlet var onJlptLevelInteract : UISegmentedControl
     @IBAction func onJlptLevelChanged(sender : AnyObject)
     {
         settings.jlptLevel = jlptLevel.selectedSegmentIndex
-        
-        println(settings.jlptLevel)
         
         saveContext()
     }
     
     @IBAction func isOnlyKanjiChanged(sender : AnyObject)
     {
+        settings.onlyStudyKanji = isOnlyKanji.on
+        
+        saveContext()
     }
     
     @IBAction func addAmountChanged(sender : AnyObject)
     {
+        var amount = addAmount.text.toInt()
+        
+        println(amount)
+        
+        if var castAmount = amount
+        {
+            settings.cardAddAmount = castAmount
+        }
+        else
+        {
+            addAmount.text = settings.cardAddAmount.stringValue
+        }
     }
     
 //    func fetchSettings() -> Settings
