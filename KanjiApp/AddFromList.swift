@@ -4,13 +4,10 @@ import CoreData
 
 class AddFromList: CustomUIViewController
 {
-    //@IBOutlet var outputText: UITextView
     @IBOutlet var jlptLevel : UISegmentedControl
     @IBOutlet var isOnlyKanji : UISwitch
     @IBOutlet var addAmount : UITextField
     @IBOutlet var addButton : UIButton
-    
-//    @IBOutlet var addAmountPicker: UIPickerView
     
     var settings: Settings {
     get {
@@ -25,19 +22,8 @@ class AddFromList: CustomUIViewController
         
         settings.userName = "default"
         
-//        addAmountPicker.
-        
         saveContext()
     }
-//        super.init(coder: aDecoder)
-//        
-////        if let settings = fetchCardsGeneral(CoreDataEntities.Settings, self.managedObjectContext, SettingsProperties.jlptLevel.description()) {
-////            
-////            //settings[0].
-////        }
-////        
-////        saveContext(self.managedObjectContext)
-//    }
     
     override func viewDidLoad()
     {
@@ -46,6 +32,11 @@ class AddFromList: CustomUIViewController
         jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
         isOnlyKanji.on = settings.onlyStudyKanji.boolValue
         addAmount.text = settings.cardAddAmount.stringValue
+    }
+    
+    @IBAction func onAddTouch(sender: AnyObject)
+    {
+        println("button")
     }
     
     @IBAction func onJlptLevelChanged(sender : AnyObject)
@@ -77,11 +68,4 @@ class AddFromList: CustomUIViewController
             addAmount.text = settings.cardAddAmount.stringValue
         }
     }
-    
-//    func fetchSettings() -> Settings
-//    {
-//    }
-//    @IBOutlet var onOnlyKanjiInteract : UISwitch
-//    @IBOutlet var onAddAmountInteract : UITextField
-//    @IBOutlet var onAddButtonInteract : UIButton
 }

@@ -100,17 +100,15 @@ class GameMode: CustomUIViewController {
     }
     
     func updateText() {
-        
-        //var card = fetchCardByKanji(due[0], self.managedObjectContext)
-        
-        if(isFront) {
-            outputText.attributedText = dueCard.front
+        if due.count > 0 {
+            if isFront {
+                outputText.attributedText = dueCard.front
+            }
+            else {
+                outputText.attributedText = dueCard.back
+            }
+            outputText.textAlignment = .Center
         }
-        else {
-            outputText.attributedText = dueCard.back
-        }
-        
-        outputText.textAlignment = .Center
     }
   
 //    func makeEntityAction () {
@@ -132,14 +130,15 @@ class GameMode: CustomUIViewController {
         
         var values: [NSNumber] = []
         
-        if let allCards = managedObjectContext.fetchEntitiesGeneral(CoreDataEntities.Card, sortProperty: CardProperties.interval) {
+        let allCards = managedObjectContext.fetchEntities(CoreDataEntities.Card, CardProperties.enabled, false, CardProperties.interval, sortAscending: true)
+        //{//managedObjectContext.fetchEntities(.Card, CardProperties.enabled, true, CardProperties.interval) {
             
             for item in allCards {
                 var card = item as Card
                 
                 values += card.index
             }
-        }
+        //}
         
         return values
 //        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.Card, CardProperties.kanji, "Bill", self.managedObjectContext) {
@@ -206,29 +205,7 @@ class GameMode: CustomUIViewController {
         {
             advanceCard()
         }
-        
-//        if !isFront {
-//            lastDue = due[0]
-//        }
     }
-    
-//    func respondToSwipeFromLeft(gesture: UIGestureRecognizer) {
-//        
-//        if let swipeGesture = gesture as? UIScreenEdgePanGestureRecognizer {
-//            
-//            if swipeGesture.state == .Began
-//            {
-//                self.performSegueWithIdentifier("back", sender: self)
-//            }
-//        }
-//    }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-//        
-//        if segue.identifier == "back" {
-//            
-//        }
-//    }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         

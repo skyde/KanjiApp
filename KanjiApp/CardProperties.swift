@@ -15,12 +15,14 @@ enum CardProperties: EntityProperties {
     case pitchAccentText
     case pitchAccent
     case otherExampleSentences
-    
     case answersKnown
     case answersNormal
     case answersHard
     case answersForgot
     case interval
+    case dueTime
+    case enabled
+    
     func description() -> String {
         switch self {
         case .kanji:
@@ -63,6 +65,10 @@ enum CardProperties: EntityProperties {
             return "answersForgot"
         case .interval:
             return "interval"
+        case .dueTime:
+            return "dueTime"
+        case .enabled:
+            return "enabled"
         }
     }
 }
