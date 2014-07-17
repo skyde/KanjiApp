@@ -2,8 +2,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class CustomUIViewController : UIViewController
-{
+class CustomUIViewController : UIViewController {
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
     var settings: Settings {
@@ -12,20 +11,17 @@ class CustomUIViewController : UIViewController
     }
     }
     
-    func loadContext ()
-    {
+    func loadContext () {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context: NSManagedObjectContext = appDelegate.managedObjectContext
         self.managedObjectContext = context
     }
     
-    func isNavigationBarHidden() -> Bool
-    {
+    func isNavigationBarHidden() -> Bool {
         return false
     }
     
-    init(coder aDecoder: NSCoder!)
-    {
+    init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         loadContext()
@@ -52,16 +48,12 @@ class CustomUIViewController : UIViewController
         navigationController.navigationBarHidden = isNavigationBarHidden()
     }
     
-    func saveContext (_ context: NSManagedObjectContext? = nil)
-    {
-        if var c = context
-        {
+    func saveContext (_ context: NSManagedObjectContext? = nil) {
+        if var c = context {
             var error: NSError? = nil
             c.save(&error)
         }
-        else
-        {
-            
+        else {
             var error: NSError? = nil
             self.managedObjectContext.save(&error)
         }

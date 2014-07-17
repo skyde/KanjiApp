@@ -1,6 +1,5 @@
 import Foundation
 
-protocol EntityProperties
-{
+protocol EntityProperties {
     func description() -> String
 }

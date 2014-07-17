@@ -3,18 +3,15 @@ import CoreData
 
 extension NSManagedObjectContext
 {
-    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "") -> T?
-    {
+    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "") -> T? {
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
         
         request.returnsObjectsAsFaults = false
         
-        if let p = property
-        {
+        if let p = property {
             request.predicate = NSPredicate(format: "\(p.description()) = %@", value)
         }
-        else
-        {
+        else {
             request.predicate = NSPredicate()
         }
         
@@ -22,8 +19,7 @@ extension NSManagedObjectContext
         
         var matches: NSArray = self.executeFetchRequest(request, error: &error)
         
-        if (matches.count > 0)
-        {
+        if (matches.count > 0) {
             return matches[0] as? T
         }
         
@@ -42,8 +38,7 @@ extension NSManagedObjectContext
         //return nil
     }
     
-    func fetchEntities(entity: CoreDataEntities, _ property: EntityProperties, _ value:CVarArg, _ sortProperty: EntityProperties, sortAscending: Bool = true) -> NSArray
-    {
+    func fetchEntities(entity: CoreDataEntities, _ property: EntityProperties, _ value:CVarArg, _ sortProperty: EntityProperties, sortAscending: Bool = true) -> NSArray {
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
         
         request.returnsObjectsAsFaults = false
@@ -56,8 +51,8 @@ extension NSManagedObjectContext
         
 //        if let s = sortProperty
 //        {
-            let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: true)
-            request.sortDescriptors = [sortDescriptor]
+        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: true)
+        request.sortDescriptors = [sortDescriptor]
         //        }
         return matches
         
@@ -69,7 +64,7 @@ extension NSManagedObjectContext
 //        return []
     }
     
-    func fetchEntitiesGeneral (entity : CoreDataEntities, sortProperty : EntityProperties, sortAscending: Bool = true) -> [NSManagedObject]?{
+    func fetchEntitiesGeneral (entity : CoreDataEntities, sortProperty : EntityProperties, sortAscending: Bool = true) -> [NSManagedObject]? {
         
         let entityName = entity.description()
         //let propertyName = property.description()
@@ -89,15 +84,13 @@ extension NSManagedObjectContext
         }
     }
 
-    func fetchCardByKanji(kanji: String) -> Card
-    {
+    func fetchCardByKanji(kanji: String) -> Card {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)
         
         return value as Card
     }
 
-    func fetchCardByIndex(index: NSNumber) -> Card
-    {
+    func fetchCardByIndex(index: NSNumber) -> Card {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.index, index)
         
         return value as Card

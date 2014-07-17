@@ -7,32 +7,27 @@ class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var tableView: UITableView
     var items: [NSNumber] = []
     
-    init(coder aDecoder: NSCoder!)
-    {
+    init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         items = []
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
-        if let allCards = managedObjectContext.fetchEntitiesGeneral(.Card, sortProperty: CardProperties.index)
-        {
+        if let allCards = managedObjectContext.fetchEntitiesGeneral(.Card, sortProperty: CardProperties.index) {
             items = allCards.map { ($0 as Card).index }
         }
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.items.count;
     }
     
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
-    {
+    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
@@ -42,8 +37,7 @@ class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
-    {
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("You selected cell #\(indexPath.row)!")
     }
 }

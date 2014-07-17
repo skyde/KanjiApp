@@ -2,7 +2,6 @@ import UIKit
 import CoreData
 
 class GameMode: CustomUIViewController {
-    
     @IBOutlet var outputText: UITextView
     
     var due: [NSNumber]
@@ -10,8 +9,7 @@ class GameMode: CustomUIViewController {
     
     var dueCard: Card? {
     get {
-        if due.count > 0
-        {
+        if due.count > 0 {
             return managedObjectContext.fetchCardByIndex(due[0])
         }
         return nil
@@ -26,18 +24,15 @@ class GameMode: CustomUIViewController {
         
         self.due = loadDatabase()
         
-        if !settings.generatedCards.boolValue
-        {
+        if !settings.generatedCards.boolValue {
             settings.generatedCards = true
-            
             createDatabase("AllCards copy")
         }
         
         self.due = loadDatabase()
     }
     
-    func createDatabase(filename: String)
-    {
+    func createDatabase(filename: String) {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
@@ -47,21 +42,17 @@ class GameMode: CustomUIViewController {
         
         if let content = possibleContent {
             var deck = content.componentsSeparatedByString("\n")
-            
-            for deckItem in deck
-            {
+            for deckItem in deck {
                 var items = deckItem.componentsSeparatedByString("\t")
                 
                 var index: Int = items[1].toInt()!
                 var pitchAccent = 0
-                if var p = items[12].toInt()
-                {
+                if var p = items[12].toInt() {
                     pitchAccent = p
                 }
                 
                 var usageAmount = 0
-                if var u = items[9].toInt()
-                {
+                if var u = items[9].toInt() {
                     usageAmount = u
                 }
                 
@@ -84,7 +75,6 @@ class GameMode: CustomUIViewController {
                 card.pitchAccentText = items[11]
                 card.pitchAccent = pitchAccent
                 card.otherExampleSentences = items[13]
-                
                 card.answersKnown = 0
                 card.answersNormal = 0
                 card.answersHard = 0
@@ -92,13 +82,9 @@ class GameMode: CustomUIViewController {
                 card.interval = 0
                 card.dueTime = 0
                 
-                //saveContext(self.managedObjectContext)
-                
                 values += card
             }
         }
-        
-//        values[0].enabled = true
         
         saveContext()
     }
@@ -119,51 +105,44 @@ class GameMode: CustomUIViewController {
             outputText.textAlignment = .Center
         }
     }
-  
-//    func makeEntityAction () {
-//        println("-- Make action --")
-//        
-//        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-//        let value = "例　ExKanji with interval of 22"
-//        
-//        var card = Card.createCard(CardProperties.kanji, value : value, context: self.managedObjectContext)!
-//        
-//        card.interval = 22
-//        card.definition = "Test Definition"
-//        
-//        saveContext(self.managedObjectContext)
-//        //saveContext(appDelegate.managedObjectContext)
-//    }
     
-    func loadDatabase () -> [NSNumber]
-    {
+    func loadDatabase () -> [NSNumber] {
         var values: [NSNumber] = []
         
         let allCards = managedObjectContext.fetchEntities(CoreDataEntities.Card, CardProperties.enabled, true, CardProperties.interval, sortAscending: true)
         
-        for item in allCards
-        {
+        for item in allCards {
             var card = item as Card
             values += card.index
         }
-        //}
         
         return values
-//        if let mySinglearray: AnyObject[] = myNameFetchRequest(CoreDataEntities.Card, CardProperties.kanji, "Bill", self.managedObjectContext) {
-//            println("(--  --)")
-//            printFetchedArrayList(mySinglearray)
-//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateText()
         setupSwipeGestures()
-        //navigationController.navigationBarHidden = true
+        
+        //[self presentModalViewController:myNewVC animated:YES];
+        
+//        self.presentModalViewController
+        
+//        self.presentViewController(AddFromList(), animated: true) {}
+        
+//        println(self.due.count)
+//        if self.due.count == 0 {
+//            navigationController.performSegueWithIdentifier("AddCards", sender: self)
+//        }
     }
     
-    func advanceCard()
-    {
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue.identifier == "AddCards" {
+            // pass data to next view
+        }
+    }
+    
+    func advanceCard() {
         if !isFront && due.count > 1 {
             
             due.removeAtIndex(0)
@@ -175,42 +154,33 @@ class GameMode: CustomUIViewController {
     }
     
     func onInteract(interactType: InteractType, _ card: Card) {
-        
         switch interactType {
-            
         case .Tap:
             card.answerCard(.Normal)
-            
         case .SwipeRight:
             println("Swiped right \(card.kanji)")
             card.answerCard(.Hard)
             due += due[0]
-            
         case .SwipeLeft:
             println("Swiped Left \(card.kanji)")
             card.answerCard(.Forgot)
             due += due[0]
-            
         case .SwipeUp:
             println("Swiped Up \(card.kanji)")
             card.answerCard(.Easy)
-            
         case .SwipeDown:
             println("Swipe Down \(card.kanji)")
         }
         advanceCard()
-        
         saveContext()
     }
     
     @IBAction func onTap () {
-        if let card = dueCard
-        {
+        if let card = dueCard {
             if !isFront {
                 onInteract(.Tap, card)
             }
-            else
-            {
+            else {
                 advanceCard()
             }
         }
@@ -219,8 +189,7 @@ class GameMode: CustomUIViewController {
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if !isFront {
-                if let card = dueCard
-                {
+                if let card = dueCard {
                     switch swipeGesture.direction {
                         
                     case UISwipeGestureRecognizerDirection.Right:
@@ -243,7 +212,7 @@ class GameMode: CustomUIViewController {
         }
     }
     
-    func setupSwipeGestures(){
+    func setupSwipeGestures() {
 //        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
 //        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
 //        self.view.addGestureRecognizer(swipeRight)

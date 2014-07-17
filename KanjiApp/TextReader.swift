@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class TextReader: CustomUIViewController
-{
+class TextReader: CustomUIViewController {
     @IBOutlet var userText : UITextView
     
     override func viewDidLoad() {

@@ -31,22 +31,19 @@ class Card: NSManagedObject {
     @NSManaged var dueTime: NSNumber
     @NSManaged var enabled: NSNumber
     
-    func answerCard(difficulty: AnswerDifficulty)
-    {
+    func answerCard(difficulty: AnswerDifficulty) {
         switch difficulty {
         case .Easy:
             println("Easy")
             interval = 9
         case .Normal:
             println("Normal")
-            if interval.integerValue < 12
-            {
+            if interval.integerValue < 12 {
                 interval = interval.doubleValue + 1
             }
         case .Hard:
             println("Hard")
-            if interval.integerValue >= 1
-            {
+            if interval.integerValue >= 1 {
                 interval = interval.doubleValue - 1
             }
         case .Forgot:
@@ -67,13 +64,11 @@ class Card: NSManagedObject {
         
         var size = baseSize * 2 / Double(countElements(kanji))
         
-        if size > baseSize
-        {
+        if size > baseSize {
             size = baseSize
         }
         
-        for char in kanji
-        {
+        for char in kanji {
             value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))
         }
         
@@ -94,92 +89,87 @@ class Card: NSManagedObject {
     }
 
     var back: NSAttributedString {
-        get
-        {
-            let font = "HiraKakuProN-W3"
-            var value = NSMutableAttributedString()
+    get {
+        let font = "HiraKakuProN-W3"
+        var value = NSMutableAttributedString()
+        
+        value.beginEditing()
+
+        value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
+
+        value.addBreak(5)
+
+        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 22))
+
+        value.addBreak(20)
+
+        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true, removeSpaces: true)
+
+        value.addBreak(5)
+
+        value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
+
+        value.addBreak(30)
+        
+        var validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
+        var isJapanese = true
+        var text = ""
+        
+        var examples: String  = otherExampleSentences.removeTagsFromString(otherExampleSentences)
+        
+        for item in examples {
+            var test = String(item).componentsSeparatedByCharactersInSet(validChars)[0]
+            var isCurrentJapanese = test != ""
             
-            value.beginEditing()
-
-            value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
-
-            value.addBreak(5)
-
-            value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 22))
-
-            value.addBreak(20)
-
-            value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true, removeSpaces: true)
-
-            value.addBreak(5)
-
-            value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
-
-            value.addBreak(30)
-            
-            var validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
-            var isJapanese = true
-            var text = ""
-            
-            var examples: String  = otherExampleSentences.removeTagsFromString(otherExampleSentences)
-            
-            for item in examples
-            {
-                var test = String(item).componentsSeparatedByCharactersInSet(validChars)[0]
-                var isCurrentJapanese = test != ""
-                
-                if isJapanese != isCurrentJapanese &&
-                    text != "" &&
-                    item != " " &&
-                    item != "　" &&
-                    item != "-" &&
-                    item != "(" &&
-                    item != ")" &&
-                    item != "0" &&
-                    item != "1" &&
-                    item != "2" &&
-                    item != "3" &&
-                    item != "4" &&
-                    item != "5" &&
-                    item != "6" &&
-                    item != "7" &&
-                    item != "8" &&
-                    item != "9"
-                {
-                    if countElements(text) > 1
-                    {
-                        var size: CGFloat = isJapanese ? 24 : 16
-                        var removeSpaces = isJapanese ? true : false
-                        var extraSpace: String = isJapanese ? "" : "\n"
-                        
-                        value.addAttributedText(text + "\n" + extraSpace, NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
-                        
-                        text = ""
-                    }
-                    isJapanese = !isJapanese
+            if isJapanese != isCurrentJapanese &&
+                text != "" &&
+                item != " " &&
+                item != "　" &&
+                item != "-" &&
+                item != "(" &&
+                item != ")" &&
+                item != "0" &&
+                item != "1" &&
+                item != "2" &&
+                item != "3" &&
+                item != "4" &&
+                item != "5" &&
+                item != "6" &&
+                item != "7" &&
+                item != "8" &&
+                item != "9" {
+                if countElements(text) > 1 {
+                    var size: CGFloat = isJapanese ? 24 : 16
+                    var removeSpaces = isJapanese ? true : false
+                    var extraSpace: String = isJapanese ? "" : "\n"
+                    
+                    value.addAttributedText(text + "\n" + extraSpace, NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                    
+                    text = ""
                 }
-                
-                if !(text == "" && item == ".")
-                {
-                    text += item
-                }
+                isJapanese = !isJapanese
             }
             
-            value.addBreak(10)
-            
-            value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
-
-            //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
-
-            var color = colorForPitchAccent(Int(pitchAccent))
-
-            value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
-
-
-            value.endEditing()
-
-            return value
+            if !(text == "" && item == ".") {
+                text += item
+            }
         }
+        
+        value.addBreak(10)
+        
+        value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
+
+        //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
+
+        var color = colorForPitchAccent(Int(pitchAccent))
+
+        value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
+
+
+        value.endEditing()
+
+        return value
+    }
     }
 
 //    func getAsciiCharacterSet() -> NSCharacterSet
@@ -197,8 +187,7 @@ class Card: NSManagedObject {
 ////        NSLog(@"%@", test);
 //    }
 
-    func colorForPitchAccent(pitchAccent: Int) -> UIColor
-    {
+    func colorForPitchAccent(pitchAccent: Int) -> UIColor {
         var color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 
         switch pitchAccent {
