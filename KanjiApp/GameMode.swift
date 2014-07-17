@@ -8,9 +8,13 @@ class GameMode: CustomUIViewController {
     var due: [NSNumber]
     var isFront: Bool = true;
     
-    var dueCard: Card {
+    var dueCard: Card? {
     get {
-        return managedObjectContext.fetchCardByIndex(due[0])
+        if due.count > 0
+        {
+            return managedObjectContext.fetchCardByIndex(due[0])
+        }
+        return nil
     }
     }
     
@@ -105,12 +109,12 @@ class GameMode: CustomUIViewController {
     }
     
     func updateText() {
-        if due.count > 0 {
+        if let card = dueCard {
             if isFront {
-                outputText.attributedText = dueCard.front
+                outputText.attributedText = card.front
             }
             else {
-                outputText.attributedText = dueCard.back
+                outputText.attributedText = card.back
             }
             outputText.textAlignment = .Center
         }
@@ -200,39 +204,40 @@ class GameMode: CustomUIViewController {
     }
     
     @IBAction func onTap () {
-        
-        if !isFront {
-            
-            onInteract(.Tap, dueCard)
-        }
-        else
+        if let card = dueCard
         {
-            advanceCard()
+            if !isFront {
+                onInteract(.Tap, card)
+            }
+            else
+            {
+                advanceCard()
+            }
         }
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
             if !isFront {
-                
-                switch swipeGesture.direction {
-                    
-                case UISwipeGestureRecognizerDirection.Right:
-                    onInteract(.SwipeRight, dueCard)
-                    
-                case UISwipeGestureRecognizerDirection.Down:
-                    onInteract(.SwipeDown, dueCard)
-                    
-                case UISwipeGestureRecognizerDirection.Up:
-                    onInteract(.SwipeUp, dueCard)
-                    
-                case UISwipeGestureRecognizerDirection.Left:
-                    onInteract(.SwipeLeft, dueCard)
-                    
-                default:
-                    break
+                if let card = dueCard
+                {
+                    switch swipeGesture.direction {
+                        
+                    case UISwipeGestureRecognizerDirection.Right:
+                        onInteract(.SwipeRight, card)
+                        
+                    case UISwipeGestureRecognizerDirection.Down:
+                        onInteract(.SwipeDown, card)
+                        
+                    case UISwipeGestureRecognizerDirection.Up:
+                        onInteract(.SwipeUp, card)
+                        
+                    case UISwipeGestureRecognizerDirection.Left:
+                        onInteract(.SwipeLeft, card)
+                        
+                    default:
+                        break
+                    }
                 }
             }
         }
