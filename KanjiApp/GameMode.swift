@@ -136,6 +136,7 @@ class GameMode: CustomUIViewController {
         
 //        println(self.due.count)
 //        if self.due.count == 0 {
+        self.navigationController.popToRootViewControllerAnimated(false)
         self.performSegueWithIdentifier("AddFromListSegue", sender: self)
 //        navigationController.performSegueWithIdentifier(, sender: <#AnyObject?#>)
 //        self.
