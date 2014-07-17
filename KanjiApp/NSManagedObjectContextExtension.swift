@@ -58,7 +58,7 @@ extension NSManagedObjectContext
 //        {
             let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: true)
             request.sortDescriptors = [sortDescriptor]
-//        }
+        //        }
         return matches
         
 //        if let c = matches as? [T]

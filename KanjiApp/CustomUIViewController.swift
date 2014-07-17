@@ -6,6 +6,12 @@ class CustomUIViewController : UIViewController
 {
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
+    var settings: Settings {
+    get {
+        return managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default")! as Settings
+    }
+    }
+    
     func loadContext ()
     {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -23,6 +29,12 @@ class CustomUIViewController : UIViewController
         super.init(coder: aDecoder)
         
         loadContext()
+        
+        var settings = managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default")! as Settings
+        
+        settings.userName = "default"
+        
+        saveContext()
     }
     
     override func prefersStatusBarHidden() -> Bool {

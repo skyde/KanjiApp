@@ -6,6 +6,7 @@ enum SettingsProperties: EntityProperties {
     case jlptLevel
     case onlyStudyKanji
     case volume
+    case generatedCards
     
     func description() -> String {
         switch self {
@@ -19,6 +20,8 @@ enum SettingsProperties: EntityProperties {
             return "onlyStudyKanji"
         case .volume:
             return "volume"
+        case .generatedCards:
+            return "generatedCards"
         }
     }
 }

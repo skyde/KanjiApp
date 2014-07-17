@@ -22,11 +22,14 @@ class GameMode: CustomUIViewController {
         
         self.due = loadDatabase()
         
-        if self.due.count == 0
+        if !settings.generatedCards.boolValue
         {
+            settings.generatedCards = true
+            
             createDatabase("AllCards copy")
-            self.due = loadDatabase()
         }
+        
+        self.due = loadDatabase()
     }
     
     func createDatabase(filename: String)
@@ -36,7 +39,7 @@ class GameMode: CustomUIViewController {
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
         var possibleContent = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
         
-        var value: [Card] = []
+        var values: [Card] = []
         
         if let content = possibleContent {
             var deck = content.componentsSeparatedByString("\n")
@@ -87,9 +90,11 @@ class GameMode: CustomUIViewController {
                 
                 //saveContext(self.managedObjectContext)
                 
-                value += card
+                values += card
             }
         }
+        
+//        values[0].enabled = true
         
         saveContext()
     }
@@ -126,18 +131,17 @@ class GameMode: CustomUIViewController {
 //        //saveContext(appDelegate.managedObjectContext)
 //    }
     
-    func loadDatabase () -> [NSNumber] {
-        
+    func loadDatabase () -> [NSNumber]
+    {
         var values: [NSNumber] = []
         
-        let allCards = managedObjectContext.fetchEntities(CoreDataEntities.Card, CardProperties.enabled, false, CardProperties.interval, sortAscending: true)
-        //{//managedObjectContext.fetchEntities(.Card, CardProperties.enabled, true, CardProperties.interval) {
-            
-            for item in allCards {
-                var card = item as Card
-                
-                values += card.index
-            }
+        let allCards = managedObjectContext.fetchEntities(CoreDataEntities.Card, CardProperties.enabled, true, CardProperties.interval, sortAscending: true)
+        
+        for item in allCards
+        {
+            var card = item as Card
+            values += card.index
+        }
         //}
         
         return values

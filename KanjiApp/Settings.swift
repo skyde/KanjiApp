@@ -8,4 +8,5 @@ class Settings: NSManagedObject {
     @NSManaged var jlptLevel: NSNumber
     @NSManaged var onlyStudyKanji: NSNumber
     @NSManaged var volume: NSNumber
+    @NSManaged var generatedCards: NSNumber
 }

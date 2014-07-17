@@ -9,20 +9,9 @@ class AddFromList: CustomUIViewController
     @IBOutlet var addAmount : UITextField
     @IBOutlet var addButton : UIButton
     
-    var settings: Settings {
-    get {
-        return managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default")! as Settings
-    }
-    }
-    
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
-        var settings = managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default")! as Settings
-        
-        settings.userName = "default"
-        
-        saveContext()
     }
     
     override func viewDidLoad()

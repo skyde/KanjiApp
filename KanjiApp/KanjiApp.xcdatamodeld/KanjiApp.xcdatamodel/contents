@@ -26,6 +26,7 @@
     </entity>
     <entity name="Settings" syncable="YES">
         <attribute name="cardAddAmount" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="generatedCards" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="jlptLevel" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="onlyStudyKanji" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,6 +34,6 @@
     </entity>
     <elements>
         <element name="Card" positionX="-63" positionY="-18" width="128" height="375"/>
-        <element name="Settings" positionX="-63" positionY="135" width="128" height="120"/>
+        <element name="Settings" positionX="-63" positionY="135" width="128" height="135"/>
     </elements>
 </model>
