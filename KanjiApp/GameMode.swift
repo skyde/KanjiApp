@@ -128,19 +128,25 @@ class GameMode: CustomUIViewController {
         
 //        self.presentModalViewController
         
-//        self.presentViewController(AddFromList(), animated: true) {}
+//        var view = storyboard.instantiateViewControllerWithIdentifier("AddFromList") as UIViewController!
+//        
+//        println(view!)
+//        
+//        self.presentViewController(view!, animated: true) {}
         
 //        println(self.due.count)
 //        if self.due.count == 0 {
-//            navigationController.performSegueWithIdentifier("AddCards", sender: self)
+        self.performSegueWithIdentifier("AddFromListSegue", sender: self)
+//        navigationController.performSegueWithIdentifier(, sender: <#AnyObject?#>)
+//        self.
 //        }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if segue.identifier == "AddCards" {
-            // pass data to next view
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+//        if segue!.identifier == "AddFromListSegue" {
+//            // pass data to next view
+//        }
+//    }
     
     func advanceCard() {
         if !isFront && due.count > 1 {

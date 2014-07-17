@@ -92,7 +92,7 @@
         <!--Add From List-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController title="Add From List" id="njT-bO-QmB" customClass="AddFromList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddFromList" title="Add From List" id="njT-bO-QmB" customClass="AddFromList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -206,7 +206,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184" y="1247"/>
+            <point key="canvasLocation" x="1335" y="1265"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -265,15 +265,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Oa-KB-5PH">
-                                <rect key="frame" x="389" y="175" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="njT-bO-QmB" kind="show" identifier="AddCards" id="nvd-lh-hxH"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -290,6 +281,7 @@
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddFromListSegue" id="slw-lc-Jnx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
@@ -417,6 +409,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yPL-jh-Klg"/>
+        <segue reference="slw-lc-Jnx"/>
     </inferredMetricsTieBreakers>
 </document>

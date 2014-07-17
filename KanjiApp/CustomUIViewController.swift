@@ -33,6 +33,15 @@ class CustomUIViewController : UIViewController {
         saveContext()
     }
     
+//    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//        
+//        initSelf()
+//    }
+//    
+//    func initSelf() {
+//    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -41,9 +50,9 @@ class CustomUIViewController : UIViewController {
         super.viewDidLoad()
         
         navigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController.navigationBar.shadowImage = UIImage()
-        self.navigationController.navigationBar.translucent = true
-        self.navigationController.view.backgroundColor = UIColor.clearColor()
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.translucent = true
+        navigationController.view.backgroundColor = UIColor.clearColor()
         
         navigationController.navigationBarHidden = isNavigationBarHidden()
     }
