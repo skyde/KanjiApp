@@ -38,7 +38,7 @@ class AddFromList: CustomUIViewController {
             }
         }
         
-//        self.navigationController.popToRootViewControllerAnimated(false)
+        self.navigationController.popToRootViewControllerAnimated(true)
         self.performSegueWithIdentifier("GameMode", sender: self)
     }
     
