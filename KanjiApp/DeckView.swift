@@ -17,10 +17,9 @@ class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    
-        if let allCards = managedObjectContext.fetchEntitiesGeneral(.Card, sortProperty: CardProperties.index) {
-            items = allCards.map { ($0 as Card).index }
-        }
+        
+        var allCards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, "true")], CardProperties.interval, sortAscending: true)
+        items = allCards.map { ($0 as Card).index }
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

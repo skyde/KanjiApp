@@ -38,7 +38,7 @@ extension NSManagedObjectContext
         //return nil
     }
     
-    func fetchEntities(entity: CoreDataEntities, _ predicates: [(EntityProperties, String)], _ sortProperty: EntityProperties, sortAscending: Bool = true) -> NSArray {
+    func fetchEntities(entity: CoreDataEntities, _ predicates: [(EntityProperties, String)], _ sortProperty: EntityProperties, sortAscending: Bool = true) -> [NSManagedObject] {
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
         
         request.returnsObjectsAsFaults = false
@@ -61,21 +61,10 @@ extension NSManagedObjectContext
         
         var error: NSError? = nil
         
-        var matches: NSArray = self.executeFetchRequest(request, error: &error)
-        
-//        if let s = sortProperty
-//        {
-        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: true)
+        let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: sortAscending)
         request.sortDescriptors = [sortDescriptor]
-        //        }
-        return matches
         
-//        if let c = matches as? [T]
-//        {
-//            return c
-//        }
-//        
-//        return []
+        return self.executeFetchRequest(request, error: &error) as [NSManagedObject]
     }
     
     func fetchEntitiesGeneral (entity : CoreDataEntities, sortProperty : EntityProperties, sortAscending: Bool = true) -> [NSManagedObject]? {
