@@ -165,7 +165,6 @@ class Card: NSManagedObject {
 
         value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
 
-
         value.endEditing()
 
         return value

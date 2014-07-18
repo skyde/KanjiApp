@@ -30,7 +30,13 @@ class AddFromList: CustomUIViewController {
             added++
             
             if let card = card as? Card {
-                card.enabled = true
+                
+                var onlyStudyKanji = settings.onlyStudyKanji.boolValue
+                
+                if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji())
+                {
+                    card.enabled = true
+                }
                 
                 if added >= settings.cardAddAmount.integerValue {
                     break
@@ -59,12 +65,8 @@ class AddFromList: CustomUIViewController {
     @IBAction func addAmountChanged(sender : AnyObject) {
         var amount = addAmount.text.toInt()
         
-//        println(addAmount.text)
-//        println(amount)
-        
         if var amount = amount {
-            if amount == 0
-            {
+            if amount == 0 {
                 amount = 1
                 addAmount.text = "\(1)"
             }
