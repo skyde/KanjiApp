@@ -18,7 +18,7 @@ class Card: NSManagedObject {
     @NSManaged var soundDefinition: String
     @NSManaged var definitionOther: String
     @NSManaged var usageAmount: NSNumber
-    @NSManaged var usageAmountOther: NSNumber
+    @NSManaged var jlptLevel: NSNumber
     @NSManaged var pitchAccentText: String
     @NSManaged var pitchAccent: NSNumber
     @NSManaged var otherExampleSentences: String

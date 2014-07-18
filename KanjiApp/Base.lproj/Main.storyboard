@@ -173,11 +173,12 @@
                         <outlet property="addButton" destination="f1c-Wd-Mj2" id="qDA-jM-wgd"/>
                         <outlet property="isOnlyKanji" destination="fwr-vc-Hvu" id="Zq8-dq-yL7"/>
                         <outlet property="jlptLevel" destination="5fX-SU-KbW" id="yay-5b-Txp"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="hI6-eY-sBz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1379" y="709"/>
+            <point key="canvasLocation" x="1344" y="688"/>
         </scene>
         <!--My Words-->
         <scene sceneID="yXk-YT-iD0">
@@ -206,7 +207,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="1265"/>
+            <point key="canvasLocation" x="1195" y="1247"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -281,7 +282,7 @@
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddFromListSegue" id="slw-lc-Jnx"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddFromList" id="slw-lc-Jnx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
@@ -294,7 +295,7 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="729" y="716"/>
+            <point key="canvasLocation" x="697" y="721"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="ngR-aF-ckz">
@@ -410,5 +411,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="slw-lc-Jnx"/>
+        <segue reference="hI6-eY-sBz"/>
     </inferredMetricsTieBreakers>
 </document>

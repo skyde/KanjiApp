@@ -56,6 +56,11 @@ class GameMode: CustomUIViewController {
                     usageAmount = u
                 }
                 
+                var jlptLevel = 0
+                if var j = items[10].toInt() {
+                    jlptLevel = j
+                }
+                
                 let kanji = items[0]
                 
                 var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)! as Card
@@ -71,7 +76,7 @@ class GameMode: CustomUIViewController {
                 card.soundDefinition = items[7]
                 card.definitionOther = items[8]
                 card.usageAmount = usageAmount
-                card.usageAmountOther = 0
+                card.jlptLevel = jlptLevel
                 card.pitchAccentText = items[11]
                 card.pitchAccent = pitchAccent
                 card.otherExampleSentences = items[13]
@@ -109,7 +114,7 @@ class GameMode: CustomUIViewController {
     func loadDatabase () -> [NSNumber] {
         var values: [NSNumber] = []
         
-        let allCards = managedObjectContext.fetchEntities(CoreDataEntities.Card, CardProperties.enabled, true, CardProperties.interval, sortAscending: true)
+        let allCards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, "true")], CardProperties.interval, sortAscending: true)
         
         for item in allCards {
             var card = item as Card
@@ -124,23 +129,10 @@ class GameMode: CustomUIViewController {
         updateText()
         setupSwipeGestures()
         
-        //[self presentModalViewController:myNewVC animated:YES];
-        
-//        self.presentModalViewController
-        
-//        var view = storyboard.instantiateViewControllerWithIdentifier("AddFromList") as UIViewController!
-//        
-//        println(view!)
-//        
-//        self.presentViewController(view!, animated: true) {}
-        
-//        println(self.due.count)
-//        if self.due.count == 0 {
-        self.navigationController.popToRootViewControllerAnimated(false)
-        self.performSegueWithIdentifier("AddFromListSegue", sender: self)
-//        navigationController.performSegueWithIdentifier(, sender: <#AnyObject?#>)
-//        self.
-//        }
+        if due.count == 0 {
+            self.navigationController.popToRootViewControllerAnimated(false)
+            self.performSegueWithIdentifier("AddFromList", sender: self)
+        }
     }
     
 //    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
@@ -151,7 +143,6 @@ class GameMode: CustomUIViewController {
     
     func advanceCard() {
         if !isFront && due.count > 1 {
-            
             due.removeAtIndex(0)
         }
         

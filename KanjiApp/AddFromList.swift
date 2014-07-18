@@ -8,21 +8,38 @@ class AddFromList: CustomUIViewController {
     @IBOutlet var addAmount : UITextField
     @IBOutlet var addButton : UIButton
     
-//    init(coder aDecoder: NSCoder!) {
-//        super.init(coder: aDecoder)
-//        
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        jlptLevel.selectedSegmentIndex = settings.jlptLevel.integerValue
+        jlptLevel.selectedSegmentIndex = 4 - settings.jlptLevel.integerValue
         isOnlyKanji.on = settings.onlyStudyKanji.boolValue
         addAmount.text = settings.cardAddAmount.stringValue
     }
     
     @IBAction func onAddTouch(sender: AnyObject) {
-        println("button")
+        var predicate: [(EntityProperties, String)] = []
+        
+        predicate += (CardProperties.enabled, "false")
+        predicate += (CardProperties.jlptLevel, "\(settings.jlptLevel)")
+        
+        let cards = managedObjectContext.fetchEntities(.Card, predicate, CardProperties.index, sortAscending: true)
+        
+        var added = 0
+        
+        for card in cards {
+            added++
+            
+            if let card = card as? Card {
+                card.enabled = true
+                
+                if added >= settings.cardAddAmount.integerValue {
+                    break
+                }
+            }
+        }
+        
+//        self.navigationController.popToRootViewControllerAnimated(false)
+        self.performSegueWithIdentifier("GameMode", sender: self)
     }
     
     @IBAction func onJlptLevelChanged(sender : AnyObject) {
@@ -42,12 +59,19 @@ class AddFromList: CustomUIViewController {
     @IBAction func addAmountChanged(sender : AnyObject) {
         var amount = addAmount.text.toInt()
         
-        println(amount)
+//        println(addAmount.text)
+//        println(amount)
         
-        if var castAmount = amount {
-            settings.cardAddAmount = castAmount
+        if var amount = amount {
+            if amount == 0
+            {
+                amount = 1
+                addAmount.text = "\(1)"
+            }
+            
+            settings.cardAddAmount = amount
         }
-        else {
+        else if addAmount.text != "" {
             addAmount.text = settings.cardAddAmount.stringValue
         }
     }

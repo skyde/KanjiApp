@@ -38,12 +38,26 @@ extension NSManagedObjectContext
         //return nil
     }
     
-    func fetchEntities(entity: CoreDataEntities, _ property: EntityProperties, _ value:CVarArg, _ sortProperty: EntityProperties, sortAscending: Bool = true) -> NSArray {
+    func fetchEntities(entity: CoreDataEntities, _ predicates: [(EntityProperties, String)], _ sortProperty: EntityProperties, sortAscending: Bool = true) -> NSArray {
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
         
         request.returnsObjectsAsFaults = false
         
-        request.predicate = NSPredicate(format: "\(property.description()) = %@", value)
+        var search = ""
+        var and = ""
+        
+        for predicate in predicates
+        {
+            search += and
+            
+            search += "("
+            search += "\(predicate.0.description()) == \(predicate.1)"
+            search += ")"
+            
+            and = " AND "
+        }
+        
+        request.predicate = NSPredicate(format: search)
         
         var error: NSError? = nil
         

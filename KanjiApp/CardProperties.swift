@@ -11,7 +11,7 @@ enum CardProperties: EntityProperties {
     case soundDefinition
     case definitionOther
     case usageAmount
-    case usageAmountOther
+    case jlptLevel
     case pitchAccentText
     case pitchAccent
     case otherExampleSentences
@@ -47,8 +47,8 @@ enum CardProperties: EntityProperties {
             return "definitionOther"
         case .usageAmount:
             return "usageAmount"
-        case .usageAmountOther:
-            return "usageAmountOther"
+        case .jlptLevel:
+            return "jlptLevel"
         case .pitchAccentText:
             return "pitchAccentText"
         case .pitchAccent:
