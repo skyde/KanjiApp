@@ -26,8 +26,9 @@ class AddFromList: CustomUIViewController {
         
         var added = 0
         
+        println("only study kanji = \(settings.onlyStudyKanji.boolValue)")
+        
         for card in cards {
-            added++
             
             if let card = card as? Card {
                 
@@ -35,6 +36,8 @@ class AddFromList: CustomUIViewController {
                 
                 if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji())
                 {
+                    println("\(card.kanji) \(card.kanji.isPrimarilyKanji())")
+                    added++
                     card.enabled = true
                 }
                 

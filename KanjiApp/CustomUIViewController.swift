@@ -30,6 +30,12 @@ class CustomUIViewController : UIViewController {
         
         settings.userName = "default"
         
+        if settings.cardAddAmount == 0
+        {
+            settings.cardAddAmount = 5
+            settings.onlyStudyKanji = true
+        }
+        
         saveContext()
     }
     

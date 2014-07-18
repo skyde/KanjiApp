@@ -4,10 +4,10 @@ import CoreData
 extension String
 {
     func isPrimarilyKanji() -> Bool
-    {
+    {        
         var validChars = NSCharacterSet(range: NSRange(location: 0x4e00, length: 0x9fbf-0x4e00))
-   
-        return true
+
+        return componentsSeparatedByCharactersInSet(validChars).count > 1
     }
     
     func removeTagsFromString(var text: String) -> String
