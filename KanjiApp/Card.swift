@@ -69,7 +69,7 @@ class Card: NSManagedObject {
         }
         
         for char in kanji {
-            value.addAttributedText(char + "", NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))
+            value.addAttributedText(char + "", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))])
         }
         
         var style = NSMutableParagraphStyle()
@@ -95,19 +95,19 @@ class Card: NSManagedObject {
         
         value.beginEditing()
 
-        value.addAttributedText(hiragana, NSFontAttributeName, UIFont(name: font, size: 50))
+        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50))])
 
         value.addBreak(5)
 
-        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: 22))
+        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: 22))])
 
         value.addBreak(20)
 
-        value.addAttributedText(exampleJapanese, NSFontAttributeName, UIFont(name: font, size: 24), processAttributes: true, removeSpaces: true)
+        value.addAttributedText(exampleJapanese, [(NSFontAttributeName, UIFont(name: font, size: 24))], processAttributes: true, removeSpaces: true)
 
         value.addBreak(5)
 
-        value.addAttributedText(exampleEnglish, NSFontAttributeName, UIFont(name: font, size: 16))
+        value.addAttributedText(exampleEnglish, [(NSFontAttributeName, UIFont(name: font, size: 16))])
 
         value.addBreak(30)
         
@@ -143,7 +143,7 @@ class Card: NSManagedObject {
                     var removeSpaces = isJapanese ? true : false
                     var extraSpace: String = isJapanese ? "" : "\n"
                     
-                    value.addAttributedText(text + "\n" + extraSpace, NSFontAttributeName, UIFont(name: font, size: size), processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                    value.addAttributedText(text + "\n" + extraSpace, [(NSFontAttributeName, UIFont(name: font, size: size))], processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
                     
                     text = ""
                 }
@@ -157,7 +157,7 @@ class Card: NSManagedObject {
         
         value.addBreak(10)
         
-        value.addAttributedText("\(pitchAccent)", NSFontAttributeName, UIFont(name: font, size: 16))
+        value.addAttributedText("\(pitchAccent)", [(NSFontAttributeName, UIFont(name: font, size: 16))])
 
         //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
 
@@ -179,19 +179,21 @@ class Card: NSManagedObject {
         
         value.beginEditing()
         
-        value.addAttributedText(kanji + " ", NSFontAttributeName, UIFont(name: font, size: CGFloat(25)), breakLine: false)
+        value.addAttributedText(kanji + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(25)))], breakLine: false)
         
-        var hiraganaStart = value.mutableString.length
-        
-        value.addAttributedText(hiragana + " ", NSFontAttributeName, UIFont(name: font, size: CGFloat(16)), breakLine: false)
+//        var hiraganaStart = value.mutableString.length
         
         var hiraganaColor = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
         
-        value.addAttribute(NSForegroundColorAttributeName, value: hiraganaColor, range: NSMakeRange(hiraganaStart, value.mutableString.length - hiraganaStart))
+        value.addAttributedText(hiragana + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(16))), (NSForegroundColorAttributeName, hiraganaColor)], breakLine: false)
+        
+//        value.addAttribute(NSForegroundColorAttributeName, value: hiraganaColor, range: NSMakeRange(hiraganaStart, value.mutableString.length - hiraganaStart))
         
         //value.addBreak(10)
         
-        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: CGFloat(12)))
+        var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         
         value.endEditing()
         

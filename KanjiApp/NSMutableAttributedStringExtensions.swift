@@ -6,11 +6,11 @@ extension NSMutableAttributedString {
     {
         if(size > 0)
         {
-            self.addAttributedText(" ", NSFontAttributeName, UIFont(name: "Helvetica", size: size));
+            self.addAttributedText(" ", [(NSFontAttributeName, UIFont(name: "Helvetica", size: size))]);
         }
     }
     
-    func addAttributedText(var text: String, _ attributeName: String, _ object: AnyObject, breakLine: Bool = true, processAttributes: Bool = false, removeSpaces: Bool = false)
+    func addAttributedText(var text: String, var _ attributeAndValues: [(String, AnyObject)], breakLine: Bool = true, processAttributes: Bool = false, removeSpaces: Bool = false)
     {
         var bolds: [NSRange] = []
         
@@ -61,6 +61,9 @@ extension NSMutableAttributedString {
         var range: NSRange = NSMakeRange(existingLength, countElements(text))
         self.mutableString.appendString(text)
         
-        self.addAttribute(attributeName, value: object, range: range)
+        for pair in attributeAndValues
+        {
+            self.addAttribute(pair.0, value: pair.1, range: range)
+        }
     }
 }
