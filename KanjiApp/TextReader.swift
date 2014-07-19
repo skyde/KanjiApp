@@ -15,8 +15,15 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
     var items: [NSNumber] = []
     
     @IBOutlet var tableView: UITableView
+    
     @IBAction func addAll(sender: AnyObject) {
+        for index in items {
+            var card = managedObjectContext.fetchCardByIndex(index)
+            card.enabled = true
+        }
+        saveContext()
     }
+    
     @IBAction func onTranslate(sender: AnyObject) {
         tokenizeText()
     }
@@ -32,34 +39,38 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
             let subString = CFStringCreateWithSubstring(nil, textCF, range)
             
-            println(subString)
-            
-//            tokens.append(Token(text:subString, range:range.ToNSRange()))
+            if countElements(subString as String) > 1 || (subString as String).isPrimarilyKanji()
+            {
+                if let card = managedObjectContext.fetchCardByKanji(subString)
+                {
+                    println(subString)
+                    
+                    items += card.index
+                }
+            }
         }
         
-        let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)    }
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("didload")
-        
-        items = [1, 1, 1, 1, 2]
         self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        items = []
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        println(items.count)
         return self.items.count;
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        //var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
+        var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
         
-        cell.textLabel.text = "\(self.items[indexPath.row])"//"\(card.kanji) \(card.interval)"
+        cell.textLabel.text = "\(card.kanji) \(card.interval)"
         
         return cell
     }

@@ -63,7 +63,7 @@ class GameMode: CustomUIViewController {
                 
                 let kanji = items[0]
                 
-                var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)! as Card
+                var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji, createIfNil: true)! as Card
                 
                 card.kanji = kanji
                 

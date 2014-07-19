@@ -3,7 +3,7 @@ import CoreData
 
 extension NSManagedObjectContext
 {
-    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "") -> T? {
+    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "", var createIfNil: Bool = false) -> T? {
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
         
         request.returnsObjectsAsFaults = false
@@ -19,8 +19,12 @@ extension NSManagedObjectContext
         
         var matches: NSArray = self.executeFetchRequest(request, error: &error)
         
-        if (matches.count > 0) {
+        if matches.count > 0 {
             return matches[0] as? T
+        }
+        
+        if !createIfNil && matches.count == 0 {
+            return nil
         }
         
         let entityDescription = NSEntityDescription.entityForName(entity.description(), inManagedObjectContext: self)
@@ -87,10 +91,10 @@ extension NSManagedObjectContext
         }
     }
 
-    func fetchCardByKanji(kanji: String) -> Card {
+    func fetchCardByKanji(kanji: String) -> Card? {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)
         
-        return value as Card
+        return value as Card?
     }
 
     func fetchCardByIndex(index: NSNumber) -> Card {
