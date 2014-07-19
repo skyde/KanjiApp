@@ -1,11 +1,13 @@
 import UIKit
 import CoreData
+import AVFoundation
 
-class GameMode: CustomUIViewController {
+class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     @IBOutlet var outputText: UITextView
     
     var due: [NSNumber]
-    var isFront: Bool = true;
+    var isFront: Bool = true
+    var audioPlayer = AVAudioPlayer()
     
     var dueCard: Card? {
     get {
@@ -142,13 +144,36 @@ class GameMode: CustomUIViewController {
 //    }
     
     func advanceCard() {
+        
         if !isFront && due.count > 1 {
+            
             due.removeAtIndex(0)
         }
         
         isFront = !isFront
         
+        if !isFront
+        {
+            playSound("1V")
+        }
+        
         updateText()
+    }
+    
+    func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true)
+    {
+        var sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: fileType))
+        
+        var error:NSError?
+        audioPlayer = AVAudioPlayer(contentsOfURL: sound, error: &error)
+        if sendEvents {
+            audioPlayer.delegate = self
+        }
+        audioPlayer.play()
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        playSound("1S", sendEvents: false)
     }
     
     func onInteract(interactType: InteractType, _ card: Card) {
