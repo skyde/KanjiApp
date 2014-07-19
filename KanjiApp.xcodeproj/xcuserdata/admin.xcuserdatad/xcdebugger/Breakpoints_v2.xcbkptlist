@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/GameMode.swift"
-            timestampString = "427343839.326925"
+            timestampString = "427426595.051824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "respondToSwipeGesture(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/TextReader.swift"
-            timestampString = "427425784.293544"
+            timestampString = "427425952.206483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "tokenizeText()"
             landmarkType = "5">
          </BreakpointContent>

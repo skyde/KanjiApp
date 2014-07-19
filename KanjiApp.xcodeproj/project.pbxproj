@@ -18,6 +18,9 @@
 		842878FB196341B10060BDD1 /* KanjiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878FA196341B10060BDD1 /* KanjiAppTests.swift */; };
 		846C9749196A4243001D013C /* TextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C9748196A4243001D013C /* TextReader.swift */; };
 		846C974B196A42A0001D013C /* CustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C974A196A42A0001D013C /* CustomUIViewController.swift */; };
+		849DA4B4197A0760004ED365 /* 1S.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849DA4B2197A0760004ED365 /* 1S.mp3 */; };
+		849DA4B5197A0760004ED365 /* 1V.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849DA4B3197A0760004ED365 /* 1V.mp3 */; };
+		849DA4B7197A08C4004ED365 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DA4B6197A08C4004ED365 /* SettingsView.swift */; };
 		84A5F61119743E31001B7404 /* EntityProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5F61019743E31001B7404 /* EntityProperties.swift */; };
 		84A5F6131974418D001B7404 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5F6121974418D001B7404 /* NSManagedObjectContextExtension.swift */; };
 		84D6074919706508007706DE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6074819706508007706DE /* Settings.swift */; };
@@ -59,6 +62,9 @@
 		842878FA196341B10060BDD1 /* KanjiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiAppTests.swift; sourceTree = "<group>"; };
 		846C9748196A4243001D013C /* TextReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReader.swift; sourceTree = "<group>"; };
 		846C974A196A42A0001D013C /* CustomUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIViewController.swift; sourceTree = "<group>"; };
+		849DA4B2197A0760004ED365 /* 1S.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 1S.mp3; path = Audio/1S.mp3; sourceTree = "<group>"; };
+		849DA4B3197A0760004ED365 /* 1V.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 1V.mp3; path = Audio/1V.mp3; sourceTree = "<group>"; };
+		849DA4B6197A08C4004ED365 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		84A5F61019743E31001B7404 /* EntityProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityProperties.swift; sourceTree = "<group>"; };
 		84A5F6121974418D001B7404 /* NSManagedObjectContextExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtension.swift; sourceTree = "<group>"; };
 		84D6074819706508007706DE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -132,6 +138,8 @@
 		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				849DA4B2197A0760004ED365 /* 1S.mp3 */,
+				849DA4B3197A0760004ED365 /* 1V.mp3 */,
 				842878E3196341B10060BDD1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -171,6 +179,7 @@
 				84D6075019707A31007706DE /* AddFromList.swift */,
 				841390B619645CB6005958B9 /* DeckView.swift */,
 				846C9748196A4243001D013C /* TextReader.swift */,
+				849DA4B6197A08C4004ED365 /* SettingsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,8 +279,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849DA4B4197A0760004ED365 /* 1S.mp3 in Resources */,
 				84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */,
 				84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */,
+				849DA4B5197A0760004ED365 /* 1V.mp3 in Resources */,
 				842878ED196341B10060BDD1 /* Main.storyboard in Resources */,
 				842878EF196341B10060BDD1 /* Images.xcassets in Resources */,
 			);
@@ -309,6 +320,7 @@
 				84EC7C1B19734A7800CA9054 /* SettingsProperties.swift in Sources */,
 				84A5F61119743E31001B7404 /* EntityProperties.swift in Sources */,
 				84D6075119707A31007706DE /* AddFromList.swift in Sources */,
+				849DA4B7197A08C4004ED365 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

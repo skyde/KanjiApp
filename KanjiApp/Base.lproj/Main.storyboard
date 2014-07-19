@@ -225,7 +225,7 @@
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
             <objects>
-                <viewController title="Settings" id="1Aq-z8-1P3" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="1Aq-z8-1P3" customClass="SettingsView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JYF-dt-dpX"/>
                         <viewControllerLayoutGuide type="bottom" id="dWD-8y-8GG"/>
@@ -242,6 +242,9 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="p1H-mf-Il1">
                                 <rect key="frame" x="181" y="229" width="118" height="31"/>
+                                <connections>
+                                    <action selector="onVolumeChanged:" destination="1Aq-z8-1P3" eventType="valueChanged" id="Jdu-ZB-VNI"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -250,6 +253,9 @@
                             <constraint firstAttribute="centerX" secondItem="9wD-3J-NV6" secondAttribute="centerX" id="NXn-P3-VuM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="volume" destination="p1H-mf-Il1" id="16G-F8-4dI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pt-m8-LWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

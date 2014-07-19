@@ -35,7 +35,7 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
         
         let tokenizer = CFStringTokenizerCreate(nil, textCF, CFRangeMake(0, length), 0, CFLocaleCreate(nil, "ja_JP"))
         
-        while(CFStringTokenizerAdvanceToNextToken(tokenizer) != .None) {
+        while CFStringTokenizerAdvanceToNextToken(tokenizer) != .None {
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
             let subString = CFStringCreateWithSubstring(nil, textCF, range)
             
@@ -43,8 +43,6 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
             {
                 if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
-                    println(subString)
-                    
                     items += card.index
                 }
             }
