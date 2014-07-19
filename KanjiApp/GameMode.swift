@@ -154,10 +154,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         
         if !isFront
         {
-            playSound("1V")
+            if var path = dueCard?.soundWord
+            {
+                playSound(filterSoundPath(path))
+            }
         }
         
         updateText()
+    }
+    
+    func filterSoundPath(path: String) -> String
+    {
+        var range: NSRange = NSRange(location: 7, length: countElements(path) - 12)
+        return (path as NSString).substringWithRange(range)
     }
     
     func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true)
@@ -173,7 +182,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-        playSound("1S", sendEvents: false)
+        
+        if var path = dueCard?.soundDefinition
+        {
+            playSound(filterSoundPath(path), sendEvents: false)
+        }
+//        playSound("1S", sendEvents: false)
     }
     
     func onInteract(interactType: InteractType, _ card: Card) {
