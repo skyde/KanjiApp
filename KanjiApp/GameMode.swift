@@ -169,16 +169,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         return (path as NSString).substringWithRange(range)
     }
     
-    func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true)
-    {
-        var sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: fileType))
+    func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true) {
+        var resourcePath = NSBundle.mainBundle().pathForResource(name, ofType: fileType)
         
-        var error:NSError?
-        audioPlayer = AVAudioPlayer(contentsOfURL: sound, error: &error)
-        if sendEvents {
-            audioPlayer.delegate = self
+        if let resourcePath = resourcePath {
+            var sound = NSURL(fileURLWithPath: resourcePath)
+            
+            var error:NSError?
+            audioPlayer = AVAudioPlayer(contentsOfURL: sound, error: &error)
+            if sendEvents {
+                audioPlayer.delegate = self
+            }
+            audioPlayer.play()
         }
-        audioPlayer.play()
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {

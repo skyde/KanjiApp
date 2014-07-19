@@ -27,9 +27,7 @@ class AddFromList: CustomUIViewController {
         var added = 0
         
         for card in cards {
-            
             if let card = card as? Card {
-                
                 var onlyStudyKanji = settings.onlyStudyKanji.boolValue
                 
                 if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji()) {
