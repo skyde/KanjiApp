@@ -187,7 +187,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         {
             playSound(filterSoundPath(path), sendEvents: false)
         }
-//        playSound("1S", sendEvents: false)
     }
     
     func onInteract(interactType: InteractType, _ card: Card) {

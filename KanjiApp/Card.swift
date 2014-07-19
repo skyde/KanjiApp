@@ -170,6 +170,34 @@ class Card: NSManagedObject {
         return value
     }
     }
+    
+    
+    var cellText: NSAttributedString {
+    get {
+        let font = "HiraKakuProN-W3"
+        var value = NSMutableAttributedString()
+        
+        value.beginEditing()
+        
+        value.addAttributedText(kanji + " ", NSFontAttributeName, UIFont(name: font, size: CGFloat(25)), breakLine: false)
+        
+        var hiraganaStart = value.mutableString.length
+        
+        value.addAttributedText(hiragana + " ", NSFontAttributeName, UIFont(name: font, size: CGFloat(16)), breakLine: false)
+        
+        var hiraganaColor = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
+        
+        value.addAttribute(NSForegroundColorAttributeName, value: hiraganaColor, range: NSMakeRange(hiraganaStart, value.mutableString.length - hiraganaStart))
+        
+        //value.addBreak(10)
+        
+        value.addAttributedText(definition, NSFontAttributeName, UIFont(name: font, size: CGFloat(12)))
+        
+        value.endEditing()
+        
+        return value
+    }
+    }
 
 //    func getAsciiCharacterSet() -> NSCharacterSet
 //    {

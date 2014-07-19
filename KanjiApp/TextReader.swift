@@ -68,7 +68,7 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
         
         var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
         
-        cell.textLabel.text = "\(card.kanji) \(card.interval)"
+        cell.textLabel.attributedText = card.cellText//"\(card.kanji) \(card.interval)"
         
         return cell
     }

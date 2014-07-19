@@ -27,11 +27,12 @@ class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
         
-        cell.textLabel.text = "\(card.kanji) \(card.interval)"
+        cell.textLabel.attributedText = card.cellText
+//        cell.detailTextLabel.text = card.definition
         
         return cell
     }

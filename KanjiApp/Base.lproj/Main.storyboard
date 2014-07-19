@@ -191,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="574"/>
+            <point key="canvasLocation" x="1220" y="716"/>
         </scene>
         <!--My Words-->
         <scene sceneID="yXk-YT-iD0">
@@ -308,7 +308,7 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="686" y="552"/>
+            <point key="canvasLocation" x="713" y="716"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="ngR-aF-ckz">
@@ -423,7 +423,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yPL-jh-Klg"/>
+        <segue reference="slw-lc-Jnx"/>
         <segue reference="hI6-eY-sBz"/>
     </inferredMetricsTieBreakers>
 </document>
