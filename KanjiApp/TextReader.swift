@@ -58,7 +58,7 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         items = []
         
-        userText.font = UIFont(name: "M+ 2p", size: 20)
+        userText.font = UIFont(name: Globals.JapaneseFont, size: 20)
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

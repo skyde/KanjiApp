@@ -69,7 +69,7 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
-                                <rect key="frame" x="0.0" y="313" width="480" height="167"/>
+                                <rect key="frame" x="0.0" y="423" width="480" height="57"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="716"/>
+            <point key="canvasLocation" x="1178" y="716"/>
         </scene>
         <!--My Words-->
         <scene sceneID="yXk-YT-iD0">
@@ -225,7 +225,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253" y="1247"/>
+            <point key="canvasLocation" x="1178" y="1247"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -313,11 +313,12 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="713" y="716"/>
+            <point key="canvasLocation" x="686" y="716"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Main Menu" id="cUj-3S-BQf" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
@@ -400,9 +401,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="1247"/>
+            <point key="canvasLocation" x="686" y="1247"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="SLU-SY-3JO">
@@ -424,11 +424,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-zb-khQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179" y="1247"/>
+            <point key="canvasLocation" x="-531" y="1310"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="slw-lc-Jnx"/>
-        <segue reference="hI6-eY-sBz"/>
+        <segue reference="5Kq-4D-i5l"/>
+        <segue reference="yPL-jh-Klg"/>
     </inferredMetricsTieBreakers>
 </document>

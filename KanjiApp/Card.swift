@@ -90,7 +90,7 @@ class Card: NSManagedObject {
 
     var back: NSAttributedString {
     get {
-        let font = "HiraKakuProN-W3"
+        let font = Globals.JapaneseFont
         var value = NSMutableAttributedString()
         
         value.beginEditing()
