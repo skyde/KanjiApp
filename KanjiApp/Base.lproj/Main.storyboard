@@ -3,6 +3,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="mplus-2p-light.ttf">
+            <string>mplus-2p-light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Help-->
         <scene sceneID="Rrw-Cv-8K4">
@@ -77,7 +82,7 @@
                                 <string key="text">相対性理論での空間
 
 アルベルト・アインシュタインは、ローレンツの考えとは異なった観点から着想し、「全ての慣性基準系は対等であって、特権的な基準系はない」とする仮説と、「あらゆる慣性基準系において真空中の光の速度は一定である」とする仮説によって、ニュートン力学の理論体系を組みなおし、空間と時間に関して新しい考え方を提示した（相対性理論を参照）。ここにおいて、空間は時間と連関して扱われることになり、4次元の時空という概念が現れた。</string>
-                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>

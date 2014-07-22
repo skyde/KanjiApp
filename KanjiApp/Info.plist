@@ -30,5 +30,11 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>uiapp</key>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>mplus-2p-light.ttf</string>
+	</array>
 </dict>
 </plist>
