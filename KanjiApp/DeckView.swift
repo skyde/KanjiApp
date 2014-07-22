@@ -4,7 +4,7 @@ import CoreData
 
 class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    @IBOutlet var tableView: UITableView
+    @IBOutlet var tableView: UITableView!
     var items: [NSNumber] = []
     
     init(coder aDecoder: NSCoder!) {

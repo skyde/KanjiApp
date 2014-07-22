@@ -3,7 +3,7 @@ import CoreData
 import AVFoundation
 
 class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
-    @IBOutlet var outputText: UITextView
+    @IBOutlet var outputText: UITextView!
     
     var due: [NSNumber]
     var isFront: Bool = true

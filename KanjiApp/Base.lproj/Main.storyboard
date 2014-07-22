@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WrA-K3-cmd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WrA-K3-cmd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="mplus-2p-light.ttf">
@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="DPi-jM-E1R"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Mg-a6-9Ev">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="UFC-vF-2A2">
@@ -49,11 +49,11 @@
                         <viewControllerLayoutGuide type="bottom" id="lkb-sP-k49"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="exu-bT-Vaz">
-                        <rect key="frame" x="0.0" y="64" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
-                                <rect key="frame" x="0.0" y="44" width="480" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Add All" id="lrY-gL-Rp8">
                                         <connections>
@@ -69,7 +69,7 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
-                                <rect key="frame" x="0.0" y="423" width="480" height="57"/>
+                                <rect key="frame" x="0.0" y="423" width="600" height="57"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
@@ -116,7 +116,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dpG-7U-eXX">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-SU-KbW">
@@ -138,13 +138,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Only Kanji" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fba-gV-845">
-                                <rect key="frame" x="201" y="143" width="78" height="21"/>
+                                <rect key="frame" x="261" y="143" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwr-vc-Hvu">
-                                <rect key="frame" x="216" y="172" width="51" height="31"/>
+                                <rect key="frame" x="276" y="172" width="51" height="31"/>
                                 <connections>
                                     <action selector="isOnlyKanjiChanged:" destination="njT-bO-QmB" eventType="valueChanged" id="fhD-j2-Aio"/>
                                 </connections>
@@ -156,7 +156,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Add Amount" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-aL-cjy">
-                                <rect key="frame" x="189" y="240" width="102" height="30"/>
+                                <rect key="frame" x="249" y="240" width="102" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
@@ -202,12 +202,12 @@
         <scene sceneID="yXk-YT-iD0">
             <objects>
                 <tableViewController title="My Words" id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jO6-5i-Yf0">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jO6-5i-Yf0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="DTy-Ej-LhY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DTy-Ej-LhY">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DTy-Ej-LhY" id="W2p-mZ-jrY">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -236,7 +236,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dWD-8y-8GG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8pf-AF-gb3">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-3J-NV6">
@@ -275,11 +275,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4Ob-f4-4wS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZhP-H3-adN">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
-                                <rect key="frame" x="90" y="61" width="285" height="480"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
+                                <rect key="frame" x="90" y="61" width="285" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -318,14 +318,13 @@
         <!--Main Menu-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Main Menu" id="cUj-3S-BQf" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-Ed-cG9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3Yu-yV-REK">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-AB-Hvt">
@@ -401,6 +400,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="686" y="1247"/>
         </scene>
@@ -424,7 +424,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-zb-khQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-531" y="1310"/>
+            <point key="canvasLocation" x="179" y="1247"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

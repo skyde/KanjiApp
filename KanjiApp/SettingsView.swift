@@ -4,7 +4,7 @@ import CoreData
 
 class SettingsView: CustomUIViewController {
     
-    @IBOutlet var volume: UISlider
+    @IBOutlet var volume: UISlider!
     
     @IBAction func onVolumeChanged(sender: AnyObject) {
         settings.volume = volume.value

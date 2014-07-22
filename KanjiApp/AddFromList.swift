@@ -3,10 +3,10 @@ import UIKit
 import CoreData
 
 class AddFromList: CustomUIViewController {
-    @IBOutlet var jlptLevel : UISegmentedControl
-    @IBOutlet var isOnlyKanji : UISwitch
-    @IBOutlet var addAmount : UITextField
-    @IBOutlet var addButton : UIButton
+    @IBOutlet var jlptLevel : UISegmentedControl!
+    @IBOutlet var isOnlyKanji : UISwitch!
+    @IBOutlet var addAmount : UITextField!
+    @IBOutlet var addButton : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

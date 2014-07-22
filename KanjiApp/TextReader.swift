@@ -11,10 +11,10 @@ import UIKit
 import CoreData
 
 class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var userText : UITextView
+    @IBOutlet var userText : UITextView!
     var items: [NSNumber] = []
     
-    @IBOutlet var tableView: UITableView
+    @IBOutlet var tableView: UITableView!
     
     @IBAction func addAll(sender: AnyObject) {
         for index in items {
@@ -39,9 +39,9 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
             let subString = CFStringCreateWithSubstring(nil, textCF, range)
             
-            if countElements(subString as String) > 1 || (subString as String).isPrimarilyKanji()
+            if countElements(subString.__conversion() as String) > 1 || (subString.__conversion() as String).isPrimarilyKanji()
             {
-                if let card = managedObjectContext.fetchCardByKanji(subString)
+                if let card = managedObjectContext.fetchCardByKanji(subString.__conversion())
                 {
                     items += card.index
                 }
