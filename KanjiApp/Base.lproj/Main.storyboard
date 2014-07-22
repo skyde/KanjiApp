@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqL-o0-qyd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="1770"/>
+            <point key="canvasLocation" x="480" y="2012"/>
         </scene>
         <!--Add Words-->
         <scene sceneID="60A-KG-9Sp">
@@ -52,7 +52,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
                                 <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Add All" id="lrY-gL-Rp8">
@@ -68,16 +68,8 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
-                                <rect key="frame" x="0.0" y="423" width="600" height="57"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
-                                    <outlet property="delegate" destination="TB3-d0-7EI" id="NSO-Df-yg7"/>
-                                </connections>
-                            </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
-                                <rect key="frame" x="0.0" y="88" width="480" height="226"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
+                                <rect key="frame" x="0.0" y="88" width="600" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">相対性理論での空間
 
@@ -85,17 +77,29 @@
                                 <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
+                                <rect key="frame" x="0.0" y="543" width="600" height="57"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
+                                    <outlet property="delegate" destination="TB3-d0-7EI" id="NSO-Df-yg7"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="8PJ-Eg-lWr"/>
-                            <constraint firstItem="Agp-3c-QiX" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="GwH-kz-efg"/>
-                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="L5N-FI-I29"/>
-                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="Agp-3c-QiX" secondAttribute="bottom" constant="225" id="LNp-NK-dGC"/>
-                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" constant="15" id="TSr-kS-i2m"/>
-                            <constraint firstAttribute="trailing" secondItem="Agp-3c-QiX" secondAttribute="trailing" id="lIo-UP-SD1"/>
-                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="tWv-if-QIL"/>
-                            <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="xCf-Oh-TQc"/>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="Agp-3c-QiX" secondAttribute="bottom" id="6ln-lt-FqT"/>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="Agp-3c-QiX" secondAttribute="bottom" id="7ha-Rx-bFp"/>
+                            <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="JNE-3Z-CxT"/>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="Q5D-Hw-Bl4"/>
+                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="QQ0-CR-a8D"/>
+                            <constraint firstItem="Agp-3c-QiX" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="RWE-b2-p1I"/>
+                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="UGB-wg-3VO"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="Agp-3c-QiX" secondAttribute="bottom" constant="455" id="W4q-EL-Jj7"/>
+                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" constant="56" id="g6u-OI-PNx"/>
+                            <constraint firstAttribute="trailing" secondItem="Agp-3c-QiX" secondAttribute="trailing" id="oE4-Wc-Ldd"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="oXN-Qa-DQ2"/>
+                            <constraint firstItem="Agp-3c-QiX" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" constant="44" id="vAs-uD-enI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -105,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="1770"/>
+            <point key="canvasLocation" x="1400" y="2038"/>
         </scene>
         <!--Add From List-->
         <scene sceneID="xMs-nz-whf">
@@ -196,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="716"/>
+            <point key="canvasLocation" x="1400" y="496"/>
         </scene>
         <!--My Words-->
         <scene sceneID="yXk-YT-iD0">
@@ -225,7 +229,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="1247"/>
+            <point key="canvasLocation" x="1440" y="1235"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -264,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pt-m8-LWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179" y="716"/>
+            <point key="canvasLocation" x="85" y="556"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Ty6-Va-CEw">
@@ -313,7 +317,7 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="686" y="716"/>
+            <point key="canvasLocation" x="738" y="536"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="ngR-aF-ckz">
@@ -424,11 +428,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-zb-khQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179" y="1247"/>
+            <point key="canvasLocation" x="7" y="1241"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Kq-4D-i5l"/>
-        <segue reference="yPL-jh-Klg"/>
+        <segue reference="hI6-eY-sBz"/>
+        <segue reference="slw-lc-Jnx"/>
     </inferredMetricsTieBreakers>
 </document>

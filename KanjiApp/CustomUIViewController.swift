@@ -56,12 +56,12 @@ class CustomUIViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationController.navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        navigationController.navigationBar.shadowImage = UIImage()
-//        navigationController.navigationBar.translucent = true
-//        navigationController.view.backgroundColor = UIColor.clearColor()
-//        
-//        navigationController.navigationBarHidden = isNavigationBarHidden()
+        navigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.translucent = true
+        navigationController.view.backgroundColor = UIColor.clearColor()
+        
+        navigationController.navigationBarHidden = isNavigationBarHidden()
     }
     
     func saveContext (_ context: NSManagedObjectContext? = nil) {
