@@ -16,28 +16,46 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
     
+    var sidebarButtonBaseFrame: CGRect!
+    
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
         println("down")
         
-        sidebarButton.layer.transform = CATransform3DMakeScale(0.6,0.6,1)
-        UIView.animateWithDuration(0.25, animations: {
-            self.sidebarButton.layer.transform = CATransform3DMakeScale(1,1,1)
-            })
-        
 //        mainView.frame = CGRect(x: 300, y: 0, width: mainView.frame.width, height: mainView.frame.height)
+        
+        let animationSpeed = 0.5
+        let xMove: CGFloat = 300
         
         if mainView.frame.origin.x == 0
         {
-            UIView.animateWithDuration(0.5, animations: ({ () -> Void in
-                self.mainView.frame = CGRectMake(300, 0, self.mainView.frame.width, self.mainView.frame.height);
-                }))
+            UIView.animateWithDuration(animationSpeed) {
+                self.mainView.frame = CGRectMake(xMove, 0, self.mainView.frame.width, self.mainView.frame.height);
+            }
+            
+            UIView.animateWithDuration(animationSpeed) {
+                self.sidebarButton.frame = CGRectMake(
+                    self.sidebarButtonBaseFrame.origin.x + xMove - 23,
+                    0,
+                    self.sidebarButton.frame.width,
+                    self.sidebarButton.frame.height);
+            }
         }
         else
         {
-            UIView.animateWithDuration(0.5, animations: ({ () -> Void in
+            UIView.animateWithDuration(animationSpeed) {
                 self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
-                }))
+            }
+            
+            UIView.animateWithDuration(animationSpeed) {
+                self.sidebarButton.frame = self.sidebarButtonBaseFrame;
+            }
         }
+        
+//        sidebarButton.layer.transform = CATransform3DMakeScale(0.6,0.6,1)
+//        UIView.animateWithDuration(0.25, animations: {
+//            self.sidebarButton.layer.transform = CATransform3DMakeScale(1,1,1)
+//            })
+        
 //        mainView.layer.transform = CATransform3DMakeTranslation(-100, 0, 0)
 //        mainView.hidden = true
 //        UIView.animateWithDuration(0.25, animations: {
@@ -53,6 +71,7 @@ class RootContainer: CustomUIViewController {
 //            }));
     
     init(coder aDecoder: NSCoder!) {
+        
         super.init(coder: aDecoder)
         
     }
@@ -69,5 +88,8 @@ class RootContainer: CustomUIViewController {
         super.viewDidAppear(animated)
         
         mainView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
+        
+        sidebarButtonBaseFrame = sidebarButton.frame
+        
     }
 }

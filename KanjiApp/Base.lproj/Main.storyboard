@@ -267,7 +267,6 @@
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="36m-mw-ljt"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
-                            <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Nxw-rV-QuP"/>
                         </constraints>
                     </view>
                     <connections>
