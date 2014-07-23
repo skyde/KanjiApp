@@ -239,33 +239,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-XO-a6v">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="WrA-K3-cmd" kind="embed" id="vu2-pw-rg7"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cou-04-Je8">
-                                <rect key="frame" x="278" y="20" width="46" height="30"/>
-                                <state key="normal" title="Menu">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au8-mm-pTk">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au8-mm-pTk">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="600"/>
                                 <connections>
                                     <segue destination="gKl-wB-WbN" kind="embed" id="q3g-wv-Iuy"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-XO-a6v">
+                                <rect key="frame" x="125" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="WrA-K3-cmd" kind="embed" id="vu2-pw-rg7"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
+                                <rect key="frame" x="-4" y="0.0" width="56" height="40"/>
+                                <state key="normal" image="hamburgerIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sidebarButtonTouch:" destination="qjX-0f-FbU" eventType="touchDown" id="r9a-QZ-0Sa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="Q6A-LK-foP"/>
-                            <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="ecc-vL-bRB"/>
-                            <constraint firstItem="hhY-XO-a6v" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="ezA-BC-t71"/>
-                            <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="r9X-A0-GhD"/>
+                            <constraint firstItem="hhY-XO-a6v" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="0X0-uQ-823"/>
+                            <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="36m-mw-ljt"/>
+                            <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
+                            <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
+                            <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Nxw-rV-QuP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
+                        <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>
+                        <outlet property="sidebarButton" destination="qDf-Jv-7yu" id="hD5-VT-qgS"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-727" y="1254"/>
@@ -669,6 +678,9 @@
             <point key="canvasLocation" x="7" y="1241"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hamburgerIcon.png" width="600" height="414"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yPL-jh-Klg"/>
         <segue reference="5Kq-4D-i5l"/>
