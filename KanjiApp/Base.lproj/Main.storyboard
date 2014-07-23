@@ -278,10 +278,10 @@
             </objects>
             <point key="canvasLocation" x="-789" y="1241"/>
         </scene>
-        <!--Text Reader-->
+        <!--Reader-->
         <scene sceneID="60A-KG-9Sp">
             <objects>
-                <viewController id="TB3-d0-7EI" customClass="TextReader" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TB3-d0-7EI" customClass="Reader" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQP-zl-NMR"/>
                         <viewControllerLayoutGuide type="bottom" id="lkb-sP-k49"/>
@@ -339,7 +339,7 @@
         <!--Add From List-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController storyboardIdentifier="AddFromList" title="Add From List" id="njT-bO-QmB" customClass="AddFromList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddFromList" title="Add From List" id="njT-bO-QmB" customClass="AddWords" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -650,7 +650,7 @@
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yPL-jh-Klg"/>
-        <segue reference="5Kq-4D-i5l"/>
+        <segue reference="slw-lc-Jnx"/>
+        <segue reference="hI6-eY-sBz"/>
     </inferredMetricsTieBreakers>
 </document>

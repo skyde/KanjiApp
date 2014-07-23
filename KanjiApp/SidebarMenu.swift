@@ -27,6 +27,19 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         //super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
-        println("You selected cell #\(indexPath.row)!")
+        //println("You selected cell #\(indexPath.row)!")
+        
+        switch indexPath.row {
+        case 0:
+            targetView = "GameMode"
+        case 1:
+            targetView = "Reader"
+        case 2:
+            targetView = "AddWords"
+        default:
+            break
+        }
+        
+        println(targetView)
     }
 }
