@@ -24,7 +24,7 @@ class RootContainer: CustomUIViewController {
 //        mainView.frame = CGRect(x: 300, y: 0, width: mainView.frame.width, height: mainView.frame.height)
         
         let animationSpeed = 0.5
-        let xMove: CGFloat = 300
+        let xMove: CGFloat = 272
         
         if mainView.frame.origin.x == 0
         {
@@ -34,7 +34,7 @@ class RootContainer: CustomUIViewController {
             
             UIView.animateWithDuration(animationSpeed) {
                 self.sidebarButton.frame = CGRectMake(
-                    self.sidebarButtonBaseFrame.origin.x + xMove - 23,
+                    self.sidebarButtonBaseFrame.origin.x + xMove,
                     0,
                     self.sidebarButton.frame.width,
                     self.sidebarButton.frame.height);
