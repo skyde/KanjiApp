@@ -10,6 +10,7 @@ class SettingsView: CustomUIViewController {
         settings.volume = volume.value
         saveContext()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
