@@ -29,12 +29,18 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
         //println("You selected cell #\(indexPath.row)!")
         
+        //Search
+        //Lists
+        //Settings
+        
         switch indexPath.row {
         case 0:
-            targetView = "GameMode"
+            targetView = "Search"
         case 1:
-            targetView = "Reader"
+            targetView = "GameMode"
         case 2:
+            targetView = "Reader"
+        case 3:
             targetView = "AddWords"
         default:
             break

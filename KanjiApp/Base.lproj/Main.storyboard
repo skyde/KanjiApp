@@ -28,7 +28,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D41-1s-08X" id="4UM-gb-jIT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Flashcards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cer-Ju-U35">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Discover" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cer-Ju-U35">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.5812436996" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,6 +37,22 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.19231980846774194" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Wkc-jq-r89" style="IBUITableViewCellStyleDefault" id="hE9-7l-U9b">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hE9-7l-U9b" id="Kup-DG-Ohf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Flashcards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wkc-jq-r89">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.5812436996" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.19231980849999999" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="BeV-aH-Pze" style="IBUITableViewCellStyleDefault" id="czl-2b-NBu">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -224,7 +240,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nt2-8u-8yS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-743" y="547"/>
+            <point key="canvasLocation" x="-2111" y="867"/>
         </scene>
         <!--Root Container-->
         <scene sceneID="0eb-Ac-JoJ">
@@ -276,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQ1-uo-r6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-789" y="1241"/>
+            <point key="canvasLocation" x="-2157" y="1561"/>
         </scene>
         <!--Reader-->
         <scene sceneID="60A-KG-9Sp">
@@ -330,16 +346,21 @@
                     <connections>
                         <outlet property="tableView" destination="dLO-NK-4CY" id="8bW-oR-kwf"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
+                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="7Pe-a5-cX3"/>
+                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="a77-3h-PUr"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="xvY-BP-Rrc"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="mkf-p0-YEv"/>
+                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="t5D-9u-Gcv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="2124"/>
+            <point key="canvasLocation" x="11" y="2231"/>
         </scene>
-        <!--Add From List-->
+        <!--Add Words-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController storyboardIdentifier="AddFromList" title="Add From List" id="njT-bO-QmB" customClass="AddWords" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddFromList" title="Add Words" id="njT-bO-QmB" customClass="AddWords" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -420,17 +441,21 @@
                         <outlet property="addButton" destination="f1c-Wd-Mj2" id="qDA-jM-wgd"/>
                         <outlet property="isOnlyKanji" destination="fwr-vc-Hvu" id="Zq8-dq-yL7"/>
                         <outlet property="jlptLevel" destination="5fX-SU-KbW" id="yay-5b-Txp"/>
-                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="hI6-eY-sBz"/>
+                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="q5u-AB-ybc"/>
+                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="RVm-Ee-2ez"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="2Gs-3b-euS"/>
+                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="mhL-KH-D8W"/>
+                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="Prk-cP-C8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="496"/>
+            <point key="canvasLocation" x="964" y="1176"/>
         </scene>
-        <!--My Words-->
+        <!--Lists-->
         <scene sceneID="yXk-YT-iD0">
             <objects>
-                <tableViewController title="My Words" id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Lists" id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jO6-5i-Yf0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -450,11 +475,16 @@
                     </tableView>
                     <connections>
                         <outlet property="tableView" destination="jO6-5i-Yf0" id="hqI-Wo-ZQ7"/>
+                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="3Xg-KU-YCU"/>
+                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="yO4-xn-oGf"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="R5m-ne-XNj"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="aIR-cX-sOa"/>
+                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="YoU-25-G8Z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416" y="1281"/>
+            <point key="canvasLocation" x="814" y="1974"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -489,11 +519,16 @@
                     </view>
                     <connections>
                         <outlet property="volume" destination="p1H-mf-Il1" id="16G-F8-4dI"/>
+                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="Eje-mm-xAE"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="7Gc-pU-o2C"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="7y8-W9-GsU"/>
+                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="prc-EY-TXs"/>
+                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="dTO-zg-0Dk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pt-m8-LWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85" y="556"/>
+            <point key="canvasLocation" x="-393" y="788"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Ty6-Va-CEw">
@@ -529,7 +564,11 @@
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddFromList" id="slw-lc-Jnx"/>
+                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="duL-BY-wKm"/>
+                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="nD1-Lg-j3p"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="Lkn-Lw-DeS"/>
+                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="Bou-3Y-NM4"/>
+                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="5iR-sg-a0j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
@@ -542,13 +581,13 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="726" y="537"/>
+            <point key="canvasLocation" x="400" y="507"/>
         </scene>
-        <!--Main Menu-->
+        <!--Search-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Main Menu" id="cUj-3S-BQf" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="cUj-3S-BQf" customClass="MainMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-Ed-cG9"/>
@@ -557,71 +596,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-AB-Hvt">
-                                <rect key="frame" x="188" y="88" width="105" height="57"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Review">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="5Kq-4D-i5l"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msO-aN-3vh">
-                                <rect key="frame" x="155" y="204" width="152" height="57"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Lists">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="njT-bO-QmB" kind="show" id="yPL-jh-Klg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoq-vc-9Ub">
-                                <rect key="frame" x="180" y="309" width="121" height="74"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="1Aq-z8-1P3" kind="show" id="fb4-yM-Tao"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPj-pY-JTR">
-                                <rect key="frame" x="180" y="258" width="120" height="57"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="My Words">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="FjX-yY-Kqd" kind="show" id="1Co-J8-WTa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a59-T1-faz">
-                                <rect key="frame" x="135" y="146" width="211" height="57"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Reader">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="TB3-d0-7EI" kind="show" id="Jh5-F4-xDP"/>
-                                </connections>
-                            </button>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="a59-T1-faz" secondAttribute="centerX" id="9gJ-Gh-mYI"/>
-                            <constraint firstAttribute="centerX" secondItem="qPj-pY-JTR" secondAttribute="centerX" id="O6x-Ls-eJI"/>
-                            <constraint firstAttribute="centerX" secondItem="msO-aN-3vh" secondAttribute="centerX" id="eMH-lb-ahQ"/>
-                            <constraint firstAttribute="centerX" secondItem="LuF-AB-Hvt" secondAttribute="centerX" id="prq-tl-tEZ"/>
-                            <constraint firstAttribute="centerX" secondItem="Uoq-vc-9Ub" secondAttribute="centerX" id="z7f-Os-DKx"/>
+                            <constraint firstItem="96a-eE-Ku8" firstAttribute="top" secondItem="yru-gu-OpA" secondAttribute="bottom" id="GmS-W7-Qb4"/>
+                            <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="dV7-nH-Xb6"/>
+                            <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="r1k-y9-DNA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="Eke-RJ-Moz"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="b0b-80-wga"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="cgb-kk-182"/>
+                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="D8A-8f-XKF"/>
+                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="tg1-pm-sSm"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="686" y="1247"/>
+            <point key="canvasLocation" x="-618" y="1535"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="SLU-SY-3JO">
@@ -643,14 +641,18 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="7" y="1241"/>
+            <point key="canvasLocation" x="-1361" y="1561"/>
         </scene>
     </scenes>
     <resources>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="slw-lc-Jnx"/>
-        <segue reference="hI6-eY-sBz"/>
+        <segue reference="cgb-kk-182"/>
+        <segue reference="Eje-mm-xAE"/>
+        <segue reference="nD1-Lg-j3p"/>
+        <segue reference="R5m-ne-XNj"/>
+        <segue reference="prc-EY-TXs"/>
+        <segue reference="5iR-sg-a0j"/>
     </inferredMetricsTieBreakers>
 </document>

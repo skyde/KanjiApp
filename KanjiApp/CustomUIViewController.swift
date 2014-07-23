@@ -30,8 +30,7 @@ class CustomUIViewController : UIViewController {
         
         settings.userName = "default"
         
-        if settings.cardAddAmount == 0
-        {
+        if settings.cardAddAmount == 0 {
             settings.cardAddAmount = 5
             settings.onlyStudyKanji = true
             settings.volume = 0.5
@@ -48,6 +47,10 @@ class CustomUIViewController : UIViewController {
 //    
 //    func initSelf() {
 //    }
+    
+     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        println("t")
+    }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
