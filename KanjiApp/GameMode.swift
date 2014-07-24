@@ -188,7 +188,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         
         if var path = dueCard?.soundDefinition
         {
-            playSound(filterSoundPath(path), sendEvents: false)
+            if !isFront
+            {
+                playSound(filterSoundPath(path), sendEvents: false)
+            }
         }
     }
     

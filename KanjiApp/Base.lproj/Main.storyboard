@@ -20,7 +20,7 @@
                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="" id="nrW-1a-h2y">
+                            <tableViewSection headerTitle=" " id="nrW-1a-h2y">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="cer-Ju-U35" style="IBUITableViewCellStyleDefault" id="D41-1s-08X">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -88,7 +88,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle=" " id="z9f-DK-dg1">
+                            <tableViewSection id="z9f-DK-dg1">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationWidth="10" textLabel="cHN-Yf-3sn" style="IBUITableViewCellStyleDefault" id="wjZ-17-9gM">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -124,7 +124,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle=" " id="pvj-rq-boV">
+                            <tableViewSection headerTitle="" id="pvj-rq-boV">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="C6W-Pr-96o" style="IBUITableViewCellStyleDefault" id="rdZ-tm-5Pz">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -208,7 +208,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle=" " id="5ii-Wd-w9r">
+                            <tableViewSection headerTitle="" id="5ii-Wd-w9r">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="eh7-ge-yBi" style="IBUITableViewCellStyleDefault" id="WAQ-pL-e1h">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -267,7 +267,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
-                                <rect key="frame" x="-4" y="0.0" width="56" height="40"/>
+                                <rect key="frame" x="-4" y="10" width="56" height="40"/>
                                 <state key="normal" image="hamburgerIcon.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -306,32 +306,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
-                                <rect key="frame" x="0.0" y="543" width="600" height="57"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
-                                    <outlet property="delegate" destination="TB3-d0-7EI" id="NSO-Df-yg7"/>
-                                </connections>
-                            </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-3c-QiX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="meY-T2-dAc"/>
-                                    <barButtonItem title="Add All" id="lrY-gL-Rp8">
-                                        <connections>
-                                            <action selector="addAll:" destination="TB3-d0-7EI" id="HpN-qT-jHP"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Translate" id="eFd-XE-ezc">
-                                        <connections>
-                                            <action selector="onTranslate:" destination="TB3-d0-7EI" id="7Vw-Vl-AGp"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">相対性理論での空間
 
@@ -339,8 +315,43 @@
                                 <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
+                                <rect key="frame" x="0.0" y="553" width="600" height="47"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Agp-3c-QiX">
+                                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <items>
+                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="meY-T2-dAc"/>
+                                        <barButtonItem title="Add All" id="lrY-gL-Rp8">
+                                            <connections>
+                                                <action selector="addAll:" destination="TB3-d0-7EI" id="HpN-qT-jHP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem title="Translate" id="eFd-XE-ezc">
+                                            <connections>
+                                                <action selector="onTranslate:" destination="TB3-d0-7EI" id="7Vw-Vl-AGp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </items>
+                                </toolbar>
+                                <connections>
+                                    <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
+                                    <outlet property="delegate" destination="TB3-d0-7EI" id="NSO-Df-yg7"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" id="2Bf-jH-aEk"/>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="3Gu-39-0FJ"/>
+                            <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="6wl-ph-q3K"/>
+                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="8nT-JS-I7e"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="DcK-la-ymI"/>
+                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="UAT-uB-UtP"/>
+                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="WZb-U5-URm"/>
+                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="533" id="zJh-e2-8n8"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -575,7 +586,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -644,7 +655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDV-f5-2VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1305" y="1364"/>
+            <point key="canvasLocation" x="-1315" y="1364"/>
         </scene>
     </scenes>
     <resources>

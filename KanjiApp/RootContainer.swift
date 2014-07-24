@@ -74,7 +74,7 @@ class RootContainer: CustomUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().statusBarHidden = true
+//        UIApplication.sharedApplication().statusBarHidden = true
     }
     
     override func viewDidAppear(animated: Bool)
