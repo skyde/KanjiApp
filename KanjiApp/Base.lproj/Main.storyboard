@@ -582,10 +582,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408163265307" green="0.26020408163265307" blue="0.26020408163265307" alpha="1" colorSpace="calibratedRGB"/>
@@ -593,14 +589,18 @@
                                 <color key="textColor" red="0.72448979591836737" green="0.72448979591836737" blue="0.72448979591836737" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244897959184" green="0.80612244897959184" blue="0.80612244897959184" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
+                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NuM-Ed-cG9" firstAttribute="top" secondItem="96a-eE-Ku8" secondAttribute="bottom" id="YrS-iP-wm8"/>
-                            <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="dPr-9Y-oLY"/>
-                            <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="hE8-Ff-66r"/>
-                            <constraint firstItem="cEn-qY-4J5" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="mnA-g5-jQ7"/>
-                            <constraint firstAttribute="trailing" secondItem="cEn-qY-4J5" secondAttribute="trailing" id="wxb-20-FXD"/>
+                            <constraint firstAttribute="trailing" secondItem="cEn-qY-4J5" secondAttribute="trailing" id="286-FV-45x"/>
+                            <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="7aW-yc-cW4"/>
+                            <constraint firstItem="96a-eE-Ku8" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="Ay8-im-R8e"/>
+                            <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="g5j-5L-sch"/>
+                            <constraint firstItem="cEn-qY-4J5" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="mwy-Sa-Yxv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
