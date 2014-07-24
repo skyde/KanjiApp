@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddFromList: CustomUIViewController {
+class AddWords: CustomUIViewController {
     @IBOutlet var jlptLevel : UISegmentedControl!
     @IBOutlet var isOnlyKanji : UISwitch!
     @IBOutlet var addAmount : UITextField!

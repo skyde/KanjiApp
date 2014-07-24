@@ -21,6 +21,10 @@ class CustomUIViewController : UIViewController {
         return false
     }
     
+    func isGameView() -> Bool {
+        return true
+    }
+    
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
@@ -37,6 +41,22 @@ class CustomUIViewController : UIViewController {
         }
         
         saveContext()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: TransitionToView, object: nil)
+    }
+    
+    func onTransitionToView()
+    {
+        if isGameView() {
+            println("In view " +  self.description +  "MainMenu")
+            performSegueWithIdentifier("MainMenu", sender: self)
+            
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 //    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -48,9 +68,9 @@ class CustomUIViewController : UIViewController {
 //    func initSelf() {
 //    }
     
-     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-        println("t")
-    }
+//     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+//        println("t")
+//    }
     
     override func prefersStatusBarHidden() -> Bool {
         return true

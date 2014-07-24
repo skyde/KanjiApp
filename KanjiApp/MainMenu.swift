@@ -10,4 +10,14 @@ import Foundation
 
 class MainMenu: CustomUIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Now In Menu " + targetView)
+        performSegueWithIdentifier(targetView, sender: self)
+    }
+    
+    override func isGameView() -> Bool {
+        return false
+    }
 }

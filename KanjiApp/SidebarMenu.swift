@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+let TransitionToView = "TransitionToView"
+
 class SidebarMenu: UITableViewController, UITableViewDelegate {
     @IBOutlet var table: UITableView!
     
@@ -17,12 +19,17 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        self.back
         // 150 for text
         self.view.backgroundColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
-        
     }
 
 //    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
 //        return 11;
 //    }
+    override func viewDidAppear(animated: Bool) {
+        
+//        var root = (self.parentViewController as RootContainer)
+//        
+//        println(root.mainView.subviews[0] as UINavigationController)
+    }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         //super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
@@ -46,6 +53,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             break
         }
         
-        println(targetView)
+//        var n = NSNotification(name: TransitionToView, object: targetView)
+        NSNotificationCenter.defaultCenter().postNotificationName(TransitionToView, object: nil)
     }
 }

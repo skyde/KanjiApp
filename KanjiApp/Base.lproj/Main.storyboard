@@ -240,7 +240,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nt2-8u-8yS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2111" y="867"/>
+            <point key="canvasLocation" x="-2522" y="681"/>
         </scene>
         <!--Root Container-->
         <scene sceneID="0eb-Ac-JoJ">
@@ -292,12 +292,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQ1-uo-r6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2157" y="1561"/>
+            <point key="canvasLocation" x="-2682" y="1375"/>
         </scene>
-        <!--Reader-->
+        <!--Text Reader-->
         <scene sceneID="60A-KG-9Sp">
             <objects>
-                <viewController id="TB3-d0-7EI" customClass="Reader" sceneMemberID="viewController">
+                <viewController id="TB3-d0-7EI" customClass="TextReader" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQP-zl-NMR"/>
                         <viewControllerLayoutGuide type="bottom" id="lkb-sP-k49"/>
@@ -346,21 +346,17 @@
                     <connections>
                         <outlet property="tableView" destination="dLO-NK-4CY" id="8bW-oR-kwf"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
-                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="7Pe-a5-cX3"/>
-                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="a77-3h-PUr"/>
-                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="xvY-BP-Rrc"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="mkf-p0-YEv"/>
-                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="t5D-9u-Gcv"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="vgr-gb-U0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11" y="2231"/>
+            <point key="canvasLocation" x="-351" y="2074"/>
         </scene>
         <!--Add Words-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController storyboardIdentifier="AddFromList" title="Add Words" id="njT-bO-QmB" customClass="AddWords" sceneMemberID="viewController">
+                <viewController title="Add Words" id="njT-bO-QmB" customClass="AddWords" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -441,16 +437,12 @@
                         <outlet property="addButton" destination="f1c-Wd-Mj2" id="qDA-jM-wgd"/>
                         <outlet property="isOnlyKanji" destination="fwr-vc-Hvu" id="Zq8-dq-yL7"/>
                         <outlet property="jlptLevel" destination="5fX-SU-KbW" id="yay-5b-Txp"/>
-                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="q5u-AB-ybc"/>
-                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="RVm-Ee-2ez"/>
-                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="2Gs-3b-euS"/>
-                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="mhL-KH-D8W"/>
-                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="Prk-cP-C8l"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="Njb-Jk-Mx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="1176"/>
+            <point key="canvasLocation" x="282" y="705"/>
         </scene>
         <!--Lists-->
         <scene sceneID="yXk-YT-iD0">
@@ -475,16 +467,12 @@
                     </tableView>
                     <connections>
                         <outlet property="tableView" destination="jO6-5i-Yf0" id="hqI-Wo-ZQ7"/>
-                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="3Xg-KU-YCU"/>
-                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="yO4-xn-oGf"/>
-                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="R5m-ne-XNj"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="aIR-cX-sOa"/>
-                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="YoU-25-G8Z"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="ftg-2W-kdT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="1974"/>
+            <point key="canvasLocation" x="282" y="1347"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -519,16 +507,12 @@
                     </view>
                     <connections>
                         <outlet property="volume" destination="p1H-mf-Il1" id="16G-F8-4dI"/>
-                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="Eje-mm-xAE"/>
-                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="7Gc-pU-o2C"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="7y8-W9-GsU"/>
-                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="prc-EY-TXs"/>
-                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="dTO-zg-0Dk"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="yfD-aM-lZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pt-m8-LWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="788"/>
+            <point key="canvasLocation" x="273" y="2074"/>
         </scene>
         <!--Game Mode-->
         <scene sceneID="Ty6-Va-CEw">
@@ -564,11 +548,7 @@
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
-                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="duL-BY-wKm"/>
-                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="nD1-Lg-j3p"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="Lkn-Lw-DeS"/>
-                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="Bou-3Y-NM4"/>
-                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="5iR-sg-a0j"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="ocT-bm-8xQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
@@ -581,13 +561,12 @@
                     <rectEdge key="edges" left="YES"/>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="400" y="507"/>
+            <point key="canvasLocation" x="-342" y="1347"/>
         </scene>
         <!--Search-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Search" id="cUj-3S-BQf" customClass="MainMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="cUj-3S-BQf" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-Ed-cG9"/>
@@ -611,21 +590,17 @@
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="Eke-RJ-Moz"/>
-                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="b0b-80-wga"/>
-                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="cgb-kk-182"/>
-                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="D8A-8f-XKF"/>
-                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="tg1-pm-sSm"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="7jX-Xq-vJx"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-618" y="1535"/>
+            <point key="canvasLocation" x="-365" y="628"/>
         </scene>
-        <!--Main Menu-->
+        <!--Item-->
         <scene sceneID="SLU-SY-3JO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-zb-khQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController title="Main Menu" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="WrA-K3-cmd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="WrA-K3-cmd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="J74-rl-PSv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gqo-I0-ThL">
@@ -637,22 +612,45 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="cUj-3S-BQf" kind="relationship" relationship="rootViewController" id="dHd-m6-BdK"/>
+                        <segue destination="vil-on-bL0" kind="relationship" relationship="rootViewController" id="tBV-uj-OEZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-zb-khQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1361" y="1561"/>
+            <point key="canvasLocation" x="-1962" y="1347"/>
+        </scene>
+        <!--Main Menu-->
+        <scene sceneID="fob-DL-5yY">
+            <objects>
+                <viewController id="vil-on-bL0" customClass="MainMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H3a-26-08l"/>
+                        <viewControllerLayoutGuide type="bottom" id="YsG-j2-he8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B6Y-nx-LTK" customClass="MainMenu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rVL-8c-ZTy"/>
+                    <connections>
+                        <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="XTh-Se-i0V"/>
+                        <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="BpJ-Ou-mkl"/>
+                        <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="dIH-16-YTB"/>
+                        <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="LLh-zB-V6l"/>
+                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="1Ld-Pf-lTK"/>
+                        <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="6c8-Kv-2MU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oDV-f5-2VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1287" y="1347"/>
         </scene>
     </scenes>
     <resources>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cgb-kk-182"/>
-        <segue reference="Eje-mm-xAE"/>
-        <segue reference="nD1-Lg-j3p"/>
-        <segue reference="R5m-ne-XNj"/>
-        <segue reference="prc-EY-TXs"/>
-        <segue reference="5iR-sg-a0j"/>
+        <segue reference="yfD-aM-lZg"/>
     </inferredMetricsTieBreakers>
 </document>
