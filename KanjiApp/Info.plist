@@ -34,6 +34,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>mplus-2p-regular.ttf</string>
 		<string>mplus-2p-light.ttf</string>
 	</array>
 </dict>

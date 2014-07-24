@@ -73,7 +73,7 @@ class CustomUIViewController : UIViewController {
 //     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
 //        println("t")
 //    }
-    
+//    
 //    override func prefersStatusBarHidden() -> Bool {
 //        return true
 //    }

@@ -79,7 +79,7 @@ class RootContainer: CustomUIViewController {
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return statusBarHidden
+        return true
     }
     
     override func viewDidLoad() {
