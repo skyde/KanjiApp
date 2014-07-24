@@ -346,12 +346,12 @@
                     <connections>
                         <outlet property="tableView" destination="dLO-NK-4CY" id="8bW-oR-kwf"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
-                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="vgr-gb-U0p"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="vgr-gb-U0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="2074"/>
+            <point key="canvasLocation" x="-394" y="2232"/>
         </scene>
         <!--Add Words-->
         <scene sceneID="xMs-nz-whf">
@@ -437,7 +437,7 @@
                         <outlet property="addButton" destination="f1c-Wd-Mj2" id="qDA-jM-wgd"/>
                         <outlet property="isOnlyKanji" destination="fwr-vc-Hvu" id="Zq8-dq-yL7"/>
                         <outlet property="jlptLevel" destination="5fX-SU-KbW" id="yay-5b-Txp"/>
-                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="Njb-Jk-Mx7"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="Njb-Jk-Mx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -467,7 +467,7 @@
                     </tableView>
                     <connections>
                         <outlet property="tableView" destination="jO6-5i-Yf0" id="hqI-Wo-ZQ7"/>
-                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="ftg-2W-kdT"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ftg-2W-kdT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -507,7 +507,7 @@
                     </view>
                     <connections>
                         <outlet property="volume" destination="p1H-mf-Il1" id="16G-F8-4dI"/>
-                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="yfD-aM-lZg"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="yfD-aM-lZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pt-m8-LWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -548,7 +548,7 @@
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
-                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="ocT-bm-8xQ"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ocT-bm-8xQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
@@ -590,7 +590,7 @@
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="vil-on-bL0" kind="show" identifier="MainMenu" id="7jX-Xq-vJx"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="7jX-Xq-vJx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZY-ht-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -619,10 +619,10 @@
             </objects>
             <point key="canvasLocation" x="-1962" y="1347"/>
         </scene>
-        <!--Main Menu-->
+        <!--Root Menu-->
         <scene sceneID="fob-DL-5yY">
             <objects>
-                <viewController id="vil-on-bL0" customClass="MainMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vil-on-bL0" customClass="RootMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H3a-26-08l"/>
                         <viewControllerLayoutGuide type="bottom" id="YsG-j2-he8"/>
@@ -644,13 +644,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDV-f5-2VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1287" y="1347"/>
+            <point key="canvasLocation" x="-1305" y="1364"/>
         </scene>
     </scenes>
     <resources>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yfD-aM-lZg"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

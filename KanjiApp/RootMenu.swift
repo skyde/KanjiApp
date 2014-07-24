@@ -8,11 +8,14 @@
 
 import Foundation
 
-class MainMenu: CustomUIViewController {
+class RootMenu: CustomUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         println("Now In Menu " + targetView)
         performSegueWithIdentifier(targetView, sender: self)
     }

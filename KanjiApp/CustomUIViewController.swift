@@ -42,16 +42,18 @@ class CustomUIViewController : UIViewController {
         
         saveContext()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: TransitionToView, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: TransitionToViewNotification, object: nil)
     }
     
-    func onTransitionToView()
-    {
+    func onTransitionToView() {
         if isGameView() {
-            println("In view " +  self.description +  "MainMenu")
-            performSegueWithIdentifier("MainMenu", sender: self)
-            
+            transitionToView(targetView)
         }
+    }
+    
+    func transitionToView(target: String) {
+        targetView = target
+        self.navigationController.popToRootViewControllerAnimated(false)
     }
     
     override func viewDidDisappear(animated: Bool) {

@@ -41,8 +41,9 @@ class AddWords: CustomUIViewController {
             }
         }
         
-        self.navigationController.popToRootViewControllerAnimated(true)
-        self.performSegueWithIdentifier("GameMode", sender: self)
+//        self.navigationController.popToRootViewControllerAnimated(true)
+//        self.performSegueWithIdentifier("GameMode", sender: self)
+        transitionToView("GameMode")
     }
     
     @IBAction func onJlptLevelChanged(sender : AnyObject) {

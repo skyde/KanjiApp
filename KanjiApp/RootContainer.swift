@@ -19,6 +19,7 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var sidebar: UIView!
     
     var sidebarButtonBaseFrame: CGRect!
+    var open = false
     
     override func isGameView() -> Bool {
         return false
@@ -26,11 +27,15 @@ class RootContainer: CustomUIViewController {
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
         
-        let animationSpeed = 0.5
+        animateSelf(mainView.frame.origin.x == 0)
+    }
+    
+    private func animateSelf(open: Bool) {
+        
+        let animationSpeed = 0.4
         let xMove: CGFloat = 272
         
-        if mainView.frame.origin.x == 0
-        {
+        if open {
             UIView.animateWithDuration(animationSpeed) {
                 self.mainView.frame = CGRectMake(xMove, 0, self.mainView.frame.width, self.mainView.frame.height);
             }
@@ -53,22 +58,23 @@ class RootContainer: CustomUIViewController {
                 self.sidebarButton.frame = self.sidebarButtonBaseFrame;
             }
         }
-        
-        
     }
-    
+
     init(coder aDecoder: NSCoder!) {
         
         super.init(coder: aDecoder)
+    }
+
+    override func onTransitionToView() {
+        super.onTransitionToView()
         
-//        mainView.addSubview(view: UIView?)
+        animateSelf(false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UIApplication.sharedApplication().statusBarHidden = true
-        
     }
     
     override func viewDidAppear(animated: Bool)

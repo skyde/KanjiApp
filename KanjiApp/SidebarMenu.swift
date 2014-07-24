@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let TransitionToView = "TransitionToView"
+let TransitionToViewNotification = "TransitionToViewNotification"
 
 class SidebarMenu: UITableViewController, UITableViewDelegate {
     @IBOutlet var table: UITableView!
@@ -40,7 +40,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         //Lists
         //Settings
         
-        switch indexPath.row {
+        switch indexPath.section * 100 + indexPath.row {
         case 0:
             targetView = "Search"
         case 1:
@@ -49,11 +49,13 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             targetView = "Reader"
         case 3:
             targetView = "AddWords"
+        case 100:
+            targetView = "Lists"
         default:
             break
         }
         
 //        var n = NSNotification(name: TransitionToView, object: targetView)
-        NSNotificationCenter.defaultCenter().postNotificationName(TransitionToView, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(TransitionToViewNotification, object: nil)
     }
 }
