@@ -11,9 +11,10 @@ import UIKit
 
 class Search : CustomUIViewController {
     
+    let numberOfColumns = 7
 //    var discoverLabels: [DiscoverAnimatedLabel] = []
     var timer:NSTimer? = nil
-    
+    var spawnedColumns: [Int] = []
 //    init(coder aDecoder: NSCoder!) {
 //        
 //        super.init(coder: aDecoder)
@@ -24,7 +25,37 @@ class Search : CustomUIViewController {
         super.viewDidLoad()
         
         //        discoverLabels.map { self.animateLabel($0) }
+//        spawnedColumns = []
         timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
+    }
+    
+    func resetSpawnColumns() {
+        
+        spawnedColumns = []
+        for var i = 0; i < numberOfColumns; i++ {
+            spawnedColumns += i
+        }
+    }
+    
+    func selectRandomOpenColumn() -> Int {
+        
+        if spawnedColumns.count == 0 {
+            resetSpawnColumns()
+        }
+//        spawnedColumns.f
+//        var open = spawnedColumns.filter { $0 == false }
+//        println(spawnedColumns.count)
+//        
+//        if open.count == 0 {
+//            spawnedColumns = [Bool](count: spawnedColumns.count, repeatedValue: false)
+//        }
+        //
+        var select = randomRange(0, spawnedColumns.count)
+        
+        var value = spawnedColumns[select]
+        spawnedColumns.removeAtIndex(select)
+        
+        return value
     }
     
     func onSpawnTimerTick() {
@@ -34,13 +65,13 @@ class Search : CustomUIViewController {
         let height: CGFloat = 250
         let verticalOutset: CGFloat = 200
         
-        var distance = randomRange(0, 1)
+        var distance = randomRange(0.0, 1.0)
         
-        var animationLength: Double = 20 + 30 * distance
+        var time: Double = 20 + 30 * distance
         
-        var xPos = randomRange(inset, Double(UIScreen.mainScreen().bounds.width) - inset ) - width / 2
-        xPos = round(xPos / 40) * 40 + 5
+        var targetColumn = selectRandomOpenColumn()
         
+        var xPos = inset + (Double(UIScreen.mainScreen().bounds.width) - inset * 2) / Double(numberOfColumns) * Double(targetColumn)
         var label = DiscoverAnimatedLabel(frame: CGRectMake(CGFloat(xPos), -verticalOutset, CGFloat(width), 200))
         
         if var card = fetchRandomCard() {
@@ -66,7 +97,7 @@ class Search : CustomUIViewController {
 //        UIView.setAnimationDidStopSelector("onAnimationStopped")
         
 //        UIView.setAnimationCurve()
-        UIView.animateWithDuration(animationLength,
+        UIView.animateWithDuration(time,
             delay: NSTimeInterval(),
             options: UIViewAnimationOptions.CurveLinear,
             animations: {
@@ -85,15 +116,9 @@ class Search : CustomUIViewController {
         labels.sort { CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0] }
         
         for label in labels {
-            println(CGColorGetComponents(label.textColor.CGColor)[0])
-            
             self.view.sendSubviewToBack(label)
         }
     }
-    
-//    func onAnimationStopped(animationID: NSString, finished: NSNumber) {
-//        
-//    }
     
 //    void)myAnimationStopped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 //    {
