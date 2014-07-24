@@ -97,9 +97,13 @@ extension NSManagedObjectContext
         return value as Card?
     }
 
-    func fetchCardByIndex(index: NSNumber) -> Card {
+    func fetchCardByIndex(index: NSNumber) -> Card? {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.index, index)
         
-        return value as Card
+        if value as? Card {
+            return value as? Card
+        }
+        
+        return nil
     }
 }

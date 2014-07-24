@@ -29,9 +29,9 @@ class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
-        
-        cell.textLabel.attributedText = card.cellText
+        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+            cell.textLabel.attributedText = card.cellText
+        }
 //        cell.detailTextLabel.text = card.definition
         
         return cell

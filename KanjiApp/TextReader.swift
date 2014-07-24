@@ -18,8 +18,9 @@ class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDa
     
     @IBAction func addAll(sender: AnyObject) {
         for index in items {
-            var card = managedObjectContext.fetchCardByIndex(index)
-            card.enabled = true
+            if var card = managedObjectContext.fetchCardByIndex(index) {
+             card.enabled = true
+            }
         }
         saveContext()
     }
