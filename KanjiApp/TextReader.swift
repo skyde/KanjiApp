@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSource {
+class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var userText : UITextView!
     var items: [NSNumber] = []
     
@@ -54,28 +54,29 @@ class TextReader: CustomUIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        self.automaticallyAdjustsScrollViewInsets = false
+//        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         items = []
         
         userText.font = UIFont(name: Globals.JapaneseFont, size: 24)
+        
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
-    }
-    
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        
-        var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
-        
-        cell.textLabel.attributedText = card.cellText//"\(card.kanji) \(card.interval)"
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        println("You selected cell #\(indexPath.row)!")
-    }
+//    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+//        return self.items.count;
+//    }
+//    
+//    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+//        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+//        
+//        var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
+//        
+//        cell.textLabel.attributedText = card.cellText//"\(card.kanji) \(card.interval)"
+//        
+//        return cell
+//    }
+//    
+//    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+//        println("You selected cell #\(indexPath.row)!")
+//    }
 }

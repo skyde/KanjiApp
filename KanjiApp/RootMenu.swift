@@ -16,8 +16,7 @@ class RootMenu: CustomUIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        println("Now In Menu " + targetView)
-        performSegueWithIdentifier(targetView, sender: self)
+        performSegueWithIdentifier(targetView.description(), sender: self)
     }
     
     override func isGameView() -> Bool {

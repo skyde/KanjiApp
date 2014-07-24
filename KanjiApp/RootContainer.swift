@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-var targetView = "Search"
+var targetView = View.Search
 
 class RootContainer: CustomUIViewController {
     
@@ -19,7 +19,8 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var sidebar: UIView!
     
     var sidebarButtonBaseFrame: CGRect!
-    var open = false
+    var statusBarHidden = false
+    
     
     override func isGameView() -> Bool {
         return false
@@ -37,13 +38,13 @@ class RootContainer: CustomUIViewController {
         
         if open {
             UIView.animateWithDuration(animationSpeed) {
-                self.mainView.frame = CGRectMake(xMove, 0, self.mainView.frame.width, self.mainView.frame.height);
+                self.mainView.frame = CGRectMake(xMove, self.mainView.frame.origin.y, self.mainView.frame.width, self.mainView.frame.height);
             }
             
             UIView.animateWithDuration(animationSpeed) {
                 self.sidebarButton.frame = CGRectMake(
                     self.sidebarButtonBaseFrame.origin.x + xMove,
-                    0,
+                    self.sidebarButtonBaseFrame.origin.y,
                     self.sidebarButton.frame.width,
                     self.sidebarButton.frame.height);
             }
@@ -69,12 +70,26 @@ class RootContainer: CustomUIViewController {
         super.onTransitionToView()
         
         animateSelf(false)
+        
+        //switch ta
+        
+//        statusBarHidden = true
+        
+//        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return statusBarHidden
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        UIApplication.sharedApplication().statusBarHidden = true
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.BlackOpaque
     }
     
     override func viewDidAppear(animated: Bool)

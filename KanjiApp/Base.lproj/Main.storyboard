@@ -267,7 +267,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
-                                <rect key="frame" x="-4" y="10" width="56" height="40"/>
+                                <rect key="frame" x="-4" y="22" width="56" height="40"/>
                                 <state key="normal" image="hamburgerIcon.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -306,63 +306,45 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">相対性理論での空間
-
-アルベルト・アインシュタインは、ローレンツの考えとは異なった観点から着想し、「全ての慣性基準系は対等であって、特権的な基準系はない」とする仮説と、「あらゆる慣性基準系において真空中の光の速度は一定である」とする仮説によって、ニュートン力学の理論体系を組みなおし、空間と時間に関して新しい考え方を提示した（相対性理論を参照）。ここにおいて、空間は時間と連関して扱われることになり、4次元の時空という概念が現れた。</string>
-                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dLO-NK-4CY">
-                                <rect key="frame" x="0.0" y="553" width="600" height="47"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Agp-3c-QiX">
-                                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <items>
-                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="meY-T2-dAc"/>
-                                        <barButtonItem title="Add All" id="lrY-gL-Rp8">
-                                            <connections>
-                                                <action selector="addAll:" destination="TB3-d0-7EI" id="HpN-qT-jHP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem title="Translate" id="eFd-XE-ezc">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="vmp-ce-x8X">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="W50-QT-B53">
+                                        <barButtonItem key="leftBarButtonItem" title="Translate" id="eFd-XE-ezc">
                                             <connections>
                                                 <action selector="onTranslate:" destination="TB3-d0-7EI" id="7Vw-Vl-AGp"/>
                                             </connections>
                                         </barButtonItem>
-                                    </items>
-                                </toolbar>
-                                <connections>
-                                    <outlet property="dataSource" destination="TB3-d0-7EI" id="72Y-cm-Zhq"/>
-                                    <outlet property="delegate" destination="TB3-d0-7EI" id="NSO-Df-yg7"/>
-                                </connections>
-                            </tableView>
+                                        <barButtonItem key="rightBarButtonItem" title="Add All" id="lrY-gL-Rp8">
+                                            <connections>
+                                                <action selector="addAll:" destination="TB3-d0-7EI" id="HpN-qT-jHP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="0.97188397139923866" blue="0.92094908348848337" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">相対性理論での空間
+
+アルベルト・アインシュタインは、ローレンツの考えとは異なった観点から着想し、「全ての慣性基準系は対等であって、特権的な基準系はない」とする仮説と、「あらゆる慣性基準系において真空中の光の速度は一定である」とする仮説によって、ニュートン力学の理論体系を組みなおし、空間と時間に関して新しい考え方を提示した（相対性理論を参照）。ここにおいて、空間は時間と連関して扱われることになり、4次元の時空という概念が現れた。</string>
+                                <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" id="2Bf-jH-aEk"/>
-                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="3Gu-39-0FJ"/>
-                            <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="6wl-ph-q3K"/>
-                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="8nT-JS-I7e"/>
-                            <constraint firstItem="dLO-NK-4CY" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="DcK-la-ymI"/>
-                            <constraint firstAttribute="trailing" secondItem="dLO-NK-4CY" secondAttribute="trailing" id="UAT-uB-UtP"/>
-                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="dLO-NK-4CY" secondAttribute="bottom" id="WZb-U5-URm"/>
-                            <constraint firstItem="dLO-NK-4CY" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="533" id="zJh-e2-8n8"/>
-                        </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="dLO-NK-4CY" id="8bW-oR-kwf"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="vgr-gb-U0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdN-4r-JcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="2232"/>
+            <point key="canvasLocation" x="-392" y="2229"/>
         </scene>
         <!--Add Words-->
         <scene sceneID="xMs-nz-whf">
@@ -586,17 +568,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="96a-eE-Ku8" firstAttribute="top" secondItem="yru-gu-OpA" secondAttribute="bottom" id="GmS-W7-Qb4"/>
-                            <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="dV7-nH-Xb6"/>
-                            <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="r1k-y9-DNA"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
                     <nil key="simulatedTopBarMetrics"/>

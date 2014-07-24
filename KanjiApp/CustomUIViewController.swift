@@ -51,7 +51,7 @@ class CustomUIViewController : UIViewController {
         }
     }
     
-    func transitionToView(target: String) {
+    func transitionToView(target: View) {
         targetView = target
         self.navigationController.popToRootViewControllerAnimated(false)
     }

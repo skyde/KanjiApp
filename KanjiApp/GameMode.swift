@@ -133,7 +133,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         
         if due.count == 0 {
             self.navigationController.popToRootViewControllerAnimated(false)
-            targetView = "AddWords"
+            targetView = .AddWords
         }
     }
     
