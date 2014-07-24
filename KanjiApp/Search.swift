@@ -15,6 +15,8 @@ class Search : CustomUIViewController {
 //    var discoverLabels: [DiscoverAnimatedLabel] = []
     var timer:NSTimer? = nil
     var spawnedColumns: [Int] = []
+    let baseLife: Double = 20
+    let randomLife: Double = 30
 //    init(coder aDecoder: NSCoder!) {
 //        
 //        super.init(coder: aDecoder)
@@ -27,6 +29,11 @@ class Search : CustomUIViewController {
         //        discoverLabels.map { self.animateLabel($0) }
 //        spawnedColumns = []
         timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
+        
+        let averageLife = baseLife + randomLife / 2
+        for var i: Double = 0; i < averageLife; i++ {
+            spawnText(i / averageLife)
+        }
     }
     
     func resetSpawnColumns() {
@@ -59,6 +66,10 @@ class Search : CustomUIViewController {
     }
     
     func onSpawnTimerTick() {
+        spawnText(0)
+    }
+    
+    func spawnText(var time: Double) {
         
         let inset: Double = 10.0
         let width: Double = 30.0
@@ -67,12 +78,13 @@ class Search : CustomUIViewController {
         
         var distance = randomRange(0.0, 1.0)
         
-        var time: Double = 20 + 30 * distance
+        var life: Double = (baseLife + randomLife * distance) * (1 - time)
         
         var targetColumn = selectRandomOpenColumn()
+        var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * CGFloat(time)
         
         var xPos = inset + (Double(UIScreen.mainScreen().bounds.width) - inset * 2) / Double(numberOfColumns) * Double(targetColumn)
-        var label = DiscoverAnimatedLabel(frame: CGRectMake(CGFloat(xPos), -verticalOutset, CGFloat(width), 200))
+        var label = DiscoverAnimatedLabel(frame: CGRectMake(CGFloat(xPos), -verticalOutset + yOffset, CGFloat(width), 200))
         
         if var card = fetchRandomCard() {
             label.text = card.kanji
@@ -93,15 +105,11 @@ class Search : CustomUIViewController {
         self.view.addSubview(label)
         self.view.sendSubviewToBack(label)
         
-//        UIView.setAnimationDelegate(self)
-//        UIView.setAnimationDidStopSelector("onAnimationStopped")
-        
-//        UIView.setAnimationCurve()
-        UIView.animateWithDuration(time,
+        UIView.animateWithDuration(life,
             delay: NSTimeInterval(),
             options: UIViewAnimationOptions.CurveLinear,
             animations: {
-            label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + verticalOutset, label.frame.width, label.frame.height)
+                label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + verticalOutset, label.frame.width, label.frame.height)
             },
             completion: { (_) -> Void in label.removeFromSuperview() })
         
@@ -119,7 +127,6 @@ class Search : CustomUIViewController {
             self.view.sendSubviewToBack(label)
         }
     }
-    
 //    void)myAnimationStopped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 //    {
     
