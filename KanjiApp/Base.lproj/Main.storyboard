@@ -324,8 +324,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="1" green="0.97188397139923866" blue="0.92094908348848337" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">相対性理論での空間
 
@@ -334,9 +334,12 @@
                                 <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Reader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDn-cS-WZM">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Reader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDn-cS-WZM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5yI-GX-PVE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -363,8 +366,9 @@
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="KMf-QI-zug"/>
                             <constraint firstAttribute="trailing" secondItem="gfr-OM-l2J" secondAttribute="trailing" constant="3" id="QJZ-hr-GUv"/>
                             <constraint firstItem="gfr-OM-l2J" firstAttribute="leading" secondItem="Uge-Te-jM9" secondAttribute="trailing" constant="5" id="rCG-Lq-Qwo"/>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="udl-mi-rlE"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="wn0-hz-fp3"/>
-                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="CDn-cS-WZM" secondAttribute="bottom" id="y3q-Wq-nca"/>
+                            <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="wqz-fA-Wv8"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -612,7 +616,7 @@
                             </searchBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.26020408163265307" green="0.26020408163265307" blue="0.26020408163265307" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.26020408163265307" green="0.26020408163265307" blue="0.26020408163265307" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="RND-Vb-f7w"/>
                                 </constraints>
