@@ -28,10 +28,12 @@ class Search : CustomUIViewController {
         
         //        discoverLabels.map { self.animateLabel($0) }
 //        spawnedColumns = []
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
+        var spawnInterval: Double = 1.5
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(spawnInterval, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
         
         let averageLife = baseLife + randomLife / 2
-        for var i: Double = 0; i < averageLife; i++ {
+        for var i: Double = 0; i < averageLife; i += spawnInterval {
             spawnText(i / averageLife)
         }
     }
@@ -77,6 +79,7 @@ class Search : CustomUIViewController {
         let verticalOutset: CGFloat = 200
         
         var distance = randomRange(0.0, 1.0)
+        distance = distance * distance
         
         var life: Double = (baseLife + randomLife * distance) * (1 - time)
         
@@ -100,7 +103,11 @@ class Search : CustomUIViewController {
         
         label.numberOfLines = 0
         label.font = UIFont(name: Globals.JapaneseFont, size: 24)
-        label.textColor = UIColor(white: CGFloat(distance * 0.95), alpha: 1)
+        label.textColor = UIColor(
+            red: CGFloat(distance * 0.4),
+            green: CGFloat(distance * 0.85),
+            blue: CGFloat(distance * 1),
+            alpha: 1)
         
         self.view.addSubview(label)
         self.view.sendSubviewToBack(label)

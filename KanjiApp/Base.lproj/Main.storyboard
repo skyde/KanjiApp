@@ -583,7 +583,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="discoverBarFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="z3B-70-MMs">
-                                <rect key="frame" x="0.0" y="44" width="600" height="205"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="126"/>
                             </imageView>
                             <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
                                 <rect key="frame" x="0.0" y="44" width="600" height="44"/>
@@ -593,7 +593,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408163265307" green="0.26020408163265307" blue="0.26020408163265307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.72448979591836737" green="0.72448979591836737" blue="0.72448979591836737" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244897959184" green="0.80612244897959184" blue="0.80612244897959184" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                         </subviews>
