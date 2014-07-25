@@ -24,6 +24,7 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -486,34 +487,56 @@
             <point key="canvasLocation" x="282" y="705"/>
         </scene>
         <!--Lists-->
-        <scene sceneID="yXk-YT-iD0">
+        <scene sceneID="aNa-Pg-76R">
             <objects>
-                <tableViewController title="Lists" id="FjX-yY-Kqd" customClass="DeckView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jO6-5i-Yf0">
+                <viewController id="zR6-VI-QSd" customClass="Lists" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zQZ-Lk-gyV"/>
+                        <viewControllerLayoutGuide type="bottom" id="yE0-Rj-gdz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EzM-Yf-p7c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-Up-XMI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zR6-VI-QSd" id="Byi-z8-FKf"/>
+                                    <outlet property="delegate" destination="zR6-VI-QSd" id="AWr-8p-BMy"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-BU-dcO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GVg-8Q-Qqo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DTy-Ej-LhY">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DTy-Ej-LhY" id="W2p-mZ-jrY">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="FjX-yY-Kqd" id="Uga-zr-yYf"/>
-                            <outlet property="delegate" destination="FjX-yY-Kqd" id="PMQ-rT-ora"/>
-                        </connections>
-                    </tableView>
+                        <constraints>
+                            <constraint firstItem="yE0-Rj-gdz" firstAttribute="top" secondItem="GQF-Up-XMI" secondAttribute="bottom" id="FBy-6Y-taz"/>
+                            <constraint firstItem="fhj-BU-dcO" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="Gdk-ro-uTe"/>
+                            <constraint firstItem="GQF-Up-XMI" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="HQZ-Kf-Fie"/>
+                            <constraint firstItem="GQF-Up-XMI" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" id="Id0-tf-TrN"/>
+                            <constraint firstAttribute="trailing" secondItem="fhj-BU-dcO" secondAttribute="trailing" id="QQq-c2-Lw8"/>
+                            <constraint firstAttribute="trailing" secondItem="GQF-Up-XMI" secondAttribute="trailing" id="YMI-RF-qsw"/>
+                            <constraint firstItem="fhj-BU-dcO" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" id="sFk-mf-oLQ"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="jO6-5i-Yf0" id="hqI-Wo-ZQ7"/>
-                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ftg-2W-kdT"/>
+                        <outlet property="tableView" destination="GQF-Up-XMI" id="8Ac-PC-fQt"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="iYu-nc-2Hh"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EU6-gR-eta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKX-PI-HF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="1347"/>
+            <point key="canvasLocation" x="364" y="1387"/>
         </scene>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
@@ -659,6 +682,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="discoverBarFade" destination="r8K-4J-9f7" id="RHR-XN-bZm"/>
@@ -725,8 +749,8 @@
                         <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="BpJ-Ou-mkl"/>
                         <segue destination="TB3-d0-7EI" kind="show" identifier="Reader" id="dIH-16-YTB"/>
                         <segue destination="1Aq-z8-1P3" kind="show" identifier="Settings" id="LLh-zB-V6l"/>
-                        <segue destination="FjX-yY-Kqd" kind="show" identifier="Lists" id="1Ld-Pf-lTK"/>
                         <segue destination="njT-bO-QmB" kind="show" identifier="AddWords" id="6c8-Kv-2MU"/>
+                        <segue destination="zR6-VI-QSd" kind="show" identifier="Lists" id="x5i-JI-PAG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDV-f5-2VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -740,6 +764,6 @@
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ftg-2W-kdT"/>
+        <segue reference="iYu-nc-2Hh"/>
     </inferredMetricsTieBreakers>
 </document>

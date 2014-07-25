@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class DeckView: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
+class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var tableView: UITableView!
     var items: [NSNumber] = []
