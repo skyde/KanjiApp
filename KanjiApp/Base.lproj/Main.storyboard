@@ -582,6 +582,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="discoverBarFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="z3B-70-MMs">
+                                <rect key="frame" x="0.0" y="44" width="600" height="205"/>
+                            </imageView>
                             <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
                                 <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -596,11 +599,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cEn-qY-4J5" secondAttribute="trailing" id="286-FV-45x"/>
-                            <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="7aW-yc-cW4"/>
-                            <constraint firstItem="96a-eE-Ku8" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="Ay8-im-R8e"/>
-                            <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="g5j-5L-sch"/>
-                            <constraint firstItem="cEn-qY-4J5" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="mwy-Sa-Yxv"/>
+                            <constraint firstItem="cEn-qY-4J5" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="2sU-un-juF"/>
+                            <constraint firstItem="z3B-70-MMs" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="AEG-dj-9dv"/>
+                            <constraint firstAttribute="trailing" secondItem="z3B-70-MMs" secondAttribute="trailing" id="ARe-o4-JoB"/>
+                            <constraint firstAttribute="trailing" secondItem="cEn-qY-4J5" secondAttribute="trailing" id="BEx-S9-K4q"/>
+                            <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="ZZm-Rn-B2W"/>
+                            <constraint firstItem="z3B-70-MMs" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="ixQ-2X-n2b"/>
+                            <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="jpJ-kJ-scy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
@@ -664,6 +669,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="discoverBarFade.png" width="512" height="512"/>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
