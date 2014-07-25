@@ -11,6 +11,7 @@ import UIKit
 
 class Search : CustomUIViewController {
     
+    @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
 //    var discoverLabels: [DiscoverAnimatedLabel] = []
     var timer:NSTimer? = nil
@@ -133,6 +134,7 @@ class Search : CustomUIViewController {
         for label in labels {
             self.view.sendSubviewToBack(label)
         }
+        self.view.sendSubviewToBack(discoverBarFade)
     }
 //    void)myAnimationStopped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 //    {
