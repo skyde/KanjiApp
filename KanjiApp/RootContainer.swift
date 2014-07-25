@@ -97,6 +97,8 @@ class RootContainer: CustomUIViewController {
         super.viewDidAppear(animated)
         
         mainView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
+        self.view.sendSubviewToBack(mainView)
+        self.view.sendSubviewToBack(sidebar)
         
         sidebarButtonBaseFrame = sidebarButton.frame
     }

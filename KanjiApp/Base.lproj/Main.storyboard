@@ -272,20 +272,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au8-mm-pTk">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au8-mm-pTk">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="TOv-Y8-84Z"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="gKl-wB-WbN" kind="embed" id="q3g-wv-Iuy"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-XO-a6v">
-                                <rect key="frame" x="125" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="WrA-K3-cmd" kind="embed" id="vu2-pw-rg7"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
                                 <rect key="frame" x="-4" y="2" width="56" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WhD-td-Gqd"/>
+                                    <constraint firstAttribute="width" constant="56" id="k9w-E3-izU"/>
+                                </constraints>
                                 <state key="normal" image="hamburgerIcon.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -293,6 +294,12 @@
                                     <action selector="sidebarButtonTouch:" destination="qjX-0f-FbU" eventType="touchDown" id="r9a-QZ-0Sa"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-XO-a6v">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="WrA-K3-cmd" kind="embed" id="vu2-pw-rg7"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -300,6 +307,11 @@
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="36m-mw-ljt"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
+                            <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" constant="2" id="ciQ-Ad-4sr"/>
+                            <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
+                            <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
+                            <constraint firstItem="qDf-Jv-7yu" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" constant="-4" id="x73-U1-zt7"/>
+                            <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="yWv-Rx-Pub"/>
                         </constraints>
                     </view>
                     <connections>
