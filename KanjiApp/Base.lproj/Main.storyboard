@@ -640,17 +640,6 @@ you wish to study</string>
                                     <constraint firstAttribute="height" constant="500" id="EAJ-9m-CrT"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-YA-pq2">
-                                <rect key="frame" x="0.0" y="93" width="600" height="119"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="BwX-4x-4aF"/>
-                                </constraints>
-                                <string key="text">You have finished studying
-all due cards</string>
-                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
-                                <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flashcards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-xZ-FvN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
@@ -661,10 +650,10 @@ all due cards</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Wd-Mj2">
-                                <rect key="frame" x="168" y="223" width="265" height="58"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Wd-Mj2">
+                                <rect key="frame" x="0.0" y="328" width="600" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="bhV-vr-iq7"/>
+                                    <constraint firstAttribute="height" constant="43" id="oN7-aR-TWI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="22"/>
                                 <state key="normal" title="Continue Studying">
@@ -674,10 +663,10 @@ all due cards</string>
                                     <action selector="onAddTouch:" destination="njT-bO-QmB" eventType="touchDown" id="msb-tI-Msn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-Wf-gzd">
-                                <rect key="frame" x="168" y="286" width="265" height="58"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-Wf-gzd">
+                                <rect key="frame" x="0.0" y="376" width="600" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="WwI-WV-m6l"/>
+                                    <constraint firstAttribute="height" constant="43" id="aMf-PE-NfW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="22"/>
                                 <state key="normal" title="Add New Cards">
@@ -687,23 +676,62 @@ all due cards</string>
                                     <segue destination="MSR-R2-cbT" kind="show" id="jq4-f8-RfP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-YA-pq2">
+                                <rect key="frame" x="0.0" y="158" width="600" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="R7F-hL-E7w"/>
+                                </constraints>
+                                <string key="text">You have finished studying
+all due cards</string>
+                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
+                                <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-As-O2q">
+                                <rect key="frame" x="279" y="214" width="42" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="100" id="8GA-xc-4Hc"/>
+                                    <constraint firstAttribute="width" constant="42" id="WdL-ji-ENK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-JM-ZZD">
+                                <rect key="frame" x="279" y="44" width="42" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="100" id="sjZ-Ap-MPN"/>
+                                    <constraint firstAttribute="width" constant="42" id="vew-5c-ywt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="f1c-Wd-Mj2" firstAttribute="top" secondItem="FeW-6r-oIN" secondAttribute="bottom" constant="203" id="3OM-tO-q07"/>
                             <constraint firstAttribute="bottom" secondItem="G8E-XZ-vjd" secondAttribute="bottom" constant="-10" id="3hx-6q-6cd"/>
-                            <constraint firstAttribute="trailing" secondItem="pEQ-YA-pq2" secondAttribute="trailing" id="5dA-ic-NCL"/>
+                            <constraint firstItem="f1c-Wd-Mj2" firstAttribute="top" secondItem="BO0-As-O2q" secondAttribute="bottom" id="3yP-Un-XM6"/>
                             <constraint firstItem="vbe-vi-baI" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="EBY-M9-HLC"/>
                             <constraint firstAttribute="trailing" secondItem="Lhh-xZ-FvN" secondAttribute="trailing" id="ED6-Q1-AAt"/>
-                            <constraint firstItem="pEQ-YA-pq2" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="Etb-f8-zzU"/>
+                            <constraint firstAttribute="centerX" secondItem="BO0-As-O2q" secondAttribute="centerX" id="ElF-c3-ET2"/>
                             <constraint firstItem="vbe-vi-baI" firstAttribute="top" secondItem="dpG-7U-eXX" secondAttribute="top" id="FPb-Lp-haI"/>
-                            <constraint firstItem="PEB-Wf-gzd" firstAttribute="top" secondItem="FeW-6r-oIN" secondAttribute="bottom" constant="266" id="GQm-Kd-kT3"/>
+                            <constraint firstAttribute="trailing" secondItem="PEB-Wf-gzd" secondAttribute="trailing" id="HDm-B4-Afg"/>
                             <constraint firstItem="Lhh-xZ-FvN" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="J4x-fi-0hi"/>
+                            <constraint firstAttribute="trailing" secondItem="f1c-Wd-Mj2" secondAttribute="trailing" id="NLa-zz-rUD"/>
+                            <constraint firstItem="PEB-Wf-gzd" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="Ngk-iZ-4u8"/>
+                            <constraint firstAttribute="trailing" secondItem="pEQ-YA-pq2" secondAttribute="trailing" id="Qi4-13-RiH"/>
+                            <constraint firstItem="BO0-As-O2q" firstAttribute="top" secondItem="pEQ-YA-pq2" secondAttribute="bottom" id="SIF-yA-bIY"/>
+                            <constraint firstItem="f1c-Wd-Mj2" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="YSw-9i-vGw"/>
                             <constraint firstAttribute="trailing" secondItem="G8E-XZ-vjd" secondAttribute="trailing" id="aCW-SW-dRb"/>
-                            <constraint firstAttribute="centerX" secondItem="f1c-Wd-Mj2" secondAttribute="centerX" id="bwg-Sa-vjH"/>
-                            <constraint firstAttribute="centerX" secondItem="PEB-Wf-gzd" secondAttribute="centerX" id="dam-yM-2zx"/>
+                            <constraint firstItem="PEB-Wf-gzd" firstAttribute="top" secondItem="f1c-Wd-Mj2" secondAttribute="bottom" constant="5" id="aD1-4Z-E3y"/>
+                            <constraint firstAttribute="centerX" secondItem="2sk-JM-ZZD" secondAttribute="centerX" id="dcU-1i-OGE"/>
                             <constraint firstItem="G8E-XZ-vjd" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="gto-tj-GTe"/>
-                            <constraint firstItem="pEQ-YA-pq2" firstAttribute="top" secondItem="FeW-6r-oIN" secondAttribute="bottom" constant="73" id="phn-MR-r0e"/>
+                            <constraint firstItem="2sk-JM-ZZD" firstAttribute="top" secondItem="Lhh-xZ-FvN" secondAttribute="bottom" id="h2b-mK-1eM"/>
+                            <constraint firstItem="2sk-JM-ZZD" firstAttribute="height" secondItem="BO0-As-O2q" secondAttribute="height" id="sCK-fh-Lhs"/>
+                            <constraint firstAttribute="centerY" secondItem="f1c-Wd-Mj2" secondAttribute="centerY" constant="-50" id="sR0-C3-0Dt"/>
+                            <constraint firstItem="pEQ-YA-pq2" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="uaV-f3-RCK"/>
+                            <constraint firstItem="pEQ-YA-pq2" firstAttribute="top" secondItem="2sk-JM-ZZD" secondAttribute="bottom" id="uds-Ce-LV0"/>
                             <constraint firstItem="Lhh-xZ-FvN" firstAttribute="top" secondItem="dpG-7U-eXX" secondAttribute="top" id="xhh-vL-8lf"/>
                             <constraint firstAttribute="trailing" secondItem="vbe-vi-baI" secondAttribute="trailing" id="y4Y-RR-Cro"/>
                         </constraints>
@@ -1056,6 +1084,6 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yfD-aM-lZg"/>
+        <segue reference="Njb-Jk-Mx7"/>
     </inferredMetricsTieBreakers>
 </document>
