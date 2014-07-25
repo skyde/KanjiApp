@@ -479,7 +479,7 @@ you wish to study</string>
                             <constraint firstItem="Ouf-CW-RsS" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" constant="12" id="Lhb-BR-0Vt"/>
                             <constraint firstAttribute="trailing" secondItem="I7o-Lg-hhw" secondAttribute="trailing" id="bCf-c9-W4M"/>
                             <constraint firstItem="Ouf-CW-RsS" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" constant="3" id="iU4-Ea-59f"/>
-                            <constraint firstItem="CcD-zX-eec" firstAttribute="top" relation="greaterThanOrEqual" secondItem="V4k-H2-WOF" secondAttribute="bottom" priority="900" id="lxz-iZ-Ojd"/>
+                            <constraint firstItem="V4k-H2-WOF" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="CcD-zX-eec" secondAttribute="top" priority="900" id="lxz-iZ-Ojd"/>
                             <constraint firstItem="oIn-zS-WgB" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="mQ2-Tg-vy0"/>
                             <constraint firstItem="I7o-Lg-hhw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oIn-zS-WgB" secondAttribute="bottom" priority="900" id="pZv-Vd-ukQ"/>
                             <constraint firstItem="V4k-H2-WOF" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="xxS-fG-Uux"/>
