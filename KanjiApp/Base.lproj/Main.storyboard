@@ -38,7 +38,6 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
-            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -409,10 +408,10 @@
             </objects>
             <point key="canvasLocation" x="-389" y="2201"/>
         </scene>
-        <!--View Controller-->
+        <!--CustomUI View Controller-->
         <scene sceneID="Ygc-J7-j5G">
             <objects>
-                <viewController id="MSR-R2-cbT" sceneMemberID="viewController">
+                <viewController id="MSR-R2-cbT" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gmo-3F-9NX"/>
                         <viewControllerLayoutGuide type="bottom" id="CcD-zX-eec"/>
@@ -460,17 +459,6 @@ you wish to study</string>
                                 <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouf-CW-RsS">
-                                <rect key="frame" x="12" y="3" width="43" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="9iP-mj-mfJ"/>
-                                    <constraint firstAttribute="height" constant="36" id="g32-01-KeW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6b-gx-U2P" userLabel="Middle">
                                 <rect key="frame" x="279" y="242.5" width="42" height="5"/>
                                 <constraints>
@@ -512,14 +500,12 @@ you wish to study</string>
                             <constraint firstAttribute="centerX" secondItem="M6b-gx-U2P" secondAttribute="centerX" id="GC3-PE-PvU"/>
                             <constraint firstAttribute="trailing" secondItem="oIn-zS-WgB" secondAttribute="trailing" id="GXd-Bc-T1y"/>
                             <constraint firstAttribute="trailing" secondItem="V4k-H2-WOF" secondAttribute="trailing" id="Kmw-X2-bQA"/>
-                            <constraint firstItem="Ouf-CW-RsS" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" constant="12" id="Lhb-BR-0Vt"/>
                             <constraint firstItem="M6b-gx-U2P" firstAttribute="top" secondItem="dvt-9D-fkt" secondAttribute="bottom" id="TPE-Us-O3i"/>
                             <constraint firstItem="dvt-9D-fkt" firstAttribute="top" secondItem="I7o-Lg-hhw" secondAttribute="bottom" id="TsE-Xx-MRC"/>
                             <constraint firstAttribute="centerX" secondItem="eaw-A8-CGj" secondAttribute="centerX" id="Us6-Kk-1eD"/>
                             <constraint firstAttribute="trailing" secondItem="I7o-Lg-hhw" secondAttribute="trailing" id="bCf-c9-W4M"/>
                             <constraint firstAttribute="centerX" secondItem="dvt-9D-fkt" secondAttribute="centerX" id="fWX-9D-Nfc"/>
                             <constraint firstItem="I7o-Lg-hhw" firstAttribute="top" secondItem="eaw-A8-CGj" secondAttribute="bottom" id="hQK-XI-SYJ"/>
-                            <constraint firstItem="Ouf-CW-RsS" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" constant="3" id="iU4-Ea-59f"/>
                             <constraint firstItem="CcD-zX-eec" firstAttribute="top" secondItem="V4k-H2-WOF" secondAttribute="bottom" id="kJQ-Sv-Mvl"/>
                             <constraint firstItem="V4k-H2-WOF" firstAttribute="top" secondItem="M6b-gx-U2P" secondAttribute="bottom" id="lZv-iT-qpq"/>
                             <constraint firstItem="oIn-zS-WgB" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="mQ2-Tg-vy0"/>
@@ -542,7 +528,7 @@ you wish to study</string>
                         <sections>
                             <tableViewSection id="rv8-ZE-VQo">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="hHU-3f-mDI" style="IBUITableViewCellStyleDefault" id="CQx-1H-wk3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hHU-3f-mDI" style="IBUITableViewCellStyleDefault" id="CQx-1H-wk3">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CQx-1H-wk3" id="wdg-My-Nkb">
@@ -559,7 +545,7 @@ you wish to study</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.19231980849999999" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="D5u-o9-R8p" style="IBUITableViewCellStyleDefault" id="Hkc-Ey-KFF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="D5u-o9-R8p" style="IBUITableViewCellStyleDefault" id="Hkc-Ey-KFF">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hkc-Ey-KFF" id="iKu-SJ-uHN">
@@ -576,7 +562,7 @@ you wish to study</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.19231980849999999" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="dxH-MS-1P5" style="IBUITableViewCellStyleDefault" id="hzh-F6-tAG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dxH-MS-1P5" style="IBUITableViewCellStyleDefault" id="hzh-F6-tAG">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hzh-F6-tAG" id="EqH-Y8-lx9">
@@ -593,7 +579,7 @@ you wish to study</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.19231980849999999" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="pxO-E2-wuI" style="IBUITableViewCellStyleDefault" id="ayG-yr-S4H">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="pxO-E2-wuI" style="IBUITableViewCellStyleDefault" id="ayG-yr-S4H">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayG-yr-S4H" id="Mtp-fe-KBs">
@@ -610,7 +596,7 @@ you wish to study</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.19231980849999999" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="Zex-4w-Bb6" style="IBUITableViewCellStyleDefault" id="CJh-0o-f0G">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Zex-4w-Bb6" style="IBUITableViewCellStyleDefault" id="CJh-0o-f0G">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJh-0o-f0G" id="gyb-mu-dA3">
@@ -627,7 +613,7 @@ you wish to study</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.19231980849999999" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="La7-rE-ML0" style="IBUITableViewCellStyleDefault" id="CxO-nG-1Ih">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="La7-rE-ML0" style="IBUITableViewCellStyleDefault" id="CxO-nG-1Ih">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CxO-nG-1Ih" id="o9p-zk-O7Z">
