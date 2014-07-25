@@ -44,6 +44,8 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         //Lists
         //Settings
         
+        println(indexPath.section * 100 + indexPath.row)
+        
         switch indexPath.section * 100 + indexPath.row {
         case 0:
             targetView = .Search
@@ -55,6 +57,8 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             targetView = .AddWords
         case 100:
             targetView = .Lists
+        case 300:
+            targetView = .Settings
         default:
             break
         }

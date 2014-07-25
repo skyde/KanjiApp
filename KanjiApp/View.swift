@@ -14,6 +14,7 @@ enum View {
     case Reader
     case AddWords
     case Lists
+    case Settings
     
     func description() -> String {
         switch self {
@@ -27,6 +28,8 @@ enum View {
             return "AddWords"
         case .Lists:
             return "Lists"
+        case .Settings:
+            return "Settings"
         }
     }
 }

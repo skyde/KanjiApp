@@ -38,6 +38,7 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -522,7 +523,7 @@ you wish to study</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="264"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
@@ -771,39 +772,6 @@ all due cards</string>
             </objects>
             <point key="canvasLocation" x="175" y="649"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="wG4-td-mVX">
-            <objects>
-                <tableViewController id="XZO-vE-Bxq" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="neE-8n-I6f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZhH-Vb-ZsM">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZhH-Vb-ZsM" id="veF-VP-woA">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vex-pC-zaq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vex-pC-zaq" id="sX9-k9-AMg">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="XZO-vE-Bxq" id="MWW-te-ygP"/>
-                            <outlet property="delegate" destination="XZO-vE-Bxq" id="PJG-Hf-DIA"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FqT-wW-J2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="831" y="672"/>
-        </scene>
         <!--Lists-->
         <scene sceneID="aNa-Pg-76R">
             <objects>
@@ -875,6 +843,18 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBottomFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0g-vH-EGh">
+                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="1jp-z6-RDw"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="discoverBarFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="r0q-5g-Gnv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="519"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="474" id="CBQ-x8-QKk"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-3J-NV6">
                                 <rect key="frame" x="164" y="194" width="154" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -893,6 +873,16 @@ all due cards</string>
                                     <action selector="onVolumeChanged:" destination="1Aq-z8-1P3" eventType="valueChanged" id="Jdu-ZB-VNI"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTA-Cg-Czx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Fyd-un-duG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-6h-2x1">
                                 <rect key="frame" x="192" y="311" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -901,8 +891,19 @@ all due cards</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="T0g-vH-EGh" firstAttribute="leading" secondItem="8pf-AF-gb3" secondAttribute="leading" id="5VY-vz-zG1"/>
                             <constraint firstAttribute="centerX" secondItem="p1H-mf-Il1" secondAttribute="centerX" id="7yc-jb-KQQ"/>
+                            <constraint firstAttribute="trailing" secondItem="r0q-5g-Gnv" secondAttribute="trailing" id="AkZ-Lh-4Qv"/>
+                            <constraint firstItem="dWD-8y-8GG" firstAttribute="top" secondItem="T0g-vH-EGh" secondAttribute="bottom" id="It2-D3-Srg"/>
+                            <constraint firstItem="FTA-Cg-Czx" firstAttribute="top" secondItem="8pf-AF-gb3" secondAttribute="top" id="MLX-x6-xX6"/>
+                            <constraint firstItem="dWD-8y-8GG" firstAttribute="top" secondItem="r0q-5g-Gnv" secondAttribute="bottom" constant="81" id="NBB-lE-NIb"/>
                             <constraint firstAttribute="centerX" secondItem="9wD-3J-NV6" secondAttribute="centerX" id="NXn-P3-VuM"/>
+                            <constraint firstItem="T0g-vH-EGh" firstAttribute="top" secondItem="FTA-Cg-Czx" secondAttribute="bottom" constant="56" id="Ux3-VP-EJp"/>
+                            <constraint firstItem="FTA-Cg-Czx" firstAttribute="leading" secondItem="8pf-AF-gb3" secondAttribute="leading" id="VXR-eD-YHH"/>
+                            <constraint firstAttribute="trailing" secondItem="FTA-Cg-Czx" secondAttribute="trailing" id="bJD-e3-J8p"/>
+                            <constraint firstItem="r0q-5g-Gnv" firstAttribute="leading" secondItem="8pf-AF-gb3" secondAttribute="leading" id="eEv-d4-9Zy"/>
+                            <constraint firstItem="r0q-5g-Gnv" firstAttribute="top" secondItem="8pf-AF-gb3" secondAttribute="top" id="kYF-Xb-875"/>
+                            <constraint firstAttribute="trailing" secondItem="T0g-vH-EGh" secondAttribute="trailing" id="xme-eh-04y"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1111,6 +1112,6 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Njb-Jk-Mx7"/>
+        <segue reference="yfD-aM-lZg"/>
     </inferredMetricsTieBreakers>
 </document>
