@@ -30,9 +30,9 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        var root = (self.parentViewController as RootContainer)
 //        
         //        println(root.mainView.subviews[0] as UINavigationController)
-        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
-        table.headerViewForSection(0).textLabel.backgroundColor = bkColor
-        table.headerViewForSection(0).contentView.backgroundColor = bkColor
+//        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
+//        table.headerViewForSection(0).textLabel.backgroundColor = bkColor
+//        table.headerViewForSection(0).contentView.backgroundColor = bkColor
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {

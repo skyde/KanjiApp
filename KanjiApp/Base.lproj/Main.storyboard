@@ -38,7 +38,7 @@
                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle=" " id="nrW-1a-h2y">
+                            <tableViewSection id="nrW-1a-h2y">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="cer-Ju-U35" style="IBUITableViewCellStyleDefault" id="D41-1s-08X">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -740,6 +740,6 @@
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vgr-gb-U0p"/>
+        <segue reference="ftg-2W-kdT"/>
     </inferredMetricsTieBreakers>
 </document>
