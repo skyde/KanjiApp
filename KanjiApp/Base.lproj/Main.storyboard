@@ -443,12 +443,23 @@
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4k-H2-WOF">
-                                <rect key="frame" x="0.0" y="231" width="600" height="264"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4k-H2-WOF">
+                                <rect key="frame" x="0.0" y="247.5" width="600" height="352.5"/>
                                 <connections>
                                     <segue destination="ghP-Tk-0Fs" kind="embed" id="qjo-3l-XkZ"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="I7o-Lg-hhw">
+                                <rect key="frame" x="0.0" y="115.5" width="600" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="lMl-lK-vsZ"/>
+                                </constraints>
+                                <string key="text">Choose the list from which
+you wish to study</string>
+                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
+                                <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouf-CW-RsS">
                                 <rect key="frame" x="12" y="3" width="43" height="36"/>
                                 <constraints>
@@ -460,28 +471,58 @@
                                     <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="I7o-Lg-hhw">
-                                <rect key="frame" x="0.0" y="115" width="600" height="119"/>
-                                <string key="text">Choose the list from which
-you wish to study</string>
-                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
-                                <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6b-gx-U2P" userLabel="Middle">
+                                <rect key="frame" x="279" y="242.5" width="42" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="Dzs-cN-86G"/>
+                                    <constraint firstAttribute="width" constant="42" id="sT2-NH-X2W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvt-9D-fkt">
+                                <rect key="frame" x="279" y="171.5" width="42" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="gW9-Hc-RNl"/>
+                                    <constraint firstAttribute="height" priority="750" constant="100" id="tga-z6-t9K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-A8-CGj">
+                                <rect key="frame" x="279" y="44" width="42" height="71.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="B6g-lt-aSW"/>
+                                    <constraint firstAttribute="height" priority="750" constant="100" id="WRo-WC-iU5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oIn-zS-WgB" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" id="0UW-nU-hOs"/>
+                            <constraint firstAttribute="centerY" secondItem="M6b-gx-U2P" secondAttribute="centerY" constant="55" id="0vQ-10-HAJ"/>
+                            <constraint firstItem="eaw-A8-CGj" firstAttribute="height" secondItem="dvt-9D-fkt" secondAttribute="height" id="7sA-8x-bul"/>
                             <constraint firstItem="I7o-Lg-hhw" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="Bdg-I2-Pip"/>
+                            <constraint firstItem="eaw-A8-CGj" firstAttribute="top" secondItem="oIn-zS-WgB" secondAttribute="bottom" id="EhV-lq-wEb"/>
+                            <constraint firstAttribute="centerX" secondItem="M6b-gx-U2P" secondAttribute="centerX" id="GC3-PE-PvU"/>
                             <constraint firstAttribute="trailing" secondItem="oIn-zS-WgB" secondAttribute="trailing" id="GXd-Bc-T1y"/>
-                            <constraint firstItem="V4k-H2-WOF" firstAttribute="top" secondItem="I7o-Lg-hhw" secondAttribute="bottom" constant="-3" id="JFi-fc-mod"/>
                             <constraint firstAttribute="trailing" secondItem="V4k-H2-WOF" secondAttribute="trailing" id="Kmw-X2-bQA"/>
                             <constraint firstItem="Ouf-CW-RsS" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" constant="12" id="Lhb-BR-0Vt"/>
+                            <constraint firstItem="M6b-gx-U2P" firstAttribute="top" secondItem="dvt-9D-fkt" secondAttribute="bottom" id="TPE-Us-O3i"/>
+                            <constraint firstItem="dvt-9D-fkt" firstAttribute="top" secondItem="I7o-Lg-hhw" secondAttribute="bottom" id="TsE-Xx-MRC"/>
+                            <constraint firstAttribute="centerX" secondItem="eaw-A8-CGj" secondAttribute="centerX" id="Us6-Kk-1eD"/>
                             <constraint firstAttribute="trailing" secondItem="I7o-Lg-hhw" secondAttribute="trailing" id="bCf-c9-W4M"/>
+                            <constraint firstAttribute="centerX" secondItem="dvt-9D-fkt" secondAttribute="centerX" id="fWX-9D-Nfc"/>
+                            <constraint firstItem="I7o-Lg-hhw" firstAttribute="top" secondItem="eaw-A8-CGj" secondAttribute="bottom" id="hQK-XI-SYJ"/>
                             <constraint firstItem="Ouf-CW-RsS" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" constant="3" id="iU4-Ea-59f"/>
-                            <constraint firstItem="V4k-H2-WOF" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="CcD-zX-eec" secondAttribute="top" priority="900" id="lxz-iZ-Ojd"/>
+                            <constraint firstItem="CcD-zX-eec" firstAttribute="top" secondItem="V4k-H2-WOF" secondAttribute="bottom" id="kJQ-Sv-Mvl"/>
+                            <constraint firstItem="V4k-H2-WOF" firstAttribute="top" secondItem="M6b-gx-U2P" secondAttribute="bottom" id="lZv-iT-qpq"/>
                             <constraint firstItem="oIn-zS-WgB" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="mQ2-Tg-vy0"/>
-                            <constraint firstItem="I7o-Lg-hhw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oIn-zS-WgB" secondAttribute="bottom" priority="900" id="pZv-Vd-ukQ"/>
                             <constraint firstItem="V4k-H2-WOF" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="xxS-fG-Uux"/>
                         </constraints>
                     </view>
