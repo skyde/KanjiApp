@@ -6,10 +6,10 @@
     <customFonts key="customFonts">
         <mutableArray key="mplus-2p-light.ttf">
             <string>mplus-2p-light</string>
-            <string>mplus-2p-light</string>
-            <string>mplus-2p-light</string>
         </mutableArray>
         <mutableArray key="mplus-2p-regular.ttf">
+            <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
@@ -455,7 +455,7 @@
                                 </constraints>
                                 <string key="text">Choose the list from which
 you wish to study</string>
-                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="20"/>
                                 <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -520,7 +520,7 @@ you wish to study</string>
         <!--Table View Controller-->
         <scene sceneID="4M5-xF-dQG">
             <objects>
-                <tableViewController id="ghP-Tk-0Fs" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="264"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -678,9 +678,9 @@ you wish to study</string>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Wd-Mj2">
-                                <rect key="frame" x="0.0" y="328" width="600" height="43"/>
+                                <rect key="frame" x="0.0" y="325.5" width="600" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="oN7-aR-TWI"/>
+                                    <constraint firstAttribute="height" constant="48" id="oN7-aR-TWI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="22"/>
                                 <state key="normal" title="Continue Studying">
@@ -691,7 +691,7 @@ you wish to study</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-Wf-gzd">
-                                <rect key="frame" x="0.0" y="376" width="600" height="43"/>
+                                <rect key="frame" x="0.0" y="373.5" width="600" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="aMf-PE-NfW"/>
                                 </constraints>
@@ -704,18 +704,18 @@ you wish to study</string>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-YA-pq2">
-                                <rect key="frame" x="0.0" y="158" width="600" height="56"/>
+                                <rect key="frame" x="0.0" y="157" width="600" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="R7F-hL-E7w"/>
                                 </constraints>
                                 <string key="text">You have finished studying
 all due cards</string>
-                                <fontDescription key="fontDescription" name="mplus-2p-light" family="M+ 2p" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="20"/>
                                 <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-As-O2q">
-                                <rect key="frame" x="279" y="214" width="42" height="114"/>
+                                <rect key="frame" x="279" y="213" width="42" height="112.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="100" id="8GA-xc-4Hc"/>
                                     <constraint firstAttribute="width" constant="42" id="WdL-ji-ENK"/>
@@ -725,7 +725,7 @@ all due cards</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-JM-ZZD">
-                                <rect key="frame" x="279" y="44" width="42" height="114"/>
+                                <rect key="frame" x="279" y="44" width="42" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="100" id="sjZ-Ap-MPN"/>
                                     <constraint firstAttribute="width" constant="42" id="vew-5c-ywt"/>
@@ -751,7 +751,7 @@ all due cards</string>
                             <constraint firstItem="BO0-As-O2q" firstAttribute="top" secondItem="pEQ-YA-pq2" secondAttribute="bottom" id="SIF-yA-bIY"/>
                             <constraint firstItem="f1c-Wd-Mj2" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="YSw-9i-vGw"/>
                             <constraint firstAttribute="trailing" secondItem="G8E-XZ-vjd" secondAttribute="trailing" id="aCW-SW-dRb"/>
-                            <constraint firstItem="PEB-Wf-gzd" firstAttribute="top" secondItem="f1c-Wd-Mj2" secondAttribute="bottom" constant="5" id="aD1-4Z-E3y"/>
+                            <constraint firstItem="PEB-Wf-gzd" firstAttribute="top" secondItem="f1c-Wd-Mj2" secondAttribute="bottom" id="aD1-4Z-E3y"/>
                             <constraint firstAttribute="centerX" secondItem="2sk-JM-ZZD" secondAttribute="centerX" id="dcU-1i-OGE"/>
                             <constraint firstItem="G8E-XZ-vjd" firstAttribute="leading" secondItem="dpG-7U-eXX" secondAttribute="leading" id="gto-tj-GTe"/>
                             <constraint firstItem="2sk-JM-ZZD" firstAttribute="top" secondItem="Lhh-xZ-FvN" secondAttribute="bottom" id="h2b-mK-1eM"/>
