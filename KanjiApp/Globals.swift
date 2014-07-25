@@ -10,7 +10,9 @@ import Foundation
 
 struct Globals
 {
-    static let JapaneseFont = "M+ 2p"
+    static let JapaneseFont = "M+ 2p"//mplus-2p-regular
+    
+    static let JapaneseFontLight = "mplus-2p-light"
 }
 
 //func randomRange(max: Double) -> Double {

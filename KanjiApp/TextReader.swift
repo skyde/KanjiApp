@@ -59,7 +59,9 @@ class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDa
 //        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         items = []
         
-        userText.font = UIFont(name: Globals.JapaneseFont, size: 24)
+//        userText.font = UIFont(userText.font.fontDescriptor().fontDescriptorWithSymbolicTraits(UIFontDescriptorSymbolicTraits.), size: <#CGFloat#>)
+//        println(UIFont.fontNamesForFamilyName("M+ 2p"))
+        userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
         
     }
     
