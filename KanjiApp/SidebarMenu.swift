@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-let TransitionToViewNotification = "TransitionToViewNotification"
-
 class SidebarMenu: UITableViewController, UITableViewDelegate {
     @IBOutlet var table: UITableView!
     
@@ -63,7 +61,8 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             break
         }
         
+//        println(targetView.description())
 //        var n = NSNotification(name: TransitionToView, object: targetView)
-        NSNotificationCenter.defaultCenter().postNotificationName(TransitionToViewNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(transitionToViewNotification, object: nil)
     }
 }

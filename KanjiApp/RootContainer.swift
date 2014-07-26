@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import QuartzCore
 
-var targetView = View.Search
-
 class RootContainer: CustomUIViewController {
     
     @IBOutlet weak var sidebarButton: UIButton!
@@ -20,7 +18,6 @@ class RootContainer: CustomUIViewController {
     
     var sidebarButtonBaseFrame: CGRect!
     var statusBarHidden = false
-    
     
     override func isGameView() -> Bool {
         return false

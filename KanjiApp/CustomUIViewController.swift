@@ -45,8 +45,16 @@ class CustomUIViewController : UIViewController {
         }
         
         saveContext()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: TransitionToViewNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: transitionToViewNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func createDatabase(filename: String) {
@@ -123,10 +131,6 @@ class CustomUIViewController : UIViewController {
         self.navigationController.popToRootViewControllerAnimated(false)
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
     
 //    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
 //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

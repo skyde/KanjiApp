@@ -56,7 +56,7 @@ class Card: NSManagedObject {
     
     var front: NSAttributedString {
     get {
-        let font = Globals.JapaneseFont
+        let font = Globals.JapaneseFontLight//"Hiragino Kaku Gothic ProN W6"//Globals.JapaneseFont
         var value = NSMutableAttributedString()
 
         value.beginEditing()

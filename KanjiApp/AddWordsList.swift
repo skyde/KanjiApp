@@ -1,9 +1,6 @@
 import Foundation
 import UIKit
 
-let addWordsFromListNotification = "addWordsFromListNotification"
-var addWordsFromList: WordList = WordList.AllWords
-
 class AddWordsList: UITableViewController, UITableViewDelegate {
     
     @IBOutlet var table: UITableView!

@@ -8,6 +8,29 @@ class AddWords: CustomUIViewController {
 //    @IBOutlet var addAmount : UITextField!
 //    @IBOutlet var addButton : UIButton!
     
+    init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAddWordsFromList", name: addWordsFromListNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func onAddWordsFromList() {
+        println("onadd = \(addWordsFromList.description())")
+        transitionToView(View.GameMode)
+//        if isGameView() {
+//            transitionToView(rgetta)
+//        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +66,7 @@ class AddWords: CustomUIViewController {
         
 //        self.navigationController.popToRootViewControllerAnimated(true)
 //        self.performSegueWithIdentifier("GameMode", sender: self)
-        transitionToView(.GameMode)
+//        transitionToView(.GameMode)
     }
     
 //    @IBAction func onJlptLevelChanged(sender : AnyObject) {

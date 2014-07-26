@@ -978,14 +978,22 @@ all due cards</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
+                                    <fragment content="一">
+                                        <attributes>
+                                            <font key="NSFont" size="146" name="mplus-2p-light"/>
+                                            <font key="NSOriginalFont" size="146" name="mplus-2p-light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
                                     <fragment>
-                                        <string key="content">一
+                                        <string key="content">
 所
 懸
 命</string>
                                         <attributes>
-                                            <font key="NSFont" size="140" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <font key="NSFont" size="144" name="mplus-2p-light"/>
+                                            <font key="NSOriginalFont" size="144" name="mplus-2p-light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -1165,7 +1173,7 @@ all due cards</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jq4-f8-RfP"/>
-        <segue reference="o8I-8R-76U"/>
-        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="HeO-Ae-RU8"/>
+        <segue reference="Njb-Jk-Mx7"/>
     </inferredMetricsTieBreakers>
 </document>
