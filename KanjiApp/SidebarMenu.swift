@@ -44,7 +44,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         //Lists
         //Settings
         
-        println(indexPath.section * 100 + indexPath.row)
+//        println(indexPath.section * 100 + indexPath.row)
         
         switch indexPath.section * 100 + indexPath.row {
         case 0:
