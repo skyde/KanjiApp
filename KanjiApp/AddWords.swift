@@ -24,26 +24,28 @@ class AddWords: CustomUIViewController {
     }
     
     func onAddWordsFromList() {
-        println("onadd = \(addWordsFromList.description())")
-        transitionToView(View.GameMode)
-//        if isGameView() {
-//            transitionToView(rgetta)
-//        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-//        jlptLevel.selectedSegmentIndex = 4 - settings.jlptLevel.integerValue
-//        isOnlyKanji.on = settings.onlyStudyKanji.boolValue
-//        addAmount.text = settings.cardAddAmount.stringValue
-    }
-    
-    @IBAction func onAddTouch(sender: AnyObject) {
+        println("onadd = \(addWordsFromList.description())")
+        
         var predicate: [(EntityProperties, String)] = []
         
         predicate += (CardProperties.enabled, "false")
-        predicate += (CardProperties.jlptLevel, "\(settings.jlptLevel)")
+        
+        switch addWordsFromList {
+        case .AllWords:
+            break;
+        case .Jlpt4:
+            predicate += (CardProperties.jlptLevel, "4")
+        case .Jlpt3:
+            predicate += (CardProperties.jlptLevel, "3")
+        case .Jlpt2:
+            predicate += (CardProperties.jlptLevel, "2")
+        case .Jlpt1:
+            predicate += (CardProperties.jlptLevel, "1")
+        case .MyWords:
+            predicate += (CardProperties.suspended, "false")
+            
+        }
         
         let cards = managedObjectContext.fetchEntities(.Card, predicate, CardProperties.index, sortAscending: true)
         
@@ -63,11 +65,27 @@ class AddWords: CustomUIViewController {
                 }
             }
         }
+
         
-//        self.navigationController.popToRootViewControllerAnimated(true)
-//        self.performSegueWithIdentifier("GameMode", sender: self)
-//        transitionToView(.GameMode)
+        transitionToView(View.GameMode)
+//        if isGameView() {
+//            transitionToView(rgetta)
+//        }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        jlptLevel.selectedSegmentIndex = 4 - settings.jlptLevel.integerValue
+//        isOnlyKanji.on = settings.onlyStudyKanji.boolValue
+//        addAmount.text = settings.cardAddAmount.stringValue
+    }
+    
+//    @IBAction func onAddTouch(sender: AnyObject) {
+////        self.navigationController.popToRootViewControllerAnimated(true)
+////        self.performSegueWithIdentifier("GameMode", sender: self)
+////        transitionToView(.GameMode)
+//    }
     
 //    @IBAction func onJlptLevelChanged(sender : AnyObject) {
 //        var value = jlptLevel.selectedSegmentIndex

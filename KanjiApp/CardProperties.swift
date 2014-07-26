@@ -22,6 +22,7 @@ enum CardProperties: EntityProperties {
     case interval
     case dueTime
     case enabled
+    case suspended
     
     func description() -> String {
         switch self {
@@ -69,6 +70,8 @@ enum CardProperties: EntityProperties {
             return "dueTime"
         case .enabled:
             return "enabled"
+        case .suspended:
+            return "suspended"
         }
     }
 }
