@@ -30,6 +30,7 @@ class Card: NSManagedObject {
     @NSManaged var interval: NSNumber
     @NSManaged var dueTime: NSNumber
     @NSManaged var enabled: NSNumber
+    @NSManaged var suspended: NSNumber
     
     func answerCard(difficulty: AnswerDifficulty) {
         switch difficulty {

@@ -34,15 +34,82 @@ class CustomUIViewController : UIViewController {
         
         settings.userName = "default"
         
-        if settings.cardAddAmount == 0 {
+        
+        if !settings.generatedCards.boolValue {
+            settings.generatedCards = true
             settings.cardAddAmount = 5
             settings.onlyStudyKanji = true
             settings.volume = 0.5
+            
+            createDatabase("AllCards copy")
         }
         
         saveContext()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: TransitionToViewNotification, object: nil)
+    }
+    
+    func createDatabase(filename: String) {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
+        var possibleContent = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+        
+        var values: [Card] = []
+        
+        if let content = possibleContent {
+            var deck = content.componentsSeparatedByString("\n")
+            for deckItem in deck {
+                var items = deckItem.componentsSeparatedByString("\t")
+                
+                var index: Int = items[1].toInt()!
+                var pitchAccent = 0
+                if var p = items[12].toInt() {
+                    pitchAccent = p
+                }
+                
+                var usageAmount = 0
+                if var u = items[9].toInt() {
+                    usageAmount = u
+                }
+                
+                var jlptLevel = 0
+                if var j = items[10].toInt() {
+                    jlptLevel = j
+                }
+                
+                let kanji = items[0]
+                
+                var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji, createIfNil: true)! as Card
+                
+                card.kanji = kanji
+                
+                card.index = index
+                card.hiragana = items[2]
+                card.definition = items[3]
+                card.exampleEnglish = items[4]
+                card.exampleJapanese = items[5]
+                card.soundWord = items[6]
+                card.soundDefinition = items[7]
+                card.definitionOther = items[8]
+                card.usageAmount = usageAmount
+                card.jlptLevel = jlptLevel
+                card.pitchAccentText = items[11]
+                card.pitchAccent = pitchAccent
+                card.otherExampleSentences = items[13]
+                card.answersKnown = 0
+                card.answersNormal = 0
+                card.answersHard = 0
+                card.answersForgot = 0
+                card.interval = 0
+                card.dueTime = 0
+                card.suspended = true
+                
+                values += card
+            }
+        }
+        
+        saveContext()
     }
     
     func onTransitionToView() {
