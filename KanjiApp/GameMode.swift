@@ -24,8 +24,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         self.due = []
         super.init(coder: aDecoder)
         
-//        self.due = loadDatabase()
-        
         self.due = loadDatabase()
     }
     

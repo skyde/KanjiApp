@@ -1008,6 +1008,7 @@ all due cards</string>
                     <connections>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ocT-bm-8xQ"/>
+                        <segue destination="MSR-R2-cbT" kind="show" identifier="AddWords" id="0Q0-aS-4tM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
@@ -1165,6 +1166,6 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="jq4-f8-RfP"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="vgr-gb-U0p"/>
+        <segue reference="ocT-bm-8xQ"/>
     </inferredMetricsTieBreakers>
 </document>
