@@ -22,16 +22,18 @@ class Search : CustomUIViewController {
 //        
 //        super.init(coder: aDecoder)
 //        
-//    }
+    //    }
+    let spawnInterval: Double = 1.5
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        discoverLabels.map { self.animateLabel($0) }
-//        spawnedColumns = []
-        var spawnInterval: Double = 1.5
-        
         timer = NSTimer.scheduledTimerWithTimeInterval(spawnInterval, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         let averageLife = baseLife + randomLife / 2
         for var i: Double = 0; i < averageLife; i += spawnInterval {

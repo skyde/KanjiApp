@@ -39,6 +39,9 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -353,7 +356,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="1" green="0.97188397139923866" blue="0.92094908348848337" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.99931991100311279" green="0.97001075744628906" blue="0.93296515941619873" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">相対性理論での空間
 
 アルベルト・アインシュタインは、ローレンツの考えとは異なった観点から着想し、「全ての慣性基準系は対等であって、特権的な基準系はない」とする仮説と、「あらゆる慣性基準系において真空中の光の速度は一定である」とする仮説によって、ニュートン力学の理論体系を組みなおし、空間と時間に関して新しい考え方を提示した（相対性理論を参照）。ここにおいて、空間は時間と連関して扱われることになり、4次元の時空という概念が現れた。</string>
@@ -420,10 +423,10 @@
             </objects>
             <point key="canvasLocation" x="-389" y="2201"/>
         </scene>
-        <!--CustomUI View Controller-->
+        <!--Add Words-->
         <scene sceneID="Ygc-J7-j5G">
             <objects>
-                <viewController id="MSR-R2-cbT" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MSR-R2-cbT" customClass="AddWords" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gmo-3F-9NX"/>
                         <viewControllerLayoutGuide type="bottom" id="CcD-zX-eec"/>
@@ -444,7 +447,7 @@
                                     <constraint firstAttribute="height" constant="474" id="0Y8-7V-HHZ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIn-zS-WgB">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIn-zS-WgB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -538,10 +541,10 @@ you wish to study</string>
             </objects>
             <point key="canvasLocation" x="175" y="-2"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Add Words List-->
         <scene sceneID="4M5-xF-dQG">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -659,6 +662,9 @@ you wish to study</string>
                             <outlet property="delegate" destination="ghP-Tk-0Fs" id="KiN-xo-ZCE"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="table" destination="UpY-Ke-Oyd" id="dtV-f3-E4U"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4u-6e-hyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -876,12 +882,12 @@ all due cards</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-3J-NV6">
-                                <rect key="frame" x="223" y="194" width="154" height="30"/>
+                                <rect key="frame" x="223" y="149" width="154" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="154" id="7nn-Hm-M7y"/>
                                     <constraint firstAttribute="height" constant="30" id="Vpe-Eg-eNV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -891,12 +897,12 @@ all due cards</string>
                                     <constraint firstAttribute="width" constant="154" id="Pop-kS-DQd"/>
                                     <constraint firstAttribute="height" constant="30" id="bIh-CA-81m"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="p1H-mf-Il1">
-                                <rect key="frame" x="241" y="229" width="118" height="31"/>
+                                <rect key="frame" x="241" y="184" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="Lwr-zh-8Yv"/>
                                     <constraint firstAttribute="height" constant="30" id="jKT-5S-51C"/>
@@ -915,13 +921,13 @@ all due cards</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-6h-2x1">
-                                <rect key="frame" x="251" y="311" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-6h-2x1">
+                                <rect key="frame" x="251" y="301" width="97" height="52"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="P53-NQ-wht"/>
+                                    <constraint firstAttribute="height" constant="52" id="P53-NQ-wht"/>
                                     <constraint firstAttribute="width" constant="97" id="Rqf-gq-y6e"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -936,14 +942,14 @@ all due cards</string>
                             <constraint firstAttribute="centerX" secondItem="9wD-3J-NV6" secondAttribute="centerX" id="NXn-P3-VuM"/>
                             <constraint firstItem="T0g-vH-EGh" firstAttribute="top" secondItem="FTA-Cg-Czx" secondAttribute="bottom" constant="56" id="Ux3-VP-EJp"/>
                             <constraint firstItem="FTA-Cg-Czx" firstAttribute="leading" secondItem="8pf-AF-gb3" secondAttribute="leading" id="VXR-eD-YHH"/>
-                            <constraint firstItem="9wD-3J-NV6" firstAttribute="top" secondItem="FTA-Cg-Czx" secondAttribute="bottom" constant="150" id="WZS-qf-Vs0"/>
+                            <constraint firstItem="9wD-3J-NV6" firstAttribute="top" secondItem="FTA-Cg-Czx" secondAttribute="bottom" constant="105" id="WZS-qf-Vs0"/>
                             <constraint firstAttribute="centerX" secondItem="bn9-6h-2x1" secondAttribute="centerX" id="XTr-A2-Ibv"/>
                             <constraint firstAttribute="trailing" secondItem="FTA-Cg-Czx" secondAttribute="trailing" id="bJD-e3-J8p"/>
                             <constraint firstItem="r0q-5g-Gnv" firstAttribute="leading" secondItem="8pf-AF-gb3" secondAttribute="leading" id="eEv-d4-9Zy"/>
                             <constraint firstItem="r0q-5g-Gnv" firstAttribute="top" secondItem="8pf-AF-gb3" secondAttribute="top" id="kYF-Xb-875"/>
                             <constraint firstItem="p1H-mf-Il1" firstAttribute="top" secondItem="9wD-3J-NV6" secondAttribute="bottom" constant="5" id="pH3-lT-0fO"/>
-                            <constraint firstItem="0FU-Bu-Kpp" firstAttribute="top" secondItem="p1H-mf-Il1" secondAttribute="bottom" constant="14" id="q9c-1N-eta"/>
-                            <constraint firstItem="bn9-6h-2x1" firstAttribute="top" secondItem="0FU-Bu-Kpp" secondAttribute="bottom" constant="8" id="qs7-bl-Xl5"/>
+                            <constraint firstItem="0FU-Bu-Kpp" firstAttribute="top" secondItem="p1H-mf-Il1" secondAttribute="bottom" constant="59" id="q9c-1N-eta"/>
+                            <constraint firstItem="bn9-6h-2x1" firstAttribute="top" secondItem="0FU-Bu-Kpp" secondAttribute="bottom" constant="-2" id="qs7-bl-Xl5"/>
                             <constraint firstAttribute="trailing" secondItem="T0g-vH-EGh" secondAttribute="trailing" id="xme-eh-04y"/>
                         </constraints>
                     </view>
@@ -1159,6 +1165,6 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="jq4-f8-RfP"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="yfD-aM-lZg"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>
