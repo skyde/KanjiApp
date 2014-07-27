@@ -21,23 +21,23 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
         
         switch indexPath.row {
         case 0:
-            addWordsFromList = .MyWords
+            Globals.addWordsFromList = .MyWords
         case 1:
-            addWordsFromList = .Jlpt4
+            Globals.addWordsFromList = .Jlpt4
         case 2:
-            addWordsFromList = .Jlpt3
+            Globals.addWordsFromList = .Jlpt3
         case 3:
-            addWordsFromList = .Jlpt2
+            Globals.addWordsFromList = .Jlpt2
         case 4:
-            addWordsFromList = .Jlpt1
+            Globals.addWordsFromList = .Jlpt1
         case 5:
-            addWordsFromList = .AllWords
+            Globals.addWordsFromList = .AllWords
         default:
             break
         }
         
 //        println(addWordsFromList.description())
 //                var n = NSNotification(name: addWordsFromListNotification, object: targetView)
-        NSNotificationCenter.defaultCenter().postNotificationName(addWordsFromListNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationAddWordsFromList, object: nil)
     }
 }

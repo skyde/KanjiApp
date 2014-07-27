@@ -63,7 +63,7 @@ class CustomUIViewController : UIViewController {
     }
     
     func addToNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: transitionToViewNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: Globals.notificationTransitionToView, object: nil)
     }
     
     func removeFromNotifications() {
@@ -135,12 +135,12 @@ class CustomUIViewController : UIViewController {
     
     func onTransitionToView() {
         if isGameView() {
-            transitionToView(targetView)
+            transitionToView(Globals.targetView)
         }
     }
     
     func transitionToView(target: View) {
-        targetView = target
+        Globals.targetView = target
         self.navigationController?.popToRootViewControllerAnimated(false)
     }
     

@@ -56,13 +56,7 @@ class Card: NSManagedObject {
     
     func setFrontText(label: UILabel) {
         
-//        let font = Globals.JapaneseFont//"Hiragino Kaku Gothic ProN W6"//Globals.JapaneseFont
-        
-//        println(UIFont(name: font, size: 10).description)
-        
         var value = NSMutableAttributedString()
-        
-//        value.beginEditing()
         
         let baseSize: Double = 250
         
@@ -81,55 +75,74 @@ class Card: NSManagedObject {
             }
             setText += "\(spacing)\(add)"
             spacing = "\n"
-            //value.addAttributedText(char + "", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))])
         }
         
-        label.font = label.font.fontWithSize(CGFloat(size))//UIFont(label.font.fontName, size)
+        label.font = label.font.fontWithSize(CGFloat(size))
         label.text = setText
-        
-//        var style = NSMutableParagraphStyle()
-//        //style.lineSpacing = CGFloat(-size * 0.8)
-//        //        style.paragraphSpacing = 0
-//        //        style.lineSpacing = 0
-//        //style.headIndent = 50;
-//        //style.maximumLineHeight = CGFloat(size)
-//        style.paragraphSpacingBefore = 0
-//        style.lineHeightMultiple = 0.8
-        
-        //        style.firstLineHeadIndent = 60
-        
-//        var range = NSMakeRange(0, value.mutableString.length)
-//        
-//        value.addAttribute(NSParagraphStyleAttributeName, value: style, range: range)
-//        
-//        value.endEditing()
-        
-//        return value
     }
-
+    
     var back: NSAttributedString {
     get {
         let font = Globals.JapaneseFont
         var value = NSMutableAttributedString()
         
         value.beginEditing()
-
-        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50))])
-
-        value.addBreak(5)
-
-        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: 22))])
-
-        value.addBreak(20)
-
-        value.addAttributedText(exampleJapanese, [(NSFontAttributeName, UIFont(name: font, size: 24))], processAttributes: true, removeSpaces: true)
-
-        value.addBreak(5)
-
-        value.addAttributedText(exampleEnglish, [(NSFontAttributeName, UIFont(name: font, size: 16))])
-
-        value.addBreak(30)
         
+        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50))])
+        value.endEditing()
+        
+        addBody(value, font)
+        
+        return value
+    }
+    }
+    
+    var definitionAttributedText: NSAttributedString {
+    get {
+        let font = Globals.JapaneseFont
+        var value = NSMutableAttributedString()
+        
+        value.beginEditing()
+        
+        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: font, size: 50))])
+        value.endEditing()
+        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 30))])
+        value.endEditing()
+        
+        addBody(value, font)
+        
+        return value
+    }
+    }
+    
+    func addBody(addTo: NSMutableAttributedString, _ fontName: String) {
+        
+        addTo.addBreak(5)
+        
+        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
+        
+        addTo.addBreak(20)
+        
+        addTo.addAttributedText(exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
+        
+        addTo.addBreak(5)
+        
+        addTo.addAttributedText(exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        addTo.addBreak(30)
+        
+        addExampleSentences(addTo, fontName)
+        
+        addTo.addBreak(10)
+        
+        addTo.addAttributedText("\(pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        var color = colorForPitchAccent(Int(pitchAccent))
+        
+        addTo.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, addTo.mutableString.length))
+    }
+    
+    func addExampleSentences(addTo: NSMutableAttributedString, _ fontName: String) {
         var validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
         var isJapanese = true
         var text = ""
@@ -157,37 +170,22 @@ class Card: NSManagedObject {
                 item != "7" &&
                 item != "8" &&
                 item != "9" {
-                if countElements(text) > 1 {
-                    var size: CGFloat = isJapanese ? 24 : 16
-                    var removeSpaces = isJapanese ? true : false
-                    var extraSpace: String = isJapanese ? "" : "\n"
-                    
-                    value.addAttributedText(text + "\n" + extraSpace, [(NSFontAttributeName, UIFont(name: font, size: size))], processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
-                    
-                    text = ""
-                }
-                isJapanese = !isJapanese
+                    if countElements(text) > 1 {
+                        var size: CGFloat = isJapanese ? 24 : 16
+                        var removeSpaces = isJapanese ? true : false
+                        var extraSpace: String = isJapanese ? "" : "\n"
+                        
+                        addTo.addAttributedText(text + "\n" + extraSpace, [(NSFontAttributeName, UIFont(name: fontName, size: size))], processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                        
+                        text = ""
+                    }
+                    isJapanese = !isJapanese
             }
             
             if !(text == "" && item == ".") {
                 text += item
             }
         }
-        
-        value.addBreak(10)
-        
-        value.addAttributedText("\(pitchAccent)", [(NSFontAttributeName, UIFont(name: font, size: 16))])
-
-        //'#000000', '#CC0066', '#0099EE', '#11AA00', '#FF6600', '#990099', '#999999', '#000000', '#000000', '#000000'
-
-        var color = colorForPitchAccent(Int(pitchAccent))
-
-        value.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, value.mutableString.length))
-
-        value.endEditing()
-
-        return value
-    }
     }
     
     

@@ -46,23 +46,23 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
         switch indexPath.section * 100 + indexPath.row {
         case 0:
-            targetView = .Search
+            Globals.targetView = .Search
         case 1:
-            targetView = .GameMode
+            Globals.targetView = .GameMode
         case 2:
-            targetView = .Reader
+            Globals.targetView = .Reader
         case 3:
-            targetView = .AddWords
+            Globals.targetView = .AddWords
         case 100:
-            targetView = .Lists
+            Globals.targetView = .Lists
         case 300:
-            targetView = .Settings
+            Globals.targetView = .Settings
         default:
             break
         }
         
 //        println(targetView.description())
 //        var n = NSNotification(name: TransitionToView, object: targetView)
-        NSNotificationCenter.defaultCenter().postNotificationName(transitionToViewNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: nil)
     }
 }

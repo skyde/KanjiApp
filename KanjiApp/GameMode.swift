@@ -20,7 +20,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var kanjiView: UILabel!
     
-    let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+//    let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
     
     init(coder aDecoder: NSCoder!) {
         self.due = []
@@ -88,7 +88,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         
         if due.count == 0 {
             self.navigationController.popToRootViewControllerAnimated(false)
-            targetView = .AddWords
+            Globals.targetView = .AddWords
         }
     }
     

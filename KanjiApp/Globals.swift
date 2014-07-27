@@ -1,13 +1,16 @@
 import Foundation
 
-var targetView = View.Search
-let transitionToViewNotification = "transitionToViewNotification"
-
-let addWordsFromListNotification = "addWordsFromListNotification"
-var addWordsFromList: WordList = WordList.MyWords
-
 struct Globals
 {
+    static let notificationShowDefinition = "showDefinitionNotification"
+    static var currentDefinition: String = ""
+    
+    static let notificationTransitionToView = "transitionToViewNotification"
+    
+    static let notificationAddWordsFromList = "addWordsFromListNotification"
+    static var addWordsFromList: WordList = WordList.MyWords
+    static var targetView = View.Search
+    
     static let JapaneseFont = "M+ 2p"//mplus-2p-regular
     
     static let JapaneseFontLight = "mplus-2p-light"

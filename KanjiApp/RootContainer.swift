@@ -98,5 +98,21 @@ class RootContainer: CustomUIViewController {
         self.view.sendSubviewToBack(sidebar)
         
         sidebarButtonBaseFrame = sidebarButton.frame
+        
+        addToNotifications()
     }
+    
+    func onDefinitionLookup() {
+        
+    }
+    
+    override func addToNotifications() {
+        super.addToNotifications()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onDefinitionLookup", name: Globals.notificationShowDefinition, object: nil)
+    }
+    
+//    func removeFromNotifications() {
+//        NSNotificationCenter.defaultCenter().removeObserver(self)
+//    }
 }

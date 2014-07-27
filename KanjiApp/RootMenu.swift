@@ -25,6 +25,6 @@ class RootMenu: CustomUIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        performSegueWithIdentifier(targetView.description(), sender: self)
+        performSegueWithIdentifier(Globals.targetView.description(), sender: self)
     }
 }

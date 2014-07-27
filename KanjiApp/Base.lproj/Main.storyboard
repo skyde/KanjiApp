@@ -277,6 +277,47 @@
             </objects>
             <point key="canvasLocation" x="-2522" y="681"/>
         </scene>
+        <!--Definition Popover-->
+        <scene sceneID="5Ej-YB-gya">
+            <objects>
+                <viewController id="tK9-c8-QBp" customClass="DefinitionPopover" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M8V-25-2rZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="mHs-7n-6qZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jx9-XZ-c6h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
+                            <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
+                            <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
+                            <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXi-8g-1At" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="alW-Rh-5R3">
+                    <connections>
+                        <action selector="onTap" destination="tK9-c8-QBp" id="chI-dC-YOw"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-2039" y="669"/>
+        </scene>
         <!--Root Container-->
         <scene sceneID="0eb-Ac-JoJ">
             <objects>
@@ -1172,6 +1213,6 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="jq4-f8-RfP"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="iYu-nc-2Hh"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

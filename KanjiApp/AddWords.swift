@@ -16,7 +16,7 @@ class AddWords: CustomUIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAddWordsFromList", name: addWordsFromListNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAddWordsFromList", name: Globals.notificationAddWordsFromList, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -31,7 +31,7 @@ class AddWords: CustomUIViewController {
         
         predicate += (CardProperties.enabled, "false")
         
-        switch addWordsFromList {
+        switch Globals.addWordsFromList {
         case .AllWords:
             break;
         case .Jlpt4:
