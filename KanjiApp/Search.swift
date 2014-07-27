@@ -103,7 +103,6 @@ class Search : CustomUIViewController {
             }
         }
         
-        
         label.numberOfLines = 0
         label.font = UIFont(name: Globals.JapaneseFont, size: 24)
         label.textColor = UIColor(

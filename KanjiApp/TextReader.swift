@@ -65,10 +65,30 @@ class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDa
         
         userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
         userText.textContainerInset.top = 44
-//        userText.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
-        userText.contentOffset = CGPoint(x: 0, y: 0)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        
+//        var text = userText.text
+//        
+//        userText.text = ""
+//        
+//        userText.scrollEnabled = false
+////        userText.text = text
+//        userText.scrollEnabled = true
+//        let animationSpeed = 0.4
+//        //        UIView.animateWithDuration(animationSpeed) {}
+//        UIView.animateWithDuration(animationSpeed) {
+//            self.userText.contentOffset = CGPoint(x: 0, y: 0)
+//        }
+
+    }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        
+//    }
+//    
 //    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
 //        return self.items.count;
 //    }
