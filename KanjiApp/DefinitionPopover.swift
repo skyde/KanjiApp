@@ -27,6 +27,21 @@ class DefinitionPopover : CustomUIViewController {
         updateText()
     }
     
-    @IBAction func onTap () {
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        println("didappear")
+//    }
+    @IBAction func onTap(sender: AnyObject) {
+        Globals.currentDefinition = ""
+        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
     }
+//    weak var onCloseClick: UIButton! {
+//    }
+    
+//    @IBAction func onTap(sender: AnyObject) {
+//    }
+    
+//    @IBAction func onTap () {
+//    }
 }

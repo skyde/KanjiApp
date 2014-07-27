@@ -34,7 +34,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        //super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+//        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
         //println("You selected cell #\(indexPath.row)!")
         
@@ -61,8 +61,6 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             break
         }
         
-//        println(targetView.description())
-//        var n = NSNotification(name: TransitionToView, object: targetView)
         NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: nil)
     }
 }

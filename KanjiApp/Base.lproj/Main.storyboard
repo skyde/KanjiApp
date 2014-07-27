@@ -289,20 +289,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
+                                <rect key="frame" x="0.0" y="0.0" width="598" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cat-GQ-uZn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTap:" destination="tK9-c8-QBp" eventType="touchDown" id="eRk-Yd-jlR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cat-GQ-uZn" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="47n-Ul-IGO"/>
+                            <constraint firstAttribute="trailing" secondItem="cat-GQ-uZn" secondAttribute="trailing" id="9OG-z6-uJr"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
+                            <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="cat-GQ-uZn" secondAttribute="bottom" id="Mqf-qc-LRj"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
-                            <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
+                            <constraint firstItem="cat-GQ-uZn" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="rqq-a2-U2J"/>
+                            <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" constant="2" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -310,11 +323,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXi-8g-1At" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="alW-Rh-5R3">
-                    <connections>
-                        <action selector="onTap" destination="tK9-c8-QBp" id="chI-dC-YOw"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2039" y="669"/>
         </scene>
@@ -358,6 +366,12 @@
                                     <segue destination="WrA-K3-cmd" kind="embed" id="vu2-pw-rg7"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHA-xR-qxM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="tK9-c8-QBp" kind="embed" id="6mh-Ka-sSy"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -365,7 +379,11 @@
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="36m-mw-ljt"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
+                            <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
+                            <constraint firstAttribute="trailing" secondItem="nHA-xR-qxM" secondAttribute="trailing" id="Tev-wY-sDY"/>
+                            <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" constant="2" id="ciQ-Ad-4sr"/>
+                            <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" constant="-4" id="x73-U1-zt7"/>
@@ -373,6 +391,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
                         <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>
                         <outlet property="sidebarButton" destination="qDf-Jv-7yu" id="hD5-VT-qgS"/>
@@ -1211,8 +1230,8 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jq4-f8-RfP"/>
+        <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="vgr-gb-U0p"/>
+        <segue reference="6pM-di-aOQ"/>
     </inferredMetricsTieBreakers>
 </document>

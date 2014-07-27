@@ -15,9 +15,11 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
+    @IBOutlet weak var definitionOverlay: UIView!
     
     var sidebarButtonBaseFrame: CGRect!
     var statusBarHidden = false
+    var popoverAnimationSpeed = 0.4
     
     override func isGameView() -> Bool {
         return false
@@ -30,15 +32,15 @@ class RootContainer: CustomUIViewController {
     
     private func animateSelf(open: Bool) {
         
-        let animationSpeed = 0.4
+//        let animationSpeed = 0.4
         let xMove: CGFloat = 272
         
         if open {
-            UIView.animateWithDuration(animationSpeed) {
+            UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.mainView.frame = CGRectMake(xMove, self.mainView.frame.origin.y, self.mainView.frame.width, self.mainView.frame.height);
             }
             
-            UIView.animateWithDuration(animationSpeed) {
+            UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.sidebarButton.frame = CGRectMake(
                     self.sidebarButtonBaseFrame.origin.x + xMove,
                     self.sidebarButtonBaseFrame.origin.y,
@@ -48,11 +50,11 @@ class RootContainer: CustomUIViewController {
         }
         else
         {
-            UIView.animateWithDuration(animationSpeed) {
+            UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
             }
             
-            UIView.animateWithDuration(animationSpeed) {
+            UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.sidebarButton.frame = self.sidebarButtonBaseFrame;
             }
         }
@@ -104,8 +106,25 @@ class RootContainer: CustomUIViewController {
     
     func onDefinitionLookup() {
         
+        println("Root container handle definiton change = \(Globals.currentDefinition)")
+        
+        var animationSpeed = 0.4
+        
+        if Globals.currentDefinition == "" {
+            UIView.animateWithDuration(popoverAnimationSpeed) {
+                self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
+                }
+        } else {
+            UIView.animateWithDuration(popoverAnimationSpeed) {
+                self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
+            }
+        }
     }
     
+//    @IBAction func onTap(sender: AnyObject) {
+//        
+//        println("base on tap")
+//    }
     override func addToNotifications() {
         super.addToNotifications()
         
