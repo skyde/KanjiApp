@@ -1,11 +1,6 @@
 import UIKit
 import CoreData
 
-//class CustomManagedObject: NSManagedObject
-//{
-//    
-//}
-
 @objc(Card)
 class Card: NSManagedObject {
     @NSManaged var kanji: String
@@ -54,14 +49,22 @@ class Card: NSManagedObject {
         }
     }
     
-    var front: NSAttributedString {
-    get {
-        let font = Globals.JapaneseFontLight//"Hiragino Kaku Gothic ProN W6"//Globals.JapaneseFont
-        var value = NSMutableAttributedString()
-
-        value.beginEditing()
+//    var front: NSAttributedString {
+//    get {
+//    }
+//    }
+    
+    func setFrontText(label: UILabel) {
         
-        let baseSize: Double = 210
+//        let font = Globals.JapaneseFont//"Hiragino Kaku Gothic ProN W6"//Globals.JapaneseFont
+        
+//        println(UIFont(name: font, size: 10).description)
+        
+        var value = NSMutableAttributedString()
+        
+//        value.beginEditing()
+        
+        let baseSize: Double = 250
         
         var size = baseSize * 2 / Double(countElements(kanji))
         
@@ -69,24 +72,39 @@ class Card: NSManagedObject {
             size = baseSize
         }
         
+        var setText = ""
+        var spacing = ""
         for char in kanji {
-            value.addAttributedText(char + "", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))])
+            var add = char
+            if add == "ー" {
+                add = "丨"
+            }
+            setText += "\(spacing)\(add)"
+            spacing = "\n"
+            //value.addAttributedText(char + "", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(size)))])
         }
         
-        var style = NSMutableParagraphStyle()
-        style.lineSpacing = CGFloat(-size * 0.3)
-//        style.paragraphSpacing = 0
-//        style.lineSpacing = 0
-        //style.maximumLineHeight = size / 1.5
+        label.font = label.font.fontWithSize(CGFloat(size))//UIFont(label.font.fontName, size)
+        label.text = setText
         
-        var rangle = NSMakeRange(0, value.mutableString.length)
+//        var style = NSMutableParagraphStyle()
+//        //style.lineSpacing = CGFloat(-size * 0.8)
+//        //        style.paragraphSpacing = 0
+//        //        style.lineSpacing = 0
+//        //style.headIndent = 50;
+//        //style.maximumLineHeight = CGFloat(size)
+//        style.paragraphSpacingBefore = 0
+//        style.lineHeightMultiple = 0.8
         
-        value.addAttribute(NSParagraphStyleAttributeName, value: style, range: rangle)
-
-        value.endEditing()
-
-        return value
-    }
+        //        style.firstLineHeadIndent = 60
+        
+//        var range = NSMakeRange(0, value.mutableString.length)
+//        
+//        value.addAttribute(NSParagraphStyleAttributeName, value: style, range: range)
+//        
+//        value.endEditing()
+        
+//        return value
     }
 
     var back: NSAttributedString {

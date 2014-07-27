@@ -41,7 +41,6 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
-            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -375,10 +374,10 @@
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-OM-l2J">
-                                <rect key="frame" x="527" y="7" width="70" height="33"/>
+                                <rect key="frame" x="552" y="7" width="50" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="FL2-K8-HYM"/>
-                                    <constraint firstAttribute="height" constant="33" id="glP-We-Ndh"/>
+                                    <constraint firstAttribute="width" constant="50" id="FL2-K8-HYM"/>
+                                    <constraint firstAttribute="height" constant="30" id="glP-We-Ndh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="15"/>
                                 <state key="normal" title="Add">
@@ -386,9 +385,9 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uge-Te-jM9">
-                                <rect key="frame" x="480" y="7" width="42" height="30"/>
+                                <rect key="frame" x="505" y="7" width="50" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="VwY-Ah-L2g"/>
+                                    <constraint firstAttribute="width" constant="50" id="VwY-Ah-L2g"/>
                                     <constraint firstAttribute="height" constant="30" id="eJ7-RK-9dl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="15"/>
@@ -403,10 +402,10 @@
                             <constraint firstItem="CDn-cS-WZM" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="Hcf-AL-fjH"/>
                             <constraint firstAttribute="trailing" secondItem="CDn-cS-WZM" secondAttribute="trailing" id="Ixe-Wr-FgP"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="KMf-QI-zug"/>
-                            <constraint firstAttribute="trailing" secondItem="gfr-OM-l2J" secondAttribute="trailing" constant="3" id="QJZ-hr-GUv"/>
+                            <constraint firstAttribute="trailing" secondItem="gfr-OM-l2J" secondAttribute="trailing" constant="-2" id="QJZ-hr-GUv"/>
                             <constraint firstItem="Uge-Te-jM9" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="7" id="cUx-74-gw7"/>
                             <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="gYg-Up-xVa"/>
-                            <constraint firstItem="gfr-OM-l2J" firstAttribute="leading" secondItem="Uge-Te-jM9" secondAttribute="trailing" constant="5" id="rCG-Lq-Qwo"/>
+                            <constraint firstItem="gfr-OM-l2J" firstAttribute="leading" secondItem="Uge-Te-jM9" secondAttribute="trailing" constant="-3" id="rCG-Lq-Qwo"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="udl-mi-rlE"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="wn0-hz-fp3"/>
                             <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="wqz-fA-Wv8"/>
@@ -974,39 +973,36 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="一">
-                                        <attributes>
-                                            <font key="NSFont" size="146" name="mplus-2p-light"/>
-                                            <font key="NSOriginalFont" size="146" name="mplus-2p-light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
+                                <string key="text">一
+所</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="146"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="PTp-ZI-4VH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <string key="text">一
 所
 懸
 命</string>
-                                        <attributes>
-                                            <font key="NSFont" size="144" name="mplus-2p-light"/>
-                                            <font key="NSOriginalFont" size="144" name="mplus-2p-light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
+                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="120"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
+                            <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
+                            <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
+                            <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="HFN-uo-rcV" appends="YES" id="5rQ-cm-qMZ"/>
@@ -1014,6 +1010,7 @@ all due cards</string>
                     </view>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <connections>
+                        <outlet property="kanjiView" destination="PTp-ZI-4VH" id="1II-hK-YDu"/>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ocT-bm-8xQ"/>
                         <segue destination="MSR-R2-cbT" kind="show" identifier="AddWords" id="0Q0-aS-4tM"/>
@@ -1062,7 +1059,7 @@ all due cards</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="RND-Vb-f7w"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244897959184" green="0.80612244897959184" blue="0.80612244897959184" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
@@ -1172,8 +1169,8 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jq4-f8-RfP"/>
-        <segue reference="HeO-Ae-RU8"/>
-        <segue reference="Njb-Jk-Mx7"/>
+        <segue reference="0Q0-aS-4tM"/>
+        <segue reference="o8I-8R-76U"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

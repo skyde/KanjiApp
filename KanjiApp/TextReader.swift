@@ -61,8 +61,12 @@ class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDa
         
 //        userText.font = UIFont(userText.font.fontDescriptor().fontDescriptorWithSymbolicTraits(UIFontDescriptorSymbolicTraits.), size: <#CGFloat#>)
 //        println(UIFont.fontNamesForFamilyName("M+ 2p"))
-        userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
+//        println(userText.font)
         
+        userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
+        userText.textContainerInset.top = 44
+//        userText.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+        userText.contentOffset = CGPoint(x: 0, y: 0)
     }
     
 //    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

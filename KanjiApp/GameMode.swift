@@ -18,6 +18,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     }
     
+    @IBOutlet weak var kanjiView: UILabel!
+    
     let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
     
     init(coder aDecoder: NSCoder!) {
@@ -33,14 +35,36 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     func updateText() {
+        
+//        println(UIFont(name: "Helvetica Neue", size: 16).fontName)
+        
         if let card = dueCard {
             if isFront {
-                outputText.attributedText = card.front
+                card.setFrontText(kanjiView)
+                outputText.text = ""
             }
             else {
+                kanjiView.text = ""
                 outputText.attributedText = card.back
             }
             outputText.textAlignment = .Center
+            outputText.textContainerInset.top = 40
+            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+            outputText.scrollEnabled = !isFront
+            
+            kanjiView.enabled = isFront
+            outputText.alpha = isFront ? 0 : 1
+            
+//            if isFront {
+//                
+//            }
+            
+//            if isFront {
+//                outputText.frame = CGRect(x: 0, y: -100, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height + 100)
+//            } else {
+//                outputText.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
+//            }
+//            outputText.
         }
     }
     
