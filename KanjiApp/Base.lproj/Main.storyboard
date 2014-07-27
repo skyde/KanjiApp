@@ -534,6 +534,7 @@ you wish to study</string>
                     </view>
                     <connections>
                         <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="o8I-8R-76U"/>
+                        <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="6pM-di-aOQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0i-p9-3Y9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -795,7 +796,7 @@ all due cards</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZD-Cu-FwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294" y="737"/>
+            <point key="canvasLocation" x="490" y="740"/>
         </scene>
         <!--Lists-->
         <scene sceneID="aNa-Pg-76R">
@@ -1169,8 +1170,8 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Q0-aS-4tM"/>
+        <segue reference="jq4-f8-RfP"/>
+        <segue reference="6pM-di-aOQ"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

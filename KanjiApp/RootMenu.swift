@@ -10,16 +10,21 @@ import Foundation
 
 class RootMenu: CustomUIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        performSegueWithIdentifier(targetView.description(), sender: self)
-    }
-    
     override func isGameView() -> Bool {
         return false
+    }
+    
+    override func receiveTransitionToViewNotifications() -> Bool {
+        return false
+    }
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        performSegueWithIdentifier(targetView.description(), sender: self)
     }
 }

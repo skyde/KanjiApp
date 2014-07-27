@@ -25,6 +25,10 @@ class CustomUIViewController : UIViewController {
         return true
     }
     
+    func receiveTransitionToViewNotifications() -> Bool {
+        return isGameView()
+    }
+    
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
@@ -33,7 +37,6 @@ class CustomUIViewController : UIViewController {
         var settings = managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default", createIfNil: true)! as Settings
         
         settings.userName = "default"
-        
         
         if !settings.generatedCards.boolValue {
             settings.generatedCards = true
@@ -48,12 +51,22 @@ class CustomUIViewController : UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: transitionToViewNotification, object: nil)
+        if receiveTransitionToViewNotifications() {
+            addToNotifications()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
-        
+        if receiveTransitionToViewNotifications() {
+            removeFromNotifications()
+        }
+    }
+    
+    func addToNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: transitionToViewNotification, object: nil)
+    }
+    
+    func removeFromNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -121,14 +134,19 @@ class CustomUIViewController : UIViewController {
     }
     
     func onTransitionToView() {
+        
+        println("In different view, target = \(targetView.description()), self = \(self.description)")
         if isGameView() {
+            
             transitionToView(targetView)
         }
     }
     
     func transitionToView(target: View) {
         targetView = target
-        self.navigationController.popToRootViewControllerAnimated(false)
+        println("pop to root, navCtl = \(self.navigationController)")
+//        removeFromNotifications()
+        self.navigationController?.popToRootViewControllerAnimated(false)
     }
     
     

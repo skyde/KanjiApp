@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDataSource {
+class TextReader: CustomUIViewController {
     @IBOutlet var userText : UITextView!
     var items: [NSNumber] = []
     
@@ -55,35 +55,29 @@ class TextReader: CustomUIViewController {//, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.automaticallyAdjustsScrollViewInsets = false
-//        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         items = []
-        
-//        userText.font = UIFont(userText.font.fontDescriptor().fontDescriptorWithSymbolicTraits(UIFontDescriptorSymbolicTraits.), size: <#CGFloat#>)
-//        println(UIFont.fontNamesForFamilyName("M+ 2p"))
-//        println(userText.font)
         
         userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
         userText.textContainerInset.top = 44
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
-        
-//        var text = userText.text
+//    override func viewWillAppear(animated: Bool) {
 //        
-//        userText.text = ""
 //        
-//        userText.scrollEnabled = false
-////        userText.text = text
-//        userText.scrollEnabled = true
-//        let animationSpeed = 0.4
-//        //        UIView.animateWithDuration(animationSpeed) {}
-//        UIView.animateWithDuration(animationSpeed) {
-//            self.userText.contentOffset = CGPoint(x: 0, y: 0)
-//        }
-
-    }
+////        var text = userText.text
+////        
+////        userText.text = ""
+////        
+////        userText.scrollEnabled = false
+//////        userText.text = text
+////        userText.scrollEnabled = true
+////        let animationSpeed = 0.4
+////        //        UIView.animateWithDuration(animationSpeed) {}
+////        UIView.animateWithDuration(animationSpeed) {
+////            self.userText.contentOffset = CGPoint(x: 0, y: 0)
+////        }
+//
+//    }
     
 //    override func viewDidAppear(animated: Bool) {
 //        
