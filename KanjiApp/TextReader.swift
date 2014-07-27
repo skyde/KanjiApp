@@ -58,12 +58,25 @@ class TextReader: CustomUIViewController {
         items = []
         
         userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
-        userText.textContainerInset.top = 44
+//        userText.textContainerInset.top = 44
     }
     
-//    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+        //        userText.scrollEnabled = false
+//        userText.scrollEnabled = true
+    }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
 //        
+//        println(userText.contentOffset)
 //        
+//    }
+//    override
+//
+//
 ////        var text = userText.text
 ////        
 ////        userText.text = ""

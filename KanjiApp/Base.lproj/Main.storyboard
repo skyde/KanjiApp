@@ -353,8 +353,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" red="0.99931991100311279" green="0.97001075744628906" blue="0.93296515941619873" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">相対性理論での空間
 
@@ -406,7 +406,7 @@
                             <constraint firstItem="Uge-Te-jM9" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="7" id="cUx-74-gw7"/>
                             <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="gYg-Up-xVa"/>
                             <constraint firstItem="gfr-OM-l2J" firstAttribute="leading" secondItem="Uge-Te-jM9" secondAttribute="trailing" constant="-3" id="rCG-Lq-Qwo"/>
-                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="udl-mi-rlE"/>
+                            <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="44" id="udl-mi-rlE"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="wn0-hz-fp3"/>
                             <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="wqz-fA-Wv8"/>
                         </constraints>
@@ -811,7 +811,7 @@ all due cards</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-Up-XMI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="zR6-VI-QSd" id="Byi-z8-FKf"/>
@@ -841,7 +841,7 @@ all due cards</string>
                             <constraint firstItem="yE0-Rj-gdz" firstAttribute="top" secondItem="GQF-Up-XMI" secondAttribute="bottom" id="FBy-6Y-taz"/>
                             <constraint firstItem="fhj-BU-dcO" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="Gdk-ro-uTe"/>
                             <constraint firstItem="GQF-Up-XMI" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="HQZ-Kf-Fie"/>
-                            <constraint firstItem="GQF-Up-XMI" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" id="Id0-tf-TrN"/>
+                            <constraint firstItem="GQF-Up-XMI" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" constant="44" id="Id0-tf-TrN"/>
                             <constraint firstAttribute="trailing" secondItem="fhj-BU-dcO" secondAttribute="trailing" id="QQq-c2-Lw8"/>
                             <constraint firstAttribute="trailing" secondItem="GQF-Up-XMI" secondAttribute="trailing" id="YMI-RF-qsw"/>
                             <constraint firstItem="fhj-BU-dcO" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" id="sFk-mf-oLQ"/>
@@ -1171,7 +1171,7 @@ all due cards</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jq4-f8-RfP"/>
-        <segue reference="6pM-di-aOQ"/>
         <segue reference="o8I-8R-76U"/>
+        <segue reference="iYu-nc-2Hh"/>
     </inferredMetricsTieBreakers>
 </document>
