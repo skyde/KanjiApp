@@ -26,7 +26,7 @@ class CustomUIViewController : UIViewController {
     }
     
     func receiveTransitionToViewNotifications() -> Bool {
-        return isGameView()
+        return true
     }
     
     init(coder aDecoder: NSCoder!) {
@@ -134,18 +134,13 @@ class CustomUIViewController : UIViewController {
     }
     
     func onTransitionToView() {
-        
-        println("In different view, target = \(targetView.description()), self = \(self.description)")
         if isGameView() {
-            
             transitionToView(targetView)
         }
     }
     
     func transitionToView(target: View) {
         targetView = target
-        println("pop to root, navCtl = \(self.navigationController)")
-//        removeFromNotifications()
         self.navigationController?.popToRootViewControllerAnimated(false)
     }
     

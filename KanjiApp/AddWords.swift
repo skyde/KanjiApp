@@ -14,7 +14,7 @@ class AddWords: CustomUIViewController {
 //    }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAddWordsFromList", name: addWordsFromListNotification, object: nil)
     }
@@ -26,8 +26,6 @@ class AddWords: CustomUIViewController {
     }
     
     func onAddWordsFromList() {
-        
-        println("onadd = \(addWordsFromList.description())")
         
         var predicate: [(EntityProperties, String)] = []
         
