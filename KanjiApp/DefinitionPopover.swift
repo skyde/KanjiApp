@@ -25,23 +25,15 @@ class DefinitionPopover : CustomUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateText()
+        setupGestures()
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        println("didappear")
-//    }
-    @IBAction func onTap(sender: AnyObject) {
-        Globals.currentDefinition = ""
+    func setupGestures() {
+        var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func respondToTapGesture(gesture: UIGestureRecognizer) {        Globals.currentDefinition = ""
         NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
     }
-//    weak var onCloseClick: UIButton! {
-//    }
-    
-//    @IBAction func onTap(sender: AnyObject) {
-//    }
-    
-//    @IBAction func onTap () {
-//    }
 }
