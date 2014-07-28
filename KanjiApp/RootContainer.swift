@@ -157,17 +157,31 @@ class RootContainer: CustomUIViewController {
         
         //            view.drawViewHierarchyInRect(Globals.screenRect, afterScreenUpdates: false)
         
-        var image = UIGraphicsGetImageFromCurrentImageContext()
         
-        let outset: CGFloat = 30
-        var expanded = CGSize(width: image.size.width + outset * 2, height: image.size.height + outset * 2)
-        var insetRect = CGRectMake(outset, outset, image.size.width, image.size.height)
+        
+        
+        let baseImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        let outset: CGFloat = 50
+        var expanded = CGSize(width: baseImage.size.width + outset * 2, height: baseImage.size.height + outset * 2)
+        var insetRect = CGRectMake(outset, outset, baseImage.size.width, baseImage.size.height)
         
         UIGraphicsEndImageContext()
         UIGraphicsBeginImageContextWithOptions(expanded, true, 0)
-        image.drawInRect(insetRect)
+//        let col = UIColor(red: 253.0 / 255, green: 250.0 / 255, blue: 248.0 / 255, alpha: 1.0)
+//        col.set()
+        //        UIRectFill(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
+        baseImage.drawInRect(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
+        
+        baseImage.drawInRect(CGRectMake(0, outset, baseImage.size.width + outset * 2, baseImage.size.height))
+        
+        baseImage.drawInRect(insetRect)
+        
+        
+        
+        
 //        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-        image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
 //        UIGraphicsEndImageContext();
 //        return newImage;
         
@@ -196,7 +210,7 @@ class RootContainer: CustomUIViewController {
         //[clampFilter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
 //        objCType:@encode(CGAffineTransform)]
         //        forKey:@];
-        let inputRadius:CGFloat = 10
+        let inputRadius:CGFloat = 30
         
 //        coreImage = ciContext.createCGImage(<#im: CIImage?#>, fromRect: <#CGRect#>)(coreImage, fromRect: CGRectMake(
 //            -outset, -outset, image.size.width + outset * 2, image.size.height + outset * 2))
@@ -215,10 +229,15 @@ class RootContainer: CustomUIViewController {
             blurImage.image = filteredImage
             
             var screen = UIScreen.mainScreen().bounds.size
+            println(filteredImage.size)
+            println(image.size)
+//            println(-(filteredImage.size.height - image.size.height * 2) / 2)
             blurImage.frame = CGRectMake(
-                -(filteredImage.size.width - screen.width) / 2,
-                -(filteredImage.size.height - screen.height) / 2,
-                filteredImage.size.width, filteredImage.size.height)
+                -outset - inputRadius,
+                -outset - inputRadius,
+                screen.width + outset * 2 + inputRadius * 2,
+                screen.height + outset * 2 + inputRadius * 2)
+            println(blurImage.frame)
 //            = Globals.screenRect
         }
         UIGraphicsEndImageContext()
