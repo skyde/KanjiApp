@@ -150,113 +150,61 @@ class RootContainer: CustomUIViewController {
     }
     
     func caculateBlur() {
+        let inputRadius:CGFloat = 30
+        
+        let ciContext = CIContext(options: nil)
         var size = UIScreen.mainScreen().bounds.size
         
         UIGraphicsBeginImageContext(size)
         view.drawViewHierarchyInRect(Globals.screenRect, afterScreenUpdates: false)
         
-        //            view.drawViewHierarchyInRect(Globals.screenRect, afterScreenUpdates: false)
+//        let baseImage = UIGraphicsGetImageFromCurrentImageContext()
         
+        let outset: CGFloat = 0
+//        var expanded = CGSize(width: baseImage.size.width + outset * 2, height: baseImage.size.height + outset * 2)
+//        var insetRect = CGRectMake(outset, outset, baseImage.size.width, baseImage.size.height)
+//        
+//        UIGraphicsEndImageContext()
+//        UIGraphicsBeginImageContextWithOptions(expanded, true, 0)
+//        baseImage.drawInRect(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
+//        
+//        baseImage.drawInRect(CGRectMake(0, outset, baseImage.size.width + outset * 2, baseImage.size.height))
+//        
+//        baseImage.drawInRect(insetRect)
         
-        
-        
-        let baseImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        let outset: CGFloat = 50
-        var expanded = CGSize(width: baseImage.size.width + outset * 2, height: baseImage.size.height + outset * 2)
-        var insetRect = CGRectMake(outset, outset, baseImage.size.width, baseImage.size.height)
-        
-        UIGraphicsEndImageContext()
-        UIGraphicsBeginImageContextWithOptions(expanded, true, 0)
-        baseImage.drawInRect(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
-        
-        baseImage.drawInRect(CGRectMake(0, outset, baseImage.size.width + outset * 2, baseImage.size.height))
-        
-        baseImage.drawInRect(insetRect)
-        
-        
-        
-        
-//        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
         let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext();
-//        return newImage;
-        
-        
         var coreImage = CIImage(image: image)
         
+        var imageExtent = coreImage.extent()
         
-        let filter = CIFilter(name: "CIGaussianBlur")
-        let ciContext = CIContext(options: nil)
-//        
-//        var transform: CGAffineTransform = CGAffineTransformIdentity
-//        var clampFilter = CIFilter(name:"CIAffineClamp")
-//        clampFilter.setValue(image, forKey:"inputImage")
-//        clampFilter.setValue(NSValue(nonretainedObject: transform), "inputTransform")
-//        [clampFilter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
-//        var affineClampFilter = CIFilter(name: "CIAffineClamp")
-//        
-//        var xform = CGAffineTransformMakeScale(1.0, 1.0)
-////        var aofb = [UInt8](count:data.length, repeatedValue:0)
-////        data.getBytes(&aofb, length:data.length)
-////        var v1 = [UInt8](xform)
-////        var v2 = [UInt8](CGAffineTransform)
-////        var value = NSValue(bytes:v1, objCType:v2)
-//        affineClampFilter.setValue(xform as AnyObject, forKey:"inputTransform")
+        var transform: CGAffineTransform = CGAffineTransformIdentity
+        var clampFilter = CIFilter(name: "CIAffineClamp")
+        clampFilter.setValue(coreImage, forKey: kCIInputImageKey)
+        clampFilter.setValue(NSValue(CGAffineTransform: transform), forKey:"inputTransform")
         
-        //[clampFilter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
-//        objCType:@encode(CGAffineTransform)]
-        //        forKey:@];
-        let inputRadius:CGFloat = 30
+        let gaussianFilter = CIFilter(name: "CIGaussianBlur")
+        gaussianFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
+        gaussianFilter.setValue(inputRadius, forKey: "inputRadius")
         
-//        coreImage = ciContext.createCGImage(<#im: CIImage?#>, fromRect: <#CGRect#>)(coreImage, fromRect: CGRectMake(
-//            -outset, -outset, image.size.width + outset * 2, image.size.height + outset * 2))
+        let filteredImageData = gaussianFilter.valueForKey(kCIOutputImageKey) as CIImage
         
-        filter.setValue(inputRadius, forKey: "inputRadius")
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: Globals.screenRect)
+        let filteredImage = UIImage(CGImage: filteredImageRef)
         
-        filter.setValue(coreImage, forKey: kCIInputImageKey)
-//        filter.setValue(affineClampFilter, forKey: "inputTransform")
-        if var filter: AnyObject = filter.valueForKey(kCIOutputImageKey) {
-            
-            let filteredImageData = filter as CIImage
-            
-            let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent())
-            let filteredImage = UIImage(CGImage: filteredImageRef);
-            
-            // Crop larger image down to screen size
-            UIGraphicsEndImageContext()
-            UIGraphicsBeginImageContext(Globals.screenSize)
-            
-            filteredImage.drawInRect(CGRectMake(
-                                -outset - inputRadius,
-                                -outset - inputRadius,
-                                Globals.screenSize.width + outset * 2 + inputRadius * 2,
-                                Globals.screenSize.height + outset * 2 + inputRadius * 2))
-            
-            let image = UIGraphicsGetImageFromCurrentImageContext()
+        // Crop larger image down to screen size
+//        UIGraphicsEndImageContext()
+//        UIGraphicsBeginImageContext(Globals.screenSize)
+        
+//        filteredImage.drawInRect(CGRectMake(
+//                            -outset - inputRadius,
+//                            -outset - inputRadius,
+//                            Globals.screenSize.width + outset * 2 + inputRadius * 2,
+//                            Globals.screenSize.height + outset * 2 + inputRadius * 2))
+        
+//            let image =
 
-            
-            
-            
-            
-            blurImage.image = image
-            
-//            var screen = UIScreen.mainScreen().bounds.size
-//            println(filteredImage.size)
-//            println(image.size)
-//            println(-(filteredImage.size.height - image.size.height * 2) / 2)
-//            blurImage.frame = CGRectMake(
-//                -outset - inputRadius,
-//                -outset - inputRadius,
-//                screen.width + outset * 2 + inputRadius * 2,
-//                screen.height + outset * 2 + inputRadius * 2)
-//            println(blurImage.frame)
-//            = Globals.screenRect
-        }
+            blurImage.image = filteredImage//UIGraphicsGetImageFromCurrentImageContext()
+//        }
         UIGraphicsEndImageContext()
     }
-    
-//    func removeFromNotifications() {
-//        NSNotificationCenter.defaultCenter().removeObserver(self)
-//    }
 }
