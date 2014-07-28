@@ -52,21 +52,21 @@ class CustomUIViewController : UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         if receiveTransitionToViewNotifications() {
-            addToNotifications()
+            addNotifications()
         }
     }
     
     override func viewDidDisappear(animated: Bool) {
         if receiveTransitionToViewNotifications() {
-            removeFromNotifications()
+            removeNotifications()
         }
     }
     
-    func addToNotifications() {
+    func addNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: Globals.notificationTransitionToView, object: nil)
     }
     
-    func removeFromNotifications() {
+    func removeNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     

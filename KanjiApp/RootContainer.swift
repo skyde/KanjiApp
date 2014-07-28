@@ -132,8 +132,8 @@ class RootContainer: CustomUIViewController {
         }
     }
     
-    override func addToNotifications() {
-        super.addToNotifications()
+    override func addNotifications() {
+        super.addNotifications()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onNotificationShowDefinition", name: Globals.notificationShowDefinition, object: nil)
     }
