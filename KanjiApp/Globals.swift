@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 struct Globals
 {
@@ -14,6 +15,13 @@ struct Globals
     static let JapaneseFont = "M+ 2p"//mplus-2p-regular
     
     static let JapaneseFontLight = "mplus-2p-light"
+    
+    static var screenRect: CGRect {
+    get {
+        var size = UIScreen.mainScreen().bounds.size
+        return CGRectMake(0, 0, size.width, size.height)
+    }
+    }
 }
 
 func randomRange(min: Double, max: Double) -> Double {

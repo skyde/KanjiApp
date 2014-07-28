@@ -1,8 +1,12 @@
 import Foundation
 import UIKit
+import SpriteKit
 
 class DefinitionPopover : CustomUIViewController {
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var outputText: UITextView!
+    
+//    var timer: NSTimer = NSTimer()
     
     var viewCard: Card? {
     get {
@@ -27,7 +31,14 @@ class DefinitionPopover : CustomUIViewController {
         super.viewDidLoad()
         updateText()
         setupGestures()
+        
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
+        
     }
+    
+//    func onTimerTick() {
+//        caculateBlur()
+//    }
     
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
@@ -43,6 +54,16 @@ class DefinitionPopover : CustomUIViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        [view drawViewHierarchyInRect:(CGRect){CGPointZero, w, h} afterScreenUpdates:YES]; // view is the view you are grabbing the screen shot of. The view that is to be blurred.
+//        var image = UIGraphicsGetImageFromCurrentImageContext();
+        
+    
+    }
+    
     
     func onNotificationShowDefinition() {
         

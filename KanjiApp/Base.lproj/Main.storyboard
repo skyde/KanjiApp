@@ -285,18 +285,17 @@
                         <viewControllerLayoutGuide type="top" id="M8V-25-2rZ"/>
                         <viewControllerLayoutGuide type="bottom" id="mHs-7n-6qZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jx9-XZ-c6h">
+                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.89999999999999991" contentMode="scaleToFill" id="jx9-XZ-c6h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
                                 <rect key="frame" x="0.0" y="0.0" width="598" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
@@ -333,6 +332,9 @@
                                     <segue destination="gKl-wB-WbN" kind="embed" id="q3g-wv-Iuy"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3KA-G9-9Gl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
                                 <rect key="frame" x="-4" y="2" width="56" height="40"/>
                                 <constraints>
@@ -367,16 +369,21 @@
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
                             <constraint firstAttribute="trailing" secondItem="nHA-xR-qxM" secondAttribute="trailing" id="Tev-wY-sDY"/>
+                            <constraint firstAttribute="trailing" secondItem="3KA-G9-9Gl" secondAttribute="trailing" id="UAc-hU-CWp"/>
+                            <constraint firstItem="3KA-G9-9Gl" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="UlO-YW-izs"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
+                            <constraint firstItem="3KA-G9-9Gl" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="XLd-nX-W2e"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" constant="2" id="ciQ-Ad-4sr"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
+                            <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="3KA-G9-9Gl" secondAttribute="bottom" id="vIn-2n-fNi"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" constant="-4" id="x73-U1-zt7"/>
                             <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="yWv-Rx-Pub"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurImage" destination="3KA-G9-9Gl" id="qZT-7h-SgD"/>
                         <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
                         <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>
@@ -592,7 +599,7 @@ you wish to study</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
