@@ -158,20 +158,6 @@ class RootContainer: CustomUIViewController {
         UIGraphicsBeginImageContext(size)
         view.drawViewHierarchyInRect(Globals.screenRect, afterScreenUpdates: false)
         
-//        let baseImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        let outset: CGFloat = 0
-//        var expanded = CGSize(width: baseImage.size.width + outset * 2, height: baseImage.size.height + outset * 2)
-//        var insetRect = CGRectMake(outset, outset, baseImage.size.width, baseImage.size.height)
-//        
-//        UIGraphicsEndImageContext()
-//        UIGraphicsBeginImageContextWithOptions(expanded, true, 0)
-//        baseImage.drawInRect(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
-//        
-//        baseImage.drawInRect(CGRectMake(0, outset, baseImage.size.width + outset * 2, baseImage.size.height))
-//        
-//        baseImage.drawInRect(insetRect)
-        
         let image = UIGraphicsGetImageFromCurrentImageContext()
         var coreImage = CIImage(image: image)
         
@@ -191,20 +177,7 @@ class RootContainer: CustomUIViewController {
         let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: Globals.screenRect)
         let filteredImage = UIImage(CGImage: filteredImageRef)
         
-        // Crop larger image down to screen size
-//        UIGraphicsEndImageContext()
-//        UIGraphicsBeginImageContext(Globals.screenSize)
-        
-//        filteredImage.drawInRect(CGRectMake(
-//                            -outset - inputRadius,
-//                            -outset - inputRadius,
-//                            Globals.screenSize.width + outset * 2 + inputRadius * 2,
-//                            Globals.screenSize.height + outset * 2 + inputRadius * 2))
-        
-//            let image =
-
-            blurImage.image = filteredImage//UIGraphicsGetImageFromCurrentImageContext()
-//        }
+        blurImage.image = filteredImage
         UIGraphicsEndImageContext()
     }
 }

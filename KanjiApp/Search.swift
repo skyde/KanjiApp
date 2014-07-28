@@ -70,10 +70,13 @@ class Search : CustomUIViewController {
         var matches: [DiscoverAnimatedLabel] = []
         
         for label in animatedLabels {
-            var frame = label.layer.presentationLayer().frame
             
-            if  CGRectContainsPoint(frame, tapLocation) {
-                matches += label
+            var frame = label.layer?.presentationLayer()?.frame
+            
+            if let frame = frame {
+                if  CGRectContainsPoint(frame, tapLocation) {
+                    matches += label
+                }
             }
         }
         
