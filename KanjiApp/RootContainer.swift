@@ -140,7 +140,7 @@ class RootContainer: CustomUIViewController {
                 options: sidebarEasing,
                 animations: {
                     self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height); },
-                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.sidebar.hidden = true } })
+                completion: { (_) -> Void in if self.definitionOverlay.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.definitionOverlay.hidden = true }})
             
             
             

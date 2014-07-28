@@ -174,8 +174,6 @@ class Search : CustomUIViewController {
             },
             completion: { (_) -> Void in label.removeFromSuperview() })
         
-        
-        
         var labels = animatedLabels.sorted { CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0] }
         
         for label in labels {
