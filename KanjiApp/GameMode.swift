@@ -36,8 +36,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     func updateText() {
         
-//        println(UIFont(name: "Helvetica Neue", size: 16).fontName)
-        
         if let card = dueCard {
             if isFront {
                 card.setFrontText(kanjiView)
@@ -54,17 +52,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             
             kanjiView.enabled = isFront
             outputText.alpha = isFront ? 0 : 1
-            
-//            if isFront {
-//                
-//            }
-            
-//            if isFront {
-//                outputText.frame = CGRect(x: 0, y: -100, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height + 100)
-//            } else {
-//                outputText.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
-//            }
-//            outputText.
         }
     }
     

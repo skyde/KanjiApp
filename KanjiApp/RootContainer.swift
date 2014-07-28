@@ -104,11 +104,11 @@ class RootContainer: CustomUIViewController {
         addToNotifications()
     }
     
-    func onDefinitionLookup() {
-        
-        println("Root container handle definiton change = \(Globals.currentDefinition)")
+    func onNotificationShowDefinition() {
         
         var animationSpeed = 0.4
+        
+        println("onNotificationShowDefinition \(Globals.currentDefinition)")
         
         if Globals.currentDefinition == "" {
             UIView.animateWithDuration(popoverAnimationSpeed) {
@@ -121,14 +121,10 @@ class RootContainer: CustomUIViewController {
         }
     }
     
-//    @IBAction func onTap(sender: AnyObject) {
-//        
-//        println("base on tap")
-//    }
     override func addToNotifications() {
         super.addToNotifications()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onDefinitionLookup", name: Globals.notificationShowDefinition, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onNotificationShowDefinition", name: Globals.notificationShowDefinition, object: nil)
     }
     
 //    func removeFromNotifications() {

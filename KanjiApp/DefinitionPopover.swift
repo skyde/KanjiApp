@@ -33,7 +33,21 @@ class DefinitionPopover : CustomUIViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
-    func respondToTapGesture(gesture: UIGestureRecognizer) {        Globals.currentDefinition = ""
+    func respondToTapGesture(gesture: UIGestureRecognizer) {
+        Globals.currentDefinition = ""
         NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+    }
+    
+    func onNotificationShowDefinition() {
+        
+        var animationSpeed = 0.4
+        
+        updateText()
+    }
+    
+    override func addToNotifications() {
+        super.addToNotifications()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onNotificationShowDefinition", name: Globals.notificationShowDefinition, object: nil)
     }
 }

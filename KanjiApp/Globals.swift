@@ -3,7 +3,7 @@ import Foundation
 struct Globals
 {
     static let notificationShowDefinition = "showDefinitionNotification"
-    static var currentDefinition: String = "空"
+    static var currentDefinition: String = ""
     
     static let notificationTransitionToView = "transitionToViewNotification"
     
