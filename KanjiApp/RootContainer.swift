@@ -33,7 +33,6 @@ class RootContainer: CustomUIViewController {
     
     private func animateSelf(open: Bool) {
         
-//        let animationSpeed = 0.4
         let xMove: CGFloat = 272
         
         if open {
@@ -75,12 +74,6 @@ class RootContainer: CustomUIViewController {
         super.onTransitionToView()
         
         animateSelf(false)
-        
-        //switch ta
-        
-//        statusBarHidden = true
-        
-//        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -108,43 +101,26 @@ class RootContainer: CustomUIViewController {
     {
         super.viewDidAppear(animated)
         
-//        mainView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
         self.view.sendSubviewToBack(mainView)
         self.view.sendSubviewToBack(sidebar)
         
         sidebarButtonBaseFrame = sidebarButton.frame
-        
-        addToNotifications()
-        
-//        UIView.animateWithDuration(popoverAnimationSpeed) {
-//            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
-//        }
     }
     
     func onNotificationShowDefinition() {
         
         var animationSpeed = 0.4
         
-        println("onNotificationShowDefinition \(Globals.currentDefinition)")
-        
         if Globals.currentDefinition == "" {
-//            definitionOverlay.hidden = true
-            
-//            UIView.animateWithDuration(popoverAnimationSpeed) {
-//                self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
-//                }
-            
-            
             UIView.animateWithDuration(popoverAnimationSpeed,
                 delay: NSTimeInterval(),
                 options: sidebarEasing,
                 animations: {
-                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height); },
-                completion: { (_) -> Void in if self.definitionOverlay.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.definitionOverlay.hidden = true }})
-            
-            
-            
-            
+                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
+                },
+                completion: {
+                    (_) -> Void in if self.definitionOverlay.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.definitionOverlay.hidden = true }
+                })
         } else {
             definitionOverlay.hidden = false
             
@@ -154,33 +130,6 @@ class RootContainer: CustomUIViewController {
                 self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
             }
         }
-        
-        
-        
-        
-        
-//        if Globals.currentDefinition == "" {
-//            //            UIView.animateWithDuration(popoverAnimationSpeed) {
-//            //
-//            //            }
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: NSTimeInterval(),
-//                options: sidebarEasing,
-//                animations: {
-//                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height); },
-//                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.sidebar.hidden = false } })
-//        } else {
-//            definitionOverlay.hidden = false
-//            
-//            UIView.animateWithDuration(popoverAnimationSpeed) {
-//                self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
-//            }
-//        }
-        
-        
-        
-        
-        
     }
     
     override func addToNotifications() {
