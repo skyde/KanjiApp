@@ -116,18 +116,20 @@ class RootContainer: CustomUIViewController {
         var animationSpeed = 0.4
         
         if Globals.currentDefinition == "" {
+            self.mainView.hidden = false
+            self.blurImage.opaque = false
+            
             UIView.animateWithDuration(popoverAnimationSpeed,
                 delay: NSTimeInterval(),
-                options: sidebarEasing,
+                options: blurEasing,
                 animations: {
                     self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
                     self.blurImage.alpha = 0
                 },
                 completion: {
-                    (_) -> Void in if self.definitionOverlay.layer.presentationLayer().frame.origin.x == self.mainView.frame.width {
+                    (_) -> Void in
                         self.definitionOverlay.hidden = true;
                         self.blurImage.hidden = true;
-                    }
                 })
         } else {
             caculateBlur()
@@ -136,10 +138,18 @@ class RootContainer: CustomUIViewController {
             
             self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
             
-            UIView.animateWithDuration(popoverAnimationSpeed) {
-                self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
-                self.blurImage.alpha = 1
-            }
+            UIView.animateWithDuration(popoverAnimationSpeed,
+                delay: NSTimeInterval(),
+                options: blurEasing,
+                animations: {
+                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
+                    self.blurImage.alpha = 1
+                },
+                completion: {
+                    (_) -> Void in
+                        self.mainView.hidden = true
+                        self.blurImage.opaque = true
+                })
         }
     }
     
