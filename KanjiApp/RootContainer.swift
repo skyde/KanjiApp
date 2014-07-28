@@ -160,13 +160,16 @@ class RootContainer: CustomUIViewController {
     }
     
     func caculateBlur() {
-        let inputRadius:CGFloat = 30
+        let scale: CGFloat = 0.25
+        var inputRadius:CGFloat = 20
         
+        inputRadius *= scale
         let ciContext = CIContext(options: nil)
-        var size = UIScreen.mainScreen().bounds.size
+        var size = CGSize(width: Globals.screenSize.width * scale, height: Globals.screenSize.height * scale)
+        var sizeRect = CGRectMake(0, 0, size.width, size.height)
         
         UIGraphicsBeginImageContext(size)
-        view.drawViewHierarchyInRect(Globals.screenRect, afterScreenUpdates: false)
+        view.drawViewHierarchyInRect(sizeRect, afterScreenUpdates: false)
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         var coreImage = CIImage(image: image)
@@ -184,7 +187,7 @@ class RootContainer: CustomUIViewController {
         
         let filteredImageData = gaussianFilter.valueForKey(kCIOutputImageKey) as CIImage
         
-        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: Globals.screenRect)
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: sizeRect)
         let filteredImage = UIImage(CGImage: filteredImageRef)
         
         blurImage.image = filteredImage
