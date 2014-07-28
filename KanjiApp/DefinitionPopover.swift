@@ -22,6 +22,7 @@ class DefinitionPopover : CustomUIViewController {
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateText()
@@ -34,8 +35,13 @@ class DefinitionPopover : CustomUIViewController {
     }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {
-        Globals.currentDefinition = ""
-        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+        
+        var tapLocation = gesture.locationInView(self.view)
+        
+        if  CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
+            Globals.currentDefinition = ""
+            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+        }
     }
     
     func onNotificationShowDefinition() {

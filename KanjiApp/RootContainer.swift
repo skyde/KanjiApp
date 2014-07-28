@@ -19,7 +19,8 @@ class RootContainer: CustomUIViewController {
     
     var sidebarButtonBaseFrame: CGRect!
     var statusBarHidden = false
-    var popoverAnimationSpeed = 0.4
+    let popoverAnimationSpeed = 0.4
+    let sidebarEasing = UIViewAnimationOptions.CurveEaseIn
     
     override func isGameView() -> Bool {
         return false
@@ -36,6 +37,8 @@ class RootContainer: CustomUIViewController {
         let xMove: CGFloat = 272
         
         if open {
+            sidebar.hidden = false
+            
             UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.mainView.frame = CGRectMake(xMove, self.mainView.frame.origin.y, self.mainView.frame.width, self.mainView.frame.height);
             }
@@ -50,9 +53,12 @@ class RootContainer: CustomUIViewController {
         }
         else
         {
-            UIView.animateWithDuration(popoverAnimationSpeed) {
-                self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
-            }
+            UIView.animateWithDuration(popoverAnimationSpeed,
+            delay: NSTimeInterval(),
+            options: sidebarEasing,
+            animations: {
+                self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height); },
+                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
             
             UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.sidebarButton.frame = self.sidebarButtonBaseFrame;
@@ -90,18 +96,29 @@ class RootContainer: CustomUIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.BlackOpaque
     }
+//    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        definitionOverlay.hidden = true
+        sidebar.hidden = true
+    }
     
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
-        mainView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
+//        mainView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height)
         self.view.sendSubviewToBack(mainView)
         self.view.sendSubviewToBack(sidebar)
         
         sidebarButtonBaseFrame = sidebarButton.frame
         
         addToNotifications()
+        
+//        UIView.animateWithDuration(popoverAnimationSpeed) {
+//            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
+//        }
     }
     
     func onNotificationShowDefinition() {
@@ -111,14 +128,59 @@ class RootContainer: CustomUIViewController {
         println("onNotificationShowDefinition \(Globals.currentDefinition)")
         
         if Globals.currentDefinition == "" {
-            UIView.animateWithDuration(popoverAnimationSpeed) {
-                self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
-                }
+//            definitionOverlay.hidden = true
+            
+//            UIView.animateWithDuration(popoverAnimationSpeed) {
+//                self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
+//                }
+            
+            
+            UIView.animateWithDuration(popoverAnimationSpeed,
+                delay: NSTimeInterval(),
+                options: sidebarEasing,
+                animations: {
+                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height); },
+                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.sidebar.hidden = true } })
+            
+            
+            
+            
         } else {
+            definitionOverlay.hidden = false
+            
+            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+            
             UIView.animateWithDuration(popoverAnimationSpeed) {
                 self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
             }
         }
+        
+        
+        
+        
+        
+//        if Globals.currentDefinition == "" {
+//            //            UIView.animateWithDuration(popoverAnimationSpeed) {
+//            //
+//            //            }
+//            UIView.animateWithDuration(popoverAnimationSpeed,
+//                delay: NSTimeInterval(),
+//                options: sidebarEasing,
+//                animations: {
+//                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height); },
+//                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == self.mainView.frame.width { self.sidebar.hidden = false } })
+//        } else {
+//            definitionOverlay.hidden = false
+//            
+//            UIView.animateWithDuration(popoverAnimationSpeed) {
+//                self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
+//            }
+//        }
+        
+        
+        
+        
+        
     }
     
     override func addToNotifications() {
