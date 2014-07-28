@@ -503,7 +503,7 @@
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4k-H2-WOF">
-                                <rect key="frame" x="0.0" y="247" width="600" height="352.5"/>
+                                <rect key="frame" x="0.0" y="247" width="600" height="353"/>
                                 <connections>
                                     <segue destination="ghP-Tk-0Fs" kind="embed" id="1go-BF-CJ4"/>
                                 </connections>
@@ -539,8 +539,8 @@ you wish to study</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-A8-CGj">
-                                <rect key="frame" x="279" y="44" width="42" height="71.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-A8-CGj">
+                                <rect key="frame" x="279" y="44" width="42" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="B6g-lt-aSW"/>
                                     <constraint firstAttribute="height" priority="750" constant="100" id="WRo-WC-iU5"/>
@@ -797,8 +797,8 @@ all due cards</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-JM-ZZD">
-                                <rect key="frame" x="279" y="44" width="42" height="113.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-JM-ZZD">
+                                <rect key="frame" x="279" y="44" width="42" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="100" id="sjZ-Ap-MPN"/>
                                     <constraint firstAttribute="width" constant="42" id="vew-5c-ywt"/>
