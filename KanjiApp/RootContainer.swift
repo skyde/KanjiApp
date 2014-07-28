@@ -168,9 +168,6 @@ class RootContainer: CustomUIViewController {
         
         UIGraphicsEndImageContext()
         UIGraphicsBeginImageContextWithOptions(expanded, true, 0)
-//        let col = UIColor(red: 253.0 / 255, green: 250.0 / 255, blue: 248.0 / 255, alpha: 1.0)
-//        col.set()
-        //        UIRectFill(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
         baseImage.drawInRect(CGRectMake(0, 0, baseImage.size.width + outset * 2, baseImage.size.height + outset * 2))
         
         baseImage.drawInRect(CGRectMake(0, outset, baseImage.size.width + outset * 2, baseImage.size.height))
@@ -226,18 +223,34 @@ class RootContainer: CustomUIViewController {
             let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent())
             let filteredImage = UIImage(CGImage: filteredImageRef);
             
-            blurImage.image = filteredImage
+            // Crop larger image down to screen size
+            UIGraphicsEndImageContext()
+            UIGraphicsBeginImageContext(Globals.screenSize)
             
-            var screen = UIScreen.mainScreen().bounds.size
-            println(filteredImage.size)
-            println(image.size)
+            filteredImage.drawInRect(CGRectMake(
+                                -outset - inputRadius,
+                                -outset - inputRadius,
+                                Globals.screenSize.width + outset * 2 + inputRadius * 2,
+                                Globals.screenSize.height + outset * 2 + inputRadius * 2))
+            
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+
+            
+            
+            
+            
+            blurImage.image = image
+            
+//            var screen = UIScreen.mainScreen().bounds.size
+//            println(filteredImage.size)
+//            println(image.size)
 //            println(-(filteredImage.size.height - image.size.height * 2) / 2)
-            blurImage.frame = CGRectMake(
-                -outset - inputRadius,
-                -outset - inputRadius,
-                screen.width + outset * 2 + inputRadius * 2,
-                screen.height + outset * 2 + inputRadius * 2)
-            println(blurImage.frame)
+//            blurImage.frame = CGRectMake(
+//                -outset - inputRadius,
+//                -outset - inputRadius,
+//                screen.width + outset * 2 + inputRadius * 2,
+//                screen.height + outset * 2 + inputRadius * 2)
+//            println(blurImage.frame)
 //            = Globals.screenRect
         }
         UIGraphicsEndImageContext()

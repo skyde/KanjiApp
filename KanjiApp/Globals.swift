@@ -17,9 +17,15 @@ struct Globals
     static let JapaneseFontLight = "mplus-2p-light"
     
     static var screenRect: CGRect {
-    get {
-        var size = UIScreen.mainScreen().bounds.size
-        return CGRectMake(0, 0, size.width, size.height)
+        get {
+            var size = UIScreen.mainScreen().bounds.size
+            return CGRectMake(0, 0, size.width, size.height)
+    }
+    }
+    
+    static var screenSize: CGSize {
+        get {
+            return UIScreen.mainScreen().bounds.size
     }
     }
 }
