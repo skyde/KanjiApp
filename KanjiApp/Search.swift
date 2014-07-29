@@ -104,7 +104,7 @@ class Search : CustomUIViewController {
     func spawnText(var time: Double) {
         
         let inset: Double = 10.0
-        let width: Double = 30.0
+        let width: Double = 42.0
         let height: CGFloat = 250
         let verticalOutset: CGFloat = 200
         
@@ -130,8 +130,13 @@ class Search : CustomUIViewController {
         }
         
         if let card = card {
+            var size: CGFloat = 30
+            
             label.kanji = card.kanji
-            label.attributedText = card.animatedLabelText
+            label.attributedText = card.animatedLabelText(size)
+            let height = size * (CGFloat(countElements(card.kanji)) + 1)
+            
+            label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, height)
         }
         
         label.numberOfLines = 0
@@ -142,6 +147,7 @@ class Search : CustomUIViewController {
             green: CGFloat(distance * 0.85),
             blue: CGFloat(distance * 1),
             alpha: 1)
+//        label.backgroundColor = UIColor.redColor()
         
         self.view.addSubview(label)
         self.view.sendSubviewToBack(label)

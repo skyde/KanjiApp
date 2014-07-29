@@ -66,15 +66,14 @@ class Card: NSManagedObject {
     }
     }
     
-    var animatedLabelText: NSAttributedString {
-    get {
-        let font = Globals.JapaneseFont
+    func animatedLabelText(size: CGFloat) -> NSAttributedString {
+    let font = Globals.JapaneseFont
         var value = NSMutableAttributedString()
         
         value.beginEditing()
         
-        let size: CGFloat = 30
-        
+//        let size: CGFloat = 30
+    
         value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: font, size: size))])
         value.endEditing()
         
@@ -86,7 +85,6 @@ class Card: NSManagedObject {
 //        addBody(value, font)
         
         return value
-    }
     }
     
     func setFrontText(label: UILabel) {
