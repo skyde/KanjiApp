@@ -141,13 +141,11 @@ class Search : CustomUIViewController {
         
         label.numberOfLines = 0
         
-//        label.font = UIFont(name: Globals.JapaneseFontLight, size: 30)
         label.textColor = UIColor(
             red: CGFloat(distance * 0.4),
             green: CGFloat(distance * 0.85),
             blue: CGFloat(distance * 1),
             alpha: 1)
-//        label.backgroundColor = UIColor.redColor()
         
         self.view.addSubview(label)
         self.view.sendSubviewToBack(label)
