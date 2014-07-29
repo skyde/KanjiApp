@@ -22,7 +22,7 @@ class RootContainer: CustomUIViewController {
     var statusBarHidden = false
     let popoverAnimationSpeed = 0.4
     let sidebarEasing = UIViewAnimationOptions.CurveEaseIn
-    let blurEasing = UIViewAnimationOptions.CurveEaseIn
+    let blurEasing = UIViewAnimationOptions.CurveEaseOut
     
     override func isGameView() -> Bool {
         return false
@@ -91,7 +91,7 @@ class RootContainer: CustomUIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.BlackOpaque
     }
-//    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -161,7 +161,7 @@ class RootContainer: CustomUIViewController {
     
     func caculateBlur() {
         let scale: CGFloat = 0.25
-        var inputRadius:CGFloat = 20
+        var inputRadius:CGFloat = 30
         
         inputRadius *= scale
         let ciContext = CIContext(options: nil)

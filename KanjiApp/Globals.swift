@@ -12,6 +12,7 @@ struct Globals
     static var addWordsFromList: WordList = WordList.MyWords
     static var targetView = View.Search
     
+    static let DefaultFont = "Hiragino Kaku Gothic ProN W3"
     static let JapaneseFont = "M+ 2p"//mplus-2p-regular
     
     static let JapaneseFontLight = "mplus-2p-light"

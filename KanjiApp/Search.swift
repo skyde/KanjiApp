@@ -13,7 +13,6 @@ class Search : CustomUIViewController {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
-//    var discoverLabels: [DiscoverAnimatedLabel] = []
     var timer:NSTimer? = nil
     var spawnedColumns: [Int] = []
     let baseLife: Double = 20
@@ -32,27 +31,7 @@ class Search : CustomUIViewController {
     }
     }
     
-//    var animatedLabelsPresentation : [DiscoverAnimatedLabel] {
-//    get {
-//        var labels:[DiscoverAnimatedLabel] = []
-//        for item in self.view.layer.presentationLayer() {
-//            if let label = item as? DiscoverAnimatedLabel {
-//                labels += label
-//            }
-//        }
-//        
-//        return labels
-//    }
-//    }
-    
-    
-//    init(coder aDecoder: NSCoder!) {
-//        
-//        super.init(coder: aDecoder)
-//        
-    //    }
     let spawnInterval: Double = 1.5
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +45,6 @@ class Search : CustomUIViewController {
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         
         var tapLocation = gesture.locationInView(self.view)
-        
         var matches: [DiscoverAnimatedLabel] = []
         
         for label in animatedLabels {
@@ -83,10 +61,9 @@ class Search : CustomUIViewController {
         if matches.count > 0 {
             var match = matches.sorted { CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0] }[0]
             
-            Globals.currentDefinition = match.text
+            Globals.currentDefinition = match.kanji
             NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,14 +88,7 @@ class Search : CustomUIViewController {
         if spawnedColumns.count == 0 {
             resetSpawnColumns()
         }
-//        spawnedColumns.f
-//        var open = spawnedColumns.filter { $0 == false }
-//        println(spawnedColumns.count)
-//        
-//        if open.count == 0 {
-//            spawnedColumns = [Bool](count: spawnedColumns.count, repeatedValue: false)
-//        }
-        //
+        
         var select = randomRange(0, spawnedColumns.count)
         
         var value = spawnedColumns[select]
@@ -149,19 +119,24 @@ class Search : CustomUIViewController {
         var xPos = inset + (Double(UIScreen.mainScreen().bounds.width) - inset * 2) / Double(numberOfColumns) * Double(targetColumn)
         var label = DiscoverAnimatedLabel(frame: CGRectMake(CGFloat(xPos), -verticalOutset + yOffset, CGFloat(width), 200))
         
-        if var card = fetchRandomCard() {
-            label.text = card.kanji
-        } else {
-            if var card = fetchRandomCard() {
-                label.text = card.kanji
-            }
-            else {
-                label.text = "空"
-            }
+        var card = fetchRandomCard()
+        
+        if card == nil {
+            card = fetchRandomCard()
+        }
+        
+        if card == nil {
+            card = managedObjectContext.fetchCardByKanji("空")
+        }
+        
+        if let card = card {
+            label.kanji = card.kanji
+            label.attributedText = card.animatedLabelText
         }
         
         label.numberOfLines = 0
-        label.font = UIFont(name: Globals.JapaneseFont, size: 24)
+        
+        label.font = UIFont(name: Globals.JapaneseFontLight, size: 30)
         label.textColor = UIColor(
             red: CGFloat(distance * 0.4),
             green: CGFloat(distance * 0.85),

@@ -49,10 +49,38 @@ class Card: NSManagedObject {
         }
     }
     
-//    var front: NSAttributedString {
-//    get {
-//    }
-//    }
+    var verticalKanji: String {
+    get {
+        var setText = ""
+        var spacing = ""
+        for char in kanji {
+            var add = char
+            if add == "ー" {
+                add = "丨"
+            }
+            setText += "\(spacing)\(add)"
+            spacing = "\n"
+        }
+        
+        return setText
+    }
+    }
+    
+    var animatedLabelText: NSAttributedString {
+    get {
+        let font = Globals.JapaneseFont
+        var value = NSMutableAttributedString()
+        
+        value.beginEditing()
+        
+        value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: font, size: 30))])
+        value.endEditing()
+        
+//        addBody(value, font)
+        
+        return value
+    }
+    }
     
     func setFrontText(label: UILabel) {
         
@@ -66,19 +94,8 @@ class Card: NSManagedObject {
             size = baseSize
         }
         
-        var setText = ""
-        var spacing = ""
-        for char in kanji {
-            var add = char
-            if add == "ー" {
-                add = "丨"
-            }
-            setText += "\(spacing)\(add)"
-            spacing = "\n"
-        }
-        
         label.font = label.font.fontWithSize(CGFloat(size))
-        label.text = setText
+        label.text = verticalKanji
     }
     
     var back: NSAttributedString {
