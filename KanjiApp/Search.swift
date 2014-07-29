@@ -41,11 +41,20 @@ class Search : CustomUIViewController {
         
         timer = NSTimer.scheduledTimerWithTimeInterval(spawnInterval, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
         
-        var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
-        self.view.addGestureRecognizer(tapGesture)
+        var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
+        gesture.minimumPressDuration = 0
+//        println(tapGesture.delaysTouchesBegan)
+        
+//        tapGesture.delaysTouchesBegan = false
+        self.view.addGestureRecognizer(gesture)
     }
     
-    func respondToTapGesture(gesture: UIGestureRecognizer) {
+//    @IBAction func onTouchDown(sender: AnyObject) {
+//        println(view.loc)
+//    }
+    
+    func onTouch(gesture: UIGestureRecognizer) {
+//        gesture.
         var tapLocation = gesture.locationInView(self.view)
         var matches: [DiscoverAnimatedLabel] = []
         
@@ -53,7 +62,7 @@ class Search : CustomUIViewController {
             var frame = label.layer?.presentationLayer()?.frame
             
             if let frame = frame {
-                if  CGRectContainsPoint(frame, tapLocation) {
+                if CGRectContainsPoint(frame, tapLocation) {
                     matches += label
                 }
             }

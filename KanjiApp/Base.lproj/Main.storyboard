@@ -599,7 +599,7 @@ you wish to study</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="353"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1225,6 +1225,6 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="7jX-Xq-vJx"/>
     </inferredMetricsTieBreakers>
 </document>
