@@ -13,8 +13,9 @@ class Search : CustomUIViewController {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
-    var timer:NSTimer? = nil
+    var timer: NSTimer? = nil
     var spawnedColumns: [Int] = []
+    var lastSpawned: [DiscoverAnimatedLabel?] = []
     let baseLife: Double = 20
     let randomLife: Double = 30
     
@@ -36,6 +37,8 @@ class Search : CustomUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lastSpawned = Array(count: numberOfColumns, repeatedValue: nil)
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(spawnInterval, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
         
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
@@ -43,12 +46,10 @@ class Search : CustomUIViewController {
     }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {
-        
         var tapLocation = gesture.locationInView(self.view)
         var matches: [DiscoverAnimatedLabel] = []
         
         for label in animatedLabels {
-            
             var frame = label.layer?.presentationLayer()?.frame
             
             if let frame = frame {
@@ -59,7 +60,9 @@ class Search : CustomUIViewController {
         }
         
         if matches.count > 0 {
-            var match = matches.sorted { CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0] }[0]
+            var match = matches.sorted {
+                CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
+                }[0]
             
             Globals.currentDefinition = match.kanji
             NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
@@ -68,15 +71,19 @@ class Search : CustomUIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+//        for var i: Double = 0; i < Double(numberOfColumns); i += spawnInterval {
+//            let life = 0.95 + i / Double(numberOfColumns) * 0.05
+//            spawnText(life, distributionRandom: true)
+//        }
+
         
         let averageLife = baseLife + randomLife / 2
         for var i: Double = 0; i < averageLife; i += spawnInterval {
-            spawnText(i / averageLife)
+            spawnText(1 - i / averageLife, distributionRandom: true)
         }
     }
     
     func resetSpawnColumns() {
-        
         spawnedColumns = []
         for var i = 0; i < numberOfColumns; i++ {
             spawnedColumns += i
@@ -84,7 +91,6 @@ class Search : CustomUIViewController {
     }
     
     func selectRandomOpenColumn() -> Int {
-        
         if spawnedColumns.count == 0 {
             resetSpawnColumns()
         }
@@ -101,19 +107,27 @@ class Search : CustomUIViewController {
         spawnText(0)
     }
     
-    func spawnText(var time: Double) {
-        
+    func spawnText(var time: Double, distributionRandom: Bool = false) {
         let inset: Double = 10.0
         let width: Double = 42.0
         let height: CGFloat = 250
         let verticalOutset: CGFloat = 200
         
+        var targetColumn = selectRandomOpenColumn()
+        
+        if !distributionRandom {
+            var sorted = lastSpawned.sorted { $0?.animatedPosition?.y > $1?.animatedPosition?.y }
+            
+            if let item = sorted[0] {
+                targetColumn = item.column
+            }
+        }
+        
         var distance = randomRange(0.0, 1.0)
         distance = distance * distance
         
         var life: Double = (baseLife + randomLife * distance) * (1 - time)
-        
-        var targetColumn = selectRandomOpenColumn()
+
         var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * CGFloat(time)
         
         var xPos = inset + (Double(UIScreen.mainScreen().bounds.width) - inset * 2) / Double(numberOfColumns) * Double(targetColumn)
@@ -138,6 +152,7 @@ class Search : CustomUIViewController {
             
             label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, height)
         }
+        label.column = targetColumn
         
         label.numberOfLines = 0
         
@@ -156,19 +171,28 @@ class Search : CustomUIViewController {
             animations: {
                 label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + verticalOutset, label.frame.width, label.frame.height)
             },
-            completion: { (_) -> Void in label.removeFromSuperview() })
+            completion: {
+                (_) -> Void in
+                label.removeFromSuperview();
+                if self.lastSpawned[label.column] == label {
+                    self.lastSpawned[label.column] = nil
+                }
+            })
         
-        var labels = animatedLabels.sorted { CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0] }
+        var labels = animatedLabels.sorted {
+            CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
+        }
         
         for label in labels {
             self.view.sendSubviewToBack(label)
         }
         
         self.view.sendSubviewToBack(discoverBarFade)
+        
+        lastSpawned[label.column] = label
     }
     
     func fetchRandomCard() -> Card? {
-        
         var rnd = Int(randomRange(1000, 9567))
         
         return managedObjectContext.fetchCardByIndex(rnd)

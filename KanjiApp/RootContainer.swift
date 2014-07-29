@@ -29,12 +29,10 @@ class RootContainer: CustomUIViewController {
     }
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
-        
         animateSelf(mainView.frame.origin.x == 0)
     }
     
     private func animateSelf(open: Bool) {
-        
         let xMove: CGFloat = 272
         
         if open {
