@@ -79,7 +79,7 @@ class Search : CustomUIViewController {
         
         let averageLife = baseLife + randomLife / 2
         for var i: Double = 0; i < averageLife; i += spawnInterval {
-            spawnText(1 - i / averageLife, distributionRandom: true)
+            spawnText(1 - i / averageLife)//, distributionRandom: true
         }
     }
     
@@ -107,7 +107,7 @@ class Search : CustomUIViewController {
         spawnText(0)
     }
     
-    func spawnText(var time: Double, distributionRandom: Bool = false) {
+    func spawnText(var time: Double) {// , distributionRandom: Bool = false
         let inset: Double = 10.0
         let width: Double = 42.0
         let height: CGFloat = 250
@@ -115,13 +115,13 @@ class Search : CustomUIViewController {
         
         var targetColumn = selectRandomOpenColumn()
         
-        if !distributionRandom {
-            var sorted = lastSpawned.sorted { $0?.animatedPosition?.y > $1?.animatedPosition?.y }
-            
-            if let item = sorted[0] {
-                targetColumn = item.column
-            }
-        }
+//        if !distributionRandom {
+//            var sorted = lastSpawned.sorted { $0?.animatedPosition?.y > $1?.animatedPosition?.y }
+//            
+//            if let item = sorted[0] {
+//                targetColumn = item.column
+//            }
+//        }
         
         var distance = randomRange(0.0, 1.0)
         distance = distance * distance
