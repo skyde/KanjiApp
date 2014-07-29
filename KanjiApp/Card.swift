@@ -73,9 +73,16 @@ class Card: NSManagedObject {
         
         value.beginEditing()
         
-        value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: font, size: 30))])
+        let size: CGFloat = 30
+        
+        value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: font, size: size))])
         value.endEditing()
         
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 0
+        paragraphStyle.paragraphSpacing = -size / 3.0
+        
+        value.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, value.mutableString.length))
 //        addBody(value, font)
         
         return value
