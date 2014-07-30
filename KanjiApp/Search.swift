@@ -46,7 +46,12 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
-        
+        println("open search")
+        searchResults.hidden = false
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
+        searchResults.hidden = true
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
