@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class Search : CustomUIViewController {
+class Search : CustomUIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
@@ -39,6 +39,23 @@ class Search : CustomUIViewController {
         var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
         gesture.minimumPressDuration = 0
         self.view.addGestureRecognizer(gesture)
+    }
+    
+    func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
+        return true
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
+        
+    }
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
+        return true
+        
+    }
+    
+    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
+        println(searchText)
     }
     
     func onTouch(gesture: UIGestureRecognizer) {

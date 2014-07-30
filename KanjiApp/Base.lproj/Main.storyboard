@@ -1098,6 +1098,9 @@ all due cards</string>
                                     <constraint firstAttribute="height" constant="44" id="OGG-NS-mZW"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cUj-3S-BQf" id="xqo-ok-MtL"/>
+                                </connections>
                             </searchBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1227,8 +1230,8 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Q0-aS-4tM"/>
-        <segue reference="o8I-8R-76U"/>
+        <segue reference="jq4-f8-RfP"/>
+        <segue reference="HeO-Ae-RU8"/>
         <segue reference="7jX-Xq-vJx"/>
     </inferredMetricsTieBreakers>
 </document>
