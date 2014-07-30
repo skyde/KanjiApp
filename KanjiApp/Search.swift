@@ -8,8 +8,8 @@ class Search : CustomUIViewController {
     var timer: NSTimer? = nil
     var spawnedColumns: [Int] = []
     var lastSpawned: [DiscoverAnimatedLabel?] = []
-    let baseLife: Double = 20
-    let randomLife: Double = 30
+    let baseLife: Double = 30
+    let randomLife: Double = 10
     
     @IBOutlet weak var navigationBarLabel: UILabel!
     var animatedLabels : [DiscoverAnimatedLabel] {
