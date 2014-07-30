@@ -5,8 +5,7 @@ import SpriteKit
 class DefinitionPopover : CustomUIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var outputText: UITextView!
-    
-//    var timer: NSTimer = NSTimer()
+    @IBOutlet weak var addRemoveButton: AddRemoveButton!
     
     var viewCard: Card? {
     get {
@@ -31,14 +30,22 @@ class DefinitionPopover : CustomUIViewController {
         super.viewDidLoad()
         updateText()
         setupGestures()
-        
-//        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
-        
     }
     
-//    func onTimerTick() {
-//        caculateBlur()
-//    }
+    @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
+        
+        if let viewCard = viewCard {
+            viewCard.enabled = !viewCard.enabled.boolValue
+            
+            addRemoveButton.onInteract()
+            addRemoveButton.setButtonType(!viewCard.enabled.boolValue)
+            
+//            addRemoveButton.imageView.image =  UIImage(named: "minusIcon.png")
+        
+        
+            saveContext()
+        }
+    }
     
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
@@ -46,7 +53,6 @@ class DefinitionPopover : CustomUIViewController {
     }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {
-        
         var tapLocation = gesture.locationInView(self.view)
         
         if  CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {

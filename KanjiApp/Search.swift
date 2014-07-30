@@ -1,11 +1,3 @@
-//
-//  Search.swift
-//  KanjiApp
-//
-//  Created by Sky on 2014-07-24.
-//  Copyright (c) 2014 Sky. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -44,18 +36,10 @@ class Search : CustomUIViewController {
         
         var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
         gesture.minimumPressDuration = 0
-//        println(tapGesture.delaysTouchesBegan)
-        
-//        tapGesture.delaysTouchesBegan = false
         self.view.addGestureRecognizer(gesture)
     }
     
-//    @IBAction func onTouchDown(sender: AnyObject) {
-//        println(view.loc)
-//    }
-    
     func onTouch(gesture: UIGestureRecognizer) {
-//        gesture.
         var tapLocation = gesture.locationInView(self.view)
         var matches: [DiscoverAnimatedLabel] = []
         
