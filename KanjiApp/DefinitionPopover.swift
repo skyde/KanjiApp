@@ -23,6 +23,8 @@ class DefinitionPopover : CustomUIViewController {
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+            
+            addRemoveButton.setButtonType(!card.enabled.boolValue)
         }
     }
     
@@ -57,6 +59,11 @@ class DefinitionPopover : CustomUIViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
     }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

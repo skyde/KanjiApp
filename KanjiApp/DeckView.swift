@@ -38,6 +38,11 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        println("You selected cell #\(indexPath.row)!")
+        
+        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+            Globals.currentDefinition = card.kanji
+            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+        }
+        
     }
 }

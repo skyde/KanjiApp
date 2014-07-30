@@ -880,27 +880,6 @@ all due cards</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4J-Ih-Glc">
-                                <rect key="frame" x="553" y="-2" width="46" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="GdC-Ry-Glz"/>
-                                    <constraint firstAttribute="height" constant="46" id="crO-is-Vka"/>
-                                </constraints>
-                                <state key="normal" image="plusIcon.png">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-h5-P1z">
-                                <rect key="frame" x="511" y="-2" width="46" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="3hL-bv-biA"/>
-                                    <constraint firstAttribute="height" constant="46" id="geQ-c1-hZ7"/>
-                                </constraints>
-                                <state key="normal" image="minusIcon.png">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -909,12 +888,8 @@ all due cards</string>
                             <constraint firstItem="GQF-Up-XMI" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="HQZ-Kf-Fie"/>
                             <constraint firstItem="GQF-Up-XMI" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" constant="44" id="Id0-tf-TrN"/>
                             <constraint firstAttribute="trailing" secondItem="fhj-BU-dcO" secondAttribute="trailing" id="QQq-c2-Lw8"/>
-                            <constraint firstItem="B4J-Ih-Glc" firstAttribute="top" secondItem="EzM-Yf-p7c" secondAttribute="top" constant="-2" id="UQc-gK-AmA"/>
                             <constraint firstAttribute="trailing" secondItem="GQF-Up-XMI" secondAttribute="trailing" id="YMI-RF-qsw"/>
-                            <constraint firstItem="Kog-h5-P1z" firstAttribute="top" secondItem="EzM-Yf-p7c" secondAttribute="top" constant="-2" id="bzx-NT-ppj"/>
-                            <constraint firstAttribute="trailing" secondItem="B4J-Ih-Glc" secondAttribute="trailing" constant="1" id="hfX-mk-Xg4"/>
                             <constraint firstItem="fhj-BU-dcO" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" id="sFk-mf-oLQ"/>
-                            <constraint firstItem="B4J-Ih-Glc" firstAttribute="leading" secondItem="Kog-h5-P1z" secondAttribute="trailing" constant="-4" id="upQ-Ma-hNQ"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -1239,12 +1214,11 @@ all due cards</string>
         <image name="discoverBarFade.png" width="512" height="512"/>
         <image name="discoverBottomFade.png" width="512" height="512"/>
         <image name="hamburgerIcon.png" width="600" height="414"/>
-        <image name="minusIcon.png" width="512" height="512"/>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="vgr-gb-U0p"/>
+        <segue reference="iYu-nc-2Hh"/>
     </inferredMetricsTieBreakers>
 </document>
