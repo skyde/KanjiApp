@@ -11,6 +11,7 @@ class Search : CustomUIViewController {
     let baseLife: Double = 30
     let randomLife: Double = 10
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
     @IBOutlet weak var navigationBarLabel: UILabel!
     var animatedLabels : [DiscoverAnimatedLabel] {

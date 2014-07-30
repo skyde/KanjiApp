@@ -1146,6 +1146,7 @@ all due cards</string>
                     <connections>
                         <outlet property="discoverBarFade" destination="r8K-4J-9f7" id="RHR-XN-bZm"/>
                         <outlet property="navigationBarLabel" destination="cEn-qY-4J5" id="7k6-P0-8VX"/>
+                        <outlet property="searchBar" destination="96a-eE-Ku8" id="Qw5-RY-Wlf"/>
                         <outlet property="searchResults" destination="UPW-QC-lvn" id="G0L-eI-5gs"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="7jX-Xq-vJx"/>
                     </connections>
