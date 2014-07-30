@@ -294,21 +294,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezt-gv-unZ">
-                                <rect key="frame" x="567" y="10" width="23" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t">
+                                <rect key="frame" x="553" y="-2" width="46" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="3F4-LZ-vuP"/>
-                                    <constraint firstAttribute="width" constant="23" id="4bo-yt-Ws1"/>
+                                    <constraint firstAttribute="width" constant="46" id="UXy-CR-8dS"/>
+                                    <constraint firstAttribute="height" constant="46" id="cwN-43-Vmp"/>
                                 </constraints>
                                 <state key="normal" image="plusIcon.png">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-ZL-RLB">
-                                <rect key="frame" x="529" y="10" width="23" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sD1-ia-bBA">
+                                <rect key="frame" x="511" y="-2" width="46" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="23" id="XrS-4X-bej"/>
-                                    <constraint firstAttribute="height" constant="23" id="xfZ-lJ-KRC"/>
+                                    <constraint firstAttribute="width" constant="46" id="0PP-gf-4TY"/>
+                                    <constraint firstAttribute="height" constant="46" id="bVp-bi-5eY"/>
                                 </constraints>
                                 <state key="normal" image="minusIcon.png">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -318,13 +318,13 @@
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ezt-gv-unZ" firstAttribute="leading" secondItem="Yoy-ZL-RLB" secondAttribute="trailing" constant="15" id="Af3-la-KW3"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
-                            <constraint firstItem="Yoy-ZL-RLB" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" constant="10" id="SQQ-VW-4Fv"/>
-                            <constraint firstItem="ezt-gv-unZ" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" constant="10" id="b22-TN-GU7"/>
+                            <constraint firstItem="9qq-MD-I8t" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" constant="-2" id="R1c-gm-c5b"/>
+                            <constraint firstItem="9qq-MD-I8t" firstAttribute="leading" secondItem="sD1-ia-bBA" secondAttribute="trailing" constant="-4" id="Twe-Ta-mKU"/>
+                            <constraint firstItem="sD1-ia-bBA" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" constant="-2" id="VCa-pP-BYx"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
-                            <constraint firstAttribute="trailing" secondItem="ezt-gv-unZ" secondAttribute="trailing" constant="10" id="yNM-8i-XAa"/>
+                            <constraint firstAttribute="trailing" secondItem="9qq-MD-I8t" secondAttribute="trailing" constant="1" id="lz1-mG-Kvq"/>
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" constant="2" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
@@ -1170,6 +1170,7 @@ all due cards</string>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="discoverBarFade" destination="r8K-4J-9f7" id="RHR-XN-bZm"/>
+                        <outlet property="navigationBarLabel" destination="cEn-qY-4J5" id="7k6-P0-8VX"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="7jX-Xq-vJx"/>
                     </connections>
                 </viewController>
