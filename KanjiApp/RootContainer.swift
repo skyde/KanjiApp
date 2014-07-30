@@ -21,7 +21,7 @@ class RootContainer: CustomUIViewController {
     var sidebarButtonBaseFrame: CGRect!
     var statusBarHidden = false
     let popoverAnimationSpeed = 0.4
-    let sidebarEasing = UIViewAnimationOptions.CurveEaseIn
+    let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
     
     override func isGameView() -> Bool {
@@ -38,17 +38,25 @@ class RootContainer: CustomUIViewController {
         if open {
             sidebar.hidden = false
             
-            UIView.animateWithDuration(popoverAnimationSpeed) {
-                self.mainView.frame = CGRectMake(xMove, self.mainView.frame.origin.y, self.mainView.frame.width, self.mainView.frame.height);
-            }
+            UIView.animateWithDuration(popoverAnimationSpeed,
+                delay: NSTimeInterval(),
+                options: sidebarEasing,
+                animations: {
+                    self.mainView.frame = CGRectMake(xMove, self.mainView.frame.origin.y, self.mainView.frame.width, self.mainView.frame.height)
+                },
+                completion: nil)
             
-            UIView.animateWithDuration(popoverAnimationSpeed) {
-                self.sidebarButton.frame = CGRectMake(
-                    self.sidebarButtonBaseFrame.origin.x + xMove,
-                    self.sidebarButtonBaseFrame.origin.y,
-                    self.sidebarButton.frame.width,
-                    self.sidebarButton.frame.height);
-            }
+            UIView.animateWithDuration(popoverAnimationSpeed,
+                delay: NSTimeInterval(),
+                options: sidebarEasing,
+                animations: {
+                    self.sidebarButton.frame = CGRectMake(
+                        self.sidebarButtonBaseFrame.origin.x + xMove,
+                        self.sidebarButtonBaseFrame.origin.y,
+                        self.sidebarButton.frame.width,
+                        self.sidebarButton.frame.height);
+                },
+                completion: nil)
         }
         else
         {
@@ -59,9 +67,17 @@ class RootContainer: CustomUIViewController {
                 self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height) },
                 completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
             
-            UIView.animateWithDuration(popoverAnimationSpeed) {
-                self.sidebarButton.frame = self.sidebarButtonBaseFrame;
-            }
+            UIView.animateWithDuration(popoverAnimationSpeed,
+                delay: NSTimeInterval(),
+                options: sidebarEasing,
+                animations: {
+                    self.sidebarButton.frame = self.sidebarButtonBaseFrame
+                },
+                completion: nil)
+            
+//            UIView.animateWithDuration(popoverAnimationSpeed) {
+//                
+//            }
         }
     }
 

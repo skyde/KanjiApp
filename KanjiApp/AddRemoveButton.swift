@@ -4,31 +4,18 @@ import UIKit
 class AddRemoveButton: UIButton {
     public func onInteract() {
         
-//        var duration = 0.5
-//        var outset = 10
-//        
-//        var baseFrame = frame
-//        
-//        println(self.frame)
+        var baseFrame = frame
         
-//        self.con
+        let outset: CGFloat = 1.7
+        self.transform = CGAffineTransformMakeScale(outset, outset)
         
-//        self.frame = CGRectMake(
-//            self.frame.origin.x - outset,
-//            self.frame.origin.y - outset,
-//            self.frame.width + outset * 2,
-//            self.frame.height + outset * 2)
-        
-//        println(self.frame)
-//        UIView.animateWithDuration(4,
-//            delay: NSTimeInterval(),
-//            options: UIViewAnimationOptions.CurveEaseOut,
-//            animations: {
-//                self.frame = baseFrame
-//            },
-//            completion: {
-//                (_) -> Void in println("done")
-//            })
+        UIView.animateWithDuration(0.3,
+            delay: NSTimeInterval(),
+            options: UIViewAnimationOptions.CurveEaseOut,
+            animations: {
+                self.transform = CGAffineTransformMakeScale(1, 1)
+            },
+            completion: nil)
 
     }
     

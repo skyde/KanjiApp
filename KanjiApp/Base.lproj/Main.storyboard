@@ -291,7 +291,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="KanjiApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="KanjiApp" customModuleProvider="target">
                                 <rect key="frame" x="553" y="-2" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="UXy-CR-8dS"/>
@@ -439,7 +439,7 @@
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9A-Ht-RIx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9A-Ht-RIx">
                                 <rect key="frame" x="553" y="-2" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Wdb-jJ-Aq0"/>
@@ -880,7 +880,7 @@ all due cards</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4J-Ih-Glc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4J-Ih-Glc">
                                 <rect key="frame" x="553" y="-2" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="GdC-Ry-Glz"/>
@@ -890,7 +890,7 @@ all due cards</string>
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-h5-P1z">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-h5-P1z">
                                 <rect key="frame" x="511" y="-2" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="3hL-bv-biA"/>
@@ -1245,6 +1245,6 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="iYu-nc-2Hh"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

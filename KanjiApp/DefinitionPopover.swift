@@ -40,9 +40,6 @@ class DefinitionPopover : CustomUIViewController {
             addRemoveButton.onInteract()
             addRemoveButton.setButtonType(!viewCard.enabled.boolValue)
             
-//            addRemoveButton.imageView.image =  UIImage(named: "minusIcon.png")
-        
-        
             saveContext()
         }
     }
