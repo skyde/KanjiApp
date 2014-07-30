@@ -11,6 +11,7 @@ class Search : CustomUIViewController {
     let baseLife: Double = 30
     let randomLife: Double = 10
     
+    @IBOutlet weak var searchResults: UITableView!
     @IBOutlet weak var navigationBarLabel: UILabel!
     var animatedLabels : [DiscoverAnimatedLabel] {
     get {
@@ -40,31 +41,36 @@ class Search : CustomUIViewController {
     }
     
     func onTouch(gesture: UIGestureRecognizer) {
-        var tapLocation = gesture.locationInView(self.view)
-        var matches: [DiscoverAnimatedLabel] = []
-        
-        for label in animatedLabels {
-            var frame = label.layer?.presentationLayer()?.frame
+        if Globals.currentDefinition == "" {
+            var tapLocation = gesture.locationInView(self.view)
+            var matches: [DiscoverAnimatedLabel] = []
             
-            if let frame = frame {
-                if CGRectContainsPoint(frame, tapLocation) {
-                    matches += label
+            for label in animatedLabels {
+                var frame = label.layer?.presentationLayer()?.frame
+                
+                if let frame = frame {
+                    if CGRectContainsPoint(frame, tapLocation) {
+                        matches += label
+                    }
                 }
             }
-        }
-        
-        if matches.count > 0 {
-            var match = matches.sorted {
-                CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
-                }[0]
             
-            Globals.currentDefinition = match.kanji
-            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+            if matches.count > 0 {
+                var match = matches.sorted {
+                    CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
+                    }[0]
+                
+                Globals.currentDefinition = match.kanji
+                NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+            }
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        searchResults.hidden = true
+        Globals.currentDefinition == ""
 //        for var i: Double = 0; i < Double(numberOfColumns); i += spawnInterval {
 //            let life = 0.95 + i / Double(numberOfColumns) * 0.05
 //            spawnText(life, distributionRandom: true)

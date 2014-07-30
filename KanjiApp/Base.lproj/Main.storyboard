@@ -1115,18 +1115,26 @@ all due cards</string>
                                     <constraint firstAttribute="height" constant="500" id="jLY-ft-iTr"/>
                                 </constraints>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-QC-lvn">
+                                <rect key="frame" x="0.0" y="88" width="600" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cEn-qY-4J5" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="2sU-un-juF"/>
                             <constraint firstItem="cEn-qY-4J5" firstAttribute="top" secondItem="3Yu-yV-REK" secondAttribute="top" id="3kt-wR-vkh"/>
+                            <constraint firstAttribute="trailing" secondItem="UPW-QC-lvn" secondAttribute="trailing" id="4IN-8N-jKK"/>
                             <constraint firstItem="NuM-Ed-cG9" firstAttribute="top" secondItem="r8K-4J-9f7" secondAttribute="bottom" id="4Yw-Rq-2Wo"/>
                             <constraint firstItem="z3B-70-MMs" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="AEG-dj-9dv"/>
                             <constraint firstAttribute="trailing" secondItem="z3B-70-MMs" secondAttribute="trailing" id="ARe-o4-JoB"/>
                             <constraint firstItem="96a-eE-Ku8" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="Aax-g7-CdY"/>
                             <constraint firstAttribute="trailing" secondItem="cEn-qY-4J5" secondAttribute="trailing" id="BEx-S9-K4q"/>
+                            <constraint firstItem="NuM-Ed-cG9" firstAttribute="top" secondItem="UPW-QC-lvn" secondAttribute="bottom" id="IMm-ya-Yas"/>
                             <constraint firstItem="r8K-4J-9f7" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="NE5-9N-E7k"/>
+                            <constraint firstItem="UPW-QC-lvn" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="OD7-tH-V8q"/>
                             <constraint firstAttribute="trailing" secondItem="r8K-4J-9f7" secondAttribute="trailing" id="Qua-0D-9qP"/>
+                            <constraint firstItem="UPW-QC-lvn" firstAttribute="top" secondItem="96a-eE-Ku8" secondAttribute="bottom" id="T1M-r9-Sdl"/>
                             <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="ZZm-Rn-B2W"/>
                             <constraint firstItem="z3B-70-MMs" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="hR2-Vl-b68"/>
                             <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="jpJ-kJ-scy"/>
@@ -1138,6 +1146,7 @@ all due cards</string>
                     <connections>
                         <outlet property="discoverBarFade" destination="r8K-4J-9f7" id="RHR-XN-bZm"/>
                         <outlet property="navigationBarLabel" destination="cEn-qY-4J5" id="7k6-P0-8VX"/>
+                        <outlet property="searchResults" destination="UPW-QC-lvn" id="G0L-eI-5gs"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="7jX-Xq-vJx"/>
                     </connections>
                 </viewController>
@@ -1219,6 +1228,6 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="iYu-nc-2Hh"/>
+        <segue reference="7jX-Xq-vJx"/>
     </inferredMetricsTieBreakers>
 </document>

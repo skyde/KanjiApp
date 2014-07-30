@@ -130,6 +130,7 @@ class RootContainer: CustomUIViewController {
         var animationSpeed = 0.4
         
         if Globals.currentDefinition == "" {
+            Globals.currentDefinition = "animating"
             self.mainView.hidden = false
             self.blurImage.opaque = false
             
@@ -141,9 +142,10 @@ class RootContainer: CustomUIViewController {
                     self.blurImage.alpha = 0
                 },
                 completion: {
-                    (_) -> Void in
-                        self.definitionOverlay.hidden = true;
-                        self.blurImage.hidden = true;
+                (_) -> Void in
+                    self.definitionOverlay.hidden = true;
+                    self.blurImage.hidden = true;
+                    Globals.currentDefinition = ""
                 })
         } else {
             caculateBlur()

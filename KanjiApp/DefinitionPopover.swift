@@ -54,7 +54,7 @@ class DefinitionPopover : CustomUIViewController {
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)
         
-        if  CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
+        if Globals.currentDefinition != "" && CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
             Globals.currentDefinition = ""
             NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
