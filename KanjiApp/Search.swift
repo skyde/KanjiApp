@@ -16,6 +16,7 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     @IBOutlet weak var navigationBarLabel: UILabel!
     var searchResultsBaseFrame: CGRect = CGRect()
 //    var searchBarVisible = false
+    @IBOutlet weak var discoverClickableArea: UIButton!
     
     var animatedLabels : [DiscoverAnimatedLabel] {
     get {
@@ -44,7 +45,8 @@ class Search : CustomUIViewController, UISearchBarDelegate {
         var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
         gesture.minimumPressDuration = 0
         gesture.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(gesture)
+        gesture.delaysTouchesEnded = false
+        discoverClickableArea.addGestureRecognizer(gesture)
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
@@ -102,7 +104,7 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     
     func onTouch(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)
-        if Globals.currentDefinition == "" && tapLocation.y > 88 {
+        if Globals.currentDefinition == "" {
             var matches: [DiscoverAnimatedLabel] = []
             
             for label in animatedLabels {
