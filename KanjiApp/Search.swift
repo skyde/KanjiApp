@@ -43,6 +43,7 @@ class Search : CustomUIViewController, UISearchBarDelegate {
         
         var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
         gesture.minimumPressDuration = 0
+        gesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gesture)
     }
     
@@ -100,8 +101,8 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     }
     
     func onTouch(gesture: UIGestureRecognizer) {
-        if Globals.currentDefinition == "" {
-            var tapLocation = gesture.locationInView(self.view)
+        var tapLocation = gesture.locationInView(self.view)
+        if Globals.currentDefinition == "" && tapLocation.y > 88 {
             var matches: [DiscoverAnimatedLabel] = []
             
             for label in animatedLabels {
@@ -121,17 +122,6 @@ class Search : CustomUIViewController, UISearchBarDelegate {
                 
                 var duration: NSTimeInterval = 0.4
                 var outset: CGFloat = 6
-                
-//                match.frame = CGRectMake(match.animatedPosition!.x, match.animatedPosition!.y, match.frame.width, match.frame.height)
-//                
-//                UIView.animateWithDuration(0.3,
-//                    delay: NSTimeInterval(),
-//                    options: UIViewAnimationOptions.CurveEaseOut,
-//                    animations: {
-//                        self.transform = CGAffineTransformMakeScale(1, 1)
-//                    },
-//                    completion: nil)
-                
                 
                 UIView.animateWithDuration(duration,
                     delay: NSTimeInterval(),
@@ -157,12 +147,11 @@ class Search : CustomUIViewController, UISearchBarDelegate {
         
         searchResults.hidden = true
         Globals.currentDefinition == ""
+        
 //        for var i: Double = 0; i < Double(numberOfColumns); i += spawnInterval {
 //            let life = 0.95 + i / Double(numberOfColumns) * 0.05
 //            spawnText(life, distributionRandom: true)
 //        }
-        
-
         
         let averageLife = baseLife + randomLife / 2
         for var i: Double = 0; i < averageLife; i += spawnInterval {
