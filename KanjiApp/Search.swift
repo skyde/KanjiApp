@@ -119,26 +119,31 @@ class Search : CustomUIViewController, UISearchBarDelegate {
                     CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
                     }[0]
                 
-                var duration: NSTimeInterval = 0.3
-                var outset: CGFloat = 5
+                var duration: NSTimeInterval = 0.4
+                var outset: CGFloat = 6
                 
 //                match.frame = CGRectMake(match.animatedPosition!.x, match.animatedPosition!.y, match.frame.width, match.frame.height)
+//                
+//                UIView.animateWithDuration(0.3,
+//                    delay: NSTimeInterval(),
+//                    options: UIViewAnimationOptions.CurveEaseOut,
+//                    animations: {
+//                        self.transform = CGAffineTransformMakeScale(1, 1)
+//                    },
+//                    completion: nil)
+                
                 
                 UIView.animateWithDuration(duration,
                     delay: NSTimeInterval(),
                     options: UIViewAnimationOptions.CurveEaseOut,
                     animations: {
                         match.transform = CGAffineTransformMakeScale(outset, outset)
-//                        match.frame = CGRectMake(
-//                            match.frame.origin.x - outset,
-//                            match.frame.origin.y - outset,
-//                            match.frame.height + outset * 2,
-//                            match.frame.width + outset * 2)
                         match.alpha = 0
                     },
                     completion: {
                         (_) -> Void in
-                        match.removeFromSuperview()
+                        match.transform = CGAffineTransformMakeScale(1, 1)
+                        match.alpha = 1
                     })
                 
                 Globals.currentDefinition = match.kanji
