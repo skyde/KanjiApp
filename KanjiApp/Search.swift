@@ -72,8 +72,8 @@ class Search : CustomUIViewController, UISearchBarDelegate {
         
         let fadeSpeed: NSTimeInterval = 0.4
         
-        if searchText != "" {
-            println("fade in")
+        if searchText != "" && searchResults.hidden {
+//            println("fade in")
             
             searchResults.hidden = false
             searchResults.alpha = 0
@@ -85,8 +85,8 @@ class Search : CustomUIViewController, UISearchBarDelegate {
                     self.searchResults.alpha = 1
                 },
                 completion: nil)
-        } else if(searchText == "") {
-            println("fade out")
+        } else if searchText == "" && !searchResults.hidden {
+//            println("fade out")
             
             UIView.animateWithDuration(fadeSpeed,
                 delay: NSTimeInterval(),
@@ -118,6 +118,28 @@ class Search : CustomUIViewController, UISearchBarDelegate {
                 var match = matches.sorted {
                     CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
                     }[0]
+                
+                var duration: NSTimeInterval = 0.3
+                var outset: CGFloat = 5
+                
+//                match.frame = CGRectMake(match.animatedPosition!.x, match.animatedPosition!.y, match.frame.width, match.frame.height)
+                
+                UIView.animateWithDuration(duration,
+                    delay: NSTimeInterval(),
+                    options: UIViewAnimationOptions.CurveEaseOut,
+                    animations: {
+                        match.transform = CGAffineTransformMakeScale(outset, outset)
+//                        match.frame = CGRectMake(
+//                            match.frame.origin.x - outset,
+//                            match.frame.origin.y - outset,
+//                            match.frame.height + outset * 2,
+//                            match.frame.width + outset * 2)
+                        match.alpha = 0
+                    },
+                    completion: {
+                        (_) -> Void in
+                        match.removeFromSuperview()
+                    })
                 
                 Globals.currentDefinition = match.kanji
                 NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
