@@ -178,7 +178,7 @@ class RootContainer: CustomUIViewController {
     }
     
     func caculateBlur() {
-        let scale: CGFloat = 0.25
+        let scale: CGFloat = 0.1
         var inputRadius:CGFloat = 20
         
         inputRadius *= scale

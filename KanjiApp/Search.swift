@@ -14,6 +14,9 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
     @IBOutlet weak var navigationBarLabel: UILabel!
+    var searchResultsBaseFrame: CGRect = CGRect()
+//    var searchBarVisible = false
+    
     var animatedLabels : [DiscoverAnimatedLabel] {
     get {
         var labels:[DiscoverAnimatedLabel] = []
@@ -32,6 +35,8 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchResultsBaseFrame = searchResults.frame
+        
         lastSpawned = Array(count: numberOfColumns, repeatedValue: nil)
         
         timer = NSTimer.scheduledTimerWithTimeInterval(spawnInterval, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
@@ -47,19 +52,50 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
         println("open search")
-        searchResults.hidden = false
+//        searchResults.hidden = false
+        
+        //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-        searchResults.hidden = true
+//        searchResults.hidden = true
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
+//        println("should end editing")
+        
         return true
         
     }
     
     func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
+        
+        let fadeSpeed: NSTimeInterval = 0.4
+        
+        if searchText != "" {
+            println("fade in")
+            
+            searchResults.hidden = false
+            searchResults.alpha = 0
+            
+            UIView.animateWithDuration(fadeSpeed,
+                delay: NSTimeInterval(),
+                options: UIViewAnimationOptions.CurveEaseOut,
+                animations: {
+                    self.searchResults.alpha = 1
+                },
+                completion: nil)
+        } else if(searchText == "") {
+            println("fade out")
+            
+            UIView.animateWithDuration(fadeSpeed,
+                delay: NSTimeInterval(),
+                options: UIViewAnimationOptions.CurveEaseOut,
+                animations: {
+                    self.searchResults.alpha = 0
+                },
+                completion: { (_) -> Void in self.searchResults.hidden = true})
+        }
         println(searchText)
     }
     
@@ -98,6 +134,7 @@ class Search : CustomUIViewController, UISearchBarDelegate {
 //            let life = 0.95 + i / Double(numberOfColumns) * 0.05
 //            spawnText(life, distributionRandom: true)
 //        }
+        
 
         
         let averageLife = baseLife + randomLife / 2
