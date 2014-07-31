@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class Search : CustomUIViewController, UISearchBarDelegate {
+class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
@@ -17,6 +17,13 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     var searchResultsBaseFrame: CGRect = CGRect()
 //    var searchBarVisible = false
     @IBOutlet weak var discoverClickableArea: UIButton!
+    var items: [NSNumber] = []
+
+    init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+        
+        items = []
+    }
     
     var animatedLabels : [DiscoverAnimatedLabel] {
     get {
@@ -33,8 +40,15 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     
     let spawnInterval: Double = 1.5
     
+//    init(coder aDecoder: NSCoder!) {
+//        super.init(coder: aDecoder)
+//        
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchResults.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         searchResultsBaseFrame = searchResults.frame
         
@@ -61,14 +75,17 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-//        searchResults.hidden = true
+        //        searchResults.hidden = true
+        println("did end editing")
+
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
-//        println("should end editing")
+       println("should end editing")
+//        searchBar.resignFirstResponder()
+//        searchBar.
         
         return true
-        
     }
     
     func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
@@ -76,8 +93,6 @@ class Search : CustomUIViewController, UISearchBarDelegate {
         let fadeSpeed: NSTimeInterval = 0.4
         
         if searchText != "" && searchResults.hidden {
-//            println("fade in")
-            
             searchResults.hidden = false
             searchResults.alpha = 0
             
@@ -89,7 +104,7 @@ class Search : CustomUIViewController, UISearchBarDelegate {
                 },
                 completion: nil)
         } else if searchText == "" && !searchResults.hidden {
-//            println("fade out")
+            searchBar.resignFirstResponder()
             
             UIView.animateWithDuration(fadeSpeed,
                 delay: NSTimeInterval(),
@@ -100,6 +115,25 @@ class Search : CustomUIViewController, UISearchBarDelegate {
                 completion: { (_) -> Void in self.searchResults.hidden = true})
         }
         println(searchText)
+        
+        if searchText != "" {
+            
+            var card = managedObjectContext.fetchCardByKanji(searchText)//managedObjectContext.fetchEntities(.Card, [(CardProperties.kanji, "漢字")], CardProperties.interval, sortAscending: true)
+            if let card = card {
+//                println(card.kanji)
+                
+                items = [card.index]
+                
+                searchResults.reloadData()
+                
+//                println(searchResults.numberOfSections())
+            }
+//            if cards.count == 0 {
+//                cards = []
+//            } else {
+//                items = cards.map { ($0 as Card).index }
+//            }
+        }
     }
     
     func onTouch(gesture: UIGestureRecognizer) {
@@ -277,5 +311,33 @@ class Search : CustomUIViewController, UISearchBarDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+    }
+    
+    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        println(self.items.count)
+        return self.items.count;
+    }
+    
+    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        var cell = searchResults.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        
+//        println("layout")
+        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+            
+//            println(card.kanji)
+            
+            cell.textLabel.attributedText = card.cellText
+        }
+        //        cell.detailTextLabel.text = card.definition
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        
+        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+            Globals.currentDefinition = card.kanji
+            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+        }
     }
 }
