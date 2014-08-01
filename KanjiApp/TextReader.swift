@@ -12,13 +12,13 @@ import CoreData
 
 class TextReader: CustomUIViewController {
     @IBOutlet var userText : UITextView!
-    var items: [NSNumber] = []
+    var items: [TextToken] = []
     
-    @IBOutlet var tableView: UITableView!
+//    @IBOutlet var tableView: UITableView!
     
     @IBAction func addAll(sender: AnyObject) {
-        for index in items {
-            if var card = managedObjectContext.fetchCardByIndex(index) {
+        for item in items {
+            if var card = managedObjectContext.fetchCardByIndex(item.index) {
              card.enabled = true
             }
         }
@@ -27,9 +27,16 @@ class TextReader: CustomUIViewController {
     
     @IBAction func onTranslate(sender: AnyObject) {
         tokenizeText()
+        formatDisplay()
+    }
+    
+    func formatDisplay() {
+        
     }
     
     func tokenizeText() {
+        var tokens: [TextToken] = []
+        
         let textNS:NSString = userText.text as NSString
         let textCF:CFString = textNS as CFString
         let length = textNS.length
@@ -38,18 +45,18 @@ class TextReader: CustomUIViewController {
         
         while CFStringTokenizerAdvanceToNextToken(tokenizer) != .None {
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
-            let subString = CFStringCreateWithSubstring(nil, textCF, range)
+            let subString = CFStringCreateWithSubstring(nil, textCF, range).__conversion() as String
             
-            if countElements(subString.__conversion() as String) > 1 || (subString.__conversion() as String).isPrimarilyKanji()
+            if countElements(subString) > 1 || subString.isPrimarilyKanji()
             {
-                if let card = managedObjectContext.fetchCardByKanji(subString.__conversion())
+                if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
-                    items += card.index
+                    tokens += TextToken(subString, card.index, hasDefinition: true)
                 }
             }
         }
         
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -58,6 +65,8 @@ class TextReader: CustomUIViewController {
         items = []
         
         userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
+        
+        tokenizeText()
 //        userText.textContainerInset.top = 44
     }
     

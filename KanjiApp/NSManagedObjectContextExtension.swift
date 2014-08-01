@@ -71,8 +71,8 @@ extension NSManagedObjectContext
             
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
             
-            println(predicate.format)
-            println(predicate.arguments)
+//            println(predicate.format)
+//            println(predicate.arguments)
         
         request.returnsObjectsAsFaults = false
             request.predicate = NSPredicate(format: predicate.format, argumentArray: predicate.arguments)
