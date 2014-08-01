@@ -118,14 +118,20 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if searchText != "" {
             
-            var card = managedObjectContext.fetchCardByKanji(searchText)//managedObjectContext.fetchEntities(.Card, [(CardProperties.kanji, "漢字")], CardProperties.interval, sortAscending: true)
-            if let card = card {
-//                println(card.kanji)
-                
-                items = [card.index]
-                
-                searchResults.reloadData()
-            }
+            var predicate = "\(CardProperties.kanji.description())==%@"
+            
+            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [searchText]), CardProperties.kanji)
+            
+            items = cards.map { ($0 as Card).index }
+            
+            searchResults.reloadData()
+//            
+//            if let card = card {
+////                println(card.kanji)
+//                
+//                items = [carじd.index]
+//                
+//            }
 //            if cards.count == 0 {
 //                cards = []
 //            } else {

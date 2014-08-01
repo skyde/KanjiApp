@@ -27,9 +27,9 @@ class AddWords: CustomUIViewController {
     
     func onAddWordsFromList() {
         
-        var predicate: [(EntityProperties, String)] = []
+        var predicate: [(EntityProperties, AnyObject)] = []
         
-        predicate += (CardProperties.enabled, "false")
+        predicate += (CardProperties.enabled, false)
         
         switch Globals.addWordsFromList {
         case .AllWords:
@@ -43,7 +43,7 @@ class AddWords: CustomUIViewController {
         case .Jlpt1:
             predicate += (CardProperties.jlptLevel, "1")
         case .MyWords:
-            predicate += (CardProperties.suspended, "false")
+            predicate += (CardProperties.suspended, false)
             
         }
         

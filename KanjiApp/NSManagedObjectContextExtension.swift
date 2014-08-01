@@ -41,29 +41,41 @@ extension NSManagedObjectContext
         //        }
         //return nil
     }
-    func fetchEntities(entity: CoreDataEntities, _ predicates: [(EntityProperties, String)], _ sortProperty: EntityProperties, sortAscending: Bool = true) -> [NSManagedObject] {
+    func fetchEntities(
+        entity: CoreDataEntities,
+        _ predicates: [(EntityProperties, AnyObject)],
+        _ sortProperty: EntityProperties,
+        sortAscending: Bool = true) -> [NSManagedObject] {
+        var arguments: [AnyObject] = []
         var search = ""
         var and = ""
         
         for predicate in predicates
         {
-            search += and
+            arguments += predicate.1
             
-            search += "("
-            search += "\(predicate.0.description()) == \(predicate.1)"
-            search += ")"
+            search += and
+            search += "(\(predicate.0.description())==%@)"
             
             and = " AND "
         }
         
-        return fetchEntities(entity, stringPredicate: search, sortProperty, sortAscending: sortAscending)
+        return fetchEntities(entity, rawPredicate: (search, arguments), sortProperty, sortAscending: sortAscending)
     }
     
-    func fetchEntities(entity: CoreDataEntities, stringPredicate predicates: String, _ sortProperty: EntityProperties, sortAscending: Bool = true) -> [NSManagedObject] {
+    func fetchEntities(
+        entity: CoreDataEntities,
+        rawPredicate predicate: (format: String, arguments: [AnyObject]),
+        _ sortProperty: EntityProperties,
+        sortAscending: Bool = true) -> [NSManagedObject] {
+            
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
+            
+            println(predicate.format)
+            println(predicate.arguments)
         
         request.returnsObjectsAsFaults = false
-                request.predicate = NSPredicate(format: predicates)
+            request.predicate = NSPredicate(format: predicate.format, argumentArray: predicate.arguments)
         
         var error: NSError? = nil
         
