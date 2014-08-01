@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/TextReader.swift"
-            timestampString = "428551414.017188"
+            timestampString = "428552638.034799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "tokenizeText()"
             landmarkType = "5">
          </BreakpointContent>

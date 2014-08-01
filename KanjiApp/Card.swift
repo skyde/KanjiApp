@@ -159,9 +159,9 @@ class Card: NSManagedObject {
         
         addTo.addAttributedText("\(pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
-        var color = colorForPitchAccent(Int(pitchAccent))
+//        var color = 
         
-        addTo.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, addTo.mutableString.length))
+        addTo.addAttribute(NSForegroundColorAttributeName, value: pitchAccentColor(), range: NSMakeRange(0, addTo.mutableString.length))
     }
     
     func addExampleSentences(addTo: NSMutableAttributedString, _ fontName: String) {
@@ -248,8 +248,12 @@ class Card: NSManagedObject {
 ////        
 ////        NSLog(@"%@", test);
 //    }
+    
+    func pitchAccentColor() -> UIColor {
+        return caculateColorForPitchAccent(pitchAccent.integerValue)
+    }
 
-    func colorForPitchAccent(pitchAccent: Int) -> UIColor {
+    func caculateColorForPitchAccent(pitchAccent: Int) -> UIColor {
         var color = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 
         switch pitchAccent {

@@ -12,14 +12,14 @@ import CoreData
 
 class TextReader: CustomUIViewController {
     @IBOutlet var userText : UITextView!
-    var items: [TextToken] = []
+    var tokens: [TextToken] = []
     
 //    @IBOutlet var tableView: UITableView!
     
     @IBAction func addAll(sender: AnyObject) {
-        for item in items {
-            if var card = managedObjectContext.fetchCardByIndex(item.index) {
-             card.enabled = true
+        for token in tokens {
+            if var card = managedObjectContext.fetchCardByIndex(token.index) {
+                card.enabled = true
             }
         }
         saveContext()
@@ -27,15 +27,43 @@ class TextReader: CustomUIViewController {
     
     @IBAction func onTranslate(sender: AnyObject) {
         tokenizeText()
-        formatDisplay()
     }
     
     func formatDisplay() {
         
+        let font = Globals.JapaneseFontLight
+        let size: CGFloat = 24
+        
+        var value = NSMutableAttributedString()
+        value.beginEditing()
+        
+        for token in tokens {
+            
+            var color = UIColor.blackColor()
+            
+            if token.hasDefinition {
+                
+                color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
+                
+//                if let card = managedObjectContext.fetchCardByIndex(token.index) {
+//                    color = card.pitchAccentColor()
+//                }
+            }
+            
+            let fontAttribute: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
+            
+            let colorAttribute: (String, AnyObject) = (NSForegroundColorAttributeName, color)
+            
+            value.addAttributedText(token.text, [fontAttribute, colorAttribute], breakLine: false)
+        }
+        
+        value.endEditing()
+        
+        userText.attributedText = value
     }
     
     func tokenizeText() {
-        var tokens: [TextToken] = []
+         tokens = []
         
         let textNS:NSString = userText.text as NSString
         let textCF:CFString = textNS as CFString
@@ -43,28 +71,44 @@ class TextReader: CustomUIViewController {
         
         let tokenizer = CFStringTokenizerCreate(nil, textCF, CFRangeMake(0, length), 0, CFLocaleCreate(nil, "ja_JP"))
         
+        var currentAdd = ""
         while CFStringTokenizerAdvanceToNextToken(tokenizer) != .None {
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
             let subString = CFStringCreateWithSubstring(nil, textCF, range).__conversion() as String
             
             if countElements(subString) > 1 || subString.isPrimarilyKanji()
             {
+                if currentAdd != "" {
+                    tokens += TextToken(currentAdd, hasDefinition: false)
+                    currentAdd = ""
+                }
+                
                 if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
-                    tokens += TextToken(subString, card.index, hasDefinition: true)
+                    tokens += TextToken(
+                        subString,
+                        hasDefinition: true,
+                        index: card.index)
                 }
+            }
+            else {
+                currentAdd += subString
             }
         }
         
+        if currentAdd != "" {
+            tokens += TextToken(currentAdd, hasDefinition: false)
+            currentAdd = ""
+        }
+        
+        formatDisplay()
 //        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = []
-        
-        userText.font = UIFont(name: Globals.JapaneseFontLight, size: 24)
+        tokens = []
         
         tokenizeText()
 //        userText.textContainerInset.top = 44

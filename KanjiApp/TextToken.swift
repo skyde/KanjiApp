@@ -1,7 +1,7 @@
 import Foundation
 
 class TextToken {
-    init(_ text: String, _ index: Int, hasDefinition: Bool) {
+    init(_ text: String, hasDefinition: Bool, index: Int = -1) {
         self.text = text
         self.index = index
         self.hasDefinition = hasDefinition
