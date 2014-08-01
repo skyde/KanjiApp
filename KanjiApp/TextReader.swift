@@ -70,35 +70,22 @@ class TextReader: CustomUIViewController {
         let length = textNS.length
         
         let tokenizer = CFStringTokenizerCreate(nil, textCF, CFRangeMake(0, length), 0, CFLocaleCreate(nil, "ja_JP"))
-//        tokenizer.
-        
-        //相対性理論での空間
-        
-//        アルベルト・アインシュタインは、ローレンツの考えとは異なった観点から着想し、「全ての慣性基準系は対等であって、特権的な基準系はない」とする仮説と、「あらゆる慣性基準系において真空中の光の速度は一定である」とする仮説によって、ニュートン力学の理論体系を組みなおし、空間と時間に関して新しい考え方を提示した（相対性理論を参照）。ここにおいて、空間は時間と連関して扱われることになり、4次元の時空という概念が現れた。
-        
         
         var currentAdd = ""
         var lastRangeMax: CFIndex = 0
-//        var lastRangeAdvance = 0
         while CFStringTokenizerAdvanceToNextToken(tokenizer) != .None {
             
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
             let subString = CFStringCreateWithSubstring(nil, textCF, range).__conversion() as String
             
             if lastRangeMax < range.location {
-                
-//                println("\(range.location - lastRangeMax)")
-                
                 var r = CFRangeMake(lastRangeMax, range.location - lastRangeMax)
                 var s = CFStringCreateWithSubstring(nil, textCF, r).__conversion() as String
                 
-                println(countElements(s))
                 tokens += TextToken(s, hasDefinition: false)
             }
             
             lastRangeMax = range.location + range.length
-            
-//            println("\(subString) \(range.location) \(range.location + range.length)")
             
             if countElements(subString) > 1 || subString.isPrimarilyKanji()
             {
@@ -128,7 +115,6 @@ class TextReader: CustomUIViewController {
         }
         
         formatDisplay()
-//        tableView.reloadData()
     }
     
     override func viewDidLoad() {
