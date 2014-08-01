@@ -41,12 +41,7 @@ extension NSManagedObjectContext
         //        }
         //return nil
     }
-    
     func fetchEntities(entity: CoreDataEntities, _ predicates: [(EntityProperties, String)], _ sortProperty: EntityProperties, sortAscending: Bool = true) -> [NSManagedObject] {
-        let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
-        
-        request.returnsObjectsAsFaults = false
-        
         var search = ""
         var and = ""
         
@@ -61,7 +56,14 @@ extension NSManagedObjectContext
             and = " AND "
         }
         
-        request.predicate = NSPredicate(format: search)
+        return fetchEntities(entity, stringPredicate: search, sortProperty, sortAscending: sortAscending)
+    }
+    
+    func fetchEntities(entity: CoreDataEntities, stringPredicate predicates: String, _ sortProperty: EntityProperties, sortAscending: Bool = true) -> [NSManagedObject] {
+        let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
+        
+        request.returnsObjectsAsFaults = false
+                request.predicate = NSPredicate(format: predicates)
         
         var error: NSError? = nil
         

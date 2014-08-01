@@ -18,8 +18,8 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        var allCards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, "true")], CardProperties.interval, sortAscending: true)
-        items = allCards.map { ($0 as Card).index }
+        var cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, "true")], CardProperties.interval, sortAscending: true)
+        items = cards.map { ($0 as Card).index }
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

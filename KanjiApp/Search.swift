@@ -125,8 +125,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 items = [card.index]
                 
                 searchResults.reloadData()
-                
-//                println(searchResults.numberOfSections())
             }
 //            if cards.count == 0 {
 //                cards = []
@@ -321,14 +319,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         var cell = searchResults.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-//        println("layout")
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            
-//            println(card.kanji)
             
             cell.textLabel.attributedText = card.cellText
         }
-        //        cell.detailTextLabel.text = card.definition
         
         return cell
     }

@@ -1245,8 +1245,8 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jq4-f8-RfP"/>
+        <segue reference="vgr-gb-U0p"/>
         <segue reference="HeO-Ae-RU8"/>
-        <segue reference="7jX-Xq-vJx"/>
+        <segue reference="jq4-f8-RfP"/>
     </inferredMetricsTieBreakers>
 </document>
