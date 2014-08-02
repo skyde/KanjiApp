@@ -69,6 +69,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
         println("open search")
+        
 //        searchResults.hidden = false
         
         //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)

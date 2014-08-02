@@ -124,11 +124,26 @@ class TextReader: CustomUIViewController {
         
         tokenizeText()
 //        userText.textContainerInset.top = 44
+        
+        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+//        gesture.minimumPressDuration = 0
+//        gesture.cancelsTouchesInView = false
+//        gesture.delaysTouchesEnded = false
+        userText.addGestureRecognizer(gesture)
+        
+        println("add on touch")
+    }
+
+    func onTouch(gesture: UIGestureRecognizer) {
+        println("on touch")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+        
+//        userText
+//        userText.
         //        userText.scrollEnabled = false
 //        userText.scrollEnabled = true
     }

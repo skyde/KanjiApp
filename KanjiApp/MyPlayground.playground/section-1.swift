@@ -2,19 +2,12 @@
 
 import UIKit
 
-var str = "Hello, playground"
+var test = "hello"
 
-var array: String[] = String[](count: 100, repeatedValue: "")
-
-for var i = 0; i < array.count; i++ {
-    
-    array[i] = String(i)
+var t = ""
+for var i = 0; i < 100; i++ {
+    var s = "\(test) + \(i)"
+    t += s
 }
 
-for t in array {
-    
-    t
-}
-
-
-array
+t
