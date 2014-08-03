@@ -41,6 +41,7 @@ class TextReader: CustomUIViewController {
             
             var color = UIColor.blackColor()
             
+            
             if token.hasDefinition {
                 
                 color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
@@ -54,7 +55,15 @@ class TextReader: CustomUIViewController {
             
             let colorAttribute: (String, AnyObject) = (NSForegroundColorAttributeName, color)
             
-            value.addAttributedText(token.text, [fontAttribute, colorAttribute], breakLine: false)
+            var hasDefinition: (String, AnyObject) = ("hasDefinition", token.index)
+            
+            var attributes = [fontAttribute, colorAttribute, hasDefinition]
+            
+//            if let hasDefinition = hasDefinition {
+//            attributes +=
+//            }
+            
+            value.addAttributedText(token.text, attributes, breakLine: false)
         }
         
         value.endEditing()
@@ -131,11 +140,32 @@ class TextReader: CustomUIViewController {
 //        gesture.delaysTouchesEnded = false
         userText.addGestureRecognizer(gesture)
         
-        println("add on touch")
+//        println("add on touch")
     }
 
     func onTouch(gesture: UIGestureRecognizer) {
-        println("on touch")
+        
+        let location = gesture.locationInView(userText)
+        let layout = userText.layoutManager
+        
+        var index = layout.characterIndexForPoint(location, inTextContainer: userText.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        if index < userText.textStorage.length {
+            var range: NSRange = NSMakeRange(0, 1)
+            if let value = userText.attributedText.attribute("hasDefinition", atIndex: index, effectiveRange: &range) as? NSNumber {
+                
+                if value != -1 {
+            
+                    var kanji = managedObjectContext.fetchCardByIndex(value)?.kanji
+                    
+                    if let kanji = kanji {
+                        Globals.currentDefinition = kanji
+                        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+                    }
+                }
+            }
+
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
