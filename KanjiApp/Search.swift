@@ -8,8 +8,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var timer: NSTimer? = nil
     var spawnedColumns: [Int] = []
     var lastSpawned: [DiscoverAnimatedLabel?] = []
-    let baseLife: Double = 30
-    let randomLife: Double = 10
+    let baseLife: Double = 20
+    let randomLife: Double = 5
+    let spawnInterval: Double = 1.7
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
@@ -38,7 +39,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     }
     
-    let spawnInterval: Double = 1.5
     
 //    init(coder aDecoder: NSCoder!) {
 //        super.init(coder: aDecoder)
@@ -78,6 +78,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
         //        searchResults.hidden = true
         println("did end editing")
+        searchBar.resignFirstResponder()
 
     }
     
@@ -89,7 +90,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         return true
     }
     
+    var lastSearchText = ""
+    
     func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
+        lastSearchText = searchText
         
         let fadeSpeed: NSTimeInterval = 0.4
         
@@ -105,7 +109,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 },
                 completion: nil)
         } else if searchText == "" && !searchResults.hidden {
-            searchBar.resignFirstResponder()
             
             UIView.animateWithDuration(fadeSpeed,
                 delay: NSTimeInterval(),
@@ -115,9 +118,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 },
                 completion: { (_) -> Void in self.searchResults.hidden = true})
         }
-        println(searchText)
         
         if searchText != "" {
+            searchBar.resignFirstResponder()
             
             var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
             
@@ -126,22 +129,15 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             items = cards.map { ($0 as Card).index }
             
             searchResults.reloadData()
-//            
-//            if let card = card {
-////                println(card.kanji)
-//                
-//                items = [carじd.index]
-//                
-//            }
-//            if cards.count == 0 {
-//                cards = []
-//            } else {
-//                items = cards.map { ($0 as Card).index }
-//            }
         }
     }
     
     func onTouch(gesture: UIGestureRecognizer) {
+        
+        if lastSearchText == "" {
+            searchBar.resignFirstResponder()
+        }
+        
         var tapLocation = gesture.locationInView(self.view)
         if Globals.currentDefinition == "" {
             var matches: [DiscoverAnimatedLabel] = []
@@ -227,8 +223,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func spawnText(var time: Double) {// , distributionRandom: Bool = false
         let inset: Double = 10.0
         let width: Double = 42.0
-        let height: CGFloat = 250
-        let verticalOutset: CGFloat = 200
+//        let height: CGFloat = 250
+        let verticalOutset: CGFloat = 100
         
         var targetColumn = selectRandomOpenColumn()
         
@@ -286,7 +282,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             delay: NSTimeInterval(),
             options: UIViewAnimationOptions.CurveLinear,
             animations: {
-                label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + verticalOutset, label.frame.width, label.frame.height)
+                label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + 5, label.frame.width, label.frame.height)
             },
             completion: {
                 (_) -> Void in
