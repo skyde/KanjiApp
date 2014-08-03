@@ -119,9 +119,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if searchText != "" {
             
-            var predicate = "\(CardProperties.kanji.description())==%@"
+            var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
             
-            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [searchText]), CardProperties.kanji)
+            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [searchText, searchText]), CardProperties.kanji)
             
             items = cards.map { ($0 as Card).index }
             
