@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import CoreText
 
 class TextReader: CustomUIViewController {
     @IBOutlet var userText : UITextView!
@@ -33,6 +34,13 @@ class TextReader: CustomUIViewController {
         
         let font = Globals.JapaneseFontLight
         let size: CGFloat = 24
+        
+////       Globals.JapaneseFontLight.bridgeToObjectiveC()
+//        var transform = CGAffineTransformMakeRotation(CGFloat(-M_PI / 2))
+//        var rotatedFont = CTFontCreateWithName("rotatedJapanese", size, &transform)
+//        CTFont
+        
+//        println(rotatedFont)
         
         var value = NSMutableAttributedString()
         value.beginEditing()
@@ -139,6 +147,8 @@ class TextReader: CustomUIViewController {
 //        gesture.cancelsTouchesInView = false
 //        gesture.delaysTouchesEnded = false
         userText.addGestureRecognizer(gesture)
+        
+//        userText.transform = CGAffineTransformMakeRotation(CGFloat(M_PI / 2))
         
 //        println("add on touch")
     }

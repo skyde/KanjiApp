@@ -58,7 +58,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func loadDatabase () -> [NSNumber] {
         var values: [NSNumber] = []
         
-        let cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, "true")], CardProperties.interval, sortAscending: true)
+        let cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        
+//        println((cards[0] as Card).enabled)
         
         return cards.map { ($0 as Card).index }
     }

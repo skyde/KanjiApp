@@ -18,7 +18,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        var cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, "true")], CardProperties.interval, sortAscending: true)
+        var cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         items = cards.map { ($0 as Card).index }
     }
     

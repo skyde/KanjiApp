@@ -124,6 +124,7 @@ class CustomUIViewController : UIViewController {
                 card.answersForgot = 0
                 card.interval = 0
                 card.dueTime = 0
+                card.enabled = false
                 card.suspended = true
                 
                 values += card
