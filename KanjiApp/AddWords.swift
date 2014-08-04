@@ -58,6 +58,7 @@ class AddWords: CustomUIViewController {
                 if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji()) {
                     added++
                     card.enabled = true
+                    card.suspended = false
                 }
                 
                 if added >= settings.cardAddAmount.integerValue {
