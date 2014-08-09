@@ -23,7 +23,19 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
 //        var cards = Globals.viewCards//managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
-        items = Globals.viewCards
+        
+        switch Globals.notificationTransitionToView.value {
+        case .Lists(let title, let cards):
+            items = cards
+        default:
+            break
+        }
+        
+//        println(.description())
+        
+//        if Globals.notificationTransitionToView.value == View.Lists {
+////            items = ( as View.Lists)
+//        }
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

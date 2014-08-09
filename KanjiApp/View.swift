@@ -13,7 +13,7 @@ enum View {
     case GameMode
     case Reader
     case AddWords
-    case Lists
+    case Lists(title: String, cards: [NSNumber])
     case Settings
     
     func description() -> String {

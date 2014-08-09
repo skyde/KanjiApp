@@ -42,13 +42,6 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
-        //println("You selected cell #\(indexPath.row)!")
-        
-        //Search
-        //Lists
-        //Settings
-        
-//        println(indexPath.section * 100 + indexPath.row)
         var targetView: View
         
         switch indexPath.section * 100 + indexPath.row {
@@ -61,8 +54,10 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 3:
             targetView = .AddWords
         case 100:
-            targetView = .Lists
-            Globals.viewCards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "My Words", cards: cards)
+//            Globals.viewCards =
         case 300:
             targetView = .Settings
         default:
