@@ -17,8 +17,6 @@ class AddWords: CustomUIViewController {
         super.viewWillAppear(animated)
         
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: , name: Globals.notificationAddWordsFromList, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -55,6 +53,7 @@ class AddWords: CustomUIViewController {
         }
         
         let cards = managedObjectContext.fetchEntities(.Card, predicate, CardProperties.index, sortAscending: true)
+        var addCards: [NSNumber] = []
         
         var added = 0
         
@@ -66,6 +65,7 @@ class AddWords: CustomUIViewController {
                     added++
                     card.enabled = true
                     card.suspended = false
+                    addCards += card.index
                 }
                 
                 if added >= settings.cardAddAmount.integerValue {
@@ -73,9 +73,15 @@ class AddWords: CustomUIViewController {
                 }
             }
         }
+        //managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        //        items =
+        println("cardAddAmount \(settings.cardAddAmount.integerValue)")
+        println(addCards.count)
+        println(addCards)
         
+        Globals.viewCards = addCards//.map { ($0 as Card).index }
         Globals.autoAddWordsFromList = false
-        Globals.notificationTransitionToView.postNotification(View.GameMode)
+        Globals.notificationTransitionToView.postNotification(View.Lists)
     }
     
 //    override func viewDidLoad() {

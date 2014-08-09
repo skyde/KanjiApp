@@ -2,8 +2,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     var items: [NSNumber] = []
     
@@ -13,13 +12,18 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
         items = []
     }
     
+    @IBAction func onButtonDown(sender: AnyObject) {
+        println("on down")
+        Globals.notificationTransitionToView.postNotification(.GameMode)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        var cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
-        items = cards.map { ($0 as Card).index }
+//        var cards = Globals.viewCards//managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        items = Globals.viewCards
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +50,5 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
 //            Globals.currentDefinition = card.kanji
 //            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
-        
     }
 }
