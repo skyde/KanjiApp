@@ -10,8 +10,10 @@ import Foundation
 
 class RootMenu: CustomUIViewController {
     
-    override func isGameView() -> Bool {
+    override var isGameView: Bool {
+    get {
         return false
+    }
     }
     
     override var alwaysReceiveNotifications: Bool {

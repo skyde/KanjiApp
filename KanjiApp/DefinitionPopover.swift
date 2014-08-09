@@ -13,8 +13,10 @@ class DefinitionPopover : CustomUIViewController {
     }
     }
     
-    override func isGameView() -> Bool {
+    override var isGameView: Bool {
+    get {
         return false
+    }
     }
     
     init(coder aDecoder: NSCoder!) {

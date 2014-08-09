@@ -17,12 +17,16 @@ class CustomUIViewController : UIViewController {
         self.managedObjectContext = context
     }
     
-    func isNavigationBarHidden() -> Bool {
-        return false
-    }
+//    var isNavigationBarHidden: Bool {
+//    get {
+//        return false
+//    }
+//    }
     
-    func isGameView() -> Bool {
+    var isGameView: Bool {
+    get {
         return true
+    }
     }
     
     var alwaysReceiveNotifications: Bool {
@@ -143,7 +147,7 @@ class CustomUIViewController : UIViewController {
     func onTransitionToView(notification: NSNotification) {
         if let targetView = (notification.object as? Container<View>)?.Value {
             
-            if isGameView() {
+            if isGameView {
                 //                transitionToView(targetView)
                 println("transition to \(targetView.description()) \(self)")
                 self.navigationController?.popToRootViewControllerAnimated(false)

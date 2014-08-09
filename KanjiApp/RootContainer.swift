@@ -16,8 +16,10 @@ class RootContainer: CustomUIViewController {
     let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
     
-    override func isGameView() -> Bool {
+    override var isGameView: Bool {
+    get {
         return false
+    }
     }
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
