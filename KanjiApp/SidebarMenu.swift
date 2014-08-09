@@ -62,6 +62,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             targetView = .AddWords
         case 100:
             targetView = .Lists
+            Globals.viewCards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
         case 300:
             targetView = .Settings
         default:

@@ -8,6 +8,7 @@ struct Globals
     static let notificationAddWordsFromList = Notification<WordList>("addWordsFromListNotification", .MyWords)
     // If this is true then words are added from the list without the prompt to choose a different list
     static var viewCards: [NSNumber] = []
+    static var listsTitle = ""
     static var autoAddWordsFromList = false
     
     static let DefaultFont = "Hiragino Kaku Gothic ProN W3"

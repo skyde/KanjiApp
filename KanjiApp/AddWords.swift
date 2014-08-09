@@ -75,9 +75,9 @@ class AddWords: CustomUIViewController {
         }
         //managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         //        items =
-        println("cardAddAmount \(settings.cardAddAmount.integerValue)")
-        println(addCards.count)
-        println(addCards)
+//        println("cardAddAmount \(settings.cardAddAmount.integerValue)")
+//        println(addCards.count)
+//        println(addCards)
         
         Globals.viewCards = addCards//.map { ($0 as Card).index }
         Globals.autoAddWordsFromList = false

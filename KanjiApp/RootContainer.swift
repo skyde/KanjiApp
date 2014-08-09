@@ -2,8 +2,14 @@ import Foundation
 import UIKit
 import QuartzCore
 
+var rootContainerInstance: RootContainer? = nil
+
 class RootContainer: CustomUIViewController {
     
+    class var instance: RootContainer {
+        get { return rootContainerInstance! }
+    }
+
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
@@ -91,7 +97,7 @@ class RootContainer: CustomUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        rootContainerInstance = self
         
 //        UIApplication.sharedApplication().statusBarHidden = true
     }

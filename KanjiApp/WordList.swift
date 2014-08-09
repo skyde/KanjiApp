@@ -7,7 +7,7 @@ enum WordList {
     case Jlpt2
     case Jlpt1
     case AllWords
-    case List([String])
+//    case List([NSNumber])
     
     func description() -> String {
         switch self {
@@ -23,8 +23,8 @@ enum WordList {
             return "JLPT 1"
         case .AllWords:
             return "All Words"
-        case .List:
-            return "List"
+//        case .List:
+//            return "List"
         }
     }
 }
