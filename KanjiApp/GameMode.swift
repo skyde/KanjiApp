@@ -80,7 +80,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             }
             
 //            transitionToView()
-            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(View.AddWords))
+            Globals.notificationTransitionToView.postNotification(Container(View.AddWords))
         }
     }
     

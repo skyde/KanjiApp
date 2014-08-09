@@ -69,6 +69,6 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             break
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(targetView))
+        Globals.notificationTransitionToView.postNotification(Container(targetView))
     }
 }

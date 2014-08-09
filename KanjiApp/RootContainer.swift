@@ -168,6 +168,8 @@ class RootContainer: CustomUIViewController {
         super.addNotifications()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onNotificationShowDefinition", name: Globals.notificationShowDefinition, object: nil)
+        
+//        NSNotificationCenter.defaultCenter().ad
     }
     
     func caculateBlur() {

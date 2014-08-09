@@ -73,12 +73,7 @@ class AddWords: CustomUIViewController {
         }
         
         Globals.autoAddWordsFromList = false
-
-//        transitionToView(View.GameMode)
-        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(View.GameMode))
-//        if isGameView() {
-//            transitionToView(rgetta)
-//        }
+        Globals.notificationTransitionToView.postNotification(Container(View.GameMode))
     }
     
 //    override func viewDidLoad() {
