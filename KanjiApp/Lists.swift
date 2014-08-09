@@ -5,6 +5,7 @@ import CoreData
 class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     var items: [NSNumber] = []
+    @IBOutlet weak var header: UILabel!
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
@@ -27,6 +28,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         switch Globals.notificationTransitionToView.value {
         case .Lists(let title, let cards):
             items = cards
+            header.text = title
         default:
             break
         }

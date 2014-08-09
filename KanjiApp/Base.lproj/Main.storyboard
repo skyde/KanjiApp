@@ -891,6 +891,7 @@ all due cards</string>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="header" destination="fhj-BU-dcO" id="uSR-SU-ytp"/>
                         <outlet property="tableView" destination="GQF-Up-XMI" id="8Ac-PC-fQt"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="iYu-nc-2Hh"/>
                     </connections>

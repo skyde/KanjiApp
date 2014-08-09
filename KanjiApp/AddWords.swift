@@ -81,7 +81,7 @@ class AddWords: CustomUIViewController {
         
 //        Globals.viewCards = //.map { ($0 as Card).index }
         Globals.autoAddWordsFromList = false
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Add Words", cards: addCards))
+        Globals.notificationTransitionToView.postNotification(.Lists(title: "Added Words", cards: addCards))
     }
     
 //    override func viewDidLoad() {
