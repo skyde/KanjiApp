@@ -73,7 +73,7 @@ class AddWords: CustomUIViewController {
         }
         
         Globals.autoAddWordsFromList = false
-        Globals.notificationTransitionToView.postNotification(Container(View.GameMode))
+        Globals.notificationTransitionToView.postNotification(View.GameMode)
     }
     
 //    override func viewDidLoad() {

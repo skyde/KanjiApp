@@ -2,14 +2,18 @@ import Foundation
 import UIKit
 import SpriteKit
 
+//var definitionPopoverInstance: DefinitionPopover? = nil
+
 class DefinitionPopover : CustomUIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     
+//    public var definition: String = ""
+    
     var viewCard: Card? {
     get {
-        return managedObjectContext.fetchCardByKanji(Globals.currentDefinition)
+        return managedObjectContext.fetchCardByKanji(Globals.notificationShowDefinition.value)
     }
     }
     
@@ -19,8 +23,15 @@ class DefinitionPopover : CustomUIViewController {
     }
     }
     
+//    class var instance: DefinitionPopover {
+//        get { return definitionPopoverInstance! }
+//    }
+    
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
+        
+//        println("def init")
+//        definitionPopoverInstance = self
     }
     
     func updateText() {
@@ -60,9 +71,12 @@ class DefinitionPopover : CustomUIViewController {
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)
         
-        if Globals.currentDefinition != "" && CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
-            Globals.currentDefinition = ""
-            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+//        println("respondToTapGesture")
+        if Globals.notificationShowDefinition.value != "" && CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
+//            println("close")
+//            definition = ""
+            Globals.notificationShowDefinition.postNotification("")
+//            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
     }
     
@@ -82,15 +96,18 @@ class DefinitionPopover : CustomUIViewController {
     
     
     func onNotificationShowDefinition() {
+//        if definition != "" {
+//            definition = Globals.notificationShowDefinition.value
         
-        var animationSpeed = 0.4
+//        var animationSpeed = 0.4
         
         updateText()
+//        }
     }
     
     override func addNotifications() {
         super.addNotifications()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onNotificationShowDefinition", name: Globals.notificationShowDefinition, object: nil)
+        Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
     }
 }

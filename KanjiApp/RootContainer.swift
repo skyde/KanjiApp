@@ -119,13 +119,14 @@ class RootContainer: CustomUIViewController {
     }
     
     func onNotificationShowDefinition() {
-        
+//        var definition = .getObject(notification)
 //        println(container)
+//        var definition =
         
         var animationSpeed = 0.4
         
-        if Globals.currentDefinition == "" {
-            Globals.currentDefinition = "animating"
+        if Globals.notificationShowDefinition.value == "" {
+            Globals.notificationShowDefinition.value = "animating"
             self.mainView.hidden = false
             self.blurImage.opaque = false
             
@@ -140,7 +141,7 @@ class RootContainer: CustomUIViewController {
                 (_) -> Void in
                     self.definitionOverlay.hidden = true;
                     self.blurImage.hidden = true;
-                    Globals.currentDefinition = ""
+                    Globals.notificationShowDefinition.value = ""
                 })
         } else {
             caculateBlur()
@@ -167,7 +168,7 @@ class RootContainer: CustomUIViewController {
     override func addNotifications() {
         super.addNotifications()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onNotificationShowDefinition", name: Globals.notificationShowDefinition, object: nil)
+        Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
         
 //        NSNotificationCenter.defaultCenter().ad
     }

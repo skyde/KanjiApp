@@ -40,8 +40,11 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            Globals.currentDefinition = card.kanji
-            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+            
+            Globals.notificationShowDefinition.postNotification(card.kanji)
+            
+//            Globals.currentDefinition = card.kanji
+//            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
         
     }

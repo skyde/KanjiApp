@@ -80,7 +80,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             }
             
 //            transitionToView()
-            Globals.notificationTransitionToView.postNotification(Container(View.AddWords))
+            Globals.notificationTransitionToView.postNotification(View.AddWords)
         }
     }
     

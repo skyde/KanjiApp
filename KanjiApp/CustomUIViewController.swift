@@ -145,7 +145,7 @@ class CustomUIViewController : UIViewController {
     }
     
     func onTransitionToView(notification: NSNotification) {
-        let targetView = Globals.notificationTransitionToView.getObject(notification).Value
+        let targetView = Globals.notificationTransitionToView.value
         
         if isGameView {
             self.navigationController?.popToRootViewControllerAnimated(false)

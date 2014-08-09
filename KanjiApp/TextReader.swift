@@ -169,8 +169,11 @@ class TextReader: CustomUIViewController {
                     var kanji = managedObjectContext.fetchCardByIndex(value)?.kanji
                     
                     if let kanji = kanji {
-                        Globals.currentDefinition = kanji
-                        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+                        
+                        Globals.notificationShowDefinition.postNotification(kanji)
+                        
+//                        Globals.currentDefinition = kanji
+//                        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
                     }
                 }
             }

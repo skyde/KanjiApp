@@ -3,10 +3,10 @@ import UIKit
 
 struct Globals
 {
-    static let notificationShowDefinition = "showDefinitionNotification"
-    static var currentDefinition = ""
+    static let notificationShowDefinition = Notification<String>("showDefinitionNotification", "")
+//    static var currentDefinition = ""
     
-    static let notificationTransitionToView = Notification<Container<View>>("transitionToViewNotification")//
+    static let notificationTransitionToView = Notification<View>("transitionToViewNotification", View.Search)//
     
     static let notificationAddWordsFromList = "addWordsFromListNotification"
     // If this is true then words are added from the list without the prompt to choose a different list

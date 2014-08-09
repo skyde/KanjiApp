@@ -1,21 +1,25 @@
 import Foundation
 
-class Notification<T: AnyObject> {
-    init (_ id: String) {
+class Notification<T> {
+    init (_ id: String, _ defaultValue: T) {
         self.id = id
+        self.value = defaultValue
     }
     
     public var id: String
+    public var value: T
     
     public func postNotification(value: T) {
-        NSNotificationCenter.defaultCenter().postNotificationName(id, object: value)
+        self.value = value
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(id, object: Container(value))
     }
     
     public func addObserver(observer: AnyObject!, selector: Selector, object: AnyObject! = nil) {
         NSNotificationCenter.defaultCenter().addObserver(observer, selector: selector, name: id, object: object)
     }
     
-    public func getObject(notification: NSNotification) -> T {
-        return notification.object as T
-    }
+//    public func getObject(notification: NSNotification) -> T {
+//        return (notification.object as Container<T>).Value
+//    }
 }

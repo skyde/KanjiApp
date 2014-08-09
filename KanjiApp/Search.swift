@@ -139,7 +139,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         
         var tapLocation = gesture.locationInView(self.view)
-        if Globals.currentDefinition == "" {
+        if Globals.notificationShowDefinition.value == "" {
             var matches: [DiscoverAnimatedLabel] = []
             
             for label in animatedLabels {
@@ -173,8 +173,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                         match.alpha = 1
                     })
                 
-                Globals.currentDefinition = match.kanji
-                NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+                Globals.notificationShowDefinition.postNotification(match.kanji)
+                
+//                Globals.currentDefinition =
+//                NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
             }
         }
     }
@@ -183,7 +185,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         super.viewWillAppear(animated)
         
         searchResults.hidden = true
-        Globals.currentDefinition == ""
+//        Globals.currentDefinition == ""
         
 //        for var i: Double = 0; i < Double(numberOfColumns); i += spawnInterval {
 //            let life = 0.95 + i / Double(numberOfColumns) * 0.05
@@ -333,8 +335,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            Globals.currentDefinition = card.kanji
-            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
+            Globals.notificationShowDefinition.postNotification(card.kanji)
         }
     }
 }
