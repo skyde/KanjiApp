@@ -19,27 +19,33 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
+        var sourceList: WordList
+        
         switch indexPath.row {
         case 0:
-            Globals.addWordsFromList = .MyWords
+            sourceList = .MyWords
         case 1:
-            Globals.addWordsFromList = .Jlpt4
+            sourceList = .Jlpt4
         case 2:
-            Globals.addWordsFromList = .Jlpt3
+            sourceList = .Jlpt3
         case 3:
-            Globals.addWordsFromList = .Jlpt2
+            sourceList = .Jlpt2
         case 4:
-            Globals.addWordsFromList = .Jlpt1
+            sourceList = .Jlpt1
         case 5:
-            Globals.addWordsFromList = .AllWords
+            sourceList = .AllWords
         default:
+            sourceList = .MyWords
             break
         }
         
-        var l = Container(Globals.addWordsFromList)
+//        var l = )
         
 //        println(addWordsFromList.description())
 //                var n = NSNotification(name: addWordsFromListNotification, object: targetView)
-        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationAddWordsFromList, object: l)
+        
+    Globals.notificationAddWordsFromList.postNotification(sourceList)
+        
+//        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationAddWordsFromList, object: Globals.addWordsFromList)
     }
 }

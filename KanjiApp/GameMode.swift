@@ -75,7 +75,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
             
             if myWords.count > 0 {
-                Globals.addWordsFromList = .MyWords
+                Globals.notificationAddWordsFromList.value = .MyWords
                 Globals.autoAddWordsFromList = true
             }
             

@@ -12,7 +12,7 @@ class Notification<T> {
     public func postNotification(value: T) {
         self.value = value
         
-        NSNotificationCenter.defaultCenter().postNotificationName(id, object: Container(value))
+        NSNotificationCenter.defaultCenter().postNotificationName(id, object: nil)
     }
     
     public func addObserver(observer: AnyObject!, selector: Selector, object: AnyObject! = nil) {

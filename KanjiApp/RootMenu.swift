@@ -23,12 +23,14 @@ class RootMenu: CustomUIViewController {
 //        
 //    }
     var targetView: View = .Search
-    override func onTransitionToView(notification: NSNotification) {
-//        println("RootMenu onTransitionToView \(notification)")
-        if let targetView = (notification.object as? Container<View>)?.Value {
-            self.targetView = targetView
+    override func onTransitionToView() {
+        super.onTransitionToView()
+//        let targetView =
+////        println("RootMenu onTransitionToView \(notification)")
+//        if let targetView = (notification.object as? Container<View>)?.Value {
+        self.targetView = Globals.notificationTransitionToView.value
 //            println("RootMenu \(targetView)")
-        }
+//        }
     }
 //    override onTransitionToView
     

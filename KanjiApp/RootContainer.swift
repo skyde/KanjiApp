@@ -78,8 +78,8 @@ class RootContainer: CustomUIViewController {
         super.init(coder: aDecoder)
     }
 
-    override func onTransitionToView(notification: NSNotification) {
-        super.onTransitionToView(notification)
+    override func onTransitionToView() {
+        super.onTransitionToView()
         
         animateSelf(false)
     }
