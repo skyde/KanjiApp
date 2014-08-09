@@ -23,6 +23,10 @@ class AddWords: CustomUIViewController {
         super.viewDidDisappear(animated)
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        if Globals.autoAddWordsFromList {
+            onAddWordsFromList()
+        }
     }
     
     func onAddWordsFromList() {
@@ -44,7 +48,8 @@ class AddWords: CustomUIViewController {
             predicate += (CardProperties.jlptLevel, "1")
         case .MyWords:
             predicate += (CardProperties.suspended, false)
-            
+        default:
+            break;
         }
         
         let cards = managedObjectContext.fetchEntities(.Card, predicate, CardProperties.index, sortAscending: true)
@@ -66,9 +71,11 @@ class AddWords: CustomUIViewController {
                 }
             }
         }
-
         
-        transitionToView(View.GameMode)
+        Globals.autoAddWordsFromList = false
+
+//        transitionToView(View.GameMode)
+        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(View.GameMode))
 //        if isGameView() {
 //            transitionToView(rgetta)
 //        }

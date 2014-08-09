@@ -71,8 +71,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         setupSwipeGestures()
         
         if due.count == 0 {
-            self.navigationController.popToRootViewControllerAnimated(false)
-            Globals.targetView = .AddWords
+            
+            let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+            
+            if myWords.count > 0 {
+                Globals.addWordsFromList = .MyWords
+                Globals.autoAddWordsFromList = true
+            }
+            
+//            transitionToView()
+            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(View.AddWords))
         }
     }
     

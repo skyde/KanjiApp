@@ -36,8 +36,10 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
             break
         }
         
+        var l = Container(Globals.addWordsFromList)
+        
 //        println(addWordsFromList.description())
 //                var n = NSNotification(name: addWordsFromListNotification, object: targetView)
-        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationAddWordsFromList, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationAddWordsFromList, object: l)
     }
 }

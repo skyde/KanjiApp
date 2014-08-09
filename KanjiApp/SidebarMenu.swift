@@ -33,6 +33,12 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        table.headerViewForSection(0).contentView.backgroundColor = bkColor
     }
     
+//    override func onTransitionToView(notification: NSNotification) {
+//        //        super.onTransitionToView(notification)
+//        
+//        animateSelf(false)
+//    }
+    
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
@@ -43,24 +49,26 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         //Settings
         
 //        println(indexPath.section * 100 + indexPath.row)
+        var targetView: View
         
         switch indexPath.section * 100 + indexPath.row {
         case 0:
-            Globals.targetView = .Search
+            targetView = .Search
         case 1:
-            Globals.targetView = .GameMode
+            targetView = .GameMode
         case 2:
-            Globals.targetView = .Reader
+            targetView = .Reader
         case 3:
-            Globals.targetView = .AddWords
+            targetView = .AddWords
         case 100:
-            Globals.targetView = .Lists
+            targetView = .Lists
         case 300:
-            Globals.targetView = .Settings
+            targetView = .Settings
         default:
+            targetView = .Search
             break
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(targetView))
     }
 }

@@ -25,9 +25,15 @@ class CustomUIViewController : UIViewController {
         return true
     }
     
-    func receiveTransitionToViewNotifications() -> Bool {
-        return true
+    var alwaysReceiveNotifications: Bool {
+    get {
+        return false
     }
+    }
+//    
+//    func receiveTransitionToViewNotifications() -> Bool {
+//        return true
+//    }
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
@@ -51,19 +57,19 @@ class CustomUIViewController : UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if receiveTransitionToViewNotifications() {
+        if !alwaysReceiveNotifications {
             addNotifications()
         }
     }
     
     override func viewDidDisappear(animated: Bool) {
-        if receiveTransitionToViewNotifications() {
+        if !alwaysReceiveNotifications {
             removeNotifications()
         }
     }
     
     func addNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView", name: Globals.notificationTransitionToView, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onTransitionToView:", name: Globals.notificationTransitionToView, object: nil)
     }
     
     func removeNotifications() {
@@ -134,16 +140,21 @@ class CustomUIViewController : UIViewController {
         saveContext()
     }
     
-    func onTransitionToView() {
-        if isGameView() {
-            transitionToView(Globals.targetView)
+    func onTransitionToView(notification: NSNotification) {
+        if let targetView = (notification.object as? Container<View>)?.Value {
+            
+            if isGameView() {
+                //                transitionToView(targetView)
+                println("transition to \(targetView.description()) \(self)")
+                self.navigationController?.popToRootViewControllerAnimated(false)
+            }
         }
     }
     
-    func transitionToView(target: View) {
-        Globals.targetView = target
-        self.navigationController?.popToRootViewControllerAnimated(false)
-    }
+//    func transitionToView(targetView: View) {
+////        Globals.targetView = target
+//        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationTransitionToView, object: Container(targetView))
+//    }
     
     
 //    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -166,6 +177,9 @@ class CustomUIViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if alwaysReceiveNotifications {
+            addNotifications()
+        }
 //        navigationController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
 //        navigationController.navigationBar.shadowImage = UIImage()
 //        navigationController.navigationBar.translucent = true

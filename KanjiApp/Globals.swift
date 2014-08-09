@@ -4,13 +4,15 @@ import UIKit
 struct Globals
 {
     static let notificationShowDefinition = "showDefinitionNotification"
-    static var currentDefinition: String = ""
+    static var currentDefinition = ""
     
     static let notificationTransitionToView = "transitionToViewNotification"
     
     static let notificationAddWordsFromList = "addWordsFromListNotification"
-    static var addWordsFromList: WordList = WordList.MyWords
-    static var targetView = View.Search
+    // If this is true then words are added from the list without the prompt to choose a different list
+    static var autoAddWordsFromList = false
+    static var addWordsFromList = WordList.MyWords
+//    static var targetView = View.Search
     
     static let DefaultFont = "Hiragino Kaku Gothic ProN W3"
     static let JapaneseFont = "M+ 2p"//mplus-2p-regular

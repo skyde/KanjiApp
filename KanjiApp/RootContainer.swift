@@ -1,11 +1,3 @@
-//
-//  RootContainer.swift
-//  KanjiApp
-//
-//  Created by Sky on 2014-07-22.
-//  Copyright (c) 2014 Sky. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import QuartzCore
@@ -57,9 +49,7 @@ class RootContainer: CustomUIViewController {
                         self.sidebarButton.frame.height);
                 },
                 completion: nil)
-        }
-        else
-        {
+        } else {
             UIView.animateWithDuration(popoverAnimationSpeed,
             delay: NSTimeInterval(),
             options: sidebarEasing,
@@ -86,8 +76,8 @@ class RootContainer: CustomUIViewController {
         super.init(coder: aDecoder)
     }
 
-    override func onTransitionToView() {
-        super.onTransitionToView()
+    override func onTransitionToView(notification: NSNotification) {
+        super.onTransitionToView(notification)
         
         animateSelf(false)
     }
@@ -117,8 +107,7 @@ class RootContainer: CustomUIViewController {
         blurImage.alpha = 0
     }
     
-    override func viewDidAppear(animated: Bool)
-    {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         self.view.sendSubviewToBack(mainView)
@@ -128,6 +117,8 @@ class RootContainer: CustomUIViewController {
     }
     
     func onNotificationShowDefinition() {
+        
+//        println(container)
         
         var animationSpeed = 0.4
         

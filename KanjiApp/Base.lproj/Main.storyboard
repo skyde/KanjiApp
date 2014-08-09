@@ -37,7 +37,6 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
-            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -604,23 +603,6 @@ you wish to study</string>
                         <sections>
                             <tableViewSection id="rv8-ZE-VQo">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hHU-3f-mDI" style="IBUITableViewCellStyleDefault" id="CQx-1H-wk3">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CQx-1H-wk3" id="wdg-My-Nkb">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="My Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHU-3f-mDI">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <size key="shadowOffset" width="-1" height="1"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.19231980849999999" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="D5u-o9-R8p" style="IBUITableViewCellStyleDefault" id="Hkc-Ey-KFF">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
