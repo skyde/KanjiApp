@@ -57,6 +57,30 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
             
             targetView = .Lists(title: "My Words", cards: cards)
+        case 101:
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "Will Study", cards: cards)
+        case 200:
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.jlptLevel, 4), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "JLPT 4", cards: cards)
+        case 201:
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.jlptLevel, 3), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "JLPT 3", cards: cards)
+        case 202:
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.jlptLevel, 2), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "JLPT 2", cards: cards)
+        case 203:
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.jlptLevel, 1), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "JLPT 1", cards: cards)
+        case 204:
+            var cards = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.suspended, true)], CardProperties.interval, sortAscending: true).map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "All Words", cards: cards)
 //            Globals.viewCards =
         case 300:
             targetView = .Settings
