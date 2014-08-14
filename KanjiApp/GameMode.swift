@@ -71,8 +71,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         setupSwipeGestures()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         if true {//due.count == 0 {
             

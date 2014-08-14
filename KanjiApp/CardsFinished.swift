@@ -10,7 +10,13 @@ import Foundation
 
 class CardsFinished : CustomUIViewController {
     
+    @IBAction func continueStudyingPressed(sender: AnyObject) {
+        print("continueStudyingPressed")
+    }
     
+    @IBAction func addNewCardsPressed(sender: AnyObject) {
+        print("addNewCardsPressed")
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

@@ -737,7 +737,7 @@ you wish to study</string>
         <!--Cards Finished-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController title="Cards Finished" id="njT-bO-QmB" customClass="CustomUIViewController" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Cards Finished" id="njT-bO-QmB" customClass="CardsFinished" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -778,7 +778,7 @@ you wish to study</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nGt-Uz-nIp" kind="show" id="HeO-Ae-RU8"/>
+                                    <action selector="continueStudyingPressed:" destination="njT-bO-QmB" eventType="touchDown" id="c38-91-jqi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-Wf-gzd">
@@ -791,7 +791,7 @@ you wish to study</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="MSR-R2-cbT" kind="show" id="jq4-f8-RfP"/>
+                                    <action selector="addNewCardsPressed:" destination="njT-bO-QmB" eventType="touchDown" id="GLP-uv-O5R"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-YA-pq2">
@@ -1305,8 +1305,8 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iYu-nc-2Hh"/>
-        <segue reference="jq4-f8-RfP"/>
-        <segue reference="HeO-Ae-RU8"/>
+        <segue reference="Njb-Jk-Mx7"/>
+        <segue reference="Ut6-yd-kHz"/>
+        <segue reference="o8I-8R-76U"/>
     </inferredMetricsTieBreakers>
 </document>
