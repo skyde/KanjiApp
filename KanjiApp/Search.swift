@@ -98,7 +98,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
-        var gesture = UILongPressGestureRecognizer(target: self, action: "respondToPanGesture:")
+        var gesture = UILongPressGestureRecognizer(target: self, action: "respondToLongPressGesture:")
         gesture.minimumPressDuration = 0
         gesture.cancelsTouchesInView = false
         gesture.delaysTouchesBegan = false
@@ -342,7 +342,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
 //    var startTouchLocation: CGPoint = CGPoint()
     var touchLocation: CGPoint = CGPoint()
-    func respondToPanGesture(gesture: UILongPressGestureRecognizer) {
+    func respondToLongPressGesture(gesture: UILongPressGestureRecognizer) {
+        
+        searchBar.resignFirstResponder()
         
         switch gesture.state {
         case .Began:
@@ -430,7 +432,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         //        searchResults.hidden = true
         println("did end editing")
         searchBar.resignFirstResponder()
-        
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
