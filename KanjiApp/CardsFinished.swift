@@ -12,19 +12,24 @@ class CardsFinished : CustomUIViewController {
     
     @IBAction func continueStudyingPressed(sender: AnyObject) {
         print("continueStudyingPressed")
+        Globals.notificationTransitionToView.postNotification(.GameMode)
     }
     
     @IBAction func addNewCardsPressed(sender: AnyObject) {
         print("addNewCardsPressed")
-    }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
         let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         
         if myWords.count > 0 {
-        Globals.notificationAddWordsFromList.value = .MyWords
-        Globals.autoAddWordsFromList = true
+            Globals.notificationAddWordsFromList.value = .MyWords
+//            Globals.autoAddWordsFromList = true
         }
+        else {
+            Globals.notificationTransitionToView.postNotification(.AddWords(exclude: [.MyWords]))
+        }
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 }

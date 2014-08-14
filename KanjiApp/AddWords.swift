@@ -24,9 +24,9 @@ class AddWords: CustomUIViewController {
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
         
-        if Globals.autoAddWordsFromList {
-            onAddWordsFromList()
-        }
+//        if Globals.autoAddWordsFromList {
+//            onAddWordsFromList()
+//        }
     }
     
     func onAddWordsFromList() {
@@ -80,7 +80,7 @@ class AddWords: CustomUIViewController {
 //        println(addCards)
         
 //        Globals.viewCards = //.map { ($0 as Card).index }
-        Globals.autoAddWordsFromList = false
+//        Globals.autoAddWordsFromList = false
         Globals.notificationTransitionToView.postNotification(.Lists(title: "Added Words", cards: addCards))
     }
     
