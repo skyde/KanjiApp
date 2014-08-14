@@ -6,38 +6,53 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
     var timer: NSTimer? = nil
-    var spawnedColumns: [Int] = []
-    var lastSpawned: [DiscoverAnimatedLabel?] = []
+//    var spawnedColumns: [Int] = []
     let baseLife: Double = 20
     let randomLife: Double = 5
     let spawnInterval: Double = 1.7
+    
+    var currentTime = 0.0
+    var frameRate = 1.0 / 60.0
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
     @IBOutlet weak var navigationBarLabel: UILabel!
     var searchResultsBaseFrame: CGRect = CGRect()
-//    var searchBarVisible = false
     @IBOutlet weak var discoverClickableArea: UIButton!
     var items: [NSNumber] = []
+    var labels: [DiscoverAnimatedLabel] = []
+    
+    var averageLabelLife: Double {
+    get {
+        return baseLife + randomLife / 2
+    }
+    }
+    var numberOfLabels: Int {
+    get {
+        return Int(averageLabelLife / spawnInterval)
+    }
+    }
 
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
-        items = []
+//        items = []
+//        labels = []
     }
     
-    var animatedLabels : [DiscoverAnimatedLabel] {
-    get {
-        var labels:[DiscoverAnimatedLabel] = []
-        for item in self.view.subviews {
-            if let label = item as? DiscoverAnimatedLabel {
-                labels += label
-            }
-        }
-        
-        return labels
-    }
-    }
+//    var animatedLabels : [DiscoverAnimatedLabel]
+//    {
+//    get {
+//        var labels:[DiscoverAnimatedLabel] = []
+//        for item in self.view.subviews {
+//            if let label = item as? DiscoverAnimatedLabel {
+//                labels += label
+//            }
+//        }
+//        
+//        return labels
+//    }
+//    }
     
     
 //    init(coder aDecoder: NSCoder!) {
@@ -47,16 +62,21 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                for i in 0 ..< numberOfLabels {
+            var add = DiscoverAnimatedLabel(frame: CGRectMake(0, 0, 1, 1))
+            labels += add
+            spawnLabel(add, time: Double(i) / Double(numberOfLabels))
+        }
+
         self.automaticallyAdjustsScrollViewInsets = false
         
         searchResults.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         searchResultsBaseFrame = searchResults.frame
         
-        lastSpawned = Array(count: numberOfColumns, repeatedValue: nil)
+//        lastSpawned = Array(count: numberOfColumns, repeatedValue: nil)
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(spawnInterval, target: self, selector: "onSpawnTimerTick", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
         var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
         gesture.minimumPressDuration = 0
@@ -65,73 +85,13 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         discoverClickableArea.addGestureRecognizer(gesture)
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
-        return true
-    }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
-        println("open search")
+    func onTimerTick() {
+        currentTime += frameRate
         
-//        searchResults.hidden = false
-        
-        //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-        //        searchResults.hidden = true
-        println("did end editing")
-        searchBar.resignFirstResponder()
-
-    }
-    
-    func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
-       println("should end editing")
-//        searchBar.resignFirstResponder()
-//        searchBar.
-        
-        return true
-    }
-    
-    var lastSearchText = ""
-    
-    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
-        lastSearchText = searchText
-        
-        let fadeSpeed: NSTimeInterval = 0.4
-        
-        if searchText != "" && searchResults.hidden {
-            searchResults.hidden = false
-            searchResults.alpha = 0
-            
-            UIView.animateWithDuration(fadeSpeed,
-                delay: NSTimeInterval(),
-                options: UIViewAnimationOptions.CurveEaseOut,
-                animations: {
-                    self.searchResults.alpha = 1
-                },
-                completion: nil)
-        } else if searchText == "" && !searchResults.hidden {
-            
-            UIView.animateWithDuration(fadeSpeed,
-                delay: NSTimeInterval(),
-                options: UIViewAnimationOptions.CurveEaseOut,
-                animations: {
-                    self.searchResults.alpha = 0
-                },
-                completion: { (_) -> Void in self.searchResults.hidden = true})
+        for label in labels {
+            label.frame.origin.y += 0.3
         }
-        
-        if searchText != "" {
-            searchBar.resignFirstResponder()
-            
-            var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
-            
-            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [searchText, searchText]), CardProperties.kanji)
-            
-            items = cards.map { ($0 as Card).index }
-            
-            searchResults.reloadData()
-        }
+//        spawnText(0)
     }
     
     func onTouch(gesture: UIGestureRecognizer) {
@@ -144,7 +104,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         if Globals.notificationShowDefinition.value == "" {
             var matches: [DiscoverAnimatedLabel] = []
             
-            for label in animatedLabels {
+            for label in labels {
                 var frame = label.layer?.presentationLayer()?.frame
                 
                 if let frame = frame {
@@ -194,51 +154,35 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //            spawnText(life, distributionRandom: true)
 //        }
         
-        let averageLife = baseLife + randomLife / 2
-        for var i: Double = 0; i < averageLife; i += spawnInterval {
-            spawnText(1 - i / averageLife)//, distributionRandom: true
-        }
     }
     
-    func resetSpawnColumns() {
-        spawnedColumns = []
-        for var i = 0; i < numberOfColumns; i++ {
-            spawnedColumns += i
-        }
-    }
+//    func resetSpawnColumns() {
+//        spawnedColumns = []
+//        for var i = 0; i < numberOfColumns; i++ {
+//            spawnedColumns += i
+//        }
+//    }
     
     func selectRandomOpenColumn() -> Int {
-        if spawnedColumns.count == 0 {
-            resetSpawnColumns()
-        }
+//        if spawnedColumns.count == 0 {
+//            resetSpawnColumns()
+//        }
         
-        var select = randomRange(0, spawnedColumns.count)
+        return randomRange(0, numberOfColumns)
         
-        var value = spawnedColumns[select]
-        spawnedColumns.removeAtIndex(select)
-        
-        return value
+//        var value = spawnedColumns[select]
+//        spawnedColumns.removeAtIndex(select)
+//        
+//        return value
     }
     
-    func onSpawnTimerTick() {
-        spawnText(0)
-    }
     
-    func spawnText(var time: Double) {// , distributionRandom: Bool = false
+    func spawnLabel(var label: DiscoverAnimatedLabel, var time: Double) {
         let inset: Double = 10.0
         let width: Double = 42.0
-//        let height: CGFloat = 250
         let verticalOutset: CGFloat = 100
         
         var targetColumn = selectRandomOpenColumn()
-        
-//        if !distributionRandom {
-//            var sorted = lastSpawned.sorted { $0?.animatedPosition?.y > $1?.animatedPosition?.y }
-//            
-//            if let item = sorted[0] {
-//                targetColumn = item.column
-//            }
-//        }
         
         var distance = randomRange(0.0, 1.0)
         distance = distance * distance
@@ -248,7 +192,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * CGFloat(time)
         
         var xPos = inset + (Double(UIScreen.mainScreen().bounds.width) - inset * 2) / Double(numberOfColumns) * Double(targetColumn)
-        var label = DiscoverAnimatedLabel(frame: CGRectMake(CGFloat(xPos), -verticalOutset + yOffset, CGFloat(width), 200))
+        label.frame = CGRectMake(CGFloat(xPos), -verticalOutset + yOffset, CGFloat(width), 200)
         
         var card = fetchRandomCard()
         
@@ -282,38 +226,33 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         self.view.addSubview(label)
         self.view.sendSubviewToBack(label)
         
-        UIView.animateWithDuration(life,
-            delay: NSTimeInterval(),
-            options: UIViewAnimationOptions.CurveLinear,
-            animations: {
-                label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + 5, label.frame.width, label.frame.height)
-            },
-            completion: {
-                (_) -> Void in
-                label.removeFromSuperview();
-                if self.lastSpawned[label.column] == label {
-                    self.lastSpawned[label.column] = nil
-                }
-            })
+//        UIView.animateWithDuration(life,
+//            delay: NSTimeInterval(),
+//            options: UIViewAnimationOptions.CurveLinear,
+//            animations: {
+//                label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + 5, label.frame.width, label.frame.height)
+//            },
+//            completion: {
+//                (_) -> Void in
+//                label.removeFromSuperview();
+////                if self.lastSpawned[label.column] == label {
+////                    self.lastSpawned[label.column] = nil
+////                }
+//            })
         
-        var labels = animatedLabels.sorted {
+//        var l =
+        
+        for label in (labels.sorted {
             CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
-        }
-        
-        for label in labels {
+        }) {
             self.view.sendSubviewToBack(label)
         }
         
         self.view.sendSubviewToBack(discoverBarFade)
         
-        lastSpawned[label.column] = label
+//        lastSpawned[label.column] = label
     }
     
-    func fetchRandomCard() -> Card? {
-        var rnd = Int(randomRange(1000, 9567))
-        
-        return managedObjectContext.fetchCardByIndex(rnd)
-    }
     
     override func viewDidAppear(animated: Bool) {
     }
@@ -339,5 +278,79 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             Globals.notificationShowDefinition.postNotification(card.kanji)
         }
+    }
+    func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
+        return true
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
+        println("open search")
+        
+        //        searchResults.hidden = false
+        
+        //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
+        //        searchResults.hidden = true
+        println("did end editing")
+        searchBar.resignFirstResponder()
+        
+    }
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
+        println("should end editing")
+        //        searchBar.resignFirstResponder()
+        //        searchBar.
+        
+        return true
+    }
+    
+    var lastSearchText = ""
+    
+    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
+        lastSearchText = searchText
+        
+        let fadeSpeed: NSTimeInterval = 0.4
+        
+        if searchText != "" && searchResults.hidden {
+            searchResults.hidden = false
+            searchResults.alpha = 0
+            
+            UIView.animateWithDuration(fadeSpeed,
+                delay: NSTimeInterval(),
+                options: UIViewAnimationOptions.CurveEaseOut,
+                animations: {
+                    self.searchResults.alpha = 1
+                },
+                completion: nil)
+        } else if searchText == "" && !searchResults.hidden {
+            
+            UIView.animateWithDuration(fadeSpeed,
+                delay: NSTimeInterval(),
+                options: UIViewAnimationOptions.CurveEaseOut,
+                animations: {
+                    self.searchResults.alpha = 0
+                },
+                completion: { (_) -> Void in self.searchResults.hidden = true})
+        }
+        
+        if searchText != "" {
+            searchBar.resignFirstResponder()
+            
+            var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
+            
+            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [searchText, searchText]), CardProperties.kanji)
+            
+            items = cards.map { ($0 as Card).index }
+            
+            searchResults.reloadData()
+        }
+    }
+    
+    func fetchRandomCard() -> Card? {
+        var rnd = Int(randomRange(1000, 9567))
+        
+        return managedObjectContext.fetchCardByIndex(rnd)
     }
 }
