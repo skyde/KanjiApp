@@ -1,23 +1,28 @@
 import UIKit
 import CoreData
 
+@objc(CardData)
+class CardData: NSManagedObject {
+    
+    @NSManaged var definition: String
+    @NSManaged var definitionOther: String
+    @NSManaged var exampleEnglish: String
+    @NSManaged var exampleJapanese: String
+    @NSManaged var otherExampleSentences: String
+    @NSManaged var pitchAccent: NSNumber
+    @NSManaged var pitchAccentText: String
+    @NSManaged var soundDefinition: String
+    @NSManaged var soundWord: String
+    @NSManaged var parent: Card
+}
+
 @objc(Card)
 class Card: NSManagedObject {
     @NSManaged var kanji: String
     @NSManaged var index: NSNumber
     @NSManaged var hiragana: String
-    @NSManaged var definition: String
-    @NSManaged var exampleEnglish: String
-    @NSManaged var exampleJapanese: String
-    @NSManaged var soundWord: String
-    @NSManaged var soundDefinition: String
-    @NSManaged var definitionOther: String
     @NSManaged var usageAmount: NSNumber
     @NSManaged var jlptLevel: NSNumber
-    @NSManaged var pitchAccentText: String
-    @NSManaged var pitchAccent: NSNumber
-    @NSManaged var otherExampleSentences: String
-
     @NSManaged var answersKnown: NSNumber
     @NSManaged var answersNormal: NSNumber
     @NSManaged var answersHard: NSNumber
@@ -26,6 +31,7 @@ class Card: NSManagedObject {
     @NSManaged var dueTime: NSNumber
     @NSManaged var enabled: NSNumber
     @NSManaged var suspended: NSNumber
+    @NSManaged var data: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
         switch difficulty {
@@ -141,15 +147,19 @@ class Card: NSManagedObject {
         
         addTo.addBreak(5)
         
-        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
+        var entity = managedObjectContext.fetchCardByIndex(index)
+        
+        println(entity?)
+        
+        addTo.addAttributedText(data.definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
         
         addTo.addBreak(20)
         
-        addTo.addAttributedText(exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
+        addTo.addAttributedText(data.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
         
         addTo.addBreak(5)
         
-        addTo.addAttributedText(exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText(data.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
         addTo.addBreak(30)
         
@@ -157,7 +167,7 @@ class Card: NSManagedObject {
         
         addTo.addBreak(10)
         
-        addTo.addAttributedText("\(pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("\(data.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
 //        var color = 
         
@@ -169,7 +179,7 @@ class Card: NSManagedObject {
         var isJapanese = true
         var text = ""
         
-        var examples: String  = otherExampleSentences.removeTagsFromString(otherExampleSentences)
+        var examples: String  = data.otherExampleSentences.removeTagsFromString(data.otherExampleSentences)
         
         for item in examples {
             var test = String(item).componentsSeparatedByCharactersInSet(validChars)[0]
@@ -226,7 +236,7 @@ class Card: NSManagedObject {
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
-        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
+        value.addAttributedText(data.definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         
         value.endEditing()
         
@@ -250,7 +260,7 @@ class Card: NSManagedObject {
 //    }
     
     func pitchAccentColor() -> UIColor {
-        return caculateColorForPitchAccent(pitchAccent.integerValue)
+        return caculateColorForPitchAccent(data.pitchAccent.integerValue)
     }
 
     func caculateColorForPitchAccent(pitchAccent: Int) -> UIColor {

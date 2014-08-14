@@ -117,17 +117,17 @@ class CustomUIViewController : UIViewController {
                 
                 card.index = index
                 card.hiragana = items[2]
-                card.definition = items[3]
-                card.exampleEnglish = items[4]
-                card.exampleJapanese = items[5]
-                card.soundWord = items[6]
-                card.soundDefinition = items[7]
-                card.definitionOther = items[8]
+                card.data.definition = items[3]
+                card.data.exampleEnglish = items[4]
+                card.data.exampleJapanese = items[5]
+                card.data.soundWord = items[6]
+                card.data.soundDefinition = items[7]
+                card.data.definitionOther = items[8]
                 card.usageAmount = usageAmount
                 card.jlptLevel = jlptLevel
-                card.pitchAccentText = items[11]
-                card.pitchAccent = pitchAccent
-                card.otherExampleSentences = items[13]
+                card.data.pitchAccentText = items[11]
+                card.data.pitchAccent = pitchAccent
+                card.data.otherExampleSentences = items[13]
                 card.answersKnown = 0
                 card.answersNormal = 0
                 card.answersHard = 0
