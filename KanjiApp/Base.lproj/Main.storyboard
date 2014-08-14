@@ -40,6 +40,7 @@
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
+            <string>mplus-2p-regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -350,7 +351,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3KA-G9-9Gl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
                                 <rect key="frame" x="-4" y="22" width="56" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WhD-td-Gqd"/>
@@ -383,6 +384,7 @@
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
+                            <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" constant="2" id="HfT-s2-VLZ"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" constant="2" id="KGm-zH-geF"/>
                             <constraint firstAttribute="trailing" secondItem="nHA-xR-qxM" secondAttribute="trailing" id="Tev-wY-sDY"/>
                             <constraint firstAttribute="trailing" secondItem="3KA-G9-9Gl" secondAttribute="trailing" id="UAc-hU-CWp"/>
@@ -393,7 +395,6 @@
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="3KA-G9-9Gl" secondAttribute="bottom" id="vIn-2n-fNi"/>
-                            <constraint firstItem="qDf-Jv-7yu" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" constant="-4" id="x73-U1-zt7"/>
                             <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="yWv-Rx-Pub"/>
                         </constraints>
                     </view>
@@ -457,9 +458,6 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uO-Hc-A8e">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="k0z-g1-X4f"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -467,18 +465,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="054-fo-6yE"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="top" secondItem="CDn-cS-WZM" secondAttribute="bottom" id="5rq-U6-8k2"/>
                             <constraint firstItem="1uO-Hc-A8e" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="7Of-O3-ARK"/>
-                            <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="1uO-Hc-A8e" secondAttribute="bottom" id="Cqw-wE-j8R"/>
                             <constraint firstItem="CDn-cS-WZM" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="Hcf-AL-fjH"/>
                             <constraint firstAttribute="trailing" secondItem="CDn-cS-WZM" secondAttribute="trailing" id="Ixe-Wr-FgP"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="KMf-QI-zug"/>
                             <constraint firstItem="1uO-Hc-A8e" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" id="RU1-Vu-SSh"/>
+                            <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="1uO-Hc-A8e" secondAttribute="bottom" id="Wis-V6-mHl"/>
                             <constraint firstAttribute="trailing" secondItem="1uO-Hc-A8e" secondAttribute="trailing" id="buN-NE-UFD"/>
                             <constraint firstAttribute="trailing" secondItem="S9A-Ht-RIx" secondAttribute="trailing" constant="1" id="f3u-xr-gMR"/>
+                            <constraint firstItem="S9A-Ht-RIx" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="-2" id="jii-Bb-dSY"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="wn0-hz-fp3"/>
                             <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="wqz-fA-Wv8"/>
-                            <constraint firstItem="S9A-Ht-RIx" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" constant="18" id="zma-TM-h2C"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -596,7 +595,6 @@ you wish to study</string>
                             <constraint firstItem="M6b-gx-U2P" firstAttribute="top" secondItem="dvt-9D-fkt" secondAttribute="bottom" id="TPE-Us-O3i"/>
                             <constraint firstItem="dvt-9D-fkt" firstAttribute="top" secondItem="I7o-Lg-hhw" secondAttribute="bottom" id="TsE-Xx-MRC"/>
                             <constraint firstAttribute="centerX" secondItem="eaw-A8-CGj" secondAttribute="centerX" id="Us6-Kk-1eD"/>
-                            <constraint firstItem="oIn-zS-WgB" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" constant="20" id="W7n-Rs-d3P"/>
                             <constraint firstItem="8qQ-Fe-hOg" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" id="YA0-Sm-aSR"/>
                             <constraint firstAttribute="trailing" secondItem="I7o-Lg-hhw" secondAttribute="trailing" id="bCf-c9-W4M"/>
                             <constraint firstAttribute="trailing" secondItem="8qQ-Fe-hOg" secondAttribute="trailing" id="cND-jj-lgS"/>
@@ -605,6 +603,7 @@ you wish to study</string>
                             <constraint firstAttribute="trailing" secondItem="wqH-ka-yMF" secondAttribute="trailing" id="csd-hb-LaI"/>
                             <constraint firstItem="vSz-a9-1dS" firstAttribute="top" secondItem="EO1-0d-zKt" secondAttribute="top" id="cuC-RW-w2F"/>
                             <constraint firstAttribute="centerX" secondItem="dvt-9D-fkt" secondAttribute="centerX" id="fWX-9D-Nfc"/>
+                            <constraint firstItem="oIn-zS-WgB" firstAttribute="top" secondItem="gmo-3F-9NX" secondAttribute="bottom" id="gOC-96-ZHb"/>
                             <constraint firstItem="I7o-Lg-hhw" firstAttribute="top" secondItem="eaw-A8-CGj" secondAttribute="bottom" id="hQK-XI-SYJ"/>
                             <constraint firstItem="oIn-zS-WgB" firstAttribute="top" secondItem="vSz-a9-1dS" secondAttribute="bottom" id="jEZ-0Q-JJ2"/>
                             <constraint firstItem="CcD-zX-eec" firstAttribute="top" secondItem="V4k-H2-WOF" secondAttribute="bottom" id="kJQ-Sv-Mvl"/>
@@ -874,7 +873,7 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-Up-XMI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-Up-XMI">
                                 <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -883,7 +882,7 @@ all due cards</string>
                                 </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-BU-dcO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GVg-8Q-Qqo"/>
@@ -892,7 +891,7 @@ all due cards</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIP-Mh-RwX">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIP-Mh-RwX">
                                 <rect key="frame" x="548" y="7" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Ng5-Jk-jYn"/>
@@ -905,10 +904,19 @@ all due cards</string>
                                     <action selector="onButtonDown:" destination="zR6-VI-QSd" eventType="touchDown" id="0Y5-8E-M8c"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npd-Yu-Wt1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KIP-Mh-RwX" secondAttribute="trailing" constant="12" id="2Wv-nF-knt"/>
+                            <constraint firstItem="fhj-BU-dcO" firstAttribute="top" secondItem="npd-Yu-Wt1" secondAttribute="bottom" id="8Sf-m5-7E1"/>
+                            <constraint firstItem="npd-Yu-Wt1" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="B5L-XO-HCU"/>
                             <constraint firstItem="yE0-Rj-gdz" firstAttribute="top" secondItem="GQF-Up-XMI" secondAttribute="bottom" id="FBy-6Y-taz"/>
                             <constraint firstItem="fhj-BU-dcO" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="Gdk-ro-uTe"/>
                             <constraint firstItem="GQF-Up-XMI" firstAttribute="leading" secondItem="EzM-Yf-p7c" secondAttribute="leading" id="HQZ-Kf-Fie"/>
@@ -916,10 +924,11 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="fhj-BU-dcO" secondAttribute="trailing" id="QQq-c2-Lw8"/>
                             <constraint firstItem="KIP-Mh-RwX" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" constant="7" id="TRF-ZB-kAC"/>
                             <constraint firstAttribute="trailing" secondItem="GQF-Up-XMI" secondAttribute="trailing" id="YMI-RF-qsw"/>
+                            <constraint firstItem="npd-Yu-Wt1" firstAttribute="top" secondItem="EzM-Yf-p7c" secondAttribute="top" id="izC-1q-hOU"/>
                             <constraint firstItem="fhj-BU-dcO" firstAttribute="top" secondItem="zQZ-Lk-gyV" secondAttribute="bottom" id="sFk-mf-oLQ"/>
+                            <constraint firstAttribute="trailing" secondItem="npd-Yu-Wt1" secondAttribute="trailing" id="vMc-fJ-zl7"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="header" destination="fhj-BU-dcO" id="uSR-SU-ytp"/>
                         <outlet property="tableView" destination="GQF-Up-XMI" id="8Ac-PC-fQt"/>
@@ -1126,19 +1135,19 @@ all due cards</string>
                                     <constraint firstAttribute="height" constant="500" id="jLY-ft-iTr"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-bf-LBf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-bf-LBf">
                                 <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-um-Llw">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-um-Llw">
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-QC-lvn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-QC-lvn">
                                 <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1146,7 +1155,7 @@ all due cards</string>
                                     <outlet property="delegate" destination="cUj-3S-BQf" id="3mV-Of-tVW"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
+                            <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
                                 <rect key="frame" x="0.0" y="44" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="OGG-NS-mZW"/>
@@ -1156,7 +1165,7 @@ all due cards</string>
                                     <outlet property="delegate" destination="cUj-3S-BQf" id="xqo-ok-MtL"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408163265307" green="0.26020408163265307" blue="0.26020408163265307" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1282,7 +1291,7 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7jX-Xq-vJx"/>
+        <segue reference="iYu-nc-2Hh"/>
         <segue reference="o8I-8R-76U"/>
         <segue reference="jq4-f8-RfP"/>
     </inferredMetricsTieBreakers>
