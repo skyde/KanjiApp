@@ -12,6 +12,7 @@ enum View {
     case Search
     case GameMode
     case Reader
+    case CardsFinished
     case AddWords
     case Lists(title: String, cards: [NSNumber])
     case Settings
@@ -24,6 +25,8 @@ enum View {
             return "GameMode"
         case .Reader:
             return "Reader"
+        case .CardsFinished:
+            return "CardsFinished"
         case .AddWords:
             return "AddWords"
         case .Lists:

@@ -16,7 +16,7 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var definitionOverlay: UIView!
     @IBOutlet weak var blurImage: UIImageView!
     
-    var sidebarButtonBaseFrame: CGRect!
+    var sidebarButtonBaseX: CGFloat = 0
     var statusBarHidden = false
     let popoverAnimationSpeed = 0.4
     let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
@@ -51,8 +51,8 @@ class RootContainer: CustomUIViewController {
                 options: sidebarEasing,
                 animations: {
                     self.sidebarButton.frame = CGRectMake(
-                        self.sidebarButtonBaseFrame.origin.x + xMove,
-                        self.sidebarButtonBaseFrame.origin.y,
+                        self.sidebarButtonBaseX + xMove,
+                        self.sidebarButton.frame.origin.y,
                         self.sidebarButton.frame.width,
                         self.sidebarButton.frame.height);
                 },
@@ -69,7 +69,11 @@ class RootContainer: CustomUIViewController {
                 delay: NSTimeInterval(),
                 options: sidebarEasing,
                 animations: {
-                    self.sidebarButton.frame = self.sidebarButtonBaseFrame
+                    self.sidebarButton.frame = CGRectMake(
+                        self.sidebarButtonBaseX,
+                        self.sidebarButton.frame.origin.y,
+                        self.sidebarButton.frame.width,
+                        self.sidebarButton.frame.height);//self.sidebarButtonBaseFrame
                 },
                 completion: nil)
             
@@ -121,7 +125,7 @@ class RootContainer: CustomUIViewController {
         self.view.sendSubviewToBack(mainView)
         self.view.sendSubviewToBack(sidebar)
         
-        sidebarButtonBaseFrame = sidebarButton.frame
+        sidebarButtonBaseX = sidebarButton.frame.origin.x
     }
     
     func onNotificationShowDefinition() {

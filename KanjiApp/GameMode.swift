@@ -69,18 +69,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         updateText()
         setupSwipeGestures()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if due.count == 0 {
+        if true {//due.count == 0 {
             
-            let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+            print("go")
             
-            if myWords.count > 0 {
-                Globals.notificationAddWordsFromList.value = .MyWords
-                Globals.autoAddWordsFromList = true
-            }
-            
-//            transitionToView()
-            Globals.notificationTransitionToView.postNotification(View.AddWords)
+            //            transitionToView()
+            Globals.notificationTransitionToView.postNotification(.CardsFinished)
         }
     }
     
