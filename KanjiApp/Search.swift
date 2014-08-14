@@ -48,6 +48,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         searchResults.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         searchResultsBaseFrame = searchResults.frame

@@ -38,6 +38,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
 //        if Globals.notificationTransitionToView.value == View.Lists {
 ////            items = ( as View.Lists)
 //        }
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
