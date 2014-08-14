@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class DiscoverAnimatedLabel: UILabel {
+class DiscoverLabel: UILabel {
     var kanji: String = ""
     var column: Int = 0
     

@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+class DiscoverLabelData {
+    
+}
+
 class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
@@ -20,7 +24,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var searchResultsBaseFrame: CGRect = CGRect()
     @IBOutlet weak var discoverClickableArea: UIButton!
     var items: [NSNumber] = []
-    var labels: [DiscoverAnimatedLabel] = []
+    var labels: [DiscoverLabel] = []
     
     var averageLabelLife: Double {
     get {
@@ -63,7 +67,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
                 for i in 0 ..< numberOfLabels {
-            var add = DiscoverAnimatedLabel(frame: CGRectMake(0, 0, 1, 1))
+            var add = DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
             labels += add
             spawnLabel(add, time: Double(i) / Double(numberOfLabels))
         }
@@ -102,7 +106,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         var tapLocation = gesture.locationInView(self.view)
         if Globals.notificationShowDefinition.value == "" {
-            var matches: [DiscoverAnimatedLabel] = []
+            var matches: [DiscoverLabel] = []
             
             for label in labels {
                 var frame = label.layer?.presentationLayer()?.frame
@@ -177,7 +181,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     
-    func spawnLabel(var label: DiscoverAnimatedLabel, var time: Double) {
+    func spawnLabel(var label: DiscoverLabel, var time: Double) {
         let inset: Double = 10.0
         let width: Double = 42.0
         let verticalOutset: CGFloat = 100
