@@ -2,7 +2,14 @@ import Foundation
 import UIKit
 
 class DiscoverLabelData {
-    
+    public var visible = false
+    public var kanji = ""
+    public var startTime: CGFloat = 0.0
+    public var life: CGFloat = 0.0
+    public var distance = 0.0
+    public var column = 0
+    public var attributedText: NSAttributedString? = nil
+    public var height: CGFloat = 0
 }
 
 class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -10,12 +17,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
     var timer: NSTimer? = nil
-//    var spawnedColumns: [Int] = []
     let baseLife: Double = 20
     let randomLife: Double = 5
     let spawnInterval: Double = 1.7
     
     var currentTime = 0.0
+    var maxTime = 0.0
     var frameRate = 1.0 / 60.0
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -25,15 +32,22 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     @IBOutlet weak var discoverClickableArea: UIButton!
     var items: [NSNumber] = []
     var labels: [DiscoverLabel] = []
+    var labelsData: [DiscoverLabelData] = []
     
-    var averageLabelLife: Double {
+    var averageLife: Double {
     get {
         return baseLife + randomLife / 2
     }
     }
+    var maxLife: Double {
+    get {
+        return baseLife + randomLife
+    }
+    }
+    
     var numberOfLabels: Int {
     get {
-        return Int(averageLabelLife / spawnInterval)
+        return Int(averageLife / spawnInterval)
     }
     }
 
@@ -66,11 +80,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                for i in 0 ..< numberOfLabels {
-            var add = DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
-            labels += add
-            spawnLabel(add, time: Double(i) / Double(numberOfLabels))
-        }
 
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -87,15 +96,86 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         gesture.cancelsTouchesInView = false
         gesture.delaysTouchesEnded = false
         discoverClickableArea.addGestureRecognizer(gesture)
+        
+        for i in 0 ..< numberOfLabels {
+            labels += DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
+        }
     }
     
     func onTimerTick() {
         currentTime += frameRate
+        maxTime = max(currentTime, maxTime)
+        currentTime = min(currentTime, 0)
         
-        for label in labels {
-            label.frame.origin.y += 0.3
+        var first = Int(currentTime / maxLife)
+        var last = first + numberOfLabels
+        
+        while last > labelsData.count {
+            labelsData += spawnLabelData(Double(labelsData.count) * spawnInterval - maxLife)
         }
-//        spawnText(0)
+        
+        for i in 0 ..< labels.count {
+            var label = labels[i]
+            
+            var data = labelsData[Int(currentTime / maxLife) + i]
+            
+            if !data.visible {
+                data.visible = true
+                label.textColor = UIColor(
+                    red: CGFloat(data.distance * 0.4),
+                    green: CGFloat(data.distance * 0.85),
+                    blue: CGFloat(data.distance * 1),
+                    alpha: 1)
+                
+                label.kanji = data.kanji
+                label.attributedText = data.attributedText
+                
+                label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, data.height)
+                
+                self.view.addSubview(label)
+                self.view.sendSubviewToBack(label)
+                
+                for label in (labels.sorted {
+                    CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
+                    }) {
+                        self.view.sendSubviewToBack(label)
+                }
+                
+                self.view.sendSubviewToBack(discoverBarFade)
+            }
+            
+            let localTime: CGFloat = (CGFloat(currentTime) - data.startTime) / data.life
+            
+            let xInset: CGFloat = 10.0
+            let width: CGFloat = 42.0
+            let verticalOutset: CGFloat = 100
+            
+            var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * localTime
+            
+            var xPos: CGFloat = xInset + (UIScreen.mainScreen().bounds.width - xInset * 2) / CGFloat(numberOfColumns) * CGFloat(data.column)
+            label.frame = CGRectMake(xPos, -verticalOutset + yOffset, CGFloat(width), 200)
+        }
+    }
+    
+    func spawnLabelData(var time: Double) -> DiscoverLabelData {
+        let value = DiscoverLabelData()
+        
+        var textSize: CGFloat = 30
+        
+        let card = fetchRandomCard()
+        var random = randomRange(0.0, 1.0)
+        random = random * random
+        
+        value.startTime = CGFloat(time)
+        value.life = CGFloat(baseLife + randomLife * random)
+        value.distance = random
+        value.column = selectRandomOpenColumn()
+        
+        value.kanji = card.kanji
+        value.attributedText = card.animatedLabelText(textSize)
+        value.height = textSize * (CGFloat(countElements(card.kanji)) + 1)
+        
+        return value
     }
     
     func onTouch(gesture: UIGestureRecognizer) {
@@ -180,82 +260,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //        return value
     }
     
-    
-    func spawnLabel(var label: DiscoverLabel, var time: Double) {
-        let inset: Double = 10.0
-        let width: Double = 42.0
-        let verticalOutset: CGFloat = 100
-        
-        var targetColumn = selectRandomOpenColumn()
-        
-        var distance = randomRange(0.0, 1.0)
-        distance = distance * distance
-        
-        var life: Double = (baseLife + randomLife * distance) * (1 - time)
-
-        var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * CGFloat(time)
-        
-        var xPos = inset + (Double(UIScreen.mainScreen().bounds.width) - inset * 2) / Double(numberOfColumns) * Double(targetColumn)
-        label.frame = CGRectMake(CGFloat(xPos), -verticalOutset + yOffset, CGFloat(width), 200)
-        
-        var card = fetchRandomCard()
-        
-        if card == nil {
-            card = fetchRandomCard()
-        }
-        
-        if card == nil {
-            card = managedObjectContext.fetchCardByKanji("空")
-        }
-        
-        if let card = card {
-            var size: CGFloat = 30
-            
-            label.kanji = card.kanji
-            label.attributedText = card.animatedLabelText(size)
-            let height = size * (CGFloat(countElements(card.kanji)) + 1)
-            
-            label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, height)
-        }
-        label.column = targetColumn
-        
-        label.numberOfLines = 0
-        
-        label.textColor = UIColor(
-            red: CGFloat(distance * 0.4),
-            green: CGFloat(distance * 0.85),
-            blue: CGFloat(distance * 1),
-            alpha: 1)
-        
-        self.view.addSubview(label)
-        self.view.sendSubviewToBack(label)
-        
-//        UIView.animateWithDuration(life,
-//            delay: NSTimeInterval(),
-//            options: UIViewAnimationOptions.CurveLinear,
-//            animations: {
-//                label.frame = CGRectMake(label.frame.origin.x, UIScreen.mainScreen().bounds.height + 5, label.frame.width, label.frame.height)
-//            },
-//            completion: {
-//                (_) -> Void in
-//                label.removeFromSuperview();
-////                if self.lastSpawned[label.column] == label {
-////                    self.lastSpawned[label.column] = nil
-////                }
-//            })
-        
-//        var l =
-        
-        for label in (labels.sorted {
-            CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
-        }) {
-            self.view.sendSubviewToBack(label)
-        }
-        
-        self.view.sendSubviewToBack(discoverBarFade)
-        
-//        lastSpawned[label.column] = label
-    }
     
     
     override func viewDidAppear(animated: Bool) {
@@ -352,9 +356,15 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
     }
     
-    func fetchRandomCard() -> Card? {
+    func fetchRandomCard() -> Card {
         var rnd = Int(randomRange(1000, 9567))
         
-        return managedObjectContext.fetchCardByIndex(rnd)
+        var value = managedObjectContext.fetchCardByIndex(rnd)
+        
+        if value == nil {
+            value = fetchRandomCard()
+        }
+        
+        return value!
     }
 }
