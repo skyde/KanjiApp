@@ -6,7 +6,7 @@ class AddRemoveButton: UIButton {
         
         var baseFrame = frame
         
-        let outset: CGFloat = 1.7
+        let outset: CGFloat = 3.7
         self.transform = CGAffineTransformMakeScale(outset, outset)
         
         UIView.animateWithDuration(0.3,

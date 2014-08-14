@@ -24,7 +24,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var currentTime: Double = 20
     var maxTime: Double = 140
     let frameRate: Double = 1 / 60
-    let scrollSpeed: Double = 0.2
+    let scrollSpeed: Double = 0.26
     let scrollDamping: Double = 0.9
     
     @IBOutlet weak var searchBar: UISearchBar!

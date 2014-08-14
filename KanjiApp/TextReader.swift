@@ -148,6 +148,7 @@ class TextReader: CustomUIViewController {
 //        gesture.delaysTouchesEnded = false
         userText.addGestureRecognizer(gesture)
         
+        self.automaticallyAdjustsScrollViewInsets = false
 //        userText.transform = CGAffineTransformMakeRotation(CGFloat(M_PI / 2))
         
 //        println("add on touch")
