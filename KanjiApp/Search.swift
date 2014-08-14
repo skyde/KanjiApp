@@ -130,8 +130,11 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func onTimerTick() {
         currentTime += scrollVelocity
         scrollVelocity *= scrollDamping
-    
-        if !touchesDown && searchResults.hidden && RootContainer.instance.sidebar.hidden && RootContainer.instance.definitionOverlay.hidden {
+        
+        if !touchesDown &&
+            searchResults.hidden &&
+            RootContainer.instance.sidebar.hidden &&
+            !RootContainer.instance.mainView.hidden {
             currentTime += frameRate
         }
         maxTime = max(currentTime, maxTime)

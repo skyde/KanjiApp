@@ -6,11 +6,11 @@ class DiscoverLabel: UILabel {
     var kanji = ""
     var column = 0
     
-    var animatedPosition: CGPoint? {
-    get {
-        return layer?.presentationLayer()?.frame?.origin
-    }
-    }
+//    var animatedPosition: CGPoint? {
+//    get {
+//        return layer?.presentationLayer()?.frame?.origin
+//    }
+//    }
     
     init(frame: CGRect) {
         super.init(frame: frame)
