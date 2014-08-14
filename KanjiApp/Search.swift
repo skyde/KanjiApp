@@ -105,9 +105,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func onTimerTick() {
         currentTime += frameRate
         maxTime = max(currentTime, maxTime)
-        currentTime = min(currentTime, 0)
+        currentTime = max(currentTime, 0)
         
-        var first = Int(currentTime / maxLife)
+        var first = Int(currentTime / spawnInterval)
         var last = first + numberOfLabels
         
         while last > labelsData.count {
@@ -117,7 +117,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         for i in 0 ..< labels.count {
             var label = labels[i]
             
-            var data = labelsData[Int(currentTime / maxLife) + i]
+            var data = labelsData[Int(currentTime / spawnInterval) + i]
             
             if !data.visible {
                 data.visible = true
