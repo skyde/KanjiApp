@@ -115,19 +115,23 @@ class CustomUIViewController : UIViewController {
                 
                 card.kanji = kanji
                 
+                var dataDesc = NSEntityDescription.entityForName("CardData", inManagedObjectContext: managedObjectContext)
+                
+                card.embeddedData = CardData(entity: dataDesc, insertIntoManagedObjectContext: managedObjectContext)
+                
                 card.index = index
                 card.hiragana = items[2]
-                card.data.definition = items[3]
-                card.data.exampleEnglish = items[4]
-                card.data.exampleJapanese = items[5]
-                card.data.soundWord = items[6]
-                card.data.soundDefinition = items[7]
-                card.data.definitionOther = items[8]
+                card.embeddedData.definition = items[3]
+                card.embeddedData.exampleEnglish = items[4]
+                card.embeddedData.exampleJapanese = items[5]
+                card.embeddedData.soundWord = items[6]
+                card.embeddedData.soundDefinition = items[7]
+                card.embeddedData.definitionOther = items[8]
                 card.usageAmount = usageAmount
                 card.jlptLevel = jlptLevel
-                card.data.pitchAccentText = items[11]
-                card.data.pitchAccent = pitchAccent
-                card.data.otherExampleSentences = items[13]
+                card.embeddedData.pitchAccentText = items[11]
+                card.embeddedData.pitchAccent = pitchAccent
+                card.embeddedData.otherExampleSentences = items[13]
                 card.answersKnown = 0
                 card.answersNormal = 0
                 card.answersHard = 0
@@ -140,6 +144,7 @@ class CustomUIViewController : UIViewController {
                 values += card
             }
         }
+        
         
         saveContext()
     }

@@ -96,7 +96,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         
         if !isFront
         {
-            if var path = dueCard?.data.soundWord
+            if var path = dueCard?.embeddedData.soundWord
             {
                 playSound(filterSoundPath(path))
             }
@@ -128,7 +128,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         
-        if var path = dueCard?.data.soundDefinition
+        if var path = dueCard?.embeddedData.soundDefinition
         {
             if !isFront
             {

@@ -1,21 +1,6 @@
 import UIKit
 import CoreData
 
-@objc(CardData)
-class CardData: NSManagedObject {
-    
-    @NSManaged var definition: String
-    @NSManaged var definitionOther: String
-    @NSManaged var exampleEnglish: String
-    @NSManaged var exampleJapanese: String
-    @NSManaged var otherExampleSentences: String
-    @NSManaged var pitchAccent: NSNumber
-    @NSManaged var pitchAccentText: String
-    @NSManaged var soundDefinition: String
-    @NSManaged var soundWord: String
-    @NSManaged var parent: Card
-}
-
 @objc(Card)
 class Card: NSManagedObject {
     @NSManaged var kanji: String
@@ -31,7 +16,7 @@ class Card: NSManagedObject {
     @NSManaged var dueTime: NSNumber
     @NSManaged var enabled: NSNumber
     @NSManaged var suspended: NSNumber
-    @NSManaged var data: CardData
+    @NSManaged var embeddedData: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
         switch difficulty {
@@ -151,15 +136,15 @@ class Card: NSManagedObject {
         
         println(entity?)
         
-        addTo.addAttributedText(data.definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
+        addTo.addAttributedText(embeddedData.definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
         
         addTo.addBreak(20)
         
-        addTo.addAttributedText(data.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
+        addTo.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
         
         addTo.addBreak(5)
         
-        addTo.addAttributedText(data.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText(embeddedData.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
         addTo.addBreak(30)
         
@@ -167,7 +152,7 @@ class Card: NSManagedObject {
         
         addTo.addBreak(10)
         
-        addTo.addAttributedText("\(data.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
 //        var color = 
         
@@ -179,7 +164,7 @@ class Card: NSManagedObject {
         var isJapanese = true
         var text = ""
         
-        var examples: String  = data.otherExampleSentences.removeTagsFromString(data.otherExampleSentences)
+        var examples: String  = embeddedData.otherExampleSentences.removeTagsFromString(embeddedData.otherExampleSentences)
         
         for item in examples {
             var test = String(item).componentsSeparatedByCharactersInSet(validChars)[0]
@@ -236,7 +221,7 @@ class Card: NSManagedObject {
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
-        value.addAttributedText(data.definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
+        value.addAttributedText(embeddedData.definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         
         value.endEditing()
         
@@ -260,7 +245,7 @@ class Card: NSManagedObject {
 //    }
     
     func pitchAccentColor() -> UIColor {
-        return caculateColorForPitchAccent(data.pitchAccent.integerValue)
+        return caculateColorForPitchAccent(embeddedData.pitchAccent.integerValue)
     }
 
     func caculateColorForPitchAccent(pitchAccent: Int) -> UIColor {
