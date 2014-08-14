@@ -21,9 +21,11 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     let randomLife: Double = 5
     let spawnInterval: Double = 1.7
     
-    var currentTime = 0.0
-    var maxTime = 0.0
-    var frameRate = 1.0 / 60.0
+    var currentTime: Double = 40
+    var maxTime: Double = 120
+    let frameRate: Double = 1 / 60
+    let scrollSpeed: Double = 0.2
+    let scrollDamping: Double = 0.9
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
@@ -33,6 +35,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var items: [NSNumber] = []
     var labels: [DiscoverLabel] = []
     var labelsData: [DiscoverLabelData] = []
+    var scrollVelocity: Double = 0
     
     var averageLife: Double {
     get {
@@ -91,21 +94,33 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
-        var gesture = UILongPressGestureRecognizer(target: self, action: "onTouch:")
-        gesture.minimumPressDuration = 0
+        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+//        gesture.minimumPressDuration = 0
         gesture.cancelsTouchesInView = false
+        gesture.delaysTouchesBegan = false
         gesture.delaysTouchesEnded = false
+//        gesture.can
         discoverClickableArea.addGestureRecognizer(gesture)
         
         for i in 0 ..< numberOfLabels {
             labels += DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
         }
+        
+        setupSwipeGestures()
+        onTimerTick()
     }
     
     func onTimerTick() {
+        currentTime += scrollVelocity
+        scrollVelocity *= scrollDamping
+        
         currentTime += frameRate
         maxTime = max(currentTime, maxTime)
         currentTime = max(currentTime, 0)
+        
+        if currentTime == 0 {
+            scrollVelocity = 0//abs(scrollVelocity) * 0.5
+        }
         
         var first = Int(currentTime / spawnInterval)
         var last = first + numberOfLabels
@@ -270,7 +285,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        println(self.items.count)
+//        println(self.items.count)
         return self.items.count;
     }
     
@@ -291,6 +306,60 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             Globals.notificationShowDefinition.postNotification(card.kanji)
         }
     }
+    
+    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        
+//        println(gesture.locationInView(self.view))
+        
+        var pan = Double(gesture.velocityInView(self.view).y)
+        
+        pan /= 4000
+        pan *= scrollSpeed
+        
+        scrollVelocity += pan
+        
+//        currentTime = min(currentTime, maxTime)
+        
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+//            if !isFront {
+//                if let card = dueCard {
+//                    switch swipeGesture.direction {
+//                        
+//                    case UISwipeGestureRecognizerDirection.Right:
+//                        onInteract(.SwipeRight, card)
+//                        
+//                    case UISwipeGestureRecognizerDirection.Down:
+//                        onInteract(.SwipeDown, card)
+//                        
+//                    case UISwipeGestureRecognizerDirection.Up:
+//                        onInteract(.SwipeUp, card)
+//                        
+//                    case UISwipeGestureRecognizerDirection.Left:
+//                        onInteract(.SwipeLeft, card)
+//                        
+//                    default:
+//                        break
+//                    }
+//                }
+//            }
+//        }
+    }
+    
+    func setupSwipeGestures() {
+//        println("add gestures")
+        
+//        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToVerticalScrollGesture:")
+//        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+//        self.discoverClickableArea.addGestureRecognizer(swipeDown)
+        
+        var pan = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+        pan.cancelsTouchesInView = false
+        pan.delaysTouchesBegan = false
+        pan.delaysTouchesEnded = false
+//        pan.direction = UISwipeGestureRecognizerDirection.Up
+        self.view.addGestureRecognizer(pan)
+    }
+    
     func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
         return true
     }

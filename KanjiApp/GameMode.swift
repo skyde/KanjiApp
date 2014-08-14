@@ -177,6 +177,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if !isFront {
                 if let card = dueCard {
