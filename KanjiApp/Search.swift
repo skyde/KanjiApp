@@ -131,7 +131,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         currentTime += scrollVelocity
         scrollVelocity *= scrollDamping
     
-        if !touchesDown && searchResults.hidden && RootContainer.instance.sidebar.hidden {
+        if !touchesDown && searchResults.hidden && RootContainer.instance.sidebar.hidden && RootContainer.instance.definitionOverlay.hidden {
             currentTime += frameRate
         }
         maxTime = max(currentTime, maxTime)
