@@ -134,8 +134,6 @@ class Card: NSManagedObject {
         
         var entity = managedObjectContext.fetchCardByIndex(index)
         
-        println(entity?)
-        
         addTo.addAttributedText(embeddedData.definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
         
         addTo.addBreak(20)
