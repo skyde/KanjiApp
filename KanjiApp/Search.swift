@@ -92,6 +92,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
 //        lastSpawned = Array(count: numberOfColumns, repeatedValue: nil)
         
+        for i in 0 ..< numberOfLabels {
+            labels += DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
+        }
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
         var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
@@ -102,9 +105,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //        gesture.can
         discoverClickableArea.addGestureRecognizer(gesture)
         
-        for i in 0 ..< numberOfLabels {
-            labels += DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
-        }
         
         setupSwipeGestures()
         onTimerTick()
@@ -137,8 +137,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             }
             let dataIndex = first + index
             let data = labelsData[dataIndex]
+            let width: CGFloat = 42.0
             
             if !data.visible {
+                
                 data.visible = true
                 label.textColor = UIColor(
                     red: CGFloat(data.distance * 0.4),
@@ -149,6 +151,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 label.kanji = data.kanji
                 label.attributedText = data.attributedText
                 
+                label.frame = CGRectMake(0, 0, width, data.height)
 //                label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, data.height)
                 
                 self.view.addSubview(label)
@@ -166,13 +169,16 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             let localTime: CGFloat = (CGFloat(currentTime) - data.startTime) / data.life
             
             let xInset: CGFloat = 10.0
-            let width: CGFloat = 42.0
             let verticalOutset: CGFloat = 140
             
             var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * localTime
             
             var xPos: CGFloat = xInset + (UIScreen.mainScreen().bounds.width - xInset * 2) / CGFloat(numberOfColumns) * CGFloat(data.column)
-            label.frame = CGRectMake(xPos, -verticalOutset + yOffset - data.height / 2, width, data.height)
+            label.frame = CGRectMake(
+                xPos - label.frame.width / 2 + width / 2,
+                -verticalOutset + yOffset - data.height / 2 - label.frame.height / 2 + data.height / 2,
+                label.frame.width,
+                label.frame.height)
         }
     }
     
