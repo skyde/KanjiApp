@@ -12,7 +12,7 @@ class DiscoverLabelData {
     public var height: CGFloat = 0
 }
 
-class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
     let numberOfColumns = 7
@@ -103,15 +103,24 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         gesture.cancelsTouchesInView = false
         gesture.delaysTouchesBegan = false
         gesture.delaysTouchesEnded = false
-//        gesture.delegate =
-//        gesture.can
         discoverClickableArea.addGestureRecognizer(gesture)
         
+        var tap = UITapGestureRecognizer(target: self, action: "onTouch:")
+//        tap.minimumPressDuration = 0
+        tap.cancelsTouchesInView = false
+        tap.delaysTouchesBegan = false
+        tap.delaysTouchesEnded = false
+        discoverClickableArea.addGestureRecognizer(tap)
+        
+        gesture.requireGestureRecognizerToFail(tap)
         
         setupSwipeGestures()
         onTimerTick()
     }
-//    
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return true
+    }
 //    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
 //        super.touchesBegan(touches, withEvent: event)
 //        
@@ -331,6 +340,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
     }
     
+//    var startTouchLocation: CGPoint = CGPoint()
     var touchLocation: CGPoint = CGPoint()
     func respondToPanGesture(gesture: UILongPressGestureRecognizer) {
         
@@ -338,10 +348,18 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         case .Began:
             touchesDown = true
             touchLocation = gesture.locationInView(self.view)
+//            startTouchLocation = touchLocation
             
-            onTouch(gesture)
         case .Ended:
             touchesDown = false
+            
+//            let maxDistance: CGFloat = 3
+            
+            touchLocation = gesture.locationInView(self.view)
+ 
+//            if (touchLocation.x - startTouchLocation.x) * (touchLocation.y - startTouchLocation.y) < maxDistance * maxDistance {
+//                onTouch(gesture)
+//            }
         default:
             break
         }
