@@ -91,8 +91,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     func onTimerTick() {
-        if searchBarTextChanged {
-            searchBarTextChanged = false
+        if searchBar.text != lastSearchText {
             updateSearch(searchBar.text)
         }
         
@@ -435,18 +434,16 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //        println("selectedScopeButtonIndexDidChange = \(searchBar.text)")
 //    }
     
-    var searchBarTextChanged = false
-    
-    func searchBar(searchBar: UISearchBar!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
-        
-        searchBarTextChanged = true
-        
-        return true
-    }
+//    var searchBarTextChanged = false
+//    
+//    func searchBar(searchBar: UISearchBar!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
+//        
+//        searchBarTextChanged = true
+//        
+//        return true
+//    }
     
     func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
-        println(searchText)
-        
         updateSearch(searchText)
     }
     
@@ -455,7 +452,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     private func updateSearch(text: String) {
         lastSearchText = text
         
-        let fadeSpeed: NSTimeInterval = 0.4
+        let fadeSpeed: NSTimeInterval = 0.3
         
         if text != "" && searchResults.hidden {
             searchResults.hidden = false
@@ -480,8 +477,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         
         if text != "" {
-            //            searchBar.resignFirstResponder()
-            
             var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
             
             var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, text]), CardProperties.kanji)
