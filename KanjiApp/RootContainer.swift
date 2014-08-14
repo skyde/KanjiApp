@@ -29,7 +29,11 @@ class RootContainer: CustomUIViewController {
     }
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
-        animateSelf(mainView.frame.origin.x == 0)
+        var open = mainView.frame.origin.x == 0
+        
+        Globals.notificationSidebarInteract.postNotification(open)
+        
+        animateSelf(open)
     }
     
     private func animateSelf(open: Bool) {

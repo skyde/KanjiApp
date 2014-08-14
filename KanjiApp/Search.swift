@@ -1,17 +1,6 @@
 import Foundation
 import UIKit
 
-class DiscoverLabelData {
-    public var visible = false
-    public var kanji = ""
-    public var startTime: CGFloat = 0.0
-    public var life: CGFloat = 0.0
-    public var distance = 0.0
-    public var column = 0
-    public var attributedText: NSAttributedString? = nil
-    public var height: CGFloat = 0
-}
-
 class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var discoverBarFade: UIImageView!
@@ -57,30 +46,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
-        
-//        items = []
-//        labels = []
     }
-    
-//    var animatedLabels : [DiscoverAnimatedLabel]
-//    {
-//    get {
-//        var labels:[DiscoverAnimatedLabel] = []
-//        for item in self.view.subviews {
-//            if let label = item as? DiscoverAnimatedLabel {
-//                labels += label
-//            }
-//        }
-//        
-//        return labels
-//    }
-//    }
-    
-    
-//    init(coder aDecoder: NSCoder!) {
-//        super.init(coder: aDecoder)
-//        
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +56,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         searchResults.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         searchResultsBaseFrame = searchResults.frame
-        
-//        lastSpawned = Array(count: numberOfColumns, repeatedValue: nil)
         
         for i in 0 ..< numberOfLabels {
             labels += DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
@@ -106,35 +70,25 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         discoverClickableArea.addGestureRecognizer(gesture)
         
         var tap = UITapGestureRecognizer(target: self, action: "onTouch:")
-//        tap.minimumPressDuration = 0
         tap.cancelsTouchesInView = false
         tap.delaysTouchesBegan = false
         tap.delaysTouchesEnded = false
         discoverClickableArea.addGestureRecognizer(tap)
         
-        
         gesture.requireGestureRecognizerToFail(tap)
         
+        Globals.notificationShowDefinition.addObserver(self, selector: "onCloseKeyboard", object: nil)
         
-//        var closeKeyboard = UILongPressGestureRecognizer(target: self, action: "onCloseKeyboard:")
-//        closeKeyboard.minimumPressDuration = 0
-//        closeKeyboard.cancelsTouchesInView = false
-//        closeKeyboard.delaysTouchesBegan = false
-//        closeKeyboard.delaysTouchesEnded = false
-//        searchResults.addGestureRecognizer(closeKeyboard)
+//        Globals.notificationTransitionToView.addObserver(self, selector: "onCloseKeyboard", object: nil)
         
-//        setupSwipeGestures()
+        Globals.notificationSidebarInteract.addObserver(self, selector: "onCloseKeyboard", object: nil)
+        
         onTimerTick()
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
         return true
     }
-//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-//        super.touchesBegan(touches, withEvent: event)
-//        
-//        println("began")
-//    }
     
     func onTimerTick() {
         if searchBarTextChanged {
@@ -239,7 +193,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         return value
     }
     
-    func onCloseKeyboard(gesture: UIGestureRecognizer) {
+    func onCloseKeyboard() {
         closeKeyboard()
     }
     
@@ -445,44 +399,40 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 ////        self.view.addGestureRecognizer(pan)
 //    }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
-        println("searchBarShouldBeginEditing")
-
-        return true
-    }
+//    func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
+//        println("searchBarShouldBeginEditing")
+//
+//        return true
+//    }
+//    
+//    func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
+//        println("open search")
+//        
+//        //        searchResults.hidden = false
+//        
+//        //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)
+//    }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
-        println("open search")
-        
-        //        searchResults.hidden = false
-        
-        //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-        //        searchResults.hidden = true
-        println("did end editing")
-//        searchBar.resignFirstResponder()
-    }
+//    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
+//        //        searchResults.hidden = true
+//        println("did end editing")
+////        searchBar.resignFirstResponder()
+//    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
-        println("searchBarSearchButtonClicked")
+//        println("searchBarSearchButtonClicked")
         closeKeyboard()
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
-        println("should end editing")
+//        println("should end editing")
         closeKeyboard()
-        //        searchBar.
         
         return true
     }
 
-    func searchBar(searchBar: UISearchBar!, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        println("selectedScopeButtonIndexDidChange = \(searchBar.text)")
-    }
-//    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
-//    
+//    func searchBar(searchBar: UISearchBar!, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        println("selectedScopeButtonIndexDidChange = \(searchBar.text)")
 //    }
     
     var searchBarTextChanged = false
@@ -490,48 +440,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func searchBar(searchBar: UISearchBar!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
         
         searchBarTextChanged = true
-//        println("searchBar.text = \(searchBar.text)")
-////        println("searchBar.text == nil = \(searchBar.text == nil)")
-//        println("range = \(range)")
-//        println("range.location = \(range.location)")
-//        println("range.length = \(range.length)")
-//        println("replacementText = \(text)")
-//        
-//        var current = searchBar.text!
-//        
-//        if range.length == 0 {
-//            current += text!
-//        } else {
-//            var t = ""
-//            if range.location > 0 {
-//                t += current[0...range.location]
-//            }
-//            
-//            t += text
-//            
-//            if range.location + range.length > countElements(current) {
-//                t += current[range.location + range.length..<countElements(searchBar.text)]
-//            }
-//            
-//            current = t
-//        }
-////        println("range = \(range)")
-////        println("range = \(range)")
-//        
-////        var predicted = searchBar.text!
-////        if text != "" {
-////            predicted += text
-////        } else {
-////            var l = range.length - range.location - 1
-////            predicted = predicted[0 ..< l]
-////            println(l)
-////        }
-//        
-//        println("current = \(current)")
-//        updateSearch(predicted)
         
         return true
     }
+    
     func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
         println(searchText)
         
