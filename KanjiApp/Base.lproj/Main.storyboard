@@ -381,7 +381,6 @@
                         <color key="backgroundColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="0X0-uQ-823"/>
-                            <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" constant="20" id="36m-mw-ljt"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
@@ -391,6 +390,7 @@
                             <constraint firstItem="3KA-G9-9Gl" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="UlO-YW-izs"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
                             <constraint firstItem="3KA-G9-9Gl" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="XLd-nX-W2e"/>
+                            <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" id="arP-bz-0cn"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="qDf-Jv-7yu" secondAttribute="trailing" constant="-52" id="rrJ-WA-SoZ"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
