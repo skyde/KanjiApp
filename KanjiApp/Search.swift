@@ -112,9 +112,18 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         tap.delaysTouchesEnded = false
         discoverClickableArea.addGestureRecognizer(tap)
         
+        
         gesture.requireGestureRecognizerToFail(tap)
         
-        setupSwipeGestures()
+        
+//        var closeKeyboard = UILongPressGestureRecognizer(target: self, action: "onCloseKeyboard:")
+//        closeKeyboard.minimumPressDuration = 0
+//        closeKeyboard.cancelsTouchesInView = false
+//        closeKeyboard.delaysTouchesBegan = false
+//        closeKeyboard.delaysTouchesEnded = false
+//        searchResults.addGestureRecognizer(closeKeyboard)
+        
+//        setupSwipeGestures()
         onTimerTick()
     }
     
@@ -128,6 +137,11 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //    }
     
     func onTimerTick() {
+        if searchBarTextChanged {
+            searchBarTextChanged = false
+            updateSearch(searchBar.text)
+        }
+        
         currentTime += scrollVelocity
         scrollVelocity *= scrollDamping
         
@@ -225,6 +239,14 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         return value
     }
     
+    func onCloseKeyboard(gesture: UIGestureRecognizer) {
+        closeKeyboard()
+    }
+    
+    func closeKeyboard() {
+        searchBar.resignFirstResponder()
+    }
+    
     func onTouch(gesture: UIGestureRecognizer) {
         
         switch gesture.state {
@@ -237,7 +259,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         
         if lastSearchText == "" {
-            searchBar.resignFirstResponder()
+            closeKeyboard()
         }
         
         var tapLocation = gesture.locationInView(self.view)
@@ -320,6 +342,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     override func viewDidAppear(animated: Bool) {
     }
     
+    func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
+        closeKeyboard()
+    }
+    
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
 //        println(self.items.count)
         return self.items.count;
@@ -347,7 +373,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var touchLocation: CGPoint = CGPoint()
     func respondToLongPressGesture(gesture: UILongPressGestureRecognizer) {
         
-        searchBar.resignFirstResponder()
+        closeKeyboard()
         
         switch gesture.state {
         case .Began:
@@ -404,22 +430,24 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //        }
     }
     
-    func setupSwipeGestures() {
-//        println("add gestures")
-        
-//        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToVerticalScrollGesture:")
-//        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-//        self.discoverClickableArea.addGestureRecognizer(swipeDown)
-        
-//        var pan = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-//        pan.cancelsTouchesInView = false
-//        pan.delaysTouchesBegan = false
-//        pan.delaysTouchesEnded = false
-////        pan.direction = UISwipeGestureRecognizerDirection.Up
-//        self.view.addGestureRecognizer(pan)
-    }
+//    func setupSwipeGestures() {
+////        println("add gestures")
+//        
+////        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToVerticalScrollGesture:")
+////        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+////        self.discoverClickableArea.addGestureRecognizer(swipeDown)
+//        
+////        var pan = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+////        pan.cancelsTouchesInView = false
+////        pan.delaysTouchesBegan = false
+////        pan.delaysTouchesEnded = false
+//////        pan.direction = UISwipeGestureRecognizerDirection.Up
+////        self.view.addGestureRecognizer(pan)
+//    }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
+        println("searchBarShouldBeginEditing")
+
         return true
     }
     
@@ -434,25 +462,90 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
         //        searchResults.hidden = true
         println("did end editing")
-        searchBar.resignFirstResponder()
+//        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+        println("searchBarSearchButtonClicked")
+        closeKeyboard()
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
         println("should end editing")
-        //        searchBar.resignFirstResponder()
+        closeKeyboard()
         //        searchBar.
         
         return true
     }
+
+    func searchBar(searchBar: UISearchBar!, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        println("selectedScopeButtonIndexDidChange = \(searchBar.text)")
+    }
+//    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
+//    
+//    }
+    
+    var searchBarTextChanged = false
+    
+    func searchBar(searchBar: UISearchBar!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
+        
+        searchBarTextChanged = true
+//        println("searchBar.text = \(searchBar.text)")
+////        println("searchBar.text == nil = \(searchBar.text == nil)")
+//        println("range = \(range)")
+//        println("range.location = \(range.location)")
+//        println("range.length = \(range.length)")
+//        println("replacementText = \(text)")
+//        
+//        var current = searchBar.text!
+//        
+//        if range.length == 0 {
+//            current += text!
+//        } else {
+//            var t = ""
+//            if range.location > 0 {
+//                t += current[0...range.location]
+//            }
+//            
+//            t += text
+//            
+//            if range.location + range.length > countElements(current) {
+//                t += current[range.location + range.length..<countElements(searchBar.text)]
+//            }
+//            
+//            current = t
+//        }
+////        println("range = \(range)")
+////        println("range = \(range)")
+//        
+////        var predicted = searchBar.text!
+////        if text != "" {
+////            predicted += text
+////        } else {
+////            var l = range.length - range.location - 1
+////            predicted = predicted[0 ..< l]
+////            println(l)
+////        }
+//        
+//        println("current = \(current)")
+//        updateSearch(predicted)
+        
+        return true
+    }
+    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
+        println(searchText)
+        
+        updateSearch(searchText)
+    }
     
     var lastSearchText = ""
     
-    func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
-        lastSearchText = searchText
+    private func updateSearch(text: String) {
+        lastSearchText = text
         
         let fadeSpeed: NSTimeInterval = 0.4
         
-        if searchText != "" && searchResults.hidden {
+        if text != "" && searchResults.hidden {
             searchResults.hidden = false
             searchResults.alpha = 0
             
@@ -463,7 +556,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                     self.searchResults.alpha = 1
                 },
                 completion: nil)
-        } else if searchText == "" && !searchResults.hidden {
+        } else if text == "" && !searchResults.hidden {
             
             UIView.animateWithDuration(fadeSpeed,
                 delay: NSTimeInterval(),
@@ -474,12 +567,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 completion: { (_) -> Void in self.searchResults.hidden = true})
         }
         
-        if searchText != "" {
-            searchBar.resignFirstResponder()
+        if text != "" {
+            //            searchBar.resignFirstResponder()
             
             var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
             
-            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [searchText, searchText]), CardProperties.kanji)
+            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, text]), CardProperties.kanji)
             
             items = cards.map { ($0 as Card).index }
             

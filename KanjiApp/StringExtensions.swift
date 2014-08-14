@@ -3,6 +3,15 @@ import CoreData
 
 extension String
 {
+    subscript (r: Range<Int>) -> String {
+        get {
+            let startIndex = advance(self.startIndex, r.startIndex)
+            let endIndex = advance(startIndex, r.endIndex - r.startIndex)
+            
+            return self[Range(start: startIndex, end: endIndex)]
+        }
+    }
+    
     func isPrimarilyKanji() -> Bool
     {        
         var validChars = NSCharacterSet(range: NSRange(location: 0x4e00, length: 0x9fbf-0x4e00))
