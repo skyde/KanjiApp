@@ -111,7 +111,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         var last = first + numberOfLabels
         
         while last > labelsData.count {
-            labelsData += spawnLabelData(Double(labelsData.count) * spawnInterval - maxLife)
+            labelsData += spawnLabelData(Double(labelsData.count) * spawnInterval - averageLife)
         }
         
         for i in 0 ..< labels.count {
@@ -122,7 +122,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             }
             let dataIndex = first + index
             let data = labelsData[dataIndex]
-            
             
             if !data.visible {
                 data.visible = true
@@ -135,7 +134,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 label.kanji = data.kanji
                 label.attributedText = data.attributedText
                 
-                label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, data.height)
+//                label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, data.height)
                 
                 self.view.addSubview(label)
                 self.view.sendSubviewToBack(label)
@@ -153,12 +152,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             
             let xInset: CGFloat = 10.0
             let width: CGFloat = 42.0
-            let verticalOutset: CGFloat = 100
+            let verticalOutset: CGFloat = 140
             
             var yOffset: CGFloat = (UIScreen.mainScreen().bounds.height + verticalOutset * 2) * localTime
             
             var xPos: CGFloat = xInset + (UIScreen.mainScreen().bounds.width - xInset * 2) / CGFloat(numberOfColumns) * CGFloat(data.column)
-            label.frame = CGRectMake(xPos, -verticalOutset + yOffset, CGFloat(width), 200)
+            label.frame = CGRectMake(xPos, -verticalOutset + yOffset - data.height / 2, width, data.height)
         }
     }
     
