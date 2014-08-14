@@ -115,9 +115,14 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         
         for i in 0 ..< labels.count {
-            var label = labels[i]
+            let label = labels[i]
+            var index = i - first % labels.count
+            if index < 0 {
+                index += labels.count
+            }
+            let dataIndex = first + index
+            let data = labelsData[dataIndex]
             
-            var data = labelsData[Int(currentTime / spawnInterval) + i]
             
             if !data.visible {
                 data.visible = true
