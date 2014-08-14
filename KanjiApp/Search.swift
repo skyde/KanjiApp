@@ -36,6 +36,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var labels: [DiscoverLabel] = []
     var labelsData: [DiscoverLabelData] = []
     var scrollVelocity: Double = 0
+    var touchesDown = false
     
     var averageLife: Double {
     get {
@@ -97,11 +98,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
-        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-//        gesture.minimumPressDuration = 0
+        var gesture = UILongPressGestureRecognizer(target: self, action: "respondToPanGesture:")
+        gesture.minimumPressDuration = 0
         gesture.cancelsTouchesInView = false
         gesture.delaysTouchesBegan = false
         gesture.delaysTouchesEnded = false
+//        gesture.delegate =
 //        gesture.can
         discoverClickableArea.addGestureRecognizer(gesture)
         
@@ -109,12 +111,20 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         setupSwipeGestures()
         onTimerTick()
     }
+//    
+//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+//        super.touchesBegan(touches, withEvent: event)
+//        
+//        println("began")
+//    }
     
     func onTimerTick() {
         currentTime += scrollVelocity
         scrollVelocity *= scrollDamping
-        
-        currentTime += frameRate
+    
+        if !touchesDown {
+            currentTime += frameRate
+        }
         maxTime = max(currentTime, maxTime)
         currentTime = max(currentTime, 0)
         
@@ -205,6 +215,15 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     func onTouch(gesture: UIGestureRecognizer) {
         
+        switch gesture.state {
+        case .Began:
+            touchesDown = true
+        case .Ended:
+            touchesDown = false
+        default:
+            break
+        }
+        
         if lastSearchText == "" {
             searchBar.resignFirstResponder()
         }
@@ -243,7 +262,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                         match.transform = CGAffineTransformMakeScale(1, 1)
                         match.alpha = 1
                     })
-                
                 Globals.notificationShowDefinition.postNotification(match.kanji)
                 
 //                Globals.currentDefinition =
@@ -313,13 +331,25 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
     }
     
-    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+    var touchLocation: CGPoint = CGPoint()
+    func respondToPanGesture(gesture: UILongPressGestureRecognizer) {
         
-//        println(gesture.locationInView(self.view))
+        switch gesture.state {
+        case .Began:
+            touchesDown = true
+            touchLocation = gesture.locationInView(self.view)
+            
+            onTouch(gesture)
+        case .Ended:
+            touchesDown = false
+        default:
+            break
+        }
         
-        var pan = Double(gesture.velocityInView(self.view).y)
+        var pan = Double(gesture.locationInView(self.view).y - touchLocation.y)
+        touchLocation = gesture.locationInView(self.view)
         
-        pan /= 4000
+        pan /= 80
         pan *= scrollSpeed
         
         scrollVelocity += pan
@@ -358,12 +388,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
 //        self.discoverClickableArea.addGestureRecognizer(swipeDown)
         
-        var pan = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-        pan.cancelsTouchesInView = false
-        pan.delaysTouchesBegan = false
-        pan.delaysTouchesEnded = false
-//        pan.direction = UISwipeGestureRecognizerDirection.Up
-        self.view.addGestureRecognizer(pan)
+//        var pan = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+//        pan.cancelsTouchesInView = false
+//        pan.delaysTouchesBegan = false
+//        pan.delaysTouchesEnded = false
+////        pan.direction = UISwipeGestureRecognizerDirection.Up
+//        self.view.addGestureRecognizer(pan)
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
