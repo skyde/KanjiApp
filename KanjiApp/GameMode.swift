@@ -74,11 +74,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if true {//due.count == 0 {
-            
-            print("go")
-            
-            //            transitionToView()
+        if due.count == 0 {
             Globals.notificationTransitionToView.postNotification(.CardsFinished)
         }
     }

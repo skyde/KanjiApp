@@ -21,8 +21,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     let randomLife: Double = 5
     let spawnInterval: Double = 1.7
     
-    var currentTime: Double = 40
-    var maxTime: Double = 120
+    var currentTime: Double = 20
+    var maxTime: Double = 140
     let frameRate: Double = 1 / 60
     let scrollSpeed: Double = 0.2
     let scrollDamping: Double = 0.9
@@ -131,7 +131,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         currentTime += scrollVelocity
         scrollVelocity *= scrollDamping
     
-        if !touchesDown {
+        if !touchesDown && searchResults.hidden && RootContainer.instance.sidebar.hidden {
             currentTime += frameRate
         }
         maxTime = max(currentTime, maxTime)
