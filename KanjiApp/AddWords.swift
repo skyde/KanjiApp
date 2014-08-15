@@ -13,76 +13,21 @@ class AddWords: CustomUIViewController {
 //        
 //    }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//
+//    }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        
-//        if Globals.autoAddWordsFromList {
-//            onAddWordsFromList()
-//        }
-    }
-    
-    func onAddWordsFromList() {
-        
-        var predicate: [(EntityProperties, AnyObject)] = []
-        
-        predicate += (CardProperties.enabled, false)
-        
-        switch Globals.notificationAddWordsFromList.value {
-        case .AllWords:
-            break;
-        case .Jlpt4:
-            predicate += (CardProperties.jlptLevel, "4")
-        case .Jlpt3:
-            predicate += (CardProperties.jlptLevel, "3")
-        case .Jlpt2:
-            predicate += (CardProperties.jlptLevel, "2")
-        case .Jlpt1:
-            predicate += (CardProperties.jlptLevel, "1")
-        case .MyWords:
-            predicate += (CardProperties.suspended, false)
-        default:
-            break;
-        }
-        
-        let cards = managedObjectContext.fetchEntities(.Card, predicate, CardProperties.index, sortAscending: true)
-        var addCards: [NSNumber] = []
-        
-        var added = 0
-        
-        for card in cards {
-            if let card = card as? Card {
-                var onlyStudyKanji = settings.onlyStudyKanji.boolValue
-                
-                if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji()) {
-                    added++
-                    card.enabled = true
-                    card.suspended = false
-                    addCards += card.index
-                }
-                
-                if added >= settings.cardAddAmount.integerValue {
-                    break
-                }
-            }
-        }
-        //managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
-        //        items =
-//        println("cardAddAmount \(settings.cardAddAmount.integerValue)")
-//        println(addCards.count)
-//        println(addCards)
-        
-//        Globals.viewCards = //.map { ($0 as Card).index }
-//        Globals.autoAddWordsFromList = false
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Added Words", cards: addCards))
-    }
+//    override func viewDidDisappear(animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        
+//        NSNotificationCenter.defaultCenter().removeObserver(self)
+//        
+////        if Globals.autoAddWordsFromList {
+////            onAddWordsFromList()
+////        }
+//    }
     
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
