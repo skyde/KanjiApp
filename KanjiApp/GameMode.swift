@@ -228,5 +228,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         self.view.addGestureRecognizer(swipeFromLeftEdge)
     }
     
+    
 //    @IBOutlet var swipeFromLeftEdge : UIScreenEdgePanGestureRecognizer = nil
 }

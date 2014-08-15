@@ -114,7 +114,11 @@ class RootContainer: CustomUIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.BlackOpaque
     }
-
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return View.GameMode.description() == Globals.notificationTransitionToView.value.description()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

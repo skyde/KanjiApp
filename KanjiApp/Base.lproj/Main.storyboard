@@ -924,12 +924,12 @@ all due cards</string>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIP-Mh-RwX">
-                                <rect key="frame" x="548" y="27" width="40" height="30"/>
+                                <rect key="frame" x="533" y="27" width="55" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Ng5-Jk-jYn"/>
+                                    <constraint firstAttribute="width" constant="55" id="Ng5-Jk-jYn"/>
                                     <constraint firstAttribute="height" constant="30" id="o3P-iN-09z"/>
                                 </constraints>
-                                <state key="normal" title="Study">
+                                <state key="normal" title="Confirm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1336,7 +1336,7 @@ all due cards</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="yfD-aM-lZg"/>
+        <segue reference="iYu-nc-2Hh"/>
         <segue reference="0Q0-aS-4tM"/>
     </inferredMetricsTieBreakers>
 </document>

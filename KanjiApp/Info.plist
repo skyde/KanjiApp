@@ -32,6 +32,8 @@
 	</array>
 	<key>uiapp</key>
 	<string></string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>mplus-2p-regular.ttf</string>
