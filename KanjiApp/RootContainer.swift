@@ -121,7 +121,19 @@ class RootContainer: CustomUIViewController {
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return View.GameMode.description() == Globals.notificationTransitionToView.value.description()
+        
+        var orientationPass = true
+        switch UIDevice.currentDevice().orientation {
+        case .LandscapeLeft :
+            orientationPass = false
+        case .LandscapeRight :
+            orientationPass = false
+        default:
+            break
+        }
+        
+        return View.GameMode.description() == Globals.notificationTransitionToView.value.description() ||
+            !orientationPass
     }
     
     override func viewWillAppear(animated: Bool) {
