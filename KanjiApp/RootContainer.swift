@@ -108,7 +108,8 @@ class RootContainer: CustomUIViewController {
         rootContainerInstance = self
         
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-//        UIApplication.sharedApplication().statusBarHidden = true
+//        UIApplication.sharedApplication().status
+        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -233,45 +234,46 @@ class RootContainer: CustomUIViewController {
         
         predicate += (CardProperties.enabled, false)
         
+        var cards: [Card] = []
+        
         switch Globals.notificationAddWordsFromList.value {
         case .AllWords:
             break;
         case .Jlpt4:
-            predicate += (CardProperties.jlptLevel, "4")
+            cards = managedObjectContext.fetchCardsJLPT4Suspended()
         case .Jlpt3:
-            predicate += (CardProperties.jlptLevel, "3")
+            cards = managedObjectContext.fetchCardsJLPT3Suspended()
         case .Jlpt2:
-            predicate += (CardProperties.jlptLevel, "2")
+            cards = managedObjectContext.fetchCardsJLPT2Suspended()
         case .Jlpt1:
-            predicate += (CardProperties.jlptLevel, "1")
+            cards = managedObjectContext.fetchCardsJLPT1Suspended()
         case .MyWords:
-            predicate += (CardProperties.suspended, false)
+            cards = managedObjectContext.fetchCardsWillStudy()
+        case .AllWords:
+            cards = managedObjectContext.fetchCardsAllWordsSuspended()
         default:
             break;
         }
         
-        let cards = managedObjectContext.fetchEntities(.Card, predicate, CardProperties.index, sortAscending: true)
         var addCards: [NSNumber] = []
         
         var added = 0
         
         for card in cards {
-            if let card = card as? Card {
-                var onlyStudyKanji = settings.onlyStudyKanji.boolValue
-                
-                if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji()) {
-                    added++
-                    card.enabled = true
-                    card.suspended = false
-                    addCards += card.index
-                }
-                
-                if added >= settings.cardAddAmount.integerValue {
-                    break
-                }
+//            if let card = card as? Card {
+            var onlyStudyKanji = settings.onlyStudyKanji.boolValue
+            
+            if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji()) {
+                added++
+                addCards += card.index
             }
+            
+            if added >= settings.cardAddAmount.integerValue {
+                break
+            }
+//            }
         }
         
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Added Words", cards: addCards))
+        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", cards: addCards, displayAddButton: true))
     }
 }

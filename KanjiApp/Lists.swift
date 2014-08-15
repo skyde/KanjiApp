@@ -6,6 +6,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet var tableView: UITableView!
     var items: [NSNumber] = []
     @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
@@ -14,8 +15,17 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     @IBAction func onButtonDown(sender: AnyObject) {
-        println("on down")
+        for index in items {
+            if let card = managedObjectContext.fetchCardByIndex(index) {
+                card.enabled = true
+                card.suspended = false
+            }
+        }
+        
+        saveContext()
+        
         Globals.notificationTransitionToView.postNotification(.GameMode)
+        
     }
     
     override func viewDidLoad() {
@@ -23,22 +33,22 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-//        var cards = Globals.viewCards//managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         switch Globals.notificationTransitionToView.value {
-        case .Lists(let title, let cards):
+        case .Lists(let title, let cards, let displayAddButton):
             items = cards
             header.text = title
+            confirmButton.hidden = !displayAddButton
         default:
             break
         }
         
-//        println(.description())
-        
-//        if Globals.notificationTransitionToView.value == View.Lists {
-////            items = ( as View.Lists)
-//        }
-        self.automaticallyAdjustsScrollViewInsets = false
+
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

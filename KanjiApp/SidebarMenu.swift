@@ -54,30 +54,30 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 100:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "My Words", cards: cards)
+            targetView = .Lists(title: "My Words", cards: cards, displayAddButton: false)
         case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "Will Study", cards: cards)
+            targetView = .Lists(title: "Will Study", cards: cards, displayAddButton: false)
         case 200:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 4", cards: cards)
+            targetView = .Lists(title: "JLPT 4", cards: cards, displayAddButton: false)
         case 201:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 3", cards: cards)
+            targetView = .Lists(title: "JLPT 3", cards: cards, displayAddButton: false)
         case 202:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT2Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 2", cards: cards)
+            targetView = .Lists(title: "JLPT 2", cards: cards, displayAddButton: false)
         case 203:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT1Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 1", cards: cards)
+            targetView = .Lists(title: "JLPT 1", cards: cards, displayAddButton: false)
         case 204:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsAllWordsSuspended().map { ($0 as Card).index }
-            targetView = .Lists(title: "All Words", cards: cards)
+            targetView = .Lists(title: "All Words", cards: cards, displayAddButton: false)
 //            Globals.viewCards =
         case 300:
             targetView = .Settings

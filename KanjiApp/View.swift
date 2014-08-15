@@ -14,7 +14,7 @@ enum View {
     case Reader
     case CardsFinished
     case AddWords
-    case Lists(title: String, cards: [NSNumber])
+    case Lists(title: String, cards: [NSNumber], displayAddButton: Bool)
     case Settings
     
     func description() -> String {
