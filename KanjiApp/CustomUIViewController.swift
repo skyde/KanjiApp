@@ -44,7 +44,7 @@ class CustomUIViewController : UIViewController {
         
         loadContext()
         
-        println(managedObjectContext)
+//        println(managedObjectContext)
         
         var settings = (managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default", createIfNil: true) as Settings?)!
         
