@@ -983,6 +983,12 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBarFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="r0q-5g-Gnv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="542"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="542" id="CBQ-x8-QKk"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBottomFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0g-vH-EGh">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <constraints>
@@ -1045,12 +1051,6 @@ all due cards</string>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBarFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="r0q-5g-Gnv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="542"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="542" id="CBQ-x8-QKk"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
