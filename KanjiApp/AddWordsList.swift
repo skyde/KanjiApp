@@ -5,25 +5,29 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
     
     @IBOutlet var table: UITableView!
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-////        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
-////        self.view.backgroundColor = bkColor
-//    }
+    var myWordsEnabled = false
     
     override func viewDidAppear(animated: Bool) {
         
-        table.selectRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0
-            ), animated: false, scrollPosition: .Top)    }
+//        table.selectRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0
+//            ), animated: false, scrollPosition: .Top)
+        
+        myWordsEnabled = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().count > 0
+        
+        table.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)).textLabel.enabled = myWordsEnabled
+        
+    }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
-        var sourceList: WordList
+        var sourceList: WordList?
         
         switch indexPath.row {
         case 0:
-            sourceList = .MyWords
+            if myWordsEnabled {
+                sourceList = .MyWords
+            }
         case 1:
             sourceList = .Jlpt4
         case 2:
@@ -35,7 +39,7 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
         case 5:
             sourceList = .AllWords
         default:
-            sourceList = .MyWords
+            sourceList = nil
             break
         }
         
@@ -43,8 +47,11 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
         
 //        println(addWordsFromList.description())
 //                var n = NSNotification(name: addWordsFromListNotification, object: targetView)
+    if let sourceList = sourceList {
+        Globals.notificationAddWordsFromList.postNotification(sourceList)
+    }
         
-    Globals.notificationAddWordsFromList.postNotification(sourceList)
+    table.deselectRowAtIndexPath(indexPath, animated: true)
         
 //        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationAddWordsFromList, object: Globals.addWordsFromList)
     }

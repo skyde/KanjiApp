@@ -105,12 +105,14 @@ extension NSManagedObjectContext
         }
     }
 
+    // Helpers
+    
     func fetchCardByKanji(kanji: String) -> Card? {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)
         
         return value as Card?
     }
-
+    
     func fetchCardByIndex(index: NSNumber) -> Card? {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.index, index)
         
@@ -119,5 +121,23 @@ extension NSManagedObjectContext
         }
         
         return nil
+    }
+    
+//    func fetchCardByIndex(index: NSNumber) -> Card? {
+//        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.index, index)
+//        
+//        if value as? Card {
+//            return value as? Card
+//        }
+//        
+//        return nil
+    //    }
+    
+    func fetchCardsActive() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
+    func fetchCardsWillStudy() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
     }
 }

@@ -87,22 +87,26 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     func advanceCard() {
         
-        if !isFront && due.count > 1 {
+        if !isFront && due.count >= 1 {
             
             due.removeAtIndex(0)
         }
         
-        isFront = !isFront
-        
-        if !isFront
-        {
-            if var path = dueCard?.embeddedData.soundWord
+        if due.count == 0 {
+            Globals.notificationTransitionToView.postNotification(.CardsFinished)
+        } else {
+            isFront = !isFront
+            
+            if !isFront
             {
-                playSound(filterSoundPath(path))
+                if var path = dueCard?.embeddedData.soundWord
+                {
+                    playSound(filterSoundPath(path))
+                }
             }
+            
+            updateText()
         }
-        
-        updateText()
     }
     
     func filterSoundPath(path: String) -> String

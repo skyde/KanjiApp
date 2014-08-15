@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class CardsFinished : CustomUIViewController {
+    
+    @IBOutlet weak var continueStudying: UIButton!
     
     @IBAction func continueStudyingPressed(sender: AnyObject) {
         println("continueStudyingPressed")
@@ -30,5 +33,8 @@ class CardsFinished : CustomUIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let active = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        
+        continueStudying.enabled = active.count != 0
     }
 }
