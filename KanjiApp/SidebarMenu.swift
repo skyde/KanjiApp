@@ -104,6 +104,10 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
             
             targetView = .Lists(title: "Will Study", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
+        case 102:
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsAllWordsSuspended().map { ($0 as Card).index }
+            
+            targetView = .Lists(title: "Known", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
         case 200:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             
