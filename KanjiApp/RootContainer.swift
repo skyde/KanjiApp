@@ -143,12 +143,20 @@ class RootContainer: CustomUIViewController {
     }
     
     func respondToFromLeftSwipeTap(gesture: UITapGestureRecognizer) {
+        if Globals.notificationShowDefinition.value != "" {
+            Globals.notificationShowDefinition.postNotification("")
+        }
+        
         if mainView.frame.origin.x != 0 {
             animateSelf(false)
         }
     }
     
     func respondToFromLeftSwipeGesture(gesture: UIPanGestureRecognizer) {
+        if Globals.notificationShowDefinition.value != "" {
+            Globals.notificationShowDefinition.postNotification("")
+        }
+        
         var x = gesture.locationInView(self.view).x
         x = max(0, x)
         x = min(x, sidebar.frame.width)
