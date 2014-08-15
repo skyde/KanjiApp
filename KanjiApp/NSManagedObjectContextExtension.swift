@@ -140,4 +140,24 @@ extension NSManagedObjectContext
     func fetchCardsWillStudy() -> [Card] {
         return fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
     }
+    
+    func fetchCardsJLPT4Suspended() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.jlptLevel, 4), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
+    func fetchCardsJLPT3Suspended() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.jlptLevel, 3), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
+    func fetchCardsJLPT2Suspended() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.jlptLevel, 2), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
+    func fetchCardsJLPT1Suspended() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.jlptLevel, 1), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
+    func fetchCardsAllWordsSuspended() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+    }
 }

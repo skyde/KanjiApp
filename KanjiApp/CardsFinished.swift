@@ -14,12 +14,12 @@ class CardsFinished : CustomUIViewController {
     @IBOutlet weak var continueStudying: UIButton!
     
     @IBAction func continueStudyingPressed(sender: AnyObject) {
-        println("continueStudyingPressed")
+//        println("continueStudyingPressed")
         Globals.notificationTransitionToView.postNotification(.GameMode)
     }
     
     @IBAction func addNewCardsPressed(sender: AnyObject) {
-        println("addNewCardsPressed")
+//        println("addNewCardsPressed")
         
         let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         
