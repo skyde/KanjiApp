@@ -43,14 +43,14 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 2:
             targetView = .Reader
         case 3:
-            let myWords = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
-            var exclude = [WordList.MyWords]
+//            let myWords = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+//            var exclude = [WordList.MyWords]
+//            
+//            if myWords.count > 0 {
+//                exclude = []
+//            }
             
-            if myWords.count > 0 {
-                exclude = []
-            }
-            
-            targetView = .AddWords(exclude: exclude)
+            targetView = .AddWords
         case 100:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             

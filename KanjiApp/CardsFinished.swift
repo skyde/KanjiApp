@@ -27,7 +27,7 @@ class CardsFinished : CustomUIViewController {
             Globals.notificationAddWordsFromList.postNotification(.MyWords)
         }
         else {
-            Globals.notificationTransitionToView.postNotification(.AddWords(exclude: [.MyWords]))
+            Globals.notificationTransitionToView.postNotification(.AddWords)
         }
     }
     override func viewWillAppear(animated: Bool) {

@@ -13,7 +13,7 @@ enum View {
     case GameMode
     case Reader
     case CardsFinished
-    case AddWords(exclude: [WordList])
+    case AddWords
     case Lists(title: String, cards: [NSNumber])
     case Settings
     
