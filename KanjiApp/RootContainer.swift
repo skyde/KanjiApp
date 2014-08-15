@@ -18,7 +18,7 @@ class RootContainer: CustomUIViewController {
     
     var sidebarButtonBaseX: CGFloat = 0
     var statusBarHidden = false
-    let popoverAnimationSpeed = 0.4
+    let popoverAnimationSpeed = 0.22
     let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
     

@@ -41,8 +41,12 @@ class DefinitionPopover : CustomUIViewController {
             outputText.textContainerInset.top = 40
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
             
-            addRemoveButton.setButtonType(!card.enabled.boolValue)
+            updateButtonState(card)
         }
+    }
+    
+    private func updateButtonState(card: Card) {
+        addRemoveButton.setButtonType(card.suspended.boolValue)
     }
     
     override func viewDidLoad() {
@@ -54,10 +58,10 @@ class DefinitionPopover : CustomUIViewController {
     @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
         
         if let viewCard = viewCard {
-            viewCard.enabled = !viewCard.enabled.boolValue
+            viewCard.suspended = !viewCard.suspended.boolValue
             
             addRemoveButton.onInteract()
-            addRemoveButton.setButtonType(!viewCard.enabled.boolValue)
+            updateButtonState(viewCard)
             
             saveContext()
         }

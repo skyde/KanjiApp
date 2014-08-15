@@ -11,18 +11,17 @@ import Foundation
 class CardsFinished : CustomUIViewController {
     
     @IBAction func continueStudyingPressed(sender: AnyObject) {
-        print("continueStudyingPressed")
+        println("continueStudyingPressed")
         Globals.notificationTransitionToView.postNotification(.GameMode)
     }
     
     @IBAction func addNewCardsPressed(sender: AnyObject) {
-        print("addNewCardsPressed")
+        println("addNewCardsPressed")
         
         let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         
         if myWords.count > 0 {
-            Globals.notificationAddWordsFromList.value = .MyWords
-//            Globals.autoAddWordsFromList = true
+            Globals.notificationTransitionToView.postNotification(.AddWords(exclude: []))
         }
         else {
             Globals.notificationTransitionToView.postNotification(.AddWords(exclude: [.MyWords]))

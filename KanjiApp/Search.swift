@@ -468,12 +468,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         } else if text == "" && !searchResults.hidden {
             
             UIView.animateWithDuration(fadeSpeed,
-                delay: NSTimeInterval(),
+                delay: 0.5,
                 options: UIViewAnimationOptions.CurveEaseOut,
                 animations: {
                     self.searchResults.alpha = 0
                 },
-                completion: { (_) -> Void in self.searchResults.hidden = true})
+                completion: { (_) -> Void in self.searchResults.hidden = true })
         }
         
         if text != "" {
