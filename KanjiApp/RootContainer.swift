@@ -347,6 +347,6 @@ class RootContainer: CustomUIViewController {
 //            }
         }
         
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", cards: addCards, displayAddButton: true))
+        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: Globals.colorLists, cards: addCards, displayAddButton: true))
     }
 }

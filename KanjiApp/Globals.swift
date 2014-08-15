@@ -17,6 +17,11 @@ struct Globals
     
     static let JapaneseFontLight = "mplus-2p-light"
     
+    static var colorFunctions: UIColor! = nil
+    static var colorMyWords: UIColor! = nil
+    static var colorLists: UIColor! = nil
+    static var colorOther: UIColor! = nil
+    
     static var screenRect: CGRect {
         get {
             var size = UIScreen.mainScreen().bounds.size

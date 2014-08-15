@@ -28,14 +28,14 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        return 11;
 //    }
     
-    override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        if section == 1 || section == 2 || section == 3 {
-            return 30
-        }
-        
-        return 0
-    }
+//    override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
+//        
+//        if section == 1 || section == 2 || section == 3 {
+//            return 30
+//        }
+//        
+//        return 0
+//    }
     
     override func viewDidAppear(animated: Bool) {
         
@@ -56,6 +56,13 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //                header.frame = CGRectMake(header.frame.origin.x, header.frame.origin.y, header.frame.width, 10)
             }
         }
+        
+//        println(table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor)
+        
+        Globals.colorFunctions = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor
+        Globals.colorMyWords = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)).textLabel.textColor
+        Globals.colorLists = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)).textLabel.textColor
+        Globals.colorOther = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3)).textLabel.textColor
     }
     
 //    override func onTransitionToView(notification: NSNotification) {
@@ -63,6 +70,10 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        
 //        animateSelf(false)
 //    }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//            }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
@@ -88,37 +99,39 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 100:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "My Words", cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "Studying", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
         case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "Will Study", cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "Will Study", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
         case 200:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 4", cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 4", color: Globals.colorLists, cards: cards, displayAddButton: false)
         case 201:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 3", cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 3", color: Globals.colorLists, cards: cards, displayAddButton: false)
         case 202:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT2Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 2", cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 2", color: Globals.colorLists, cards: cards, displayAddButton: false)
         case 203:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT1Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 1", cards: cards, displayAddButton: false)
-        case 204:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsAllWordsSuspended().map { ($0 as Card).index }
-            targetView = .Lists(title: "All Words", cards: cards, displayAddButton: false)
-//            Globals.viewCards =
+            targetView = .Lists(title: "JLPT 1", color: Globals.colorLists, cards: cards, displayAddButton: false)
+//        case 204:
+//            var cards = RootContainer.instance.managedObjectContext.fetchCardsAllWordsSuspended().map { ($0 as Card).index }
+//            targetView = .Lists(title: "All Words", cards: cards, displayAddButton: false)
+////            Globals.viewCards =
         case 300:
             targetView = .Settings
         default:
             targetView = .Search
             break
         }
+        
+        table.deselectRowAtIndexPath(indexPath, animated: true)
         
         Globals.notificationTransitionToView.postNotification(targetView)
     }

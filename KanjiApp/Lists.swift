@@ -40,9 +40,10 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         super.viewWillAppear(animated)
         
         switch Globals.notificationTransitionToView.value {
-        case .Lists(let title, let cards, let displayAddButton):
+        case .Lists(let title, let color, let cards, let displayAddButton):
             items = cards
             header.text = title
+            header.textColor = color
             confirmButton.hidden = !displayAddButton
         default:
             break
