@@ -263,7 +263,9 @@ class RootContainer: CustomUIViewController {
 //            if let card = card as? Card {
             var onlyStudyKanji = settings.onlyStudyKanji.boolValue
             
-            if !onlyStudyKanji || (onlyStudyKanji && card.kanji.isPrimarilyKanji()) {
+            if !onlyStudyKanji ||
+            (onlyStudyKanji && card.kanji.isPrimarilyKanji()) ||
+            Globals.notificationAddWordsFromList.value.description() == WordList.MyWords.description() {
                 added++
                 addCards += card.index
             }
