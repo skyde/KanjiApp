@@ -1,6 +1,6 @@
 import Foundation
 
-class Notification<T> {
+public class Notification<T> {
     init (_ id: String, _ defaultValue: T) {
         self.id = id
         self.value = defaultValue

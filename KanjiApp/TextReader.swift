@@ -80,7 +80,7 @@ class TextReader: CustomUIViewController {
     }
     
     func tokenizeText() {
-         tokens = []
+        tokens = []
         
         let textNS:NSString = userText.text as NSString
         let textCF:CFString = textNS as CFString
@@ -99,7 +99,7 @@ class TextReader: CustomUIViewController {
                 var r = CFRangeMake(lastRangeMax, range.location - lastRangeMax)
                 var s = CFStringCreateWithSubstring(nil, textCF, r).__conversion() as String
                 
-                tokens += TextToken(s, hasDefinition: false)
+                tokens.append(TextToken(s, hasDefinition: false))
             }
             
             lastRangeMax = range.location + range.length
@@ -107,18 +107,18 @@ class TextReader: CustomUIViewController {
             if countElements(subString) > 1 || subString.isPrimarilyKanji()
             {
                 if currentAdd != "" {
-                    tokens += TextToken(currentAdd, hasDefinition: false)
+                    tokens.append(TextToken(currentAdd, hasDefinition: false))
                     currentAdd = ""
                 }
                 
                 if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
-                    tokens += TextToken(
+                    tokens.append(TextToken(
                         subString,
                         hasDefinition: true,
-                        index: card.index)
+                        index: card.index))
                 } else {
-                    tokens += TextToken(subString, hasDefinition: false)
+                    tokens.append(TextToken(subString, hasDefinition: false))
                 }
             }
             else {
@@ -127,7 +127,7 @@ class TextReader: CustomUIViewController {
         }
         
         if currentAdd != "" {
-            tokens += TextToken(currentAdd, hasDefinition: false)
+            tokens.append(TextToken(currentAdd, hasDefinition: false))
             currentAdd = ""
         }
         

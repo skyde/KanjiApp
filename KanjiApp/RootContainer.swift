@@ -91,7 +91,7 @@ class RootContainer: CustomUIViewController {
         }
     }
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         
         super.init(coder: aDecoder)
     }
@@ -246,9 +246,10 @@ class RootContainer: CustomUIViewController {
     
     func onAddWordsFromList() {
         
-        var predicate: [(EntityProperties, AnyObject)] = []
+        //var predicate: [(EntityProperties, AnyObject)] = [(CardProperties.enabled, false)
+//]
         
-        predicate += (CardProperties.enabled, false)
+//        var add: (EntityProperties, AnyObject) =         predicate.append(add)
         
         var cards: [Card] = []
         
@@ -283,7 +284,7 @@ class RootContainer: CustomUIViewController {
             (onlyStudyKanji && card.kanji.isPrimarilyKanji()) ||
             Globals.notificationAddWordsFromList.value.description() == WordList.MyWords.description() {
                 added++
-                addCards += card.index
+                addCards.append(card.index)
             }
             
             if added >= settings.cardAddAmount.integerValue {

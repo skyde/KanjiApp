@@ -12,9 +12,11 @@ class DiscoverLabel: UILabel {
 //    }
 //    }
     
-    init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.numberOfLines = 0
-    }
+//    required init(frame: CGRect) {
+//        super.init(frame: frame)
+//        
+//        self.numberOfLines = 0
+//    }
+    
+    //override
 }

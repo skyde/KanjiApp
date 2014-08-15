@@ -7,21 +7,55 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
-        self.view.backgroundColor = bkColor
+//        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
+//        self.view.backgroundColor = bkColor
+//        table.headerViewForSection(1).textLabel.font = UIFont(name: Globals.JapaneseFont, size: 16)
+//        println(table.®)
     }
 
+//    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+//        
+//        var label  = UILabel(frame: CGRectMake(0, 0, view.frame.width, 20))
+//        label.font = UIFont(name: Globals.JapaneseFont, size: 16)
+//        label.text = tableView.headerViewForSection(section).description
+//        
+//        var add = UIView()
+//        add.addSubview(label)
+//        
+//        return add
+//    }
 //    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
 //        return 11;
 //    }
+    
+    override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if section == 1 || section == 2 || section == 3 {
+            return 30
+        }
+        
+        return 0
+    }
+    
     override func viewDidAppear(animated: Bool) {
         
 //        var root = (self.parentViewController as RootContainer)
 //        
         //        println(root.mainView.subviews[0] as UINavigationController)
-//        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
-//        table.headerViewForSection(0).textLabel.backgroundColor = bkColor
-//        table.headerViewForSection(0).contentView.backgroundColor = bkColor
+        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
+        //        table.headerViewForSection(0).textLabel.backgroundColor = bkColor
+        //        table.headerViewForSection(0).contentView.backgroundColor = bkColor
+//        println("did appear")
+        for i in 0 ..< table.numberOfSections() {
+            if let header = table.headerViewForSection(i) {
+                header.textLabel.font = UIFont(name: Globals.JapaneseFont, size: 16)
+                header.textLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0, alpha: 1)
+//                header.textLabel.textAlignment = NSTextAlignment.Left
+                header.backgroundView.backgroundColor = bkColor
+                
+//                header.frame = CGRectMake(header.frame.origin.x, header.frame.origin.y, header.frame.width, 10)
+            }
+        }
     }
     
 //    override func onTransitionToView(notification: NSNotification) {

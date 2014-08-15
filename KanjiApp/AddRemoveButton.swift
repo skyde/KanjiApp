@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class AddRemoveButton: UIButton {
+public class AddRemoveButton: UIButton {
     public func onInteract() {
         
         var baseFrame = frame

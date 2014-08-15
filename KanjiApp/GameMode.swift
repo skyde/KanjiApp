@@ -22,7 +22,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
 //    let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         self.due = []
         super.init(coder: aDecoder)
         
@@ -148,11 +148,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         case .SwipeRight:
             println("Swiped right \(card.kanji)")
             card.answerCard(.Hard)
-            due += due[0]
+            due.append(due[0])
         case .SwipeLeft:
             println("Swiped Left \(card.kanji)")
             card.answerCard(.Forgot)
-            due += due[0]
+            due.append(due[0])
         case .SwipeUp:
             break
 //            println("Swiped Up \(card.kanji)")

@@ -8,7 +8,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         items = []

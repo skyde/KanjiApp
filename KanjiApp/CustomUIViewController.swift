@@ -7,7 +7,7 @@ class CustomUIViewController : UIViewController {
     
     var settings: Settings {
     get {
-        return managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default")! as Settings
+        return (managedObjectContext.fetchEntity(CoreDataEntities.Settings, SettingsProperties.userName, "default") as Settings?)!
     }
     }
     
@@ -39,12 +39,14 @@ class CustomUIViewController : UIViewController {
 //        return true
 //    }
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         loadContext()
         
-        var settings = managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default", createIfNil: true)! as Settings
+        println(managedObjectContext)
+        
+        var settings = (managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default", createIfNil: true) as Settings?)!
         
         settings.userName = "default"
         
@@ -141,7 +143,7 @@ class CustomUIViewController : UIViewController {
                 card.enabled = false
                 card.suspended = true
                 
-                values += card
+                values.append(card)
             }
         }
         

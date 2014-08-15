@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class DiscoverLabelData {
+public class DiscoverLabelData {
     public var visible = false
     public var kanji = ""
     public var startTime: CGFloat = 0.0

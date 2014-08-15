@@ -44,7 +44,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     }
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }
     
@@ -58,7 +58,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         searchResultsBaseFrame = searchResults.frame
         
         for i in 0 ..< numberOfLabels {
-            labels += DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
+            labels.append(DiscoverLabel(frame: CGRectMake(0, 0, 1, 1)))
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
@@ -115,7 +115,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         var last = first + numberOfLabels
         
         while last > labelsData.count {
-            labelsData += spawnLabelData(Double(labelsData.count) * spawnInterval - averageLife)
+            labelsData.append(spawnLabelData(Double(labelsData.count) * spawnInterval - averageLife))
         }
         
         for i in 0 ..< labels.count {
@@ -142,6 +142,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 
                 label.frame = CGRectMake(0, 0, width, data.height)
 //                label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, data.height)
+                label.numberOfLines = 0
                 
                 self.view.addSubview(label)
                 self.view.sendSubviewToBack(label)
@@ -220,11 +221,11 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             var matches: [DiscoverLabel] = []
             
             for label in labels {
-                var frame = label.layer?.presentationLayer()?.frame
+                var frame = label.layer.presentationLayer()?.frame
                 
                 if let frame = frame {
                     if CGRectContainsPoint(frame, tapLocation) {
-                        matches += label
+                        matches.append(label)
                     }
                 }
             }

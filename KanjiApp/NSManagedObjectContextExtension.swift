@@ -3,7 +3,7 @@ import CoreData
 
 extension NSManagedObjectContext
 {
-    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArg = "", var createIfNil: Bool = false) -> T? {
+    func fetchEntity<T: NSManagedObject> (entity: CoreDataEntities, _ property:EntityProperties? = nil, _ value:CVarArgType = "", var createIfNil: Bool = false) -> T? {
         let request : NSFetchRequest = NSFetchRequest(entityName: entity.description())
         
         request.returnsObjectsAsFaults = false
@@ -29,7 +29,7 @@ extension NSManagedObjectContext
         
         let entityDescription = NSEntityDescription.entityForName(entity.description(), inManagedObjectContext: self)
         
-        var card = T(entity: entityDescription, insertIntoManagedObjectContext: self)
+        var value = T(entity: entityDescription, insertIntoManagedObjectContext: self)
         
         //            switch property {
         //            case .kanji:
@@ -37,7 +37,7 @@ extension NSManagedObjectContext
         //            default:
         //                return card
         //            }
-        return card
+        return value
         //        }
         //return nil
     }
@@ -52,7 +52,7 @@ extension NSManagedObjectContext
         
         for predicate in predicates
         {
-            arguments += predicate.1
+            arguments.append(predicate.1)
             
             search += and
             search += "(\(predicate.0.description())==%@)"
@@ -116,7 +116,7 @@ extension NSManagedObjectContext
     func fetchCardByIndex(index: NSNumber) -> Card? {
         var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.index, index)
         
-        if value as? Card {
+        if value as? Card != nil {
             return value as? Card
         }
         
