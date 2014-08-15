@@ -366,6 +366,15 @@
                                     <segue destination="tK9-c8-QBp" kind="embed" id="6mh-Ka-sSy"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1r-OF-kBl">
+                                <rect key="frame" x="0.0" y="0.0" width="13" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="13" id="cbZ-NN-rsB"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-Jv-7yu">
                                 <rect key="frame" x="-4" y="22" width="56" height="40"/>
                                 <constraints>
@@ -383,7 +392,9 @@
                         <color key="backgroundColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="0X0-uQ-823"/>
+                            <constraint firstItem="y1r-OF-kBl" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="318-kl-5qf"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
+                            <constraint firstItem="y1r-OF-kBl" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Akc-MK-9rs"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" constant="2" id="HfT-s2-VLZ"/>
@@ -393,6 +404,7 @@
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
                             <constraint firstItem="3KA-G9-9Gl" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="XLd-nX-W2e"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" id="arP-bz-0cn"/>
+                            <constraint firstAttribute="bottom" secondItem="y1r-OF-kBl" secondAttribute="bottom" id="hhW-ts-F62"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="qDf-Jv-7yu" secondAttribute="trailing" constant="-52" id="rrJ-WA-SoZ"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
@@ -407,6 +419,7 @@
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
                         <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>
                         <outlet property="sidebarButton" destination="qDf-Jv-7yu" id="hD5-VT-qgS"/>
+                        <outlet property="swipeFromLeftArea" destination="y1r-OF-kBl" id="u3s-6a-nQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQ1-uo-r6o" userLabel="First Responder" sceneMemberID="firstResponder"/>

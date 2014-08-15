@@ -9,7 +9,7 @@ class RootContainer: CustomUIViewController {
     class var instance: RootContainer {
         get { return rootContainerInstance! }
     }
-
+    @IBOutlet weak var swipeFromLeftArea: UIButton!
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
@@ -106,14 +106,39 @@ class RootContainer: CustomUIViewController {
 //        return true
 //    }
     
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         rootContainerInstance = self
         
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-//        UIApplication.sharedApplication().status
         
+        println("add")
+        
+        var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
+//        gesture. = .Left
+//        gesture.cancelsTouchesInView = false
+//        gesture.delaysTouchesBegan = false
+//        gesture.delaysTouchesEnded = false
+        swipeFromLeftArea.addGestureRecognizer(gesture)
+    }
+    
+    func respondToFromLeftSwipeGesture(gesture: UIPanGestureRecognizer) {
+        var x = gesture.locationInView(self.view).x
+        x = max(0, x)
+        x = min(x, sidebar.frame.width)
+        
+//        print(sidebar.frame.width)
+        
+        sidebar.hidden = x == 0
+        
+        mainView.frame.origin.x = x
+        sidebarButton.frame.origin.x = sidebarButtonBaseX + x
+        swipeFromLeftArea.frame.origin.x = x
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
