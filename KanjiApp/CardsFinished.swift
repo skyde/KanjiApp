@@ -24,7 +24,7 @@ class CardsFinished : CustomUIViewController {
         let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         
         if myWords.count > 0 {
-            Globals.notificationTransitionToView.postNotification(.AddWords(exclude: []))
+            Globals.notificationAddWordsFromList.postNotification(.MyWords)
         }
         else {
             Globals.notificationTransitionToView.postNotification(.AddWords(exclude: [.MyWords]))
@@ -33,7 +33,7 @@ class CardsFinished : CustomUIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let active = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        let active = managedObjectContext.fetchCardsActive()
         
         continueStudying.enabled = active.count != 0
     }
