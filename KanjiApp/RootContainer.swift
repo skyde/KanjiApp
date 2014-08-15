@@ -9,14 +9,15 @@ class RootContainer: CustomUIViewController {
     class var instance: RootContainer {
         get { return rootContainerInstance! }
     }
-    @IBOutlet weak var swipeFromLeftArea: UIButton!
+    var swipeFromLeftArea: UIButton! = nil
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
     @IBOutlet weak var definitionOverlay: UIView!
     @IBOutlet weak var blurImage: UIImageView!
     
-    var sidebarButtonBaseX: CGFloat = 0
+    var sidebarButtonBaseX: CGFloat = 13
+    var swipeFromLeftAreaBaseWidth: CGFloat = 0
     var statusBarHidden = false
     let popoverAnimationSpeed = 0.22
     let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
@@ -26,6 +27,36 @@ class RootContainer: CustomUIViewController {
     get {
         return false
     }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        rootContainerInstance = self
+        
+        swipeFromLeftArea = UIButton(frame: CGRectMake(0, 0, sidebarButtonBaseX, sidebar.frame.height))
+//        swipeFromLeftArea.backgroundColor = UIColor.redColor()
+        view.addSubview(swipeFromLeftArea)
+        
+        view.bringSubviewToFront(sidebarButton)
+        
+        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
+        
+        var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
+        swipeFromLeftArea.addGestureRecognizer(gesture)
+        
+        var tap = UITapGestureRecognizer(target: self, action: "respondToFromLeftSwipeTap:")
+        swipeFromLeftArea.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.view.sendSubviewToBack(mainView)
+        self.view.sendSubviewToBack(sidebar)
+        
+        sidebarButtonBaseX = sidebarButton.frame.origin.x
+        swipeFromLeftAreaBaseWidth = swipeFromLeftArea.frame.width
     }
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
@@ -41,49 +72,50 @@ class RootContainer: CustomUIViewController {
     }
     
     private func animateSelf(open: Bool) {
-        let xMove: CGFloat = 272
+//        let xMove: CGFloat =  // 272
+//        println()
         
         if open {
             sidebar.hidden = false
             
             UIView.animateWithDuration(popoverAnimationSpeed,
-                delay: NSTimeInterval(),
+                delay: 0,
                 options: sidebarEasing,
-                animations: {
-                    self.mainView.frame = CGRectMake(xMove, self.mainView.frame.origin.y, self.mainView.frame.width, self.mainView.frame.height)
+                {
+                self.mainView.frame.origin.x = self.sidebar.frame.width
+                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + self.sidebar.frame.width
+//                    print(xMove)
+//                self.swipeFromLeftArea.frame.origin.x = xMove
+//                self.swipeFromLeftArea.frame.size.width = 100
+                self.swipeFromLeftArea.frame = CGRectMake(
+                    self.sidebar.frame.width,
+                    self.swipeFromLeftArea.frame.origin.y,
+                    Globals.screenSize.width - self.sidebar.frame.width,
+                    self.swipeFromLeftArea.frame.height)
                 },
-                completion: nil)
-            
-            UIView.animateWithDuration(popoverAnimationSpeed,
-                delay: NSTimeInterval(),
-                options: sidebarEasing,
-                animations: {
-                    self.sidebarButton.frame = CGRectMake(
-                        self.sidebarButtonBaseX + xMove,
-                        self.sidebarButton.frame.origin.y,
-                        self.sidebarButton.frame.width,
-                        self.sidebarButton.frame.height);
-                },
-                completion: nil)
+                nil)
         } else {
             UIView.animateWithDuration(popoverAnimationSpeed,
-            delay: NSTimeInterval(),
+            delay: 0,
             options: sidebarEasing,
-            animations: {
-                self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height) },
-                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
-            
-            UIView.animateWithDuration(popoverAnimationSpeed,
-                delay: NSTimeInterval(),
-                options: sidebarEasing,
-                animations: {
-                    self.sidebarButton.frame = CGRectMake(
-                        self.sidebarButtonBaseX,
-                        self.sidebarButton.frame.origin.y,
-                        self.sidebarButton.frame.width,
-                        self.sidebarButton.frame.height);//self.sidebarButtonBaseFrame
+            {
+                self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
+                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX
+//                self.swipeFromLeftArea.frame.origin.x = 0
+                self.swipeFromLeftArea.frame = CGRectMake(
+                    0,
+                    self.swipeFromLeftArea.frame.origin.y,
+                    self.swipeFromLeftAreaBaseWidth,
+                    self.swipeFromLeftArea.frame.height)
                 },
-                completion: nil)
+                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
+//            
+//            UIView.animateWithDuration(popoverAnimationSpeed,
+//                delay: NSTimeInterval(),
+//                options: sidebarEasing,
+//                animations: {
+//                },
+//                completion: nil)
             
 //            UIView.animateWithDuration(popoverAnimationSpeed) {
 //                
@@ -110,21 +142,10 @@ class RootContainer: CustomUIViewController {
         return true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        rootContainerInstance = self
-        
-        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-        
-        println("add")
-        
-        var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
-//        gesture. = .Left
-//        gesture.cancelsTouchesInView = false
-//        gesture.delaysTouchesBegan = false
-//        gesture.delaysTouchesEnded = false
-        swipeFromLeftArea.addGestureRecognizer(gesture)
+    func respondToFromLeftSwipeTap(gesture: UITapGestureRecognizer) {
+        if mainView.frame.origin.x != 0 {
+            animateSelf(false)
+        }
     }
     
     func respondToFromLeftSwipeGesture(gesture: UIPanGestureRecognizer) {
@@ -132,13 +153,29 @@ class RootContainer: CustomUIViewController {
         x = max(0, x)
         x = min(x, sidebar.frame.width)
         
-//        print(sidebar.frame.width)
-        
         sidebar.hidden = x == 0
         
         mainView.frame.origin.x = x
         sidebarButton.frame.origin.x = sidebarButtonBaseX + x
         swipeFromLeftArea.frame.origin.x = x
+        
+        var transitionThreshold: CGFloat = 30
+        
+        switch gesture.state {
+        case .Ended:
+            var xDelta = gesture.translationInView(self.view).x
+            if xDelta > transitionThreshold {
+                animateSelf(true)
+            } else if xDelta < transitionThreshold {
+                animateSelf(false)
+            } else if transitionThreshold < 0 {
+                animateSelf(true)
+            } else {
+                animateSelf(false)
+            }
+        default:
+            break
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -170,14 +207,6 @@ class RootContainer: CustomUIViewController {
         blurImage.alpha = 0
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.view.sendSubviewToBack(mainView)
-        self.view.sendSubviewToBack(sidebar)
-        
-        sidebarButtonBaseX = sidebarButton.frame.origin.x
-    }
     
     func onNotificationShowDefinition() {
 //        var definition = .getObject(notification)
@@ -195,13 +224,13 @@ class RootContainer: CustomUIViewController {
                 delay: NSTimeInterval(),
                 options: blurEasing,
                 animations: {
-                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height);
+                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
                     self.blurImage.alpha = 0
                 },
                 completion: {
                 (_) -> Void in
-                    self.definitionOverlay.hidden = true;
-                    self.blurImage.hidden = true;
+                    self.definitionOverlay.hidden = true
+                    self.blurImage.hidden = true
                     Globals.notificationShowDefinition.value = ""
                 })
         } else {
@@ -215,7 +244,7 @@ class RootContainer: CustomUIViewController {
                 delay: NSTimeInterval(),
                 options: blurEasing,
                 animations: {
-                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height);
+                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
                     self.blurImage.alpha = 1
                 },
                 completion: {
