@@ -31,6 +31,10 @@ class RootContainer: CustomUIViewController {
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
         var open = mainView.frame.origin.x == 0
         
+        if Globals.notificationShowDefinition.value != "" {
+            Globals.notificationShowDefinition.postNotification("")
+        }
+        
         Globals.notificationSidebarInteract.postNotification(open)
         
         animateSelf(open)
