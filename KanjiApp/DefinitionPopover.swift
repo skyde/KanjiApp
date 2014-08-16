@@ -5,6 +5,10 @@ import SpriteKit
 //var definitionPopoverInstance: DefinitionPopover? = nil
 
 class DefinitionPopover : CustomUIViewController {
+    
+    var swipeFromRightArea: UIButton! = nil
+    var swipeFromRightAreaBaseWidth: CGFloat = 13
+    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
@@ -53,6 +57,15 @@ class DefinitionPopover : CustomUIViewController {
         super.viewDidLoad()
         updateText()
         setupGestures()
+        createSwipeArea()
+    }
+    
+    func createSwipeArea() {
+        swipeFromRightArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeFromRightAreaBaseWidth, 0, swipeFromRightAreaBaseWidth, Globals.screenSize.height))
+        swipeFromRightArea.backgroundColor = UIColor.redColor()
+        view.addSubview(swipeFromRightArea)
+        
+        view.bringSubviewToFront(swipeFromRightArea)
     }
     
     @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {

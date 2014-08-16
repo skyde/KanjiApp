@@ -34,7 +34,7 @@ class RootContainer: CustomUIViewController {
         
         rootContainerInstance = self
         
-        swipeFromLeftArea = UIButton(frame: CGRectMake(0, 0, sidebarButtonBaseX, sidebar.frame.height))
+        swipeFromLeftArea = UIButton(frame: CGRectMake(0, 0, sidebarButtonBaseX, Globals.screenSize.height))
 //        swipeFromLeftArea.backgroundColor = UIColor.redColor()
         view.addSubview(swipeFromLeftArea)
         
