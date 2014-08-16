@@ -142,6 +142,7 @@ class CustomUIViewController : UIViewController {
                 card.dueTime = 0
                 card.enabled = false
                 card.suspended = true
+                card.known = false
                 
                 values.append(card)
             }

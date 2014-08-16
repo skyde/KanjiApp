@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6208.6" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Card" representedClassName="Card" syncable="YES">
         <attribute name="answersForgot" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <attribute name="answersHard" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
@@ -12,6 +12,7 @@
         <attribute name="interval" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="jlptLevel" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="known" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="suspended" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="usageAmount" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <relationship name="embeddedData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CardData" inverseName="parent" inverseEntity="CardData" syncable="YES"/>
@@ -37,8 +38,8 @@
         <attribute name="volume" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-83" positionY="-39" width="128" height="253"/>
-        <element name="Settings" positionX="-306" positionY="234" width="128" height="135"/>
+        <element name="Card" positionX="-83" positionY="-39" width="128" height="270"/>
         <element name="CardData" positionX="142" positionY="216" width="128" height="193"/>
+        <element name="Settings" positionX="-306" positionY="234" width="128" height="135"/>
     </elements>
 </model>

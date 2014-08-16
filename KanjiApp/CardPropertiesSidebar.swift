@@ -1,23 +1,39 @@
 import Foundation
 import UIKit
 
-public enum CardPropertiesEdit {
-    case Add
-    case Known
-    case Remove
-}
-
-public enum CardPropertiesType {
-    case KnownAndAdd
-    case RemoveAndAdd
-    case RemoveAndKnow
-}
-
 public class CardPropertiesSidebar : UIViewController {
     
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    var currentType: CardPropertiesType = .KnownAndAdd
+    
+    @IBAction func leftTap(sender: AnyObject) {
+        switch currentType {
+        case .KnownAndAdd:
+            Globals.notificationEditCardProperties.postNotification(.Known)
+        case .RemoveAndAdd:
+            Globals.notificationEditCardProperties.postNotification(.Remove)
+            break
+        case .RemoveAndKnow:
+            Globals.notificationEditCardProperties.postNotification(.Remove)
+            break
+        }
+
+        
+    }
+    @IBAction func rightTap(sender: AnyObject) {
+        switch currentType {
+        case .KnownAndAdd:
+            Globals.notificationEditCardProperties.postNotification(.Add)
+        case .RemoveAndAdd:
+            Globals.notificationEditCardProperties.postNotification(.Add)
+            break
+        case .RemoveAndKnow:
+            Globals.notificationEditCardProperties.postNotification(.Known)
+            break
+        }
+    }
     public func animate(offset: CGFloat) {
         leftButton.frame.origin.x = 0
         rightButton.frame.origin.x = max(0, offset - leftButton.frame.width)
@@ -32,6 +48,8 @@ public class CardPropertiesSidebar : UIViewController {
     }
     
     public func setPropertiesType(type: CardPropertiesType) {
+        currentType = type
+        
         let addText = "Add"
         let knownText = "Known"
         let removeText = "Remove"
@@ -53,8 +71,18 @@ public class CardPropertiesSidebar : UIViewController {
             leftColor = knownColor
             rightColor = addColor
         case .RemoveAndAdd:
+            leftText = removeText
+            rightText = addText
+            
+            leftColor = removeColor
+            rightColor = addColor
             break
         case .RemoveAndKnow:
+            leftText = removeText
+            rightText = knownText
+            
+            leftColor = removeColor
+            rightColor = knownColor
             break
         }
         

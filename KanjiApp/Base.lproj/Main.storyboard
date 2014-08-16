@@ -1366,6 +1366,9 @@ all due cards</string>
                                     <color key="titleColor" red="0.98594826459884644" green="0.0" blue="0.026950567960739136" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="leftTap:" destination="HHw-53-owD" eventType="touchUpInside" id="2k0-L0-PuM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
                                 <rect key="frame" x="101" y="0.0" width="101" height="600"/>
@@ -1375,6 +1378,9 @@ all due cards</string>
                                     <color key="titleColor" red="0.072240069510000005" green="0.59228098389999995" blue="0.99853724239999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="rightTap:" destination="HHw-53-owD" eventType="touchUpInside" id="wr0-eH-1hX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

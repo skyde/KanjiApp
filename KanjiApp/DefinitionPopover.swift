@@ -27,6 +27,9 @@ class DefinitionPopover : CustomUIViewController {
 //    let sidebarTransitionThreshold: CGFloat = 30
     
 //    public var definition: String = ""
+    var cardPropertiesSidebar: CardPropertiesSidebar {
+        return self.childViewControllers[0] as CardPropertiesSidebar
+    }
     
     var viewCard: Card? {
     get {
@@ -60,6 +63,17 @@ class DefinitionPopover : CustomUIViewController {
             outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
             updateButtonState(card)
+            updatePropertySidebar(card)
+        }
+    }
+    
+    func updatePropertySidebar(card: Card) {
+        if card.suspended.boolValue {
+            cardPropertiesSidebar.setPropertiesType(.KnownAndAdd)
+        } else if card.known.boolValue {
+            cardPropertiesSidebar.setPropertiesType(.RemoveAndAdd)
+        } else {
+            cardPropertiesSidebar.setPropertiesType(.RemoveAndKnow)
         }
     }
     
@@ -75,10 +89,32 @@ class DefinitionPopover : CustomUIViewController {
         setupGestures()
         setupAddRemoveSidebar()
         
+        Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
 //        self.addRemoveSidebar.subviews
 //        for let view in v {
 //            
 //        }
+    }
+    
+    func onEditCard() {
+        if !view.hidden {
+            if let card = viewCard {
+                switch Globals.notificationEditCardProperties.value {
+                case .Add:
+                    card.suspended = false
+                    card.known = false
+                case .Remove:
+                    card.suspended = true
+                case .Known:
+                    card.suspended = false
+                    card.known = true
+                }
+                
+                saveContext()
+                
+                edgeReveal.animateSidebar(false)
+            }
+        }
     }
     
     private func setupAddRemoveSidebar() {
@@ -92,12 +128,15 @@ class DefinitionPopover : CustomUIViewController {
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
-                (self.childViewControllers[0] as CardPropertiesSidebar).animate(offset)
+                self.cardPropertiesSidebar.animate(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
+                if let card = self.viewCard {
+                    self.updatePropertySidebar(card)
+                }
         })
-        
+//        edgeReveal.ani
         //        sidebarLeft = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
 //        view.addSubview(sidebarLeft)
 //        

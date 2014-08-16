@@ -65,7 +65,7 @@ public class EdgeReveal : UIButton {
         
     }
     
-    private func animateSidebar(open: Bool) {
+    public func animateSidebar(open: Bool) {
         
         if open {
 //        sidebarLeft.hidden = false

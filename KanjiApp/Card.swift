@@ -16,6 +16,7 @@ class Card: NSManagedObject {
     @NSManaged var dueTime: NSNumber
     @NSManaged var enabled: NSNumber
     @NSManaged var suspended: NSNumber
+    @NSManaged var known: NSNumber
     @NSManaged var embeddedData: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
