@@ -339,7 +339,6 @@
                     </view>
                     <connections>
                         <outlet property="addRemoveButton" destination="9qq-MD-I8t" id="kHz-fh-nff"/>
-                        <outlet property="addRemoveButtonSidebarWidth" destination="hgG-No-Obn" id="Crb-fq-5hR"/>
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
                     </connections>
@@ -1362,6 +1361,9 @@ all due cards</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
                                 <rect key="frame" x="0.0" y="0.0" width="101" height="600"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="vnl-ST-F46"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Remove">
                                     <color key="titleColor" red="0.98594826459884644" green="0.0" blue="0.026950567960739136" alpha="1" colorSpace="calibratedRGB"/>
@@ -1371,6 +1373,9 @@ all due cards</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
                                 <rect key="frame" x="101" y="0.0" width="101" height="600"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="GYt-7s-Csv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Known">
                                     <color key="titleColor" red="0.072240069510000005" green="0.59228098389999995" blue="0.99853724239999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -1380,13 +1385,12 @@ all due cards</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p1b-uN-dxd" firstAttribute="width" secondItem="Djr-zy-ozk" secondAttribute="width" id="0FX-rY-jyO"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="p1b-uN-dxd" secondAttribute="trailing" id="2FB-k5-YBb"/>
+                            <constraint firstItem="p1b-uN-dxd" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" priority="750" id="GyU-Ih-mvL"/>
                             <constraint firstAttribute="bottom" secondItem="Djr-zy-ozk" secondAttribute="bottom" id="Ikh-OT-bCV"/>
-                            <constraint firstAttribute="trailing" secondItem="p1b-uN-dxd" secondAttribute="trailing" id="LkD-No-J1g"/>
                             <constraint firstAttribute="bottom" secondItem="p1b-uN-dxd" secondAttribute="bottom" id="Vvl-Xt-GYV"/>
                             <constraint firstItem="p1b-uN-dxd" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="rLY-Sv-iCH"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="tFL-eN-Cja"/>
-                            <constraint firstItem="p1b-uN-dxd" firstAttribute="leading" secondItem="Djr-zy-ozk" secondAttribute="trailing" id="ydD-7p-Gwf"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" id="zCy-ww-M73"/>
                         </constraints>
                     </view>

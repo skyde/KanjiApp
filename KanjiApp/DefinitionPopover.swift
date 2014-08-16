@@ -14,7 +14,7 @@ class DefinitionPopover : CustomUIViewController {
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     
-    @IBOutlet weak var addRemoveButtonSidebarWidth: NSLayoutConstraint!
+//    @IBOutlet weak var addRemoveButtonSidebarWidth: NSLayoutConstraint!
 //    var sidebarLeft: UIButton! = nil
 //    var sidebarRight: UIButton! = nil
     
