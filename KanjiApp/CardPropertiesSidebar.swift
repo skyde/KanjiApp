@@ -1,6 +1,12 @@
 import Foundation
 import UIKit
 
+public enum CardPropertiesType {
+    case KnownAndAdd
+    case RemoveAndAdd
+    case RemoveAndKnow
+}
+
 public class CardPropertiesSidebar : UIViewController {
     
     @IBOutlet weak var leftButton: UIButton!
@@ -15,6 +21,10 @@ public class CardPropertiesSidebar : UIViewController {
         super.viewDidAppear(animated)
         
         self.view.bringSubviewToFront(rightButton)
+    }
+    
+    public func setPropertiesType(type: CardPropertiesType) {
+        
     }
     
 //    public override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {

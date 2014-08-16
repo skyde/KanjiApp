@@ -61,6 +61,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
         Globals.colorFunctions = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor
         Globals.colorMyWords = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)).textLabel.textColor
+        Globals.colorKnown = table.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)).textLabel.textColor
         Globals.colorLists = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)).textLabel.textColor
         Globals.colorOther = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3)).textLabel.textColor
     }
@@ -107,7 +108,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 102:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsAllWordsSuspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "Known", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "Known", color: Globals.colorKnown, cards: cards, displayAddButton: false)
         case 200:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             

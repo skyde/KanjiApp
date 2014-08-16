@@ -19,6 +19,7 @@ struct Globals
     
     static var colorFunctions: UIColor! = nil
     static var colorMyWords: UIColor! = nil
+    static var colorKnown: UIColor! = nil
     static var colorLists: UIColor! = nil
     static var colorOther: UIColor! = nil
     
