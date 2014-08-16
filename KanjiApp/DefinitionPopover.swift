@@ -67,22 +67,32 @@ class DefinitionPopover : CustomUIViewController {
         addRemoveButton.setButtonType(card.suspended.boolValue)
     }
     
+//    var cardPropertiesBar: CardPropertiesBar! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateText()
         setupGestures()
         setupAddRemoveSidebar()
+        
+//        self.addRemoveSidebar.subviews
+//        for let view in v {
+//            
+//        }
     }
     
     private func setupAddRemoveSidebar() {
+        
+//        self.view.
+//        self.view
         
         edgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
             onUpdate: {(offset: CGFloat) -> () in
-//                self.addRemoveButtonSidebarWidth.constant = offset
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
+                (self.childViewControllers[0] as CardPropertiesSidebar).animate(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible

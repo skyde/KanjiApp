@@ -345,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXi-8g-1At" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1976" y="664"/>
+            <point key="canvasLocation" x="-1939" y="649"/>
         </scene>
         <!--Root Container-->
         <scene sceneID="0eb-Ac-JoJ">
@@ -1346,10 +1346,10 @@ all due cards</string>
             </objects>
             <point key="canvasLocation" x="-1315" y="1364"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Properties Sidebar-->
         <scene sceneID="5vr-Tl-k06">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="HHw-53-owD" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="HHw-53-owD" customClass="CardPropertiesSidebar" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IDz-Q9-9NV"/>
                         <viewControllerLayoutGuide type="bottom" id="Vko-NP-bnK"/>
@@ -1361,9 +1361,6 @@ all due cards</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
                                 <rect key="frame" x="0.0" y="0.0" width="101" height="600"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="101" id="vnl-ST-F46"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Remove">
                                     <color key="titleColor" red="0.98594826459884644" green="0.0" blue="0.026950567960739136" alpha="1" colorSpace="calibratedRGB"/>
@@ -1373,9 +1370,6 @@ all due cards</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
                                 <rect key="frame" x="101" y="0.0" width="101" height="600"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="101" id="GYt-7s-Csv"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Known">
                                     <color key="titleColor" red="0.072240069510000005" green="0.59228098389999995" blue="0.99853724239999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -1385,20 +1379,25 @@ all due cards</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="p1b-uN-dxd" secondAttribute="trailing" id="2FB-k5-YBb"/>
-                            <constraint firstItem="p1b-uN-dxd" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" priority="750" id="GyU-Ih-mvL"/>
+                            <constraint firstAttribute="trailing" secondItem="p1b-uN-dxd" secondAttribute="trailing" id="GYr-5f-REe"/>
                             <constraint firstAttribute="bottom" secondItem="Djr-zy-ozk" secondAttribute="bottom" id="Ikh-OT-bCV"/>
                             <constraint firstAttribute="bottom" secondItem="p1b-uN-dxd" secondAttribute="bottom" id="Vvl-Xt-GYV"/>
+                            <constraint firstItem="Djr-zy-ozk" firstAttribute="width" secondItem="p1b-uN-dxd" secondAttribute="width" id="bN1-HV-ok0"/>
+                            <constraint firstItem="p1b-uN-dxd" firstAttribute="leading" secondItem="Djr-zy-ozk" secondAttribute="trailing" id="hOu-Es-HKq"/>
                             <constraint firstItem="p1b-uN-dxd" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="rLY-Sv-iCH"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="tFL-eN-Cja"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" id="zCy-ww-M73"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="leftButton" destination="Djr-zy-ozk" id="62V-X7-t0J"/>
+                        <outlet property="rightButton" destination="p1b-uN-dxd" id="W1b-c9-WcZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mS-I6-zQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="540"/>
+            <point key="canvasLocation" x="-1479" y="526"/>
         </scene>
     </scenes>
     <resources>
