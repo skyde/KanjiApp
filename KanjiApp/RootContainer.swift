@@ -233,7 +233,8 @@ class RootContainer: CustomUIViewController {
                 delay: NSTimeInterval(),
                 options: blurEasing,
                 animations: {
-                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+                //                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+                    self.definitionOverlay.alpha = 0
                     self.blurImage.alpha = 0
                 },
                 completion: {
@@ -247,19 +248,21 @@ class RootContainer: CustomUIViewController {
             definitionOverlay.hidden = false
             blurImage.hidden = false
             
-            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+//            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
             
             UIView.animateWithDuration(popoverAnimationSpeed,
                 delay: NSTimeInterval(),
                 options: blurEasing,
                 animations: {
-                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
+//                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
                     self.blurImage.alpha = 1
+                    self.definitionOverlay.alpha = 1
                 },
                 completion: {
                     (_) -> Void in
-                        self.mainView.hidden = true
-                        self.blurImage.opaque = true
+                    self.definitionOverlay.alpha = 1
+                    self.mainView.hidden = true
+                    self.blurImage.opaque = true
                 })
         }
     }

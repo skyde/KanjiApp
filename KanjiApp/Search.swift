@@ -236,7 +236,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                     }[0]
                 
                 var duration: NSTimeInterval = 0.4
-                var outset: CGFloat = 6
+                var outset: CGFloat = 2
                 
                 UIView.animateWithDuration(duration,
                     delay: NSTimeInterval(),

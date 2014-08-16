@@ -13,6 +13,7 @@ class DefinitionPopover : CustomUIViewController {
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     
+    @IBOutlet weak var addRemoveButtonSidebarWidth: NSLayoutConstraint!
 //    var sidebarLeft: UIButton! = nil
 //    var sidebarRight: UIButton! = nil
     
@@ -77,6 +78,7 @@ class DefinitionPopover : CustomUIViewController {
             parent: view,
             revealType: .Right,
             onUpdate: {(offset: CGFloat) -> () in
+//                self.addRemoveButtonSidebarWidth.constant = offset
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
             },
