@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SpriteKit
 
 class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
@@ -127,16 +128,16 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             }
             let dataIndex = first + index
             let data = labelsData[dataIndex]
-            let width: CGFloat = 42.0
+            let width: CGFloat = 42
             
             if !data.visible {
-                
                 data.visible = true
                 label.textColor = UIColor(
                     red: CGFloat(data.distance * 0.4),
                     green: CGFloat(data.distance * 0.85),
                     blue: CGFloat(data.distance * 1),
                     alpha: 1)
+//                label.textAlignment = NSTextAlignment.Right
                 
                 label.kanji = data.kanji
                 label.attributedText = data.attributedText
@@ -225,7 +226,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 var frame = label.layer.presentationLayer()?.frame
                 
                 if let frame = frame {
-                    if CGRectContainsPoint(frame, tapLocation) {
+                    if CGRectContainsPoint(CGRectMake(frame.origin.x - 25, frame.origin.y - 20, frame.width + 40, frame.height + 40), tapLocation) {
                         matches.append(label)
                     }
                 }
