@@ -13,9 +13,12 @@ class DefinitionPopover : CustomUIViewController {
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     
-    var sidebarLeft: UIButton! = nil
-    var sidebarRight: UIButton! = nil
+//    var sidebarLeft: UIButton! = nil
+//    var sidebarRight: UIButton! = nil
     
+    @IBOutlet weak var addRemoveSidebar: UIView!
+    
+    var edgeReveal: EdgeReveal! = nil
 //    let popoverAnimationSpeed = 0.22
 //    let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
 //    let sidebarMaxOffset: CGFloat = 202
@@ -65,17 +68,29 @@ class DefinitionPopover : CustomUIViewController {
         super.viewDidLoad()
         updateText()
         setupGestures()
-        createRightSidebar()
+        setupAddRemoveSidebar()
     }
     
-    private func createRightSidebar() {
-        sidebarLeft = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
-        view.addSubview(sidebarLeft)
+    private func setupAddRemoveSidebar() {
         
-        sidebarRight = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
-        view.addSubview(sidebarRight)
+        edgeReveal = EdgeReveal(
+            parent: view,
+            revealType: .Right,
+            onUpdate: {(offset: CGFloat) -> () in
+                self.outputText.frame.origin.x = -offset
+                self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
+            },
+            setVisible: {(isVisible: Bool) -> () in
+                self.addRemoveSidebar.hidden = !isVisible
+        })
         
-        updateSidebarText([], [])
+        //        sidebarLeft = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
+//        view.addSubview(sidebarLeft)
+//        
+//        sidebarRight = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
+//        view.addSubview(sidebarRight)
+        
+//        updateSidebarText([], [])
         
 //        var gesture = UIPanGestureRecognizer(target: self, action: "respondToEdgeSwipeGesture:")
 //        swipeFromRightArea.addGestureRecognizer(gesture)
@@ -84,18 +99,18 @@ class DefinitionPopover : CustomUIViewController {
 //        swipeFromRightArea.addGestureRecognizer(tap)
     }
     
-    private func updateSidebarText(texts: [String], _ colors: [UIColor]) {
-        sidebarLeft.backgroundColor = UIColor.blueColor()
-        sidebarRight.backgroundColor = UIColor.greenColor()
-    }
-    private func updateSidebarFrames(offset: CGFloat) {
-        //let xOffset = -xPosition
-        
-//        println(openAmount)
-        
-        sidebarLeft.frame = CGRectMake(Globals.screenSize.width - offset, 0, offset / 2, Globals.screenSize.height)
-        sidebarRight.frame = CGRectMake(Globals.screenSize.width - offset / 2, 0, offset / 2, Globals.screenSize.height)
-    }
+//    private func updateSidebarText(texts: [String], _ colors: [UIColor]) {
+//        sidebarLeft.backgroundColor = UIColor.blueColor()
+//        sidebarRight.backgroundColor = UIColor.greenColor()
+//    }
+//    private func updateSidebarFrames(offset: CGFloat) {
+//        //let xOffset = -xPosition
+//        
+////        println(openAmount)
+//        
+//        sidebarLeft.frame = CGRectMake(Globals.screenSize.width - offset, 0, offset / 2, Globals.screenSize.height)
+//        sidebarRight.frame = CGRectMake(Globals.screenSize.width - offset / 2, 0, offset / 2, Globals.screenSize.height)
+//    }
     
 //    private func animateRightSidebar(open: Bool) {
 //        
@@ -215,7 +230,8 @@ class DefinitionPopover : CustomUIViewController {
 //        [view drawViewHierarchyInRect:(CGRect){CGPointZero, w, h} afterScreenUpdates:YES]; // view is the view you are grabbing the screen shot of. The view that is to be blurred.
 //        var image = UIGraphicsGetImageFromCurrentImageContext();
         
-    
+//        edgeReveal.onUpdate!(offset: 0)
+//        addRemoveSidebar.frame.origin.x = Globals.screenSize.width
     }
     
     

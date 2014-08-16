@@ -339,6 +339,7 @@
                     </view>
                     <connections>
                         <outlet property="addRemoveButton" destination="9qq-MD-I8t" id="kHz-fh-nff"/>
+                        <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
                     </connections>
                 </viewController>

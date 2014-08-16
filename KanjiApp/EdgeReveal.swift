@@ -18,25 +18,25 @@ public class EdgeReveal : UIButton {
     
     var swipeArea: UIButton
     
-    var onUpdate: (offset: CGFloat) -> ()
-    var onComplete: (isOpen: Bool) -> ()
+    var onUpdate: ((offset: CGFloat) -> ())?
+    var setVisible: ((isOpen: Bool) -> ())?
     
     public init(
         parent: UIView,
         revealType: EdgeRevealType,
         maxOffset: CGFloat = 202,
         autoAddToParent: Bool = true,
-        onUpdate: (offset: CGFloat) -> (),
-        onComplete: (isOpen: Bool) -> ()) {
+        onUpdate: ((offset: CGFloat) -> ())?,
+        setVisible: ((isVisible: Bool) -> ())?) {
         
         self.revealType = revealType
         self.maxReveal = maxOffset
         
         swipeArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height))
-        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
+//        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
             
         self.onUpdate = onUpdate
-        self.onComplete = onComplete
+        self.setVisible = setVisible
         
         super.init(frame: CGRectMake(0, 0, 0, 0))
         
@@ -50,7 +50,10 @@ public class EdgeReveal : UIButton {
         
         var tap = UITapGestureRecognizer(target: self, action: "respondToSwipeTap:")
         swipeArea.addGestureRecognizer(tap)
-
+        
+        if let setVisible = setVisible {
+            setVisible(isVisible: false)
+        }
     }
     
     /// Do not call this method
@@ -77,12 +80,22 @@ public class EdgeReveal : UIButton {
                 let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
                 
                 self.swipeArea.frame = CGRectMake(0, 0,viewVisibleWidth, Globals.screenSize.height)
+                
+                if let onUpdate = self.onUpdate {
+                    onUpdate(offset: self.maxReveal)
+                }
+                
 //                self.outputText.frame.origin.x = viewVisibleWidth - self.outputText.frame.width
 //                RootContainer.instance.blurImage.frame.origin.x = viewVisibleWidth - RootContainer.instance.blurImage.frame.width
             },
-            nil)
-    } else {
-        UIView.animateWithDuration(animationTime,
+            completion: { (_) -> Void in
+            
+                if let setVisible = self.setVisible {
+                    setVisible(isOpen: true)
+                }
+            })
+        } else {
+            UIView.animateWithDuration(animationTime,
                 delay: 0,
                 options: animationEasing,
                 {
@@ -90,9 +103,16 @@ public class EdgeReveal : UIButton {
                     
                     self.swipeArea.frame = CGRectMake(Globals.screenSize.width - self.swipeAreaWidth, 0,self.swipeAreaWidth, Globals.screenSize.height)
 //                    self.outputText.frame.origin.x = 0
-//                    RootContainer.instance.blurImage.frame.origin.x = 0
+                    //                    RootContainer.instance.blurImage.frame.origin.x = 0
+                    if let onUpdate = self.onUpdate {
+                        onUpdate(offset: 0)
+                    }
                 },
                 completion: { (_) -> Void in
+                        
+                    if let setVisible = self.setVisible {
+                        setVisible(isOpen: false)
+                    }
 //                        self.sidebarLeft.hidden = true
 //                        self.sidebarRight.hidden = true
                 })
@@ -106,10 +126,22 @@ public class EdgeReveal : UIButton {
         //        println("tap")
     }
     
-    func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {
+    func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
+        case .Began:
+            if let setVisible = self.setVisible {
+                setVisible(isOpen: true)
+            }
+        default:
+            break
+        }
+        
         var xOffset = Globals.screenSize.width - gesture.locationInView(self.superview).x
         xOffset = max(0, xOffset)
         xOffset = min(xOffset, maxReveal)
+        
+        if let onUpdate = onUpdate {
+            onUpdate(offset: xOffset)
+        }
         
         let x = Globals.screenSize.width - xOffset
         
