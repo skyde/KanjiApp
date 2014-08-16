@@ -52,6 +52,7 @@ class DefinitionPopover : CustomUIViewController {
     
     func updateText() {
         if let card = viewCard {
+            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
             outputText.attributedText = card.definitionAttributedText
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
