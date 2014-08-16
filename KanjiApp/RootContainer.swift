@@ -336,6 +336,7 @@ class RootContainer: CustomUIViewController {
 //        var add: (EntityProperties, AnyObject) =         predicate.append(add)
         
         var cards: [Card] = []
+        var color = Globals.colorLists
         
         switch Globals.notificationAddWordsFromList.value {
         case .AllWords:
@@ -350,6 +351,7 @@ class RootContainer: CustomUIViewController {
             cards = managedObjectContext.fetchCardsJLPT1Suspended()
         case .MyWords:
             cards = managedObjectContext.fetchCardsWillStudy()
+            color = Globals.colorMyWords
         case .AllWords:
             cards = managedObjectContext.fetchCardsAllWordsSuspended()
         default:
@@ -377,6 +379,6 @@ class RootContainer: CustomUIViewController {
 //            }
         }
         
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: Globals.colorLists, cards: addCards, displayAddButton: true))
+        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: color, cards: addCards, displayAddButton: true))
     }
 }
