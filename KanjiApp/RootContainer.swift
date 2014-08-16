@@ -167,7 +167,7 @@ class RootContainer: CustomUIViewController {
         sidebarButton.frame.origin.x = sidebarButtonBaseX + x
         swipeFromLeftArea.frame.origin.x = x
         
-        var transitionThreshold: CGFloat = 30
+        let transitionThreshold: CGFloat = 30
         
         switch gesture.state {
         case .Ended:
@@ -176,9 +176,10 @@ class RootContainer: CustomUIViewController {
                 animateSelf(true)
             } else if xDelta < transitionThreshold {
                 animateSelf(false)
-            } else if transitionThreshold < 0 {
+            } else if xDelta < 0 {
                 animateSelf(true)
-            } else {
+            }
+            else {
                 animateSelf(false)
             }
         default:

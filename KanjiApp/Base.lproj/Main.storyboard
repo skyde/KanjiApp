@@ -4,9 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="KozGoPr6N-Regular.otf">
-            <string>KozGoPr6N-Regular</string>
-        </mutableArray>
         <mutableArray key="mplus-2p-light.ttf">
             <string>mplus-2p-light</string>
         </mutableArray>
@@ -296,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
-                                <rect key="frame" x="0.0" y="0.0" width="598" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -313,38 +310,15 @@
                                     <action selector="onAddRemoveButtonTouch:" destination="tK9-c8-QBp" eventType="touchDown" id="XXk-MA-aRb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlt-ga-vf6">
-                                <rect key="frame" x="520" y="0.0" width="80" height="600"/>
-                                <color key="backgroundColor" red="0.14233576640000001" green="0.38321167880000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="00J-l5-Vgn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="KozGoPr6N-Regular" family="Kozuka Gothic Pr6N" pointSize="15"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD0-Dv-rRW">
-                                <rect key="frame" x="440" y="0.0" width="80" height="600"/>
-                                <color key="backgroundColor" red="0.19809002019999999" green="0.3986364583" blue="0.50510204079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="CA7-rk-HJo"/>
-                                </constraints>
-                                <state key="normal" title="Known">
-                                    <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wlt-ga-vf6" firstAttribute="leading" secondItem="qD0-Dv-rRW" secondAttribute="trailing" id="0Vt-1c-FXM"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
                             <constraint firstAttribute="trailing" secondItem="9qq-MD-I8t" secondAttribute="trailing" constant="1" id="lz1-mG-Kvq"/>
                             <constraint firstItem="9qq-MD-I8t" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" constant="-2" id="pu7-wT-UW2"/>
-                            <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" constant="2" id="z1Y-ec-1SZ"/>
+                            <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
                     <connections>
