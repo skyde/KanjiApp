@@ -226,7 +226,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 var frame = label.layer.presentationLayer()?.frame
                 
                 if let frame = frame {
-                    if CGRectContainsPoint(CGRectMake(frame.origin.x - 25, frame.origin.y - 20, frame.width + 40, frame.height + 40), tapLocation) {
+                    if CGRectContainsPoint(CGRectMake(frame.origin.x - 15, frame.origin.y - 10, frame.width + 20, frame.height + 20), tapLocation) {
                         matches.append(label)
                     }
                 }
