@@ -220,12 +220,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
         
-        var swipeFromLeftEdge = UIScreenEdgePanGestureRecognizer(target: self, action: "respondToSwipeFromLeft:")
-        swipeFromLeftEdge.edges = UIRectEdge.Left
-        self.view.addGestureRecognizer(swipeFromLeftEdge)
-        
-        swipeFromLeftEdge.addTarget(self, action: "respondToSwipeGesture:")
-        self.view.addGestureRecognizer(swipeFromLeftEdge)
+//        var swipeFromLeftEdge = UIScreenEdgePanGestureRecognizer(target: self, action: "respondToSwipeFromLeft:")
+//        swipeFromLeftEdge.edges = UIRectEdge.Left
+//        self.view.addGestureRecognizer(swipeFromLeftEdge)
+//        
+//        swipeFromLeftEdge.addTarget(self, action: "respondToSwipeGesture:")
+//        self.view.addGestureRecognizer(swipeFromLeftEdge)
     }
     
     
