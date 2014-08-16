@@ -101,7 +101,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         if !touchesDown &&
             searchResults.hidden &&
             RootContainer.instance.sidebar.hidden &&
-            !RootContainer.instance.mainView.hidden {
+            !RootContainer.instance.mainView.hidden &&
+            RootContainer.instance.definitionOverlay.hidden {
             currentTime += frameRate
         }
         maxTime = max(currentTime, maxTime)

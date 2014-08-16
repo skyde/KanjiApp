@@ -10,7 +10,7 @@ class DefinitionPopover : CustomUIViewController {
 //    var swipeFromRightAreaBaseWidth: CGFloat = 13
     
 //    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var background: UIImageView!
+//    @IBOutlet weak var background: UIImageView!
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     

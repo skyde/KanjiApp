@@ -10,6 +10,7 @@ class RootContainer: CustomUIViewController {
         get { return rootContainerInstance! }
     }
     var swipeFromLeftArea: UIButton! = nil
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
@@ -39,7 +40,6 @@ class RootContainer: CustomUIViewController {
         view.addSubview(swipeFromLeftArea)
         
         view.bringSubviewToFront(sidebarButton)
-        
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
         
         var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
@@ -212,6 +212,7 @@ class RootContainer: CustomUIViewController {
         
         definitionOverlay.hidden = true
         sidebar.hidden = true
+        backgroundImage.hidden = true
 //        blurImage.hidden = true
 //        blurImage.alpha = 0
     }
@@ -222,19 +223,23 @@ class RootContainer: CustomUIViewController {
 //        println(container)
 //        var definition =
         
-        var animationSpeed = 0.4
+        var animationSpeed: Double = 4
         
         if Globals.notificationShowDefinition.value == "" {
             Globals.notificationShowDefinition.value = "animating"
-            self.mainView.hidden = false
+//            self.mainView.hidden = false
 //            self.blurImage.opaque = false
+            
+            self.mainView.hidden = false
             
             UIView.animateWithDuration(popoverAnimationSpeed,
                 delay: NSTimeInterval(),
                 options: blurEasing,
                 animations: {
-                //                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+                    //                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+                    //                    self.mainView.alpha = 1
                     self.definitionOverlay.alpha = 0
+                    self.backgroundImage.alpha = 0
 //                    self.blurImage.alpha = 0
                 },
                 completion: {
@@ -242,27 +247,37 @@ class RootContainer: CustomUIViewController {
                     self.definitionOverlay.hidden = true
 //                    self.blurImage.hidden = true
                     Globals.notificationShowDefinition.value = ""
+                    self.backgroundImage.hidden = true
                 })
         } else {
+            backgroundImage.hidden = false
             caculateBlur()
             definitionOverlay.hidden = false
+            self.definitionOverlay.alpha = 0
+            backgroundImage.alpha = 0
+//            self.mainView.alpha = 1
 //            blurImage.hidden = false
             
 //            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
             
+//            self.definitionOverlay.alpha = 1
             UIView.animateWithDuration(popoverAnimationSpeed,
-                delay: NSTimeInterval(),
+                delay: 0,
                 options: blurEasing,
                 animations: {
 //                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
-//                    self.blurImage.alpha = 1
+                    //                    self.blurImage.alpha = 1
+//                    self.mainView.alpha = 0
+                    self.backgroundImage.alpha = 1
                     self.definitionOverlay.alpha = 1
                 },
                 completion: {
                     (_) -> Void in
-                    self.definitionOverlay.alpha = 1
 //                    self.definitionOverlay.alpha = 1
-//                    self.mainView.hidden = true
+//                    self.definitionOverlay.alpha = 1
+                    
+                    self.mainView.hidden = true
+                    
 //                    self.blurImage.opaque = true
                 })
         }
@@ -277,7 +292,7 @@ class RootContainer: CustomUIViewController {
     }
     
     func caculateBlur() {
-        let scale: CGFloat = 0.1
+        let scale: CGFloat = 0.125
         var inputRadius:CGFloat = 20
         
         inputRadius *= scale
@@ -308,7 +323,7 @@ class RootContainer: CustomUIViewController {
         let filteredImage = UIImage(CGImage: filteredImageRef)
         
 //        filteredImage.renderingMode 
-        DefinitionPopover.instance.background.image = filteredImage
+        backgroundImage.image = filteredImage
 //        DefinitionPopover.instance.background.
         UIGraphicsEndImageContext()
     }
