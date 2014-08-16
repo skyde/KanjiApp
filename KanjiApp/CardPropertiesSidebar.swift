@@ -21,10 +21,63 @@ public class CardPropertiesSidebar : UIViewController {
         super.viewDidAppear(animated)
         
         self.view.bringSubviewToFront(rightButton)
+        
+        setPropertiesType(.KnownAndAdd)
     }
     
     public func setPropertiesType(type: CardPropertiesType) {
+        let addText = "Add"
+        let knownText = "Known"
+        let removeText = "Remove"
         
+        let addColor = Globals.colorMyWords
+        let knownColor = Globals.colorKnown
+        let removeColor = Globals.colorLists
+        
+        var leftText = ""
+        var rightText = ""
+        var leftColor = UIColor()
+        var rightColor = UIColor()
+        
+        switch type {
+        case .KnownAndAdd:
+            leftText = knownText
+            rightText = addText
+            
+            leftColor = knownColor
+            rightColor = addColor
+        case .RemoveAndAdd:
+            break
+        case .RemoveAndKnow:
+            break
+        }
+        
+        leftButton.setTitle(leftText, forState: .Normal)
+        rightButton.setTitle(rightText, forState: .Normal)
+        
+        leftButton.setTitleColor(adjustToForegroundColor(leftColor), forState: .Normal)
+        rightButton.setTitleColor(adjustToForegroundColor(rightColor), forState: .Normal)
+        
+        leftButton.backgroundColor = adjustToBackgroundColor(leftColor)
+        rightButton.backgroundColor = adjustToBackgroundColor(rightColor)
+    }
+    
+    func adjustToBackgroundColor(color: UIColor) -> UIColor {
+        
+        var h: CGFloat = 0, s: CGFloat = 0, b :CGFloat = 0, a :CGFloat = 0
+        
+        color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        
+        return UIColor(hue: h, saturation: 0.1, brightness: min(b + 0.35, 1), alpha: a)
+    }
+    
+    func adjustToForegroundColor(color: UIColor) -> UIColor {
+        
+        var h: CGFloat = 0, s: CGFloat = 0, b :CGFloat = 0, a :CGFloat = 0
+        
+        color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        
+        return UIColor(hue: h, saturation: s, brightness: max(b - 0.5, 0), alpha: a)
     }
     
 //    public override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
