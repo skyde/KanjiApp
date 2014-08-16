@@ -1,6 +1,12 @@
 import Foundation
 import UIKit
 
+public enum CardPropertiesEdit {
+    case Add
+    case Known
+    case Remove
+}
+
 public enum CardPropertiesType {
     case KnownAndAdd
     case RemoveAndAdd
@@ -68,7 +74,7 @@ public class CardPropertiesSidebar : UIViewController {
         
         color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
         
-        return UIColor(hue: h, saturation: 0.1, brightness: min(b + 0.35, 1), alpha: a)
+        return UIColor(hue: h, saturation: 0.08, brightness: min(b + 0.4, 1), alpha: a)
     }
     
     func adjustToForegroundColor(color: UIColor) -> UIColor {
@@ -77,7 +83,7 @@ public class CardPropertiesSidebar : UIViewController {
         
         color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
         
-        return UIColor(hue: h, saturation: s, brightness: max(b - 0.5, 0), alpha: a)
+        return UIColor(hue: h, saturation: s, brightness: max(b - 0.4, 0), alpha: a)
     }
     
 //    public override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {

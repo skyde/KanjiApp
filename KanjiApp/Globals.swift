@@ -7,6 +7,7 @@ struct Globals
     static let notificationShowDefinition = Notification<String>("showDefinitionNotification", "")
     static let notificationTransitionToView = Notification<View>("transitionToViewNotification", .Search)
     static let notificationAddWordsFromList = Notification<WordList>("addWordsFromListNotification", .MyWords)
+    static let editCardProperties = Notification<CardPropertiesEdit>("editCardPropertiesNotification", .Add)
     // If this is true then words are added from the list without the prompt to choose a different list
 //    static var viewCards: [NSNumber] = []
 //    static var listsTitle = ""
