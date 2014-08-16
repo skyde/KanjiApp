@@ -14,7 +14,7 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
     @IBOutlet weak var definitionOverlay: UIView!
-    @IBOutlet weak var blurImage: UIImageView!
+//    @IBOutlet weak var blurImage: UIImageView!
     
     var sidebarButtonBaseX: CGFloat = 13
     var swipeFromLeftAreaBaseWidth: CGFloat = 0
@@ -212,8 +212,8 @@ class RootContainer: CustomUIViewController {
         
         definitionOverlay.hidden = true
         sidebar.hidden = true
-        blurImage.hidden = true
-        blurImage.alpha = 0
+//        blurImage.hidden = true
+//        blurImage.alpha = 0
     }
     
     
@@ -227,7 +227,7 @@ class RootContainer: CustomUIViewController {
         if Globals.notificationShowDefinition.value == "" {
             Globals.notificationShowDefinition.value = "animating"
             self.mainView.hidden = false
-            self.blurImage.opaque = false
+//            self.blurImage.opaque = false
             
             UIView.animateWithDuration(popoverAnimationSpeed,
                 delay: NSTimeInterval(),
@@ -235,18 +235,18 @@ class RootContainer: CustomUIViewController {
                 animations: {
                 //                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
                     self.definitionOverlay.alpha = 0
-                    self.blurImage.alpha = 0
+//                    self.blurImage.alpha = 0
                 },
                 completion: {
                 (_) -> Void in
                     self.definitionOverlay.hidden = true
-                    self.blurImage.hidden = true
+//                    self.blurImage.hidden = true
                     Globals.notificationShowDefinition.value = ""
                 })
         } else {
             caculateBlur()
             definitionOverlay.hidden = false
-            blurImage.hidden = false
+//            blurImage.hidden = false
             
 //            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
             
@@ -255,14 +255,15 @@ class RootContainer: CustomUIViewController {
                 options: blurEasing,
                 animations: {
 //                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
-                    self.blurImage.alpha = 1
+//                    self.blurImage.alpha = 1
                     self.definitionOverlay.alpha = 1
                 },
                 completion: {
                     (_) -> Void in
                     self.definitionOverlay.alpha = 1
-                    self.mainView.hidden = true
-                    self.blurImage.opaque = true
+//                    self.definitionOverlay.alpha = 1
+//                    self.mainView.hidden = true
+//                    self.blurImage.opaque = true
                 })
         }
     }
@@ -306,7 +307,9 @@ class RootContainer: CustomUIViewController {
         let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: sizeRect)
         let filteredImage = UIImage(CGImage: filteredImageRef)
         
-        blurImage.image = filteredImage
+//        filteredImage.renderingMode 
+        DefinitionPopover.instance.background.image = filteredImage
+//        DefinitionPopover.instance.background.
         UIGraphicsEndImageContext()
     }
     

@@ -296,6 +296,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-w9-ObI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -328,12 +331,16 @@
                         <constraints>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
+                            <constraint firstItem="WJ4-w9-ObI" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="Ntr-fy-LGe"/>
+                            <constraint firstItem="WJ4-w9-ObI" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="afG-gF-CAS"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
                             <constraint firstAttribute="bottom" secondItem="9C5-Qd-7TJ" secondAttribute="bottom" id="efb-tb-nfz"/>
                             <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" id="faS-qF-ii9"/>
                             <constraint firstAttribute="trailing" secondItem="9qq-MD-I8t" secondAttribute="trailing" constant="1" id="lz1-mG-Kvq"/>
                             <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="mjA-zf-sw7"/>
+                            <constraint firstAttribute="bottom" secondItem="WJ4-w9-ObI" secondAttribute="bottom" id="ohN-4y-EYh"/>
                             <constraint firstItem="9qq-MD-I8t" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" constant="-2" id="pu7-wT-UW2"/>
+                            <constraint firstAttribute="trailing" secondItem="WJ4-w9-ObI" secondAttribute="trailing" id="urh-Jh-9YI"/>
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
@@ -341,6 +348,7 @@
                         <outlet property="addRemoveButton" destination="9qq-MD-I8t" id="kHz-fh-nff"/>
                         <outlet property="addRemoveButtonSidebarWidth" destination="hgG-No-Obn" id="Crb-fq-5hR"/>
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
+                        <outlet property="background" destination="WJ4-w9-ObI" id="1IJ-XN-War"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
                     </connections>
                 </viewController>
@@ -418,9 +426,13 @@
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="3KA-G9-9Gl" secondAttribute="bottom" id="vIn-2n-fNi"/>
                             <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="yWv-Rx-Pub"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3KA-G9-9Gl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="blurImage" destination="3KA-G9-9Gl" id="qZT-7h-SgD"/>
                         <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
                         <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>

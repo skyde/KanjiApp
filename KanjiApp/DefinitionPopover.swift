@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-//var definitionPopoverInstance: DefinitionPopover? = nil
+var definitionPopoverInstance: DefinitionPopover? = nil
 
 class DefinitionPopover : CustomUIViewController {
     
@@ -10,6 +10,7 @@ class DefinitionPopover : CustomUIViewController {
 //    var swipeFromRightAreaBaseWidth: CGFloat = 13
     
 //    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     
@@ -39,15 +40,15 @@ class DefinitionPopover : CustomUIViewController {
     }
     }
     
-//    class var instance: DefinitionPopover {
-//        get { return definitionPopoverInstance! }
-//    }
+    class var instance: DefinitionPopover {
+        get { return definitionPopoverInstance! }
+    }
     
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
 //        println("def init")
-//        definitionPopoverInstance = self
+        definitionPopoverInstance = self
     }
     
     func updateText() {
@@ -56,7 +57,7 @@ class DefinitionPopover : CustomUIViewController {
             outputText.attributedText = card.definitionAttributedText
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
-            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+            outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
             updateButtonState(card)
         }
