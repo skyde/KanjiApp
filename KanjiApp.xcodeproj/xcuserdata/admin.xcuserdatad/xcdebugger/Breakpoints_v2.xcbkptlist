@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/GameMode.swift"
-            timestampString = "429942230.878849"
+            timestampString = "429942401.65981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "respondToSwipeGesture(_:)"
             landmarkType = "5">
          </BreakpointContent>
