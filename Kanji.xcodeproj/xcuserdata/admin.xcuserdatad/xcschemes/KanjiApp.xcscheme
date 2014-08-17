@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "842878DE196341B10060BDD1"
-               BuildableName = "KanjiApp.app"
-               BlueprintName = "KanjiApp"
+               BuildableName = "Kanji.app"
+               BlueprintName = "Kanji"
                ReferencedContainer = "container:Kanji.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "842878DE196341B10060BDD1"
-            BuildableName = "KanjiApp.app"
-            BlueprintName = "KanjiApp"
+            BuildableName = "Kanji.app"
+            BlueprintName = "Kanji"
             ReferencedContainer = "container:Kanji.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "842878DE196341B10060BDD1"
-            BuildableName = "KanjiApp.app"
-            BlueprintName = "KanjiApp"
+            BuildableName = "Kanji.app"
+            BlueprintName = "Kanji"
             ReferencedContainer = "container:Kanji.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "842878DE196341B10060BDD1"
-            BuildableName = "KanjiApp.app"
-            BlueprintName = "KanjiApp"
+            BuildableName = "Kanji.app"
+            BlueprintName = "Kanji"
             ReferencedContainer = "container:Kanji.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
