@@ -42,6 +42,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func updateText() {
         
         if let card = dueCard {
+            
+            self.cardPropertiesSidebar.updateContents(card)
+            
             if isFront {
                 card.setFrontText(kanjiView)
                 outputText.text = ""
@@ -99,10 +102,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 self.cardPropertiesSidebar.animate(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
-                self.addRemoveSidebar.hidden = !isVisible
-                if let card = self.dueCard {
-                    self.cardPropertiesSidebar.updateContents(card)
+                if !isVisible {
+                    if let card = self.dueCard {
+                        self.cardPropertiesSidebar.updateContents(card)
+                    }
                 }
+                self.addRemoveSidebar.hidden = !isVisible
         })
     }
     

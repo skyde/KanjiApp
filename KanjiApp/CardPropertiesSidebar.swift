@@ -31,9 +31,8 @@ public class CardPropertiesSidebar : UIViewController {
             Globals.notificationEditCardProperties.postNotification(.Remove)
             break
         }
-
-        
     }
+    
     @IBAction func rightTap(sender: AnyObject) {
         switch currentType {
         case .KnownAndAdd:
@@ -46,15 +45,22 @@ public class CardPropertiesSidebar : UIViewController {
             break
         }
     }
+    
     public func animate(offset: CGFloat) {
-        leftButton.frame.origin.x = 0
+        leftButton.frame.origin.x = min(0, -leftButton.frame.width + offset)
         rightButton.frame.origin.x = max(0, offset - leftButton.frame.width)
+    }
+    
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        self.view.bringSubviewToFront(rightButton)
     }
     
     public override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.view.bringSubviewToFront(rightButton)
+//        self.view.bringSubviewToFront(rightButton)
         
         setPropertiesType(.KnownAndAdd)
     }
