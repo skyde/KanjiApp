@@ -51,19 +51,15 @@ public class CardPropertiesSidebar : UIViewController {
         rightButton.frame.origin.x = max(0, offset - leftButton.frame.width)
     }
     
-    public override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        self.view.bringSubviewToFront(rightButton)
-    }
-    
-    public override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        self.view.bringSubviewToFront(rightButton)
-        
-        setPropertiesType(.KnownAndAdd)
-    }
+//    public override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+////        self.view.bringSubviewToFront(rightButton)
+//    }
+//    
+//    public override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//    }
     
     public func setPropertiesType(type: CardPropertiesType) {
         currentType = type

@@ -42,10 +42,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func updateText() {
         
         if let card = dueCard {
-            
-            self.cardPropertiesSidebar.updateContents(card)
-            
-            if isFront {
+                        if isFront {
                 card.setFrontText(kanjiView)
                 outputText.text = ""
             }
@@ -67,8 +64,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         var values: [NSNumber] = []
         
         let cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true)
-        
-//        println((cards[0] as Card).enabled)
         
         return cards.map { ($0 as Card).index }
     }
@@ -102,10 +97,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 self.cardPropertiesSidebar.animate(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
-                if !isVisible {
-                    if let card = self.dueCard {
-                        self.cardPropertiesSidebar.updateContents(card)
-                    }
+                if let card = self.dueCard {
+                    self.cardPropertiesSidebar.updateContents(card)
                 }
                 self.addRemoveSidebar.hidden = !isVisible
         })
@@ -118,12 +111,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             Globals.notificationTransitionToView.postNotification(.CardsFinished)
         }
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-//        if segue!.identifier == "AddFromListSegue" {
-//            // pass data to next view
-//        }
-//    }
     
     func advanceCard() {
         
