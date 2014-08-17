@@ -261,7 +261,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eh7-ge-yBi">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="16"/>
-                                                    <color key="textColor" white="0.5812436996" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -301,6 +301,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-Qd-7TJ">
+                                <rect key="frame" x="398" y="0.0" width="202" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="hgG-No-Obn"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="HHw-53-owD" kind="embed" id="daX-c3-wht"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="KanjiApp" customModuleProvider="target">
                                 <rect key="frame" x="553" y="-2" width="46" height="46"/>
                                 <constraints>
@@ -314,15 +323,6 @@
                                     <action selector="onAddRemoveButtonTouch:" destination="tK9-c8-QBp" eventType="touchDown" id="XXk-MA-aRb"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-Qd-7TJ">
-                                <rect key="frame" x="398" y="0.0" width="202" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="202" id="hgG-No-Obn"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="HHw-53-owD" kind="embed" id="daX-c3-wht"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -465,16 +465,6 @@
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9A-Ht-RIx">
-                                <rect key="frame" x="553" y="18" width="46" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="Wdb-jJ-Aq0"/>
-                                    <constraint firstAttribute="width" constant="46" id="cN3-xh-HEd"/>
-                                </constraints>
-                                <state key="normal" image="plusIcon.png">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uO-Hc-A8e">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
@@ -482,6 +472,45 @@
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKG-g3-byS">
+                                <rect key="frame" x="500" y="20" width="60" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8Oq-ul-5l0"/>
+                                    <constraint firstAttribute="width" constant="60" id="MXl-Iy-0Oa"/>
+                                </constraints>
+                                <state key="normal" title="Add All">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAllTap:" destination="TB3-d0-7EI" eventType="touchUpInside" id="dLh-Zo-bzj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX5-YK-gEQ">
+                                <rect key="frame" x="560" y="20" width="40" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="R0M-GL-bHO"/>
+                                    <constraint firstAttribute="width" constant="40" id="g5K-FB-WlO"/>
+                                </constraints>
+                                <state key="normal" title="Edit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editTap:" destination="TB3-d0-7EI" eventType="touchUpInside" id="BOe-ud-eHX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWY-kj-wHd">
+                                <rect key="frame" x="525" y="20" width="75" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RAw-pw-hVk"/>
+                                    <constraint firstAttribute="width" constant="75" id="dzb-0J-Efm"/>
+                                </constraints>
+                                <state key="normal" title="Translate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="translateTap:" destination="TB3-d0-7EI" eventType="touchUpInside" id="bwm-4O-AQt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -493,9 +522,13 @@
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="KMf-QI-zug"/>
                             <constraint firstItem="1uO-Hc-A8e" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" id="RU1-Vu-SSh"/>
                             <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="1uO-Hc-A8e" secondAttribute="bottom" id="Wis-V6-mHl"/>
+                            <constraint firstItem="kKG-g3-byS" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="XO4-Cq-8Tk"/>
                             <constraint firstAttribute="trailing" secondItem="1uO-Hc-A8e" secondAttribute="trailing" id="buN-NE-UFD"/>
-                            <constraint firstAttribute="trailing" secondItem="S9A-Ht-RIx" secondAttribute="trailing" constant="1" id="f3u-xr-gMR"/>
-                            <constraint firstItem="S9A-Ht-RIx" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" constant="-2" id="jii-Bb-dSY"/>
+                            <constraint firstItem="NWY-kj-wHd" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="bzo-rm-wPG"/>
+                            <constraint firstItem="qX5-YK-gEQ" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="hs8-ai-Onz"/>
+                            <constraint firstAttribute="trailing" secondItem="NWY-kj-wHd" secondAttribute="trailing" id="lrq-Lt-evW"/>
+                            <constraint firstItem="qX5-YK-gEQ" firstAttribute="leading" secondItem="kKG-g3-byS" secondAttribute="trailing" id="mBu-JW-E9L"/>
+                            <constraint firstAttribute="trailing" secondItem="qX5-YK-gEQ" secondAttribute="trailing" id="sca-yd-BZ4"/>
                             <constraint firstAttribute="trailing" secondItem="YLe-Is-Vnb" secondAttribute="trailing" id="wn0-hz-fp3"/>
                             <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="wqz-fA-Wv8"/>
                         </constraints>
@@ -503,6 +536,9 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="addAll" destination="kKG-g3-byS" id="Qub-lb-N3e"/>
+                        <outlet property="edit" destination="qX5-YK-gEQ" id="ygR-gx-17O"/>
+                        <outlet property="translate" destination="NWY-kj-wHd" id="Qfo-K6-nvl"/>
                         <outlet property="userText" destination="YLe-Is-Vnb" id="ge7-mi-bP7"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="vgr-gb-U0p"/>
                     </connections>
@@ -646,7 +682,7 @@ you wish to study</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1008,12 +1044,6 @@ all due cards</string>
                                     <constraint firstAttribute="height" constant="542" id="CBQ-x8-QKk"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBottomFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0g-vH-EGh">
-                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="1jp-z6-RDw"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-3J-NV6">
                                 <rect key="frame" x="223" y="169" width="154" height="30"/>
                                 <constraints>
@@ -1051,7 +1081,7 @@ all due cards</string>
                                     <constraint firstAttribute="height" constant="44" id="Fyd-un-duG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
-                                <color key="textColor" red="0.58039215686274503" green="0.58039215686274503" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5b5-Yt-AdZ">
@@ -1070,6 +1100,12 @@ all due cards</string>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBottomFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0g-vH-EGh">
+                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="1jp-z6-RDw"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1426,9 +1462,9 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="daX-c3-wht"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="ocT-bm-8xQ"/>
-        <segue reference="NNU-PR-Fp5"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

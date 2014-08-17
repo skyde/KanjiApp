@@ -15,7 +15,20 @@ class TextReader: CustomUIViewController {
     @IBOutlet var userText : UITextView!
     var tokens: [TextToken] = []
     
-//    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var addAll: UIButton!
+    @IBOutlet weak var translate: UIButton!
+    @IBOutlet weak var edit: UIButton!
+    
+    @IBAction func addAllTap(sender: AnyObject) {
+    }
+    
+    @IBAction func translateTap(sender: AnyObject) {
+        setState(true)
+    }
+    
+    @IBAction func editTap(sender: AnyObject) {
+        setState(false)
+    }
     
     @IBAction func addAll(sender: AnyObject) {
         for token in tokens {
@@ -30,17 +43,26 @@ class TextReader: CustomUIViewController {
         tokenizeText()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+        
+        setState(false)
+        
+        //        tokenizeText()
+    }
+    
+    func setState(showTranslation: Bool) {
+        
+        addAll.hidden = !showTranslation
+        edit.hidden = !showTranslation
+        translate.hidden = showTranslation
+    }
+    
     func formatDisplay() {
         
         let font = Globals.JapaneseFontLight
         let size: CGFloat = 24
-        
-////       Globals.JapaneseFontLight.bridgeToObjectiveC()
-//        var transform = CGAffineTransformMakeRotation(CGFloat(-M_PI / 2))
-//        var rotatedFont = CTFontCreateWithName("rotatedJapanese", size, &transform)
-//        CTFont
-        
-//        println(rotatedFont)
         
         var value = NSMutableAttributedString()
         value.beginEditing()
@@ -49,27 +71,15 @@ class TextReader: CustomUIViewController {
             
             var color = UIColor.blackColor()
             
-            
             if token.hasDefinition {
-                
                 color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
-                
-//                if let card = managedObjectContext.fetchCardByIndex(token.index) {
-//                    color = card.pitchAccentColor()
-//                }
             }
             
             let fontAttribute: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
-            
             let colorAttribute: (String, AnyObject) = (NSForegroundColorAttributeName, color)
-            
             var hasDefinition: (String, AnyObject) = ("hasDefinition", token.index)
             
             var attributes = [fontAttribute, colorAttribute, hasDefinition]
-            
-//            if let hasDefinition = hasDefinition {
-//            attributes +=
-//            }
             
             value.addAttributedText(token.text, attributes, breakLine: false)
         }
@@ -139,19 +149,10 @@ class TextReader: CustomUIViewController {
         
         tokens = []
         
-        tokenizeText()
-//        userText.textContainerInset.top = 44
-        
         var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-//        gesture.minimumPressDuration = 0
-//        gesture.cancelsTouchesInView = false
-//        gesture.delaysTouchesEnded = false
         userText.addGestureRecognizer(gesture)
         
         self.automaticallyAdjustsScrollViewInsets = false
-//        userText.transform = CGAffineTransformMakeRotation(CGFloat(M_PI / 2))
-        
-//        println("add on touch")
     }
 
     func onTouch(gesture: UIGestureRecognizer) {
@@ -172,9 +173,6 @@ class TextReader: CustomUIViewController {
                     if let kanji = kanji {
                         
                         Globals.notificationShowDefinition.postNotification(kanji)
-                        
-//                        Globals.currentDefinition = kanji
-//                        NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
                     }
                 }
             }
@@ -182,15 +180,6 @@ class TextReader: CustomUIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
-        
-//        userText
-//        userText.
-        //        userText.scrollEnabled = false
-//        userText.scrollEnabled = true
-    }
     
 //    override func viewDidAppear(animated: Bool) {
 //        super.viewDidAppear(animated)
