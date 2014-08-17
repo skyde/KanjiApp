@@ -9,7 +9,7 @@ public class CustomUITextView : UITextView, UITextViewDelegate {
     
     public var internalText: String {
         get {
-            if showingDefaultText {
+            if defaultTextShown {
                 return ""
             }
             
@@ -19,7 +19,9 @@ public class CustomUITextView : UITextView, UITextViewDelegate {
     var internalTextFont: UIFont = UIFont(name: Globals.JapaneseFontLight, size: 24)
     var internalTextColor: UIColor = UIColor(white: 65.0 / 255.0, alpha: 1)
     
-    public var showingDefaultText = true
+    public var defaultTextShown = true
+    
+    var onTextDidChange: (() -> ())?
     
 //    public required init(coder aDecoder: NSCoder!) {
 //        super.init(coder: aDecoder)
@@ -34,32 +36,34 @@ public class CustomUITextView : UITextView, UITextViewDelegate {
         
         text = defaultText
         textColor = defaultTextColor
-        showingDefaultText = true
+        defaultTextShown = true
         
         delegate = self
     }
     
     public func textViewShouldBeginEditing(textView: UITextView!) -> Bool {
         
-        if showingDefaultText {
+        if defaultTextShown {
             text = ""
             textColor = internalTextColor
-            showingDefaultText = false
+            defaultTextShown = false
         }
         
         return true
     }
     
-//    public func textViewDidChange(textView: UITextView!) {
-//        
-//    }
+    public func textViewDidChange(textView: UITextView!) {
+        if let onTextDidChange = onTextDidChange {
+            onTextDidChange()
+        }
+    }
     
     public func textViewShouldEndEditing(textView: UITextView!) -> Bool {
         
         if text == "" {
             text = defaultText
             textColor = defaultTextColor
-            showingDefaultText = true
+            defaultTextShown = true
         }
         return true
     }

@@ -19,8 +19,6 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
     @IBOutlet weak var translate: UIButton!
     @IBOutlet weak var edit: UIButton!
     
-//    @IBOutlet weak var touchArea: UIButton!
-//    var nonTokenizedText: String = ""
     var onTouchGesture: UITapGestureRecognizer! = nil
     
     override func viewDidLoad() {
@@ -31,6 +29,11 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         self.automaticallyAdjustsScrollViewInsets = false
         
         onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+        
+        userText.onTextDidChange = {
+            self.translate.enabled = !(self.userText.text == "" || self.userText.defaultTextShown)
+        }
+        self.translate.enabled = false
 //        touchArea.addGestureRecognizer(gesture)
         
 //        touchArea.hidden = true
@@ -60,7 +63,7 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
     }
     
     @IBAction func translateTap(sender: AnyObject) {
-        if !userText.showingDefaultText && userText.text != "" {
+        if !userText.defaultTextShown && userText.text != "" {
             setState(true)
         }
     }
