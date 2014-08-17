@@ -134,7 +134,7 @@ extension NSManagedObjectContext
     //    }
     
     func fetchCardsActive() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true) as [Card]
     }
     
     func fetchCardsWillStudy() -> [Card] {

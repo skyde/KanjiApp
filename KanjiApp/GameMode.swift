@@ -30,8 +30,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     required init(coder aDecoder: NSCoder!) {
         self.due = []
         super.init(coder: aDecoder)
-        
-        self.due = loadDatabase()
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,17 +58,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    func loadDatabase () -> [NSNumber] {
-        var values: [NSNumber] = []
-        
-        let cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true)
-        
-        return cards.map { ($0 as Card).index }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateText()
         setupSwipeGestures()
         setupEdgeReveal()
         
@@ -104,6 +93,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         })
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        due = managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
+        
+        updateText()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -113,7 +110,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     func advanceCard() {
-        
         if !isFront && due.count >= 1 {
             
             due.removeAtIndex(0)
@@ -246,15 +242,5 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
-        
-//        var swipeFromLeftEdge = UIScreenEdgePanGestureRecognizer(target: self, action: "respondToSwipeFromLeft:")
-//        swipeFromLeftEdge.edges = UIRectEdge.Left
-//        self.view.addGestureRecognizer(swipeFromLeftEdge)
-//        
-//        swipeFromLeftEdge.addTarget(self, action: "respondToSwipeGesture:")
-//        self.view.addGestureRecognizer(swipeFromLeftEdge)
     }
-    
-    
-//    @IBOutlet var swipeFromLeftEdge : UIScreenEdgePanGestureRecognizer = nil
 }
