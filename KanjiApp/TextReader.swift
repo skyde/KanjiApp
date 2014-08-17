@@ -19,19 +19,21 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
     @IBOutlet weak var translate: UIButton!
     @IBOutlet weak var edit: UIButton!
     
-    @IBOutlet weak var touchArea: UIButton!
-    var nonTokenizedText: String = ""
+//    @IBOutlet weak var touchArea: UIButton!
+//    var nonTokenizedText: String = ""
+    var onTouchGesture: UITapGestureRecognizer! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tokens = []
         
-        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-        touchArea.addGestureRecognizer(gesture)
-        
         self.automaticallyAdjustsScrollViewInsets = false
-        touchArea.hidden = true
+        
+        onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+//        touchArea.addGestureRecognizer(gesture)
+        
+//        touchArea.hidden = true
         
 //        userText.font = UIFont(name: textFont, size: textSize)
 //        userText.textColor = textColor
@@ -58,7 +60,9 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
     }
     
     @IBAction func translateTap(sender: AnyObject) {
-        setState(true)
+        if !userText.showingDefaultText && userText.text != "" {
+            setState(true)
+        }
     }
     
     @IBAction func editTap(sender: AnyObject) {
@@ -84,14 +88,17 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         edit.hidden = !showTranslation
         translate.hidden = showTranslation
         userText.editable = !showTranslation
-        touchArea.hidden = !showTranslation
+//        touchArea.hidden = !showTranslation
         
         if showTranslation {
-            nonTokenizedText = userText.internalText
             tokenizeText()
+            userText.addGestureRecognizer(onTouchGesture)
         } else {
-            if nonTokenizedText != "" {
-                userText.text = nonTokenizedText
+            userText.removeGestureRecognizer(onTouchGesture)
+            
+            if userText.internalText != "" {
+                userText.text = userText.internalText
+                userText.textColor = userText.internalTextColor
             }
         }
     }
@@ -101,9 +108,7 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         value.beginEditing()
         
         for token in tokens {
-            
             var color = userText.internalTextColor
-            
             if token.hasDefinition {
                 color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
             }
