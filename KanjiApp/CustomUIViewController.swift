@@ -55,6 +55,7 @@ class CustomUIViewController : UIViewController {
             settings.cardAddAmount = 5
             settings.onlyStudyKanji = true
             settings.volume = 0.5
+            settings.readerText = ""
             
             createDatabase("AllCards copy")
         }

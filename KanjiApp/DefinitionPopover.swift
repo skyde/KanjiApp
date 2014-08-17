@@ -5,7 +5,6 @@ import SpriteKit
 var definitionPopoverInstance: DefinitionPopover? = nil
 
 class DefinitionPopover : CustomUIViewController {
-    
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     @IBOutlet weak var addRemoveSidebar: UIView!

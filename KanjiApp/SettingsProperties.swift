@@ -7,6 +7,7 @@ enum SettingsProperties: EntityProperties {
     case onlyStudyKanji
     case volume
     case generatedCards
+    case readerText
     
     func description() -> String {
         switch self {
@@ -22,6 +23,8 @@ enum SettingsProperties: EntityProperties {
             return "volume"
         case .generatedCards:
             return "generatedCards"
+        case .readerText:
+            return "readerText"
         }
     }
 }

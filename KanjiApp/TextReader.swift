@@ -32,14 +32,11 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         
         userText.onTextDidChange = {
             self.translate.enabled = !(self.userText.text == "" || self.userText.defaultTextShown)
+            
+            self.settings.readerText = self.userText.internalText
+            
+            self.saveContext()
         }
-        self.translate.enabled = false
-//        touchArea.addGestureRecognizer(gesture)
-        
-//        touchArea.hidden = true
-        
-//        userText.font = UIFont(name: textFont, size: textSize)
-//        userText.textColor = textColor
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +44,8 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
         
         setState(false)
+        
+        userText.setTextValue(settings.readerText)
     }
     
     

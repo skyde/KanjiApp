@@ -9,4 +9,5 @@ class Settings: NSManagedObject {
     @NSManaged var onlyStudyKanji: NSNumber
     @NSManaged var volume: NSNumber
     @NSManaged var generatedCards: NSNumber
+    @NSManaged var readerText: String
 }

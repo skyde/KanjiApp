@@ -31,22 +31,43 @@ public class CustomUITextView : UITextView, UITextViewDelegate {
 //        
 //    }
     
+    /// name setText is not allowed
+    func setTextValue(value: String) {
+        if value == "" {
+            setDefaultText(true)
+        } else {
+            setDefaultText(false)
+            text = value
+        }
+        
+        if let onTextDidChange = onTextDidChange {
+            onTextDidChange()
+        }
+    }
+    
+    func setDefaultText(value: Bool) {
+        defaultTextShown = value
+        
+        if defaultTextShown {
+            text = defaultText
+            textColor = defaultTextColor
+        } else {
+            text = ""
+            textColor = internalTextColor
+        }
+    }
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        text = defaultText
-        textColor = defaultTextColor
-        defaultTextShown = true
+        setDefaultText(true)
         
         delegate = self
     }
     
     public func textViewShouldBeginEditing(textView: UITextView!) -> Bool {
-        
         if defaultTextShown {
-            text = ""
-            textColor = internalTextColor
-            defaultTextShown = false
+            setDefaultText(false)
         }
         
         return true
@@ -59,11 +80,8 @@ public class CustomUITextView : UITextView, UITextViewDelegate {
     }
     
     public func textViewShouldEndEditing(textView: UITextView!) -> Bool {
-        
         if text == "" {
-            text = defaultText
-            textColor = defaultTextColor
-            defaultTextShown = true
+            setDefaultText(true)
         }
         return true
     }
