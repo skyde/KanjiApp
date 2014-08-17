@@ -54,7 +54,7 @@
         <!--Sidebar Menu-->
         <scene sceneID="bZh-d0-aie">
             <objects>
-                <tableViewController id="gKl-wB-WbN" customClass="SidebarMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="gKl-wB-WbN" customClass="SidebarMenu" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NiI-Me-7RQ">
                         <rect key="frame" x="0.0" y="0.0" width="202" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -287,7 +287,7 @@
         <!--Definition Popover-->
         <scene sceneID="5Ej-YB-gya">
             <objects>
-                <viewController id="tK9-c8-QBp" customClass="DefinitionPopover" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tK9-c8-QBp" customClass="DefinitionPopover" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M8V-25-2rZ"/>
                         <viewControllerLayoutGuide type="bottom" id="mHs-7n-6qZ"/>
@@ -310,7 +310,7 @@
                                     <segue destination="HHw-53-owD" kind="embed" id="daX-c3-wht"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="KanjiApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="Kanji" customModuleProvider="target">
                                 <rect key="frame" x="553" y="-2" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="UXy-CR-8dS"/>
@@ -350,7 +350,7 @@
         <!--Root Container-->
         <scene sceneID="0eb-Ac-JoJ">
             <objects>
-                <viewController id="qjX-0f-FbU" customClass="RootContainer" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qjX-0f-FbU" customClass="RootContainer" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hg2-0J-WDM"/>
                         <viewControllerLayoutGuide type="bottom" id="fqP-iv-vim"/>
@@ -433,7 +433,7 @@
         <!--Text Reader-->
         <scene sceneID="60A-KG-9Sp">
             <objects>
-                <viewController id="TB3-d0-7EI" customClass="TextReader" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TB3-d0-7EI" customClass="TextReader" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQP-zl-NMR"/>
                         <viewControllerLayoutGuide type="bottom" id="lkb-sP-k49"/>
@@ -501,7 +501,7 @@
                                     <action selector="translateTap:" destination="TB3-d0-7EI" eventType="touchUpInside" id="bwm-4O-AQt"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb" customClass="CustomUITextView" customModule="KanjiApp" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-Is-Vnb" customClass="CustomUITextView" customModule="Kanji" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.99931991100311279" green="0.97001075744628906" blue="0.93296515941619873" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
@@ -553,7 +553,7 @@
         <!--Add Words-->
         <scene sceneID="Ygc-J7-j5G">
             <objects>
-                <viewController id="MSR-R2-cbT" customClass="AddWords" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MSR-R2-cbT" customClass="AddWords" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gmo-3F-9NX"/>
                         <viewControllerLayoutGuide type="bottom" id="CcD-zX-eec"/>
@@ -683,7 +683,7 @@ you wish to study</string>
         <!--Add Words List-->
         <scene sceneID="4M5-xF-dQG">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -812,7 +812,7 @@ you wish to study</string>
         <!--Cards Finished-->
         <scene sceneID="xMs-nz-whf">
             <objects>
-                <viewController title="Cards Finished" id="njT-bO-QmB" customClass="CardsFinished" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Cards Finished" id="njT-bO-QmB" customClass="CardsFinished" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FeW-6r-oIN"/>
                         <viewControllerLayoutGuide type="bottom" id="UWJ-XX-Uol"/>
@@ -952,7 +952,7 @@ all due cards</string>
         <!--Lists-->
         <scene sceneID="aNa-Pg-76R">
             <objects>
-                <viewController id="zR6-VI-QSd" customClass="Lists" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zR6-VI-QSd" customClass="Lists" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQZ-Lk-gyV"/>
                         <viewControllerLayoutGuide type="bottom" id="yE0-Rj-gdz"/>
@@ -1032,7 +1032,7 @@ all due cards</string>
         <!--Settings-->
         <scene sceneID="pKX-2b-wxR">
             <objects>
-                <viewController title="Settings" id="1Aq-z8-1P3" customClass="SettingsView" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="1Aq-z8-1P3" customClass="SettingsView" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JYF-dt-dpX"/>
                         <viewControllerLayoutGuide type="bottom" id="dWD-8y-8GG"/>
@@ -1147,7 +1147,7 @@ all due cards</string>
         <!--Game Mode-->
         <scene sceneID="Ty6-Va-CEw">
             <objects>
-                <viewController id="nGt-Uz-nIp" customClass="GameMode" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nGt-Uz-nIp" customClass="GameMode" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jVi-UJ-ybY"/>
                         <viewControllerLayoutGuide type="bottom" id="4Ob-f4-4wS"/>
@@ -1227,7 +1227,7 @@ all due cards</string>
         <!--Search-->
         <scene sceneID="ngR-aF-ckz">
             <objects>
-                <viewController title="Search" id="cUj-3S-BQf" customClass="Search" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="cUj-3S-BQf" customClass="Search" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yru-gu-OpA"/>
                         <viewControllerLayoutGuide type="bottom" id="NuM-Ed-cG9"/>
@@ -1358,7 +1358,7 @@ all due cards</string>
         <!--Root Menu-->
         <scene sceneID="fob-DL-5yY">
             <objects>
-                <viewController id="vil-on-bL0" customClass="RootMenu" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vil-on-bL0" customClass="RootMenu" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H3a-26-08l"/>
                         <viewControllerLayoutGuide type="bottom" id="YsG-j2-he8"/>
@@ -1401,7 +1401,7 @@ all due cards</string>
         <!--Card Properties Sidebar-->
         <scene sceneID="5vr-Tl-k06">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="HHw-53-owD" customClass="CardPropertiesSidebar" customModule="KanjiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="HHw-53-owD" customClass="CardPropertiesSidebar" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IDz-Q9-9NV"/>
                         <viewControllerLayoutGuide type="bottom" id="Vko-NP-bnK"/>
@@ -1468,6 +1468,6 @@ all due cards</string>
         <segue reference="daX-c3-wht"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="vgr-gb-U0p"/>
+        <segue reference="Njb-Jk-Mx7"/>
     </inferredMetricsTieBreakers>
 </document>

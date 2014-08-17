@@ -17,8 +17,14 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBAction func onButtonDown(sender: AnyObject) {
         for index in items {
             if let card = managedObjectContext.fetchCardByIndex(index) {
-                card.enabled = true
-                card.suspended = false
+                if !card.known {
+                    card.suspended = false
+                }
+                
+                if enableOnAdd {
+                    card.enabled = true
+                }
+//                card.known = false
             }
         }
         
@@ -36,15 +42,18 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
+    var enableOnAdd: Bool = false
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         switch Globals.notificationTransitionToView.value {
-        case .Lists(let title, let color, let cards, let displayAddButton):
+        case .Lists(let title, let color, let cards, let displayAddButton, let enableOnAdd):
             items = cards
             header.text = title
             header.textColor = color
             confirmButton.hidden = !displayAddButton
+            self.enableOnAdd = enableOnAdd
         default:
             break
         }

@@ -331,6 +331,7 @@ class RootContainer: CustomUIViewController {
         
         var cards: [Card] = []
         var color = Globals.colorLists
+        var enableOnAdd: Bool = false
         
         switch Globals.notificationAddWordsFromList.value {
         case .AllWords:
@@ -346,6 +347,7 @@ class RootContainer: CustomUIViewController {
         case .MyWords:
             cards = managedObjectContext.fetchCardsWillStudy()
             color = Globals.colorMyWords
+            enableOnAdd = true
         case .AllWords:
             cards = managedObjectContext.fetchCardsAllWordsSuspended()
         default:
@@ -373,6 +375,6 @@ class RootContainer: CustomUIViewController {
 //            }
         }
         
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: color, cards: addCards, displayAddButton: true))
+        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: color, cards: addCards, displayAddButton: true, enableOnAdd: enableOnAdd))
     }
 }

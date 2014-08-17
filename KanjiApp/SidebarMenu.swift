@@ -100,31 +100,31 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 100:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "Studying", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "Studying", color: Globals.colorMyWords, cards: cards, displayAddButton: false, enableOnAdd: false)
         case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "Will Study", color: Globals.colorMyWords, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "Will Study", color: Globals.colorMyWords, cards: cards, displayAddButton: false, enableOnAdd: false)
         case 102:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsKnown().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "Known", color: Globals.colorKnown, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "Known", color: Globals.colorKnown, cards: cards, displayAddButton: false, enableOnAdd: false)
         case 200:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 4", color: Globals.colorLists, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 4", color: Globals.colorLists, cards: cards, displayAddButton: false, enableOnAdd: false)
         case 201:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 3", color: Globals.colorLists, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 3", color: Globals.colorLists, cards: cards, displayAddButton: false, enableOnAdd: false)
         case 202:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT2Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 2", color: Globals.colorLists, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 2", color: Globals.colorLists, cards: cards, displayAddButton: false, enableOnAdd: false)
         case 203:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT1Suspended().map { ($0 as Card).index }
             
-            targetView = .Lists(title: "JLPT 1", color: Globals.colorLists, cards: cards, displayAddButton: false)
+            targetView = .Lists(title: "JLPT 1", color: Globals.colorLists, cards: cards, displayAddButton: false, enableOnAdd: false)
 //        case 204:
 //            var cards = RootContainer.instance.managedObjectContext.fetchCardsAllWordsSuspended().map { ($0 as Card).index }
 //            targetView = .Lists(title: "All Words", cards: cards, displayAddButton: false)

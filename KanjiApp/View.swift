@@ -7,7 +7,7 @@ enum View {
     case Reader
     case CardsFinished
     case AddWords
-    case Lists(title: String, color: UIColor, cards: [NSNumber], displayAddButton: Bool)
+    case Lists(title: String, color: UIColor, cards: [NSNumber], displayAddButton: Bool, enableOnAdd: Bool)
     case Settings
     
     func description() -> String {
