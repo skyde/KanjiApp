@@ -118,16 +118,17 @@ class TextReader: CustomUIViewController {
         
         let tokenizer = CFStringTokenizerCreate(nil, textCF, CFRangeMake(0, length), 0, CFLocaleCreate(nil, "ja_JP"))
         
-        var currentAdd = ""
         var lastRangeMax: CFIndex = 0
         while CFStringTokenizerAdvanceToNextToken(tokenizer) != .None {
             
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
-            let subString = CFStringCreateWithSubstring(nil, textCF, range).__conversion() as String
+            var subString = CFStringCreateWithSubstring(nil, textCF, range).__conversion() as String
             
             if lastRangeMax < range.location {
                 var r = CFRangeMake(lastRangeMax, range.location - lastRangeMax)
                 var s = CFStringCreateWithSubstring(nil, textCF, r).__conversion() as String
+                
+                println(s)
                 
                 tokens.append(TextToken(s, hasDefinition: false))
             }
@@ -136,29 +137,20 @@ class TextReader: CustomUIViewController {
             
             if countElements(subString) > 1 || subString.isPrimarilyKanji()
             {
-                if currentAdd != "" {
-                    tokens.append(TextToken(currentAdd, hasDefinition: false))
-                    currentAdd = ""
-                }
-                
                 if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
                     tokens.append(TextToken(
                         subString,
                         hasDefinition: true,
                         index: card.index))
-                } else {
-                    tokens.append(TextToken(subString, hasDefinition: false))
+                    
+                    subString = ""
                 }
             }
-            else {
-                currentAdd += subString
+            
+            if subString != "" {
+                tokens.append(TextToken(subString, hasDefinition: false))
             }
-        }
-        
-        if currentAdd != "" {
-            tokens.append(TextToken(currentAdd, hasDefinition: false))
-            currentAdd = ""
         }
         
         formatDisplay()
