@@ -19,6 +19,31 @@ class TextReader: CustomUIViewController {
     @IBOutlet weak var translate: UIButton!
     @IBOutlet weak var edit: UIButton!
     
+    let textFont = Globals.JapaneseFontLight
+    let textSize: CGFloat = 24
+    let textColor = UIColor(white: 65.0 / 255.0, alpha: 1)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tokens = []
+        
+        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+        userText.addGestureRecognizer(gesture)
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        userText.font = UIFont(name: textFont, size: textSize)
+        userText.textColor = textColor
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+        
+        setState(false)
+    }
+    
     @IBAction func addAllTap(sender: AnyObject) {
         var add: [Int] = []
         
@@ -52,15 +77,6 @@ class TextReader: CustomUIViewController {
         tokenizeText()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        userText.scrollRangeToVisible(NSRange(location: 0, length: 1))
-        
-        setState(false)
-        
-        //        tokenizeText()
-    }
-    
     var nonTokenizedText: String = ""
     
     func setState(showTranslation: Bool) {
@@ -68,6 +84,7 @@ class TextReader: CustomUIViewController {
         addAll.hidden = !showTranslation
         edit.hidden = !showTranslation
         translate.hidden = showTranslation
+        userText.editable = !showTranslation
         
         if showTranslation {
             nonTokenizedText = userText.text
@@ -80,22 +97,18 @@ class TextReader: CustomUIViewController {
     }
     
     func formatDisplay() {
-        
-        let font = Globals.JapaneseFontLight
-        let size: CGFloat = 24
-        
         var value = NSMutableAttributedString()
         value.beginEditing()
         
         for token in tokens {
             
-            var color = UIColor.blackColor()
+            var color = textColor
             
             if token.hasDefinition {
                 color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
             }
             
-            let fontAttribute: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
+            let fontAttribute: (String, AnyObject) = (NSFontAttributeName, UIFont(name: textFont, size: textSize))
             let colorAttribute: (String, AnyObject) = (NSForegroundColorAttributeName, color)
             var hasDefinition: (String, AnyObject) = ("hasDefinition", token.index)
             
@@ -128,8 +141,6 @@ class TextReader: CustomUIViewController {
                 var r = CFRangeMake(lastRangeMax, range.location - lastRangeMax)
                 var s = CFStringCreateWithSubstring(nil, textCF, r).__conversion() as String
                 
-                println(s)
-                
                 tokens.append(TextToken(s, hasDefinition: false))
             }
             
@@ -156,17 +167,6 @@ class TextReader: CustomUIViewController {
         formatDisplay()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tokens = []
-        
-        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-        userText.addGestureRecognizer(gesture)
-        
-        self.automaticallyAdjustsScrollViewInsets = false
-    }
-
     func onTouch(gesture: UIGestureRecognizer) {
         
         let location = gesture.locationInView(userText)
@@ -188,54 +188,6 @@ class TextReader: CustomUIViewController {
                     }
                 }
             }
-
         }
     }
-    
-    
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        println(userText.contentOffset)
-//        
-//    }
-//    override
-//
-//
-////        var text = userText.text
-////        
-////        userText.text = ""
-////        
-////        userText.scrollEnabled = false
-//////        userText.text = text
-////        userText.scrollEnabled = true
-////        let animationSpeed = 0.4
-////        //        UIView.animateWithDuration(animationSpeed) {}
-////        UIView.animateWithDuration(animationSpeed) {
-////            self.userText.contentOffset = CGPoint(x: 0, y: 0)
-////        }
-//
-//    }
-    
-//    override func viewDidAppear(animated: Bool) {
-//        
-//    }
-//    
-//    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-//        return self.items.count;
-//    }
-//    
-//    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-//        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-//        
-//        var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row])
-//        
-//        cell.textLabel.attributedText = card.cellText//"\(card.kanji) \(card.interval)"
-//        
-//        return cell
-//    }
-//    
-//    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-//        println("You selected cell #\(indexPath.row)!")
-//    }
 }
