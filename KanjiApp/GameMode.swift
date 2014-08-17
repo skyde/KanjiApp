@@ -9,6 +9,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     var isFront: Bool = true
     var audioPlayer = AVAudioPlayer()
     
+    @IBOutlet weak var addRemoveSidebar: UIView!
+    var edgeReveal: EdgeReveal! = nil
+    
     var dueCard: Card? {
     get {
         if due.count > 0 {
@@ -19,8 +22,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     @IBOutlet weak var kanjiView: UILabel!
-    
-//    let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
     
     required init(coder aDecoder: NSCoder!) {
         self.due = []

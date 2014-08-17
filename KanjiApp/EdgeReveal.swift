@@ -56,7 +56,6 @@ public class EdgeReveal : UIButton {
         }
     }
     
-    /// Do not call this method
     public required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -68,9 +67,6 @@ public class EdgeReveal : UIButton {
     public func animateSidebar(open: Bool) {
         
         if open {
-//        sidebarLeft.hidden = false
-//        sidebarRight.hidden = false
-        //
         UIView.animateWithDuration(animationTime,
             delay: 0,
             options: animationEasing,
@@ -84,9 +80,6 @@ public class EdgeReveal : UIButton {
                 if let onUpdate = self.onUpdate {
                     onUpdate(offset: self.maxReveal)
                 }
-                
-//                self.outputText.frame.origin.x = viewVisibleWidth - self.outputText.frame.width
-//                RootContainer.instance.blurImage.frame.origin.x = viewVisibleWidth - RootContainer.instance.blurImage.frame.width
             },
             completion: { (_) -> Void in
             
@@ -99,11 +92,7 @@ public class EdgeReveal : UIButton {
                 delay: 0,
                 options: animationEasing,
                 {
-//                    self.updateSidebarFrames(0)
-                    
                     self.swipeArea.frame = CGRectMake(Globals.screenSize.width - self.swipeAreaWidth, 0,self.swipeAreaWidth, Globals.screenSize.height)
-//                    self.outputText.frame.origin.x = 0
-                    //                    RootContainer.instance.blurImage.frame.origin.x = 0
                     if let onUpdate = self.onUpdate {
                         onUpdate(offset: 0)
                     }
@@ -113,17 +102,12 @@ public class EdgeReveal : UIButton {
                     if let setVisible = self.setVisible {
                         setVisible(isOpen: false)
                     }
-//                        self.sidebarLeft.hidden = true
-//                        self.sidebarRight.hidden = true
                 })
         }
     }
     
     func respondToSwipeTap(gesture: UITapGestureRecognizer) {
-//        if outputText.frame.origin.x != 0 {
         animateSidebar(false)
-//        }
-        //        println("tap")
     }
     
     func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
@@ -146,11 +130,6 @@ public class EdgeReveal : UIButton {
         let x = Globals.screenSize.width - xOffset
         
         swipeArea.frame.origin.x = x - swipeArea.frame.width
-//        outputText.frame.origin.x = x - outputText.frame.width
-//        RootContainer.instance.blurImage.frame.origin.x = x - RootContainer.instance.blurImage.frame.width
-//        
-//        sidebarLeft.hidden = xOffset == 0
-//        sidebarRight.hidden = xOffset == 0
         
         updateSidebarFrames(xOffset)
         
@@ -170,5 +149,22 @@ public class EdgeReveal : UIButton {
             break
         }
     }
-
+    
+    /// Note that this method does not save the context
+    func editCardProperties(card: Card?, value: CardPropertiesEdit) {
+        if let card = card {
+            switch value {
+            case .Add:
+                card.suspended = false
+                card.known = false
+            case .Remove:
+                card.suspended = true
+            case .Known:
+                card.suspended = false
+                card.known = true
+            }
+        }
+        
+        animateSidebar(false)
+    }
 }

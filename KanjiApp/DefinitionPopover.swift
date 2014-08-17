@@ -6,27 +6,11 @@ var definitionPopoverInstance: DefinitionPopover? = nil
 
 class DefinitionPopover : CustomUIViewController {
     
-//    var swipeFromRightArea: UIButton! = nil
-//    var swipeFromRightAreaBaseWidth: CGFloat = 13
-    
-//    @IBOutlet weak var backgroundImage: UIImageView!
-//    @IBOutlet weak var background: UIImageView!
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
-    
-//    @IBOutlet weak var addRemoveButtonSidebarWidth: NSLayoutConstraint!
-//    var sidebarLeft: UIButton! = nil
-//    var sidebarRight: UIButton! = nil
-    
     @IBOutlet weak var addRemoveSidebar: UIView!
     
     var edgeReveal: EdgeReveal! = nil
-//    let popoverAnimationSpeed = 0.22
-//    let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
-//    let sidebarMaxOffset: CGFloat = 202
-//    let sidebarTransitionThreshold: CGFloat = 30
-    
-//    public var definition: String = ""
     var cardPropertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
@@ -50,7 +34,6 @@ class DefinitionPopover : CustomUIViewController {
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
-//        println("def init")
         definitionPopoverInstance = self
     }
     
@@ -81,8 +64,6 @@ class DefinitionPopover : CustomUIViewController {
         addRemoveButton.setButtonType(card.suspended.boolValue)
     }
     
-//    var cardPropertiesBar: CardPropertiesBar! = nil
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateText()
@@ -90,30 +71,13 @@ class DefinitionPopover : CustomUIViewController {
         setupAddRemoveSidebar()
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
-//        self.addRemoveSidebar.subviews
-//        for let view in v {
-//            
-//        }
     }
     
     func onEditCard() {
         if !view.hidden {
-            if let card = viewCard {
-                switch Globals.notificationEditCardProperties.value {
-                case .Add:
-                    card.suspended = false
-                    card.known = false
-                case .Remove:
-                    card.suspended = true
-                case .Known:
-                    card.suspended = false
-                    card.known = true
-                }
-                
-                saveContext()
-                
-                edgeReveal.animateSidebar(false)
-            }
+            edgeReveal.editCardProperties(viewCard, value: Globals.notificationEditCardProperties.value)
+            
+            saveContext()
         }
     }
     
