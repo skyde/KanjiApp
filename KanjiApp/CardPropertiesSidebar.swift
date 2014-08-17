@@ -8,6 +8,18 @@ public class CardPropertiesSidebar : UIViewController {
     
     var currentType: CardPropertiesType = .KnownAndAdd
     
+    func updateContents(card: Card?) {
+        if let card = card {
+            if card.suspended.boolValue {
+                setPropertiesType(.KnownAndAdd)
+            } else if card.known.boolValue {
+                setPropertiesType(.RemoveAndAdd)
+            } else {
+                setPropertiesType(.RemoveAndKnow)
+            }
+        }
+    }
+    
     @IBAction func leftTap(sender: AnyObject) {
         switch currentType {
         case .KnownAndAdd:

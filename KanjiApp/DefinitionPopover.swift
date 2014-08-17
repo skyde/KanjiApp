@@ -46,19 +46,10 @@ class DefinitionPopover : CustomUIViewController {
             outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
             updateButtonState(card)
-            updatePropertySidebar(card)
+            cardPropertiesSidebar.updateContents(card)
         }
     }
     
-    func updatePropertySidebar(card: Card) {
-        if card.suspended.boolValue {
-            cardPropertiesSidebar.setPropertiesType(.KnownAndAdd)
-        } else if card.known.boolValue {
-            cardPropertiesSidebar.setPropertiesType(.RemoveAndAdd)
-        } else {
-            cardPropertiesSidebar.setPropertiesType(.RemoveAndKnow)
-        }
-    }
     
     private func updateButtonState(card: Card) {
         addRemoveButton.setButtonType(card.suspended.boolValue)
@@ -68,7 +59,7 @@ class DefinitionPopover : CustomUIViewController {
         super.viewDidLoad()
         updateText()
         setupGestures()
-        setupAddRemoveSidebar()
+        setupEdgeReveal()
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
     }
@@ -81,10 +72,7 @@ class DefinitionPopover : CustomUIViewController {
         }
     }
     
-    private func setupAddRemoveSidebar() {
-        
-//        self.view.
-//        self.view
+    private func setupEdgeReveal() {
         
         edgeReveal = EdgeReveal(
             parent: view,
@@ -97,114 +85,11 @@ class DefinitionPopover : CustomUIViewController {
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
                 if let card = self.viewCard {
-                    self.updatePropertySidebar(card)
+                    self.cardPropertiesSidebar.updateContents(card)
                 }
         })
-//        edgeReveal.ani
-        //        sidebarLeft = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
-//        view.addSubview(sidebarLeft)
-//        
-//        sidebarRight = UIButton(frame: CGRectMake(Globals.screenSize.width, 0, 0, Globals.screenSize.height))
-//        view.addSubview(sidebarRight)
-        
-//        updateSidebarText([], [])
-        
-//        var gesture = UIPanGestureRecognizer(target: self, action: "respondToEdgeSwipeGesture:")
-//        swipeFromRightArea.addGestureRecognizer(gesture)
-//        
-//        var tap = UITapGestureRecognizer(target: self, action: "respondToEdgeSwipeTap:")
-//        swipeFromRightArea.addGestureRecognizer(tap)
     }
     
-//    private func updateSidebarText(texts: [String], _ colors: [UIColor]) {
-//        sidebarLeft.backgroundColor = UIColor.blueColor()
-//        sidebarRight.backgroundColor = UIColor.greenColor()
-//    }
-//    private func updateSidebarFrames(offset: CGFloat) {
-//        //let xOffset = -xPosition
-//        
-////        println(openAmount)
-//        
-//        sidebarLeft.frame = CGRectMake(Globals.screenSize.width - offset, 0, offset / 2, Globals.screenSize.height)
-//        sidebarRight.frame = CGRectMake(Globals.screenSize.width - offset / 2, 0, offset / 2, Globals.screenSize.height)
-//    }
-    
-//    private func animateRightSidebar(open: Bool) {
-//        
-//        if open {
-//            sidebarLeft.hidden = false
-//            sidebarRight.hidden = false
-////            
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: 0,
-//                options: sidebarEasing,
-//                {
-//                    self.updateSidebarFrames(self.sidebarMaxOffset)
-//                    
-//                    let viewVisibleWidth = Globals.screenSize.width - self.sidebarMaxOffset
-//                    
-//                    self.swipeFromRightArea.frame = CGRectMake(0, 0,viewVisibleWidth, Globals.screenSize.height)
-//                    self.outputText.frame.origin.x = viewVisibleWidth - self.outputText.frame.width
-//                    RootContainer.instance.blurImage.frame.origin.x = viewVisibleWidth - RootContainer.instance.blurImage.frame.width
-//                },
-//                nil)
-//        } else {
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: 0,
-//                options: sidebarEasing,
-//                {
-//                    self.updateSidebarFrames(0)
-//                    
-//                    self.swipeFromRightArea.frame = CGRectMake(Globals.screenSize.width - self.swipeFromRightAreaBaseWidth, 0,self.swipeFromRightAreaBaseWidth, Globals.screenSize.height)
-//                    self.outputText.frame.origin.x = 0
-//                    RootContainer.instance.blurImage.frame.origin.x = 0
-//                },
-//                completion: { (_) -> Void in
-//                    self.sidebarLeft.hidden = true
-//                    self.sidebarRight.hidden = true
-//            })
-//        }
-//    }
-//    
-//    func respondToEdgeSwipeTap(gesture: UITapGestureRecognizer) {
-//        if outputText.frame.origin.x != 0 {
-//            animateRightSidebar(false)
-//        }
-////        println("tap")
-//    }
-//    
-//    func respondToEdgeSwipeGesture(gesture: UIPanGestureRecognizer) {
-//        var xOffset = Globals.screenSize.width - gesture.locationInView(self.view).x
-//        xOffset = max(0, xOffset)
-//        xOffset = min(xOffset, sidebarMaxOffset)
-//        
-//        let x = Globals.screenSize.width - xOffset
-//        
-//        swipeFromRightArea.frame.origin.x = x - swipeFromRightArea.frame.width
-//        outputText.frame.origin.x = x - outputText.frame.width
-//        RootContainer.instance.blurImage.frame.origin.x = x - RootContainer.instance.blurImage.frame.width
-//        
-//        sidebarLeft.hidden = xOffset == 0
-//        sidebarRight.hidden = xOffset == 0
-//        
-//        updateSidebarFrames(xOffset)
-//        
-//        switch gesture.state {
-//        case .Ended:
-//            var xDelta = -gesture.translationInView(self.view).x
-//            if xDelta > sidebarTransitionThreshold {
-//                animateRightSidebar(true)
-//            } else if xDelta < sidebarTransitionThreshold {
-//                animateRightSidebar(false)
-//            } else if xDelta < 0 {
-//                animateRightSidebar(true)
-//            } else {
-//                animateRightSidebar(false)
-//            }
-//        default:
-//            break
-//        }
-//    }
     
 
     @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
@@ -227,39 +112,13 @@ class DefinitionPopover : CustomUIViewController {
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)
         
-//        println("respondToTapGesture")
         if Globals.notificationShowDefinition.value != "" && CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
-//            println("close")
-//            definition = ""
             Globals.notificationShowDefinition.postNotification("")
-//            NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
         }
     }
     
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        [view drawViewHierarchyInRect:(CGRect){CGPointZero, w, h} afterScreenUpdates:YES]; // view is the view you are grabbing the screen shot of. The view that is to be blurred.
-//        var image = UIGraphicsGetImageFromCurrentImageContext();
-        
-//        edgeReveal.onUpdate!(offset: 0)
-//        addRemoveSidebar.frame.origin.x = Globals.screenSize.width
-    }
-    
-    
     func onNotificationShowDefinition() {
-//        if definition != "" {
-//            definition = Globals.notificationShowDefinition.value
-        
-//        var animationSpeed = 0.4
-        
         updateText()
-//        }
     }
     
     override func addNotifications() {

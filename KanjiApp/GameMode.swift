@@ -21,6 +21,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     }
     
+    var cardPropertiesSidebar: CardPropertiesSidebar {
+        return self.childViewControllers[0] as CardPropertiesSidebar
+    }
+
     @IBOutlet weak var kanjiView: UILabel!
     
     required init(coder aDecoder: NSCoder!) {
@@ -70,6 +74,35 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         updateText()
         setupSwipeGestures()
+        setupEdgeReveal()
+        
+        Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
+    }
+    
+    func onEditCard() {
+        if !view.hidden {
+            edgeReveal.editCardProperties(dueCard, value: Globals.notificationEditCardProperties.value)
+            
+            saveContext()
+        }
+    }
+    
+    private func setupEdgeReveal() {
+        
+        edgeReveal = EdgeReveal(
+            parent: view,
+            revealType: .Right,
+            onUpdate: {(offset: CGFloat) -> () in
+                self.outputText.frame.origin.x = -offset
+                self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
+                self.cardPropertiesSidebar.animate(offset)
+            },
+            setVisible: {(isVisible: Bool) -> () in
+                self.addRemoveSidebar.hidden = !isVisible
+                if let card = self.dueCard {
+                    self.cardPropertiesSidebar.updateContents(card)
+                }
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
