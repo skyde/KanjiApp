@@ -63,7 +63,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func loadDatabase () -> [NSNumber] {
         var values: [NSNumber] = []
         
-        let cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
+        let cards = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true)
         
 //        println((cards[0] as Card).enabled)
         
@@ -95,6 +95,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
+                self.kanjiView.frame.origin.x = -offset
                 self.cardPropertiesSidebar.animate(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
