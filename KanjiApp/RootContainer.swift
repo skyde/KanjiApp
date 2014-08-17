@@ -62,9 +62,9 @@ class RootContainer: CustomUIViewController {
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
         var open = mainView.frame.origin.x == 0
         
-        if Globals.notificationShowDefinition.value != "" {
-            Globals.notificationShowDefinition.postNotification("")
-        }
+//        if Globals.notificationShowDefinition.value != "" {
+//            Globals.notificationShowDefinition.postNotification("")
+//        }
         
         Globals.notificationSidebarInteract.postNotification(open)
         
@@ -82,44 +82,36 @@ class RootContainer: CustomUIViewController {
                 delay: 0,
                 options: sidebarEasing,
                 {
-                self.mainView.frame.origin.x = self.sidebar.frame.width
-                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + self.sidebar.frame.width
-//                    print(xMove)
-//                self.swipeFromLeftArea.frame.origin.x = xMove
-//                self.swipeFromLeftArea.frame.size.width = 100
-                self.swipeFromLeftArea.frame = CGRectMake(
-                    self.sidebar.frame.width,
-                    self.swipeFromLeftArea.frame.origin.y,
-                    Globals.screenSize.width - self.sidebar.frame.width,
-                    self.swipeFromLeftArea.frame.height)
+                    self.definitionOverlay.frame.origin.x = self.sidebar.frame.width
+                    self.backgroundImage.frame.origin.x = self.sidebar.frame.width
+                    self.mainView.frame.origin.x = self.sidebar.frame.width
+                    self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + self.sidebar.frame.width
+    //                    print(xMove)
+    //                self.swipeFromLeftArea.frame.origin.x = xMove
+    //                self.swipeFromLeftArea.frame.size.width = 100
+                    self.swipeFromLeftArea.frame = CGRectMake(
+                        self.sidebar.frame.width,
+                        self.swipeFromLeftArea.frame.origin.y,
+                        Globals.screenSize.width - self.sidebar.frame.width,
+                        self.swipeFromLeftArea.frame.height)
                 },
                 nil)
         } else {
             UIView.animateWithDuration(popoverAnimationSpeed,
             delay: 0,
             options: sidebarEasing,
-            {
-                self.mainView.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
-                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX
-//                self.swipeFromLeftArea.frame.origin.x = 0
-                self.swipeFromLeftArea.frame = CGRectMake(
+                {
+                    self.definitionOverlay.frame.origin.x = 0
+                    self.backgroundImage.frame.origin.x = 0
+                    self.mainView.frame.origin.x = 0
+                    self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX
+                    self.swipeFromLeftArea.frame = CGRectMake(
                     0,
                     self.swipeFromLeftArea.frame.origin.y,
                     self.swipeFromLeftAreaBaseWidth,
                     self.swipeFromLeftArea.frame.height)
                 },
                 completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
-//            
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: NSTimeInterval(),
-//                options: sidebarEasing,
-//                animations: {
-//                },
-//                completion: nil)
-            
-//            UIView.animateWithDuration(popoverAnimationSpeed) {
-//                
-//            }
         }
     }
 
@@ -130,6 +122,10 @@ class RootContainer: CustomUIViewController {
 
     override func onTransitionToView() {
         super.onTransitionToView()
+        
+        if Globals.notificationShowDefinition.value != "" {
+            Globals.notificationShowDefinition.postNotification("")
+        }
         
         animateSelf(false)
     }
@@ -143,26 +139,22 @@ class RootContainer: CustomUIViewController {
     }
     
     func respondToFromLeftSwipeTap(gesture: UITapGestureRecognizer) {
-        if Globals.notificationShowDefinition.value != "" {
-            Globals.notificationShowDefinition.postNotification("")
-        }
-        
+
         if mainView.frame.origin.x != 0 {
             animateSelf(false)
         }
     }
     
     func respondToFromLeftSwipeGesture(gesture: UIPanGestureRecognizer) {
-        if Globals.notificationShowDefinition.value != "" {
-            Globals.notificationShowDefinition.postNotification("")
-        }
-        
+
         var x = gesture.locationInView(self.view).x
         x = max(0, x)
         x = min(x, sidebar.frame.width)
         
         sidebar.hidden = x == 0
         
+        self.definitionOverlay.frame.origin.x = x
+        self.backgroundImage.frame.origin.x = x
         mainView.frame.origin.x = x
         sidebarButton.frame.origin.x = sidebarButtonBaseX + x
         swipeFromLeftArea.frame.origin.x = x
