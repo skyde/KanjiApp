@@ -11,17 +11,16 @@ import UIKit
 import CoreData
 import CoreText
 
-class TextReader: CustomUIViewController {
-    @IBOutlet var userText : UITextView!
+class TextReader: CustomUIViewController, UITextViewDelegate {
+    @IBOutlet var userText : CustomUITextView!
     var tokens: [TextToken] = []
     
     @IBOutlet weak var addAll: UIButton!
     @IBOutlet weak var translate: UIButton!
     @IBOutlet weak var edit: UIButton!
     
-    let textFont = Globals.JapaneseFontLight
-    let textSize: CGFloat = 24
-    let textColor = UIColor(white: 65.0 / 255.0, alpha: 1)
+    @IBOutlet weak var touchArea: UIButton!
+    var nonTokenizedText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +28,13 @@ class TextReader: CustomUIViewController {
         tokens = []
         
         var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-        userText.addGestureRecognizer(gesture)
+        touchArea.addGestureRecognizer(gesture)
         
         self.automaticallyAdjustsScrollViewInsets = false
+        touchArea.hidden = true
         
-        userText.font = UIFont(name: textFont, size: textSize)
-        userText.textColor = textColor
+//        userText.font = UIFont(name: textFont, size: textSize)
+//        userText.textColor = textColor
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +43,7 @@ class TextReader: CustomUIViewController {
         
         setState(false)
     }
+    
     
     @IBAction func addAllTap(sender: AnyObject) {
         var add: [Int] = []
@@ -77,17 +78,16 @@ class TextReader: CustomUIViewController {
         tokenizeText()
     }
     
-    var nonTokenizedText: String = ""
-    
     func setState(showTranslation: Bool) {
         
         addAll.hidden = !showTranslation
         edit.hidden = !showTranslation
         translate.hidden = showTranslation
         userText.editable = !showTranslation
+        touchArea.hidden = !showTranslation
         
         if showTranslation {
-            nonTokenizedText = userText.text
+            nonTokenizedText = userText.internalText
             tokenizeText()
         } else {
             if nonTokenizedText != "" {
@@ -102,13 +102,13 @@ class TextReader: CustomUIViewController {
         
         for token in tokens {
             
-            var color = textColor
+            var color = userText.internalTextColor
             
             if token.hasDefinition {
                 color = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
             }
             
-            let fontAttribute: (String, AnyObject) = (NSFontAttributeName, UIFont(name: textFont, size: textSize))
+            let fontAttribute: (String, AnyObject) = (NSFontAttributeName, userText.internalTextFont)
             let colorAttribute: (String, AnyObject) = (NSForegroundColorAttributeName, color)
             var hasDefinition: (String, AnyObject) = ("hasDefinition", token.index)
             
