@@ -20,6 +20,15 @@ class TextReader: CustomUIViewController {
     @IBOutlet weak var edit: UIButton!
     
     @IBAction func addAllTap(sender: AnyObject) {
+        var add: [Int] = []
+        
+        for token in tokens {
+            if token.hasDefinition {
+                add.append(token.index)
+            }
+        }
+        
+        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: Globals.colorFunctions, cards: add, displayAddButton: true))
     }
     
     @IBAction func translateTap(sender: AnyObject) {
@@ -52,11 +61,22 @@ class TextReader: CustomUIViewController {
         //        tokenizeText()
     }
     
+    var nonTokenizedText: String = ""
+    
     func setState(showTranslation: Bool) {
         
         addAll.hidden = !showTranslation
         edit.hidden = !showTranslation
         translate.hidden = showTranslation
+        
+        if showTranslation {
+            nonTokenizedText = userText.text
+            tokenizeText()
+        } else {
+            if nonTokenizedText != "" {
+                userText.text = nonTokenizedText
+            }
+        }
     }
     
     func formatDisplay() {
