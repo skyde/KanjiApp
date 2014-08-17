@@ -11,7 +11,7 @@ class DefinitionPopover : CustomUIViewController {
     @IBOutlet weak var addRemoveSidebar: UIView!
     
     var edgeReveal: EdgeReveal! = nil
-    var cardPropertiesSidebar: CardPropertiesSidebar {
+    var propertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
     
@@ -46,7 +46,7 @@ class DefinitionPopover : CustomUIViewController {
             outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
             updateButtonState(card)
-            cardPropertiesSidebar.updateContents(card)
+            propertiesSidebar.updateContents(card)
         }
     }
     
@@ -80,12 +80,12 @@ class DefinitionPopover : CustomUIViewController {
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
-                self.cardPropertiesSidebar.animate(offset)
+                self.propertiesSidebar.animate(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
                 if let card = self.viewCard {
-                    self.cardPropertiesSidebar.updateContents(card)
+                    self.propertiesSidebar.updateContents(card)
                 }
         })
     }
