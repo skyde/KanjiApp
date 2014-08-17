@@ -162,6 +162,8 @@ class RootContainer: CustomUIViewController {
         let transitionThreshold: CGFloat = 30
         
         switch gesture.state {
+        case .Began:
+            Globals.notificationSidebarInteract.postNotification(!(x == 0))
         case .Ended:
             var xDelta = gesture.translationInView(self.view).x
             if xDelta > transitionThreshold {

@@ -61,6 +61,12 @@ class DefinitionPopover : CustomUIViewController {
         setupEdgeReveal()
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
+        
+        Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
+    }
+    
+    func onSidebarInteract() {
+        edgeReveal.animateSidebar(false)
     }
     
     func onEditCard() {

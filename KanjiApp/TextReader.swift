@@ -37,6 +37,12 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
             
             self.saveContext()
         }
+        
+        Globals.notificationSidebarInteract.addObserver(self, selector: "closeKeyboard", object: nil)
+    }
+    
+    func closeKeyboard() {
+        userText.resignFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,7 +53,6 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         
         userText.setTextValue(settings.readerText)
     }
-    
     
     @IBAction func addAllTap(sender: AnyObject) {
         var add: [Int] = []
