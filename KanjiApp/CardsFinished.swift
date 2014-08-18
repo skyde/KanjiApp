@@ -13,9 +13,11 @@ class CardsFinished : CustomUIViewController {
     
     @IBOutlet weak var continueStudying: UIButton!
     
+    var studyAheadAmount: Double = 60 * 60 * 24 * 5
+    
     @IBAction func continueStudyingPressed(sender: AnyObject) {
 //        println("continueStudyingPressed")
-        var studyAheadAmount: Double = 60 * 60 * 24 * 5
+        
         Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: studyAheadAmount))
     }
     
@@ -34,8 +36,8 @@ class CardsFinished : CustomUIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let active = managedObjectContext.fetchCardsActive()
+        let due = managedObjectContext.fetchCardsDue(fetchAheadAmount: studyAheadAmount)
         
-        continueStudying.enabled = active.count != 0
+        continueStudying.enabled = due.count != 0
     }
 }

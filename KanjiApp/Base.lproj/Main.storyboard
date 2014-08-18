@@ -1503,9 +1503,9 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Q0-aS-4tM"/>
-        <segue reference="o8I-8R-76U"/>
         <segue reference="NNU-PR-Fp5"/>
-        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="o8I-8R-76U"/>
+        <segue reference="0Q0-aS-4tM"/>
+        <segue reference="vgr-gb-U0p"/>
     </inferredMetricsTieBreakers>
 </document>

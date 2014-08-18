@@ -177,7 +177,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     private func fetchCards() {
-        due = managedObjectContext.fetchCardsDue().map { ($0 as Card).index }
+        var fetchAheadAmount: Double = 0
+        
+        switch Globals.notificationTransitionToView.value {
+        case .GameMode(let studyAheadAmount):
+            fetchAheadAmount = studyAheadAmount
+        default:
+            break
+        }
+        
+        due = managedObjectContext.fetchCardsDue(fetchAheadAmount: fetchAheadAmount).map { ($0 as Card).index }
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -134,18 +134,18 @@ extension NSManagedObjectContext
     //    }
     
     /// ahead amount should be in seconds
-    func fetchCardsStudyAhead(var aheadAmount: Double) -> [Card] {
-        
-        var predicate = "(enabled==%@) AND (suspended==%@) AND (known==%@) AND (dueTime<%@)"
-        var values: [AnyObject] = [true, false, false, Globals.secondsSince1970 + aheadAmount]
-        
-        return fetchEntities(.Card, rawPredicate: (predicate, values), CardProperties.dueTime, sortAscending: true) as [Card]
-    }
+//    func fetchCardsStudyAhead() -> [Card] {
+//        
+//        var predicate = "(enabled==%@) AND (suspended==%@) AND (known==%@) AND (dueTime<%@)"
+//        var values: [AnyObject] = [true, false, false, Globals.secondsSince1970 + aheadAmount]
+//        
+//        return fetchEntities(.Card, rawPredicate: (predicate, values), CardProperties.dueTime, sortAscending: true) as [Card]
+//    }
     
-    func fetchCardsDue() -> [Card] {
+    func fetchCardsDue(var fetchAheadAmount: Double = 0) -> [Card] {
         
         var predicate = "(enabled==%@) AND (suspended==%@) AND (known==%@) AND (dueTime<%@)"
-        var values: [AnyObject] = [true, false, false, Globals.secondsSince1970]
+        var values: [AnyObject] = [true, false, false, Globals.secondsSince1970 + fetchAheadAmount]
         
         return fetchEntities(.Card, rawPredicate: (predicate, values), CardProperties.dueTime, sortAscending: true) as [Card]
     }
