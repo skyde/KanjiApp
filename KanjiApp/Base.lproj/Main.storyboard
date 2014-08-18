@@ -1184,21 +1184,14 @@ all due cards</string>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctf-Sa-BFI">
                                 <rect key="frame" x="200" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.50196081399917603" green="0.90145985401459849" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vow-0B-FuC">
-                                <rect key="frame" x="400" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.99428403377532959" green="0.72071343660354614" blue="0.036108106374740601" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.43635168671607971" green="1" blue="0.030377298593521118" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9v-Dx-vuY">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.86511212587356567" green="0.0" blue="0.035766083747148514" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.9859432578086853" green="0.0" blue="0.057497896254062653" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1212,6 +1205,13 @@ all due cards</string>
                                     <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vow-0B-FuC">
+                                <rect key="frame" x="400" y="0.0" width="200" height="600"/>
+                                <color key="backgroundColor" red="0.9869195818901062" green="0.77582526206970215" blue="0.054615173488855362" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1503,9 +1503,9 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ut6-yd-kHz"/>
-        <segue reference="6pM-di-aOQ"/>
+        <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
         <segue reference="NNU-PR-Fp5"/>
+        <segue reference="ocT-bm-8xQ"/>
     </inferredMetricsTieBreakers>
 </document>

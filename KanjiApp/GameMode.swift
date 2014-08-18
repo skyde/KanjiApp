@@ -14,6 +14,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var rightIndicator: UILabel!
     
     @IBOutlet weak var addRemoveSidebar: UIView!
+    @IBOutlet weak var kanjiView: UILabel!
+    
     var edgeReveal: EdgeReveal! = nil
     
     var dueCard: Card? {
@@ -25,22 +27,15 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     }
     
-    var cardPropertiesSidebar: CardPropertiesSidebar {
-        return self.childViewControllers[0] as CardPropertiesSidebar
-    }
-
-    @IBOutlet weak var kanjiView: UILabel!
-    
     required init(coder aDecoder: NSCoder!) {
         self.due = []
         super.init(coder: aDecoder)
     }
     
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-    
+    var cardPropertiesSidebar: CardPropertiesSidebar {
+        return self.childViewControllers[0] as CardPropertiesSidebar
+    }
+
     func updateText() {
         if let card = dueCard {
             if isFront {
@@ -55,10 +50,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
-//            outputText.scrollEnabled = !isFront
             
             kanjiView.enabled = isFront
-//            outputText.alpha = isFront ? 0 : 1
         }
     }
     
@@ -102,15 +95,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 highlightLabel.hidden = false
                 highlightLabel.alpha = 1
                 
-                UIView.animateWithDuration(0.5,
+                UIView.animateWithDuration(0.8,
                     delay: 0,
                     options: UIViewAnimationOptions.CurveEaseOut,
                     animations: {
                         highlightLabel.alpha = 0
                     },
                     completion: {
-                        (_) -> Void in
+                        (_) -> () in
                         highlightLabel.hidden = true
+                        self.onHighlightAnimationFinish()
                 })
                 
                 saveContext()
@@ -120,8 +114,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    func onSidebarInteract() {
-        edgeReveal.animateSidebar(false)
+    private func onHighlightAnimationFinish() {
+        if due.count == 0 {
+            Globals.notificationTransitionToView.postNotification(.CardsFinished)
+        }
     }
     
     func onEditCard() {
@@ -133,7 +129,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     private func setupEdgeReveal() {
-        
         edgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
@@ -172,9 +167,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             due.removeAtIndex(0)
         }
         
-        if due.count == 0 {
-            Globals.notificationTransitionToView.postNotification(.CardsFinished)
-        } else {
+        if due.count != 0 {
             isFront = !isFront
             
             if !isFront {
@@ -187,8 +180,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    func filterSoundPath(path: String) -> String
-    {
+    func filterSoundPath(path: String) -> String {
         var range: NSRange = NSRange(location: 7, length: countElements(path) - 12)
         return (path as NSString).substringWithRange(range)
     }
@@ -219,6 +211,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 playSound(filterSoundPath(path), sendEvents: false)
             }
         }
+    }
+    
+    func onSidebarInteract() {
+        edgeReveal.animateSidebar(false)
     }
     
 //    func onInteract(interactType: InteractType, _ card: Card) {
