@@ -172,9 +172,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        due = managedObjectContext.fetchCardsDue().map { ($0 as Card).index }
-        
+        fetchCards()
         updateText()
+    }
+    
+    private func fetchCards() {
+        due = managedObjectContext.fetchCardsDue().map { ($0 as Card).index }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -188,6 +191,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func advanceCard() {
         if !isFront && due.count >= 1 {
             due.removeAtIndex(0)
+        }
+        
+        if due.count == 0 {
+            fetchCards()
         }
         
         if due.count != 0 {

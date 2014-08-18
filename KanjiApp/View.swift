@@ -3,10 +3,10 @@ import UIKit
 
 enum View {
     case Search
-    case GameMode
+    case GameMode(studyAheadAmount: Double)
     case Reader
     case CardsFinished
-    case AddWords
+    case AddWords(enableOnAdd: Bool)
     case Lists(title: String, color: UIColor, cards: [NSNumber], displayAddButton: Bool, enableOnAdd: Bool)
     case Settings
     

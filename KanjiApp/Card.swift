@@ -34,7 +34,7 @@ class Card: NSManagedObject {
             answersKnown = answersKnown + 1
         case .Normal:
             println("Normal")
-            if interval.integerValue < 10 {
+            if interval.integerValue < 11 {
                 interval = interval.integerValue + 1
             }
             if adjustInterval {
@@ -56,7 +56,7 @@ class Card: NSManagedObject {
             }
         }
         
-        interval = min(10, interval.integerValue)
+        interval = min(11, interval.integerValue)
         interval = max(0, interval.integerValue)
         
         dueTime = secondsSince1970 + timeForInterval()
@@ -81,26 +81,28 @@ class Card: NSManagedObject {
         
         switch interval.integerValue {
         case 0:
-            return 5
+            return 0
         case 1:
-            return 25
+            return 5
         case 2:
-            return 2 * min
+            return 25
         case 3:
-            return 10 * min
+            return 2 * min
         case 4:
-            return 60 * min
+            return 10 * min
         case 5:
-            return 5 * hour
+            return 60 * min
         case 6:
-            return day
+            return 5 * hour
         case 7:
-            return 5 * day
+            return day
         case 8:
-            return 25 * day
+            return 5 * day
         case 9:
-            return 4 * month
+            return 25 * day
         case 10:
+            return 4 * month
+        case 11:
             return 2 * year
         default:
             return 0

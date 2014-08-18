@@ -197,7 +197,7 @@ class RootContainer: CustomUIViewController {
             break
         }
         
-        return View.GameMode.description() == Globals.notificationTransitionToView.value.description() ||
+        return View.GameMode(studyAheadAmount: 0).description() == Globals.notificationTransitionToView.value.description() ||
             !orientationPass
     }
     
@@ -332,6 +332,13 @@ class RootContainer: CustomUIViewController {
         var cards: [Card] = []
         var color = Globals.colorLists
         var enableOnAdd: Bool = false
+        
+        switch Globals.notificationTransitionToView.value {
+        case .AddWords(let enableOnAddWords):
+            enableOnAdd = enableOnAddWords
+        default:
+            break
+        }
         
         switch Globals.notificationAddWordsFromList.value {
         case .AllWords:

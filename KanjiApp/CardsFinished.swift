@@ -15,7 +15,8 @@ class CardsFinished : CustomUIViewController {
     
     @IBAction func continueStudyingPressed(sender: AnyObject) {
 //        println("continueStudyingPressed")
-        Globals.notificationTransitionToView.postNotification(.GameMode)
+        var studyAheadAmount: Double = 60 * 60 * 24 * 5
+        Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: studyAheadAmount))
     }
     
     @IBAction func addNewCardsPressed(sender: AnyObject) {
@@ -27,7 +28,7 @@ class CardsFinished : CustomUIViewController {
             Globals.notificationAddWordsFromList.postNotification(.MyWords)
         }
         else {
-            Globals.notificationTransitionToView.postNotification(.AddWords)
+            Globals.notificationTransitionToView.postNotification(.AddWords(enableOnAdd: true))
         }
     }
     override func viewWillAppear(animated: Bool) {

@@ -30,7 +30,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         
         saveContext()
         
-        Globals.notificationTransitionToView.postNotification(.GameMode)
+        Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: 0))
         
     }
     

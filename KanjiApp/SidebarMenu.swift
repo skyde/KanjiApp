@@ -85,7 +85,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 0:
             targetView = .Search
         case 1:
-            targetView = .GameMode
+            targetView = .GameMode(studyAheadAmount: 0)
         case 2:
             targetView = .Reader
         case 3:
@@ -96,7 +96,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //                exclude = []
 //            }
             
-            targetView = .AddWords
+            targetView = .AddWords(enableOnAdd: false)
         case 100:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
