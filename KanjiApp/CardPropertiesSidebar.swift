@@ -6,9 +6,25 @@ public class CardPropertiesSidebar : UIViewController {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    @IBOutlet weak var undoButton: UIButton!
     var currentType: CardPropertiesType = .KnownAndAdd
     
-    func updateContents(card: Card?) {
+    @IBOutlet weak var undoHeight: NSLayoutConstraint!
+    var baseUndoHeight: CGFloat? = nil
+    
+    func updateContents(card: Card?, var showUndoButton: Bool) {
+        
+        if baseUndoHeight == nil {
+            baseUndoHeight = undoHeight.constant
+        }
+        
+        if showUndoButton {
+            undoHeight.constant = baseUndoHeight!
+        } else {
+            undoHeight.constant = 0
+        }
+        undoButton.hidden = !showUndoButton
+        
         if let card = card {
             if card.suspended.boolValue {
                 setPropertiesType(.KnownAndAdd)
@@ -18,6 +34,8 @@ public class CardPropertiesSidebar : UIViewController {
                 setPropertiesType(.RemoveAndKnow)
             }
         }
+    }
+    @IBAction func undoTap(sender: AnyObject) {
     }
     
     @IBAction func leftTap(sender: AnyObject) {
@@ -32,6 +50,11 @@ public class CardPropertiesSidebar : UIViewController {
             break
         }
     }
+    
+//    public override func awakeFromNib() {
+//        super.awakeFromNib()
+//        
+//    }
     
     @IBAction func rightTap(sender: AnyObject) {
         switch currentType {
@@ -62,6 +85,7 @@ public class CardPropertiesSidebar : UIViewController {
 //    }
     
     public func setPropertiesType(type: CardPropertiesType) {
+        
         currentType = type
         
         let addText = "Add"

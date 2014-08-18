@@ -163,7 +163,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             },
             setVisible: {(isVisible: Bool) -> () in
                 if let card = self.dueCard {
-                    self.cardPropertiesSidebar.updateContents(card)
+                    self.cardPropertiesSidebar.updateContents(card, showUndoButton: true)
                 }
                 self.addRemoveSidebar.hidden = !isVisible
         })

@@ -45,7 +45,7 @@ class DefinitionPopover : CustomUIViewController {
             outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
             updateButtonState(card)
-            propertiesSidebar.updateContents(card)
+            propertiesSidebar.updateContents(card, showUndoButton: false)
         }
     }
     
@@ -90,7 +90,7 @@ class DefinitionPopover : CustomUIViewController {
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
                 if let card = self.viewCard {
-                    self.propertiesSidebar.updateContents(card)
+                    self.propertiesSidebar.updateContents(card, showUndoButton: false)
                 }
         })
     }

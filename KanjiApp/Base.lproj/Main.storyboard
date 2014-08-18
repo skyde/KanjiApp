@@ -7,6 +7,7 @@
         <mutableArray key="KozGoPr6N-Light.otf">
             <string>KozGoPr6N-Light</string>
             <string>KozGoPr6N-Light</string>
+            <string>KozGoPr6N-Light</string>
         </mutableArray>
         <mutableArray key="mplus-2p-light.ttf">
             <string>mplus-2p-light</string>
@@ -1448,7 +1449,7 @@ all due cards</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="600"/>
+                                <rect key="frame" x="0.0" y="200" width="101" height="400"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Remove">
@@ -1460,7 +1461,7 @@ all due cards</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
-                                <rect key="frame" x="101" y="0.0" width="101" height="600"/>
+                                <rect key="frame" x="101" y="200" width="101" height="400"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Known">
@@ -1471,16 +1472,34 @@ all due cards</string>
                                     <action selector="rightTap:" destination="HHw-53-owD" eventType="touchUpInside" id="wr0-eH-1hX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
+                                <rect key="frame" x="0.0" y="0.0" width="210" height="200"/>
+                                <color key="backgroundColor" red="0.99790024757385254" green="0.90225982666015625" blue="0.70449477434158325" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="IYR-r2-ti4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
+                                <state key="normal" title="Undo">
+                                    <color key="titleColor" red="0.99210119247436523" green="0.60418778657913208" blue="0.034307416528463364" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="undoTap:" destination="HHw-53-owD" eventType="touchUpInside" id="AEo-eZ-pDU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="50j-TG-1Sa" secondAttribute="trailing" constant="-8" id="6nZ-cl-AfZ"/>
                             <constraint firstAttribute="trailing" secondItem="p1b-uN-dxd" secondAttribute="trailing" id="GYr-5f-REe"/>
                             <constraint firstAttribute="bottom" secondItem="Djr-zy-ozk" secondAttribute="bottom" id="Ikh-OT-bCV"/>
+                            <constraint firstItem="p1b-uN-dxd" firstAttribute="top" secondItem="50j-TG-1Sa" secondAttribute="bottom" id="Scc-un-77v"/>
+                            <constraint firstItem="Djr-zy-ozk" firstAttribute="top" secondItem="50j-TG-1Sa" secondAttribute="bottom" id="Ucf-Vo-723"/>
                             <constraint firstAttribute="bottom" secondItem="p1b-uN-dxd" secondAttribute="bottom" id="Vvl-Xt-GYV"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="width" secondItem="p1b-uN-dxd" secondAttribute="width" id="bN1-HV-ok0"/>
                             <constraint firstItem="p1b-uN-dxd" firstAttribute="leading" secondItem="Djr-zy-ozk" secondAttribute="trailing" id="hOu-Es-HKq"/>
-                            <constraint firstItem="p1b-uN-dxd" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="rLY-Sv-iCH"/>
-                            <constraint firstItem="Djr-zy-ozk" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="tFL-eN-Cja"/>
+                            <constraint firstItem="50j-TG-1Sa" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="nZh-4E-d95"/>
+                            <constraint firstItem="50j-TG-1Sa" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" id="w9n-AW-7ys"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" id="zCy-ww-M73"/>
                         </constraints>
                     </view>
@@ -1489,6 +1508,8 @@ all due cards</string>
                     <connections>
                         <outlet property="leftButton" destination="Djr-zy-ozk" id="62V-X7-t0J"/>
                         <outlet property="rightButton" destination="p1b-uN-dxd" id="W1b-c9-WcZ"/>
+                        <outlet property="undoButton" destination="50j-TG-1Sa" id="hdd-Qa-0GH"/>
+                        <outlet property="undoHeight" destination="IYR-r2-ti4" id="P0S-2q-lSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mS-I6-zQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1504,8 +1525,8 @@ all due cards</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Q0-aS-4tM"/>
-        <segue reference="o8I-8R-76U"/>
-        <segue reference="vgr-gb-U0p"/>
-        <segue reference="daX-c3-wht"/>
+        <segue reference="BpJ-Ou-mkl"/>
+        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="NNU-PR-Fp5"/>
     </inferredMetricsTieBreakers>
 </document>

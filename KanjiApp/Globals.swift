@@ -55,3 +55,14 @@ func randomRange(min: Int, max: Int) -> Int {
     
     return Int(Double(min) + (base * Double(max)))
 }
+
+extension UIView {
+    var visible: Bool {
+        get {
+            return !hidden
+        }
+        set {
+            hidden = !newValue
+        }
+    }
+}
