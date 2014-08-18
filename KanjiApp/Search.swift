@@ -17,6 +17,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     let scrollSpeed: Double = 0.26
     let scrollDamping: Double = 0.9
     
+    var columnFinishTime:[CGFloat] = []
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
     @IBOutlet weak var navigationBarLabel: UILabel!
@@ -51,6 +53,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        columnFinishTime = []
+        
+        for i in 0 ..< numberOfColumns {
+            columnFinishTime.append(CGFloat(randomRange(0.0, 0.001)))
+        }
 
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -110,7 +118,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         currentTime = max(currentTime, 0)
         
         if currentTime == 0 {
-            scrollVelocity = 0//abs(scrollVelocity) * 0.5
+            scrollVelocity = 0
         }
         
         var first = Int(currentTime / spawnInterval)
@@ -137,13 +145,11 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                     green: CGFloat(data.distance * 0.85),
                     blue: CGFloat(data.distance * 1),
                     alpha: 1)
-//                label.textAlignment = NSTextAlignment.Right
                 
                 label.kanji = data.kanji
                 label.attributedText = data.attributedText
                 
                 label.frame = CGRectMake(0, 0, width, data.height)
-//                label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y, label.frame.width, data.height)
                 label.numberOfLines = 0
                 
                 self.view.addSubview(label)
@@ -187,6 +193,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         value.life = CGFloat(baseLife + randomLife * random)
         value.distance = random
         value.column = selectRandomOpenColumn()
+        
+        columnFinishTime[value.column] = value.startTime + value.life
         
         value.kanji = card.kanji
         value.attributedText = card.animatedLabelText(textSize)
@@ -279,13 +287,22 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //            spawnedColumns += i
 //        }
 //    }
-    
     func selectRandomOpenColumn() -> Int {
-//        if spawnedColumns.count == 0 {
-//            resetSpawnColumns()
-//        }
+        var column: Int?
+        var smallestValue: CGFloat = CGFloat.infinity
         
-        return randomRange(0, numberOfColumns)
+        for i in 0 ..< columnFinishTime.count {
+            var value = columnFinishTime[i]
+            
+            if smallestValue > value {
+                column = i
+                smallestValue = value
+            }
+        }
+        
+//        columnFinishTime.sort()
+        
+        return column!
         
 //        var value = spawnedColumns[select]
 //        spawnedColumns.removeAtIndex(select)

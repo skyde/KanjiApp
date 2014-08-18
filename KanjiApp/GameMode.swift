@@ -95,7 +95,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 highlightLabel.hidden = false
                 highlightLabel.alpha = 1
                 
-                UIView.animateWithDuration(0.8,
+                UIView.animateWithDuration(1.2,
                     delay: 0,
                     options: UIViewAnimationOptions.CurveEaseOut,
                     animations: {
