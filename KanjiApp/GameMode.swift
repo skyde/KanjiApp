@@ -64,7 +64,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupSwipeGestures()
         setupEdgeReveal()
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
@@ -75,10 +74,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         middleIndicator.hidden = true
         rightIndicator.hidden = true
         
-//        println("add onTouch")
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
         outputText.addGestureRecognizer(onTouchGesture)
-//        outputText.addGestureRecognizer(onTouchGesture)
     }
     
     func onTouch(sender: UITapGestureRecognizer) {
@@ -102,12 +99,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                     card.answerCard(.Hard)
                 }
                 
-                println(highlightLabel)
-                
                 highlightLabel.hidden = false
                 highlightLabel.alpha = 1
                 
-                UIView.animateWithDuration(0.3,
+                UIView.animateWithDuration(0.5,
                     delay: 0,
                     options: UIViewAnimationOptions.CurveEaseOut,
                     animations: {
