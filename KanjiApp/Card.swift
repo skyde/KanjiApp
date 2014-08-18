@@ -20,24 +20,90 @@ class Card: NSManagedObject {
     @NSManaged var embeddedData: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
+        let secondsSince1970 = Globals.secondsSince1970
+        let adjustInterval = dueTime < secondsSince1970
+        
+        println("dueTime \(dueTime)")
+        
         switch difficulty {
         case .Easy:
             println("Easy")
-            interval = 9
+            if adjustInterval {
+                interval = 10
+            }
+            answersKnown = answersKnown + 1
         case .Normal:
             println("Normal")
-            if interval.integerValue < 12 {
-                interval = interval.doubleValue + 1
+            if interval.integerValue < 10 {
+                interval = interval.integerValue + 1
+            }
+            if adjustInterval {
+                answersNormal = answersNormal + 1
             }
         case .Hard:
             println("Hard")
             if interval.integerValue >= 1 {
-                interval = interval.doubleValue - 1
+                interval = interval.integerValue - 1
+            }
+            if adjustInterval {
+                answersHard = answersHard + 1
             }
         case .Forgot:
             println("Forgot")
-            interval = interval.doubleValue / 2
-            
+            interval = 0
+            if adjustInterval {
+                answersForgot = answersForgot + 1
+            }
+        }
+        
+        interval = min(10, interval.integerValue)
+        interval = max(0, interval.integerValue)
+        
+        dueTime = secondsSince1970 + timeForInterval()
+//        dueTime = timeForInterval()
+        
+        println("newDueTime \(dueTime)")
+        
+//        println("timeForInterval \(timeForInterval())")
+//        println("dueTime \(dueTime)")
+//        println("secondsSince1970 \(secondsSince1970)")
+    }
+    
+    
+    /// In seconds
+    func timeForInterval() -> Double {
+        
+        let min: Double = 60.0
+        let hour: Double = 60.0 * 60.0
+        let day: Double = hour * 24.0
+        let month: Double = day * (365.0 / 12.0)
+        let year: Double = day * 365.0
+        
+        switch interval.integerValue {
+        case 0:
+            return 5
+        case 1:
+            return 25
+        case 2:
+            return 2 * min
+        case 3:
+            return 10 * min
+        case 4:
+            return 60 * min
+        case 5:
+            return 5 * hour
+        case 6:
+            return day
+        case 7:
+            return 5 * day
+        case 8:
+            return 25 * day
+        case 9:
+            return 4 * month
+        case 10:
+            return 2 * year
+        default:
+            return 0
         }
     }
     

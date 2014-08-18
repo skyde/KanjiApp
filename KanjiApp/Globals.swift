@@ -36,6 +36,12 @@ struct Globals
             return UIScreen.mainScreen().bounds.size
     }
     }
+    
+    static var secondsSince1970: Double {
+        get {
+            return NSDate().timeIntervalSince1970
+        }
+    }
 }
 
 func randomRange(min: Double, max: Double) -> Double {

@@ -172,7 +172,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        due = managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
+        due = managedObjectContext.fetchCardsDue().map { ($0 as Card).index }
         
         updateText()
     }
