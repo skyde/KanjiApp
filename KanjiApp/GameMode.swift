@@ -35,16 +35,24 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     var cardPropertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
+    
+    var backTextCache: NSAttributedString! = nil
 
     func updateText() {
         if let card = dueCard {
             if isFront {
                 card.setFrontText(kanjiView)
                 outputText.text = ""
+                backTextCache = card.back
             }
             else {
+                if backTextCache == nil {
+                    backTextCache = card.back
+                }
+
                 kanjiView.text = ""
-                outputText.attributedText = card.back
+                outputText.attributedText = backTextCache
+                backTextCache = nil
             }
             kanjiView.hidden = !isFront
             outputText.textAlignment = .Center
