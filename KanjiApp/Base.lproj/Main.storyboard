@@ -276,6 +276,7 @@
                             <outlet property="delegate" destination="gKl-wB-WbN" id="ndV-aP-lhg"/>
                         </connections>
                     </tableView>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="NiI-Me-7RQ" id="LIP-yR-Iek"/>
                     </connections>
@@ -297,7 +298,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -311,7 +312,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="Kanji" customModuleProvider="target">
-                                <rect key="frame" x="553" y="-2" width="46" height="46"/>
+                                <rect key="frame" x="553" y="18" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="UXy-CR-8dS"/>
                                     <constraint firstAttribute="height" constant="46" id="cwN-43-Vmp"/>
@@ -337,6 +338,7 @@
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="addRemoveButton" destination="9qq-MD-I8t" id="kHz-fh-nff"/>
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
@@ -418,6 +420,7 @@
                             <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="yWv-Rx-Pub"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="backgroundImage" destination="vAe-X9-2Zb" id="Zha-bN-Ggn"/>
                         <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
@@ -536,7 +539,7 @@
                             <constraint firstItem="lkb-sP-k49" firstAttribute="top" secondItem="YLe-Is-Vnb" secondAttribute="bottom" id="wqz-fA-Wv8"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addAll" destination="kKG-g3-byS" id="Qub-lb-N3e"/>
@@ -574,7 +577,7 @@
                                     <constraint firstAttribute="height" constant="474" id="0Y8-7V-HHZ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIn-zS-WgB">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIn-zS-WgB">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -590,7 +593,7 @@
                                     <segue destination="ghP-Tk-0Fs" kind="embed" id="1go-BF-CJ4"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="I7o-Lg-hhw">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="I7o-Lg-hhw">
                                 <rect key="frame" x="0.0" y="125" width="600" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="lMl-lK-vsZ"/>
@@ -611,7 +614,7 @@ you wish to study</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvt-9D-fkt">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvt-9D-fkt">
                                 <rect key="frame" x="279" y="181" width="42" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="gW9-Hc-RNl"/>
@@ -621,7 +624,7 @@ you wish to study</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-A8-CGj">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaw-A8-CGj">
                                 <rect key="frame" x="279" y="64" width="42" height="61.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="B6g-lt-aSW"/>
@@ -631,7 +634,7 @@ you wish to study</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSz-a9-1dS">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSz-a9-1dS">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
@@ -671,6 +674,7 @@ you wish to study</string>
                             <constraint firstItem="V4k-H2-WOF" firstAttribute="leading" secondItem="EO1-0d-zKt" secondAttribute="leading" id="xxS-fG-Uux"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="o8I-8R-76U"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="6pM-di-aOQ"/>
@@ -801,6 +805,7 @@ you wish to study</string>
                             <outlet property="delegate" destination="ghP-Tk-0Fs" id="KiN-xo-ZCE"/>
                         </connections>
                     </tableView>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="UpY-Ke-Oyd" id="dtV-f3-E4U"/>
                     </connections>
@@ -827,14 +832,14 @@ you wish to study</string>
                                     <constraint firstAttribute="height" constant="518" id="9pw-OA-OtA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGT-bE-WWG">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGT-bE-WWG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Flashcards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-xZ-FvN">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flashcards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-xZ-FvN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -844,7 +849,7 @@ you wish to study</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-YA-pq2">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-YA-pq2">
                                 <rect key="frame" x="0.0" y="167" width="600" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="R7F-hL-E7w"/>
@@ -855,7 +860,7 @@ all due cards</string>
                                 <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-As-O2q">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-As-O2q">
                                 <rect key="frame" x="279" y="223" width="42" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="100" id="8GA-xc-4Hc"/>
@@ -865,7 +870,7 @@ all due cards</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-JM-ZZD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-JM-ZZD">
                                 <rect key="frame" x="279" y="64" width="42" height="103.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="100" id="sjZ-Ap-MPN"/>
@@ -940,6 +945,7 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="vbe-vi-baI" secondAttribute="trailing" id="y4Y-RR-Cro"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="continueStudying" destination="f1c-Wd-Mj2" id="L5i-MJ-eZd"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="Njb-Jk-Mx7"/>
@@ -961,7 +967,7 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-Up-XMI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-Up-XMI">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -969,7 +975,7 @@ all due cards</string>
                                     <outlet property="delegate" destination="zR6-VI-QSd" id="AWr-8p-BMy"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-BU-dcO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-BU-dcO">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -979,7 +985,7 @@ all due cards</string>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIP-Mh-RwX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIP-Mh-RwX">
                                 <rect key="frame" x="533" y="27" width="55" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="Ng5-Jk-jYn"/>
@@ -993,7 +999,7 @@ all due cards</string>
                                     <action selector="onButtonDown:" destination="zR6-VI-QSd" eventType="touchUpInside" id="Xkt-TH-qMS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npd-Yu-Wt1">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npd-Yu-Wt1">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
@@ -1018,6 +1024,7 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="npd-Yu-Wt1" secondAttribute="trailing" id="vMc-fJ-zl7"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="confirmButton" destination="KIP-Mh-RwX" id="ghm-fc-N4y"/>
                         <outlet property="header" destination="fhj-BU-dcO" id="uSR-SU-ytp"/>
@@ -1135,6 +1142,7 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="T0g-vH-EGh" secondAttribute="trailing" id="xme-eh-04y"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="volume" destination="p1H-mf-Il1" id="16G-F8-4dI"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="yfD-aM-lZg"/>
@@ -1156,6 +1164,24 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">一
+所</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="146"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="PTp-ZI-4VH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <string key="text">一
+所
+懸
+命</string>
+                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="120"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctf-Sa-BFI">
                                 <rect key="frame" x="200" y="0.0" width="200" height="600"/>
                                 <color key="backgroundColor" red="0.50196081399917603" green="0.90145985401459849" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
@@ -1174,24 +1200,6 @@ all due cards</string>
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
                                 <color key="backgroundColor" red="0.86511212587356567" green="0.0" blue="0.035766083747148514" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">一
-所</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="146"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="PTp-ZI-4VH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <string key="text">一
-所
-懸
-命</string>
-                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="120"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1235,6 +1243,7 @@ all due cards</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="addRemoveSidebar" destination="5Rm-K1-JvN" id="Zgq-SN-TV9"/>
                         <outlet property="kanjiView" destination="PTp-ZI-4VH" id="1II-hK-YDu"/>
@@ -1274,20 +1283,20 @@ all due cards</string>
                                     <constraint firstAttribute="height" constant="500" id="jLY-ft-iTr"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-bf-LBf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-bf-LBf">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-um-Llw">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-um-Llw">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-QC-lvn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-QC-lvn">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1295,7 +1304,7 @@ all due cards</string>
                                     <outlet property="delegate" destination="cUj-3S-BQf" id="3mV-Of-tVW"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="96a-eE-Ku8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="OGG-NS-mZW"/>
@@ -1305,7 +1314,7 @@ all due cards</string>
                                     <outlet property="delegate" destination="cUj-3S-BQf" id="xqo-ok-MtL"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-qY-4J5">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.26020408163265307" green="0.26020408163265307" blue="0.26020408163265307" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1345,6 +1354,7 @@ all due cards</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ae-mA-tn2"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="discoverBarFade" destination="r8K-4J-9f7" id="RHR-XN-bZm"/>
@@ -1410,6 +1420,7 @@ all due cards</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rVL-8c-ZTy"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="cUj-3S-BQf" kind="show" identifier="Search" id="XTh-Se-i0V"/>
                         <segue destination="nGt-Uz-nIp" kind="show" identifier="GameMode" id="BpJ-Ou-mkl"/>
@@ -1474,6 +1485,7 @@ all due cards</string>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="leftButton" destination="Djr-zy-ozk" id="62V-X7-t0J"/>
                         <outlet property="rightButton" destination="p1b-uN-dxd" id="W1b-c9-WcZ"/>
@@ -1491,9 +1503,9 @@ all due cards</string>
         <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Q0-aS-4tM"/>
-        <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="Ut6-yd-kHz"/>
+        <segue reference="6pM-di-aOQ"/>
+        <segue reference="o8I-8R-76U"/>
         <segue reference="NNU-PR-Fp5"/>
     </inferredMetricsTieBreakers>
 </document>

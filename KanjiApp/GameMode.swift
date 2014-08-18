@@ -36,13 +36,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         super.init(coder: aDecoder)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
     func updateText() {
-        
         if let card = dueCard {
             if isFront {
                 card.setFrontText(kanjiView)
@@ -52,6 +51,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 kanjiView.text = ""
                 outputText.attributedText = card.back
             }
+            kanjiView.hidden = !isFront
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
@@ -82,14 +82,46 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     func onTouch(sender: UITapGestureRecognizer) {
-        println("onTouch")
         if let card = dueCard {
+            
             if !isFront {
-                onInteract(.Tap, card)
+                var highlightLabel: UILabel
+                
+                var x = sender.locationInView(self.view).x / Globals.screenSize.width
+                x *= 3
+                
+                if x >= 0 && x < 1 {
+                    card.answerCard(.Forgot)
+                    highlightLabel = leftIndicator
+                } else if x >= 1 && x <= 2 {
+                    highlightLabel = middleIndicator
+                    card.answerCard(.Normal)
+                    
+                } else {
+                    highlightLabel = rightIndicator
+                    card.answerCard(.Hard)
+                }
+                
+                println(highlightLabel)
+                
+                highlightLabel.hidden = false
+                highlightLabel.alpha = 1
+                
+                UIView.animateWithDuration(0.3,
+                    delay: 0,
+                    options: UIViewAnimationOptions.CurveEaseOut,
+                    animations: {
+                        highlightLabel.alpha = 0
+                    },
+                    completion: {
+                        (_) -> Void in
+                        highlightLabel.hidden = true
+                })
+                
+                saveContext()
             }
-            else {
-                advanceCard()
-            }
+            
+            advanceCard()
         }
     }
     
@@ -142,7 +174,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     func advanceCard() {
         if !isFront && due.count >= 1 {
-            
             due.removeAtIndex(0)
         }
         
@@ -151,10 +182,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         } else {
             isFront = !isFront
             
-            if !isFront
-            {
-                if var path = dueCard?.embeddedData.soundWord
-                {
+            if !isFront {
+                if var path = dueCard?.embeddedData.soundWord {
                     playSound(filterSoundPath(path))
                 }
             }
@@ -197,32 +226,32 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    func onInteract(interactType: InteractType, _ card: Card) {
-        switch interactType {
-        case .Tap:
-            //            card.answerCard(.Normal)
-            break
-        case .SwipeRight:
-//            println("Swiped right \(card.kanji)")
-//            card.answerCard(.Hard)
-            //            due.append(due[0])
-            break
-        case .SwipeLeft:
-//            println("Swiped Left \(card.kanji)")
-//            card.answerCard(.Forgot)
-            //            due.append(due[0])
-            break
-        case .SwipeUp:
-            break
-//            println("Swiped Up \(card.kanji)")
-//            card.answerCard(.Easy)
-        case .SwipeDown:
-            break
-//            println("Swipe Down \(card.kanji)")
-        }
-        advanceCard()
-        saveContext()
-    }
+//    func onInteract(interactType: InteractType, _ card: Card) {
+//        switch interactType {
+//        case .Tap:
+//            //            card.answerCard(.Normal)
+//            break
+//        case .SwipeRight:
+////            println("Swiped right \(card.kanji)")
+////            card.answerCard(.Hard)
+//            //            due.append(due[0])
+//            break
+//        case .SwipeLeft:
+////            println("Swiped Left \(card.kanji)")
+////            card.answerCard(.Forgot)
+//            //            due.append(due[0])
+//            break
+//        case .SwipeUp:
+//            break
+////            println("Swiped Up \(card.kanji)")
+////            card.answerCard(.Easy)
+//        case .SwipeDown:
+//            break
+////            println("Swipe Down \(card.kanji)")
+//        }
+//        advanceCard()
+//        saveContext()
+//    }
     
     
 //    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
