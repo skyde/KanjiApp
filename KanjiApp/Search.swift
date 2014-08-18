@@ -11,6 +11,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     let randomLife: Double = 5
     let spawnInterval: Double = 1.7
     
+    let maxNumberOfLabels: Int = 64
+    var currentMinLabel: Int = 0
+    
     var currentTime: Double = 20
     var maxTime: Double = 140
     let frameRate: Double = 1 / 60
@@ -29,7 +32,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var labelsData: [DiscoverLabelData] = []
     var scrollVelocity: Double = 0
     var touchesDown = false
-    
+//    var currentMinTime: Double = 0
+
     var averageLife: Double {
     get {
         return baseLife + randomLife / 2
@@ -114,18 +118,26 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             RootContainer.instance.definitionOverlay.hidden {
             currentTime += frameRate
         }
-        maxTime = max(currentTime, maxTime)
-        currentTime = max(currentTime, 0)
         
-        if currentTime == 0 {
+        var minTime = Double(currentMinLabel) * spawnInterval
+        
+        maxTime = max(currentTime, maxTime)
+        currentTime = max(currentTime, minTime)
+        
+        if currentTime == minTime {
             scrollVelocity = 0
         }
         
-        var first = Int(currentTime / spawnInterval)
+        if labelsData.count > maxNumberOfLabels {
+            var remove = labelsData.removeAtIndex(0)
+            currentMinLabel++
+        }
+        
+        var first = Int(currentTime / spawnInterval - 0)
         var last = first + numberOfLabels
         
-        while last > labelsData.count {
-            labelsData.append(spawnLabelData(Double(labelsData.count) * spawnInterval - averageLife))
+        while last > labelsData.count + currentMinLabel {
+            labelsData.append(spawnLabelData(Double(labelsData.count + currentMinLabel) * spawnInterval - averageLife))
         }
         
         for i in 0 ..< labels.count {
@@ -135,7 +147,13 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 index += labels.count
             }
             let dataIndex = first + index
-            let data = labelsData[dataIndex]
+            let dataLookup = dataIndex - currentMinLabel
+            
+            if dataLookup < 0 {
+                continue
+            }
+            
+            let data = labelsData[dataIndex - currentMinLabel]
             let width: CGFloat = 42
             
             if !data.visible {
