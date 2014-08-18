@@ -9,6 +9,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     var isFront: Bool = true
     var audioPlayer = AVAudioPlayer()
     
+    @IBOutlet weak var leftIndicator: UILabel!
+    @IBOutlet weak var middleIndicator: UILabel!
+    @IBOutlet weak var rightIndicator: UILabel!
+    
     @IBOutlet weak var addRemoveSidebar: UIView!
     var edgeReveal: EdgeReveal! = nil
     
@@ -40,7 +44,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func updateText() {
         
         if let card = dueCard {
-                        if isFront {
+            if isFront {
                 card.setFrontText(kanjiView)
                 outputText.text = ""
             }
@@ -51,21 +55,42 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
-            outputText.scrollEnabled = !isFront
+//            outputText.scrollEnabled = !isFront
             
             kanjiView.enabled = isFront
-            outputText.alpha = isFront ? 0 : 1
+//            outputText.alpha = isFront ? 0 : 1
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSwipeGestures()
+//        setupSwipeGestures()
         setupEdgeReveal()
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
+        
+        leftIndicator.hidden = true
+        middleIndicator.hidden = true
+        rightIndicator.hidden = true
+        
+//        println("add onTouch")
+        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+        outputText.addGestureRecognizer(onTouchGesture)
+//        outputText.addGestureRecognizer(onTouchGesture)
+    }
+    
+    func onTouch(sender: UITapGestureRecognizer) {
+        println("onTouch")
+        if let card = dueCard {
+            if !isFront {
+                onInteract(.Tap, card)
+            }
+            else {
+                advanceCard()
+            }
+        }
     }
     
     func onSidebarInteract() {
@@ -175,15 +200,18 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     func onInteract(interactType: InteractType, _ card: Card) {
         switch interactType {
         case .Tap:
-            card.answerCard(.Normal)
+            //            card.answerCard(.Normal)
+            break
         case .SwipeRight:
-            println("Swiped right \(card.kanji)")
-            card.answerCard(.Hard)
-            due.append(due[0])
+//            println("Swiped right \(card.kanji)")
+//            card.answerCard(.Hard)
+            //            due.append(due[0])
+            break
         case .SwipeLeft:
-            println("Swiped Left \(card.kanji)")
-            card.answerCard(.Forgot)
-            due.append(due[0])
+//            println("Swiped Left \(card.kanji)")
+//            card.answerCard(.Forgot)
+            //            due.append(due[0])
+            break
         case .SwipeUp:
             break
 //            println("Swiped Up \(card.kanji)")
@@ -196,59 +224,49 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         saveContext()
     }
     
-    @IBAction func onTap () {
-        if let card = dueCard {
-            if !isFront {
-                onInteract(.Tap, card)
-            }
-            else {
-                advanceCard()
-            }
-        }
-    }
     
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if !isFront {
-                if let card = dueCard {
-                    switch swipeGesture.direction {
-                        
-                    case UISwipeGestureRecognizerDirection.Right:
-                        onInteract(.SwipeRight, card)
-                        
-                    case UISwipeGestureRecognizerDirection.Down:
-                        onInteract(.SwipeDown, card)
-                        
-                    case UISwipeGestureRecognizerDirection.Up:
-                        onInteract(.SwipeUp, card)
-                        
-                    case UISwipeGestureRecognizerDirection.Left:
-                        onInteract(.SwipeLeft, card)
-                        
-                    default:
-                        break
-                    }
-                }
-            }
-        }
-    }
+//    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+//        
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+//            if !isFront {
+//                if let card = dueCard {
+//                    switch swipeGesture.direction {
+//                        
+//                    case UISwipeGestureRecognizerDirection.Right:
+//                        onInteract(.SwipeRight, card)
+//                        
+//                    case UISwipeGestureRecognizerDirection.Down:
+//                        onInteract(.SwipeDown, card)
+//                        
+//                    case UISwipeGestureRecognizerDirection.Up:
+//                        onInteract(.SwipeUp, card)
+//                        
+//                    case UISwipeGestureRecognizerDirection.Left:
+//                        onInteract(.SwipeLeft, card)
+//                        
+//                    default:
+//                        break
+//                    }
+//                }
+//            }
+//        }
+//    }
     
-    func setupSwipeGestures() {
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-        self.view.addGestureRecognizer(swipeDown)
-        
-        var swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(swipeLeft)
-    }
+//    func setupSwipeGestures() {
+////        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+////        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+////        self.view.addGestureRecognizer(swipeRight)
+////        
+////        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+////        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+////        self.view.addGestureRecognizer(swipeDown)
+////        
+////        var swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+////        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+////        self.view.addGestureRecognizer(swipeUp)
+////        
+////        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+////        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+////        self.view.addGestureRecognizer(swipeLeft)
+//    }
 }
