@@ -163,7 +163,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
             },
             setVisible: {(isVisible: Bool) -> () in
                 if let card = self.dueCard {
-                    self.cardPropertiesSidebar.updateContents(card, showUndoButton: true)
+                    self.cardPropertiesSidebar.updateContents(card, showUndoButton: true, onUndoButtonTap: {
+                        self.onUndo()
+                    })
                 }
                 self.addRemoveSidebar.hidden = !isVisible
         })
@@ -175,6 +177,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 self.advanceCard()
             }
         }
+    }
+    
+    private func onUndo() {
+        println("undo")
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -12,7 +12,11 @@ public class CardPropertiesSidebar : UIViewController {
     @IBOutlet weak var undoHeight: NSLayoutConstraint!
     var baseUndoHeight: CGFloat? = nil
     
-    func updateContents(card: Card?, var showUndoButton: Bool) {
+    var onUndoButtonTap: (() -> ())?
+    
+    func updateContents(card: Card?, var showUndoButton: Bool, var onUndoButtonTap: (() -> ())? = nil) {
+        
+        self.onUndoButtonTap = onUndoButtonTap
         
         if baseUndoHeight == nil {
             baseUndoHeight = undoHeight.constant
@@ -36,6 +40,10 @@ public class CardPropertiesSidebar : UIViewController {
         }
     }
     @IBAction func undoTap(sender: AnyObject) {
+        
+        if let onUndoButtonTap = self.onUndoButtonTap {
+            onUndoButtonTap()
+        }
     }
     
     @IBAction func leftTap(sender: AnyObject) {
