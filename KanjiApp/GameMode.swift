@@ -71,50 +71,65 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         outputText.addGestureRecognizer(onTouchGesture)
     }
     
-    func onTouch(sender: UITapGestureRecognizer) {
+    private func answerCard(answer: AnswerDifficulty) {
         if let card = dueCard {
+            var highlightLabel: UILabel! = nil
             
-            if !isFront {
-                var highlightLabel: UILabel
-                
-                var x = sender.locationInView(self.view).x / Globals.screenSize.width
-                x *= 3
-                
-                if x >= 0 && x < 1 {
-                    card.answerCard(.Forgot)
-                    highlightLabel = leftIndicator
-                } else if x >= 1 && x <= 2 {
-                    highlightLabel = middleIndicator
-                    card.answerCard(.Normal)
-                    
-                } else {
-                    highlightLabel = rightIndicator
-                    card.answerCard(.Hard)
-                }
-                
-                highlightLabel.hidden = false
-                highlightLabel.alpha = 1
-                
-                UIView.animateWithDuration(1.2,
-                    delay: 0,
-                    options: UIViewAnimationOptions.CurveEaseOut,
-                    animations: {
-                        highlightLabel.alpha = 0
-                    },
-                    completion: {
-                        (_) -> () in
-                        highlightLabel.hidden = true
-                        self.onHighlightAnimationFinish()
-                })
-                
-                saveContext()
+            switch answer {
+            case .Forgot:
+                highlightLabel = leftIndicator
+                card.answerCard(.Forgot)
+            case .Normal:
+                highlightLabel = middleIndicator
+                card.answerCard(.Normal)
+            case .Hard:
+                highlightLabel = rightIndicator
+                card.answerCard(.Hard)
+            default:
+                break
             }
             
+            highlightLabel.hidden = false
+            highlightLabel.alpha = 1
+            
+            UIView.animateWithDuration(0.25,
+                delay: 0,
+                options: UIViewAnimationOptions.CurveEaseIn,
+                animations: {
+                    highlightLabel.alpha = 0
+                },
+                completion: {
+                    (_) -> () in
+                    highlightLabel.hidden = true
+                    self.onHighlightAnimationFinish()
+            })
+            
+            saveContext()
+        }
+        
+        advanceCard()
+    }
+    
+    func onTouch(sender: UITapGestureRecognizer) {
+        if !isFront {
+            var x = sender.locationInView(self.view).x / Globals.screenSize.width
+            x *= 3
+            
+            if x >= 0 && x < 1 {
+                answerCard(.Forgot)
+            } else if x >= 1 && x <= 2 {
+                answerCard(.Normal)
+            } else {
+                answerCard(.Hard)
+            }
+        } else {
             advanceCard()
         }
     }
     
     private func onHighlightAnimationFinish() {
+        updateText()
+        
         if due.count == 0 {
             Globals.notificationTransitionToView.postNotification(.CardsFinished)
         }
@@ -144,6 +159,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 }
                 self.addRemoveSidebar.hidden = !isVisible
         })
+        
+        edgeReveal.onTap = {(isOpen: Bool) -> () in
+            if !isOpen && !self.isFront {
+                self.answerCard(.Forgot)
+            } else {
+                self.advanceCard()
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -174,9 +197,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 if var path = dueCard?.embeddedData.soundWord {
                     playSound(filterSoundPath(path))
                 }
+                
+                updateText()
             }
-            
-            updateText()
         }
     }
     

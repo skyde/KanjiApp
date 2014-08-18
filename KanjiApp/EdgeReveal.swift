@@ -14,18 +14,22 @@ public class EdgeReveal : UIButton {
     let animationTime = 0.22
     let animationEasing = UIViewAnimationOptions.CurveEaseOut
     let transitionThreshold: CGFloat = 30
-    var swipeAreaWidth: CGFloat = 13
+    var swipeAreaWidth: CGFloat
     
     var swipeArea: UIButton
     
     var onUpdate: ((offset: CGFloat) -> ())?
     var setVisible: ((isOpen: Bool) -> ())?
+    var onTap: ((isOpen: Bool) -> ())?
+    
+    var isOpen: Bool = false
     
     public init(
         parent: UIView,
         revealType: EdgeRevealType,
         maxOffset: CGFloat = 202,
         autoAddToParent: Bool = true,
+        swipeAreaWidth: CGFloat = 13,
         onUpdate: ((offset: CGFloat) -> ())?,
         setVisible: ((isVisible: Bool) -> ())?) {
         
@@ -37,6 +41,7 @@ public class EdgeReveal : UIButton {
             
         self.onUpdate = onUpdate
         self.setVisible = setVisible
+        self.swipeAreaWidth = swipeAreaWidth
         
         super.init(frame: CGRectMake(0, 0, 0, 0))
         
@@ -84,6 +89,7 @@ public class EdgeReveal : UIButton {
             completion: { (_) -> Void in
             
                 if let setVisible = self.setVisible {
+                    self.isOpen = true
                     setVisible(isOpen: true)
                 }
             })
@@ -100,6 +106,7 @@ public class EdgeReveal : UIButton {
                 completion: { (_) -> Void in
                         
                     if let setVisible = self.setVisible {
+                        self.isOpen = false
                         setVisible(isOpen: false)
                     }
                 })
@@ -107,12 +114,17 @@ public class EdgeReveal : UIButton {
     }
     
     func respondToSwipeTap(gesture: UITapGestureRecognizer) {
+        if let onTap = self.onTap {
+            onTap(isOpen: isOpen)
+        }
+        
         animateSidebar(false)
     }
     
     func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
         case .Began:
             if let setVisible = self.setVisible {
+                isOpen = true
                 setVisible(isOpen: true)
             }
         default:
