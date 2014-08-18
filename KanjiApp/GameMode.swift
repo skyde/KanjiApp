@@ -162,7 +162,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         
         edgeReveal.onTap = {(isOpen: Bool) -> () in
             if !isOpen && !self.isFront {
-                self.answerCard(.Forgot)
+                self.answerCard(.Hard)
             } else {
                 self.advanceCard()
             }
