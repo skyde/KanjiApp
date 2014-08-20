@@ -31,11 +31,11 @@ public class CardPropertiesSidebar : UIViewController {
         
         if let card = card {
             if card.suspended.boolValue {
-                setPropertiesType(.KnownAndAdd)
+                setPropertiesType(card, .KnownAndAdd)
             } else if card.known.boolValue {
-                setPropertiesType(.RemoveAndAdd)
+                setPropertiesType(card, .RemoveAndAdd)
             } else {
-                setPropertiesType(.RemoveAndKnow)
+                setPropertiesType(card, .RemoveAndKnow)
             }
         }
     }
@@ -92,13 +92,23 @@ public class CardPropertiesSidebar : UIViewController {
 //        super.viewDidAppear(animated)
 //    }
     
-    public func setPropertiesType(type: CardPropertiesType) {
+    func setPropertiesType(card: Card, _ type: CardPropertiesType) {
+        
+//        leftButton.titleLabel.numberOfLines = 0
+//        rightButton.titleLabel.numberOfLines = 0
+//        
+//        leftButton.titleLabel.textAlignment = .Center
+//        rightButton.titleLabel.textAlignment = .Center
         
         currentType = type
         
-        let addText = "Add"
+        var addText = "Add"//"Will\nStudy"
         let knownText = "Known"
         let removeText = "Remove"
+        
+//        if card.enabled.boolValue {
+//            addText = "Study"
+//        }
         
         let addColor = Globals.colorMyWords
         let knownColor = Globals.colorKnown
