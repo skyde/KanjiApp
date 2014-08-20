@@ -11,7 +11,7 @@ public class EdgeReveal : UIButton {
     
     let revealType: EdgeRevealType
     let maxReveal: CGFloat
-    let animationTime = 0.22
+    let animationTime = 0.2
     let animationEasing = UIViewAnimationOptions.CurveEaseOut
     let transitionThreshold: CGFloat = 30
     var swipeAreaWidth: CGFloat

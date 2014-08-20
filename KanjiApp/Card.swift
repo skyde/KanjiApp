@@ -20,20 +20,24 @@ class Card: NSManagedObject {
     @NSManaged var embeddedData: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
+        
+//        managedObjectContext.undoManager. = "answer card"
+        managedObjectContext.undoManager.beginUndoGrouping()
+        
         let secondsSince1970 = Globals.secondsSince1970
         let adjustInterval = dueTime < secondsSince1970
         
-        println("dueTime \(dueTime)")
+//        println("dueTime \(dueTime)")
         
         switch difficulty {
         case .Easy:
-            println("Easy")
+//            println("Easy")
             if adjustInterval {
                 interval = 10
             }
             answersKnown = answersKnown + 1
         case .Normal:
-            println("Normal")
+//            println("Normal")
             if interval.integerValue < 11 {
                 interval = interval.integerValue + 1
             }
@@ -41,7 +45,7 @@ class Card: NSManagedObject {
                 answersNormal = answersNormal + 1
             }
         case .Hard:
-            println("Hard")
+//            println("Hard")
             if interval.integerValue >= 1 {
                 interval = interval.integerValue - 1
             }
@@ -49,7 +53,7 @@ class Card: NSManagedObject {
                 answersHard = answersHard + 1
             }
         case .Forgot:
-            println("Forgot")
+//            println("Forgot")
             interval = 0
             if adjustInterval {
                 answersForgot = answersForgot + 1
@@ -62,11 +66,12 @@ class Card: NSManagedObject {
         dueTime = secondsSince1970 + timeForInterval()
 //        dueTime = timeForInterval()
         
-        println("newDueTime \(dueTime)")
+//        println("newDueTime \(dueTime)")
         
 //        println("timeForInterval \(timeForInterval())")
 //        println("dueTime \(dueTime)")
-//        println("secondsSince1970 \(secondsSince1970)")
+        //        println("secondsSince1970 \(secondsSince1970)")
+        managedObjectContext.undoManager.endUndoGrouping()
     }
     
     
@@ -147,9 +152,12 @@ class Card: NSManagedObject {
         return value
     }
     
+//    func setFrontTextFont(label: UILabel) -> UIFont {
+//    }
+    
     func setFrontText(label: UILabel) {
         
-        var value = NSMutableAttributedString()
+//        var value = NSMutableAttributedString()
         
         let baseSize: Double = 250
         
@@ -159,8 +167,8 @@ class Card: NSManagedObject {
             size = baseSize
         }
         
-        label.font = label.font.fontWithSize(CGFloat(size))
         label.text = verticalKanji
+        label.font = label.font.fontWithSize(CGFloat(size))
     }
     
     var back: NSAttributedString {
@@ -220,6 +228,21 @@ class Card: NSManagedObject {
         addTo.addBreak(10)
         
         addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        // Debug
+        
+        addTo.addBreak(10)
+        
+        addTo.addAttributedText("Interval \(interval.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        addTo.addAttributedText("Answers Normal  \(answersNormal.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        addTo.addAttributedText("Answers Hard \(answersHard.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        addTo.addAttributedText("Answers Forgot \(answersForgot.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        
+        addTo.addAttributedText("Due Time \(dueTime.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        // End Debug
         
 //        var color = 
         

@@ -66,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if coordinator != nil {
                 _managedObjectContext = NSManagedObjectContext()
                 _managedObjectContext!.persistentStoreCoordinator = coordinator
+                _managedObjectContext!.undoManager = NSUndoManager()
+                
+//                println("undo manager \(_managedObjectContext?.undoManager)")
             }
         }
         return _managedObjectContext!
