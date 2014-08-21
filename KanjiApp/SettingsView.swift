@@ -11,6 +11,11 @@ class SettingsView: CustomUIViewController {
         saveContext()
     }
     
+    @IBAction func onBackupTap(sender: AnyObject) {
+        println("backup")
+//        managedObjectContext.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
