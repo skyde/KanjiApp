@@ -121,8 +121,11 @@ public class EdgeReveal : UIButton {
         animateSidebar(false)
     }
     
+    var wasOpen = false
     func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
-        case .Began:
+    case .Began:
+        wasOpen = isOpen
+        println(wasOpen)
             if let setVisible = self.setVisible {
                 isOpen = true
                 setVisible(isOpen: true)
@@ -131,7 +134,10 @@ public class EdgeReveal : UIButton {
             break
         }
         
-        var xOffset = Globals.screenSize.width - gesture.locationInView(self.superview).x
+        var xOffset = -gesture.translationInView(self.superview).x//Globals.screenSize.width - gesture.locationInView(self.superview).x
+        if wasOpen {
+            xOffset += maxReveal
+        }
         xOffset = max(0, xOffset)
         xOffset = min(xOffset, maxReveal)
         
@@ -139,7 +145,7 @@ public class EdgeReveal : UIButton {
             onUpdate(offset: xOffset)
         }
         
-        let x = Globals.screenSize.width - xOffset
+        var x = Globals.screenSize.width - xOffset
         
         swipeArea.frame.origin.x = x - swipeArea.frame.width
         

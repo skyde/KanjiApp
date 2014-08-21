@@ -82,6 +82,7 @@ class DefinitionPopover : CustomUIViewController {
         edgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
+            swipeAreaWidth: 1000,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
