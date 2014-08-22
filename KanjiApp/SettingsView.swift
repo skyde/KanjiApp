@@ -14,6 +14,7 @@ class SettingsView: CustomUIViewController {
     @IBAction func onBackupTap(sender: AnyObject) {
         println("backup")
 //        managedObjectContext.
+        println(self.exportUserList())
     }
     
     override func viewDidLoad() {

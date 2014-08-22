@@ -150,6 +150,10 @@ extension NSManagedObjectContext
         return fetchEntities(.Card, rawPredicate: (predicate, values), CardProperties.dueTime, sortAscending: true) as [Card]
     }
     
+    func fetchCardsAllUser() -> [Card] {
+        return fetchEntities(.Card, [(CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
     func fetchCardsActive() -> [Card] {
         return fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true) as [Card]
     }
@@ -179,5 +183,9 @@ extension NSManagedObjectContext
     
     func fetchCardsAllWordsSuspended() -> [Card] {
         return fetchEntities(.Card, [(CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+    }
+    
+    func fetchCardsAllWords() -> [Card] {
+        return fetchEntitiesGeneral(.Card, sortProperty: CardProperties.interval, sortAscending: true) as [Card]
     }
 }
