@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import CoreData
+import MessageUI
 
 class CustomUIViewController : UIViewController {
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
@@ -197,8 +198,50 @@ class CustomUIViewController : UIViewController {
         for card in managedObjectContext.fetchCardsAllUser() {
             value += "\(card.index) \(card.answersKnown) \(card.answersNormal) \(card.answersHard) \(card.answersForgot) \(card.interval) \(card.dueTime) \(card.enabled) \(card.suspended) \(card.known)\n"
         }
+        mailText(value)
         
         return value
+    }
+    
+    func mailText(value: String) {
+//        [someText writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+//        
+//        NSString *someText = "Here's to some awesome text.";
+//        
+//        NSError *error = nil;
+//        
+//        NSString *path = [NSString stringWithFormat:@"%@",[[[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"someText.txt"] absoluteString]];
+//        
+//        //Write to the file
+//        [someText writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+//        NSString *someText = "Here's to some awesome text.";
+
+        var path = (UIApplication.sharedApplication().delegate! as AppDelegate).applicationDocumentsDirectory
+        
+        let fileName = "ListsBackup.kanji"
+        path = path.URLByAppendingPathComponent(fileName)
+        var pathString = NSString(format:"%@", [path])
+
+        var error: NSErrorPointer = nil
+//        value.wri
+        value.writeToFile(pathString, atomically: true, encoding: NSUTF8StringEncoding, error: error)
+        
+//        var alert = UIAlertView(title: "Exported", message: "exported file", delegate: nil, cancelButtonTitle: nil)
+        //        alert.show()
+        var emailTitle = "Export Lists"
+        var messageBody = "This is a backup of user data for the app Kanji"
+        var toRecipents = []
+        var mc: MFMailComposeViewController = MFMailComposeViewController()
+        
+        var data = NSData(contentsOfFile: pathString)
+        
+//        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(messageBody, isHTML: false)
+        mc.setToRecipients(toRecipents)
+        mc.addAttachmentData(data, mimeType: "com.binarypipeline.kanji", fileName: fileName)
+        self.presentViewController(mc, animated: true, completion: nil)
     }
     
     func importUserList(source: String) {

@@ -11,6 +11,29 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+//        NSFileManager *filemgr = [NSFileManager defaultManager];
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+//        NSString* inboxPath = [documentsDirectory stringByAppendingPathComponent:@"Inbox"];
+//        NSArray *dirFiles = [filemgr contentsOfDirectoryAtPath:inboxPath error:nil];
+        
+        let filemgr = NSFileManager.defaultManager()
+        
+        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
+        
+        var documentsDirectory = paths.objectAtIndex(0) as NSString
+        var inboxPath = documentsDirectory.stringByAppendingPathComponent("Inbox")
+        var dirFiles = filemgr.contentsOfDirectoryAtPath(inboxPath, error: nil) as NSArray
+        
+        for file in dirFiles {
+            
+            println(file)
+        }
+        
+        return true
+    }
                             
     var window: UIWindow?
 
