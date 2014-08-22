@@ -45,7 +45,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
             value += "\(card.index) \(card.answersKnown) \(card.answersNormal) \(card.answersHard) \(card.answersForgot) \(card.interval) \(card.dueTime) \(card.enabled) \(card.suspended) \(card.known)\n"
         }
         //        value = "test value"
-        println(allCards.count)
+//        println(allCards.count)
         
         mailText(value)
         
@@ -66,7 +66,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         
         //        NSString *someText = "Here's to some awesome text.";
 //        
-        let fileName = "ListsBackup.txt"
+        let fileName = "ListsBackup.kanji"
 //                var path = (UIApplication.sharedApplication().delegate! as AppDelegate).applicationDocumentsDirectory
 //        
 //        path = path.URLByAppendingPathComponent(fileName)
@@ -82,7 +82,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         var toRecipents = []
         var mc: MFMailComposeViewController = MFMailComposeViewController()
         
-        println("Mail Text")
+//        println("Mail Text")
 //        println(pathString)
 //        println(value)
         
@@ -96,8 +96,8 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         mc.setMessageBody(messageBody, isHTML: false)
         mc.setToRecipients(toRecipents)
         //text/plain
-        //com.binarypipeline.kanji
-        mc.addAttachmentData(data, mimeType: "text/plain", fileName: fileName)
+        //
+        mc.addAttachmentData(data, mimeType: "com.binarypipeline.kanji", fileName: fileName)
         //self.addChildViewController(mc)
         self.presentViewController(mc, animated: true, completion: nil)
     }

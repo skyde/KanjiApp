@@ -29,24 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        NSString* inboxPath = [documentsDirectory stringByAppendingPathComponent:@"Inbox"];
 //        NSArray *dirFiles = [filemgr contentsOfDirectoryAtPath:inboxPath error:nil];
         
-        let filemgr = NSFileManager.defaultManager()
+//        let filemgr = NSFileManager.defaultManager()
+//        
+//        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
+//        
+//        var documentsDirectory = paths.objectAtIndex(0) as NSString
+//        var inboxPath = documentsDirectory.stringByAppendingPathComponent("Inbox")
+//        var dirFiles = filemgr.contentsOfDirectoryAtPath(inboxPath, error: nil) as NSArray
         
-        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
-        
-        var documentsDirectory = paths.objectAtIndex(0) as NSString
-        var inboxPath = documentsDirectory.stringByAppendingPathComponent("Inbox")
-        var dirFiles = filemgr.contentsOfDirectoryAtPath(inboxPath, error: nil) as NSArray
-        
-        for file in dirFiles {
-            
-            println(file)
-        }
-        
-        println(url)
-        println("last path = \(url.lastPathComponent)")
-        println(sourceApplication)
-        
-        println(url.relativeString)
+//        for file in dirFiles {
+//            
+//            println(file)
+//        }
+//        
+//        println(url)
+//        println("last path = \(url.lastPathComponent)")
+//        println(sourceApplication)
+//        
+//        println(url.relativeString)
         
         var error: NSErrorPointer = nil
 //        NSUTF8StringEncoding
