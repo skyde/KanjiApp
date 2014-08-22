@@ -51,8 +51,6 @@ class RootContainer: CustomUIViewController {
         sidebarButtonBaseX = sidebarButton.frame.origin.x
         swipeFromLeftAreaBaseWidth = swipeFromLeftArea.frame.width
         
-        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-        
         var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
         swipeFromLeftArea.addGestureRecognizer(gesture)
         
@@ -282,6 +280,8 @@ class RootContainer: CustomUIViewController {
         super.addNotifications()
         
         Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
+        
+        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
         
 //        NSNotificationCenter.defaultCenter().ad
     }

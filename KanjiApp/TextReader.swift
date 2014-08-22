@@ -37,6 +37,10 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
             
             self.saveContext()
         }
+    }
+    
+    override func addNotifications() {
+        super.addNotifications()
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "closeKeyboard", object: nil)
     }

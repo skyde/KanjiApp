@@ -84,7 +84,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         var mc: MFMailComposeViewController = MFMailComposeViewController()
         
         println("Mail Text")
-        println(value)
+//        println(value)
         
         var data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)//NSData(contentsOfFile: pathString)
         //MFMailComposeViewControllerDelegate
@@ -94,26 +94,32 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         mc.setToRecipients(toRecipents)
         //text/plain
         mc.addAttachmentData(data, mimeType: "com.binarypipeline.kanji", fileName: fileName)
+        //self.addChildViewController(mc)
         self.presentViewController(mc, animated: true, completion: nil)
     }
     
     func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError) {
-        switch result.value {
-        case MFMailComposeResultCancelled.value:
-            println("Mail cancelled")
-        case MFMailComposeResultSaved.value:
-            println("Mail saved")
-        case MFMailComposeResultSent.value:
-            println("Mail sent")
-        case MFMailComposeResultFailed.value:
-            println("Mail sent failure: %@", [error.localizedDescription])
-        default:
-            break
-        }
+//        switch result.value {
+//        case MFMailComposeResultCancelled.value:
+//            println("Mail cancelled")
+//        case MFMailComposeResultSaved.value:
+//            println("Mail saved")
+//        case MFMailComposeResultSent.value:
+//            println("Mail sent")
+//        case MFMailComposeResultFailed.value:
+//            println("Mail sent failure: %@", [error.localizedDescription])
+//        default:
+//            break
+        //        }
+//        println("mailComposeController")
+//        println(self.navigationController)
+//        
+//        self.navigationController?.popViewControllerAnimated(true)
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
 //        self.dis
-        Globals.notificationTransitionToView.postNotification(.Settings)
+        //Globals.notificationTransitionToView.postNotification(.Settings)
     }
     
     func importUserList(source: String) {

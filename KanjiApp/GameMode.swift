@@ -86,16 +86,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         setupEdgeReveal()
         
-        Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
-        
-        Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
-        
         leftIndicator.hidden = true
         middleIndicator.hidden = true
         rightIndicator.hidden = true
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
         outputText.addGestureRecognizer(onTouchGesture)
+    }
+    
+    override func addNotifications() {
+        super.addNotifications()
+        
+        Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
+        
+        Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
+        
     }
     
     private func answerCard(answer: AnswerDifficulty) {

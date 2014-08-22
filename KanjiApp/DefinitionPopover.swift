@@ -49,7 +49,6 @@ class DefinitionPopover : CustomUIViewController {
         }
     }
     
-    
     private func updateButtonState(card: Card) {
         addRemoveButton.setButtonType(card.suspended.boolValue)
     }
@@ -57,12 +56,18 @@ class DefinitionPopover : CustomUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateText()
-        setupGestures()
         setupEdgeReveal()
+        setupGestures()
+    }
+    
+    override func addNotifications() {
+        super.addNotifications()
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
+        
+        Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
     }
     
     func onSidebarInteract() {
@@ -111,21 +116,15 @@ class DefinitionPopover : CustomUIViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
+    func onNotificationShowDefinition() {
+        updateText()
+    }
+    
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)
         
         if Globals.notificationShowDefinition.value != "" && CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
             Globals.notificationShowDefinition.postNotification("")
         }
-    }
-    
-    func onNotificationShowDefinition() {
-        updateText()
-    }
-    
-    override func addNotifications() {
-        super.addNotifications()
-        
-        Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
     }
 }

@@ -90,13 +90,17 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         gesture.requireGestureRecognizerToFail(tap)
         
+        onTimerTick()
+    }
+    
+    override func addNotifications() {
+        super.addNotifications()
+        
         Globals.notificationShowDefinition.addObserver(self, selector: "onCloseKeyboard", object: nil)
         
-//        Globals.notificationTransitionToView.addObserver(self, selector: "onCloseKeyboard", object: nil)
+        //        Globals.notificationTransitionToView.addObserver(self, selector: "onCloseKeyboard", object: nil)
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "onCloseKeyboard", object: nil)
-        
-        onTimerTick()
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {

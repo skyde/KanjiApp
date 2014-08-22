@@ -63,24 +63,49 @@ class CustomUIViewController : UIViewController {
         saveContext()
     }
     
+    var notificationsActive = false
+    
     override func viewWillAppear(animated: Bool) {
-        if !alwaysReceiveNotifications {
-            println("viewWillAppear \(self)")
+        super.viewWillAppear(animated)
+//        println("viewWillAppear \(self)")
+        if !alwaysReceiveNotifications && !notificationsActive {
             addNotifications()
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !alwaysReceiveNotifications && !notificationsActive {
+            addNotifications()
+        }
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+//        println("viewWillDisappear")
+        if !alwaysReceiveNotifications && notificationsActive {
+            removeNotifications()
+        }
+    }
+    
+    
     override func viewDidDisappear(animated: Bool) {
-        if !alwaysReceiveNotifications {
+//        println("viewDidDisappear")
+        super.viewWillAppear(animated)
+        if !alwaysReceiveNotifications && notificationsActive {
             removeNotifications()
         }
     }
     
     func addNotifications() {
+        notificationsActive = true
+//        println("addNotifications \(self)")
+        
         Globals.notificationTransitionToView.addObserver(self, selector: "onTransitionToView")
     }
     
     func removeNotifications() {
+        notificationsActive = false
+//        println("removeNotifications \(self)")
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -156,7 +181,7 @@ class CustomUIViewController : UIViewController {
     
     func onTransitionToView() {
         if isGameView {
-            println("transition to root \(Globals.notificationTransitionToView.value.description())")
+//            println("transition to root \(Globals.notificationTransitionToView.value.description())")
             self.navigationController?.popToRootViewControllerAnimated(false)
         }
     }
