@@ -78,11 +78,10 @@ class DefinitionPopover : CustomUIViewController {
     }
     
     private func setupEdgeReveal() {
-        
         edgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
-            swipeAreaWidth: 1000,
+            //swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
@@ -95,11 +94,8 @@ class DefinitionPopover : CustomUIViewController {
                 }
         })
     }
-    
-    
 
     @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
-        
         if let viewCard = viewCard {
             viewCard.suspended = !viewCard.suspended.boolValue
             

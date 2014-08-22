@@ -40,13 +40,6 @@ class RootContainer: CustomUIViewController {
         view.addSubview(swipeFromLeftArea)
         
         view.bringSubviewToFront(sidebarButton)
-        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
-        
-        var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
-        swipeFromLeftArea.addGestureRecognizer(gesture)
-        
-        var tap = UITapGestureRecognizer(target: self, action: "respondToFromLeftSwipeTap:")
-        swipeFromLeftArea.addGestureRecognizer(tap)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,6 +50,14 @@ class RootContainer: CustomUIViewController {
         
         sidebarButtonBaseX = sidebarButton.frame.origin.x
         swipeFromLeftAreaBaseWidth = swipeFromLeftArea.frame.width
+        
+        Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
+        
+        var gesture = UIPanGestureRecognizer(target: self, action: "respondToFromLeftSwipeGesture:")
+        swipeFromLeftArea.addGestureRecognizer(gesture)
+        
+        var tap = UITapGestureRecognizer(target: self, action: "respondToFromLeftSwipeTap:")
+        swipeFromLeftArea.addGestureRecognizer(tap)
     }
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
@@ -323,6 +324,7 @@ class RootContainer: CustomUIViewController {
     }
     
     func onAddWordsFromList() {
+        println("onAddWordsFromList")
         
         //var predicate: [(EntityProperties, AnyObject)] = [(CardProperties.enabled, false)
 //]
@@ -366,7 +368,6 @@ class RootContainer: CustomUIViewController {
         var added = 0
         
         for card in cards {
-//            if let card = card as? Card {
             var onlyStudyKanji = settings.onlyStudyKanji.boolValue
             
             if !onlyStudyKanji ||
@@ -379,7 +380,6 @@ class RootContainer: CustomUIViewController {
             if added >= settings.cardAddAmount.integerValue {
                 break
             }
-//            }
         }
         
         Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: color, cards: addCards, displayAddButton: true, enableOnAdd: enableOnAdd))
