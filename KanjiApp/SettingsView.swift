@@ -65,35 +65,39 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         //        [someText writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         //        NSString *someText = "Here's to some awesome text.";
-        
-        //        var path = (UIApplication.sharedApplication().delegate! as AppDelegate).applicationDocumentsDirectory
-        //
-        //        path = path.URLByAppendingPathComponent(fileName)
-        //        var pathString = NSString(format:"%@", [path])
-        //
-        //        var error: NSErrorPointer = nil
-        ////        value.wri
-        //        value.writeToFile(pathString, atomically: true, encoding: NSUTF8StringEncoding, error: error)
+//        
+        let fileName = "ListsBackup.txt"
+//                var path = (UIApplication.sharedApplication().delegate! as AppDelegate).applicationDocumentsDirectory
+//        
+//        path = path.URLByAppendingPathComponent(fileName)
+//        var pathString = NSString(format:"%@", [path])
+//
+//        var error: NSErrorPointer = nil
+//        value.writeToFile(pathString, atomically: false, encoding: NSUTF8StringEncoding, error: error)
         
         //        var alert = UIAlertView(title: "Exported", message: "exported file", delegate: nil, cancelButtonTitle: nil)
         //        alert.show()
-        let fileName = "ListsBackup.kanji"
         var emailTitle = "Export Lists"
         var messageBody = "This is a backup of user data for the app Kanji"
         var toRecipents = []
         var mc: MFMailComposeViewController = MFMailComposeViewController()
         
         println("Mail Text")
+//        println(pathString)
 //        println(value)
         
-        var data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)//NSData(contentsOfFile: pathString)
+        var data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)//NSData(contentsOfFile: pathString)////
         //MFMailComposeViewControllerDelegate
+//        println("data)
+//        println(data)
+        
         mc.mailComposeDelegate = self
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
         mc.setToRecipients(toRecipents)
         //text/plain
-        mc.addAttachmentData(data, mimeType: "com.binarypipeline.kanji", fileName: fileName)
+        //com.binarypipeline.kanji
+        mc.addAttachmentData(data, mimeType: "text/plain", fileName: fileName)
         //self.addChildViewController(mc)
         self.presentViewController(mc, animated: true, completion: nil)
     }

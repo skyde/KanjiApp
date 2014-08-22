@@ -12,7 +12,17 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+//    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+//        <#code#>
+//    }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        println("handle open url \(url)")
+        
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
 //        NSFileManager *filemgr = [NSFileManager defaultManager];
 //        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //        NSString *documentsDirectory = [paths objectAtIndex:0];
