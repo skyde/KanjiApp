@@ -52,9 +52,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        NSUTF8StringEncoding
         var contents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
         
-        println(contents)
+//        println(contents)
+        importUserList(contents)
         
         return true
+    }
+    func importUserList(source: String) {
+        for card in managedObjectContext.fetchCardsAllWords() {
+            card.answersKnown = 0
+            card.answersNormal = 0
+            card.answersHard = 0
+            card.answersForgot = 0
+            card.interval = 0
+            card.dueTime = 0
+            card.enabled = false
+            card.suspended = true
+            card.known = false
+        }
+        
+        var values = source.componentsSeparatedByString("\n")
+        for value in values {
+//            println(value)
+            let splits = value.componentsSeparatedByString(" ")
+            
+//            println(splits.count)
+            
+            if splits.count < 10 {
+                continue
+            }
+            
+            let index = splits[0].toInt()
+            let answersKnown = splits[1].toInt()
+            let answersNormal = splits[2].toInt()
+            let answersHard = splits[3].toInt()
+            let answersForgot = splits[4].toInt()
+            let interval = splits[5].toInt()
+            let dueTime = (splits[6] as NSString).doubleValue
+            let enabled = splits[7].toInt()
+            let suspended = splits[8].toInt()
+            let known = splits[9].toInt()
+            
+            if let card = managedObjectContext.fetchCardByIndex(index!) {
+                card.answersKnown = answersKnown!
+                card.answersNormal = answersNormal!
+                card.answersHard = answersForgot!
+                card.answersForgot = answersKnown!
+                card.interval = interval!
+                card.dueTime = dueTime
+                card.enabled = enabled!
+                card.suspended = suspended!
+                card.known = known!
+            }
+        }
+        
+        saveContext()
     }
                             
     var window: UIWindow?
