@@ -62,6 +62,10 @@
 			<string>Kanji Word List File</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.binarypipeline.kanji</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>kanjiAppIcon</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>kanjiAppIcon</string>
 		</dict>
 	</array>
 	<key>uiapp</key>

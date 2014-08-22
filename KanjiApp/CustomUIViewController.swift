@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 import MessageUI
 
-class CustomUIViewController : UIViewController {
+class CustomUIViewController : UIViewController, MFMailComposeViewControllerDelegate {
     var managedObjectContext : NSManagedObjectContext = NSManagedObjectContext()
     
     var settings: Settings {
@@ -217,15 +217,15 @@ class CustomUIViewController : UIViewController {
         
 //        NSString *someText = "Here's to some awesome text.";
 
-        var path = (UIApplication.sharedApplication().delegate! as AppDelegate).applicationDocumentsDirectory
-        
+//        var path = (UIApplication.sharedApplication().delegate! as AppDelegate).applicationDocumentsDirectory
+//        
         let fileName = "ListsBackup.kanji"
-        path = path.URLByAppendingPathComponent(fileName)
-        var pathString = NSString(format:"%@", [path])
-
-        var error: NSErrorPointer = nil
-//        value.wri
-        value.writeToFile(pathString, atomically: true, encoding: NSUTF8StringEncoding, error: error)
+//        path = path.URLByAppendingPathComponent(fileName)
+//        var pathString = NSString(format:"%@", [path])
+//
+//        var error: NSErrorPointer = nil
+////        value.wri
+//        value.writeToFile(pathString, atomically: true, encoding: NSUTF8StringEncoding, error: error)
         
 //        var alert = UIAlertView(title: "Exported", message: "exported file", delegate: nil, cancelButtonTitle: nil)
         //        alert.show()
@@ -234,14 +234,30 @@ class CustomUIViewController : UIViewController {
         var toRecipents = []
         var mc: MFMailComposeViewController = MFMailComposeViewController()
         
-        var data = NSData(contentsOfFile: pathString)
+        var data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)//NSData(contentsOfFile: pathString)
         
-//        mc.mailComposeDelegate = self
+        mc.mailComposeDelegate = self
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
         mc.setToRecipients(toRecipents)
         mc.addAttachmentData(data, mimeType: "com.binarypipeline.kanji", fileName: fileName)
         self.presentViewController(mc, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError) {
+        switch result.value {
+        case MFMailComposeResultCancelled.value:
+            println("Mail cancelled")
+        case MFMailComposeResultSaved.value:
+            println("Mail saved")
+        case MFMailComposeResultSent.value:
+            println("Mail sent")
+        case MFMailComposeResultFailed.value:
+            println("Mail sent failure: %@", [error.localizedDescription])
+        default:
+            break
+        }
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     func importUserList(source: String) {
