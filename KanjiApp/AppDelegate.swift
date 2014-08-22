@@ -42,6 +42,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println(file)
         }
         
+        println(url)
+        println("last path = \(url.lastPathComponent)")
+        println(sourceApplication)
+        
+        println(url.relativeString)
+        
+        var error: NSErrorPointer = nil
+//        NSUTF8StringEncoding
+        var contents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
+        
+        println(contents)
+        
         return true
     }
                             
