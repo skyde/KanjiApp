@@ -4,7 +4,7 @@ import SpriteKit
 
 var definitionPopoverInstance: DefinitionPopover? = nil
 
-class DefinitionPopover : CustomUIViewController {
+class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var outputText: UITextView!
     @IBOutlet weak var addRemoveButton: AddRemoveButton!
     @IBOutlet weak var addRemoveSidebar: UIView!
@@ -86,7 +86,7 @@ class DefinitionPopover : CustomUIViewController {
         edgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
-            //swipeAreaWidth: 0,
+            swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
@@ -114,10 +114,22 @@ class DefinitionPopover : CustomUIViewController {
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
         self.view.addGestureRecognizer(tapGesture)
+        var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+        panGesture.delegate = self
+        self.view.addGestureRecognizer(panGesture)
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return true
     }
     
     func onNotificationShowDefinition() {
         updateText()
+    }
+    
+    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        //println(gesture.translationInView(self.view))
+        edgeReveal.respondToPanGesture(gesture)
     }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {

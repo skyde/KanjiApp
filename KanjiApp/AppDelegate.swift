@@ -47,9 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        println(sourceApplication)
 //        
 //        println(url.relativeString)
+        var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
+        alert.show()
         
         var error: NSErrorPointer = nil
-//        NSUTF8StringEncoding
         var contents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
         
 //        println(contents)

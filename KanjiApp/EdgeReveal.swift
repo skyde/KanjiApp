@@ -13,7 +13,7 @@ public class EdgeReveal : UIButton {
     let maxReveal: CGFloat
     let animationTime = 0.2
     let animationEasing = UIViewAnimationOptions.CurveEaseOut
-    let transitionThreshold: CGFloat = 30
+    let transitionThreshold: CGFloat
     var swipeAreaWidth: CGFloat
     
     var swipeArea: UIButton
@@ -30,6 +30,7 @@ public class EdgeReveal : UIButton {
         maxOffset: CGFloat = 202,
         autoAddToParent: Bool = true,
         swipeAreaWidth: CGFloat = 13,
+        transitionThreshold: CGFloat = 30,
         onUpdate: ((offset: CGFloat) -> ())?,
         setVisible: ((isVisible: Bool) -> ())?) {
         
@@ -42,6 +43,7 @@ public class EdgeReveal : UIButton {
         self.onUpdate = onUpdate
         self.setVisible = setVisible
         self.swipeAreaWidth = swipeAreaWidth
+        self.transitionThreshold = transitionThreshold
         
         super.init(frame: CGRectMake(0, 0, 0, 0))
         
@@ -50,10 +52,10 @@ public class EdgeReveal : UIButton {
             parent.bringSubviewToFront(swipeArea)
         }
         
-        var gesture = UIPanGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        var gesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
         swipeArea.addGestureRecognizer(gesture)
         
-        var tap = UITapGestureRecognizer(target: self, action: "respondToSwipeTap:")
+        var tap = UITapGestureRecognizer(target: self, action: "respondToTap:")
         swipeArea.addGestureRecognizer(tap)
         
         if let setVisible = setVisible {
@@ -113,7 +115,7 @@ public class EdgeReveal : UIButton {
         }
     }
     
-    func respondToSwipeTap(gesture: UITapGestureRecognizer) {
+    func respondToTap(gesture: UITapGestureRecognizer) {
         if let onTap = self.onTap {
             onTap(isOpen: isOpen)
         }
@@ -122,7 +124,7 @@ public class EdgeReveal : UIButton {
     }
     
     var wasOpen = false
-    func respondToSwipeGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
+    func respondToPanGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
     case .Began:
         wasOpen = isOpen
         println(wasOpen)

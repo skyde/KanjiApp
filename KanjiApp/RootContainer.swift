@@ -229,14 +229,15 @@ class RootContainer: CustomUIViewController {
                 delay: NSTimeInterval(),
                 options: blurEasing,
                 animations: {
-                    //                    self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+                    self.definitionOverlay.frame.origin.x = Globals.screenSize.width
+                    //self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
                     //                    self.mainView.alpha = 1
-                    self.definitionOverlay.alpha = 0
+//                    self.definitionOverlay.alpha = 0
                     self.backgroundImage.alpha = 0
 //                    self.blurImage.alpha = 0
                 },
                 completion: {
-                (_) -> Void in
+                (_) -> () in
                     self.definitionOverlay.hidden = true
 //                    self.blurImage.hidden = true
                     Globals.notificationShowDefinition.value = ""
@@ -246,12 +247,12 @@ class RootContainer: CustomUIViewController {
             backgroundImage.hidden = false
             caculateBlur()
             definitionOverlay.hidden = false
-            self.definitionOverlay.alpha = 0
+            //self.definitionOverlay.alpha = 0
             backgroundImage.alpha = 0
 //            self.mainView.alpha = 1
 //            blurImage.hidden = false
             
-//            self.definitionOverlay.frame = CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
+            self.definitionOverlay.frame.origin.x = Globals.screenSize.width//CGRectMake(self.mainView.frame.width, 0, self.mainView.frame.width, self.mainView.frame.height)
             
 //            self.definitionOverlay.alpha = 1
             UIView.animateWithDuration(popoverAnimationSpeed,
@@ -261,11 +262,12 @@ class RootContainer: CustomUIViewController {
 //                    self.definitionOverlay.frame = CGRectMake(0, 0, self.mainView.frame.width, self.mainView.frame.height)
                     //                    self.blurImage.alpha = 1
 //                    self.mainView.alpha = 0
+                    self.definitionOverlay.frame.origin.x = 0
                     self.backgroundImage.alpha = 1
-                    self.definitionOverlay.alpha = 1
+                    //self.definitionOverlay.alpha = 1
                 },
                 completion: {
-                    (_) -> Void in
+                    (_) -> () in
 //                    self.definitionOverlay.alpha = 1
 //                    self.definitionOverlay.alpha = 1
                     
