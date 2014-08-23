@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        println("handle open url \(url)")
+        //println("handle open url \(url)")
         
         return true
     }

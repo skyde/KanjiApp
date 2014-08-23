@@ -326,7 +326,7 @@ class RootContainer: CustomUIViewController {
     }
     
     func onAddWordsFromList() {
-        println("onAddWordsFromList")
+        //println("onAddWordsFromList")
         
         //var predicate: [(EntityProperties, AnyObject)] = [(CardProperties.enabled, false)
 //]

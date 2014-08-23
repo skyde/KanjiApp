@@ -87,10 +87,12 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             parent: view,
             revealType: .Right,
             swipeAreaWidth: 0,
+            handlePan: false,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
                 self.propertiesSidebar.animate(offset)
+//                println(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
@@ -128,8 +130,13 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        //println(gesture.translationInView(self.view))
         edgeReveal.respondToPanGesture(gesture)
+//        switch gesture.state {
+//        case .Changed:
+//            println(gesture.translationInView(self.view))
+//        default:
+//            break
+//        }
     }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {
