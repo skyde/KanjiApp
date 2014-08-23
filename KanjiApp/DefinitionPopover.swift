@@ -87,7 +87,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             parent: view,
             revealType: .Right,
             swipeAreaWidth: 0,
+            transitionThreshold: 30,
             handlePan: false,
+            maxYTravel: 60,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset

@@ -14,6 +14,7 @@ public class EdgeReveal : UIButton {
     let animationTime = 0.2
     let animationEasing = UIViewAnimationOptions.CurveEaseOut
     let transitionThreshold: CGFloat
+    let maxYTravel: CGFloat
     var swipeAreaWidth: CGFloat
     
     var swipeArea: UIButton
@@ -31,12 +32,14 @@ public class EdgeReveal : UIButton {
         autoAddToParent: Bool = true,
         swipeAreaWidth: CGFloat = 13,
         transitionThreshold: CGFloat = 30,
+        maxYTravel: CGFloat = CGFloat.max,
         handlePan: Bool = true,
         onUpdate: ((offset: CGFloat) -> ())?,
         setVisible: ((isVisible: Bool) -> ())?) {
         
         self.revealType = revealType
         self.maxReveal = maxOffset
+        self.maxYTravel = maxYTravel
         
         swipeArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height))
 //        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
@@ -163,16 +166,21 @@ public class EdgeReveal : UIButton {
         
         switch gesture.state {
         case .Ended:
-//            println("ended")
-            var xDelta = -gesture.translationInView(self.superview).x
-        if xDelta > transitionThreshold {
-            animateSidebar(true)
-        } else if xDelta < transitionThreshold {
-            animateSidebar(false)
-        } else if xDelta < 0 {
-            animateSidebar(true)
-        } else {
-            animateSidebar(false)
+//            println("ended")maxYDistance
+            let t = gesture.translationInView(self.superview)
+            let xDelta = -t.x
+            if abs(t.y) < maxYTravel {
+                if xDelta > transitionThreshold {
+                    animateSidebar(true)
+                } else if xDelta < transitionThreshold {
+                    animateSidebar(false)
+                }
+                else {
+                    animateSidebar(wasOpen)
+                }
+            }
+            else {
+                animateSidebar(wasOpen)
             }
         default:
             break
