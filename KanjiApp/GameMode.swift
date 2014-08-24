@@ -193,7 +193,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                         card,
                         showUndoButton: self.undoStack.count > 0,
                         onUndoButtonTap: {
-                        self.edgeReveal.animateSidebar(false)
+                        self.edgeReveal.animateSelf(false)
                         self.processUndo = true
                     })
                 }
@@ -325,7 +325,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     }
     
     func onSidebarInteract() {
-        edgeReveal.animateSidebar(false)
+        edgeReveal.animateSelf(false)
     }
     
 //    func onInteract(interactType: InteractType, _ card: Card) {

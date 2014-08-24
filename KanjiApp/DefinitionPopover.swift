@@ -13,6 +13,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var studyingButton: UIButton!
     var rightEdgeReveal: EdgeReveal! = nil
+    var leftEdgeReveal: EdgeReveal! = nil
     var propertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
@@ -40,8 +41,8 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func studyingPress(sender: AnyObject) {
-        if !rightEdgeReveal.isOpen {
-            rightEdgeReveal.animateSidebar(true)
+        if rightEdgeReveal.animationState == AnimationState.Closed {
+            rightEdgeReveal.animateSelf(true)
         }
     }
     
@@ -89,7 +90,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     func onSidebarInteract() {
-        rightEdgeReveal.animateSidebar(false)
+        rightEdgeReveal.animateSelf(false)
     }
     
     func onEditCard() {
@@ -105,8 +106,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             parent: view,
             revealType: .Right,
             swipeAreaWidth: 0,
-            transitionThreshold: 30,
-            handlePan: false,
+            autoHandlePanEvent: false,
             maxYTravel: 60,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
@@ -122,6 +122,15 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
                     }
                 }
         })
+        
+//        leftEdgeReveal = EdgeReveal(
+//            parent: view,
+//            revealType: .Left,
+//            onUpdate: {(offset: CGFloat) -> () in
+//                self.outputText.frame.origin.x = offset
+//            },
+//            setVisible: {(isVisible: Bool) -> () in
+//        })
     }
 
 //    @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
