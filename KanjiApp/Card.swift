@@ -380,4 +380,16 @@ class Card: NSManagedObject {
         
         return Globals.colorMyWords
     }
+    
+    func listName() -> String {
+        if suspended.boolValue {
+            return "Not Studied"
+        } else if known.boolValue {
+            return "Known"
+        } else if enabled.boolValue {
+            return "Studied"
+        }
+        
+        return "Will Study"
+    }
 }

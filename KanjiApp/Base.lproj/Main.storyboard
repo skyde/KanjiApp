@@ -273,12 +273,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
-                                <rect key="frame" x="0.0" y="52" width="600" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-Qd-7TJ">
-                                <rect key="frame" x="398" y="52" width="202" height="548"/>
+                                <rect key="frame" x="398" y="48" width="202" height="552"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="202" id="hgG-No-Obn"/>
                                 </constraints>
@@ -297,34 +297,42 @@
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18A-fs-33E">
-                                <rect key="frame" x="0.0" y="20" width="600" height="32"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="28"/>
                                 <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="Fdl-sW-v17"/>
+                                    <constraint firstAttribute="height" constant="28" id="Fdl-sW-v17"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="28"/>
                                 <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bp7-V8-USh">
-                                <rect key="frame" x="520" y="20" width="80" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bp7-V8-USh">
+                                <rect key="frame" x="480" y="20" width="120" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="42Y-O7-hsa"/>
+                                    <constraint firstAttribute="width" constant="120" id="42Y-O7-hsa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Studying">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="studyingPress:" destination="tK9-c8-QBp" eventType="touchUpInside" id="r6o-Ag-odq"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygW-So-qXB">
-                                <rect key="frame" x="0.0" y="20" width="80" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygW-So-qXB">
+                                <rect key="frame" x="0.0" y="20" width="80" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="WkW-4f-w3z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backPress:" destination="tK9-c8-QBp" eventType="touchUpInside" id="qwm-8G-bRK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -336,6 +344,7 @@
                             <constraint firstAttribute="trailing" secondItem="18A-fs-33E" secondAttribute="trailing" id="AL5-bU-6lg"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="CBc-R1-wc8"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
+                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="F7O-PI-Ncl"/>
                             <constraint firstItem="PyI-2i-JnN" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="M7m-U5-hu8"/>
                             <constraint firstItem="ygW-So-qXB" firstAttribute="centerY" secondItem="18A-fs-33E" secondAttribute="centerY" id="Sc9-5x-tQb"/>
                             <constraint firstAttribute="trailing" secondItem="bp7-V8-USh" secondAttribute="trailing" id="XMk-En-eVi"/>
@@ -345,7 +354,6 @@
                             <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" id="faS-qF-ii9"/>
                             <constraint firstItem="PyI-2i-JnN" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="kwj-g7-phM"/>
                             <constraint firstAttribute="trailing" secondItem="PyI-2i-JnN" secondAttribute="trailing" id="u0g-I1-HNl"/>
-                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" id="vv0-Gj-XFo"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="PyI-2i-JnN" secondAttribute="bottom" id="xpV-VE-Zly"/>
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
@@ -353,8 +361,10 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
+                        <outlet property="backButton" destination="ygW-So-qXB" id="gQs-D0-pQg"/>
                         <outlet property="definitionLabel" destination="18A-fs-33E" id="MLY-IG-5LF"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
+                        <outlet property="studyingButton" destination="bp7-V8-USh" id="eXj-bN-mec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXi-8g-1At" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1476,11 +1486,11 @@ all due cards</string>
                         <viewControllerLayoutGuide type="bottom" id="Vko-NP-bnK"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nwH-1v-TMo">
-                        <rect key="frame" x="0.0" y="0.0" width="202" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="552"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="348"/>
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="352"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Remove">
@@ -1492,7 +1502,7 @@ all due cards</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
-                                <rect key="frame" x="101" y="0.0" width="101" height="348"/>
+                                <rect key="frame" x="101" y="0.0" width="101" height="352"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Known">
@@ -1504,7 +1514,7 @@ all due cards</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
-                                <rect key="frame" x="0.0" y="348" width="202" height="200"/>
+                                <rect key="frame" x="0.0" y="352" width="202" height="200"/>
                                 <color key="backgroundColor" red="0.99790024757385254" green="0.90225982666015625" blue="0.70449477434158325" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="IYR-r2-ti4"/>
@@ -1554,9 +1564,9 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Q0-aS-4tM"/>
-        <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="iYu-nc-2Hh"/>
+        <segue reference="Ut6-yd-kHz"/>
+        <segue reference="tBV-uj-OEZ"/>
         <segue reference="daX-c3-wht"/>
+        <segue reference="BpJ-Ou-mkl"/>
     </inferredMetricsTieBreakers>
 </document>

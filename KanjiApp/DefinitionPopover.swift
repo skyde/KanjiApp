@@ -10,6 +10,8 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var addRemoveSidebar: UIView!
     @IBOutlet weak var definitionLabel: UILabel!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var studyingButton: UIButton!
     var edgeReveal: EdgeReveal! = nil
     var propertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
@@ -37,6 +39,16 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         definitionPopoverInstance = self
     }
     
+    @IBAction func studyingPress(sender: AnyObject) {
+        if !edgeReveal.isOpen {
+            edgeReveal.animateSidebar(true)
+        }
+    }
+    
+    @IBAction func backPress(sender: AnyObject) {
+        Globals.notificationShowDefinition.postNotification("")
+    }
+    
     func updateText() {
         if let card = viewCard {
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
@@ -51,6 +63,8 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     private func updateDefinitionLabel(card: Card) {
+        studyingButton.setTitle(card.listName(), forState: .Normal)
+        studyingButton.setTitleColor(card.listColor(), forState: .Normal)
         //        addRemoveButton.setButtonType(card.suspended.boolValue)
 //        definitionLabel.font = UIFont(name: Globals.JapaneseFont, size: 28)
 //        definitionLabel.text = card.kanji
