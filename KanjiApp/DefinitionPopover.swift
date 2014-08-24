@@ -6,7 +6,7 @@ var definitionPopoverInstance: DefinitionPopover? = nil
 
 class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var outputText: UITextView!
-    @IBOutlet weak var addRemoveButton: AddRemoveButton!
+//    @IBOutlet weak var addRemoveButton: AddRemoveButton!
     @IBOutlet weak var addRemoveSidebar: UIView!
     
     var edgeReveal: EdgeReveal! = nil
@@ -50,7 +50,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     private func updateButtonState(card: Card) {
-        addRemoveButton.setButtonType(card.suspended.boolValue)
+//        addRemoveButton.setButtonType(card.suspended.boolValue)
     }
     
     override func viewDidLoad() {
@@ -94,7 +94,6 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
                 self.outputText.frame.origin.x = -offset
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
                 self.propertiesSidebar.animate(offset)
-//                println(offset)
             },
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
@@ -104,16 +103,16 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         })
     }
 
-    @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
-        if let viewCard = viewCard {
-            viewCard.suspended = !viewCard.suspended.boolValue
-            
-            addRemoveButton.onInteract()
-            updateButtonState(viewCard)
-            
-            saveContext()
-        }
-    }
+//    @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
+//        if let viewCard = viewCard {
+//            viewCard.suspended = !viewCard.suspended.boolValue
+//            
+//            addRemoveButton.onInteract()
+//            updateButtonState(viewCard)
+//            
+//            saveContext()
+//        }
+//    }
     
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")

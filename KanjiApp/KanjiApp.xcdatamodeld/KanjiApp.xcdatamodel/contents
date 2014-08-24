@@ -5,6 +5,7 @@
         <attribute name="answersHard" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <attribute name="answersKnown" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <attribute name="answersNormal" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dueTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="hiragana" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +19,6 @@
         <relationship name="embeddedData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CardData" inverseName="parent" inverseEntity="CardData" syncable="YES"/>
     </entity>
     <entity name="CardData" representedClassName="CardData" syncable="YES">
-        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="definitionOther" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exampleEnglish" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exampleJapanese" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,8 +39,8 @@
         <attribute name="volume" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-83" positionY="-39" width="128" height="270"/>
-        <element name="CardData" positionX="142" positionY="216" width="128" height="193"/>
+        <element name="Card" positionX="-83" positionY="-39" width="128" height="285"/>
+        <element name="CardData" positionX="142" positionY="216" width="128" height="180"/>
         <element name="Settings" positionX="-306" positionY="234" width="128" height="150"/>
     </elements>
 </model>

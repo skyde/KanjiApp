@@ -5,7 +5,6 @@ import CoreData
 @objc(CardData)
 class CardData: NSManagedObject {
     
-    @NSManaged var definition: String
     @NSManaged var definitionOther: String
     @NSManaged var exampleEnglish: String
     @NSManaged var exampleJapanese: String

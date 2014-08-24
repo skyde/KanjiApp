@@ -312,43 +312,42 @@
                                     <segue destination="HHw-53-owD" kind="embed" id="daX-c3-wht"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qq-MD-I8t" customClass="AddRemoveButton" customModule="Kanji" customModuleProvider="target">
-                                <rect key="frame" x="553" y="18" width="46" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS2-UD-F2A">
+                                <rect key="frame" x="500" y="20" width="84" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="UXy-CR-8dS"/>
-                                    <constraint firstAttribute="height" constant="46" id="cwN-43-Vmp"/>
+                                    <constraint firstAttribute="height" constant="30" id="Njq-6N-tBD"/>
+                                    <constraint firstAttribute="width" constant="84" id="Rzc-IX-TCF"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="plusIcon.png">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                <size key="titleShadowOffset" width="-1" height="1"/>
+                                <state key="normal" title="Studying">
+                                    <color key="titleColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="onAddRemoveButtonTouch:" destination="tK9-c8-QBp" eventType="touchDown" id="XXk-MA-aRb"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
+                            <constraint firstItem="dS2-UD-F2A" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="VHy-ir-qae"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
                             <constraint firstAttribute="bottom" secondItem="9C5-Qd-7TJ" secondAttribute="bottom" id="efb-tb-nfz"/>
                             <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" id="faS-qF-ii9"/>
-                            <constraint firstAttribute="trailing" secondItem="9qq-MD-I8t" secondAttribute="trailing" constant="1" id="lz1-mG-Kvq"/>
+                            <constraint firstAttribute="trailing" secondItem="dS2-UD-F2A" secondAttribute="trailing" constant="16" id="gfS-XK-4u3"/>
                             <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="mjA-zf-sw7"/>
-                            <constraint firstItem="9qq-MD-I8t" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" constant="-2" id="pu7-wT-UW2"/>
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="addRemoveButton" destination="9qq-MD-I8t" id="kHz-fh-nff"/>
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXi-8g-1At" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1939" y="649"/>
+            <point key="canvasLocation" x="-1934" y="631"/>
         </scene>
         <!--Root Container-->
         <scene sceneID="0eb-Ac-JoJ">
@@ -1537,12 +1536,11 @@ all due cards</string>
         <image name="discoverBarFade.png" width="512" height="512"/>
         <image name="discoverBottomFade.png" width="512" height="512"/>
         <image name="hamburgerIcon.png" width="600" height="414"/>
-        <image name="plusIcon.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="yfD-aM-lZg"/>
+        <segue reference="7jX-Xq-vJx"/>
         <segue reference="daX-c3-wht"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,6 +1,9 @@
 import Foundation
 import UIKit
 import SpriteKit
+//import PaRomajiKanaConverter
+//import PaRomajiKanaConverter
+//#import "UCTypingPhraseManager.h"
 
 class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
@@ -490,6 +493,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     var lastSearchText = ""
+    var romajiConverter = PaRomajiKanaConverter()
     
     private func updateSearch(text: String) {
         lastSearchText = text
@@ -519,9 +523,17 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
         
         if text != "" {
-            var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"//"\(CardProperties.kanji.description())==%@"
             
-            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, text]), CardProperties.kanji)
+            var fromRomaji = romajiConverter.convertToHiraganaFromRomaji(text)
+            
+            var predicate =
+            "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)"
+            
+            
+            
+            //"\(CardProperties.kanji.description())==%@"
+            
+            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, text, fromRomaji, text]), CardProperties.kanji)
             
             items = cards.map { ($0 as Card).index }
             

@@ -17,6 +17,7 @@ class Card: NSManagedObject {
     @NSManaged var enabled: NSNumber
     @NSManaged var suspended: NSNumber
     @NSManaged var known: NSNumber
+    @NSManaged var definition: String
     @NSManaged var embeddedData: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
@@ -211,7 +212,7 @@ class Card: NSManagedObject {
         
         var entity = managedObjectContext.fetchCardByIndex(index)
         
-        addTo.addAttributedText(embeddedData.definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
+        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
         
         addTo.addBreak(20)
         
@@ -311,7 +312,7 @@ class Card: NSManagedObject {
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
-        value.addAttributedText(embeddedData.definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
+        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         
         value.endEditing()
         
