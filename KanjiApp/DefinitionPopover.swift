@@ -12,7 +12,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var studyingButton: UIButton!
-    var edgeReveal: EdgeReveal! = nil
+    var rightEdgeReveal: EdgeReveal! = nil
     var propertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
@@ -40,8 +40,8 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func studyingPress(sender: AnyObject) {
-        if !edgeReveal.isOpen {
-            edgeReveal.animateSidebar(true)
+        if !rightEdgeReveal.isOpen {
+            rightEdgeReveal.animateSidebar(true)
         }
     }
     
@@ -89,19 +89,19 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     func onSidebarInteract() {
-        edgeReveal.animateSidebar(false)
+        rightEdgeReveal.animateSidebar(false)
     }
     
     func onEditCard() {
         if !view.hidden {
-            edgeReveal.editCardProperties(viewCard, value: Globals.notificationEditCardProperties.value)
+            rightEdgeReveal.editCardProperties(viewCard, value: Globals.notificationEditCardProperties.value)
             
             saveContext()
         }
     }
     
     private func setupEdgeReveal() {
-        edgeReveal = EdgeReveal(
+        rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
             swipeAreaWidth: 0,
@@ -152,7 +152,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        edgeReveal.respondToPanGesture(gesture)
+        rightEdgeReveal.respondToPanGesture(gesture)
 //        switch gesture.state {
 //        case .Changed:
 //            println(gesture.translationInView(self.view))
