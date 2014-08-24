@@ -268,9 +268,14 @@ public class EdgeReveal : UIButton {
         
         switch gesture.state {
         case .Ended:
-            let t = gesture.translationInView(self.superview)
-            let xDelta = -t.x
-            if abs(t.y) < maxYTravel {
+            let translation = gesture.translationInView(self.superview)
+            var xDelta = translation.x
+            
+            if revealType == EdgeRevealType.Right {
+                xDelta = -xDelta
+            }
+            
+            if abs(translation.y) < maxYTravel {
                 if xDelta > transitionThreshold {
                     animateSelf(true)
                 } else if xDelta < transitionThreshold {
