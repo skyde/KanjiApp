@@ -20,7 +20,7 @@ class RootContainer: CustomUIViewController {
     var sidebarButtonBaseX: CGFloat = 13
     var swipeFromLeftAreaBaseWidth: CGFloat = 0
     var statusBarHidden = false
-    let popoverAnimationSpeed = 0.22
+    let popoverAnimationSpeed = 0.17 //.22
     let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
     
@@ -40,6 +40,7 @@ class RootContainer: CustomUIViewController {
         view.addSubview(swipeFromLeftArea)
         
         view.bringSubviewToFront(sidebarButton)
+        view.bringSubviewToFront(definitionOverlay)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -309,10 +310,22 @@ class RootContainer: CustomUIViewController {
         var clampFilter = CIFilter(name: "CIAffineClamp")
         clampFilter.setValue(coreImage, forKey: kCIInputImageKey)
         clampFilter.setValue(NSValue(CGAffineTransform: transform), forKey:"inputTransform")
+
+//        let colorFilter = CIFilter(name: "CIColorClamp")
+//        colorFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
+//        colorFilter.setValue(CIVector(CGRect: CGRectMake(0.7, 0.7, 0.7, 0)), forKey: "inputMinComponents")
+//        
+//        let secondColorFilter = CIFilter(name: "CIColorControls")
+//        secondColorFilter.setValue(colorFilter.outputImage, forKey: kCIInputImageKey)
+//        secondColorFilter.setValue(3, forKey: "inputSaturation")
+//        secondColorFilter.setValue(0, forKey: "inputBrightness")
+//        secondColorFilter.setValue(1, forKey: "inputContrast")
+        
         
         let gaussianFilter = CIFilter(name: "CIGaussianBlur")
         gaussianFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
         gaussianFilter.setValue(inputRadius, forKey: "inputRadius")
+        
         
         let filteredImageData = gaussianFilter.valueForKey(kCIOutputImageKey) as CIImage
         

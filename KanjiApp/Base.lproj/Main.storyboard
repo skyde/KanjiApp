@@ -8,11 +8,13 @@
             <string>KozGoPr6N-Light</string>
             <string>KozGoPr6N-Light</string>
             <string>KozGoPr6N-Light</string>
+            <string>KozGoPr6N-Light</string>
         </mutableArray>
         <mutableArray key="mplus-2p-light.ttf">
             <string>mplus-2p-light</string>
         </mutableArray>
         <mutableArray key="mplus-2p-regular.ttf">
+            <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
             <string>mplus-2p-regular</string>
@@ -299,12 +301,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-Qd-7TJ">
-                                <rect key="frame" x="398" y="0.0" width="202" height="600"/>
+                                <rect key="frame" x="398" y="64" width="202" height="536"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="202" id="hgG-No-Obn"/>
                                 </constraints>
@@ -312,36 +314,48 @@
                                     <segue destination="HHw-53-owD" kind="embed" id="daX-c3-wht"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS2-UD-F2A">
-                                <rect key="frame" x="500" y="20" width="84" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyI-2i-JnN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Njq-6N-tBD"/>
-                                    <constraint firstAttribute="width" constant="84" id="Rzc-IX-TCF"/>
+                                    <constraint firstAttribute="height" constant="20" id="NWQ-aT-UTw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
-                                <size key="titleShadowOffset" width="-1" height="1"/>
-                                <state key="normal" title="Studying">
-                                    <color key="titleColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="0.0" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
+                                <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="追いかける" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18A-fs-33E">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Fdl-sW-v17"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="24"/>
+                                <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="Cip-t8-Bc3"/>
+                            <constraint firstAttribute="trailing" secondItem="18A-fs-33E" secondAttribute="trailing" id="AL5-bU-6lg"/>
+                            <constraint firstItem="18A-fs-33E" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="CBc-R1-wc8"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
-                            <constraint firstItem="dS2-UD-F2A" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="VHy-ir-qae"/>
+                            <constraint firstItem="PyI-2i-JnN" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="M7m-U5-hu8"/>
+                            <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" id="amv-uz-xCa"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
                             <constraint firstAttribute="bottom" secondItem="9C5-Qd-7TJ" secondAttribute="bottom" id="efb-tb-nfz"/>
                             <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" id="faS-qF-ii9"/>
-                            <constraint firstAttribute="trailing" secondItem="dS2-UD-F2A" secondAttribute="trailing" constant="16" id="gfS-XK-4u3"/>
-                            <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="mjA-zf-sw7"/>
+                            <constraint firstItem="PyI-2i-JnN" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="kwj-g7-phM"/>
+                            <constraint firstAttribute="trailing" secondItem="PyI-2i-JnN" secondAttribute="trailing" id="u0g-I1-HNl"/>
+                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" id="vv0-Gj-XFo"/>
+                            <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="PyI-2i-JnN" secondAttribute="bottom" id="xpV-VE-Zly"/>
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
+                        <outlet property="definitionLabel" destination="18A-fs-33E" id="MLY-IG-5LF"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
                     </connections>
                 </viewController>
@@ -1460,11 +1474,11 @@ all due cards</string>
                         <viewControllerLayoutGuide type="bottom" id="Vko-NP-bnK"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nwH-1v-TMo">
-                        <rect key="frame" x="0.0" y="0.0" width="202" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="336"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Remove">
@@ -1476,7 +1490,7 @@ all due cards</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
-                                <rect key="frame" x="101" y="0.0" width="101" height="400"/>
+                                <rect key="frame" x="101" y="0.0" width="101" height="336"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="22"/>
                                 <state key="normal" title="Known">
@@ -1488,7 +1502,7 @@ all due cards</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
-                                <rect key="frame" x="0.0" y="400" width="202" height="200"/>
+                                <rect key="frame" x="0.0" y="336" width="202" height="200"/>
                                 <color key="backgroundColor" red="0.99790024757385254" green="0.90225982666015625" blue="0.70449477434158325" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="IYR-r2-ti4"/>

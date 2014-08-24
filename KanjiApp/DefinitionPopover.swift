@@ -8,6 +8,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var outputText: UITextView!
 //    @IBOutlet weak var addRemoveButton: AddRemoveButton!
     @IBOutlet weak var addRemoveSidebar: UIView!
+    @IBOutlet weak var definitionLabel: UILabel!
     
     var edgeReveal: EdgeReveal! = nil
     var propertiesSidebar: CardPropertiesSidebar {
@@ -44,13 +45,16 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             outputText.textContainerInset.top = 40
             outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
-            updateButtonState(card)
+            updateDefinitionLabel(card)
             propertiesSidebar.updateContents(card, showUndoButton: false)
         }
     }
     
-    private func updateButtonState(card: Card) {
-//        addRemoveButton.setButtonType(card.suspended.boolValue)
+    private func updateDefinitionLabel(card: Card) {
+        //        addRemoveButton.setButtonType(card.suspended.boolValue)
+        definitionLabel.font = UIFont(name: Globals.JapaneseFont, size: 24)
+        definitionLabel.text = card.kanji
+        definitionLabel.textColor = card.listColor()
     }
     
     override func viewDidLoad() {
@@ -97,8 +101,11 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             },
             setVisible: {(isVisible: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
-                if let card = self.viewCard {
-                    self.propertiesSidebar.updateContents(card, showUndoButton: false)
+                if !isVisible {
+                    if let card = self.viewCard {
+                        self.propertiesSidebar.updateContents(card, showUndoButton: false)
+                        self.updateDefinitionLabel(card)
+                    }
                 }
         })
     }

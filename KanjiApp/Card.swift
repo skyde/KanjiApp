@@ -229,6 +229,9 @@ class Card: NSManagedObject {
         addTo.addBreak(10)
         
         addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addBreak(10)
+        
+        addTo.addAttributedText("JLPT \(jlptLevel)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
         // Debug
         
@@ -366,5 +369,15 @@ class Card: NSManagedObject {
         }
 
         return color
+    }
+    
+    func listColor() -> UIColor {
+        if suspended.boolValue {
+            return Globals.colorLists
+        } else if known.boolValue {
+            return Globals.colorKnown
+        }
+        
+        return Globals.colorMyWords
     }
 }
