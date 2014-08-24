@@ -16,13 +16,13 @@ class CardsFinished : CustomUIViewController {
     var studyAheadAmount: Double = 60 * 60 * 24 * 5
     
     @IBAction func continueStudyingPressed(sender: AnyObject) {
-//        println("continueStudyingPressed")
+        //        println("continueStudyingPressed")
         
         Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: studyAheadAmount))
     }
     
     @IBAction func addNewCardsPressed(sender: AnyObject) {
-//        println("addNewCardsPressed")
+        //        println("addNewCardsPressed")
         
         let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
         

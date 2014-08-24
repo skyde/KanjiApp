@@ -52,9 +52,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     
     private func updateDefinitionLabel(card: Card) {
         //        addRemoveButton.setButtonType(card.suspended.boolValue)
-        definitionLabel.font = UIFont(name: Globals.JapaneseFont, size: 24)
-        definitionLabel.text = card.kanji
-        definitionLabel.textColor = card.listColor()
+//        definitionLabel.font = UIFont(name: Globals.JapaneseFont, size: 28)
+//        definitionLabel.text = card.kanji
+//        definitionLabel.textColor = card.pitchAccentColor()//.listColor()
     }
     
     override func viewDidLoad() {

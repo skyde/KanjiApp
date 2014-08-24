@@ -23,7 +23,9 @@ public class EdgeReveal : UIButton {
     var setVisible: ((isOpen: Bool) -> ())?
     var onTap: ((isOpen: Bool) -> ())?
     
+    var wasOpen = false
     var isOpen: Bool = false
+    var animating = false
     
     public init(
         parent: UIView,
@@ -36,46 +38,46 @@ public class EdgeReveal : UIButton {
         handlePan: Bool = true,
         onUpdate: ((offset: CGFloat) -> ())?,
         setVisible: ((isVisible: Bool) -> ())?) {
-        
-        self.revealType = revealType
-        self.maxReveal = maxOffset
-        self.maxYTravel = maxYTravel
-        
-        swipeArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height))
-//        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
             
-        self.onUpdate = onUpdate
-        self.setVisible = setVisible
-        self.swipeAreaWidth = swipeAreaWidth
-        self.transitionThreshold = transitionThreshold
-        
-        super.init(frame: CGRectMake(0, 0, 0, 0))
-        
-        if autoAddToParent {
-            parent.addSubview(swipeArea)
-            parent.bringSubviewToFront(swipeArea)
-        }
-        
-        if handlePan {
-            var gesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-            swipeArea.addGestureRecognizer(gesture)
-        }
-        
-        var tap = UITapGestureRecognizer(target: self, action: "respondToTap:")
-        swipeArea.addGestureRecognizer(tap)
-        
-        if let setVisible = setVisible {
-            setVisible(isVisible: false)
-        }
+            self.revealType = revealType
+            self.maxReveal = maxOffset
+            self.maxYTravel = maxYTravel
+            
+            swipeArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height))
+            //        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
+            
+            self.onUpdate = onUpdate
+            self.setVisible = setVisible
+            self.swipeAreaWidth = swipeAreaWidth
+            self.transitionThreshold = transitionThreshold
+            
+            super.init(frame: CGRectMake(0, 0, 0, 0))
+            
+            if autoAddToParent {
+                parent.addSubview(swipeArea)
+                parent.bringSubviewToFront(swipeArea)
+            }
+            
+            if handlePan {
+                var gesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+                swipeArea.addGestureRecognizer(gesture)
+            }
+            
+            var tap = UITapGestureRecognizer(target: self, action: "respondToTap:")
+            swipeArea.addGestureRecognizer(tap)
+            
+            if let setVisible = setVisible {
+                setVisible(isVisible: false)
+            }
     }
     
     public required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-//    private func updateSidebarFrames(offset: CGFloat) {
-//        
-//    }
+    //    private func updateSidebarFrames(offset: CGFloat) {
+    //
+    //    }
     private func onVisibilityChanged(value: Bool) {
         if value != isOpen {
             isOpen = value
@@ -86,27 +88,33 @@ public class EdgeReveal : UIButton {
         }
     }
     
+    
     public func animateSidebar(open: Bool) {
+        if animating {
+            return
+        }
+        
+        animating = true
         
         if open {
             onVisibilityChanged(true)
             
             UIView.animateWithDuration(animationTime,
-            delay: 0,
-            options: animationEasing,
-            {
-                //self.updateSidebarFrames(self.maxReveal)
-                
-                let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
-                
-                self.swipeArea.frame = CGRectMake(0, 0,viewVisibleWidth, Globals.screenSize.height)
-                
-                if let onUpdate = self.onUpdate {
-                    onUpdate(offset: self.maxReveal)
-                }
-            },
-            completion: { (_) -> Void in
-            
+                delay: 0,
+                options: animationEasing,
+                {
+                    //self.updateSidebarFrames(self.maxReveal)
+                    
+                    let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
+                    
+                    self.swipeArea.frame = CGRectMake(0, 0,viewVisibleWidth, Globals.screenSize.height)
+                    
+                    if let onUpdate = self.onUpdate {
+                        onUpdate(offset: self.maxReveal)
+                    }
+                },
+                completion: { (_) -> Void in
+                    self.animating = false
             })
         } else {
             UIView.animateWithDuration(animationTime,
@@ -120,29 +128,31 @@ public class EdgeReveal : UIButton {
                 },
                 completion: { (_) -> () in
                     self.onVisibilityChanged(false)
-                })
-            }
+                    self.animating = false
+            })
+        }
+    }
+    
+    func respondToTap(gesture: UITapGestureRecognizer) {
+        if animating {
+            return
         }
         
-        func respondToTap(gesture: UITapGestureRecognizer) {
-            if let onTap = self.onTap {
-                onTap(isOpen: isOpen)
-            }
-            
-            animateSidebar(false)
+        if let onTap = self.onTap {
+            onTap(isOpen: isOpen)
         }
         
-    var wasOpen = false
-    func respondToPanGesture(gesture: UIPanGestureRecognizer) {        switch gesture.state {
-    case .Began:
-        wasOpen = isOpen
-//            if wasOpen {
-//                animateSidebar(false)
-////                gesture.
-//                return
-//            } else {
+        animateSidebar(false)
+    }
+    
+    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        if animating {
+            return
+        }
+        switch gesture.state {
+        case .Began:
+            wasOpen = isOpen
             onVisibilityChanged(true)
-//            }
         default:
             break
         }
@@ -166,7 +176,7 @@ public class EdgeReveal : UIButton {
         
         switch gesture.state {
         case .Ended:
-//            println("ended")maxYDistance
+            //            println("ended")maxYDistance
             let t = gesture.translationInView(self.superview)
             let xDelta = -t.x
             if abs(t.y) < maxYTravel {

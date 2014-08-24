@@ -40,6 +40,7 @@ class RootContainer: CustomUIViewController {
         view.addSubview(swipeFromLeftArea)
         
         view.bringSubviewToFront(sidebarButton)
+        view.bringSubviewToFront(backgroundImage)
         view.bringSubviewToFront(definitionOverlay)
     }
     
