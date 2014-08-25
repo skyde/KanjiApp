@@ -12,48 +12,21 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-//    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-//        <#code#>
-//    }
-    
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        //println("handle open url \(url)")
-        
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-//        NSFileManager *filemgr = [NSFileManager defaultManager];
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString *documentsDirectory = [paths objectAtIndex:0];
-//        NSString* inboxPath = [documentsDirectory stringByAppendingPathComponent:@"Inbox"];
-//        NSArray *dirFiles = [filemgr contentsOfDirectoryAtPath:inboxPath error:nil];
-        
-//        let filemgr = NSFileManager.defaultManager()
-//        
-//        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
-//        
-//        var documentsDirectory = paths.objectAtIndex(0) as NSString
-//        var inboxPath = documentsDirectory.stringByAppendingPathComponent("Inbox")
-//        var dirFiles = filemgr.contentsOfDirectoryAtPath(inboxPath, error: nil) as NSArray
-        
-//        for file in dirFiles {
-//            
-//            println(file)
-//        }
-//        
-//        println(url)
-//        println("last path = \(url.lastPathComponent)")
-//        println(sourceApplication)
-//        
-//        println(url.relativeString)
+
         var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
+        alert.addButtonWithTitle("Import")
         alert.show()
+        
+//        var a = UIAlertController(title: <#String!#>, message: <#String!#>, preferredStyle: UIAlertControllerStyle.)
         
         var error: NSErrorPointer = nil
         var contents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
         
-//        println(contents)
         importUserList(contents)
         
         return true

@@ -55,7 +55,7 @@ class Card: NSManagedObject {
             }
         case .Forgot:
 //            println("Forgot")
-            interval = 0
+            interval = 1
             if adjustInterval {
                 answersForgot = answersForgot + 1
             }

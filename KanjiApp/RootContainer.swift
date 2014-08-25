@@ -278,8 +278,6 @@ class RootContainer: CustomUIViewController {
         }
         
         switch Globals.notificationAddWordsFromList.value {
-        case .AllWords:
-            break;
         case .Jlpt4:
             cards = managedObjectContext.fetchCardsJLPT4Suspended()
         case .Jlpt3:
