@@ -127,7 +127,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
                         self.updateDefinitionLabel(card)
                     }
                 }
-        })
+            })
         
 //        leftEdgeReveal = EdgeReveal(
 //            parent: view,

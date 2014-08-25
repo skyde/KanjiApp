@@ -232,7 +232,7 @@ public class EdgeReveal : UIButton {
                     
                     let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
                     
-                    self.swipeArea.frame = CGRectMake(0, 0,viewVisibleWidth, Globals.screenSize.height)
+                    self.swipeArea.frame = self.getSwipeAreaFrame(true)
                     
                     if let onUpdate = self.onUpdate {
                         onUpdate(offset: self.maxReveal)
@@ -247,7 +247,7 @@ public class EdgeReveal : UIButton {
                 delay: 0,
                 options: animationEasing,
                 {
-                    self.swipeArea.frame = CGRectMake(Globals.screenSize.width - self.swipeAreaWidth, 0, self.swipeAreaWidth, Globals.screenSize.height)
+                    self.swipeArea.frame = self.getSwipeAreaFrame(false)
                     if let onUpdate = self.onUpdate {
                         onUpdate(offset: 0)
                     }
@@ -301,7 +301,11 @@ public class EdgeReveal : UIButton {
             onUpdate(offset: xOffset)
         }
         
-        var x = Globals.screenSize.width - xOffset
+        var x = xOffset
+        
+        if revealType == .Right {
+            x = Globals.screenSize.width - x
+        }
         
         swipeArea.frame.origin.x = x - swipeArea.frame.width
         
