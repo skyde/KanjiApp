@@ -95,11 +95,12 @@ public class EdgeReveal : UIButton {
     let transitionThreshold: CGFloat
     let maxYTravel: CGFloat
     var swipeAreaWidth: CGFloat
-    
     var swipeArea: UIButton!
+    var maxRevealInteractInset: CGFloat = 0
     
     var onUpdate: ((offset: CGFloat) -> ())?
     var setVisible: ((open: Bool, completed: Bool) -> ())?
+//    var onAnimationCompleted: ((open: Bool) -> ())?
     var onTap: ((open: Bool) -> ())?
     
     var animationState: AnimationState = AnimationState.Closed
@@ -154,13 +155,13 @@ public class EdgeReveal : UIButton {
         switch revealType {
         case .Left:
             if isOpen {
-                return CGRectMake(maxReveal, 0, Globals.screenSize.width - maxReveal, Globals.screenSize.height)
+                return CGRectMake(maxReveal - maxRevealInteractInset, 0, Globals.screenSize.width - maxReveal + maxRevealInteractInset, Globals.screenSize.height)
             } else { 
                 return CGRectMake(0, 0, swipeAreaWidth, Globals.screenSize.height)
             }
         case .Right:
             if isOpen {
-                return CGRectMake(0, 0, Globals.screenSize.width - self.maxReveal, Globals.screenSize.height)
+                return CGRectMake(0, 0, Globals.screenSize.width - self.maxReveal + maxRevealInteractInset, Globals.screenSize.height)
             } else {
                 return CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height)
             }
@@ -176,7 +177,6 @@ public class EdgeReveal : UIButton {
             setVisible(open: value, completed: completed)
         }
     }
-    
     
     public func animateSelf(isOpen: Bool) {
         if animationState.IsAnimating() {
@@ -207,6 +207,9 @@ public class EdgeReveal : UIButton {
                 },
                 completion: { (_) -> Void in
                     self.animationState = .Open
+//                    if let callback = self.onAnimationCompleted {
+//                        callback(open: true)
+//                    }
             })
         } else {
             if lastAnimationState == .Open {
@@ -228,6 +231,9 @@ public class EdgeReveal : UIButton {
                 completion: { (_) -> () in
                     self.setVisibility(false, completed: true)
                     self.animationState = .Closed
+//                    if let callback = self.onAnimationCompleted {
+//                        callback(open: false)
+//                    }
             })
         }
     }

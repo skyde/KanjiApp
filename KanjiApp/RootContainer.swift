@@ -48,61 +48,81 @@ class RootContainer: CustomUIViewController {
     
         definitionEdgeReveal = EdgeReveal(
             parent: view,
-            revealType: .Left,
+            revealType: .Right,
             maxOffset: Globals.screenSize.width,
-            swipeAreaWidth: 50,
+//            swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
+                self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 if visible {
+//                    self.view.bringSubviewToFront(self.definitionEdgeReveal)
                     self.backgroundImage.image = self.caculateSelfBlurImage()
                     DefinitionPopover.instance.updateState()
                 }
                 
 //                println(visible)
-                self.backgroundImage.visible = visible
+//                self.backgroundImage.visible = visible
                 self.definitionOverlay.visible = visible
         })
-        definitionEdgeReveal.animationState = .Open
-        
-        
-        
-//        self.definitionOverlay.frame.origin.x = 0
-//        self.backgroundImage.frame.origin.x = 0
-//        self.mainView.frame.origin.x = 0
-        
-//        self.swipeFromLeftArea.frame = CGRectMake(
-//            0,
-//            self.swipeFromLeftArea.frame.origin.y,
-//            self.swipeFromLeftAreaBaseWidth,
-//            self.swipeFromLeftArea.frame.height)
-//    },
-//    completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
-    
-    
-    
-    
-    
-    
-    
-//        swipeFromLeftArea = UIButton(frame: CGRectMake(0, 0, sidebarButtonBaseX, Globals.screenSize.height))
-//        swipeFromLeftArea.backgroundColor = UIColor.redColor()
-//        view.addSubview(swipeFromLeftArea)
+        definitionEdgeReveal.maxRevealInteractInset = definitionEdgeReveal.swipeAreaWidth
+//        definitionEdgeReveal.animationState = .Open
         
         view.bringSubviewToFront(sidebarButton)
         view.bringSubviewToFront(backgroundImage)
         view.bringSubviewToFront(definitionOverlay)
+        view.bringSubviewToFront(definitionEdgeReveal)
         
-//        leftEdgeReveal = EdgeReveal(
-//            parent: view,
-//            revealType: .Left,
-//            onUpdate: {(offset: CGFloat) -> () in
-//                self.outputText.frame.origin.x = offset
-//            },
-//            setVisible: {(isVisible: Bool, completed: Bool) -> () in
-//        })
-
+    }
+    
+    func onNotificationShowDefinition() {
+        var animationSpeed: Double = 4
+        
+        var open = Globals.notificationShowDefinition.value != ""
+        
+        if !open {
+            Globals.notificationShowDefinition.value = "animating"
+        }
+        
+        definitionEdgeReveal.animateSelf(open)
+//        if Globals.notificationShowDefinition.value == "" {
+//            Globals.notificationShowDefinition.value = "animating"
+//            
+//            self.mainView.hidden = false
+//            
+//            UIView.animateWithDuration(popoverAnimationSpeed,
+//                delay: NSTimeInterval(),
+//                options: blurEasing,
+//                animations: {
+//                    self.definitionOverlay.frame.origin.x = Globals.screenSize.width
+//                    self.backgroundImage.alpha = 0
+//                },
+//                completion: {
+//                    (_) -> () in
+//                    self.definitionOverlay.hidden = true
+//                    Globals.notificationShowDefinition.value = ""
+//                    self.backgroundImage.hidden = true
+//            })
+//        } else {
+//            backgroundImage.hidden = false
+//            //            caculateBlur()
+//            definitionOverlay.hidden = false
+//            backgroundImage.alpha = 0
+//            
+//            self.definitionOverlay.frame.origin.x = Globals.screenSize.width
+//            UIView.animateWithDuration(popoverAnimationSpeed,
+//                delay: 0,
+//                options: blurEasing,
+//                animations: {
+//                    self.definitionOverlay.frame.origin.x = 0
+//                    self.backgroundImage.alpha = 1
+//                },
+//                completion: {
+//                    (_) -> () in
+//                    self.mainView.hidden = true
+//            })
+//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -180,48 +200,6 @@ class RootContainer: CustomUIViewController {
         definitionOverlay.hidden = true
         sidebar.hidden = true
         backgroundImage.hidden = true
-    }
-    
-    func onNotificationShowDefinition() {
-        var animationSpeed: Double = 4
-        
-        if Globals.notificationShowDefinition.value == "" {
-            Globals.notificationShowDefinition.value = "animating"
-            
-            self.mainView.hidden = false
-            
-            UIView.animateWithDuration(popoverAnimationSpeed,
-                delay: NSTimeInterval(),
-                options: blurEasing,
-                animations: {
-                    self.definitionOverlay.frame.origin.x = Globals.screenSize.width
-                    self.backgroundImage.alpha = 0
-                },
-                completion: {
-                (_) -> () in
-                    self.definitionOverlay.hidden = true
-                    Globals.notificationShowDefinition.value = ""
-                    self.backgroundImage.hidden = true
-                })
-        } else {
-            backgroundImage.hidden = false
-//            caculateBlur()
-            definitionOverlay.hidden = false
-            backgroundImage.alpha = 0
-            
-            self.definitionOverlay.frame.origin.x = Globals.screenSize.width
-            UIView.animateWithDuration(popoverAnimationSpeed,
-                delay: 0,
-                options: blurEasing,
-                animations: {
-                    self.definitionOverlay.frame.origin.x = 0
-                    self.backgroundImage.alpha = 1
-                },
-                completion: {
-                    (_) -> () in
-                    self.mainView.hidden = true
-                })
-        }
     }
     
     override func addNotifications() {
