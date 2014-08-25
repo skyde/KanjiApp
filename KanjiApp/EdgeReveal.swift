@@ -115,7 +115,7 @@ public class EdgeReveal : UIButton {
     var swipeArea: UIButton!
     
     var onUpdate: ((offset: CGFloat) -> ())?
-    var setVisible: ((isOpen: Bool) -> ())?
+    var setVisible: ((isOpen: Bool, completed: Bool) -> ())?
     var onTap: ((isOpen: Bool) -> ())?
     
     var animationState: AnimationState = AnimationState.Closed
@@ -133,7 +133,7 @@ public class EdgeReveal : UIButton {
         maxYTravel: CGFloat = CGFloat.max,
         autoHandlePanEvent: Bool = true,
         onUpdate: ((offset: CGFloat) -> ())?,
-        setVisible: ((isVisible: Bool) -> ())?) {
+        setVisible: ((isVisible: Bool, completed: Bool) -> ())?) {
             
         self.revealType = revealType
         self.maxReveal = maxOffset
@@ -163,7 +163,7 @@ public class EdgeReveal : UIButton {
         swipeArea.addGestureRecognizer(tap)
             
         if let setVisible = setVisible {
-            setVisible(isVisible: false)
+            setVisible(isVisible: false, completed: false)
         }
     }
     
@@ -188,12 +188,12 @@ public class EdgeReveal : UIButton {
         fatalError("NSCoding not supported")
     }
     
-    private func setVisibility(value: Bool) {
+    private func setVisibility(value: Bool, completed: Bool) {
 //        if AnimationState.GetFinished(value) != animationState {
 //            animationState = AnimationState.GetFinished(value)
         
         if let setVisible = self.setVisible {
-            setVisible(isOpen: value)
+            setVisible(isOpen: value, completed: completed)
         }
 //        }
     }
@@ -210,7 +210,7 @@ public class EdgeReveal : UIButton {
         animationState = AnimationState.GetAnimating(isOpen)
         
         if isOpen {
-            setVisibility(true)
+            setVisibility(true, completed: false)
             
             if animationState == .Closed {
                 
@@ -246,7 +246,7 @@ public class EdgeReveal : UIButton {
                     }
                 },
                 completion: { (_) -> () in
-                    self.setVisibility(false)
+                    self.setVisibility(false, completed: true)
                     self.animationState = .Closed
             })
         }
@@ -277,7 +277,7 @@ public class EdgeReveal : UIButton {
         switch gesture.state {
         case .Began:
             if animationState == .Closed {
-                setVisibility(true)
+                setVisibility(true, completed: false)
                 animationState = .DraggingOpen
             } else {
                 animationState = .DraggingClosed

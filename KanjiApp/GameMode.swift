@@ -187,7 +187,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 self.kanjiView.frame.origin.x = -offset
                 self.cardPropertiesSidebar.animate(offset)
             },
-            setVisible: {(isVisible: Bool) -> () in
+            setVisible: {(isVisible: Bool, completed: Bool) -> () in
                 if let card = self.dueCard {
                     self.cardPropertiesSidebar.updateContents(
                         card,

@@ -114,7 +114,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = offset
             },
-            setVisible: {(isVisible: Bool) -> () in
+            setVisible: {(isVisible: Bool, completed: Bool) -> () in
         })
         
         rightEdgeReveal = EdgeReveal(
@@ -128,7 +128,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
                 self.propertiesSidebar.animate(offset)
             },
-            setVisible: {(isVisible: Bool) -> () in
+            setVisible: {(isVisible: Bool, completed: Bool) -> () in
                 self.addRemoveSidebar.hidden = !isVisible
                 if !isVisible {
                     if let card = self.viewCard {
