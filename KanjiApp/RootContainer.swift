@@ -57,13 +57,14 @@ class RootContainer: CustomUIViewController {
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 if visible {
                     self.backgroundImage.image = self.caculateSelfBlurImage()
+                    DefinitionPopover.instance.updateState()
                 }
                 
-                println(visible)
-                
+//                println(visible)
                 self.backgroundImage.visible = visible
                 self.definitionOverlay.visible = visible
         })
+        definitionEdgeReveal.animationState = .Open
         
         
         

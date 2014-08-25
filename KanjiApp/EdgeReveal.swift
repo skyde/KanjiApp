@@ -189,6 +189,8 @@ public class EdgeReveal : UIButton {
         let lastAnimationState = animationState
         animationState = AnimationState.GetAnimating(isOpen)
         
+        let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
+        
         if isOpen {
             if lastAnimationState == .Closed {
                 setVisibility(true, completed: false)
@@ -198,10 +200,7 @@ public class EdgeReveal : UIButton {
                 delay: 0,
                 options: animationEasing,
                 {
-                    let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
-                    
                     self.swipeArea.frame = self.getSwipeAreaFrame(true)
-                    
                     if let onUpdate = self.onUpdate {
                         onUpdate(offset: self.maxReveal)
                     }
@@ -210,6 +209,13 @@ public class EdgeReveal : UIButton {
                     self.animationState = .Open
             })
         } else {
+            if lastAnimationState == .Open {
+                self.swipeArea.frame = self.getSwipeAreaFrame(true)
+                if let onUpdate = self.onUpdate {
+                    onUpdate(offset: self.maxReveal)
+                }
+            }
+            
             UIView.animateWithDuration(animationTime,
                 delay: 0,
                 options: animationEasing,

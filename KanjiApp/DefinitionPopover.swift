@@ -53,7 +53,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //        rightEdgeReveal.animateSelf(false)
 //    }
 //    
-    func updateText() {
+    func updateState() {
         if let card = viewCard {
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
             outputText.attributedText = card.definitionAttributedText
@@ -77,7 +77,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateText()
+//        updateState()
         setupEdgeReveal()
         setupGestures()
     }
@@ -87,14 +87,14 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
         
-        Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
+//        Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
         
-        Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
+//        Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
     }
     
-    func onSidebarInteract() {
-        rightEdgeReveal.animateSelf(false)
-    }
+//    func onSidebarInteract() {
+//        rightEdgeReveal.animateSelf(false)
+//    }
     
     func onEditCard() {
         if !view.hidden {
@@ -150,9 +150,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    func onNotificationShowDefinition() {
-        updateText()
-    }
+//    func onNotificationShowDefinition() {
+//        updateText()
+//    }
     
     func respondToPanGesture(gesture: UIPanGestureRecognizer) {
         rightEdgeReveal.respondToPanGesture(gesture)
