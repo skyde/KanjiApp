@@ -215,7 +215,6 @@ public class EdgeReveal : UIButton {
             if animationState == .Closed {
                 
                 if let onUpdate = self.onUpdate {
-                    println("update")
                     onUpdate(offset: 0)
                 }
             }
@@ -294,7 +293,7 @@ public class EdgeReveal : UIButton {
         xOffset = max(0, xOffset)
         xOffset = min(xOffset, maxReveal)
         
-        println("\(revealType == .Left) \(xOffset)")
+//        println("\(revealType == .Left) \(xOffset)")
         
         if let onUpdate = onUpdate {
             onUpdate(offset: xOffset)
@@ -353,5 +352,11 @@ public class EdgeReveal : UIButton {
         }
         
         animateSelf(false)
+    }
+    
+    public func toggleOpenClose() {
+        if animationState.IsOpenOrClosed() {
+            animateSelf(!animationState.AnyOpen())
+        }
     }
 }

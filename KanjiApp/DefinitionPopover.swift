@@ -12,8 +12,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var studyingButton: UIButton!
-    var rightEdgeReveal: EdgeReveal! = nil
-    var leftEdgeReveal: EdgeReveal! = nil
+    var rightEdgeReveal: EdgeReveal! = nil    
     var propertiesSidebar: CardPropertiesSidebar {
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
@@ -41,9 +40,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func studyingPress(sender: AnyObject) {
-        if rightEdgeReveal.animationState.IsOpenOrClosed() {
-            rightEdgeReveal.animateSelf(!rightEdgeReveal.animationState.AnyOpen())
-        }
+        rightEdgeReveal.toggleOpenClose()
     }
     
     @IBAction func backPress(sender: AnyObject) {
@@ -72,7 +69,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     private func updateDefinitionLabel(card: Card) {
         studyingButton.setTitle(card.listName(), forState: .Normal)
         studyingButton.setTitleColor(card.listColor(), forState: .Normal)
-        //        addRemoveButton.setButtonType(card.suspended.boolValue)
+//        addRemoveButton.setButtonType(card.suspended.boolValue)
 //        definitionLabel.font = UIFont(name: Globals.JapaneseFont, size: 28)
 //        definitionLabel.text = card.kanji
 //        definitionLabel.textColor = card.pitchAccentColor()//.listColor()
@@ -108,15 +105,6 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     private func setupEdgeReveal() {
-        leftEdgeReveal = EdgeReveal(
-            parent: view,
-            revealType: .Left,
-            onUpdate: {(offset: CGFloat) -> () in
-                self.outputText.frame.origin.x = offset
-            },
-            setVisible: {(isVisible: Bool, completed: Bool) -> () in
-        })
-        
         rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
