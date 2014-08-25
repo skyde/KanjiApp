@@ -9,20 +9,17 @@ class RootContainer: CustomUIViewController {
     class var instance: RootContainer {
         get { return rootContainerInstance! }
     }
-//    var swipeFromLeftArea: UIButton! = nil
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
     @IBOutlet weak var definitionOverlay: UIView!
     var sidebarEdgeReveal: EdgeReveal!
-//    var popupEdgeReveal: EdgeReveal! = nil
-//    @IBOutlet weak var blurImage: UIImageView!
+    var definitionEdgeReveal: EdgeReveal!
     
     var sidebarButtonBaseX: CGFloat = 13
-//    var swipeFromLeftAreaBaseWidth: CGFloat = 0
     var statusBarHidden = false
-    let popoverAnimationSpeed = 0.17 //.22
+    let popoverAnimationSpeed = 0.17
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
     
     override var isGameView: Bool {
@@ -37,19 +34,36 @@ class RootContainer: CustomUIViewController {
         rootContainerInstance = self
         
         sidebarEdgeReveal = EdgeReveal(
-                parent: view,
-                revealType: .Left,
-                maxOffset: sidebar.frame.width,
-                onUpdate: {(offset: CGFloat) -> () in
-                    self.mainView.frame.origin.x = offset
-                    self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
-                },
-                setVisible: {(isVisible: Bool, completed: Bool) -> () in
-                    self.sidebar.visible = isVisible
-                    
-                    Globals.notificationSidebarInteract.postNotification(isVisible)
-            })
-        
+            parent: view,
+            revealType: .Left,
+            maxOffset: sidebar.frame.width,
+            onUpdate: {(offset: CGFloat) -> () in
+                self.mainView.frame.origin.x = offset
+                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
+            },
+            setVisible: {(visible: Bool, completed: Bool) -> () in
+                self.sidebar.visible = visible
+                Globals.notificationSidebarInteract.postNotification(visible)
+        })
+    
+        definitionEdgeReveal = EdgeReveal(
+            parent: view,
+            revealType: .Left,
+            maxOffset: Globals.screenSize.width,
+            swipeAreaWidth: 50,
+            onUpdate: {(offset: CGFloat) -> () in
+                self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
+            },
+            setVisible: {(visible: Bool, completed: Bool) -> () in
+                if visible {
+                    self.backgroundImage.image = self.caculateSelfBlurImage()
+                }
+                
+                println(visible)
+                
+                self.backgroundImage.visible = visible
+                self.definitionOverlay.visible = visible
+        })
         
         
         
@@ -190,7 +204,7 @@ class RootContainer: CustomUIViewController {
                 })
         } else {
             backgroundImage.hidden = false
-            caculateBlur()
+//            caculateBlur()
             definitionOverlay.hidden = false
             backgroundImage.alpha = 0
             
@@ -217,7 +231,7 @@ class RootContainer: CustomUIViewController {
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
     }
     
-    func caculateBlur() {
+    func caculateSelfBlurImage() -> UIImage {
         let scale: CGFloat = 0.125
         var inputRadius:CGFloat = 20
         
@@ -260,8 +274,10 @@ class RootContainer: CustomUIViewController {
         let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: sizeRect)
         let filteredImage = UIImage(CGImage: filteredImageRef)
         
-        backgroundImage.image = filteredImage
+//        backgroundImage.image = filteredImage
         UIGraphicsEndImageContext()
+        
+        return filteredImage
     }
     
     func onAddWordsFromList() {

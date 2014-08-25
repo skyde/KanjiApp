@@ -84,22 +84,6 @@ public enum AnimationState {
             return AnimationState.DraggingClosed
         }
     }
-    
-//    public mutating func SetFinished(isOpen: Bool) {
-//        if isOpen {
-//            self = AnimationState.Open
-//        } else {
-//            self = AnimationState.Closed
-//        }
-//    }
-//    
-//    public mutating func SetAnimating(isOpen: Bool) {
-//        if isOpen {
-//            self = AnimationState.Opening
-//        } else {
-//            self = AnimationState.Closing
-//        }
-//    }
 }
 
 public class EdgeReveal : UIButton {
@@ -115,13 +99,10 @@ public class EdgeReveal : UIButton {
     var swipeArea: UIButton!
     
     var onUpdate: ((offset: CGFloat) -> ())?
-    var setVisible: ((isOpen: Bool, completed: Bool) -> ())?
-    var onTap: ((isOpen: Bool) -> ())?
+    var setVisible: ((open: Bool, completed: Bool) -> ())?
+    var onTap: ((open: Bool) -> ())?
     
     var animationState: AnimationState = AnimationState.Closed
-//    var wasOpen = false
-//    var isOpen: Bool = false
-//    var animating = false
     
     public init(
         parent: UIView,
@@ -134,7 +115,7 @@ public class EdgeReveal : UIButton {
         autoHandlePanEvent: Bool = true,
         animationTime: Double = 0.17,
         onUpdate: ((offset: CGFloat) -> ())?,
-        setVisible: ((isVisible: Bool, completed: Bool) -> ())?) {
+        setVisible: ((visible: Bool, completed: Bool) -> ())?) {
             
         self.revealType = revealType
         self.maxReveal = maxOffset
@@ -165,7 +146,7 @@ public class EdgeReveal : UIButton {
         swipeArea.addGestureRecognizer(tap)
             
         if let setVisible = setVisible {
-            setVisible(isVisible: false, completed: false)
+            setVisible(visible: false, completed: false)
         }
     }
     
@@ -191,13 +172,9 @@ public class EdgeReveal : UIButton {
     }
     
     private func setVisibility(value: Bool, completed: Bool) {
-//        if AnimationState.GetFinished(value) != animationState {
-//            animationState = AnimationState.GetFinished(value)
-        
         if let setVisible = self.setVisible {
-            setVisible(isOpen: value, completed: completed)
+            setVisible(open: value, completed: completed)
         }
-//        }
     }
     
     
@@ -209,16 +186,12 @@ public class EdgeReveal : UIButton {
             return
         }
         
+        let lastAnimationState = animationState
         animationState = AnimationState.GetAnimating(isOpen)
         
         if isOpen {
-            setVisibility(true, completed: false)
-            
-            if animationState == .Closed {
-                
-                if let onUpdate = self.onUpdate {
-                    onUpdate(offset: 0)
-                }
+            if lastAnimationState == .Closed {
+                setVisibility(true, completed: false)
             }
             
             UIView.animateWithDuration(animationTime,
@@ -259,7 +232,7 @@ public class EdgeReveal : UIButton {
         }
         
         if let onTap = self.onTap {
-            onTap(isOpen: animationState.AnyOpen())
+            onTap(open: animationState.AnyOpen())
         }
         
         animateSelf(false)
@@ -294,8 +267,6 @@ public class EdgeReveal : UIButton {
         }
         xOffset = max(0, xOffset)
         xOffset = min(xOffset, maxReveal)
-        
-//        println("\(revealType == .Left) \(xOffset)")
         
         if let onUpdate = onUpdate {
             onUpdate(offset: xOffset)

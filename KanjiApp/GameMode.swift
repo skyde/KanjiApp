@@ -187,7 +187,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                 self.kanjiView.frame.origin.x = -offset
                 self.cardPropertiesSidebar.animate(offset)
             },
-            setVisible: {(isVisible: Bool, completed: Bool) -> () in
+            setVisible: {(visible: Bool, completed: Bool) -> () in
                 if let card = self.dueCard {
                     self.cardPropertiesSidebar.updateContents(
                         card,
@@ -197,17 +197,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
                         self.processUndo = true
                     })
                 }
-                self.addRemoveSidebar.hidden = !isVisible
+                self.addRemoveSidebar.hidden = !visible
                 
-                if !isVisible && self.processUndo {
+                if !visible && self.processUndo {
                     self.processUndo = false
                     self.backTextCache = nil
                     self.onUndo()
                 }
         })
         
-        edgeReveal.onTap = {(isOpen: Bool) -> () in
-            if !isOpen && !self.isFront {
+        edgeReveal.onTap = {(open: Bool) -> () in
+            if !open && !self.isFront {
                 self.answerCard(.Hard)
             } else {
                 self.advanceCard()

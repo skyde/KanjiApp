@@ -116,9 +116,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
                 self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
                 self.propertiesSidebar.animate(offset)
             },
-            setVisible: {(isVisible: Bool, completed: Bool) -> () in
-                self.addRemoveSidebar.hidden = !isVisible
-                if !isVisible {
+            setVisible: {(visible: Bool, completed: Bool) -> () in
+                self.addRemoveSidebar.hidden = !visible
+                if !visible {
                     if let card = self.viewCard {
                         self.propertiesSidebar.updateContents(card, showUndoButton: false)
                         self.updateDefinitionLabel(card)
