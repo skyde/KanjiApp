@@ -140,7 +140,6 @@ public class EdgeReveal : UIButton {
         self.maxYTravel = maxYTravel
         
         swipeArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height))
-        //        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
         
         self.onUpdate = onUpdate
         self.setVisible = setVisible
@@ -161,7 +160,7 @@ public class EdgeReveal : UIButton {
         
         var tap = UITapGestureRecognizer(target: self, action: "respondToTap:")
         swipeArea.addGestureRecognizer(tap)
-        
+            
         if let setVisible = setVisible {
             setVisible(isVisible: false)
         }
@@ -206,12 +205,24 @@ public class EdgeReveal : UIButton {
         if animationState.IsAnimating() {
             return
         }
+        
+        if animationState.IsOpenOrClosed() && animationState.AnyOpen() == isOpen {
+            return
+        }
 //        println("animate self \(isOpen)")
         
         animationState = AnimationState.GetAnimating(isOpen)
         
         if isOpen {
             setVisibility(true)
+            
+            if animationState == .Closed {
+                
+                if let onUpdate = self.onUpdate {
+                    println("update")
+                    onUpdate(offset: 0)
+                }
+            }
             
             UIView.animateWithDuration(animationTime,
                 delay: 0,

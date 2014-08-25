@@ -50,6 +50,12 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         Globals.notificationShowDefinition.postNotification("")
     }
     
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        rightEdgeReveal.animateSelf(false)
+//    }
+//    
     func updateText() {
         if let card = viewCard {
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))

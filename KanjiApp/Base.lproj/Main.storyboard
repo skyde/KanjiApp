@@ -278,7 +278,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-Qd-7TJ">
-                                <rect key="frame" x="398" y="48" width="202" height="552"/>
+                                <rect key="frame" x="600" y="48" width="202" height="552"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="202" id="hgG-No-Obn"/>
                                 </constraints>
@@ -351,7 +351,7 @@
                             <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" id="amv-uz-xCa"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="dSY-yK-N5F"/>
                             <constraint firstAttribute="bottom" secondItem="9C5-Qd-7TJ" secondAttribute="bottom" id="efb-tb-nfz"/>
-                            <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" id="faS-qF-ii9"/>
+                            <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" constant="-202" id="faS-qF-ii9"/>
                             <constraint firstItem="PyI-2i-JnN" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="kwj-g7-phM"/>
                             <constraint firstAttribute="trailing" secondItem="PyI-2i-JnN" secondAttribute="trailing" id="u0g-I1-HNl"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="PyI-2i-JnN" secondAttribute="bottom" id="xpV-VE-Zly"/>
