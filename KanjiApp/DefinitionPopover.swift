@@ -108,6 +108,15 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     private func setupEdgeReveal() {
+        leftEdgeReveal = EdgeReveal(
+            parent: view,
+            revealType: .Left,
+            onUpdate: {(offset: CGFloat) -> () in
+                self.outputText.frame.origin.x = offset
+            },
+            setVisible: {(isVisible: Bool) -> () in
+        })
+        
         rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
@@ -128,15 +137,6 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
                     }
                 }
             })
-        
-//        leftEdgeReveal = EdgeReveal(
-//            parent: view,
-//            revealType: .Left,
-//            onUpdate: {(offset: CGFloat) -> () in
-//                self.outputText.frame.origin.x = offset
-//            },
-//            setVisible: {(isVisible: Bool) -> () in
-//        })
     }
 
 //    @IBAction func onAddRemoveButtonTouch(sender: AnyObject) {
@@ -152,10 +152,10 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
-        self.view.addGestureRecognizer(tapGesture)
+        self.outputText.addGestureRecognizer(tapGesture)
         var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
         panGesture.delegate = self
-        self.view.addGestureRecognizer(panGesture)
+        self.outputText.addGestureRecognizer(panGesture)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {

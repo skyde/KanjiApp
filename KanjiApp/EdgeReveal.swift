@@ -112,7 +112,7 @@ public class EdgeReveal : UIButton {
     let maxYTravel: CGFloat
     var swipeAreaWidth: CGFloat
     
-    var swipeArea: UIButton
+    var swipeArea: UIButton!
     
     var onUpdate: ((offset: CGFloat) -> ())?
     var setVisible: ((isOpen: Bool) -> ())?
@@ -138,16 +138,17 @@ public class EdgeReveal : UIButton {
         self.revealType = revealType
         self.maxReveal = maxOffset
         self.maxYTravel = maxYTravel
-        
-        swipeArea = UIButton(frame: CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height))
-        
         self.onUpdate = onUpdate
         self.setVisible = setVisible
         self.swipeAreaWidth = swipeAreaWidth
         self.transitionThreshold = transitionThreshold
-        
+            
         super.init(frame: CGRectMake(0, 0, 0, 0))
+            
+        swipeArea = UIButton(frame: getSwipeAreaFrame(false))
         
+        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
+            
         if autoAddToParent {
             parent.addSubview(swipeArea)
             parent.bringSubviewToFront(swipeArea)
@@ -187,9 +188,6 @@ public class EdgeReveal : UIButton {
         fatalError("NSCoding not supported")
     }
     
-    //    private func updateSidebarFrames(offset: CGFloat) {
-    //
-    //    }
     private func setVisibility(value: Bool) {
 //        if AnimationState.GetFinished(value) != animationState {
 //            animationState = AnimationState.GetFinished(value)
@@ -205,11 +203,9 @@ public class EdgeReveal : UIButton {
         if animationState.IsAnimating() {
             return
         }
-        
         if animationState.IsOpenOrClosed() && animationState.AnyOpen() == isOpen {
             return
         }
-//        println("animate self \(isOpen)")
         
         animationState = AnimationState.GetAnimating(isOpen)
         
@@ -228,8 +224,6 @@ public class EdgeReveal : UIButton {
                 delay: 0,
                 options: animationEasing,
                 {
-                    //self.updateSidebarFrames(self.maxReveal)
-                    
                     let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
                     
                     self.swipeArea.frame = self.getSwipeAreaFrame(true)
@@ -240,7 +234,6 @@ public class EdgeReveal : UIButton {
                 },
                 completion: { (_) -> Void in
                     self.animationState = .Open
-                    //self.animating = false
             })
         } else {
             UIView.animateWithDuration(animationTime,
@@ -276,6 +269,11 @@ public class EdgeReveal : UIButton {
             return
         }
         
+        var xSign: CGFloat = 1
+        if revealType == .Right {
+            xSign = -1
+        }
+        
         switch gesture.state {
         case .Began:
             if animationState == .Closed {
@@ -284,18 +282,19 @@ public class EdgeReveal : UIButton {
             } else {
                 animationState = .DraggingClosed
             }
-//            animationState = AnimationState.GetAnimating(!animationState.IsAnyOpen())
-//            println(animationState)
         default:
             break
         }
         
-        var xOffset = -gesture.translationInView(self.superview).x//Globals.screenSize.width - gesture.locationInView(self.superview).x
+        var xOffset = gesture.translationInView(self.superview).x * xSign
+        
         if !animationState.AnyOpen() {
             xOffset += maxReveal
         }
         xOffset = max(0, xOffset)
         xOffset = min(xOffset, maxReveal)
+        
+        println("\(revealType == .Left) \(xOffset)")
         
         if let onUpdate = onUpdate {
             onUpdate(offset: xOffset)
@@ -305,9 +304,11 @@ public class EdgeReveal : UIButton {
         
         if revealType == .Right {
             x = Globals.screenSize.width - x
-        }
         
-        swipeArea.frame.origin.x = x - swipeArea.frame.width
+            swipeArea.frame.origin.x = x - swipeArea.frame.width
+        } else {
+            swipeArea.frame.origin.x = x
+        }
         
         switch gesture.state {
         case .Ended:
