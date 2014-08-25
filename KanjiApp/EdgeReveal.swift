@@ -15,6 +15,17 @@ public enum AnimationState {
     case DraggingOpen
     case DraggingClosed
     
+    public func IsOpenOrClosed() -> Bool {
+        switch self {
+        case Open:
+            return true
+        case Closed:
+            return true
+        default:
+            return false
+        }
+    }
+    
     public func IsAnimating() -> Bool {
         switch self {
         case Opening:
@@ -37,9 +48,9 @@ public enum AnimationState {
         }
     }
     
-    public func WillOpen() -> Bool {
+    public func AnyOpen() -> Bool {
         switch self {
-        case Opening:
+        case Open:
             return true
         case Opening:
             return true
@@ -156,6 +167,23 @@ public class EdgeReveal : UIButton {
         }
     }
     
+    private func getSwipeAreaFrame(isOpen: Bool) -> CGRect {
+        switch revealType {
+        case .Left:
+            if isOpen {
+                return CGRectMake(maxReveal, 0, Globals.screenSize.width - maxReveal, Globals.screenSize.height)
+            } else { 
+                return CGRectMake(0, 0, swipeAreaWidth, Globals.screenSize.height)
+            }
+        case .Right:
+            if isOpen {
+                return CGRectMake(0, 0, Globals.screenSize.width - self.maxReveal, Globals.screenSize.height)
+            } else {
+                return CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height)
+            }
+        }
+    }
+    
     public required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -226,7 +254,7 @@ public class EdgeReveal : UIButton {
         }
         
         if let onTap = self.onTap {
-            onTap(isOpen: animationState.WillOpen())
+            onTap(isOpen: animationState.AnyOpen())
         }
         
         animateSelf(false)
@@ -252,7 +280,7 @@ public class EdgeReveal : UIButton {
         }
         
         var xOffset = -gesture.translationInView(self.superview).x//Globals.screenSize.width - gesture.locationInView(self.superview).x
-        if !animationState.WillOpen() {
+        if !animationState.AnyOpen() {
             xOffset += maxReveal
         }
         xOffset = max(0, xOffset)
@@ -282,11 +310,11 @@ public class EdgeReveal : UIButton {
                     animateSelf(false)
                 }
                 else {
-                    animateSelf(!animationState.WillOpen())
+                    animateSelf(!animationState.AnyOpen())
                 }
             }
             else {
-                animateSelf(!animationState.WillOpen())
+                animateSelf(!animationState.AnyOpen())
             }
         default:
             break

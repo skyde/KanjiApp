@@ -41,8 +41,8 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func studyingPress(sender: AnyObject) {
-        if rightEdgeReveal.animationState == AnimationState.Closed {
-            rightEdgeReveal.animateSelf(true)
+        if rightEdgeReveal.animationState.IsOpenOrClosed() {
+            rightEdgeReveal.animateSelf(!rightEdgeReveal.animationState.AnyOpen())
         }
     }
     
