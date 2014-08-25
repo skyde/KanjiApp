@@ -109,7 +109,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             parent: view,
             revealType: .Right,
             swipeAreaWidth: 0,
-            autoHandlePanEvent: false,
+//            autoHandlePanEvent: false,
             maxYTravel: 60,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
