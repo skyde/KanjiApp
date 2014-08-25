@@ -55,7 +55,7 @@ class RootContainer: CustomUIViewController {
             parent: view,
             revealType: .Right,
             maxOffset: Globals.screenSize.width,
-//            swipeAreaWidth: 0,
+            swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
                 self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal
@@ -73,7 +73,7 @@ class RootContainer: CustomUIViewController {
                 self.backgroundImage.visible = visible
                 self.definitionOverlay.visible = visible
         })
-        definitionEdgeReveal.maxRevealInteractInset = definitionEdgeReveal.swipeAreaWidth
+        definitionEdgeReveal.maxRevealInteractInset = 13
 //        definitionEdgeReveal.animationState = .Open
         
 //        view.bringSubviewToFront(backgroundImage)

@@ -131,7 +131,7 @@ public class EdgeReveal: UIButton {
             
 //        swipeArea = UIButton(frame: )
         
-        backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
+//        backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
             
         if autoAddToParent {
             parent.addSubview(self)
