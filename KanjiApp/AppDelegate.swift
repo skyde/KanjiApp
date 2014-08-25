@@ -10,24 +10,30 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         return true
+    }
+    
+    var fileContents = ""
+    
+    func alertView(alertView: UIAlertView!, willDismissWithButtonIndex buttonIndex: Int) {
+        if buttonIndex == 1 && fileContents != "" {
+            importUserList(fileContents)
+            fileContents = ""
+        }
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
 
         var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
         alert.addButtonWithTitle("Import")
+        alert.delegate = self
         alert.show()
         
-//        var a = UIAlertController(title: <#String!#>, message: <#String!#>, preferredStyle: UIAlertControllerStyle.)
-        
         var error: NSErrorPointer = nil
-        var contents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
-        
-        importUserList(contents)
+        fileContents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
         
         return true
     }

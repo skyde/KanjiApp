@@ -17,12 +17,6 @@ class CustomUIViewController : UIViewController {
         self.managedObjectContext = context
     }
     
-//    var isNavigationBarHidden: Bool {
-//    get {
-//        return false
-//    }
-//    }
-    
     var isGameView: Bool {
     get {
         return true
@@ -34,17 +28,11 @@ class CustomUIViewController : UIViewController {
         return false
     }
     }
-//    
-//    func receiveTransitionToViewNotifications() -> Bool {
-//        return true
-//    }
     
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         loadContext()
-        
-//        println(managedObjectContext)
         
         var settings = (managedObjectContext.fetchEntity(.Settings, SettingsProperties.userName, "default", createIfNil: true) as Settings?)!
         
@@ -78,6 +66,14 @@ class CustomUIViewController : UIViewController {
         if !alwaysReceiveNotifications && !notificationsActive {
             addNotifications()
         }
+        
+//        println(self)
+//        
+//        println(isGameView)
+        
+//        if isGameView {
+//            Globals.notificationGameViewDidAppear.postNotification(true)
+//        }
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)

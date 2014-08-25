@@ -46,11 +46,9 @@ class RootContainer: CustomUIViewController {
                 self.sidebar.visible = visible
                 Globals.notificationSidebarInteract.postNotification(visible)
         })
-//        view.addSubview(sidebarEdgeReveal.swipeArea)
+        
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
         
-//        view.exchangeSubviewAtIndex(sidebarButton, sidebarEdgeReveal)
-    
         definitionEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
@@ -62,24 +60,16 @@ class RootContainer: CustomUIViewController {
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 if visible {
-//                    self.view.bringSubviewToFront(self.definitionEdgeReveal)
                     self.backgroundImage.image = self.caculateSelfBlurImage()
                     DefinitionPopover.instance.updateState()
                 } else {
                     Globals.notificationShowDefinition.value = ""
                 }
                 
-//                println(visible)
                 self.backgroundImage.visible = visible
                 self.definitionOverlay.visible = visible
         })
         definitionEdgeReveal.maxRevealInteractInset = 13
-//        definitionEdgeReveal.animationState = .Open
-        
-//        view.bringSubviewToFront(backgroundImage)
-//        view.bringSubviewToFront(definitionOverlay)
-//        view.bringSubviewToFront(definitionEdgeReveal)
-        
     }
     
     func onNotificationShowDefinition() {
@@ -92,43 +82,6 @@ class RootContainer: CustomUIViewController {
         }
         
         definitionEdgeReveal.animateSelf(open)
-//        if Globals.notificationShowDefinition.value == "" {
-//            Globals.notificationShowDefinition.value = "animating"
-//            
-//            self.mainView.hidden = false
-//            
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: NSTimeInterval(),
-//                options: blurEasing,
-//                animations: {
-//                    self.definitionOverlay.frame.origin.x = Globals.screenSize.width
-//                    self.backgroundImage.alpha = 0
-//                },
-//                completion: {
-//                    (_) -> () in
-//                    self.definitionOverlay.hidden = true
-//                    Globals.notificationShowDefinition.value = ""
-//                    self.backgroundImage.hidden = true
-//            })
-//        } else {
-//            backgroundImage.hidden = false
-//            //            caculateBlur()
-//            definitionOverlay.hidden = false
-//            backgroundImage.alpha = 0
-//            
-//            self.definitionOverlay.frame.origin.x = Globals.screenSize.width
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: 0,
-//                options: blurEasing,
-//                animations: {
-//                    self.definitionOverlay.frame.origin.x = 0
-//                    self.backgroundImage.alpha = 1
-//                },
-//                completion: {
-//                    (_) -> () in
-//                    self.mainView.hidden = true
-//            })
-//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -142,6 +95,7 @@ class RootContainer: CustomUIViewController {
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
         sidebarEdgeReveal.toggleOpenClose()
+        
     }
     
 //    private func animateSelf(open: Bool) {
@@ -214,7 +168,21 @@ class RootContainer: CustomUIViewController {
         Globals.notificationShowDefinition.addObserver(self, selector: "onNotificationShowDefinition")
         
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
+        
+//        Globals.notificationGameViewDidAppear.addObserver(self, selector: "onGameViewDidAppear")
     }
+    
+//    func onGameViewDidAppear() {
+//        println("onGameViewDidAppear")
+//        
+////        var alert = UIAlertController(title: "Import Lists", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", preferredStyle: UIAlertControllerStyle.Alert)
+////        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+////        alert.addAction(UIAlertAction(title: "Import",
+////            style: .Destructive,
+////            handler: {alert in println("Import"); RootContainer.instance.navigationController?.popToRootViewControllerAnimated(false)}))
+////        alert.modalPresentationStyle = UIModalPresentationStyle.Popover
+////        presentViewController(alert, animated: true, completion: nil)
+//    }
     
     func caculateSelfBlurImage() -> UIImage {
         let scale: CGFloat = 0.125

@@ -23,11 +23,11 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     }
     
-    override var isGameView: Bool {
-    get {
-        return false
-    }
-    }
+//    override var isGameView: Bool {
+//    get {
+//        return false
+//    }
+//    }
     
     class var instance: DefinitionPopover {
         get { return definitionPopoverInstance! }

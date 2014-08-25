@@ -2,40 +2,27 @@ import Foundation
 
 class RootMenu: CustomUIViewController {
     
-//    override var isGameView: Bool {
-//    get {
-//        return false
-//    }
-//    }
-    
-//    override var alwaysReceiveNotifications: Bool {
-//    get {
-//        return true
-//    }
-//    }
+//    var hasInitalTransitioned = false
 //
-//    override func receiveTransitionToViewNotifications() -> Bool {
-//        return true
-//    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//    }
-//    var targetView: View = .Search
-//    override func onTransitionToView() {
-//        super.onTransitionToView()
-////        let targetView =
-//////        println("RootMenu onTransitionToView \(notification)")
-////        if let targetView = (notification.object as? Container<View>)?.Value {
-//        self.targetView = Globals.notificationTransitionToView.value
-////            println("RootMenu \(targetView)")
-////        }
-//    }
-//    override onTransitionToView
+//    override func viewWillAppear(animated: Bool) {
+//        println("viewWillAppear")
+    //    }
+    override var isGameView: Bool {
+        get {
+            return false
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+//        hasInitalTransitioned = true
         performSegueWithIdentifier(Globals.notificationTransitionToView.value.description(), sender: self)
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        if !hasInitalTransitioned {
+//            hasInitalTransitioned = true
+//            performSegueWithIdentifier(Globals.notificationTransitionToView.value.description(), sender: self)
+//        }
+//    }
 }
