@@ -23,7 +23,6 @@ class RootContainer: CustomUIViewController {
 //    var swipeFromLeftAreaBaseWidth: CGFloat = 0
     var statusBarHidden = false
     let popoverAnimationSpeed = 0.17 //.22
-//    let sidebarEasing = UIViewAnimationOptions.CurveEaseOut
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
     
     override var isGameView: Bool {
@@ -159,57 +158,6 @@ class RootContainer: CustomUIViewController {
         
         sidebarEdgeReveal.animateSelf(false)
     }
-    
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
-    
-//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
-//        return true
-//    }
-    
-//    func respondToFromLeftSwipeTap(gesture: UITapGestureRecognizer) {
-//
-//        if mainView.frame.origin.x != 0 {
-//            animateSelf(false)
-//        }
-//    }
-//    
-//    func respondToFromLeftSwipeGesture(gesture: UIPanGestureRecognizer) {
-//
-//        var x = gesture.locationInView(self.view).x
-//        x = max(0, x)
-//        x = min(x, sidebar.frame.width)
-//        
-//        sidebar.hidden = x == 0
-//        
-//        self.definitionOverlay.frame.origin.x = x
-//        self.backgroundImage.frame.origin.x = x
-//        mainView.frame.origin.x = x
-//        sidebarButton.frame.origin.x = sidebarButtonBaseX + x
-//        swipeFromLeftArea.frame.origin.x = x
-//        
-//        let transitionThreshold: CGFloat = 30
-//        
-//        switch gesture.state {
-//        case .Began:
-//            Globals.notificationSidebarInteract.postNotification(!(x == 0))
-//        case .Ended:
-//            var xDelta = gesture.translationInView(self.view).x
-//            if xDelta > transitionThreshold {
-//                animateSelf(true)
-//            } else if xDelta < transitionThreshold {
-//                animateSelf(false)
-//            } else if xDelta < 0 {
-//                animateSelf(true)
-//            }
-//            else {
-//                animateSelf(false)
-//            }
-//        default:
-//            break
-//        }
-//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

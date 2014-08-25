@@ -106,7 +106,7 @@ public class EdgeReveal : UIButton {
     
     let revealType: EdgeRevealType
     let maxReveal: CGFloat
-    let animationTime = 0.2
+    let animationTime: Double
     let animationEasing = UIViewAnimationOptions.CurveEaseOut
     let transitionThreshold: CGFloat
     let maxYTravel: CGFloat
@@ -132,6 +132,7 @@ public class EdgeReveal : UIButton {
         transitionThreshold: CGFloat = 30,
         maxYTravel: CGFloat = CGFloat.max,
         autoHandlePanEvent: Bool = true,
+        animationTime: Double = 0.17,
         onUpdate: ((offset: CGFloat) -> ())?,
         setVisible: ((isVisible: Bool, completed: Bool) -> ())?) {
             
@@ -142,6 +143,7 @@ public class EdgeReveal : UIButton {
         self.setVisible = setVisible
         self.swipeAreaWidth = swipeAreaWidth
         self.transitionThreshold = transitionThreshold
+        self.animationTime = animationTime
             
         super.init(frame: CGRectMake(0, 0, 0, 0))
             
