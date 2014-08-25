@@ -37,6 +37,7 @@ class RootContainer: CustomUIViewController {
             parent: view,
             revealType: .Left,
             maxOffset: sidebar.frame.width,
+            autoAddToParent: false,
             onUpdate: {(offset: CGFloat) -> () in
                 self.mainView.frame.origin.x = offset
                 self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
@@ -45,6 +46,10 @@ class RootContainer: CustomUIViewController {
                 self.sidebar.visible = visible
                 Globals.notificationSidebarInteract.postNotification(visible)
         })
+//        view.addSubview(sidebarEdgeReveal.swipeArea)
+        view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
+        
+//        view.exchangeSubviewAtIndex(sidebarButton, sidebarEdgeReveal)
     
         definitionEdgeReveal = EdgeReveal(
             parent: view,
@@ -60,19 +65,20 @@ class RootContainer: CustomUIViewController {
 //                    self.view.bringSubviewToFront(self.definitionEdgeReveal)
                     self.backgroundImage.image = self.caculateSelfBlurImage()
                     DefinitionPopover.instance.updateState()
+                } else {
+                    Globals.notificationShowDefinition.value = ""
                 }
                 
 //                println(visible)
-//                self.backgroundImage.visible = visible
+                self.backgroundImage.visible = visible
                 self.definitionOverlay.visible = visible
         })
         definitionEdgeReveal.maxRevealInteractInset = definitionEdgeReveal.swipeAreaWidth
 //        definitionEdgeReveal.animationState = .Open
         
-        view.bringSubviewToFront(sidebarButton)
-        view.bringSubviewToFront(backgroundImage)
-        view.bringSubviewToFront(definitionOverlay)
-        view.bringSubviewToFront(definitionEdgeReveal)
+//        view.bringSubviewToFront(backgroundImage)
+//        view.bringSubviewToFront(definitionOverlay)
+//        view.bringSubviewToFront(definitionEdgeReveal)
         
     }
     

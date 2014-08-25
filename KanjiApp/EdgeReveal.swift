@@ -86,7 +86,7 @@ public enum AnimationState {
     }
 }
 
-public class EdgeReveal : UIButton {
+public class EdgeReveal: UIButton {
     
     let revealType: EdgeRevealType
     let maxReveal: CGFloat
@@ -95,7 +95,7 @@ public class EdgeReveal : UIButton {
     let transitionThreshold: CGFloat
     let maxYTravel: CGFloat
     var swipeAreaWidth: CGFloat
-    var swipeArea: UIButton!
+//    var swipeArea: UIButton!
     var maxRevealInteractInset: CGFloat = 0
     
     var onUpdate: ((offset: CGFloat) -> ())?
@@ -127,24 +127,24 @@ public class EdgeReveal : UIButton {
         self.transitionThreshold = transitionThreshold
         self.animationTime = animationTime
             
-        super.init(frame: CGRectMake(0, 0, 0, 0))
+        super.init(frame: getSwipeAreaFrame(false))
             
-        swipeArea = UIButton(frame: getSwipeAreaFrame(false))
+//        swipeArea = UIButton(frame: )
         
-        swipeArea.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
+        backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.2)
             
         if autoAddToParent {
-            parent.addSubview(swipeArea)
-            parent.bringSubviewToFront(swipeArea)
+            parent.addSubview(self)
+//            parent.bringSubviewToFront(swipeArea)
         }
         
         if autoHandlePanEvent {
             var gesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-            swipeArea.addGestureRecognizer(gesture)
+            addGestureRecognizer(gesture)
         }
         
         var tap = UITapGestureRecognizer(target: self, action: "respondToTap:")
-        swipeArea.addGestureRecognizer(tap)
+        addGestureRecognizer(tap)
             
         if let setVisible = setVisible {
             setVisible(visible: false, completed: false)
@@ -200,7 +200,7 @@ public class EdgeReveal : UIButton {
                 delay: 0,
                 options: animationEasing,
                 {
-                    self.swipeArea.frame = self.getSwipeAreaFrame(true)
+                    self.frame = self.getSwipeAreaFrame(true)
                     if let onUpdate = self.onUpdate {
                         onUpdate(offset: self.maxReveal)
                     }
@@ -213,7 +213,7 @@ public class EdgeReveal : UIButton {
             })
         } else {
             if lastAnimationState == .Open {
-                self.swipeArea.frame = self.getSwipeAreaFrame(true)
+                self.frame = self.getSwipeAreaFrame(true)
                 if let onUpdate = self.onUpdate {
                     onUpdate(offset: self.maxReveal)
                 }
@@ -223,7 +223,7 @@ public class EdgeReveal : UIButton {
                 delay: 0,
                 options: animationEasing,
                 {
-                    self.swipeArea.frame = self.getSwipeAreaFrame(false)
+                    self.frame = self.getSwipeAreaFrame(false)
                     if let onUpdate = self.onUpdate {
                         onUpdate(offset: 0)
                     }
@@ -272,7 +272,7 @@ public class EdgeReveal : UIButton {
             break
         }
         
-        var xOffset = gesture.translationInView(self.superview).x * xSign
+        var xOffset = gesture.translationInView(superview).x * xSign
         
         if !animationState.AnyOpen() {
             xOffset += maxReveal
@@ -289,14 +289,14 @@ public class EdgeReveal : UIButton {
         if revealType == .Right {
             x = Globals.screenSize.width - x
         
-            swipeArea.frame.origin.x = x - swipeArea.frame.width
+            frame.origin.x = x - frame.width
         } else {
-            swipeArea.frame.origin.x = x
+            frame.origin.x = x
         }
         
         switch gesture.state {
         case .Ended:
-            let translation = gesture.translationInView(self.superview)
+            let translation = gesture.translationInView(superview)
             var xDelta = translation.x
             
             if revealType == EdgeRevealType.Right {
