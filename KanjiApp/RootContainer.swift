@@ -43,6 +43,8 @@ class RootContainer: CustomUIViewController {
                 self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
+                self.definitionEdgeReveal?.animateSelf(false)
+                
                 self.sidebar.visible = visible
                 Globals.notificationSidebarInteract.postNotification(visible)
         })
@@ -95,50 +97,8 @@ class RootContainer: CustomUIViewController {
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
         sidebarEdgeReveal.toggleOpenClose()
-        
     }
     
-//    private func animateSelf(open: Bool) {
-////        let xMove: CGFloat =  // 272
-////        println()
-//        
-//        if open {
-//            sidebar.hidden = false
-//            
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//                delay: 0,
-//                options: sidebarEasing,
-//                {
-//                    self.definitionOverlay.frame.origin.x = self.sidebar.frame.width
-//                    self.backgroundImage.frame.origin.x = self.sidebar.frame.width
-//                    self.mainView.frame.origin.x = self.sidebar.frame.width
-//                    self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + self.sidebar.frame.width
-//                    self.swipeFromLeftArea.frame = CGRectMake(
-//                        self.sidebar.frame.width,
-//                        self.swipeFromLeftArea.frame.origin.y,
-//                        Globals.screenSize.width - self.sidebar.frame.width,
-//                        self.swipeFromLeftArea.frame.height)
-//                },
-//                nil)
-//        } else {
-//            UIView.animateWithDuration(popoverAnimationSpeed,
-//            delay: 0,
-//            options: sidebarEasing,
-//                {
-//                    self.definitionOverlay.frame.origin.x = 0
-//                    self.backgroundImage.frame.origin.x = 0
-//                    self.mainView.frame.origin.x = 0
-//                    self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX
-//                    self.swipeFromLeftArea.frame = CGRectMake(
-//                    0,
-//                    self.swipeFromLeftArea.frame.origin.y,
-//                    self.swipeFromLeftAreaBaseWidth,
-//                    self.swipeFromLeftArea.frame.height)
-//                },
-//                completion: { (_) -> Void in if self.mainView.layer.presentationLayer().frame.origin.x == 0 { self.sidebar.hidden = true } })
-//        }
-//    }
-
     required init(coder aDecoder: NSCoder!) {
         
         super.init(coder: aDecoder)

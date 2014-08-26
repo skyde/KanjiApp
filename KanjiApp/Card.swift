@@ -387,7 +387,7 @@ class Card: NSManagedObject {
         } else if known.boolValue {
             return "Known"
         } else if enabled.boolValue {
-            return "Studied"
+            return "Studying"
         }
         
         return "Will Study"
