@@ -710,7 +710,7 @@ you wish to study</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1234,6 +1234,13 @@ all due cards</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vow-0B-FuC">
+                                <rect key="frame" x="400" y="0.0" width="200" height="600"/>
+                                <color key="backgroundColor" red="0.9869195818901062" green="0.77582526206970215" blue="0.054615173488855362" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-K1-JvN">
                                 <rect key="frame" x="398" y="0.0" width="202" height="600"/>
                                 <constraints>
@@ -1243,24 +1250,44 @@ all due cards</string>
                                     <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vow-0B-FuC">
-                                <rect key="frame" x="400" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.9869195818901062" green="0.77582526206970215" blue="0.054615173488855362" alpha="0.25" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd9-7H-uN2">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="600"/>
+                                <color key="backgroundColor" red="0.99790024759999996" green="0.90225982670000004" blue="0.70449477429999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="H1s-dw-ETz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                <state key="normal" title="Undo">
+                                    <color key="titleColor" red="0.99210119249999995" green="0.60418778660000005" blue="0.034307416530000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJY-yv-PK2">
+                                <rect key="frame" x="500" y="0.0" width="100" height="600"/>
+                                <color key="backgroundColor" red="0.89514881372451782" green="1" blue="0.6525580883026123" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="dTw-Fc-VCr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                <state key="normal" title="Redo">
+                                    <color key="titleColor" red="0.48584502935409546" green="0.84595924615859985" blue="0.044939648360013962" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="bd9-7H-uN2" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="0Mf-s0-BtQ"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
                             <constraint firstItem="Ctf-Sa-BFI" firstAttribute="width" secondItem="vow-0B-FuC" secondAttribute="width" id="28J-c6-RMY"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" id="84r-wt-vJO"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="8Ed-5c-LrJ"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
+                            <constraint firstItem="bd9-7H-uN2" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="Fzq-vL-uO9"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
+                            <constraint firstAttribute="trailing" secondItem="OJY-yv-PK2" secondAttribute="trailing" id="JD1-5M-SSM"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
                             <constraint firstItem="Ctf-Sa-BFI" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="OF4-2D-U2n"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="leading" secondItem="Ctf-Sa-BFI" secondAttribute="trailing" id="Rrg-ZB-3xi"/>
@@ -1269,14 +1296,17 @@ all due cards</string>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
                             <constraint firstItem="5Rm-K1-JvN" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="bWX-He-sBo"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="cJG-hC-xSm"/>
+                            <constraint firstAttribute="bottom" secondItem="OJY-yv-PK2" secondAttribute="bottom" id="dEy-Ss-cig"/>
                             <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
                             <constraint firstItem="Ctf-Sa-BFI" firstAttribute="width" secondItem="G9v-Dx-vuY" secondAttribute="width" id="iqk-GI-3C7"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
                             <constraint firstAttribute="bottom" secondItem="Ctf-Sa-BFI" secondAttribute="bottom" id="oWh-Pb-fxX"/>
+                            <constraint firstItem="OJY-yv-PK2" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="opY-oC-S8L"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
+                            <constraint firstAttribute="bottom" secondItem="bd9-7H-uN2" secondAttribute="bottom" id="tWH-cR-MdD"/>
                             <constraint firstItem="Ctf-Sa-BFI" firstAttribute="leading" secondItem="G9v-Dx-vuY" secondAttribute="trailing" id="wyg-HV-3Ge"/>
                         </constraints>
                     </view>
@@ -1288,7 +1318,9 @@ all due cards</string>
                         <outlet property="leftIndicator" destination="G9v-Dx-vuY" id="GnO-gq-du6"/>
                         <outlet property="middleIndicator" destination="Ctf-Sa-BFI" id="Jor-2j-iMh"/>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
+                        <outlet property="redoSidebar" destination="OJY-yv-PK2" id="OGp-bz-8Tf"/>
                         <outlet property="rightIndicator" destination="vow-0B-FuC" id="Wc0-lS-48l"/>
+                        <outlet property="undoSidebar" destination="bd9-7H-uN2" id="vC9-OT-hhD"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ocT-bm-8xQ"/>
                         <segue destination="MSR-R2-cbT" kind="show" identifier="AddWords" id="0Q0-aS-4tM"/>
                     </connections>
@@ -1482,35 +1514,35 @@ all due cards</string>
                         <viewControllerLayoutGuide type="bottom" id="Vko-NP-bnK"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nwH-1v-TMo">
-                        <rect key="frame" x="0.0" y="0.0" width="202" height="552"/>
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="352"/>
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="400"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Remove">
                                     <color key="titleColor" red="0.98594826459884644" green="0.0" blue="0.026950567960739136" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="leftTap:" destination="HHw-53-owD" eventType="touchUpInside" id="2k0-L0-PuM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
-                                <rect key="frame" x="101" y="0.0" width="101" height="352"/>
+                                <rect key="frame" x="101" y="0.0" width="101" height="400"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Known">
                                     <color key="titleColor" red="0.072240069510000005" green="0.59228098389999995" blue="0.99853724239999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="rightTap:" destination="HHw-53-owD" eventType="touchUpInside" id="wr0-eH-1hX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
-                                <rect key="frame" x="0.0" y="352" width="202" height="200"/>
+                                <rect key="frame" x="0.0" y="400" width="202" height="200"/>
                                 <color key="backgroundColor" red="0.99790024757385254" green="0.90225982666015625" blue="0.70449477434158325" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="IYR-r2-ti4"/>
@@ -1518,7 +1550,7 @@ all due cards</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Undo">
                                     <color key="titleColor" red="0.99210119247436523" green="0.60418778657913208" blue="0.034307416528463364" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="undoTap:" destination="HHw-53-owD" eventType="touchUpInside" id="AEo-eZ-pDU"/>
@@ -1560,9 +1592,9 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vgr-gb-U0p"/>
-        <segue reference="Ut6-yd-kHz"/>
+        <segue reference="ocT-bm-8xQ"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="daX-c3-wht"/>
+        <segue reference="NNU-PR-Fp5"/>
+        <segue reference="0Q0-aS-4tM"/>
     </inferredMetricsTieBreakers>
 </document>

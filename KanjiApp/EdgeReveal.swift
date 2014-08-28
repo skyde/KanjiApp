@@ -205,7 +205,7 @@ public class EdgeReveal: UIButton {
                         onUpdate(offset: self.maxReveal)
                     }
                 },
-                completion: { (_) -> Void in
+                completion: { (_) -> () in
                     self.animationState = .Open
 //                    if let callback = self.onAnimationCompleted {
 //                        callback(open: true)

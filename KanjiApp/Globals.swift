@@ -57,6 +57,28 @@ func randomRange(min: Int, max: Int) -> Int {
     return Int(Double(min) + (base * Double(max)))
 }
 
+func distanceGreater(a: CGPoint, b: CGPoint, greaterThan: CGFloat) -> Bool {
+    return (a.x - b.x) * (a.y - b.y) > greaterThan * greaterThan
+}
+
+func distanceLess(a: CGPoint, b: CGPoint, greaterThan: CGFloat) -> Bool {
+    return (a.x - b.x) * (a.y - b.y) <= greaterThan * greaterThan
+}
+
+func distanceAmount(a: CGPoint, b: CGPoint) -> CGFloat {
+    return sqrt(abs((a.x - b.x) * (a.y - b.y)))
+}
+
+func sign(value: CGFloat) -> CGFloat {
+    if value > 0 {
+        return 1
+    } else if value < 0 {
+        return -1
+    }
+    
+    return 1
+}
+
 extension UIView {
     var visible: Bool {
         get {

@@ -15,7 +15,7 @@ import AVFoundation
 //    var known: NSNumber
 //}
 
-class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
+class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate {
     @IBOutlet var outputText: UITextView!
     
     var due: [NSNumber] = []
@@ -34,9 +34,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var addRemoveSidebar: UIView!
     @IBOutlet weak var kanjiView: UILabel!
+        @IBOutlet weak var undoSidebar: UIButton!
+    @IBOutlet weak var redoSidebar: UIButton!
     
     var edgeReveal: EdgeReveal! = nil
-    
+
     var dueCard: Card? {
     get {
         if due.count > 0 {
@@ -89,10 +91,217 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         leftIndicator.hidden = true
         middleIndicator.hidden = true
         rightIndicator.hidden = true
+        undoSidebar.hidden = true
+        redoSidebar.hidden = true
+        
+//        var onSwipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight:")
+//        onSwipeToRight.delegate = self
+//        onSwipeToRight.direction = .Right
+//        outputText.addGestureRecognizer(onSwipeToRight)
+        
+        var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
+        panGesture.delegate = self
+        self.outputText.addGestureRecognizer(panGesture)
+        
+        var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
+        downGesture.delegate = self
+        downGesture.minimumPressDuration = 0
+        downGesture.requireGestureRecognizerToFail(panGesture)
+        self.outputText.addGestureRecognizer(downGesture)
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+        onTouchGesture.delegate = self
+//        downGesture.requireGestureRecognizerToFail(onSwipeToRight)
         outputText.addGestureRecognizer(onTouchGesture)
+        
     }
+    
+//    func onSwipeToRight(sender: UIGestureRecognizer) {
+//        println("onSwipeToRight")
+//        
+//        onUndo()
+//    }
+    
+    //    var wasFront = false
+    private var downPosition: CGPoint! = nil
+    private var lastPosition: CGPoint! = nil
+    private var travelledDistance: CGFloat = 0
+    func onDown(sender: UIPanGestureRecognizer) {
+        
+        let tapRadius: CGFloat = 3
+        let maxTravelled: CGFloat = 6
+        
+        switch sender.state {
+        case .Began:
+            //            wasFront = isFront
+            downPosition = sender.locationInView(view)
+            lastPosition = downPosition
+            travelledDistance = 0
+            
+//        case .Ended:
+//            if distanceLess(downPosition, sender.locationInView(view), tapRadius) {
+//
+//            }
+        case .Changed:
+            var pos = sender.locationInView(view)
+//            println(pos)
+//            println(lastPosition)
+//            
+//            println(distanceAmount(pos, lastPosition))
+            travelledDistance += distanceAmount(pos, lastPosition)
+            
+            lastPosition = pos
+        case .Ended:
+            
+            println(travelledDistance)
+            
+            if travelledDistance < maxTravelled {
+                if isFront {
+                    advanceCard()
+                } else {
+                    caculateAnswer(sender)
+                }
+            }
+        
+        default:
+        break
+        }
+//        println(sender.state.toRaw())
+//        println("Down")
+    }
+    
+    func onPan(sender: UIPanGestureRecognizer) {
+        
+        let transitionThreshold: CGFloat = 30
+        var x = sender.translationInView(view).x
+        
+        x = max(0, abs(x) - 15) * sign(x)
+        
+        contentsUpdate(x)
+        sidebarUpdate(x)
+        
+        switch sender.state {
+        case .Began:
+            sidebarSetVisiblity(true)
+        case .Ended:
+            var contentsTargetX: CGFloat = 0
+            var active = false
+            var isRedo = false
+            
+            if x > transitionThreshold {
+                contentsTargetX = Globals.screenSize.width
+                active = true
+            } else if x < -transitionThreshold {
+                contentsTargetX = -Globals.screenSize.width
+                active = true
+                isRedo = true
+            }
+            
+            println(active)
+            
+            UIView.animateWithDuration(0.16,
+                delay: 0,
+                options: .CurveEaseOut,
+                {
+                    self.sidebarUpdate(0)
+                    if active {
+                        self.contentsUpdate(contentsTargetX)
+                    } else {
+                        self.contentsUpdate(0)
+                    }
+                },
+                completion: { (_) -> () in
+                    
+                    self.sidebarSetVisiblity(false)
+                    
+                    if active {
+                        if isRedo {
+                            self.onRedo()
+                        } else {
+                            self.onUndo()
+                        }
+                        
+                        self.contentsUpdate(-contentsTargetX)
+                        UIView.animateWithDuration(0.16,
+                            delay: 0,
+                            options: .CurveEaseOut,
+                            {
+                                self.contentsUpdate(0)
+    //                            self.contentsAlpha(1)
+                            },
+                            completion: nil
+                        )
+                    }
+
+//                self.contentsUpdate(0)
+            })
+
+        default:
+            break
+        }
+    }
+    
+//    private func contentsSetVisiblity(visible: Bool) {
+//        
+//    }
+    //
+    private func contentsAlpha(value: CGFloat) {
+        outputText.alpha = value
+        kanjiView.alpha = value
+    }
+    
+    private func contentsUpdate(x: CGFloat) {
+        outputText.frame.origin.x = x
+        kanjiView.frame.origin.x = x
+        
+        var alpha: CGFloat = 1 - max(0, abs(x) - undoSidebar.frame.width) / (Globals.screenSize.width - undoSidebar.frame.width)
+        
+        contentsAlpha(alpha)
+    }
+    
+    private func sidebarSetVisiblity(visible: Bool) {
+        undoSidebar.visible = visible
+        redoSidebar.visible = visible
+    }
+    
+    private func sidebarUpdate(var x: CGFloat) {
+        
+        if x != 0 {
+            x = min(undoSidebar.frame.width, abs(x)) * sign(x)
+        }
+        
+//        println(x)
+        
+        undoSidebar.frame.origin.x = x - undoSidebar.frame.width
+        redoSidebar.frame.origin.x = x + Globals.screenSize.width
+    }
+    
+    func onTouch(sender: UITapGestureRecognizer) {
+        
+//        println(sender.state)
+//        println(sender.locationOfTouch(0, inView: self.view))
+//        
+//        return
+        
+    }
+    
+    private func caculateAnswer(sender: UIGestureRecognizer) {
+        var x = sender.locationInView(self.view).x / Globals.screenSize.width
+        x *= 3
+        
+        if x >= 0 && x < 1 {
+            answerCard(.Forgot)
+        } else if x >= 1 && x <= 2 {
+            answerCard(.Normal)
+        } else {
+            answerCard(.Hard)
+        }
+    }
+
+    
+//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+//        println("began")
+//    }
     
     override func addNotifications() {
         super.addNotifications()
@@ -140,25 +349,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         }
         
         advanceCard()
-    }
-    
-    func onTouch(sender: UITapGestureRecognizer) {
-        if !isFront {
-            var x = sender.locationInView(self.view).x / Globals.screenSize.width
-            x *= 3
-            
-            if x >= 0 && x < 1 {
-                answerCard(.Forgot)
-            } else if x >= 1 && x <= 2 {
-                answerCard(.Normal)
-            } else {
-                answerCard(.Hard)
-            }
-        } else {
-            advanceCard()
-        }
-    }
-    
+    }    
     private func onHighlightAnimationFinish() {
         updateText()
         
@@ -230,6 +421,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
         }
     }
     
+    private func onRedo() {
+        
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -399,5 +593,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate {
 ////        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
 ////        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
 ////        self.view.addGestureRecognizer(swipeLeft)
-//    }
+    //    }
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return true
+    }
 }
