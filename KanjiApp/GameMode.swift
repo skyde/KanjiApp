@@ -94,10 +94,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         undoSidebar.hidden = true
         redoSidebar.hidden = true
         
+        
+        
 //        var onSwipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight:")
 //        onSwipeToRight.delegate = self
 //        onSwipeToRight.direction = .Right
 //        outputText.addGestureRecognizer(onSwipeToRight)
+        
+//        outputText.panGestureRecognizer.delegate = self
         
         var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
         panGesture.delegate = self
@@ -109,13 +113,31 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         downGesture.requireGestureRecognizerToFail(panGesture)
         self.outputText.addGestureRecognizer(downGesture)
         
-        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-        onTouchGesture.delegate = self
+//        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+//        onTouchGesture.delegate = self
 //        downGesture.requireGestureRecognizerToFail(onSwipeToRight)
-        outputText.addGestureRecognizer(onTouchGesture)
+//        outputText.addGestureRecognizer(onTouchGesture)
         
     }
     
+    
+    func onTouch(sender: UITapGestureRecognizer) {
+
+        if edgeReveal.animationState != AnimationState.Closed {
+            return
+        }
+
+//        if isFront {
+//            advanceCard()
+//        } else {
+//            caculateAnswer(sender)
+//        }
+        //        println(sender.state)
+        //        println(sender.locationOfTouch(0, inView: self.view))
+        //
+        //        return
+        
+    }
 //    func onSwipeToRight(sender: UIGestureRecognizer) {
 //        println("onSwipeToRight")
 //        
@@ -133,15 +155,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         switch sender.state {
         case .Began:
-            //            wasFront = isFront
             downPosition = sender.locationInView(view)
             lastPosition = downPosition
             travelledDistance = 0
             
-//        case .Ended:
-//            if distanceLess(downPosition, sender.locationInView(view), tapRadius) {
-//
-//            }
         case .Changed:
             var pos = sender.locationInView(view)
 //            println(pos)
@@ -153,24 +170,25 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             lastPosition = pos
         case .Ended:
             
-            println(travelledDistance)
-            
-            if travelledDistance < maxTravelled {
-                if isFront {
-                    advanceCard()
-                } else {
-                    caculateAnswer(sender)
+            if edgeReveal.animationState == AnimationState.Closed {
+                if travelledDistance < maxTravelled {
+                    if isFront {
+                        advanceCard()
+                    } else {
+                        caculateAnswer(sender)
+                    }
                 }
             }
         
         default:
-        break
+            break
         }
-//        println(sender.state.toRaw())
-//        println("Down")
     }
     
     func onPan(sender: UIPanGestureRecognizer) {
+        if edgeReveal.animationState != AnimationState.Closed {
+            return
+        }
         
         let transitionThreshold: CGFloat = 30
         var x = sender.translationInView(view).x
@@ -197,7 +215,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 isRedo = true
             }
             
-            println(active)
+//            println(active)
             
             UIView.animateWithDuration(0.16,
                 delay: 0,
@@ -254,7 +272,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         outputText.frame.origin.x = x
         kanjiView.frame.origin.x = x
         
-        var alpha: CGFloat = 1 - max(0, abs(x) - undoSidebar.frame.width) / (Globals.screenSize.width - undoSidebar.frame.width)
+        var alpha: CGFloat = 1 - abs(x / Globals.screenSize.width)//1 - max(0, abs(x) - undoSidebar.frame.width) / (Globals.screenSize.width - undoSidebar.frame.width)
+        alpha = alpha * alpha
         
         contentsAlpha(alpha)
     }
@@ -274,15 +293,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         undoSidebar.frame.origin.x = x - undoSidebar.frame.width
         redoSidebar.frame.origin.x = x + Globals.screenSize.width
-    }
-    
-    func onTouch(sender: UITapGestureRecognizer) {
-        
-//        println(sender.state)
-//        println(sender.locationOfTouch(0, inView: self.view))
-//        
-//        return
-        
     }
     
     private func caculateAnswer(sender: UIGestureRecognizer) {
@@ -398,10 +408,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         })
         
         edgeReveal.onTap = {(open: Bool) -> () in
-            if !open && !self.isFront {
-                self.answerCard(.Hard)
-            } else {
-                self.advanceCard()
+            if self.edgeReveal.animationState == .Closed {
+                if !open && !self.isFront {
+                    self.answerCard(.Hard)
+                } else {
+                    self.advanceCard()
+                }
             }
         }
     }
