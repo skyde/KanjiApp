@@ -15,7 +15,7 @@ import AVFoundation
 //    var known: NSNumber
 //}
 
-class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate {
+class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate {
     @IBOutlet var outputText: UITextView!
     
     var due: [NSNumber] = []
@@ -124,7 +124,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         downGesture.delegate = self
         downGesture.minimumPressDuration = 0
-        downGesture.requireGestureRecognizerToFail(panGesture)
+//        downGesture.requireGestureRecognizerToFail(panGesture)
         self.outputText.addGestureRecognizer(downGesture)
         
 //        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
@@ -134,6 +134,27 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
     }
     
+    private var lastScrollY: CGFloat? = nil
+    private var lastScrollTime: NSTimeInterval! = nil
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        
+        if let lastScrollY = lastScrollY {
+            var scrollY = outputText.contentOffset.y
+            var scrollTime = NSDate.timeIntervalSinceReferenceDate()
+            
+            scrollY -= lastScrollY
+            scrollTime -= lastScrollTime
+            
+            var speed = scrollY / CGFloat(scrollTime)
+            
+            println(speed)
+        }
+        
+        lastScrollY = outputText.contentOffset.y
+        lastScrollTime = NSDate.timeIntervalSinceReferenceDate()
+//        println(scrollView.panGestureRecognizer.velocityInView(view).y)
+//        println(outputText.)
+    }
     
     func onTouch(sender: UITapGestureRecognizer) {
 
@@ -159,26 +180,22 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    }
     
     //    var wasFront = false
-    private var downPosition: CGPoint! = nil
+//    private var downPosition: CGPoint! = nil
     private var lastPosition: CGPoint! = nil
     private var travelledDistance: CGFloat = 0
     func onDown(sender: UIPanGestureRecognizer) {
         
-        let tapRadius: CGFloat = 3
-        let maxTravelled: CGFloat = 6
+//        let tapRadius: CGFloat = 3
+        let maxTravelled: CGFloat = 8
         
         switch sender.state {
         case .Began:
-            downPosition = sender.locationInView(view)
-            lastPosition = downPosition
+//            downPosition = sender.locationInView(view)
+            lastPosition = sender.locationInView(view)
             travelledDistance = 0
             
         case .Changed:
             var pos = sender.locationInView(view)
-//            println(pos)
-//            println(lastPosition)
-//            
-//            println(distanceAmount(pos, lastPosition))
             travelledDistance += distanceAmount(pos, lastPosition)
             
             lastPosition = pos
@@ -204,8 +221,22 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             return
         }
         
+        println()
+        
+        if !canUndo && !canRedo {
+            return
+        }
+        
         let transitionThreshold: CGFloat = 30
         var x = sender.translationInView(view).x
+        
+        if !canUndo {
+            x = min(0, x)
+        }
+        
+        if !canRedo {
+            x = max(0, x)
+        }
         
         x = max(0, abs(x) - 15) * sign(x)
         
@@ -302,8 +333,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if x != 0 {
             x = min(undoSidebar.frame.width, abs(x)) * sign(x)
         }
-        
-//        println(x)
         
         undoSidebar.frame.origin.x = x - undoSidebar.frame.width
         redoSidebar.frame.origin.x = x + Globals.screenSize.width
@@ -446,7 +475,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if due.count > 0 && canRedo {
             var remove = due.removeAtIndex(0)
             
-            undoStack.insert(remove, atIndex: undoStack.count - 1)
+            undoStack.insert(remove, atIndex: undoStack.count)
             
             managedObjectContext.undoManager.redo()
             
