@@ -15,7 +15,7 @@ import AVFoundation
 //    var known: NSNumber
 //}
 
-class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate {
+class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate {
     @IBOutlet var outputText: UITextView!
     
     var due: [NSNumber] = []
@@ -121,11 +121,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         panGesture.delegate = self
         self.outputText.addGestureRecognizer(panGesture)
         
+//        println("viewDidLoad")
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         downGesture.delegate = self
         downGesture.minimumPressDuration = 0
 //        downGesture.requireGestureRecognizerToFail(panGesture)
         self.outputText.addGestureRecognizer(downGesture)
+        
+        self.outputText.delegate = self
         
 //        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
 //        onTouchGesture.delegate = self
@@ -136,7 +139,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     private var lastScrollY: CGFloat? = nil
     private var lastScrollTime: NSTimeInterval! = nil
+    private var scrollSpeed: CGFloat = 0
     func scrollViewDidScroll(scrollView: UIScrollView!) {
+        
+//        println("scrollViewDidScroll")
         
         if let lastScrollY = lastScrollY {
             var scrollY = outputText.contentOffset.y
@@ -145,9 +151,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             scrollY -= lastScrollY
             scrollTime -= lastScrollTime
             
-            var speed = scrollY / CGFloat(scrollTime)
+            var speed = abs(scrollY / CGFloat(scrollTime) / 1000)
             
-            println(speed)
+//            if speed != 0 {
+            scrollSpeed = speed
+//            }
+//            scrollSpeed = 2
+            
+            //            println(scrollSpeed)
+//            println("scrollSpeed = \(scrollSpeed)")
+//            println("test")
         }
         
         lastScrollY = outputText.contentOffset.y
@@ -155,6 +168,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        println(scrollView.panGestureRecognizer.velocityInView(view).y)
 //        println(outputText.)
     }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+//        println("scrollViewDidEndDecelerating")
+        scrollSpeed = 0
+    }
+    
+//    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView!) {
+//        println("end")
+//    }
+    
+//    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+//        println("scrollViewDidEndDragging")
+//    }
     
     func onTouch(sender: UITapGestureRecognizer) {
 
@@ -201,13 +227,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             lastPosition = pos
         case .Ended:
             
-            if edgeReveal.animationState == AnimationState.Closed {
-                if travelledDistance < maxTravelled {
-                    if isFront {
-                        advanceCard()
-                    } else {
-                        caculateAnswer(sender)
-                    }
+//            println("scrollSpeed = \(scrollSpeed)")
+//            println("offset = \(outputText.contentOffset.y)")
+            
+            if edgeReveal.animationState == AnimationState.Closed &&
+                (scrollSpeed < 0.4 || isFront) &&
+                travelledDistance < maxTravelled {
+                if isFront {
+                    advanceCard()
+                } else {
+                    caculateAnswer(sender)
                 }
             }
         
@@ -221,7 +250,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             return
         }
         
-        println()
+//        println()
         
         if !canUndo && !canRedo {
             return
