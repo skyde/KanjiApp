@@ -20,6 +20,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var due: [NSNumber] = []
     var undoStack: [NSNumber] = []
+    var redoStackCount = 0
     var isFront: Bool = true
     var isBack: Bool {
     get {
@@ -38,6 +39,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     @IBOutlet weak var redoSidebar: UIButton!
     
     var edgeReveal: EdgeReveal! = nil
+    
+    var canUndo: Bool {
+        get {
+            return undoStack.count > 0
+        }
+    }
+    
+    var canRedo: Bool {
+        get {
+            return redoStackCount > 0
+        }
+    }
+    
 
     var dueCard: Card? {
     get {
@@ -308,11 +322,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
 
-    
-//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-//        println("began")
-//    }
-    
     override func addNotifications() {
         super.addNotifications()
         
@@ -392,7 +401,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 if let card = self.dueCard {
                     self.cardPropertiesSidebar.updateContents(
                         card,
-                        showUndoButton: self.undoStack.count > 0,
+                        showUndoButton: false,
                         onUndoButtonTap: {
                         self.edgeReveal.animateSelf(false)
                         self.processUndo = true
@@ -419,22 +428,33 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     private func onUndo() {
-//        println("undo")
-        if undoStack.count > 0 {
+        if canUndo {
             var remove = undoStack.removeLast()
             
             due.insert(remove, atIndex: 0)
             
-//            println(managedObjectContext.undoManager.undoActionName)
             managedObjectContext.undoManager.undo()
             
             isFront = true
             updateText()
+            
+            redoStackCount++
         }
     }
     
     private func onRedo() {
-        
+        if due.count > 0 && canRedo {
+            var remove = due.removeAtIndex(0)
+            
+            undoStack.insert(remove, atIndex: undoStack.count - 1)
+            
+            managedObjectContext.undoManager.redo()
+            
+            isFront = true
+            updateText()
+            
+            redoStackCount--
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -445,6 +465,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     private func fetchCards(clearUndoStack: Bool = true) {
+        redoStackCount = 0
+        
         var fetchAheadAmount: Double = 0
         
         switch Globals.notificationTransitionToView.value {
@@ -468,11 +490,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    func advanceCard() {
-//        if !isFront {
-//            println("\(dueCard?.kanji) dueTime = \(dueCard?.interval)")
-//        }
-        
+    func advanceCard() {        
         if isBack && due.count >= 1 {
             var remove = due.removeAtIndex(0)
             undoStack.append(remove)
