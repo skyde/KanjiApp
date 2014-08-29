@@ -1220,23 +1220,16 @@ all due cards</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctf-Sa-BFI">
-                                <rect key="frame" x="200" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.43635168671607971" green="1" blue="0.030377298593521118" alpha="0.25" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9v-Dx-vuY">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.9859432578086853" green="0.0" blue="0.057497896254062653" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.9859432578086853" green="0.0" blue="0.057497896254062653" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vow-0B-FuC">
-                                <rect key="frame" x="400" y="0.0" width="200" height="600"/>
-                                <color key="backgroundColor" red="0.9869195818901062" green="0.77582526206970215" blue="0.054615173488855362" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.9869195818901062" green="0.77582526206970215" blue="0.054615173488855362" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1280,7 +1273,6 @@ all due cards</string>
                         <constraints>
                             <constraint firstItem="bd9-7H-uN2" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="0Mf-s0-BtQ"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
-                            <constraint firstItem="Ctf-Sa-BFI" firstAttribute="width" secondItem="vow-0B-FuC" secondAttribute="width" id="28J-c6-RMY"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" id="84r-wt-vJO"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="8Ed-5c-LrJ"/>
@@ -1289,9 +1281,6 @@ all due cards</string>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
                             <constraint firstAttribute="trailing" secondItem="OJY-yv-PK2" secondAttribute="trailing" id="JD1-5M-SSM"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
-                            <constraint firstItem="Ctf-Sa-BFI" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="OF4-2D-U2n"/>
-                            <constraint firstItem="vow-0B-FuC" firstAttribute="leading" secondItem="Ctf-Sa-BFI" secondAttribute="trailing" id="Rrg-ZB-3xi"/>
-                            <constraint firstItem="vow-0B-FuC" firstAttribute="width" secondItem="G9v-Dx-vuY" secondAttribute="width" id="RzU-QU-4kS"/>
                             <constraint firstAttribute="trailing" secondItem="vow-0B-FuC" secondAttribute="trailing" id="ZJZ-Vs-aKy"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
                             <constraint firstItem="5Rm-K1-JvN" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="bWX-He-sBo"/>
@@ -1299,15 +1288,14 @@ all due cards</string>
                             <constraint firstAttribute="bottom" secondItem="OJY-yv-PK2" secondAttribute="bottom" id="dEy-Ss-cig"/>
                             <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
-                            <constraint firstItem="Ctf-Sa-BFI" firstAttribute="width" secondItem="G9v-Dx-vuY" secondAttribute="width" id="iqk-GI-3C7"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
+                            <constraint firstAttribute="trailing" secondItem="G9v-Dx-vuY" secondAttribute="trailing" id="o74-5T-dSZ"/>
+                            <constraint firstItem="vow-0B-FuC" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="oFI-zv-Eof"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
-                            <constraint firstAttribute="bottom" secondItem="Ctf-Sa-BFI" secondAttribute="bottom" id="oWh-Pb-fxX"/>
                             <constraint firstItem="OJY-yv-PK2" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="opY-oC-S8L"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
                             <constraint firstAttribute="bottom" secondItem="bd9-7H-uN2" secondAttribute="bottom" id="tWH-cR-MdD"/>
-                            <constraint firstItem="Ctf-Sa-BFI" firstAttribute="leading" secondItem="G9v-Dx-vuY" secondAttribute="trailing" id="wyg-HV-3Ge"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
@@ -1316,7 +1304,6 @@ all due cards</string>
                         <outlet property="addRemoveSidebar" destination="5Rm-K1-JvN" id="Zgq-SN-TV9"/>
                         <outlet property="kanjiView" destination="PTp-ZI-4VH" id="1II-hK-YDu"/>
                         <outlet property="leftIndicator" destination="G9v-Dx-vuY" id="GnO-gq-du6"/>
-                        <outlet property="middleIndicator" destination="Ctf-Sa-BFI" id="Jor-2j-iMh"/>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
                         <outlet property="redoSidebar" destination="OJY-yv-PK2" id="OGp-bz-8Tf"/>
                         <outlet property="rightIndicator" destination="vow-0B-FuC" id="Wc0-lS-48l"/>
@@ -1514,11 +1501,11 @@ all due cards</string>
                         <viewControllerLayoutGuide type="bottom" id="Vko-NP-bnK"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nwH-1v-TMo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="552"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
-                                <rect key="frame" x="0.0" y="0.0" width="101" height="400"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-zy-ozk">
+                                <rect key="frame" x="0.0" y="0.0" width="101" height="352"/>
                                 <color key="backgroundColor" red="0.99290275573730469" green="0.70174884796142578" blue="0.70910781621932983" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Remove">
@@ -1529,8 +1516,8 @@ all due cards</string>
                                     <action selector="leftTap:" destination="HHw-53-owD" eventType="touchUpInside" id="2k0-L0-PuM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
-                                <rect key="frame" x="101" y="0.0" width="101" height="400"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-uN-dxd">
+                                <rect key="frame" x="101" y="0.0" width="101" height="352"/>
                                 <color key="backgroundColor" red="0.75975763799999996" green="0.91666007039999997" blue="0.99949502940000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                 <state key="normal" title="Known">
@@ -1541,8 +1528,8 @@ all due cards</string>
                                     <action selector="rightTap:" destination="HHw-53-owD" eventType="touchUpInside" id="wr0-eH-1hX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
-                                <rect key="frame" x="0.0" y="400" width="202" height="200"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
+                                <rect key="frame" x="0.0" y="352" width="202" height="200"/>
                                 <color key="backgroundColor" red="0.99790024757385254" green="0.90225982666015625" blue="0.70449477434158325" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="IYR-r2-ti4"/>
@@ -1592,9 +1579,9 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="daX-c3-wht"/>
         <segue reference="ocT-bm-8xQ"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="NNU-PR-Fp5"/>
         <segue reference="0Q0-aS-4tM"/>
     </inferredMetricsTieBreakers>
 </document>

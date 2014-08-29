@@ -30,7 +30,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var audioPlayer = AVAudioPlayer()
     
     @IBOutlet weak var leftIndicator: UILabel!
-    @IBOutlet weak var middleIndicator: UILabel!
+//    @IBOutlet weak var middleIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
     
     @IBOutlet weak var addRemoveSidebar: UIView!
@@ -103,7 +103,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         setupEdgeReveal()
         
         leftIndicator.hidden = true
-        middleIndicator.hidden = true
+//        middleIndicator.hidden = true
         rightIndicator.hidden = true
         undoSidebar.hidden = true
         redoSidebar.hidden = true
@@ -269,7 +269,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //            return
 //        }
         
-        let transitionThreshold: CGFloat = 30
+        let transitionThreshold: CGFloat = 32
         var x = sender.translationInView(view).x
         
 //        if !canUndo {
@@ -280,7 +280,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //            x = max(0, x)
 //        }
         
-        x = max(0, abs(x) - 15) * sign(x)
+        x = max(0, abs(x) - 18) * sign(x)
         
         contentsUpdate(x)
         sidebarUpdate(x)
@@ -409,14 +409,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     private func answerCard(answer: AnswerDifficulty) {
         if let card = dueCard {
-            var highlightLabel: UILabel! = nil
+            var highlightLabel: UILabel? = nil
             
             switch answer {
             case .Forgot:
                 highlightLabel = leftIndicator
                 card.answerCard(.Forgot)
             case .Normal:
-                highlightLabel = middleIndicator
+//                highlightLabel = middleIndicator
                 card.answerCard(.Normal)
             case .Hard:
                 highlightLabel = rightIndicator
@@ -425,27 +425,31 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 break
             }
             
-            highlightLabel.hidden = false
-            highlightLabel.alpha = 1
-            
-            UIView.animateWithDuration(0.25,
-                delay: 0,
-                options: UIViewAnimationOptions.CurveEaseIn,
-                animations: {
-                    highlightLabel.alpha = 0
-                },
-                completion: {
-                    (_) -> () in
-                    highlightLabel.hidden = true
-                    self.onHighlightAnimationFinish()
-            })
+            if let highlightLabel = highlightLabel {
+                highlightLabel.hidden = false
+                highlightLabel.alpha = 1
+                
+                UIView.animateWithDuration(0.5,
+                    delay: 0,
+                    options: UIViewAnimationOptions.CurveEaseIn,
+                    animations: {
+                        highlightLabel.alpha = 0
+                    },
+                    completion: {
+                        (_) -> () in
+                        highlightLabel.hidden = true
+                        self.onHighlightAnimationFinish()
+                })
+            } else {
+                self.onHighlightAnimationFinish()
+            }
             
             saveContext()
         }
         
-        advanceCard()
     }    
     private func onHighlightAnimationFinish() {
+        advanceCard()
         updateText()
         
         if due.count == 0 {
