@@ -100,10 +100,13 @@ public class EdgeReveal: UIButton {
     
     var onUpdate: ((offset: CGFloat) -> ())?
     var setVisible: ((open: Bool, completed: Bool) -> ())?
-//    var onAnimationCompleted: ((open: Bool) -> ())?
+    //    var onAnimationCompleted: ((open: Bool) -> ())?
     var onTap: ((open: Bool) -> ())?
+    var onOpenClose: ((shouldOpen: Bool) -> ())?
     
     var animationState: AnimationState = AnimationState.Closed
+    
+    var allowOpen: Bool = true
     
     public init(
         parent: UIView,
@@ -178,12 +181,20 @@ public class EdgeReveal: UIButton {
         }
     }
     
-    public func animateSelf(isOpen: Bool) {
+    public func animateSelf(var isOpen: Bool) {
         if animationState.IsAnimating() {
             return
         }
         if animationState.IsOpenOrClosed() && animationState.AnyOpen() == isOpen {
             return
+        }
+        
+        if let onOpenClose = onOpenClose {
+            onOpenClose(shouldOpen: isOpen)
+        }
+        
+        if !allowOpen {
+            isOpen = false
         }
         
         let lastAnimationState = animationState
@@ -303,19 +314,26 @@ public class EdgeReveal: UIButton {
                 xDelta = -xDelta
             }
             
+//            if immediatelyClose {
+//                
+//                
+//                
+//                animateSelf(false)
+//            }
+//            else {
             if abs(translation.y) < maxYTravel {
                 if xDelta > transitionThreshold {
                     animateSelf(true)
                 } else if xDelta < transitionThreshold {
                     animateSelf(false)
-                }
-                else {
+                } else {
                     animateSelf(!animationState.AnyOpen())
                 }
             }
             else {
                 animateSelf(!animationState.AnyOpen())
             }
+//            }
         default:
             break
         }

@@ -105,6 +105,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             
             kanjiView.enabled = isFront
         }
+        
+        if canUndo {
+            leftEdgeReveal.frame.origin.x = 0
+        } else {
+            leftEdgeReveal.frame.origin.x = -leftEdgeReveal.frame.width
+        }
     }
     
     override func viewDidLoad() {
@@ -291,6 +297,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        }
         
         x = max(0, abs(x) - 18) * sign(x)
+        x = min(abs(x), leftSidebar.frame.width) * sign(x)
         
         contentsUpdate(x)
         sidebarUpdate(x)
@@ -365,19 +372,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        
 //    }
     //
-    private func contentsAlpha(value: CGFloat) {
-        outputText.alpha = value
-        kanjiView.alpha = value
-    }
+//    private func contentsAlpha(value: CGFloat) {
+//        outputText.alpha = value
+//        kanjiView.alpha = value
+//    }
     
     private func contentsUpdate(x: CGFloat) {
         outputText.frame.origin.x = x
         kanjiView.frame.origin.x = x
         
-        var alpha: CGFloat = 1 - abs(x / Globals.screenSize.width)//1 - max(0, abs(x) - leftSidebar.frame.width) / (Globals.screenSize.width - leftSidebar.frame.width)
-        alpha = alpha * alpha
-        
-        contentsAlpha(alpha)
+//        var alpha: CGFloat = 1 - abs(x / Globals.screenSize.width)//1 - max(0, abs(x) - leftSidebar.frame.width) / (Globals.screenSize.width - leftSidebar.frame.width)
+//        alpha = alpha * alpha
+//        
+//        contentsAlpha(alpha)
     }
     
     private func sidebarSetVisiblity(visible: Bool) {
@@ -475,26 +482,43 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    private var processUndo = false
+    private var processUndo: Bool = false
+//    private var leftEdgeRevealBaseWidth: CGFloat!
     
     private func setupEdgeReveal() {
         
         leftEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Left,
-            maxOffset: 100,
-            autoAddToParent: false,
+            maxOffset: undoSidebar.frame.width,
             onUpdate: {(offset: CGFloat) -> () in
-//                self.mainView.frame.origin.x = offset
-//                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
+                
+                self.undoSidebar.frame.origin.x = offset - self.undoSidebar.frame.width
+                self.outputText.frame.origin.x = offset
+                self.kanjiView.frame.origin.x = offset
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
-//                self.definitionEdgeReveal?.animateSelf(false)
-//                
-//                self.sidebar.visible = visible
-//                Globals.notificationSidebarInteract.postNotification(visible)
+                self.undoSidebar.visible = visible
+                
+                println(completed)
+                
+                if !visible && self.processUndo {
+                    self.processUndo = false
+                    self.onUndo()
+                }
         })
-
+        leftEdgeReveal.allowOpen = false
+        
+        leftEdgeReveal.onOpenClose = {(shouldOpen: Bool) -> () in
+            if shouldOpen {
+//                self.onUndo()
+                self.processUndo = true
+            }
+        }
+        
+//        leftEdgeRevealBaseWidth = leftEdgeReveal.frame.width
+        
+        //                            self.onUndo()
         rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
