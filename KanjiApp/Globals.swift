@@ -43,6 +43,17 @@ struct Globals
             return NSDate().timeIntervalSince1970
         }
     }
+    
+    private static var cachedRetinaScale: CGFloat! = nil
+    static var retinaScale: CGFloat {
+        get {
+            if cachedRetinaScale == nil {
+                cachedRetinaScale = UIScreen.mainScreen().scale
+            }
+            
+            return cachedRetinaScale
+        }
+    }
 }
 
 func randomRange(min: Double, max: Double) -> Double {
