@@ -130,10 +130,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         self.outputText.delegate = self
         
-//        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
-//        onTouchGesture.delegate = self
-//        downGesture.requireGestureRecognizerToFail(onSwipeToRight)
-//        outputText.addGestureRecognizer(onTouchGesture)
+        var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+        onTouchGesture.delegate = self
+        onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
+        outputText.addGestureRecognizer(onTouchGesture)
         
     }
     
@@ -187,6 +187,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if edgeReveal.animationState != AnimationState.Closed {
             return
         }
+        
+        if !wasFront {
+            
+            answerCard(.Normal)
+//            caculateAnswer(sender)
+        }
 
 //        if isFront {
 //            advanceCard()
@@ -205,40 +211,47 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        onUndo()
 //    }
     
-    //    var wasFront = false
+    var wasFront = false
 //    private var downPosition: CGPoint! = nil
-    private var lastPosition: CGPoint! = nil
-    private var travelledDistance: CGFloat = 0
-    func onDown(sender: UIPanGestureRecognizer) {
+//    private var lastPosition: CGPoint! = nil
+//    private var travelledDistance: CGFloat = 0
+    func onDown(sender: UILongPressGestureRecognizer) {
         
 //        let tapRadius: CGFloat = 3
-        let maxTravelled: CGFloat = 8
+//        let maxTravelled: CGFloat = 8
+//        println("onDownz")
         
         switch sender.state {
         case .Began:
+            wasFront = isFront
+            
+            if  isFront &&
+                edgeReveal.animationState == AnimationState.Closed {
+                advanceCard()
+            }
 //            downPosition = sender.locationInView(view)
-            lastPosition = sender.locationInView(view)
-            travelledDistance = 0
+//            lastPosition = sender.locationInView(view)
+//            travelledDistance = 0
             
-        case .Changed:
-            var pos = sender.locationInView(view)
-            travelledDistance += distanceAmount(pos, lastPosition)
-            
-            lastPosition = pos
-        case .Ended:
+//        case .Changed:
+//            var pos = sender.locationInView(view)
+//            travelledDistance += distanceAmount(pos, lastPosition)
+//            
+//            lastPosition = pos
+//        case .Ended:
             
 //            println("scrollSpeed = \(scrollSpeed)")
 //            println("offset = \(outputText.contentOffset.y)")
             
-            if edgeReveal.animationState == AnimationState.Closed &&
-                (scrollSpeed < 0.4 || isFront) &&
-                travelledDistance < maxTravelled {
-                if isFront {
-                    advanceCard()
-                } else {
-                    caculateAnswer(sender)
-                }
-            }
+//            if  edgeReveal.animationState == AnimationState.Closed &&
+//                (scrollSpeed < 0.4 || isFront) &&
+//                travelledDistance < maxTravelled {
+//                if isFront {
+//                    advanceCard()
+//                } else {
+//                    caculateAnswer(sender)
+//                }
+//            }
         
         default:
             break
@@ -252,20 +265,20 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
 //        println()
         
-        if !canUndo && !canRedo {
-            return
-        }
+//        if !canUndo && !canRedo {
+//            return
+//        }
         
         let transitionThreshold: CGFloat = 30
         var x = sender.translationInView(view).x
         
-        if !canUndo {
-            x = min(0, x)
-        }
-        
-        if !canRedo {
-            x = max(0, x)
-        }
+//        if !canUndo {
+//            x = min(0, x)
+//        }
+//        
+//        if !canRedo {
+//            x = max(0, x)
+//        }
         
         x = max(0, abs(x) - 15) * sign(x)
         
@@ -278,15 +291,15 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         case .Ended:
             var contentsTargetX: CGFloat = 0
             var active = false
-            var isRedo = false
+            var isRight = false
             
             if x > transitionThreshold {
-                contentsTargetX = Globals.screenSize.width
+//                contentsTargetX = Globals.screenSize.width
                 active = true
             } else if x < -transitionThreshold {
-                contentsTargetX = -Globals.screenSize.width
+//                contentsTargetX = -Globals.screenSize.width
                 active = true
-                isRedo = true
+                isRight = true
             }
             
 //            println(active)
@@ -296,22 +309,27 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 options: .CurveEaseOut,
                 {
                     self.sidebarUpdate(0)
-                    if active {
-                        self.contentsUpdate(contentsTargetX)
-                    } else {
-                        self.contentsUpdate(0)
-                    }
+//                    if active {
+//                        self.contentsUpdate(contentsTargetX)
+//                    } else {
+//                    }
+                    self.contentsUpdate(0)
                 },
                 completion: { (_) -> () in
                     
                     self.sidebarSetVisiblity(false)
                     
                     if active {
-                        if isRedo {
-                            self.onRedo()
+                        if isRight {
+                            self.answerCard(.Hard)
                         } else {
-                            self.onUndo()
+                            self.answerCard(.Forgot)
                         }
+//                        if isRedo {
+//                            self.onRedo()
+//                        } else {
+//                            self.onUndo()
+//                        }
                         
                         self.contentsUpdate(-contentsTargetX)
                         UIView.animateWithDuration(0.16,
@@ -367,18 +385,18 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         redoSidebar.frame.origin.x = x + Globals.screenSize.width
     }
     
-    private func caculateAnswer(sender: UIGestureRecognizer) {
-        var x = sender.locationInView(self.view).x / Globals.screenSize.width
-        x *= 3
-        
-        if x >= 0 && x < 1 {
-            answerCard(.Forgot)
-        } else if x >= 1 && x <= 2 {
-            answerCard(.Normal)
-        } else {
-            answerCard(.Hard)
-        }
-    }
+//    private func caculateAnswer(sender: UIGestureRecognizer) {
+//        var x = sender.locationInView(self.view).x / Globals.screenSize.width
+//        x *= 3
+//        
+//        if x >= 0 && x < 1 {
+//            answerCard(.Forgot)
+//        } else if x >= 1 && x <= 2 {
+//            answerCard(.Normal)
+//        } else {
+//            answerCard(.Hard)
+//        }
+//    }
 
     override func addNotifications() {
         super.addNotifications()
