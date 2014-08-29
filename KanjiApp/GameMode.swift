@@ -33,12 +33,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    @IBOutlet weak var middleIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
     
-    @IBOutlet weak var addRemoveSidebar: UIView!
+    @IBOutlet weak var propertiesSidebar: UIView!
     @IBOutlet weak var kanjiView: UILabel!
-        @IBOutlet weak var undoSidebar: UIButton!
-    @IBOutlet weak var redoSidebar: UIButton!
+        @IBOutlet weak var leftSidebar: UIButton!
+    @IBOutlet weak var rightSidebar: UIButton!
     
-    var edgeReveal: EdgeReveal! = nil
+    @IBOutlet weak var undoSidebar: UIButton!
+    
+    override var sidebarEnabled: Bool {
+        get {
+            return false
+        }
+    }
+    
+    var leftEdgeReveal: EdgeReveal! = nil
+    var rightEdgeReveal: EdgeReveal! = nil
     
     var canUndo: Bool {
         get {
@@ -105,8 +114,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         leftIndicator.hidden = true
 //        middleIndicator.hidden = true
         rightIndicator.hidden = true
+        leftSidebar.hidden = true
+        rightSidebar.hidden = true
         undoSidebar.hidden = true
-        redoSidebar.hidden = true
         
         
         
@@ -184,7 +194,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func onTouch(sender: UITapGestureRecognizer) {
 
-        if edgeReveal.animationState != AnimationState.Closed {
+        if rightEdgeReveal.animationState != AnimationState.Closed {
             return
         }
         
@@ -226,7 +236,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             wasFront = isFront
             
             if  isFront &&
-                edgeReveal.animationState == AnimationState.Closed {
+                rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
             }
 //            downPosition = sender.locationInView(view)
@@ -259,7 +269,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onPan(sender: UIPanGestureRecognizer) {
-        if edgeReveal.animationState != AnimationState.Closed {
+        if rightEdgeReveal.animationState != AnimationState.Closed {
             return
         }
         
@@ -364,25 +374,25 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         outputText.frame.origin.x = x
         kanjiView.frame.origin.x = x
         
-        var alpha: CGFloat = 1 - abs(x / Globals.screenSize.width)//1 - max(0, abs(x) - undoSidebar.frame.width) / (Globals.screenSize.width - undoSidebar.frame.width)
+        var alpha: CGFloat = 1 - abs(x / Globals.screenSize.width)//1 - max(0, abs(x) - leftSidebar.frame.width) / (Globals.screenSize.width - leftSidebar.frame.width)
         alpha = alpha * alpha
         
         contentsAlpha(alpha)
     }
     
     private func sidebarSetVisiblity(visible: Bool) {
-        undoSidebar.visible = visible
-        redoSidebar.visible = visible
+        leftSidebar.visible = visible
+        rightSidebar.visible = visible
     }
     
     private func sidebarUpdate(var x: CGFloat) {
         
         if x != 0 {
-            x = min(undoSidebar.frame.width, abs(x)) * sign(x)
+            x = min(leftSidebar.frame.width, abs(x)) * sign(x)
         }
         
-        undoSidebar.frame.origin.x = x - undoSidebar.frame.width
-        redoSidebar.frame.origin.x = x + Globals.screenSize.width
+        leftSidebar.frame.origin.x = x - leftSidebar.frame.width
+        rightSidebar.frame.origin.x = x + Globals.screenSize.width
     }
     
 //    private func caculateAnswer(sender: UIGestureRecognizer) {
@@ -459,7 +469,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func onEditCard() {
         if !view.hidden {
-            edgeReveal.editCardProperties(dueCard, value: Globals.notificationEditCardProperties.value)
+            rightEdgeReveal.editCardProperties(dueCard, value: Globals.notificationEditCardProperties.value)
             
             saveContext()
         }
@@ -468,12 +478,29 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     private var processUndo = false
     
     private func setupEdgeReveal() {
-        edgeReveal = EdgeReveal(
+        
+        leftEdgeReveal = EdgeReveal(
+            parent: view,
+            revealType: .Left,
+            maxOffset: 100,
+            autoAddToParent: false,
+            onUpdate: {(offset: CGFloat) -> () in
+//                self.mainView.frame.origin.x = offset
+//                self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
+            },
+            setVisible: {(visible: Bool, completed: Bool) -> () in
+//                self.definitionEdgeReveal?.animateSelf(false)
+//                
+//                self.sidebar.visible = visible
+//                Globals.notificationSidebarInteract.postNotification(visible)
+        })
+
+        rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
-                self.addRemoveSidebar.frame.origin.x = Globals.screenSize.width - offset
+                self.propertiesSidebar.frame.origin.x = Globals.screenSize.width - offset
                 self.kanjiView.frame.origin.x = -offset
                 self.cardPropertiesSidebar.animate(offset)
             },
@@ -483,11 +510,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                         card,
                         showUndoButton: false,
                         onUndoButtonTap: {
-                        self.edgeReveal.animateSelf(false)
+                        self.rightEdgeReveal.animateSelf(false)
                         self.processUndo = true
                     })
                 }
-                self.addRemoveSidebar.hidden = !visible
+                self.propertiesSidebar.hidden = !visible
                 
                 if !visible && self.processUndo {
                     self.processUndo = false
@@ -496,8 +523,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 }
         })
         
-        edgeReveal.onTap = {(open: Bool) -> () in
-            if self.edgeReveal.animationState == .Closed {
+        rightEdgeReveal.onTap = {(open: Bool) -> () in
+            if self.rightEdgeReveal.animationState == .Closed {
                 if !open && !self.isFront {
                     self.answerCard(.Hard)
                 } else {
@@ -629,7 +656,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onSidebarInteract() {
-        edgeReveal.animateSelf(false)
+        rightEdgeReveal.animateSelf(false)
     }
     
 //    func onInteract(interactType: InteractType, _ card: Card) {

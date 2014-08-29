@@ -18,9 +18,15 @@ class CustomUIViewController : UIViewController {
     }
     
     var isGameView: Bool {
-    get {
-        return true
+        get {
+            return true
+        }
     }
+    
+    var sidebarEnabled: Bool {
+        get {
+            return true
+        }
     }
     
     var alwaysReceiveNotifications: Bool {
@@ -59,6 +65,15 @@ class CustomUIViewController : UIViewController {
         if !alwaysReceiveNotifications && !notificationsActive {
             addNotifications()
         }
+        
+//        if isGameView {
+//            println(self)
+//            if RootContainer.instance != nil {
+//                println(RootContainer.instance)
+//                println(RootContainer.instance.sidebarEdgeReveal)
+//                RootContainer.instance.sidebarEdgeReveal.visible = sidebarEnabled
+//            }
+//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,12 +82,14 @@ class CustomUIViewController : UIViewController {
             addNotifications()
         }
         
+        println(self)
+        
 //        println(self)
 //        
 //        println(isGameView)
         
 //        if isGameView {
-//            Globals.notificationGameViewDidAppear.postNotification(true)
+        Globals.notificationGameViewDidAppear.postNotification(self)
 //        }
     }
     override func viewWillDisappear(animated: Bool) {

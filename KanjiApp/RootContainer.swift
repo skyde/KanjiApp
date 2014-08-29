@@ -129,12 +129,15 @@ class RootContainer: CustomUIViewController {
         
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
         
-//        Globals.notificationGameViewDidAppear.addObserver(self, selector: "onGameViewDidAppear")
+        Globals.notificationGameViewDidAppear.addObserver(self, selector: "onGameViewDidAppear")
     }
     
-//    func onGameViewDidAppear() {
-//        println("onGameViewDidAppear")
-//        
+    func onGameViewDidAppear() {
+        println("onGameViewDidAppear")
+        
+        sidebarEdgeReveal.visible = Globals.notificationGameViewDidAppear.value.sidebarEnabled
+    }
+//
 ////        var alert = UIAlertController(title: "Import Lists", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", preferredStyle: UIAlertControllerStyle.Alert)
 ////        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
 ////        alert.addAction(UIAlertAction(title: "Import",
