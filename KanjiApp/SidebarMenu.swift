@@ -143,7 +143,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 enableOnAdd: false)
         case 201:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended().map { ($0 as Card).index }
-            
+             
             targetView = .Lists(
                 title: "JLPT 3",
                 color: Globals.colorLists,
