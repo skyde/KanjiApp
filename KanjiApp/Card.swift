@@ -39,26 +39,36 @@ class Card: NSManagedObject {
             answersKnown = answersKnown + 1
         case .Normal:
 //            println("Normal")
-            if interval.integerValue < 11 {
-                interval = interval.integerValue + 1
-            }
             if adjustInterval {
-                answersNormal = answersNormal + 1
+                if interval.integerValue < 11 {
+                    interval = interval.integerValue + 1
+                }
             }
+            
+            answersNormal = answersNormal + 1
         case .Hard:
-//            println("Hard")
-            if interval.integerValue >= 1 {
-                interval = interval.integerValue - 1
-            }
             if adjustInterval {
-                answersHard = answersHard + 1
+                if interval.integerValue >= 6 {
+                    interval = interval.integerValue - 1
+                }
             }
+            
+            answersHard = answersHard + 1
         case .Forgot:
-//            println("Forgot")
-            interval = 1
             if adjustInterval {
-                answersForgot = answersForgot + 1
+                if interval <= 6 {
+                    interval = 1
+                } else if interval <= 7 {
+                    interval = 2
+                } else if interval <= 9 {
+                    interval = 4
+                } else if interval <= 10 {
+                    interval = 5
+                } else if interval <= 11 {
+                    interval = 6
+                }
             }
+            answersForgot = answersForgot + 1
         }
         
         interval = min(11, interval.integerValue)
