@@ -32,7 +32,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var timer: NSTimer? = nil
     let frameRate: Double = 1 / 60
     
-    let downPressInterval = 0.5
+    let downPressInterval: Double = 0.5
     
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
@@ -140,9 +140,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
 //        outputText.panGestureRecognizer.delegate = self
         
-        var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
-        panGesture.delegate = self
-        self.outputText.addGestureRecognizer(panGesture)
+//        var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
+//        panGesture.delegate = self
+//        self.outputText.addGestureRecognizer(panGesture)
         
 //        println("viewDidLoad")
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
@@ -222,7 +222,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         if !wasFront {
             
-            answerCard(.Normal)
+            //answerCard(.Normal)
+            caculateAnswer(sender)
 //            caculateAnswer(sender)
         }
         
@@ -273,14 +274,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         case .Began:
             wasFront = isFront
             
+            println(isFront)
             if  isFront &&
                 rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
+                    
+                downBeganTime = NSDate.timeIntervalSinceReferenceDate()
+                
+                progressBar.visible = true
+                progressBar.progress = 0
             }
-            downBeganTime = NSDate.timeIntervalSinceReferenceDate()
-            
-            progressBar.visible = true
-            progressBar.progress = 0
             
 //            UIView.animateWithDuration(interval,
 //                delay: 0,
@@ -292,18 +295,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        case .Changed:
             
         case .Ended:
-            
             progressBar.visible = false
             if percent < 1 && wasFront {
-                advanceCardAndUpdateText()
+                println(percent)
+                //downBeganTime = 0
+                answerCard(.Normal)
+                //advanceCardAndUpdateText()
             }
         
         default:
             break
         }
-        
-//        println(percent)
-        
     }
     
     func onPan(sender: UIPanGestureRecognizer) {
@@ -434,18 +436,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         rightSidebar.frame.origin.x = x + Globals.screenSize.width
     }
     
-//    private func caculateAnswer(sender: UIGestureRecognizer) {
-//        var x = sender.locationInView(self.view).x / Globals.screenSize.width
-//        x *= 3
-//        
-//        if x >= 0 && x < 1 {
-//            answerCard(.Forgot)
-//        } else if x >= 1 && x <= 2 {
-//            answerCard(.Normal)
-//        } else {
-//            answerCard(.Hard)
-//        }
-//    }
+    private func caculateAnswer(sender: UIGestureRecognizer) {
+        var x = sender.locationInView(self.view).x / Globals.screenSize.width
+        x *= 2
+        
+        if x >= 0 && x < 1 {
+            answerCard(.Forgot)
+        } else {
+            answerCard(.Hard)
+        }
+    }
 
     override func addNotifications() {
         super.addNotifications()
@@ -462,13 +462,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             
             switch answer {
             case .Forgot:
-//                highlightLabel = leftIndicator
+                highlightLabel = leftIndicator
                 card.answerCard(.Forgot)
             case .Normal:
 //                highlightLabel = middleIndicator
                 card.answerCard(.Normal)
             case .Hard:
-//                highlightLabel = rightIndicator
+                highlightLabel = rightIndicator
                 card.answerCard(.Hard)
             default:
                 break
@@ -551,7 +551,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
-            swipeAreaWidth: 0,
+            //swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.propertiesSidebar.frame.origin.x = Globals.screenSize.width - offset
