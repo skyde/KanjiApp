@@ -40,11 +40,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     @IBOutlet weak var undoSidebar: UIButton!
     
-    override var sidebarEnabled: Bool {
-        get {
-            return false
-        }
-    }
+//    override var sidebarEnabled: Bool {
+//        get {
+//            return false
+//        }
+//    }
     
     var leftEdgeReveal: EdgeReveal! = nil
     var rightEdgeReveal: EdgeReveal! = nil
@@ -143,7 +143,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         downGesture.minimumPressDuration = 0
 //        downGesture.requireGestureRecognizerToFail(panGesture)
         self.outputText.addGestureRecognizer(downGesture)
-        
         self.outputText.delegate = self
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
@@ -151,6 +150,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         outputText.addGestureRecognizer(onTouchGesture)
         
+        
+        var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
+        onLongPress.delegate = self
+        outputText.addGestureRecognizer(onLongPress)
     }
     
     private var lastScrollY: CGFloat? = nil
@@ -226,6 +229,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        
 //        onUndo()
 //    }
+    
+    func onLongPress(sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .Began:
+            if rightEdgeReveal.animationState == .Closed {
+                rightEdgeReveal.animateSelf(true)
+            }
+        default:
+            break
+        }
+    }
     
     var wasFront = false
 //    private var downPosition: CGPoint! = nil
@@ -491,6 +505,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             parent: view,
             revealType: .Left,
             maxOffset: undoSidebar.frame.width,
+            swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 
                 self.undoSidebar.frame.origin.x = offset - self.undoSidebar.frame.width
@@ -500,18 +515,15 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 self.undoSidebar.visible = visible
                 
-                println(completed)
-                
                 if !visible && self.processUndo {
                     self.processUndo = false
                     self.onUndo()
                 }
-        })
+            })
         leftEdgeReveal.allowOpen = false
         
         leftEdgeReveal.onOpenClose = {(shouldOpen: Bool) -> () in
             if shouldOpen {
-//                self.onUndo()
                 self.processUndo = true
             }
         }
@@ -532,7 +544,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 if let card = self.dueCard {
                     self.cardPropertiesSidebar.updateContents(
                         card,
-                        showUndoButton: false,
+                        showUndoButton: self.canUndo,
                         onUndoButtonTap: {
                         self.rightEdgeReveal.animateSelf(false)
                         self.processUndo = true

@@ -1237,7 +1237,7 @@ all due cards</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgD-aG-VTJ">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="600"/>
+                                <rect key="frame" x="-100" y="0.0" width="100" height="600"/>
                                 <color key="backgroundColor" red="0.95083647966384888" green="0.79498875141143799" blue="0.98674637079238892" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="kzB-8l-qoT"/>
@@ -1249,7 +1249,7 @@ all due cards</string>
                                 </state>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-K1-JvN">
-                                <rect key="frame" x="398" y="0.0" width="202" height="600"/>
+                                <rect key="frame" x="600" y="0.0" width="202" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="202" id="pb3-2f-C6Q"/>
                                 </constraints>
@@ -1258,7 +1258,7 @@ all due cards</string>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd9-7H-uN2">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="600"/>
+                                <rect key="frame" x="-100" y="0.0" width="100" height="600"/>
                                 <color key="backgroundColor" red="0.98263758420944214" green="0.79204946756362915" blue="0.80164420604705811" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="H1s-dw-ETz"/>
@@ -1270,7 +1270,7 @@ all due cards</string>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJY-yv-PK2">
-                                <rect key="frame" x="500" y="0.0" width="100" height="600"/>
+                                <rect key="frame" x="600" y="0.0" width="100" height="600"/>
                                 <color key="backgroundColor" red="0.99927449226379395" green="0.96290701627731323" blue="0.81564205884933472" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="dTw-Fc-VCr"/>
@@ -1285,15 +1285,15 @@ all due cards</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="bd9-7H-uN2" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="0Mf-s0-BtQ"/>
+                            <constraint firstItem="bd9-7H-uN2" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" constant="-100" id="0Mf-s0-BtQ"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
-                            <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" id="84r-wt-vJO"/>
+                            <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" constant="-202" id="84r-wt-vJO"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="8Ed-5c-LrJ"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
                             <constraint firstItem="bd9-7H-uN2" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="Fzq-vL-uO9"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
-                            <constraint firstAttribute="trailing" secondItem="OJY-yv-PK2" secondAttribute="trailing" id="JD1-5M-SSM"/>
+                            <constraint firstAttribute="trailing" secondItem="OJY-yv-PK2" secondAttribute="trailing" constant="-100" id="JD1-5M-SSM"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
                             <constraint firstAttribute="trailing" secondItem="vow-0B-FuC" secondAttribute="trailing" id="ZJZ-Vs-aKy"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
@@ -1308,7 +1308,7 @@ all due cards</string>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="oFI-zv-Eof"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
                             <constraint firstItem="OJY-yv-PK2" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="opY-oC-S8L"/>
-                            <constraint firstItem="AgD-aG-VTJ" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="qAc-1K-HXo"/>
+                            <constraint firstItem="AgD-aG-VTJ" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" constant="-100" id="qAc-1K-HXo"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
                             <constraint firstAttribute="bottom" secondItem="bd9-7H-uN2" secondAttribute="bottom" id="tWH-cR-MdD"/>
@@ -1597,7 +1597,7 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iYu-nc-2Hh"/>
+        <segue reference="ocT-bm-8xQ"/>
         <segue reference="BpJ-Ou-mkl"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="NNU-PR-Fp5"/>
