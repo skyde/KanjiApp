@@ -29,6 +29,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     var audioPlayer = AVAudioPlayer()
     
+    var timer: NSTimer? = nil
+    let frameRate: Double = 1 / 60
+    
+    let downPressInterval = 0.5
+    
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
@@ -40,6 +45,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     @IBOutlet weak var undoSidebar: UIButton!
     
+    @IBOutlet weak var progressBar: UIProgressView!
 //    override var sidebarEnabled: Bool {
 //        get {
 //            return false
@@ -123,8 +129,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         leftSidebar.hidden = true
         rightSidebar.hidden = true
         undoSidebar.hidden = true
+        progressBar.hidden = true
         
-        
+        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
 //        var onSwipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight:")
 //        onSwipeToRight.delegate = self
@@ -150,47 +157,55 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         outputText.addGestureRecognizer(onTouchGesture)
         
-        var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
-        onLongPress.delegate = self
-        outputText.addGestureRecognizer(onLongPress)
+//        var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
+//        onLongPress.delegate = self
+//        outputText.addGestureRecognizer(onLongPress)
     }
     
-    private var lastScrollY: CGFloat? = nil
-    private var lastScrollTime: NSTimeInterval! = nil
-    private var scrollSpeed: CGFloat = 0
-    func scrollViewDidScroll(scrollView: UIScrollView!) {
-        
-//        println("scrollViewDidScroll")
-        
-        if let lastScrollY = lastScrollY {
-            var scrollY = outputText.contentOffset.y
-            var scrollTime = NSDate.timeIntervalSinceReferenceDate()
+    func onTimerTick() {
+        if progressBar.visible {
+            var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
             
-            scrollY -= lastScrollY
-            scrollTime -= lastScrollTime
-            
-            var speed = abs(scrollY / CGFloat(scrollTime) / 1000)
-            
-//            if speed != 0 {
-            scrollSpeed = speed
-//            }
-//            scrollSpeed = 2
-            
-            //            println(scrollSpeed)
-//            println("scrollSpeed = \(scrollSpeed)")
-//            println("test")
+            progressBar.progress = Float(percent)
         }
-        
-        lastScrollY = outputText.contentOffset.y
-        lastScrollTime = NSDate.timeIntervalSinceReferenceDate()
-//        println(scrollView.panGestureRecognizer.velocityInView(view).y)
-//        println(outputText.)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-//        println("scrollViewDidEndDecelerating")
-        scrollSpeed = 0
-    }
+//    private var lastScrollY: CGFloat? = nil
+//    private var lastScrollTime: NSTimeInterval! = nil
+//    private var scrollSpeed: CGFloat = 0
+//    func scrollViewDidScroll(scrollView: UIScrollView!) {
+//        
+////        println("scrollViewDidScroll")
+//        
+//        if let lastScrollY = lastScrollY {
+//            var scrollY = outputText.contentOffset.y
+//            var scrollTime = NSDate.timeIntervalSinceReferenceDate()
+//            
+//            scrollY -= lastScrollY
+//            scrollTime -= lastScrollTime
+//            
+//            var speed = abs(scrollY / CGFloat(scrollTime) / 1000)
+//            
+////            if speed != 0 {
+//            scrollSpeed = speed
+////            }
+////            scrollSpeed = 2
+//            
+//            //            println(scrollSpeed)
+////            println("scrollSpeed = \(scrollSpeed)")
+////            println("test")
+//        }
+//        
+//        lastScrollY = outputText.contentOffset.y
+//        lastScrollTime = NSDate.timeIntervalSinceReferenceDate()
+////        println(scrollView.panGestureRecognizer.velocityInView(view).y)
+////        println(outputText.)
+//    }
+    
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+////        println("scrollViewDidEndDecelerating")
+//        scrollSpeed = 0
+//    }
     
 //    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView!) {
 //        println("end")
@@ -210,6 +225,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             answerCard(.Normal)
 //            caculateAnswer(sender)
         }
+        
+//        println("touch")
 
 //        if isFront {
 //            advanceCard()
@@ -228,26 +245,29 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        onUndo()
 //    }
     
-    func onLongPress(sender: UILongPressGestureRecognizer) {
-        switch sender.state {
-        case .Began:
-            if rightEdgeReveal.animationState == .Closed {
-                rightEdgeReveal.animateSelf(true)
-            }
-        default:
-            break
-        }
-    }
+//    func onLongPress(sender: UILongPressGestureRecognizer) {
+//        switch sender.state {
+//        case .Began:
+//            if rightEdgeReveal.animationState == .Closed {
+//                rightEdgeReveal.animateSelf(true)
+//            }
+//        default:
+//            break
+//        }
+//    }
     
     var wasFront = false
 //    private var downPosition: CGPoint! = nil
 //    private var lastPosition: CGPoint! = nil
 //    private var travelledDistance: CGFloat = 0
+    var downBeganTime: NSTimeInterval = 0
     func onDown(sender: UILongPressGestureRecognizer) {
         
 //        let tapRadius: CGFloat = 3
 //        let maxTravelled: CGFloat = 8
 //        println("onDownz")
+        
+        var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
         
         switch sender.state {
         case .Began:
@@ -257,33 +277,33 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
             }
-//            downPosition = sender.locationInView(view)
-//            lastPosition = sender.locationInView(view)
-//            travelledDistance = 0
+            downBeganTime = NSDate.timeIntervalSinceReferenceDate()
             
+            progressBar.visible = true
+            progressBar.progress = 0
+            
+//            UIView.animateWithDuration(interval,
+//                delay: 0,
+//                options: .CurveEaseOut,
+//                {
+//                    self.progressBar.progress = 1
+//                },
+//                completion: nil)
 //        case .Changed:
-//            var pos = sender.locationInView(view)
-//            travelledDistance += distanceAmount(pos, lastPosition)
-//            
-//            lastPosition = pos
-//        case .Ended:
             
-//            println("scrollSpeed = \(scrollSpeed)")
-//            println("offset = \(outputText.contentOffset.y)")
+        case .Ended:
             
-//            if  edgeReveal.animationState == AnimationState.Closed &&
-//                (scrollSpeed < 0.4 || isFront) &&
-//                travelledDistance < maxTravelled {
-//                if isFront {
-//                    advanceCard()
-//                } else {
-//                    caculateAnswer(sender)
-//                }
-//            }
+            progressBar.visible = false
+            if percent < 1 && wasFront {
+                advanceCardAndUpdateText()
+            }
         
         default:
             break
         }
+        
+//        println(percent)
+        
     }
     
     func onPan(sender: UIPanGestureRecognizer) {
@@ -551,7 +571,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     self.backTextCache = nil
                     self.onUndo()
                 }
-                println("processAdvanceCard \(self.processAdvanceCard)")
+//                println("processAdvanceCard \(self.processAdvanceCard)")
                 
                 if !visible && self.processAdvanceCard {
                     self.processAdvanceCard = false
