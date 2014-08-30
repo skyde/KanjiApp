@@ -13,10 +13,11 @@ public class CardPropertiesSidebar : UIViewController {
     var baseUndoHeight: CGFloat? = nil
     
     var onUndoButtonTap: (() -> ())?
+    var onKnownButtonTap: (() -> ())?
+    var onAddButtonTap: (() -> ())?
+    var onRemoveButtonTap: (() -> ())?
     
-    func updateContents(card: Card?, var showUndoButton: Bool, var onUndoButtonTap: (() -> ())? = nil) {
-        
-        self.onUndoButtonTap = onUndoButtonTap
+    func updateContents(card: Card?, var showUndoButton: Bool) {
         
         if baseUndoHeight == nil {
             baseUndoHeight = undoHeight.constant
@@ -46,35 +47,58 @@ public class CardPropertiesSidebar : UIViewController {
         }
     }
     
-    @IBAction func leftTap(sender: AnyObject) {
-        switch currentType {
-        case .KnownAndAdd:
-            Globals.notificationEditCardProperties.postNotification(.Known)
-        case .RemoveAndAdd:
-            Globals.notificationEditCardProperties.postNotification(.Remove)
-            break
-        case .RemoveAndKnow:
-            Globals.notificationEditCardProperties.postNotification(.Remove)
-            break
+    private func onTap(property: CardPropertiesEdit) {
+        
+        Globals.notificationEditCardProperties.postNotification(property)
+
+        switch property {
+        case .Add:
+            if let callback = self.onAddButtonTap {
+                callback()
+            }
+        case .Known:
+            if let callback = self.onKnownButtonTap {
+                callback()
+            }
+        case .Remove:
+            if let callback = self.onRemoveButtonTap {
+                callback()
+            }
         }
     }
     
-//    public override func awakeFromNib() {
-//        super.awakeFromNib()
-//        
-//    }
-    
-    @IBAction func rightTap(sender: AnyObject) {
+    @IBAction func leftTap(sender: AnyObject) {
+        var property: CardPropertiesEdit!
+        
         switch currentType {
         case .KnownAndAdd:
-            Globals.notificationEditCardProperties.postNotification(.Add)
+            property = .Known
         case .RemoveAndAdd:
-            Globals.notificationEditCardProperties.postNotification(.Add)
+            property = .Remove
             break
         case .RemoveAndKnow:
-            Globals.notificationEditCardProperties.postNotification(.Known)
+            property = .Remove
             break
         }
+        
+        onTap(property)
+    }
+    
+    @IBAction func rightTap(sender: AnyObject) {
+        var property: CardPropertiesEdit!
+        
+        switch currentType {
+        case .KnownAndAdd:
+            property = .Add
+        case .RemoveAndAdd:
+            property = .Add
+            break
+        case .RemoveAndKnow:
+            property = .Known
+            break
+        }
+        
+        onTap(property)
     }
     
     public func animate(offset: CGFloat) {

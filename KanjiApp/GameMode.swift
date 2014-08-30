@@ -150,7 +150,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         outputText.addGestureRecognizer(onTouchGesture)
         
-        
         var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
         onLongPress.delegate = self
         outputText.addGestureRecognizer(onLongPress)
@@ -202,7 +201,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    }
     
     func onTouch(sender: UITapGestureRecognizer) {
-
         if rightEdgeReveal.animationState != AnimationState.Closed {
             return
         }
@@ -469,17 +467,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     completion: {
                         (_) -> () in
                         highlightLabel.hidden = true
-                        self.onHighlightAnimationFinish()
+                        self.advanceCardAndUpdateText()
                 })
             } else {
-                self.onHighlightAnimationFinish()
+                self.advanceCardAndUpdateText()
             }
             
             saveContext()
         }
         
     }    
-    private func onHighlightAnimationFinish() {
+    private func advanceCardAndUpdateText() {
         advanceCard()
         updateText()
         
@@ -497,7 +495,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     private var processUndo: Bool = false
-//    private var leftEdgeRevealBaseWidth: CGFloat!
+    private var processAdvanceCard: Bool = false
     
     private func setupEdgeReveal() {
         
@@ -519,7 +517,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     self.processUndo = false
                     self.onUndo()
                 }
+                
             })
+        
         leftEdgeReveal.allowOpen = false
         
         leftEdgeReveal.onOpenClose = {(shouldOpen: Bool) -> () in
@@ -528,12 +528,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             }
         }
         
-//        leftEdgeRevealBaseWidth = leftEdgeReveal.frame.width
-        
-        //                            self.onUndo()
         rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
+            swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.propertiesSidebar.frame.origin.x = Globals.screenSize.width - offset
@@ -544,11 +542,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 if let card = self.dueCard {
                     self.cardPropertiesSidebar.updateContents(
                         card,
-                        showUndoButton: self.canUndo,
-                        onUndoButtonTap: {
-                        self.rightEdgeReveal.animateSelf(false)
-                        self.processUndo = true
-                    })
+                        showUndoButton: self.canUndo)
                 }
                 self.propertiesSidebar.hidden = !visible
                 
@@ -557,17 +551,40 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     self.backTextCache = nil
                     self.onUndo()
                 }
+                println("processAdvanceCard \(self.processAdvanceCard)")
+                
+                if !visible && self.processAdvanceCard {
+                    self.processAdvanceCard = false
+                    self.advanceCardAndUpdateText()
+                }
         })
         
-        rightEdgeReveal.onTap = {(open: Bool) -> () in
-            if self.rightEdgeReveal.animationState == .Closed {
-                if !open && !self.isFront {
-                    self.answerCard(.Hard)
-                } else {
-                    self.advanceCard()
-                }
-            }
+        cardPropertiesSidebar.onUndoButtonTap = {
+            self.rightEdgeReveal.animateSelf(false)
+            self.processUndo = true
         }
+        
+        cardPropertiesSidebar.onAddButtonTap = {
+            self.processAdvanceCard = true
+        }
+        
+        cardPropertiesSidebar.onKnownButtonTap = {
+            self.processAdvanceCard = true
+        }
+        
+        cardPropertiesSidebar.onRemoveButtonTap = {
+            self.processAdvanceCard = true
+        }
+        
+//        rightEdgeReveal.onTap = {(open: Bool) -> () in
+//            if self.rightEdgeReveal.animationState == .Closed {
+//                if !open && !self.isFront {
+//                    self.answerCard(.Hard)
+//                } else {
+//                    self.advanceCard()
+//                }
+//            }
+//        }
     }
     
     private func onUndo() {

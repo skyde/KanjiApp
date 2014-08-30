@@ -133,7 +133,7 @@ class RootContainer: CustomUIViewController {
     }
     
     func onGameViewDidAppear() {
-        println("onGameViewDidAppear")
+//        println("onGameViewDidAppear")
         
         sidebarEdgeReveal.visible = Globals.notificationGameViewDidAppear.value.sidebarEnabled
     }

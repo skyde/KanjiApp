@@ -82,7 +82,7 @@ class CustomUIViewController : UIViewController {
             addNotifications()
         }
         
-        println(self)
+//        println(self)
         
 //        println(self)
 //        
