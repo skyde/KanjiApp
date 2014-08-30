@@ -24,8 +24,7 @@ class CardsFinished : CustomUIViewController {
     @IBAction func addNewCardsPressed(sender: AnyObject) {
         //        println("addNewCardsPressed")
         
-        let myWords = managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
-        
+        let myWords = managedObjectContext.fetchCardsWillStudy()
         if myWords.count > 0 {
             Globals.notificationAddWordsFromList.postNotification(.MyWords)
         }

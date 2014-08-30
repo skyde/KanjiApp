@@ -1607,9 +1607,9 @@ all due cards</string>
         <image name="hamburgerIcon.png" width="600" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ocT-bm-8xQ"/>
-        <segue reference="BpJ-Ou-mkl"/>
         <segue reference="0Q0-aS-4tM"/>
+        <segue reference="BpJ-Ou-mkl"/>
+        <segue reference="Njb-Jk-Mx7"/>
         <segue reference="NNU-PR-Fp5"/>
     </inferredMetricsTieBreakers>
 </document>
