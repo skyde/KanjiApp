@@ -430,13 +430,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             
             switch answer {
             case .Forgot:
-                highlightLabel = leftIndicator
+//                highlightLabel = leftIndicator
                 card.answerCard(.Forgot)
             case .Normal:
 //                highlightLabel = middleIndicator
                 card.answerCard(.Normal)
             case .Hard:
-                highlightLabel = rightIndicator
+//                highlightLabel = rightIndicator
                 card.answerCard(.Hard)
             default:
                 break
