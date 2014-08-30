@@ -8,13 +8,14 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
+    @IBOutlet weak var addWordsButton: UIButton!
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         
         items = []
     }
     
-    @IBAction func onButtonDown(sender: AnyObject) {
+    @IBAction func onConfirmButtonDown(sender: AnyObject) {
         for index in items {
             if let card = managedObjectContext.fetchCardByIndex(index) {
                 if !card.known {
@@ -34,6 +35,13 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         
     }
     
+    @IBAction func onAddWordsButtonDown(sender: AnyObject) {
+        
+        if let sourceList = sourceList {
+            Globals.notificationAddWordsFromList.postNotification(sourceList)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,17 +51,25 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     var enableOnAdd: Bool = false
+    var sourceList: WordList? = nil
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         switch Globals.notificationTransitionToView.value {
-        case .Lists(let title, let color, let cards, let displayAddButton, let enableOnAdd):
+        case .Lists(let title, let color, let cards, let displayConfirmButton, var displayAddButton, let sourceList, let enableOnAdd):
+            
+            if cards.count == 0 {
+                displayAddButton = false
+            }
+            
             items = cards
             header.text = title
             header.textColor = color
-            confirmButton.hidden = !displayAddButton
+            confirmButton.visible = displayConfirmButton
+            addWordsButton.visible = displayAddButton
             self.enableOnAdd = enableOnAdd
+            self.sourceList = sourceList
         default:
             break
         }

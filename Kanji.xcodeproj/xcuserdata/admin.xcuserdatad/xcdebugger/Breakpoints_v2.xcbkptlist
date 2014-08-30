@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/Lists.swift"
-            timestampString = "429766267.961045"
+            timestampString = "431060274.404505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "init(coder:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KanjiApp/Lists.swift"
-            timestampString = "429988900.657052"
+            timestampString = "431060274.404505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "onButtonDown(_:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "onConfirmButtonDown(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

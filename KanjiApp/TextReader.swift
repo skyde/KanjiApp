@@ -67,7 +67,14 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
             }
         }
         
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: Globals.colorFunctions, cards: add, displayAddButton: true, enableOnAdd: false))
+        Globals.notificationTransitionToView.postNotification(.Lists(
+            title: "Words to Add",
+            color: Globals.colorFunctions,
+            cards: add,
+            displayConfirmButton: true,
+            displayAddButton: false,
+            sourceList: nil,
+            enableOnAdd: false))
     }
     
     @IBAction func translateTap(sender: AnyObject) {

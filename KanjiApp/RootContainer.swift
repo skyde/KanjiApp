@@ -270,7 +270,14 @@ class RootContainer: CustomUIViewController {
             }
         }
         
-        Globals.notificationTransitionToView.postNotification(.Lists(title: "Words to Add", color: color, cards: addCards, displayAddButton: true, enableOnAdd: enableOnAdd))
+        Globals.notificationTransitionToView.postNotification(.Lists(
+            title: "Words to Add",
+            color: color,
+            cards: addCards,
+            displayConfirmButton: true,
+            displayAddButton: false,
+            sourceList: Globals.notificationAddWordsFromList.value,
+            enableOnAdd: enableOnAdd))
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
