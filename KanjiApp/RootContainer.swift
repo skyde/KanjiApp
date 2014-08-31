@@ -21,6 +21,7 @@ class RootContainer: CustomUIViewController {
     var statusBarHidden = false
     let popoverAnimationSpeed = 0.17
     let blurEasing = UIViewAnimationOptions.CurveEaseOut
+    let sidebarShadowOpacity: Float = 0.5
     
     override var isGameView: Bool {
     get {
@@ -48,6 +49,12 @@ class RootContainer: CustomUIViewController {
                 
                 self.sidebar.visible = visible
                 Globals.notificationSidebarInteract.postNotification(visible)
+                
+                if visible {
+                    self.mainView.layer.shadowOpacity = self.sidebarShadowOpacity
+                } else {
+                    self.mainView.layer.shadowOpacity = 0
+                }
         })
         
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
@@ -73,6 +80,10 @@ class RootContainer: CustomUIViewController {
                 self.definitionOverlay.visible = visible
         })
         definitionEdgeReveal.maxRevealInteractInset = 13
+        
+        mainView.layer.shadowColor = UIColor.blackColor().CGColor
+        mainView.layer.shadowOffset = CGSizeMake(-2, 0)
+        mainView.layer.shadowOpacity = sidebarShadowOpacity
     }
     
     func onNotificationShowDefinition() {
