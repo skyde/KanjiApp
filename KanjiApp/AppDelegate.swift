@@ -26,14 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-
-        var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
-        alert.addButtonWithTitle("Import")
-        alert.delegate = self
-        alert.show()
         
-        var error: NSErrorPointer = nil
-        fileContents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
+        println(url.pathExtension)
+        
+        if url.pathExtension == "midori" {
+            println("import midori")
+            var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
+            alert.addButtonWithTitle("Import")
+            alert.delegate = self
+            alert.show()
+            
+            var error: NSErrorPointer = nil
+            fileContents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
+        } else if url.pathExtension == "txt" {
+            println("import txt")
+        }
         
         return true
     }
