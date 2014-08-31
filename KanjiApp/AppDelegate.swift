@@ -9,6 +9,12 @@
 import UIKit
 import CoreData
 
+enum ImportedFiletype {
+    case Kanji
+    case CSV
+    case TSV
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     
@@ -16,35 +22,125 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         return true
     }
     
+    var filetype: ImportedFiletype?
     var fileContents = ""
     
     func alertView(alertView: UIAlertView!, willDismissWithButtonIndex buttonIndex: Int) {
-        if buttonIndex == 1 && fileContents != "" {
-            importUserList(fileContents)
+        if  buttonIndex == 1 &&
+            fileContents != "" {
+            if let filetype = filetype {
+                switch filetype {
+                case .Kanji:
+                    importKanjiDatabase(fileContents)
+                case .CSV:
+                    additiveImportList(fileContents, delimiter: ",", column: 1, fallbackColumn: 0)
+                case .TSV:
+                    additiveImportList(fileContents, delimiter: "\t", column: 1, fallbackColumn: 0)
+                }
+            }
+            
+            println(fileContents)
             fileContents = ""
         }
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        
-        println(url.pathExtension)
-        
-        if url.pathExtension == "midori" {
-            println("import midori")
-            var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
-            alert.addButtonWithTitle("Import")
-            alert.delegate = self
-            alert.show()
+        if url.pathExtension == "kanji" {
+            filetype = .Kanji
+        } else if url.pathExtension == "csv" {
+            filetype = .CSV
             
+        } else if url.pathExtension == "txt" {
+            filetype = .TSV
+            
+        } else {
+            filetype = nil
+        }
+        
+        if filetype != nil {
             var error: NSErrorPointer = nil
             fileContents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
-        } else if url.pathExtension == "txt" {
-            println("import txt")
+        }
+        
+        if let filetype = filetype {
+            switch filetype {
+            case .Kanji:
+                println("import Kanji")
+                
+                var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
+                alert.addButtonWithTitle("Import")
+                alert.delegate = self
+                alert.show()
+            case .CSV:
+                println("import CSV")
+                
+                var alert = UIAlertView(title: "Import CSV", message: "Importing this file will add the contained words to the list of words to study. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
+                alert.addButtonWithTitle("Import From Midori")
+                alert.delegate = self
+                alert.show()
+            case .TSV:
+                println("import TSV")
+                
+                var alert = UIAlertView(title: "Import TSV", message: "Importing this file will add the contained words to the list of words to study. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
+                alert.addButtonWithTitle("Import From Midori")
+                alert.delegate = self
+                alert.show()
+            }
         }
         
         return true
     }
-    func importUserList(source: String) {
+    
+    func trimEntryExcess(var value: String) -> String {
+        if value == "" {
+            return value
+        }
+        
+        let length = countElements(value)
+        
+        if length >= 2 {
+            if  value[0..<1] == "\"" &&
+                value[length - 1..<length] == "\"" {
+                value = value[1..<length-1]
+            }
+        }
+        
+        return value
+    }
+    
+    func additiveImportList(source: String, delimiter: String, column: Int, fallbackColumn: Int) {
+        managedObjectContext.undoManager.beginUndoGrouping()
+        
+        var values = source.componentsSeparatedByString("\n")
+        for value in values {
+            let splits = value.componentsSeparatedByString(delimiter)
+            
+            if splits.count <= column {
+                continue
+            }
+            var entry = splits[column]
+            
+            entry = trimEntryExcess(entry)
+            
+            if entry == "" {
+                if splits.count <= fallbackColumn {
+                    continue
+                }
+                
+                entry = splits[fallbackColumn]
+                entry = trimEntryExcess(entry)
+            }
+            
+            if let card = managedObjectContext.fetchCardByKanji(entry) {
+                card.suspended = false
+            }
+        }
+        
+        managedObjectContext.undoManager.endUndoGrouping()
+        saveContext()
+    }
+    
+    func resetDatabase() {
         for card in managedObjectContext.fetchCardsAllWords() {
             card.answersKnown = 0
             card.answersNormal = 0
@@ -56,6 +152,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             card.suspended = true
             card.known = false
         }
+    }
+    
+    func importKanjiDatabase(source: String) {
+        managedObjectContext.undoManager.beginUndoGrouping()
+        resetDatabase()
         
         var values = source.componentsSeparatedByString("\n")
         for value in values {
@@ -92,6 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             }
         }
         
+        managedObjectContext.undoManager.endUndoGrouping()
         saveContext()
     }
                             
