@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                 }
             }
             
-            println(fileContents)
+//            println(fileContents)
             fileContents = ""
         }
     }
@@ -65,22 +65,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         if let filetype = filetype {
             switch filetype {
             case .Kanji:
-                println("import Kanji")
-                
                 var alert = UIAlertView(title: "Import Data", message: "Warning, importing lists will delete all current user data, and replace it with the data from the imported file. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
                 alert.addButtonWithTitle("Import")
                 alert.delegate = self
                 alert.show()
             case .CSV:
-                println("import CSV")
-                
                 var alert = UIAlertView(title: "Import CSV", message: "Importing this file will add the contained words to the list of words to study. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
                 alert.addButtonWithTitle("Import From Midori")
                 alert.delegate = self
                 alert.show()
             case .TSV:
-                println("import TSV")
-                
                 var alert = UIAlertView(title: "Import TSV", message: "Importing this file will add the contained words to the list of words to study. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
                 alert.addButtonWithTitle("Import From Midori")
                 alert.delegate = self
