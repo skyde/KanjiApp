@@ -51,6 +51,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //            return false
 //        }
 //    }
+//    let sidebarShadowOpacity: Float = 0.04
     
     var leftEdgeReveal: EdgeReveal! = nil
     var rightEdgeReveal: EdgeReveal! = nil
@@ -156,6 +157,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         outputText.addGestureRecognizer(onTouchGesture)
         
+        
+//        kanjiView.layer.shadowColor = UIColor.blackColor().CGColor
+//        kanjiView.layer.shadowOffset = CGSizeMake(2, 0)
+//        kanjiView.layer.masksToBounds = false
+//        kanjiView.layer.shadowRadius = 10
+//        outputText.layer.shadowColor = UIColor.blackColor().CGColor
+//        outputText.layer.shadowOffset = CGSizeMake(2, 0)
+//        outputText.layer.masksToBounds = false
+//        outputText.layer.shadowRadius = 10
+        
+//        kanjiView.layer.shadowColor = UIColor.blackColor().CGColor
+//        kanjiView.layer.shadowOffset = CGSizeMake(2, 0)
+//        kanjiView.layer.masksToBounds = false
+//        self.outputText.layer.shadowOpacity = self.sidebarShadowOpacity
+//        mainView.layer.shadowOpacity =
 //        var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
 //        onLongPress.delegate = self
 //        outputText.addGestureRecognizer(onLongPress)
@@ -600,6 +616,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     self.processAdvanceCard = false
                     self.advanceCardAndUpdateText()
                 }
+                
+//                self.setSelfShadow(visible)
+//                RootContainer.instance.setSelfShadow(visible)
         })
         
         cardPropertiesSidebar.onUndoButtonTap = {
@@ -629,6 +648,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //            }
 //        }
     }
+    
+    
+//    func setSelfShadow(visible: Bool) {
+//        if visible {
+//            self.outputText.layer.shadowOpacity = self.sidebarShadowOpacity
+//            self.kanjiView.layer.shadowOpacity = self.sidebarShadowOpacity
+//        } else {
+//            self.outputText.layer.shadowOpacity = 0
+//            self.kanjiView.layer.shadowOpacity = 0
+//        }
+//    }
     
     private func onUndo() {
         if canUndo {

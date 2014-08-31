@@ -46,7 +46,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -64,7 +64,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -82,7 +82,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -104,7 +104,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -122,7 +122,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -140,7 +140,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -162,7 +162,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -180,7 +180,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -198,7 +198,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -216,7 +216,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -238,7 +238,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="shadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                             </subviews>
@@ -318,7 +318,7 @@
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Studying">
-                                    <color key="titleShadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="studyingPress:" destination="tK9-c8-QBp" eventType="touchUpInside" id="r6o-Ag-odq"/>
@@ -333,7 +333,7 @@
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Back">
-                                    <color key="titleShadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backPress:" destination="tK9-c8-QBp" eventType="touchUpInside" id="qwm-8G-bRK"/>
@@ -475,9 +475,9 @@
                             <userLayoutGuide location="291" affinity="minY"/>
                         </userGuides>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDn-cS-WZM">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDn-cS-WZM" customClass="UILabelShadowed" customModule="Kanji" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5yI-GX-PVE"/>
                                 </constraints>
@@ -487,7 +487,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uO-Hc-A8e">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
-                                <color key="backgroundColor" red="0.26020408160000003" green="0.26020408160000003" blue="0.26020408160000003" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1229,6 +1229,15 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-K1-JvN">
+                                <rect key="frame" x="600" y="0.0" width="202" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="pb3-2f-C6Q"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
+                                </connections>
+                            </containerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiW-HB-SOh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1239,6 +1248,7 @@ all due cards</string>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="PTp-ZI-4VH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">一
 所
 懸
@@ -1266,15 +1276,6 @@ all due cards</string>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-K1-JvN">
-                                <rect key="frame" x="600" y="0.0" width="202" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="202" id="pb3-2f-C6Q"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd9-7H-uN2">
                                 <rect key="frame" x="-100" y="0.0" width="100" height="600"/>
                                 <color key="backgroundColor" red="0.98263758420944214" green="0.79204946756362915" blue="0.80164420604705811" alpha="1" colorSpace="calibratedRGB"/>
@@ -1426,8 +1427,6 @@ all due cards</string>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="shadowColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-um-Llw">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
@@ -1635,8 +1634,8 @@ all due cards</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="daX-c3-wht"/>
-        <segue reference="7jX-Xq-vJx"/>
-        <segue reference="Ut6-yd-kHz"/>
+        <segue reference="vgr-gb-U0p"/>
         <segue reference="BpJ-Ou-mkl"/>
+        <segue reference="0Q0-aS-4tM"/>
     </inferredMetricsTieBreakers>
 </document>

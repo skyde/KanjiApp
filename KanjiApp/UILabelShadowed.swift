@@ -21,7 +21,8 @@ public class UILabelShadowed : UILabel {
         
         layer.shadowColor = UIColor.blackColor().CGColor
         layer.shadowOffset = CGSizeMake(0, 0)
-        layer.shadowOpacity = 0.4
+        layer.shadowOpacity = 0.2
         layer.masksToBounds = false
+        layer.shouldRasterize = true
     }
 }

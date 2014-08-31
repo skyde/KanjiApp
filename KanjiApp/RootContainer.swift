@@ -50,11 +50,7 @@ class RootContainer: CustomUIViewController {
                 self.sidebar.visible = visible
                 Globals.notificationSidebarInteract.postNotification(visible)
                 
-                if visible {
-                    self.mainView.layer.shadowOpacity = self.sidebarShadowOpacity
-                } else {
-                    self.mainView.layer.shadowOpacity = 0
-                }
+                self.setSelfShadow(visible)
         })
         
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
@@ -84,6 +80,15 @@ class RootContainer: CustomUIViewController {
         mainView.layer.shadowColor = UIColor.blackColor().CGColor
         mainView.layer.shadowOffset = CGSizeMake(-2, 0)
         mainView.layer.shadowOpacity = sidebarShadowOpacity
+        mainView.layer.shadowRadius = 10
+    }
+    
+    func setSelfShadow(visible: Bool) {
+        if visible {
+            self.mainView.layer.shadowOpacity = self.sidebarShadowOpacity
+        } else {
+            self.mainView.layer.shadowOpacity = 0
+        }
     }
     
     func onNotificationShowDefinition() {
