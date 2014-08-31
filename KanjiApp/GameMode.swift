@@ -32,7 +32,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var timer: NSTimer? = nil
     let frameRate: Double = 1 / 60
     
-    let downPressInterval: Double = 1.0
+    let downPressInterval: Double = 2.0
     
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
@@ -331,98 +331,98 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             break
         }
         
-        return
-        if rightEdgeReveal.animationState != AnimationState.Closed {
-            return
-        }
-        
-//        println()
-        
-//        if !canUndo && !canRedo {
+//        return
+//        if rightEdgeReveal.animationState != AnimationState.Closed {
 //            return
 //        }
-        
-        let transitionThreshold: CGFloat = 32
-        var x = sender.translationInView(view).x
-        
-//        if !canUndo {
-//            x = min(0, x)
-//        }
 //        
-//        if !canRedo {
-//            x = max(0, x)
-//        }
-        
-        x = max(0, abs(x) - 18) * sign(x)
-        x = min(abs(x), leftSidebar.frame.width) * sign(x)
-        
-        contentsUpdate(x)
-        sidebarUpdate(x)
-        
-        switch sender.state {
-        case .Began:
-            sidebarSetVisiblity(true)
-        case .Ended:
-            var contentsTargetX: CGFloat = 0
-            var active = false
-            var isRight = false
-            
-            if x > transitionThreshold {
-//                contentsTargetX = Globals.screenSize.width
-                active = true
-            } else if x < -transitionThreshold {
-//                contentsTargetX = -Globals.screenSize.width
-                active = true
-                isRight = true
-            }
-            
-//            println(active)
-            
-            UIView.animateWithDuration(0.16,
-                delay: 0,
-                options: .CurveEaseOut,
-                {
-                    self.sidebarUpdate(0)
+////        println()
+//        
+////        if !canUndo && !canRedo {
+////            return
+////        }
+//        
+//        let transitionThreshold: CGFloat = 32
+//        var x = sender.translationInView(view).x
+//        
+////        if !canUndo {
+////            x = min(0, x)
+////        }
+////        
+////        if !canRedo {
+////            x = max(0, x)
+////        }
+//        
+//        x = max(0, abs(x) - 18) * sign(x)
+//        x = min(abs(x), leftSidebar.frame.width) * sign(x)
+//        
+//        contentsUpdate(x)
+//        sidebarUpdate(x)
+//        
+//        switch sender.state {
+//        case .Began:
+//            sidebarSetVisiblity(true)
+//        case .Ended:
+//            var contentsTargetX: CGFloat = 0
+//            var active = false
+//            var isRight = false
+//            
+//            if x > transitionThreshold {
+////                contentsTargetX = Globals.screenSize.width
+//                active = true
+//            } else if x < -transitionThreshold {
+////                contentsTargetX = -Globals.screenSize.width
+//                active = true
+//                isRight = true
+//            }
+//            
+////            println(active)
+//            
+//            UIView.animateWithDuration(0.16,
+//                delay: 0,
+//                options: .CurveEaseOut,
+//                {
+//                    self.sidebarUpdate(0)
+////                    if active {
+////                        self.contentsUpdate(contentsTargetX)
+////                    } else {
+////                    }
+//                    self.contentsUpdate(0)
+//                },
+//                completion: { (_) -> () in
+//                    
+//                    self.sidebarSetVisiblity(false)
+//                    
 //                    if active {
-//                        self.contentsUpdate(contentsTargetX)
-//                    } else {
-//                    }
-                    self.contentsUpdate(0)
-                },
-                completion: { (_) -> () in
-                    
-                    self.sidebarSetVisiblity(false)
-                    
-                    if active {
-                        if isRight {
-                            self.answerCard(.Hard)
-                        } else {
-                            self.answerCard(.Forgot)
-                        }
-//                        if isRedo {
-//                            self.onRedo()
+//                        if isRight {
+//                            self.answerCard(.Hard)
 //                        } else {
-//                            self.onUndo()
+//                            self.answerCard(.Forgot)
 //                        }
-                        
-                        self.contentsUpdate(-contentsTargetX)
-                        UIView.animateWithDuration(0.16,
-                            delay: 0,
-                            options: .CurveEaseOut,
-                            {
-                                self.contentsUpdate(0)
-    //                            self.contentsAlpha(1)
-                            },
-                            completion: nil
-                        )
-                    }
-
-//                self.contentsUpdate(0)
-            })
-
-        default:
-            break
-        }
+////                        if isRedo {
+////                            self.onRedo()
+////                        } else {
+////                            self.onUndo()
+////                        }
+//                        
+//                        self.contentsUpdate(-contentsTargetX)
+//                        UIView.animateWithDuration(0.16,
+//                            delay: 0,
+//                            options: .CurveEaseOut,
+//                            {
+//                                self.contentsUpdate(0)
+//    //                            self.contentsAlpha(1)
+//                            },
+//                            completion: nil
+//                        )
+//                    }
+//
+////                self.contentsUpdate(0)
+//            })
+//
+//        default:
+//            break
+//        }
     }
     
 //    private func contentsSetVisiblity(visible: Bool) {
