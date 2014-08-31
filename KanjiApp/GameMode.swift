@@ -32,7 +32,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var timer: NSTimer? = nil
     let frameRate: Double = 1 / 60
     
-    let downPressInterval: Double = 0.5
+    let downPressInterval: Double = 1.0
     
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
@@ -140,15 +140,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
 //        outputText.panGestureRecognizer.delegate = self
         
-//        var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
-//        panGesture.delegate = self
-//        self.outputText.addGestureRecognizer(panGesture)
+        var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
+        panGesture.delegate = self
+        self.outputText.addGestureRecognizer(panGesture)
         
 //        println("viewDidLoad")
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         downGesture.delegate = self
         downGesture.minimumPressDuration = 0
-//        downGesture.requireGestureRecognizerToFail(panGesture)
         self.outputText.addGestureRecognizer(downGesture)
         self.outputText.delegate = self
         
@@ -163,7 +162,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onTimerTick() {
+//        progressBar.visible = false
+        
+//        println(progressBar.visible)
         if progressBar.visible {
+//            println(downBeganTime)
             var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
             
             progressBar.progress = Float(percent)
@@ -174,7 +177,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    private var lastScrollTime: NSTimeInterval! = nil
 //    private var scrollSpeed: CGFloat = 0
 //    func scrollViewDidScroll(scrollView: UIScrollView!) {
-//        
+//    }
 ////        println("scrollViewDidScroll")
 //        
 //        if let lastScrollY = lastScrollY {
@@ -258,9 +261,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    }
     
     var wasFront = false
-//    private var downPosition: CGPoint! = nil
-//    private var lastPosition: CGPoint! = nil
-//    private var travelledDistance: CGFloat = 0
     var downBeganTime: NSTimeInterval = 0
     func onDown(sender: UILongPressGestureRecognizer) {
         
@@ -270,16 +270,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
         
+//        println("\(sender.state.hashValue)")
+        
         switch sender.state {
         case .Began:
+//            println("Began")
             wasFront = isFront
+            didPan = false
             
-            println(isFront)
+//            println(isFront)
             if  isFront &&
                 rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
                     
                 downBeganTime = NSDate.timeIntervalSinceReferenceDate()
+//                println(downBeganTime)
                 
                 progressBar.visible = true
                 progressBar.progress = 0
@@ -291,24 +296,42 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //                {
 //                    self.progressBar.progress = 1
 //                },
-//                completion: nil)
+            //                completion: nil)
 //        case .Changed:
-            
+//            println("Changed")
+//        case .Cancelled:
+//            println("Cancelled")
+//        case .Failed:
+//            println("Failed")
+//        case .Possible:
+//            println("Possible")
         case .Ended:
+//            println("Ended")
+
             progressBar.visible = false
-            if percent < 1 && wasFront {
-                println(percent)
-                //downBeganTime = 0
+            if percent < 1 && !didPan && wasFront {
+//                println(percent)
+                downBeganTime = 0
                 answerCard(.Normal)
                 //advanceCardAndUpdateText()
             }
-        
         default:
             break
         }
     }
     
+    var didPan = false
     func onPan(sender: UIPanGestureRecognizer) {
+        
+        switch sender.state {
+        case .Began:
+            didPan = true
+            progressBar.visible = false
+        default:
+            break
+        }
+        
+        return
         if rightEdgeReveal.animationState != AnimationState.Closed {
             return
         }
