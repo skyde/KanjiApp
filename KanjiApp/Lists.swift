@@ -64,7 +64,11 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
             }
             
             items = cards
-            header.text = title
+            if cards.count == 0 {
+                header.text = "\(title)"
+            } else {
+                header.text = "\(title) (\(cards.count))"
+            }
             header.textColor = color
             confirmButton.visible = displayConfirmButton
             addWordsButton.visible = displayAddButton

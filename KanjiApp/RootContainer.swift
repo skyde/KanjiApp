@@ -41,6 +41,7 @@ class RootContainer: CustomUIViewController {
             onUpdate: {(offset: CGFloat) -> () in
                 self.mainView.frame.origin.x = offset
                 self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
+                self.sidebar.frame.origin.x = 0.25 * -(self.sidebarEdgeReveal.maxReveal - offset)
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 self.definitionEdgeReveal?.animateSelf(false)
