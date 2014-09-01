@@ -719,7 +719,7 @@ you wish to study</string>
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ghP-Tk-0Fs" customClass="AddWordsList" customModule="Kanji" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UpY-Ke-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="352.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
