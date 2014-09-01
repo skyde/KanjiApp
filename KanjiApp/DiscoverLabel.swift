@@ -29,8 +29,8 @@ class DiscoverLabel: UILabel {
 //        layer.shadowColor = UIColor.blackColor().CGColor
 //        layer.shadowOffset = CGSizeMake(0, 0)
 //        layer.masksToBounds = false
-//        layer.shadowRadius = 4
-//        layer.shadowOpacity = 0.07
+//        layer.shadowRadius = 7
+//        layer.shadowOpacity = 0.2
 //        layer.shouldRasterize = true
     }
     //override

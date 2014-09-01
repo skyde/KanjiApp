@@ -1634,8 +1634,8 @@ all due cards</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="daX-c3-wht"/>
-        <segue reference="vgr-gb-U0p"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="0Q0-aS-4tM"/>
+        <segue reference="vgr-gb-U0p"/>
+        <segue reference="Ut6-yd-kHz"/>
     </inferredMetricsTieBreakers>
 </document>
