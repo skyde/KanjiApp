@@ -611,13 +611,14 @@
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="0X0-uQ-823"/>
                             <constraint firstAttribute="bottom" secondItem="vAe-X9-2Zb" secondAttribute="bottom" id="0bp-GF-ldO"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
+                            <constraint firstItem="au8-mm-pTk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7hG-MW-zpD" secondAttribute="top" constant="20" id="CPg-ZT-4g9"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" constant="2" id="HfT-s2-VLZ"/>
                             <constraint firstAttribute="trailing" secondItem="nHA-xR-qxM" secondAttribute="trailing" id="Tev-wY-sDY"/>
                             <constraint firstItem="vAe-X9-2Zb" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="VgX-nN-UmE"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
-                            <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" id="arP-bz-0cn"/>
+                            <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" priority="750" id="arP-bz-0cn"/>
                             <constraint firstItem="vAe-X9-2Zb" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="fyz-8B-tqb"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="width" secondItem="nHA-xR-qxM" secondAttribute="width" id="mPb-F4-c0b"/>
