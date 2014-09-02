@@ -37,8 +37,9 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        return 0
 //    }
     
+//    var didAppear = false
     override func viewDidAppear(animated: Bool) {
-        
+//        didAppear = true
 //        var root = (self.parentViewController as RootContainer)
 //        
         //        println(root.mainView.subviews[0] as UINavigationController)
@@ -76,6 +77,47 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        super.viewWillAppear(animated)
 //            }
     
+    var listsOpen = false
+    var referencesOpen = false
+    
+    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        
+        let baseHeight: CGFloat = 44
+        var listsHeight: CGFloat = baseHeight
+        
+        if !listsOpen {
+            listsHeight = 0
+        }
+        
+        if indexPath == NSIndexPath(forRow: 1, inSection: 1) ||
+        indexPath == NSIndexPath(forRow: 2, inSection: 1) ||
+        indexPath == NSIndexPath(forRow: 3, inSection: 1) ||
+        indexPath == NSIndexPath(forRow: 4, inSection: 1) {
+            
+//            if didAppear {
+//                var cell = table.cellForRowAtIndexPath(indexPath)
+//                if listsHeight == 0 {
+//                    cell.alpha = 0
+//                } else {
+//                    cell.alpha = 1
+//                }
+//            }
+            
+            return listsHeight
+        }
+        
+        return baseHeight
+    }
+    
+    func refreshHeights() {
+        println(listsOpen)
+        
+        table.beginUpdates()
+        table.endUpdates()
+//         RootContainer.instance.mainView.visible = false
+//        RootContainer.instance.mainView.frame.origin.x = RootContainer.instance.sidebarEdgeReveal.maxReveal
+    }
+    
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
@@ -97,6 +139,11 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //            }
             
             targetView = .AddWords(enableOnAdd: false)
+        case 100:
+            listsOpen = !listsOpen
+            refreshHeights()
+//            let item = table.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1))
+//            item. = CGAffineTransformMakeScale(1, 0)
         case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
