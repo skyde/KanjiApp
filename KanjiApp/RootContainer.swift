@@ -70,7 +70,13 @@ class RootContainer: CustomUIViewController {
                 self.mainViewLeadingConstraint.constant = 0
             }
             
-            self.setNeedsStatusBarAppearanceUpdate()
+            UIView.animateWithDuration(0.5,
+                delay: 0,
+                options: UIViewAnimationOptions.CurveEaseOut,
+                {
+                    self.setNeedsStatusBarAppearanceUpdate()
+                },
+                completion: nil )
         }
         
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
