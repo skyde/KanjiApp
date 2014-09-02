@@ -80,7 +80,7 @@ class RootContainer: CustomUIViewController {
         mainView.layer.shadowColor = UIColor.blackColor().CGColor
         mainView.layer.shadowOffset = CGSizeMake(-2, 0)
         mainView.layer.shadowOpacity = sidebarShadowOpacity
-        mainView.layer.shadowRadius = 10
+        mainView.layer.shadowRadius = 18
     }
     
     func setSelfShadow(visible: Bool) {

@@ -42,7 +42,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        var root = (self.parentViewController as RootContainer)
 //        
         //        println(root.mainView.subviews[0] as UINavigationController)
-        var bkColor = UIColor(white: 0.19 + 1.0 / 255, alpha: 1)
+        var bkColor = UIColor(red: 55, green: 53, blue: 58, alpha: 1)
         //        table.headerViewForSection(0).textLabel.backgroundColor = bkColor
         //        table.headerViewForSection(0).contentView.backgroundColor = bkColor
 //        println("did appear")
@@ -59,11 +59,11 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
 //        println(table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor)
         
-        Globals.colorFunctions = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor
-        Globals.colorMyWords = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)).textLabel.textColor
-        Globals.colorKnown = table.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)).textLabel.textColor
-        Globals.colorLists = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)).textLabel.textColor
-        Globals.colorOther = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3)).textLabel.textColor
+//        Globals.colorFunctions = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor
+//        Globals.colorMyWords = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)).textLabel.textColor
+//        Globals.colorKnown = table.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)).textLabel.textColor
+//        Globals.colorLists = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)).textLabel.textColor
+//        Globals.colorOther = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3)).textLabel.textColor
     }
     
 //    override func onTransitionToView(notification: NSNotification) {
@@ -79,16 +79,16 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
-        var targetView: View
+        var targetView: View?
         
         switch indexPath.section * 100 + indexPath.row {
-        case 0:
-            targetView = .GameMode(studyAheadAmount: 0)
         case 1:
-            targetView = .Search
+            targetView = .GameMode(studyAheadAmount: 0)
         case 2:
-            targetView = .Reader
+            targetView = .Search
         case 3:
+            targetView = .Reader
+        case 4:
 //            let myWords = RootContainer.instance.managedObjectContext.fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true)
 //            var exclude = [WordList.MyWords]
 //            
@@ -97,7 +97,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //            }
             
             targetView = .AddWords(enableOnAdd: false)
-        case 100:
+        case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
             targetView = .Lists(
@@ -108,7 +108,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: false,
                 sourceList: nil,
                 enableOnAdd: false)
-        case 101:
+        case 102:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
             
             targetView = .Lists(
@@ -119,7 +119,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: true,
                 sourceList: .MyWords,
                 enableOnAdd: false)
-        case 102:
+        case 103:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsKnown().map { ($0 as Card).index }
             
             targetView = .Lists(
@@ -130,7 +130,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: false,
                 sourceList: nil,
                 enableOnAdd: false)
-        case 200:
+        case 201:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             
             targetView = .Lists(
@@ -141,7 +141,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: true,
                 sourceList: .Jlpt4,
                 enableOnAdd: false)
-        case 201:
+        case 202:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended().map { ($0 as Card).index }
              
             targetView = .Lists(
@@ -152,7 +152,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: true,
                 sourceList: .Jlpt3,
                 enableOnAdd: false)
-        case 202:
+        case 203:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT2Suspended().map { ($0 as Card).index }
             
             targetView = .Lists(
@@ -163,7 +163,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: true,
                 sourceList: .Jlpt2,
                 enableOnAdd: false)
-        case 203:
+        case 204:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT1Suspended().map { ($0 as Card).index }
             
             targetView = .Lists(
@@ -181,12 +181,14 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 300:
             targetView = .Settings
         default:
-            targetView = .Search
+            //targetView = .Search
             break
         }
         
         table.deselectRowAtIndexPath(indexPath, animated: true)
         
-        Globals.notificationTransitionToView.postNotification(targetView)
+        if let targetView = targetView {
+            Globals.notificationTransitionToView.postNotification(targetView)
+        }
     }
 }
