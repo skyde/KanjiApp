@@ -274,8 +274,8 @@ public class EdgeReveal: UIButton {
         switch gesture.state {
         case .Began:
             if animationState == .Closed {
-                setVisibility(true, completed: false)
                 animationState = .DraggingOpen
+                setVisibility(true, completed: false)
             } else {
                 animationState = .DraggingClosed
             }

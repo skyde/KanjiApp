@@ -55,10 +55,12 @@ class RootContainer: CustomUIViewController {
                 
                 if visible {
                     self.mainView.layer.shouldRasterize = true
+                    if self.sidebarEdgeReveal.animationState.IsDragging() {
+                        self.setNeedsStatusBarAppearanceUpdate()
+                    }
                 } else {
                     self.mainView.layer.shouldRasterize = false
                 }
-                
         })
         
         sidebarEdgeReveal.onAnimationCompleted = { (open: Bool) -> () in
@@ -66,7 +68,10 @@ class RootContainer: CustomUIViewController {
                 self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
             } else {
                 self.mainViewLeadingConstraint.constant = 0
-            }}
+            }
+            
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
         
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
         
@@ -328,7 +333,23 @@ class RootContainer: CustomUIViewController {
             break
         }
         
-        return View.GameMode(studyAheadAmount: 0).description() == Globals.notificationTransitionToView.value.description() ||
-            !orientationPass
+        let isGameMode = View.GameMode(studyAheadAmount: 0).description() == Globals.notificationTransitionToView.value.description()
+        var isSidebarClosed = true
+        
+        if sidebarEdgeReveal != nil {
+            isSidebarClosed = sidebarEdgeReveal.animationState == AnimationState.Closed
+        }
+        
+        var visible = !isGameMode
+        
+        if isGameMode && !isSidebarClosed {
+            visible = true
+        }
+        
+        if !orientationPass {
+            visible = false
+        }
+        
+        return !visible
     }
 }
