@@ -134,10 +134,17 @@ public class CardPropertiesSidebar : UIViewController {
 //            addText = "Study"
 //        }
         
-        let addColor = Globals.colorMyWords
-        let knownColor = Globals.colorKnown
-        let removeColor = Globals.colorLists
-        
+        let addColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+        let knownColor = UIColor(
+            red: 102.0 / 255.0,
+            green: 204.0 / 255.0,
+            blue: 255.0 / 255.0,
+            alpha: 1)
+        let removeColor = UIColor(
+            red: 255.0 / 255.0,
+            green: 102.0 / 255.0,
+            blue: 102.0 / 255.0,
+            alpha: 1)
         var leftText = ""
         var rightText = ""
         var leftColor = UIColor()
