@@ -55,8 +55,10 @@ class RootContainer: CustomUIViewController {
                 
                 if visible {
                     self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
+                    self.mainView.layer.shouldRasterize = true
                 } else {
                     self.mainViewLeadingConstraint.constant = 0
+                    self.mainView.layer.shouldRasterize = false
                 }
         })
         

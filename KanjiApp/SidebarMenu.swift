@@ -57,6 +57,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //                header.frame = CGRectMake(header.frame.origin.x, header.frame.origin.y, header.frame.width, 10)
             }
         }
+        reorderItems()
         
 //        println(table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)).textLabel.textColor)
         
@@ -84,38 +85,45 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
         let baseHeight: CGFloat = 44
         var listsHeight: CGFloat = baseHeight
+        var referencesHeight: CGFloat = baseHeight
         
         if !listsOpen {
             listsHeight = 0
         }
         
+        if !referencesOpen {
+            referencesHeight = 0
+        }
+        
         if indexPath == NSIndexPath(forRow: 1, inSection: 1) ||
-        indexPath == NSIndexPath(forRow: 2, inSection: 1) ||
-        indexPath == NSIndexPath(forRow: 3, inSection: 1) ||
-        indexPath == NSIndexPath(forRow: 4, inSection: 1) {
-            
-//            if didAppear {
-//                var cell = table.cellForRowAtIndexPath(indexPath)
-//                if listsHeight == 0 {
-//                    cell.alpha = 0
-//                } else {
-//                    cell.alpha = 1
-//                }
-//            }
-            
-            return listsHeight
+            indexPath == NSIndexPath(forRow: 2, inSection: 1) ||
+            indexPath == NSIndexPath(forRow: 3, inSection: 1) ||
+            indexPath == NSIndexPath(forRow: 4, inSection: 1) {
+                return listsHeight
+        }
+        
+        if indexPath == NSIndexPath(forRow: 1, inSection: 2) ||
+            indexPath == NSIndexPath(forRow: 2, inSection: 2) ||
+            indexPath == NSIndexPath(forRow: 3, inSection: 2) ||
+            indexPath == NSIndexPath(forRow: 4, inSection: 2) {
+                return referencesHeight
         }
         
         return baseHeight
     }
     
-    func refreshHeights() {
-        println(listsOpen)
-        
+    private func refreshHeights() {
         table.beginUpdates()
         table.endUpdates()
-//         RootContainer.instance.mainView.visible = false
-//        RootContainer.instance.mainView.frame.origin.x = RootContainer.instance.sidebarEdgeReveal.maxReveal
+        
+        reorderItems()
+    }
+    
+    private func reorderItems() {
+        var cell1 = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))
+        cell1?.superview?.bringSubviewToFront(cell1)
+        var cell2 = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3))
+        cell2?.superview?.bringSubviewToFront(cell2)
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
@@ -141,9 +149,9 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             targetView = .AddWords(enableOnAdd: false)
         case 100:
             listsOpen = !listsOpen
+            
+            table.cellForRowAtIndexPath(indexPath).accessoryType = listsOpen ? .None : .DisclosureIndicator
             refreshHeights()
-//            let item = table.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1))
-//            item. = CGAffineTransformMakeScale(1, 0)
         case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
@@ -177,6 +185,12 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: false,
                 sourceList: nil,
                 enableOnAdd: false)
+        case 200:
+            referencesOpen = !referencesOpen
+            
+            table.cellForRowAtIndexPath(indexPath).accessoryType = referencesOpen ? .None : .DisclosureIndicator
+            
+            refreshHeights()
         case 201:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
             
