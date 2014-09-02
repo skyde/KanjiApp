@@ -100,7 +100,7 @@ public class EdgeReveal: UIButton {
     
     var onUpdate: ((offset: CGFloat) -> ())?
     var setVisible: ((open: Bool, completed: Bool) -> ())?
-    //    var onAnimationCompleted: ((open: Bool) -> ())?
+    var onAnimationCompleted: ((open: Bool) -> ())?
     var onTap: ((open: Bool) -> ())?
     var onOpenClose: ((shouldOpen: Bool) -> ())?
     
@@ -218,9 +218,9 @@ public class EdgeReveal: UIButton {
                 },
                 completion: { (_) -> () in
                     self.animationState = .Open
-//                    if let callback = self.onAnimationCompleted {
-//                        callback(open: true)
-//                    }
+                    if let callback = self.onAnimationCompleted {
+                        callback(open: true)
+                    }
             })
         } else {
             if lastAnimationState == .Open {
@@ -242,9 +242,9 @@ public class EdgeReveal: UIButton {
                 completion: { (_) -> () in
                     self.setVisibility(false, completed: true)
                     self.animationState = .Closed
-//                    if let callback = self.onAnimationCompleted {
-//                        callback(open: false)
-//                    }
+                    if let callback = self.onAnimationCompleted {
+                        callback(open: false)
+                    }
             })
         }
     }

@@ -54,13 +54,19 @@ class RootContainer: CustomUIViewController {
                 self.setSelfShadow(visible)
                 
                 if visible {
-                    self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
                     self.mainView.layer.shouldRasterize = true
                 } else {
-                    self.mainViewLeadingConstraint.constant = 0
                     self.mainView.layer.shouldRasterize = false
                 }
+                
         })
+        
+        sidebarEdgeReveal.onAnimationCompleted = { (open: Bool) -> () in
+            if open {
+                self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
+            } else {
+                self.mainViewLeadingConstraint.constant = 0
+            }}
         
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)
         
