@@ -64,11 +64,11 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
             }
             
             items = cards
-            if  sourceList == .Jlpt1 ||
-                sourceList == .Jlpt2 ||
-                sourceList == .Jlpt3 ||
-                sourceList == .Jlpt4 ||
-                sourceList == .AllWords ||
+            if  sourceList == WordList.Jlpt1 ||
+                sourceList == WordList.Jlpt2 ||
+                sourceList == WordList.Jlpt3 ||
+                sourceList == WordList.Jlpt4 ||
+                sourceList == WordList.AllWords ||
                 cards.count == 0 {
                     header.text = "\(title)"
             } else {
