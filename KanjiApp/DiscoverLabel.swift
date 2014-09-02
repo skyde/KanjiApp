@@ -26,12 +26,14 @@ class DiscoverLabel: UILabel {
     
     private func initSelf() {
         
+        layer.rasterizationScale = Globals.retinaScale
+        
 //        layer.shadowColor = UIColor.blackColor().CGColor
 //        layer.shadowOffset = CGSizeMake(0, 0)
 //        layer.masksToBounds = false
 //        layer.shadowRadius = 7
 //        layer.shadowOpacity = 0.2
-//        layer.shouldRasterize = true
+        layer.shouldRasterize = true
     }
     //override
 }
