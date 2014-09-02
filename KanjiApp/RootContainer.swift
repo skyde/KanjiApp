@@ -16,6 +16,7 @@ class RootContainer: CustomUIViewController {
     @IBOutlet weak var definitionOverlay: UIView!
     var sidebarEdgeReveal: EdgeReveal!
     var definitionEdgeReveal: EdgeReveal!
+    @IBOutlet weak var mainViewLeadingConstraint: NSLayoutConstraint!
     
     var sidebarButtonBaseX: CGFloat = 13
     var statusBarHidden = false
@@ -51,6 +52,12 @@ class RootContainer: CustomUIViewController {
                 Globals.notificationSidebarInteract.postNotification(visible)
                 
                 self.setSelfShadow(visible)
+                
+                if visible {
+                    self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
+                } else {
+                    self.mainViewLeadingConstraint.constant = 0
+                }
         })
         
         view.insertSubview(sidebarEdgeReveal, belowSubview: sidebarButton)

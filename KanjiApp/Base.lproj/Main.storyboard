@@ -623,11 +623,11 @@
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" id="arP-bz-0cn"/>
                             <constraint firstItem="vAe-X9-2Zb" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="fyz-8B-tqb"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
+                            <constraint firstItem="hhY-XO-a6v" firstAttribute="width" secondItem="nHA-xR-qxM" secondAttribute="width" id="mPb-F4-c0b"/>
                             <constraint firstAttribute="trailing" secondItem="vAe-X9-2Zb" secondAttribute="trailing" id="qGl-R7-zop"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="qDf-Jv-7yu" secondAttribute="trailing" constant="-52" id="rrJ-WA-SoZ"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
-                            <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="yWv-Rx-Pub"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -635,6 +635,7 @@
                         <outlet property="backgroundImage" destination="vAe-X9-2Zb" id="Zha-bN-Ggn"/>
                         <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
+                        <outlet property="mainViewLeadingConstraint" destination="skC-5P-Usy" id="px4-mh-uKI"/>
                         <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>
                         <outlet property="sidebarButton" destination="qDf-Jv-7yu" id="hD5-VT-qgS"/>
                     </connections>
