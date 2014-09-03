@@ -56,7 +56,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var leftEdgeReveal: EdgeReveal! = nil
     var rightEdgeReveal: EdgeReveal! = nil
     
-    var soundEnabled = false
+    var soundEnabled = true
     
     var canUndo: Bool {
         get {
@@ -733,6 +733,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if due.count == 0 {
             Globals.notificationTransitionToView.postNotification(.CardsFinished)
         }
+        
+        soundEnabled = Globals.audioDirectoryExists
     }
     
     func advanceCard() {        
@@ -773,6 +775,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true) {
+        if !soundEnabled {
+            return
+        }
+        
         if settings.volume.doubleValue != 0 {
             var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)
             resourcePath = "\(resourcePath).mp3"

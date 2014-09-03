@@ -56,17 +56,22 @@ struct Globals
     }
     
     private static var _audioDirectoryPath: NSString?
+    
+    private static func initAudioDirectoryPath() {
+        if _audioDirectoryPath == nil {
+        let filemgr = NSFileManager.defaultManager()
+        
+        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
+        
+        var documentsDirectory = paths.objectAtIndex(0) as NSString
+        var audioPath = documentsDirectory.stringByAppendingPathComponent("Audio")
+        _audioDirectoryPath = audioPath
+        }
+    }
+    
     static var audioDirectoryPath: NSString {
     get {
-        if _audioDirectoryPath == nil {
-            let filemgr = NSFileManager.defaultManager()
-            
-            var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
-            
-            var documentsDirectory = paths.objectAtIndex(0) as NSString
-            var audioPath = documentsDirectory.stringByAppendingPathComponent("Audio")
-            _audioDirectoryPath = audioPath
-        }
+        initAudioDirectoryPath()
             
         return _audioDirectoryPath!
     }
@@ -74,8 +79,16 @@ struct Globals
     
     static var audioDirectoryExists: Bool {
         get {
+            initAudioDirectoryPath()
+            
             let filemgr = NSFileManager.defaultManager()
-            filemgr.fileExistsAtPath(audioDirectoryPath)
+//            var boolPointer: UnsafeMutablePointer<ObjCBool> = nil
+//            var trueBool = true
+//            boolPointer = &trueBool
+            
+//            println(filemgr.fileExistsAtPath(audioDirectoryPath))
+            
+            return filemgr.fileExistsAtPath(audioDirectoryPath)
 //        filemgr.
 //        var dirFiles = filemgr.contentsOfDirectoryAtPath(audioPath, error: nil) as NSArray
 //
@@ -83,7 +96,7 @@ struct Globals
 //
 //            println(file)
 //        }
-        return true
+//        return true
     }
     }
 }
