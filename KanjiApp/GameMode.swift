@@ -27,7 +27,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         return !isFront
     }
     }
-    var audioPlayer: AVAudioPlayer!
+    var audioPlayer: AVAudioPlayer?
     
     var timer: NSTimer? = nil
     let frameRate: Double = 1 / 60
@@ -55,6 +55,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var leftEdgeReveal: EdgeReveal! = nil
     var rightEdgeReveal: EdgeReveal! = nil
+    
+    var soundEnabled = false
     
     var canUndo: Bool {
         get {
@@ -762,58 +764,40 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func filterSoundPath(path: String) -> String {
-        println(settings.volume)
-        
-        println(Globals.audioDirectoryPath)
-        println(path)
+//        println(settings.volume)
+//        
+//        println(Globals.audioDirectoryPath)
+//        println(path)
         var range: NSRange = NSRange(location: 7, length: countElements(path) - 12)
         return (path as NSString).substringWithRange(range)
     }
     
     func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true) {
-        println("playSound")
-        println(name)
         if settings.volume.doubleValue != 0 {
-            println("volume not zero")
-            var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)//NSBundle.mainBundle().pathForResource(name, ofType: fileType)
+            var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)
             resourcePath = "\(resourcePath).mp3"
             
-            println("Unused old bundle path = \(NSBundle.mainBundle().pathForResource(name, ofType: fileType))")
-            
-            println(resourcePath)
-            
             if let resourcePath = resourcePath {
-                println("URL = \(resourcePath)")
-                var sound = NSURL(fileURLWithPath: resourcePath)
+                var url = NSURL(fileURLWithPath: resourcePath)
+                                var error:NSError?
+                audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
                 
-                let filemgr = NSFileManager.defaultManager()
-                println("file exists = \(filemgr.fileExistsAtPath(resourcePath))")
-//                println("file does not exist (shoudl be false) = \(filemgr.fileExistsAtPath("test"))
-                println("sound = \(sound)")
-                
-//                println("file exists = \(.length))")
-                var data = NSData(contentsOfFile: resourcePath)
-                
-                var error:NSError?
-                audioPlayer = AVAudioPlayer(data: data, error: &error)
-                audioPlayer.volume = 1
-                
-                println("audioPlayer.volume = \(audioPlayer.volume)")
-                
-//                audioPlayer.
-                println("error = \(error)")
-                if sendEvents {
-                    audioPlayer.delegate = self
+                if let audioPlayer = audioPlayer {
+                    audioPlayer.volume = Float(settings.volume.doubleValue)
+                    
+                    if sendEvents {
+                        audioPlayer.delegate = self
+                    }
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.play()
                 }
-                audioPlayer.prepareToPlay()
-                audioPlayer.play()
             }
         }
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         
-        println("audioPlayerDidFinishPlaying \(flag)")
+//        println("audioPlayerDidFinishPlaying \(flag)")
         if var path = dueCard?.embeddedData.soundDefinition {
             if !isFront {
                 playSound(filterSoundPath(path), sendEvents: false)
