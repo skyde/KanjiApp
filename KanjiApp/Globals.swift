@@ -54,6 +54,38 @@ struct Globals
             return cachedRetinaScale
         }
     }
+    
+    private static var _audioDirectoryPath: NSString?
+    static var audioDirectoryPath: NSString {
+    get {
+        if _audioDirectoryPath == nil {
+            let filemgr = NSFileManager.defaultManager()
+            
+            var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
+            
+            var documentsDirectory = paths.objectAtIndex(0) as NSString
+            var audioPath = documentsDirectory.stringByAppendingPathComponent("Audio")
+            _audioDirectoryPath = audioPath
+        }
+            
+        return _audioDirectoryPath!
+    }
+    }
+    
+    static var audioDirectoryExists: Bool {
+        get {
+            let filemgr = NSFileManager.defaultManager()
+            filemgr.fileExistsAtPath(audioDirectoryPath)
+//        filemgr.
+//        var dirFiles = filemgr.contentsOfDirectoryAtPath(audioPath, error: nil) as NSArray
+//
+//        for file in dirFiles {
+//
+//            println(file)
+//        }
+        return true
+    }
+    }
 }
 
 func randomRange(min: Double, max: Double) -> Double {

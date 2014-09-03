@@ -27,7 +27,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         return !isFront
     }
     }
-    var audioPlayer = AVAudioPlayer()
+    var audioPlayer: AVAudioPlayer!
     
     var timer: NSTimer? = nil
     let frameRate: Double = 1 / 60
@@ -174,7 +174,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        mainView.layer.shadowOpacity =
 //        var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
 //        onLongPress.delegate = self
-//        outputText.addGestureRecognizer(onLongPress)
+        //        outputText.addGestureRecognizer(onLongPress)[[AVAudioSession sharedInstance] setDelegate: self];
+        
+//        AVAudioSession.sharedInstance().delegate
+        var setCategoryError: NSError?
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: &setCategoryError)
+        
+        
+        
+//        AVAudioSession.sharedInstance().setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
+//        if (setCategoryError)
+//        NSLog(@"Error setting category! %@", setCategoryError);
     }
     
     func onTimerTick() {
@@ -742,6 +752,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             
             if isBack {
                 if var path = dueCard?.embeddedData.soundWord {
+//                    playSound("invalidPath.mp3")
                     playSound(filterSoundPath(path))
                 }
                 
@@ -751,22 +762,50 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func filterSoundPath(path: String) -> String {
+        println(settings.volume)
+        
+        println(Globals.audioDirectoryPath)
+        println(path)
         var range: NSRange = NSRange(location: 7, length: countElements(path) - 12)
         return (path as NSString).substringWithRange(range)
     }
     
     func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true) {
-        if settings.volume != 0 {
-            var resourcePath = NSBundle.mainBundle().pathForResource(name, ofType: fileType)
+        println("playSound")
+        println(name)
+        if settings.volume.doubleValue != 0 {
+            println("volume not zero")
+            var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)//NSBundle.mainBundle().pathForResource(name, ofType: fileType)
+            resourcePath = "\(resourcePath).mp3"
+            
+            println("Unused old bundle path = \(NSBundle.mainBundle().pathForResource(name, ofType: fileType))")
+            
+            println(resourcePath)
             
             if let resourcePath = resourcePath {
+                println("URL = \(resourcePath)")
                 var sound = NSURL(fileURLWithPath: resourcePath)
                 
+                let filemgr = NSFileManager.defaultManager()
+                println("file exists = \(filemgr.fileExistsAtPath(resourcePath))")
+//                println("file does not exist (shoudl be false) = \(filemgr.fileExistsAtPath("test"))
+                println("sound = \(sound)")
+                
+//                println("file exists = \(.length))")
+                var data = NSData(contentsOfFile: resourcePath)
+                
                 var error:NSError?
-                audioPlayer = AVAudioPlayer(contentsOfURL: sound, error: &error)
+                audioPlayer = AVAudioPlayer(data: data, error: &error)
+                audioPlayer.volume = 1
+                
+                println("audioPlayer.volume = \(audioPlayer.volume)")
+                
+//                audioPlayer.
+                println("error = \(error)")
                 if sendEvents {
                     audioPlayer.delegate = self
                 }
+                audioPlayer.prepareToPlay()
                 audioPlayer.play()
             }
         }
@@ -774,6 +813,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         
+        println("audioPlayerDidFinishPlaying \(flag)")
         if var path = dueCard?.embeddedData.soundDefinition {
             if !isFront {
                 playSound(filterSoundPath(path), sendEvents: false)
