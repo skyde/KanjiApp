@@ -20,9 +20,17 @@ struct Globals
     static let JapaneseFontLight = "mplus-2p-light"
     
     static var colorFunctions: UIColor! = UIColor(white: 170.0 / 255.0, alpha: 1)
-    static var colorMyWords: UIColor! = UIColor(white: 170.0 / 255.0, alpha: 1)
-    static var colorKnown: UIColor! = UIColor(white: 170.0 / 255.0, alpha: 1)
-    static var colorLists: UIColor! = UIColor(white: 170.0 / 255.0, alpha: 1)
+    static var colorMyWords: UIColor! = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+    static var colorKnown: UIColor! = UIColor(
+        red: 102.0 / 255.0,
+        green: 204.0 / 255.0,
+        blue: 255.0 / 255.0,
+        alpha: 1)
+    static var colorLists: UIColor! = UIColor(
+        red: 255.0 / 255.0,
+        green: 102.0 / 255.0,
+        blue: 102.0 / 255.0,
+        alpha: 1)
     static var colorOther: UIColor! = UIColor(white: 170.0 / 255.0, alpha: 1)
     
     static var screenRect: CGRect {
