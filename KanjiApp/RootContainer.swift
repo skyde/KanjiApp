@@ -37,6 +37,8 @@ class RootContainer: CustomUIViewController {
         
         self.mainView.layer.rasterizationScale = Globals.retinaScale
         
+        self.sidebar.layer.rasterizationScale = Globals.retinaScale
+        
         sidebarEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Left,
@@ -57,6 +59,7 @@ class RootContainer: CustomUIViewController {
                 
                 if visible {
                     self.mainView.layer.shouldRasterize = true
+                    self.sidebar.layer.shouldRasterize = true
                     if self.sidebarEdgeReveal.animationState.IsDragging() {
                         self.setNeedsStatusBarAppearanceUpdate()
                     }
@@ -67,6 +70,7 @@ class RootContainer: CustomUIViewController {
         
         sidebarEdgeReveal.onAnimationCompleted = { (open: Bool) -> () in
             if open {
+                self.mainView.layer.shouldRasterize = false
                 self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
             } else {
                 self.mainViewLeadingConstraint.constant = 0
