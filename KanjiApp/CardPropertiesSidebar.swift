@@ -126,7 +126,7 @@ public class CardPropertiesSidebar : UIViewController {
         
         currentType = type
         
-        var addText = "Add"//"Will\nStudy"
+        var addText = "Study"//"Will\nStudy"
         let knownText = "Known"
         let removeText = "Remove"
         
