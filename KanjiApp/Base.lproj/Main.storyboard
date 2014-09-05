@@ -435,6 +435,7 @@
                     </tableView>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="studyLabel" destination="nEM-mN-hHb" id="zlw-Nl-RA0"/>
                         <outlet property="table" destination="NiI-Me-7RQ" id="LIP-yR-Iek"/>
                     </connections>
                 </tableViewController>

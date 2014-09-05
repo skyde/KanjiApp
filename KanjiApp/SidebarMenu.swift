@@ -11,7 +11,9 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        self.view.backgroundColor = bkColor
 //        table.headerViewForSection(1).textLabel.font = UIFont(name: Globals.JapaneseFont, size: 16)
 //        println(table.®)
+        Globals.notificationSidebarInteract.addObserver(self, selector: "refreshDisplay")
     }
+    @IBOutlet weak var studyLabel: UILabel!
 
 //    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
 //        
@@ -38,7 +40,15 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //    }
     
 //    var didAppear = false
+    func refreshDisplay() {
+        var due = RootContainer.instance.managedObjectContext.fetchCardsDue(fetchAheadAmount: 0)
+        studyLabel.text = due.count == 0 ? "Study" : "Study (\(due.count))"
+    }
+    
     override func viewDidAppear(animated: Bool) {
+//        println("viewdidappear")
+        refreshDisplay()
+
 //        didAppear = true
 //        var root = (self.parentViewController as RootContainer)
 //        
