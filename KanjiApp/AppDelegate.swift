@@ -71,12 +71,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                 alert.show()
             case .CSV:
                 var alert = UIAlertView(title: "Import CSV", message: "Importing this file will add the contained words to the list of words to study. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
-                alert.addButtonWithTitle("Import From Midori")
+                alert.addButtonWithTitle("Import")
                 alert.delegate = self
                 alert.show()
             case .TSV:
                 var alert = UIAlertView(title: "Import TSV", message: "Importing this file will add the contained words to the list of words to study. Are you sure you wish to continue?", delegate: nil, cancelButtonTitle: "Cancel")
-                alert.addButtonWithTitle("Import From Midori")
+                alert.addButtonWithTitle("Import")
                 alert.delegate = self
                 alert.show()
             }
@@ -109,10 +109,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         for value in values {
             let splits = value.componentsSeparatedByString(delimiter)
             
-            if splits.count <= column {
+            var testColumn = column
+            
+            if splits.count == 1 {
+                testColumn = 0
+            }
+            
+            if splits.count <= testColumn {
                 continue
             }
-            var entry = splits[column]
+            var entry = splits[testColumn]
             
             entry = trimEntryExcess(entry)
             
