@@ -174,15 +174,16 @@ class CustomUIViewController : UIViewController {
                 card.embeddedData.pitchAccentText = items[11]
                 card.embeddedData.pitchAccent = pitchAccent
                 card.embeddedData.otherExampleSentences = items[13]
-                card.answersKnown = 0
-                card.answersNormal = 0
-                card.answersHard = 0
-                card.answersForgot = 0
+                card.embeddedData.answersKnown = 0
+                card.embeddedData.answersNormal = 0
+                card.embeddedData.answersHard = 0
+                card.embeddedData.answersForgot = 0
                 card.interval = 0
                 card.dueTime = 0
                 card.enabled = false
                 card.suspended = true
                 card.known = false
+                card.isKanji = kanji.isPrimarilyKanji()
                 
                 values.append(card)
             }

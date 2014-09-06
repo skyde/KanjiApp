@@ -42,7 +42,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         var allCards = managedObjectContext.fetchCardsAllUser()
         
         for card in allCards {
-            value += "\(card.index) \(card.answersKnown) \(card.answersNormal) \(card.answersHard) \(card.answersForgot) \(card.interval) \(card.dueTime) \(card.enabled) \(card.suspended) \(card.known)\n"
+            value += "\(card.index) \(card.embeddedData.answersKnown) \(card.embeddedData.answersNormal) \(card.embeddedData.answersHard) \(card.embeddedData.answersForgot) \(card.interval) \(card.dueTime) \(card.enabled) \(card.suspended) \(card.known)\n"
         }
         //        value = "test value"
 //        println(allCards.count)

@@ -165,27 +165,51 @@ extension NSManagedObjectContext
         return fetchEntities(.Card, [(CardProperties.suspended, false), (CardProperties.known, true)], CardProperties.interval, sortAscending: true) as [Card]
     }
     
+    private func processJPLTListOrdering(values: [Card]) -> [Card] {
+        
+        var first: [Card] = []
+        var last: [Card] = []
+        
+        for card in values {
+            if card.usageAmount < 2100 {
+                last.append(card)
+            } else {
+                first.append(card)
+            }
+        }
+        
+        for card in last {
+            first.append(card)
+        }
+        
+        return first
+    }
+    
+    private func fetchJLPTCards(level: Int) -> [Card] {
+        return processJPLTListOrdering(fetchEntities(.Card, [(CardProperties.jlptLevel, level), (CardProperties.suspended, true), (CardProperties.isKanji, true)], CardProperties.usageAmount, sortAscending: true) as [Card])
+    }
+    
     func fetchCardsJLPT4Suspended() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.jlptLevel, 4), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchJLPTCards(4)
     }
     
     func fetchCardsJLPT3Suspended() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.jlptLevel, 3), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchJLPTCards(3)
     }
     
     func fetchCardsJLPT2Suspended() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.jlptLevel, 2), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchJLPTCards(2)
     }
     
     func fetchCardsJLPT1Suspended() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.jlptLevel, 1), (CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchJLPTCards(1)
     }
     
     func fetchCardsAllWordsSuspended() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.suspended, true)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchEntities(.Card, [(CardProperties.suspended, true)], CardProperties.usageAmount, sortAscending: true) as [Card]
     }
     
     func fetchCardsAllWords() -> [Card] {
-        return fetchEntitiesGeneral(.Card, sortProperty: CardProperties.interval, sortAscending: true) as [Card]
+        return fetchEntitiesGeneral(.Card, sortProperty: CardProperties.usageAmount, sortAscending: true) as [Card]
     }
 }

@@ -24,6 +24,7 @@ enum CardProperties: EntityProperties {
     case enabled
     case suspended
     case known
+    case isKanji
     
     func description() -> String {
         switch self {
@@ -75,6 +76,8 @@ enum CardProperties: EntityProperties {
             return "suspended"
         case .known:
             return "known"
+        case .isKanji:
+            return "isKanji"
         }
     }
 }

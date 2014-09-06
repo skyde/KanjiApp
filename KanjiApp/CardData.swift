@@ -14,4 +14,8 @@ class CardData: NSManagedObject {
     @NSManaged var soundDefinition: String
     @NSManaged var soundWord: String
     @NSManaged var parent: Card
+    @NSManaged var answersKnown: NSNumber
+    @NSManaged var answersNormal: NSNumber
+    @NSManaged var answersHard: NSNumber
+    @NSManaged var answersForgot: NSNumber
 }

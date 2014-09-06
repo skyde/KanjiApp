@@ -6,18 +6,15 @@ class Card: NSManagedObject {
     @NSManaged var kanji: String
     @NSManaged var index: NSNumber
     @NSManaged var hiragana: String
-    @NSManaged var usageAmount: NSNumber
     @NSManaged var jlptLevel: NSNumber
-    @NSManaged var answersKnown: NSNumber
-    @NSManaged var answersNormal: NSNumber
-    @NSManaged var answersHard: NSNumber
-    @NSManaged var answersForgot: NSNumber
     @NSManaged var interval: NSNumber
     @NSManaged var dueTime: NSNumber
     @NSManaged var enabled: NSNumber
     @NSManaged var suspended: NSNumber
     @NSManaged var known: NSNumber
     @NSManaged var definition: String
+    @NSManaged var usageAmount: NSNumber
+    @NSManaged var isKanji: NSNumber
     @NSManaged var embeddedData: CardData
     
     func answerCard(difficulty: AnswerDifficulty) {
@@ -36,43 +33,33 @@ class Card: NSManagedObject {
             if adjustInterval {
                 interval = 10
             }
-            answersKnown = answersKnown + 1
+            embeddedData.answersKnown = embeddedData.answersKnown + 1
         case .Normal:
 //            println("Normal")
             if adjustInterval {
-                if interval.integerValue < 11 {
-                    interval = interval.integerValue + 1
+                if interval.doubleValue < 11 {
+                    interval = interval.doubleValue + 1
                 }
             }
             
-            answersNormal = answersNormal + 1
+            embeddedData.answersNormal = embeddedData.answersNormal + 1
         case .Hard:
             if adjustInterval {
-                if interval.integerValue >= 6 {
-                    interval = interval.integerValue - 1
+                if interval.doubleValue >= 6 {
+                    interval = interval.doubleValue - 0.5
                 }
             }
             
-            answersHard = answersHard + 1
+            embeddedData.answersHard = embeddedData.answersHard + 1
         case .Forgot:
             if adjustInterval {
-                if interval <= 6 {
-                    interval = 1
-                } else if interval <= 7 {
-                    interval = 2
-                } else if interval <= 9 {
-                    interval = 4
-                } else if interval <= 10 {
-                    interval = 5
-                } else if interval <= 11 {
-                    interval = 6
-                }
+                interval = interval.doubleValue - 4
             }
-            answersForgot = answersForgot + 1
+            embeddedData.answersForgot = embeddedData.answersForgot + 1
         }
         
-        interval = min(11, interval.integerValue)
-        interval = max(0, interval.integerValue)
+        interval = min(11, interval.doubleValue)
+        interval = max(0, interval.doubleValue)
         
         dueTime = secondsSince1970 + timeForInterval()
 //        dueTime = timeForInterval()
@@ -85,9 +72,19 @@ class Card: NSManagedObject {
         managedObjectContext.undoManager.endUndoGrouping()
     }
     
-    
     /// In seconds
     func timeForInterval() -> Double {
+        var small = timeForIntervalSimple(Int(interval.doubleValue))
+        var large = timeForIntervalSimple(Int(interval.doubleValue) + 1)
+        
+        var diff = large - small
+        var percent = interval.doubleValue % 1
+        diff *= percent
+        
+        return small + diff
+    }
+    
+    func timeForIntervalSimple(value: Int) -> Double {
         
         let min: Double = 60.0
         let hour: Double = 60.0 * 60.0
@@ -95,7 +92,7 @@ class Card: NSManagedObject {
         let month: Double = day * (365.0 / 12.0)
         let year: Double = day * 365.0
         
-        switch interval.integerValue {
+        switch value {
         case 0:
             return 0
         case 1:
@@ -120,6 +117,10 @@ class Card: NSManagedObject {
             return 4 * month
         case 11:
             return 2 * year
+        case 12:
+            return 3 * year
+        case 13:
+            return 4 * year
         default:
             return 0
         }
@@ -249,11 +250,11 @@ class Card: NSManagedObject {
         
         addTo.addAttributedText("Interval \(interval.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
-        addTo.addAttributedText("Answers Normal  \(answersNormal.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Answers Normal  \(embeddedData.answersNormal.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
-        addTo.addAttributedText("Answers Hard \(answersHard.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Answers Hard \(embeddedData.answersHard.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
-        addTo.addAttributedText("Answers Forgot \(answersForgot.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Answers Forgot \(embeddedData.answersForgot.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         
         addTo.addAttributedText("Due Time \(dueTime.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         // End Debug
@@ -324,8 +325,10 @@ class Card: NSManagedObject {
         value.addAttributedText(hiragana + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(16))), (NSForegroundColorAttributeName, hiraganaColor)], breakLine: false)
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        
+//        
         value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
+        
+//        value.addAttributedText("\(usageAmount)", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         
         value.endEditing()
         

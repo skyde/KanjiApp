@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  KanjiApp
-//
-//  Created by Sky on 2014-07-01.
-//  Copyright (c) 2014 Sky. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
@@ -142,10 +134,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     
     func resetDatabase() {
         for card in managedObjectContext.fetchCardsAllWords() {
-            card.answersKnown = 0
-            card.answersNormal = 0
-            card.answersHard = 0
-            card.answersForgot = 0
+            card.embeddedData.answersKnown = 0
+            card.embeddedData.answersNormal = 0
+            card.embeddedData.answersHard = 0
+            card.embeddedData.answersForgot = 0
             card.interval = 0
             card.dueTime = 0
             card.enabled = false
@@ -181,10 +173,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             let known = splits[9].toInt()
             
             if let card = managedObjectContext.fetchCardByIndex(index!) {
-                card.answersKnown = answersKnown!
-                card.answersNormal = answersNormal!
-                card.answersHard = answersForgot!
-                card.answersForgot = answersKnown!
+                card.embeddedData.answersKnown = answersKnown!
+                card.embeddedData.answersNormal = answersNormal!
+                card.embeddedData.answersHard = answersForgot!
+                card.embeddedData.answersForgot = answersKnown!
                 card.interval = interval!
                 card.dueTime = dueTime
                 card.enabled = enabled!
