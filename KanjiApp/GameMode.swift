@@ -33,6 +33,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let frameRate: Double = 1 / 60
     
     let downPressInterval: Double = 2.0
+    let panDistance: CGFloat = 10
     
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
@@ -70,14 +71,22 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-
     var dueCard: Card? {
-    get {
-        if due.count > 0 {
-            return managedObjectContext.fetchCardByIndex(due[0])
+        get {
+            if due.count > 0 {
+                return managedObjectContext.fetchCardByIndex(due[0])
+            }
+            return nil
         }
-        return nil
     }
+    
+    var nextCard: Card? {
+        get {
+            if due.count > 1 {
+                return managedObjectContext.fetchCardByIndex(due[1])
+            }
+            return nil
+        }
     }
     
     required init(coder aDecoder: NSCoder!) {
@@ -112,9 +121,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     func updateText() {
         if let card = dueCard {
             if isFront {
-                kanjiView.attributedText = card.front
+                if frontTextCache == nil {
+                    frontTextCache = card.front
+                }
+                kanjiView.attributedText = frontTextCache
 //                kanjiView.textAlignment
                 outputText.text = ""
+                frontTextCache = nil
             }
             else {
                 if backTextCache == nil {
@@ -130,7 +143,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //                UIView.commitAnimations()
                 scrollOutputTextToInset()
 //                outputText.scrollEnabled = true
-//                outputText.
+                //                outputText.
                 backTextCache = nil
             }
             kanjiView.hidden = !isFront
@@ -230,6 +243,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if isFront {
             if backTextCache == nil {
                 if let card = dueCard {
+                    backTextCache = card.back
+                }
+            }
+        }
+        if isBack {
+            if backTextCache == nil {
+                if let card = nextCard {
                     backTextCache = card.back
                 }
             }
@@ -396,7 +416,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             if let panStart = panStart {
                 var distance = distanceAmount(panStart, translation)
                 
-                if distance > 15 && !didPan {
+                if distance > panDistance && !didPan {
                     didPan = true
 //                    println("didpan")
                     progressBar.visible = false
@@ -669,7 +689,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 if !visible && self.processUndo {
                     self.processUndo = false
-                    self.backTextCache = nil
+                    self.clearCaches()
                     self.onUndo()
                 }
 //                println("processAdvanceCard \(self.processAdvanceCard)")
@@ -723,6 +743,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        }
 //    }
     
+    private func clearCaches() {
+        backTextCache = nil
+        frontTextCache = nil
+    }
+    
     private func onUndo() {
         if canUndo {
             var remove = undoStack.removeLast()
@@ -756,6 +781,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        clearCaches()
         fetchCards()
         updateText()
     }
