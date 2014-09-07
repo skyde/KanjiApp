@@ -123,7 +123,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if let card = dueCard {
             if isFront {
                 if frontTextCache == nil {
-                    println("force caculate front")
+//                    println("force caculate front")
                     frontTextCache = card.front
                 }
                 kanjiView.attributedText = frontTextCache
@@ -133,7 +133,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             }
             else {
                 if backTextCache == nil {
-                    println("force caculate back")
+//                    println("force caculate back")
                     backTextCache = card.back
                 }
                 
