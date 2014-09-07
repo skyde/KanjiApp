@@ -94,6 +94,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    }
     let topInset: CGFloat = 100
     var backTextCache: NSAttributedString! = nil
+    var frontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         
         var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
@@ -108,27 +109,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     var flipCardTime: NSTimeInterval = 0
-//    var s = false
     func updateText() {
         if let card = dueCard {
             if isFront {
-                card.setFrontText(kanjiView)
+                kanjiView.attributedText = card.front
+//                kanjiView.textAlignment
                 outputText.text = ""
-                backTextCache = card.back
             }
             else {
                 if backTextCache == nil {
                     backTextCache = card.back
                 }
-
+                
                 kanjiView.text = ""
-//                if !s {
-//                    s = true
-//                }
                 outputText.attributedText = backTextCache
-                if outputText.textAlignment != .Center {
-                    outputText.textAlignment = .Center
-                }
+                outputText.textAlignment = .Center
                 //                outputText.textContainerInset.top = -40
                 //                outputText.scrollEnabled = false
                 flipCardTime = NSDate.timeIntervalSinceReferenceDate()
@@ -166,7 +161,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
 //        println(outputText.decelerationRate)
-        outputText.decelerationRate = 0.1 //Default = 0.998
+        outputText.decelerationRate = 0.9 //Default = 0.998
         
 //        var onSwipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight:")
 //        onSwipeToRight.delegate = self
@@ -230,6 +225,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
             
             progressBar.progress = Float(percent)
+        }
+        
+        if isFront {
+            if backTextCache == nil {
+                if let card = dueCard {
+                    backTextCache = card.back
+                }
+            }
         }
     }
     

@@ -167,20 +167,33 @@ class Card: NSManagedObject {
 //    func setFrontTextFont(label: UILabel) -> UIFont {
 //    }
     
-    func setFrontText(label: UILabel) {
+    var front: NSAttributedString {
+        get {
         
-//        var value = NSMutableAttributedString()
+        let font = Globals.DefaultFont
+        var value = NSMutableAttributedString()
         
-        let baseSize: Double = 250
+        value.beginEditing()
+            
+        let baseSize: CGFloat = 250
         
-        var size = baseSize * 2 / Double(countElements(kanji))
+        var size = baseSize * 2 / CGFloat(countElements(kanji))
         
         if size > baseSize {
             size = baseSize
         }
+            
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .Center
+            
+        let fontPair: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
+        let paragraph: (String, AnyObject) = (NSParagraphStyleAttributeName, paragraphStyle)
+            
+        value.addAttributedText(verticalKanji, [fontPair, paragraph])
+        value.endEditing()
         
-        label.text = verticalKanji
-        label.font = label.font.fontWithSize(CGFloat(size))
+        return value
+    }
     }
     
     var back: NSAttributedString {
