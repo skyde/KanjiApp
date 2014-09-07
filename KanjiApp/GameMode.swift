@@ -89,8 +89,26 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
     
+//    func textViewDidChange(textView: UITextView!) {
+//        println("text did change")
+//    }
+    let topInset: CGFloat = 100
     var backTextCache: NSAttributedString! = nil
-
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        
+        var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
+        
+        if scrollView.contentOffset.y != topInset && diff < 0.1 {
+            scrollOutputTextToInset()
+        }
+    }
+    
+    private func scrollOutputTextToInset() {
+        outputText.setContentOffset(CGPoint(x: 0, y: topInset), animated: false)
+    }
+    
+    var flipCardTime: NSTimeInterval = 0
+//    var s = false
     func updateText() {
         if let card = dueCard {
             if isFront {
@@ -104,17 +122,24 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 }
 
                 kanjiView.text = ""
+//                if !s {
+//                    s = true
+//                }
                 outputText.attributedText = backTextCache
-                outputText.setContentOffset(<#contentOffset: CGPoint#>, animated: <#Bool#>)
+                if outputText.textAlignment != .Center {
+                    outputText.textAlignment = .Center
+                }
+                //                outputText.textContainerInset.top = -40
+                //                outputText.scrollEnabled = false
+                flipCardTime = NSDate.timeIntervalSinceReferenceDate()
+//                UIView.commitAnimations()
+                scrollOutputTextToInset()
+//                outputText.scrollEnabled = true
+//                outputText.
                 backTextCache = nil
             }
             kanjiView.hidden = !isFront
 //            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
-            
-            outputText.textAlignment = .Center
-            outputText.textContainerInset.top = 40
-            
-            outputText.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             
             kanjiView.enabled = isFront
         }
@@ -139,6 +164,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         progressBar.hidden = true
         
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
+        
+//        println(outputText.decelerationRate)
+        outputText.decelerationRate = 0.1 //Default = 0.998
         
 //        var onSwipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight:")
 //        onSwipeToRight.delegate = self
@@ -360,16 +388,15 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         switch sender.state {
         case .Began:
-//            didPan = true
-            progressBar.visible = false
             panStart = translation
         case .Changed:
             if let panStart = panStart {
                 var distance = distanceAmount(panStart, translation)
-                println(distance)
                 
-                if distance > 15 {
+                if distance > 15 && !didPan {
                     didPan = true
+//                    println("didpan")
+                    progressBar.visible = false
                 }
             }
             
