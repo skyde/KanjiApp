@@ -42,12 +42,12 @@ class RootContainer: CustomUIViewController {
         sidebarEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Left,
-            maxOffset: sidebar.frame.width,
+            maxOffset: { return self.sidebar.frame.width },
             autoAddToParent: false,
             onUpdate: {(offset: CGFloat) -> () in
                 self.mainView.frame.origin.x = offset
                 self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
-                self.sidebar.frame.origin.x = 0.25 * -(self.sidebarEdgeReveal.maxReveal - offset)
+                self.sidebar.frame.origin.x = 0.25 * -(self.sidebarEdgeReveal.maxReveal() - offset)
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 self.definitionEdgeReveal?.animateSelf(false)
@@ -71,7 +71,7 @@ class RootContainer: CustomUIViewController {
         sidebarEdgeReveal.onAnimationCompleted = { (open: Bool) -> () in
             if open {
                 self.mainView.layer.shouldRasterize = false
-                self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal
+                self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal()
             } else {
                 self.mainViewLeadingConstraint.constant = 0
             }
@@ -90,11 +90,11 @@ class RootContainer: CustomUIViewController {
         definitionEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
-            maxOffset: Globals.screenSize.width,
+            maxOffset: { return Globals.screenSize.width },
             swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
-                self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal
+                self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal()
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
                 if visible {

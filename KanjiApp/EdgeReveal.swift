@@ -89,7 +89,7 @@ public enum AnimationState {
 public class EdgeReveal: UIButton {
     
     let revealType: EdgeRevealType
-    let maxReveal: CGFloat
+    let maxReveal: (() -> (CGFloat))
     let animationTime: Double
     let animationEasing = UIViewAnimationOptions.CurveEaseOut
     let transitionThreshold: CGFloat
@@ -111,7 +111,7 @@ public class EdgeReveal: UIButton {
     public init(
         parent: UIView,
         revealType: EdgeRevealType,
-        maxOffset: CGFloat = 202,
+        maxOffset: (() -> (value: CGFloat)) = {() in return 202 },
         autoAddToParent: Bool = true,
         swipeAreaWidth: CGFloat = 13,
         transitionThreshold: CGFloat = 30,
@@ -129,6 +129,8 @@ public class EdgeReveal: UIButton {
         self.swipeAreaWidth = swipeAreaWidth
         self.transitionThreshold = transitionThreshold
         self.animationTime = animationTime
+            
+//        var t =
             
         super.init(frame: getSwipeAreaFrame(false))
             
@@ -158,13 +160,13 @@ public class EdgeReveal: UIButton {
         switch revealType {
         case .Left:
             if isOpen {
-                return CGRectMake(maxReveal - maxRevealInteractInset, 0, Globals.screenSize.width - maxReveal + maxRevealInteractInset, Globals.screenSize.height)
+                return CGRectMake(maxReveal() - maxRevealInteractInset, 0, Globals.screenSize.width - maxReveal() + maxRevealInteractInset, Globals.screenSize.height)
             } else { 
                 return CGRectMake(0, 0, swipeAreaWidth, Globals.screenSize.height)
             }
         case .Right:
             if isOpen {
-                return CGRectMake(0, 0, Globals.screenSize.width - self.maxReveal + maxRevealInteractInset, Globals.screenSize.height)
+                return CGRectMake(0, 0, Globals.screenSize.width - self.maxReveal() + maxRevealInteractInset, Globals.screenSize.height)
             } else {
                 return CGRectMake(Globals.screenSize.width - swipeAreaWidth, 0, swipeAreaWidth, Globals.screenSize.height)
             }
@@ -200,7 +202,7 @@ public class EdgeReveal: UIButton {
         let lastAnimationState = animationState
         animationState = AnimationState.GetAnimating(isOpen)
         
-        let viewVisibleWidth = Globals.screenSize.width - self.maxReveal
+        let viewVisibleWidth = Globals.screenSize.width - self.maxReveal()
         
         if isOpen {
             if lastAnimationState == .Closed {
@@ -213,7 +215,7 @@ public class EdgeReveal: UIButton {
                 {
                     self.frame = self.getSwipeAreaFrame(true)
                     if let onUpdate = self.onUpdate {
-                        onUpdate(offset: self.maxReveal)
+                        onUpdate(offset: self.maxReveal())
                     }
                 },
                 completion: { (_) -> () in
@@ -226,7 +228,7 @@ public class EdgeReveal: UIButton {
             if lastAnimationState == .Open {
                 self.frame = self.getSwipeAreaFrame(true)
                 if let onUpdate = self.onUpdate {
-                    onUpdate(offset: self.maxReveal)
+                    onUpdate(offset: self.maxReveal())
                 }
             }
             
@@ -286,10 +288,10 @@ public class EdgeReveal: UIButton {
         var xOffset = gesture.translationInView(superview).x * xSign
         
         if !animationState.AnyOpen() {
-            xOffset += maxReveal
+            xOffset += maxReveal()
         }
         xOffset = max(0, xOffset)
-        xOffset = min(xOffset, maxReveal)
+        xOffset = min(xOffset, maxReveal())
         
         if let onUpdate = onUpdate {
             onUpdate(offset: xOffset)

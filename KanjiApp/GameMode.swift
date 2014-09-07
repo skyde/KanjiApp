@@ -640,7 +640,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         leftEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Left,
-            maxOffset: undoSidebar.frame.width,
+            maxOffset: { return self.undoSidebar.frame.width },
             swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 
