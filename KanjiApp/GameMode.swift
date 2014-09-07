@@ -108,9 +108,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 backTextCache = nil
             }
             kanjiView.hidden = !isFront
+//            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+            
             outputText.textAlignment = .Center
             outputText.textContainerInset.top = 40
-            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
+            
+            outputText.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             
             kanjiView.enabled = isFront
         }
