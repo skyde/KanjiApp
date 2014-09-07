@@ -33,7 +33,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let frameRate: Double = 1 / 60
     
     let downPressInterval: Double = 2.0
-    let panDistance: CGFloat = 10
+    let panDistance: CGFloat = 5
     
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
@@ -61,7 +61,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var canUndo: Bool {
         get {
-            return undoStack.count > 0
+            return undoStack.count > 0 || isBack
         }
     }
     
@@ -104,6 +104,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let topInset: CGFloat = 100
     var backTextCache: NSAttributedString! = nil
     var frontTextCache: NSAttributedString! = nil
+    var nextFrontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         
         var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
@@ -122,6 +123,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if let card = dueCard {
             if isFront {
                 if frontTextCache == nil {
+                    println("force caculate front")
                     frontTextCache = card.front
                 }
                 kanjiView.attributedText = frontTextCache
@@ -131,6 +133,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             }
             else {
                 if backTextCache == nil {
+                    println("force caculate back")
                     backTextCache = card.back
                 }
                 
@@ -230,11 +233,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onTimerTick() {
-//        progressBar.visible = false
-        
-//        println(progressBar.visible)
         if progressBar.visible {
-//            println(downBeganTime)
             var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
             
             progressBar.progress = Float(percent)
@@ -247,11 +246,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 }
             }
         }
-        if isBack {
-            if backTextCache == nil {
-                if let card = nextCard {
-                    backTextCache = card.back
-                }
+        if frontTextCache == nil {
+            if let card = nextCard {
+                frontTextCache = card.front
             }
         }
     }
@@ -750,16 +747,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     private func onUndo() {
         if canUndo {
-            var remove = undoStack.removeLast()
+            if isBack {
+                isFront = true
+            } else {
+                var remove = undoStack.removeLast()
+                
+                due.insert(remove, atIndex: 0)
+                
+                managedObjectContext.undoManager.undo()
+                
+                isFront = true
+                
+                redoStackCount++
+            }
             
-            due.insert(remove, atIndex: 0)
-            
-            managedObjectContext.undoManager.undo()
-            
-            isFront = true
             updateText()
-            
-            redoStackCount++
         }
     }
     
