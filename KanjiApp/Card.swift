@@ -190,6 +190,18 @@ class Card: NSManagedObject {
         
         value.beginEditing()
         
+        // scroll up kanji
+        let baseSize: CGFloat = 250
+        
+        var size = baseSize * 2 / CGFloat(countElements(kanji))
+        
+        if size > baseSize {
+            size = baseSize
+        }
+        
+        value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: size))])
+        
+        // main text
         value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50))])
         value.endEditing()
         

@@ -105,6 +105,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 
                 kanjiView.text = ""
                 outputText.attributedText = backTextCache
+                outputText.setContentOffset(<#contentOffset: CGPoint#>, animated: <#Bool#>)
                 backTextCache = nil
             }
             kanjiView.hidden = !isFront
@@ -352,12 +353,28 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     var didPan = false
+    var panStart: CGPoint?
     func onPan(sender: UIPanGestureRecognizer) {
+        
+        var translation = sender.translationInView(view)
         
         switch sender.state {
         case .Began:
-            didPan = true
+//            didPan = true
             progressBar.visible = false
+            panStart = translation
+        case .Changed:
+            if let panStart = panStart {
+                var distance = distanceAmount(panStart, translation)
+                println(distance)
+                
+                if distance > 15 {
+                    didPan = true
+                }
+            }
+            
+        case .Ended:
+            panStart = nil
         default:
             break
         }
@@ -629,6 +646,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 if !visible && self.processAdvanceCard {
                     self.processAdvanceCard = false
+                    self.isFront = false
                     self.advanceCardAndUpdateText()
                 }
                 
