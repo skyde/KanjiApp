@@ -223,9 +223,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
 //        AVAudioSession.sharedInstance().delegate
         var setCategoryError: NSError?
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: &setCategoryError)
-        
-        
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: &setCategoryError)
         
 //        AVAudioSession.sharedInstance().setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
 //        if (setCategoryError)
