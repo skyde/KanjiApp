@@ -33,8 +33,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let frameRate: Double = 1 / 60
     
     let downPressInterval: Double = 2.0
-    let panDistance: CGFloat = 5
-    
+    let panDistance: CGFloat = 3
     @IBOutlet weak var leftIndicator: UILabel!
 //    @IBOutlet weak var middleIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
@@ -223,7 +222,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
 //        AVAudioSession.sharedInstance().delegate
         var setCategoryError: NSError?
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: &setCategoryError)
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.MixWithOthers, error: &setCategoryError)
+        
+        
         
 //        AVAudioSession.sharedInstance().setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
 //        if (setCategoryError)
