@@ -17,6 +17,7 @@ class RootContainer: CustomUIViewController {
     var sidebarEdgeReveal: EdgeReveal!
     var definitionEdgeReveal: EdgeReveal!
     @IBOutlet weak var mainViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var definitionViewLeadingConstraint: NSLayoutConstraint!
     
     var sidebarButtonBaseX: CGFloat = 13
     var statusBarHidden = false
@@ -113,6 +114,10 @@ class RootContainer: CustomUIViewController {
         mainView.layer.shadowOffset = CGSizeMake(-2, 0)
         mainView.layer.shadowOpacity = sidebarShadowOpacity
         mainView.layer.shadowRadius = 18
+    }
+    
+    func updateDefinitionViewConstraints() {
+        definitionViewLeadingConstraint.constant = Globals.notificationShowDefinition.value == "" ? Globals.screenSize.width : 0
     }
     
     func setSelfShadow(visible: Bool) {
