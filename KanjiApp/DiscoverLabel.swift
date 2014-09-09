@@ -1,10 +1,12 @@
 import Foundation
 import UIKit
 
-class DiscoverLabel: UILabel {
+class DiscoverLabel: UILabel, UIGestureRecognizerDelegate {
 //    var index = 0
     var kanji = ""
     var column = 0
+    
+    var onTouch: ((label: DiscoverLabel) -> ())? = nil
     
 //    var animatedPosition: CGPoint? {
 //    get {
@@ -33,7 +35,24 @@ class DiscoverLabel: UILabel {
 //        layer.masksToBounds = false
 //        layer.shadowRadius = 7
 //        layer.shadowOpacity = 0.2
-        layer.shouldRasterize = true
+//        layer.shouldRasterize = true
+        
+        println("add ontouch")
+        
+        var gesture = UITapGestureRecognizer(target: self, action: "onTouch:")
+        gesture.delegate = self
+//        self.addGestureRecognizer(gesture)
+    }
+    
+    func onTouch(gesture: UIGestureRecognizer) {
+        println("activate ontouch")
+        if let callback = onTouch {
+            callback(label: self)
+        }
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return true
     }
     //override
 }
