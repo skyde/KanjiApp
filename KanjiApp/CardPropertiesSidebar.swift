@@ -148,10 +148,10 @@ public class CardPropertiesSidebar : UIViewController {
         
         currentType = type
         
-        var suspendText = "Suspend"//"Will\nStudy"
-        var pendingText = "Set Pending"//"Will\nStudy"
+        var suspendText = Globals.textSuspend//"Suspend"//"Will\nStudy"
+        var pendingText = Globals.textPending//"Will\nStudy"
 //        let knownText = "Known"
-        let studyText = "Study"
+        let studyText = Globals.textStudy
         
 //        if card.enabled.boolValue {
 //            addText = "Study"

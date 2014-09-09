@@ -166,7 +166,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
             
             targetView = .Lists(
-                title: "Studying",
+                title: Globals.textStudying,
                 color: Globals.colorMyWords,
                 cards: cards,
                 displayConfirmButton: false,
@@ -177,8 +177,8 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
             
             targetView = .Lists(
-                title: "Will Study",
-                color: Globals.colorMyWords,
+                title: Globals.textPending,
+                color: Globals.colorKnown,
                 cards: cards,
                 displayConfirmButton: false,
                 displayAddButton: true,

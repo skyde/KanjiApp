@@ -422,10 +422,10 @@ class Card: NSManagedObject {
     
     func listName() -> String {
         if suspended.boolValue {
-            return "Suspended"
+            return Globals.textSuspended
         } else if !enabled.boolValue {
-            return "Pending"
+            return Globals.textPending
         }
-        return "Studying"
+        return Globals.textStudying
     }
 }
