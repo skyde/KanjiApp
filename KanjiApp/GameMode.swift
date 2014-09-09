@@ -625,9 +625,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func onEditCard() {
         if !view.hidden {
-            rightEdgeReveal.editCardProperties(dueCard, value: Globals.notificationEditCardProperties.value)
+            if let card = dueCard {
+                CardPropertiesSidebar.editCardProperties(card, Globals.notificationEditCardProperties.value)
+            }
             
             saveContext()
+            rightEdgeReveal.animateSelf(false)
+            
         }
     }
     

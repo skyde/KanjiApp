@@ -16,6 +16,35 @@ public class CardPropertiesSidebar : UIViewController {
 //    var onKnownButtonTap: (() -> ())?
     var onPropertyButtonTap: (() -> ())?
     
+    /// Note that this method does not save the context
+    class func editCardProperties(card: Card, _ value: CardPropertiesType) {
+        switch value {
+        case .Suspended:
+            card.suspended = true
+            card.enabled = false
+        case .Pending:
+            card.suspended = false
+            card.enabled = false
+        case .Studying:
+            card.suspended = false
+            card.enabled = true
+        }
+    }
+    
+    class func cycleCardState(card: Card) {
+        if card.suspended.boolValue {
+            // Suspended
+            editCardProperties(card, .Pending)
+        } else if !card.enabled.boolValue {
+            // Pending
+            editCardProperties(card, .Studying)
+        
+        } else {
+            // Studying
+            editCardProperties(card, .Suspended)
+        }
+    }
+    
     func updateContents(card: Card?, var showUndoButton: Bool) {
         
         if baseUndoHeight == nil {

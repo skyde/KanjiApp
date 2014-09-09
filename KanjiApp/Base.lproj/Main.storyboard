@@ -1848,6 +1848,7 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="Djr-zy-ozk" secondAttribute="trailing" id="3Lx-0D-Lgw"/>
                             <constraint firstAttribute="bottom" secondItem="50j-TG-1Sa" secondAttribute="bottom" id="54r-8a-jzE"/>
                             <constraint firstAttribute="trailing" secondItem="50j-TG-1Sa" secondAttribute="trailing" id="6nZ-cl-AfZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Djr-zy-ozk" secondAttribute="bottom" priority="250" id="BMj-yL-u46"/>
                             <constraint firstItem="50j-TG-1Sa" firstAttribute="top" secondItem="Djr-zy-ozk" secondAttribute="bottom" id="gr6-0P-FhZ"/>
                             <constraint firstItem="Djr-zy-ozk" firstAttribute="top" secondItem="nwH-1v-TMo" secondAttribute="top" id="nuq-37-5Wc"/>
                             <constraint firstItem="50j-TG-1Sa" firstAttribute="leading" secondItem="nwH-1v-TMo" secondAttribute="leading" id="w9n-AW-7ys"/>

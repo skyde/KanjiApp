@@ -40,7 +40,15 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func studyingPress(sender: AnyObject) {
-        rightEdgeReveal.toggleOpenClose()
+        
+        if let card = viewCard {
+            var propertyType: CardPropertiesType
+            
+            CardPropertiesSidebar.cycleCardState(card)
+            
+            saveContext()
+            updateDefinitionLabel(card)
+        }
     }
     
     @IBAction func backPress(sender: AnyObject) {
@@ -85,7 +93,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     override func addNotifications() {
         super.addNotifications()
         
-        Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
+//        Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
         
 //        Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
         
@@ -96,13 +104,18 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //        rightEdgeReveal.animateSelf(false)
 //    }
     
-    func onEditCard() {
-        if !view.hidden {
-            rightEdgeReveal.editCardProperties(viewCard, value: Globals.notificationEditCardProperties.value)
-            
-            saveContext()
-        }
-    }
+//    func onEditCard() {
+//        if !view.hidden {
+//            if let card = viewCard {
+//                propertiesSidebar.editCardProperties(card, value: Globals.notificationEditCardProperties.value)
+//                
+//                saveContext()
+//            }
+//            
+////            rightEdgeReveal.animateSelf(false)
+//            
+//        }
+//    }
     
     private func setupEdgeReveal() {
         rightEdgeReveal = EdgeReveal(
@@ -141,9 +154,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
         self.outputText.addGestureRecognizer(tapGesture)
-        var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-        panGesture.delegate = self
-        self.outputText.addGestureRecognizer(panGesture)
+//        var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+//        panGesture.delegate = self
+//        self.outputText.addGestureRecognizer(panGesture)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
@@ -154,15 +167,15 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //        updateText()
 //    }
     
-    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        rightEdgeReveal.respondToPanGesture(gesture)
-//        switch gesture.state {
-//        case .Changed:
-//            println(gesture.translationInView(self.view))
-//        default:
-//            break
-//        }
-    }
+//    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+//        rightEdgeReveal.respondToPanGesture(gesture)
+////        switch gesture.state {
+////        case .Changed:
+////            println(gesture.translationInView(self.view))
+////        default:
+////            break
+////        }
+//    }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)

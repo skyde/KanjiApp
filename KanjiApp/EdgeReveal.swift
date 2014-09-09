@@ -341,25 +341,6 @@ public class EdgeReveal: UIButton {
         }
     }
     
-    /// Note that this method does not save the context
-    func editCardProperties(card: Card?, value: CardPropertiesType) {
-        if let card = card {
-            switch value {
-            case .Suspended:
-                card.suspended = true
-                card.enabled = false
-            case .Pending:
-                card.suspended = false
-                card.enabled = false
-            case .Studying:
-                card.suspended = false
-                card.enabled = true
-            }
-        }
-        
-        animateSelf(false)
-    }
-    
     public func toggleOpenClose() {
         if animationState.IsOpenOrClosed() {
             animateSelf(!animationState.AnyOpen())
