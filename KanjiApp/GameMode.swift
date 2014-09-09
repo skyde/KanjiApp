@@ -222,8 +222,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
 //        AVAudioSession.sharedInstance().delegate
         var setCategoryError: NSError?
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.MixWithOthers, error: &setCategoryError)
-        
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.DuckOthers, error: &setCategoryError)
+        //AVAudioSessionCategoryOptions.MixWithOthers || 
         
         
 //        AVAudioSession.sharedInstance().setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
@@ -705,17 +705,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             self.processUndo = true
         }
         
-        cardPropertiesSidebar.onAddButtonTap = {
+        cardPropertiesSidebar.onPropertyButtonTap = {
             self.processAdvanceCard = true
         }
         
-        cardPropertiesSidebar.onKnownButtonTap = {
-            self.processAdvanceCard = true
-        }
-        
-        cardPropertiesSidebar.onRemoveButtonTap = {
-            self.processAdvanceCard = true
-        }
+//        cardPropertiesSidebar.onKnownButtonTap = {
+//            self.processAdvanceCard = true
+//        }
+//        
+//        cardPropertiesSidebar.onRemoveButtonTap = {
+//            self.processAdvanceCard = true
+//        }
         
 //        rightEdgeReveal.onTap = {(open: Bool) -> () in
 //            if self.rightEdgeReveal.animationState == .Closed {

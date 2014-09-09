@@ -342,17 +342,18 @@ public class EdgeReveal: UIButton {
     }
     
     /// Note that this method does not save the context
-    func editCardProperties(card: Card?, value: CardPropertiesEdit) {
+    func editCardProperties(card: Card?, value: CardPropertiesType) {
         if let card = card {
             switch value {
-            case .Add:
-                card.suspended = false
-                card.known = false
-            case .Remove:
+            case .Suspended:
                 card.suspended = true
-            case .Known:
+                card.enabled = false
+            case .Pending:
                 card.suspended = false
-                card.known = true
+                card.enabled = false
+            case .Studying:
+                card.suspended = false
+                card.enabled = true
             }
         }
         

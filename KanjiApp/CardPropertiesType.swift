@@ -9,7 +9,7 @@
 import Foundation
 
 public enum CardPropertiesType {
-    case KnownAndAdd
-    case RemoveAndAdd
-    case RemoveAndKnow
+    case Suspended//AndAdd
+    case Pending//AndAdd
+    case Studying
 }

@@ -4,18 +4,17 @@ import UIKit
 public class CardPropertiesSidebar : UIViewController {
     
     @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
+//    @IBOutlet weak var rightButton: UIButton!
     
     @IBOutlet weak var undoButton: UIButton!
-    var currentType: CardPropertiesType = .KnownAndAdd
+    var currentType: CardPropertiesType = .Suspended
     
     @IBOutlet weak var undoHeight: NSLayoutConstraint!
     var baseUndoHeight: CGFloat? = nil
     
     var onUndoButtonTap: (() -> ())?
-    var onKnownButtonTap: (() -> ())?
-    var onAddButtonTap: (() -> ())?
-    var onRemoveButtonTap: (() -> ())?
+//    var onKnownButtonTap: (() -> ())?
+    var onPropertyButtonTap: (() -> ())?
     
     func updateContents(card: Card?, var showUndoButton: Bool) {
         
@@ -32,11 +31,14 @@ public class CardPropertiesSidebar : UIViewController {
         
         if let card = card {
             if card.suspended.boolValue {
-                setPropertiesType(card, .KnownAndAdd)
-            } else if card.known.boolValue {
-                setPropertiesType(card, .RemoveAndAdd)
+                // Suspended
+                setPropertiesType(card, .Pending)
+            } else if !card.enabled.boolValue {
+                // Pending
+                setPropertiesType(card, .Studying)
             } else {
-                setPropertiesType(card, .RemoveAndKnow)
+                // Studying
+                setPropertiesType(card, .Suspended)
             }
         }
     }
@@ -47,63 +49,52 @@ public class CardPropertiesSidebar : UIViewController {
         }
     }
     
-    private func onTap(property: CardPropertiesEdit) {
+    private func onTap() {
         
-        Globals.notificationEditCardProperties.postNotification(property)
-
-        switch property {
-        case .Add:
-            if let callback = self.onAddButtonTap {
-                callback()
-            }
-        case .Known:
-            if let callback = self.onKnownButtonTap {
-                callback()
-            }
-        case .Remove:
-            if let callback = self.onRemoveButtonTap {
-                callback()
-            }
+        Globals.notificationEditCardProperties.postNotification(currentType)
+        
+        if let callback = self.onPropertyButtonTap {
+            callback()
         }
     }
     
     @IBAction func leftTap(sender: AnyObject) {
-        var property: CardPropertiesEdit!
+//        var property: CardPropertiesEdit!
+//        
+//        switch currentType {
+//        case .Suspended:
+//            property = .Known
+//        case .Pending:
+//            property = .Remove
+//            break
+//        case .RemoveAndKnow:
+//            property = .Remove
+//            break
+//        }
         
-        switch currentType {
-        case .KnownAndAdd:
-            property = .Known
-        case .RemoveAndAdd:
-            property = .Remove
-            break
-        case .RemoveAndKnow:
-            property = .Remove
-            break
-        }
-        
-        onTap(property)
+        onTap()
     }
     
-    @IBAction func rightTap(sender: AnyObject) {
-        var property: CardPropertiesEdit!
-        
-        switch currentType {
-        case .KnownAndAdd:
-            property = .Add
-        case .RemoveAndAdd:
-            property = .Add
-            break
-        case .RemoveAndKnow:
-            property = .Known
-            break
-        }
-        
-        onTap(property)
-    }
+//    @IBAction func rightTap(sender: AnyObject) {
+//        var property: CardPropertiesEdit!
+//        
+//        switch currentType {
+//        case .KnownAndAdd:
+//            property = .Add
+//        case .RemoveAndAdd:
+//            property = .Add
+//            break
+//        case .RemoveAndKnow:
+//            property = .Known
+//            break
+//        }
+//        
+//        onTap(property)
+//    }
     
     public func animate(offset: CGFloat) {
-        leftButton.frame.origin.x = min(0, -leftButton.frame.width + offset)
-        rightButton.frame.origin.x = max(0, offset - leftButton.frame.width)
+//        leftButton.frame.origin.x = min(0, -leftButton.frame.width + offset)
+//        rightButton.frame.origin.x = max(0, offset - leftButton.frame.width)
     }
     
 //    public override func viewWillAppear(animated: Bool) {
@@ -126,61 +117,62 @@ public class CardPropertiesSidebar : UIViewController {
         
         currentType = type
         
-        var addText = "Study"//"Will\nStudy"
-        let knownText = "Known"
-        let removeText = "Remove"
+        var suspendText = "Suspend\nCard"//"Will\nStudy"
+        var pendingText = "Set Pending"//"Will\nStudy"
+//        let knownText = "Known"
+        let studyText = "Study"
         
 //        if card.enabled.boolValue {
 //            addText = "Study"
 //        }
         
-        let addColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
-        let knownColor = UIColor(
+        let studyColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+        let pendingColor = UIColor(
             red: 102.0 / 255.0,
             green: 204.0 / 255.0,
             blue: 255.0 / 255.0,
             alpha: 1)
-        let removeColor = UIColor(
+        let suspendColor = UIColor(
             red: 255.0 / 255.0,
             green: 102.0 / 255.0,
             blue: 102.0 / 255.0,
             alpha: 1)
         var leftText = ""
-        var rightText = ""
+//        var rightText = ""
         var leftColor = UIColor()
-        var rightColor = UIColor()
+//        var rightColor = UIColor()
         
         switch type {
-        case .KnownAndAdd:
-            leftText = knownText
-            rightText = addText
+        case .Suspended:
+            leftText = suspendText
+//            rightText = addText
             
-            leftColor = knownColor
-            rightColor = addColor
-        case .RemoveAndAdd:
-            leftText = removeText
-            rightText = addText
+            leftColor = suspendColor
+//            rightColor = addColor
+        case .Pending:
+            leftText = pendingText
+//            rightText = addText
             
-            leftColor = removeColor
-            rightColor = addColor
+            leftColor = pendingColor
+//            rightColor = addColor
             break
-        case .RemoveAndKnow:
-            leftText = removeText
-            rightText = knownText
+        case .Studying:
+            leftText = studyText
+//            rightText = knownText
             
-            leftColor = removeColor
-            rightColor = knownColor
+            leftColor = studyColor
+//            rightColor = knownColor
             break
         }
         
         leftButton.setTitle(leftText, forState: .Normal)
-        rightButton.setTitle(rightText, forState: .Normal)
+//        rightButton.setTitle(rightText, forState: .Normal)
         
         leftButton.setTitleColor(adjustToForegroundColor(leftColor), forState: .Normal)
-        rightButton.setTitleColor(adjustToForegroundColor(rightColor), forState: .Normal)
+//        rightButton.setTitleColor(adjustToForegroundColor(rightColor), forState: .Normal)
         
         leftButton.backgroundColor = adjustToBackgroundColor(leftColor)
-        rightButton.backgroundColor = adjustToBackgroundColor(rightColor)
+//        rightButton.backgroundColor = adjustToBackgroundColor(rightColor)
     }
     
     func adjustToBackgroundColor(color: UIColor) -> UIColor {
