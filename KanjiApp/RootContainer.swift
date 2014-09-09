@@ -38,6 +38,7 @@ class RootContainer: CustomUIViewController {
         rootContainerInstance = self
         
         self.sidebar.layer.rasterizationScale = Globals.retinaScale
+        self.mainView.layer.rasterizationScale = Globals.retinaScale
         
         selfBlur.hidden = true
         
