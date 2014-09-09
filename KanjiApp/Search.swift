@@ -387,6 +387,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         if searchAnim == AnimationState.GetAnimating(open) {
             return
         }
+        if searchAnim.IsOpenOrClosed() && searchAnim.AnyOpen() == open {
+            return
+        }
         
         searchAnim = AnimationState.GetAnimating(open)
         
