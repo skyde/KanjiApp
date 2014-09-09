@@ -100,7 +100,8 @@ public class EdgeReveal: UIButton {
     
     var onUpdate: ((offset: CGFloat) -> ())?
     var setVisible: ((open: Bool, completed: Bool) -> ())?
-    var onAnimationCompleted: ((open: Bool) -> ())?
+    var onAnimationStarted: ((isNowOpen: Bool) -> ())?
+    var onAnimationCompleted: ((isNowOpen: Bool) -> ())?
     var onTap: ((open: Bool) -> ())?
     var onOpenClose: ((shouldOpen: Bool) -> ())?
     
@@ -183,28 +184,36 @@ public class EdgeReveal: UIButton {
         }
     }
     
-    public func animateSelf(var isOpen: Bool) {
+    public func animateSelf(var open: Bool) {
         if animationState.IsAnimating() {
             return
         }
-        if animationState.IsOpenOrClosed() && animationState.AnyOpen() == isOpen {
+        if animationState.IsOpenOrClosed() && animationState.AnyOpen() == open {
             return
         }
         
         if let onOpenClose = onOpenClose {
-            onOpenClose(shouldOpen: isOpen)
+            onOpenClose(shouldOpen: open)
         }
         
         if !allowOpen {
-            isOpen = false
+            open = false
         }
         
         let lastAnimationState = animationState
-        animationState = AnimationState.GetAnimating(isOpen)
+        
+        animationState = AnimationState.GetAnimating(open)
+        
+        if lastAnimationState.IsOpenOrClosed() {
+            if let callback = onAnimationStarted {
+                callback(isNowOpen: false)
+            }
+        }
+        
         
         let viewVisibleWidth = Globals.screenSize.width - self.maxReveal()
         
-        if isOpen {
+        if open {
             if lastAnimationState == .Closed {
                 setVisibility(true, completed: false)
             }
@@ -221,7 +230,7 @@ public class EdgeReveal: UIButton {
                 completion: { (_) in
                     self.animationState = .Open
                     if let callback = self.onAnimationCompleted {
-                        callback(open: true)
+                        callback(isNowOpen: true)
                     }
             })
         } else {
@@ -245,7 +254,7 @@ public class EdgeReveal: UIButton {
                     self.setVisibility(false, completed: true)
                     self.animationState = .Closed
                     if let callback = self.onAnimationCompleted {
-                        callback(open: false)
+                        callback(isNowOpen: false)
                     }
             })
         }
@@ -280,6 +289,10 @@ public class EdgeReveal: UIButton {
                 setVisibility(true, completed: false)
             } else {
                 animationState = .DraggingClosed
+            }
+            
+            if let callback = onAnimationStarted {
+                callback(isNowOpen: true)
             }
         default:
             break

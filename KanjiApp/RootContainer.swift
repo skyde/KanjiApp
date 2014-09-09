@@ -36,21 +36,21 @@ class RootContainer: CustomUIViewController {
         
         rootContainerInstance = self
         
-        self.mainView.layer.rasterizationScale = Globals.retinaScale
+        self.mainView.layer.rasterizationScale = 0.5
         
-        self.sidebar.layer.rasterizationScale = Globals.retinaScale
+        self.sidebar.layer.rasterizationScale = 0.5//Globals.retinaScale
         
         sidebarEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Left,
             maxOffset: { return self.sidebar.frame.width },
             autoAddToParent: false,
-            onUpdate: {(offset: CGFloat) -> () in
+            onUpdate: {(offset) in
                 self.mainView.frame.origin.x = offset
                 self.sidebarButton.frame.origin.x = self.sidebarButtonBaseX + offset
                 self.sidebar.frame.origin.x = 0.25 * -(self.sidebarEdgeReveal.maxReveal() - offset)
             },
-            setVisible: {(visible: Bool, completed: Bool) -> () in
+            setVisible: {(visible, completed) in
                 self.definitionEdgeReveal?.animateSelf(false)
                 
                 self.sidebar.visible = visible
@@ -59,19 +59,27 @@ class RootContainer: CustomUIViewController {
                 self.setSelfShadow(visible)
                 
                 if visible {
-                    self.mainView.layer.shouldRasterize = true
-                    self.sidebar.layer.shouldRasterize = true
                     if self.sidebarEdgeReveal.animationState.IsDragging() {
                         self.setNeedsStatusBarAppearanceUpdate()
                     }
-                } else {
-                    self.mainView.layer.shouldRasterize = false
                 }
+//                else {
+//                    self.mainView.layer.shouldRasterize = false
+//                }
         })
         
-        sidebarEdgeReveal.onAnimationCompleted = { (open: Bool) -> () in
-            if open {
+        sidebarEdgeReveal.onAnimationStarted = { (isNowOpen) in
+            self.sidebar.layer.shouldRasterize = true
+            self.mainView.layer.shouldRasterize = true
+        }
+        
+        sidebarEdgeReveal.onAnimationCompleted = { (isNowOpen) in
+            self.sidebar.layer.shouldRasterize = false
+            if !isNowOpen {
                 self.mainView.layer.shouldRasterize = false
+            }
+            
+            if isNowOpen {
                 self.mainViewLeadingConstraint.constant = self.sidebarEdgeReveal.maxReveal()
             } else {
                 self.mainViewLeadingConstraint.constant = 0
@@ -97,7 +105,7 @@ class RootContainer: CustomUIViewController {
                 self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
                 self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal()
             },
-            setVisible: {(visible: Bool, completed: Bool) -> () in
+            setVisible: {(visible, completed) in
                 if visible {
                     self.backgroundImage.image = self.caculateSelfBlurImage()
                     DefinitionPopover.instance.updateState()
@@ -112,8 +120,6 @@ class RootContainer: CustomUIViewController {
         
         mainView.layer.shadowColor = UIColor.blackColor().CGColor
         mainView.layer.shadowOffset = CGSizeMake(-2, 0)
-        mainView.layer.shadowOpacity = sidebarShadowOpacity
-        mainView.layer.shadowRadius = 18
     }
     
     func updateDefinitionViewConstraints() {
@@ -123,8 +129,10 @@ class RootContainer: CustomUIViewController {
     func setSelfShadow(visible: Bool) {
         if visible {
             self.mainView.layer.shadowOpacity = self.sidebarShadowOpacity
+            mainView.layer.shadowRadius = 18
         } else {
             self.mainView.layer.shadowOpacity = 0
+            mainView.layer.shadowRadius = 0
         }
     }
     
@@ -150,6 +158,8 @@ class RootContainer: CustomUIViewController {
     }
     
     @IBAction func sidebarButtonTouch(sender: AnyObject) {
+//        self.mainView.layer.shouldRasterize = true
+        
         sidebarEdgeReveal.toggleOpenClose()
     }
     

@@ -74,24 +74,27 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         searchResultsBaseFrame = searchResults.frame
         
         for i in 0 ..< numberOfLabels {
-            labels.append(DiscoverLabel(frame: CGRectMake(0, 0, 1, 1)))
+            var add = DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
+            
+            add.onTouch = { (label) in println(label.kanji) }
+            
+            labels.append(add)
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
         var gesture = UILongPressGestureRecognizer(target: self, action: "respondToLongPressGesture:")
         gesture.minimumPressDuration = 0
-        gesture.cancelsTouchesInView = false
-        gesture.delaysTouchesBegan = false
-        gesture.delaysTouchesEnded = false
+        gesture.delegate = self
         discoverClickableArea.addGestureRecognizer(gesture)
+//        gesture.cancelsTouchesInView = false
+//        gesture.delaysTouchesBegan = false
+//        gesture.delaysTouchesEnded = false
         
-        var tap = UITapGestureRecognizer(target: self, action: "onTouch:")
-        tap.cancelsTouchesInView = false
-        tap.delaysTouchesBegan = false
-        tap.delaysTouchesEnded = false
-        discoverClickableArea.addGestureRecognizer(tap)
+//        tap.cancelsTouchesInView = false
+//        tap.delaysTouchesBegan = false
+//        tap.delaysTouchesEnded = false
         
-        gesture.requireGestureRecognizerToFail(tap)
+//        gesture.requireGestureRecognizerToFail(tap)
         
         onTimerTick()
     }
@@ -236,20 +239,23 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         searchBar.resignFirstResponder()
     }
     
-    func onTouch(gesture: UIGestureRecognizer) {
-        
-        switch gesture.state {
-        case .Began:
-            touchesDown = true
-        case .Ended:
-            touchesDown = false
-        default:
-            break
-        }
-        
+    func closeKeyboardIfSearchIsEmpty() {
         if lastSearchText == "" {
             closeKeyboard()
         }
+    }
+    
+    func onLabelTouch(gesture: UIGestureRecognizer) {
+        
+//        switch gesture.state {
+//        case .Began:
+//            touchesDown = true
+//        case .Ended:
+//            touchesDown = false
+//        default:
+//            break
+//        }
+        closeKeyboardIfSearchIsEmpty()
         
         var tapLocation = gesture.locationInView(self.view)
         if Globals.notificationShowDefinition.value == "" {

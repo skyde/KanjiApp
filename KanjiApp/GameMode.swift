@@ -2,19 +2,6 @@ import UIKit
 import CoreData
 import AVFoundation
 
-//class CardStateEntry {
-//    var index: NSNumber
-//    var answersKnown: NSNumber
-//    var answersNormal: NSNumber
-//    var answersHard: NSNumber
-//    var answersForgot: NSNumber
-//    var interval: NSNumber
-//    var dueTime: NSNumber
-//    var enabled: NSNumber
-//    var suspended: NSNumber
-//    var known: NSNumber
-//}
-
 class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate {
     @IBOutlet var outputText: UITextView!
     
@@ -35,23 +22,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let downPressInterval: Double = 2.0
     let panDistance: CGFloat = 3
     @IBOutlet weak var leftIndicator: UILabel!
-//    @IBOutlet weak var middleIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
     
     @IBOutlet weak var propertiesSidebar: UIView!
     @IBOutlet weak var kanjiView: UILabel!
-        @IBOutlet weak var leftSidebar: UIButton!
+    @IBOutlet weak var leftSidebar: UIButton!
     @IBOutlet weak var rightSidebar: UIButton!
     
     @IBOutlet weak var undoSidebar: UIButton!
     
     @IBOutlet weak var progressBar: UIProgressView!
-//    override var sidebarEnabled: Bool {
-//        get {
-//            return false
-//        }
-//    }
-//    let sidebarShadowOpacity: Float = 0.04
     
     var leftEdgeReveal: EdgeReveal! = nil
     var rightEdgeReveal: EdgeReveal! = nil
@@ -89,7 +69,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     required init(coder aDecoder: NSCoder!) {
-//        self.due = []
         super.init(coder: aDecoder)
     }
     
@@ -97,9 +76,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
     
-//    func textViewDidChange(textView: UITextView!) {
-//        println("text did change")
-//    }
     let topInset: CGFloat = 100
     var backTextCache: NSAttributedString! = nil
     var frontTextCache: NSAttributedString! = nil
@@ -122,35 +98,25 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if let card = dueCard {
             if isFront {
                 if frontTextCache == nil {
-//                    println("force caculate front")
                     frontTextCache = card.front
                 }
                 kanjiView.attributedText = frontTextCache
-//                kanjiView.textAlignment
                 outputText.text = ""
                 frontTextCache = nil
             }
             else {
                 if backTextCache == nil {
-//                    println("force caculate back")
                     backTextCache = card.back
                 }
                 
                 kanjiView.text = ""
                 outputText.attributedText = backTextCache
                 outputText.textAlignment = .Center
-                //                outputText.textContainerInset.top = -40
-                //                outputText.scrollEnabled = false
                 flipCardTime = NSDate.timeIntervalSinceReferenceDate()
-//                UIView.commitAnimations()
                 scrollOutputTextToInset()
-//                outputText.scrollEnabled = true
-                //                outputText.
                 backTextCache = nil
             }
             kanjiView.hidden = !isFront
-//            outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
-            
             kanjiView.enabled = isFront
         }
         
@@ -166,7 +132,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         setupEdgeReveal()
         
         leftIndicator.hidden = true
-//        middleIndicator.hidden = true
         rightIndicator.hidden = true
         leftSidebar.hidden = true
         rightSidebar.hidden = true
@@ -175,21 +140,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
-//        println(outputText.decelerationRate)
         outputText.decelerationRate = 0.9 //Default = 0.998
-        
-//        var onSwipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight:")
-//        onSwipeToRight.delegate = self
-//        onSwipeToRight.direction = .Right
-//        outputText.addGestureRecognizer(onSwipeToRight)
-        
-//        outputText.panGestureRecognizer.delegate = self
         
         var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
         panGesture.delegate = self
         self.outputText.addGestureRecognizer(panGesture)
         
-//        println("viewDidLoad")
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         downGesture.delegate = self
         downGesture.minimumPressDuration = 0
@@ -201,34 +157,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         outputText.addGestureRecognizer(onTouchGesture)
         
-        
-//        kanjiView.layer.shadowColor = UIColor.blackColor().CGColor
-//        kanjiView.layer.shadowOffset = CGSizeMake(2, 0)
-//        kanjiView.layer.masksToBounds = false
-//        kanjiView.layer.shadowRadius = 10
-//        outputText.layer.shadowColor = UIColor.blackColor().CGColor
-//        outputText.layer.shadowOffset = CGSizeMake(2, 0)
-//        outputText.layer.masksToBounds = false
-//        outputText.layer.shadowRadius = 10
-        
-//        kanjiView.layer.shadowColor = UIColor.blackColor().CGColor
-//        kanjiView.layer.shadowOffset = CGSizeMake(2, 0)
-//        kanjiView.layer.masksToBounds = false
-//        self.outputText.layer.shadowOpacity = self.sidebarShadowOpacity
-//        mainView.layer.shadowOpacity =
-//        var onLongPress = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
-//        onLongPress.delegate = self
-        //        outputText.addGestureRecognizer(onLongPress)[[AVAudioSession sharedInstance] setDelegate: self];
-        
-//        AVAudioSession.sharedInstance().delegate
         var setCategoryError: NSError?
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.DuckOthers, error: &setCategoryError)
-        //AVAudioSessionCategoryOptions.MixWithOthers || 
-        
-        
-//        AVAudioSession.sharedInstance().setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
-//        if (setCategoryError)
-//        NSLog(@"Error setting category! %@", setCategoryError);
+        //AVAudioSessionCategoryOptions.MixWithOthers
     }
     
     func onTimerTick() {
@@ -252,51 +183,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-//    private var lastScrollY: CGFloat? = nil
-//    private var lastScrollTime: NSTimeInterval! = nil
-//    private var scrollSpeed: CGFloat = 0
-//    func scrollViewDidScroll(scrollView: UIScrollView!) {
-//    }
-////        println("scrollViewDidScroll")
-//        
-//        if let lastScrollY = lastScrollY {
-//            var scrollY = outputText.contentOffset.y
-//            var scrollTime = NSDate.timeIntervalSinceReferenceDate()
-//            
-//            scrollY -= lastScrollY
-//            scrollTime -= lastScrollTime
-//            
-//            var speed = abs(scrollY / CGFloat(scrollTime) / 1000)
-//            
-////            if speed != 0 {
-//            scrollSpeed = speed
-////            }
-////            scrollSpeed = 2
-//            
-//            //            println(scrollSpeed)
-////            println("scrollSpeed = \(scrollSpeed)")
-////            println("test")
-//        }
-//        
-//        lastScrollY = outputText.contentOffset.y
-//        lastScrollTime = NSDate.timeIntervalSinceReferenceDate()
-////        println(scrollView.panGestureRecognizer.velocityInView(view).y)
-////        println(outputText.)
-//    }
-    
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-////        println("scrollViewDidEndDecelerating")
-//        scrollSpeed = 0
-//    }
-    
-//    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView!) {
-//        println("end")
-//    }
-    
-//    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
-//        println("scrollViewDidEndDragging")
-//    }
-    
     func onTouch(sender: UITapGestureRecognizer) {
         if rightEdgeReveal.animationState != AnimationState.Closed {
             return
@@ -304,95 +190,35 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         if !wasFront {
             
-            //answerCard(.Normal)
             caculateAnswer(sender)
-//            caculateAnswer(sender)
         }
-        
-//        println("touch")
-
-//        if isFront {
-//            advanceCard()
-//        } else {
-//            caculateAnswer(sender)
-//        }
-        //        println(sender.state)
-        //        println(sender.locationOfTouch(0, inView: self.view))
-        //
-        //        return
-        
     }
-//    func onSwipeToRight(sender: UIGestureRecognizer) {
-//        println("onSwipeToRight")
-//        
-//        onUndo()
-//    }
-    
-//    func onLongPress(sender: UILongPressGestureRecognizer) {
-//        switch sender.state {
-//        case .Began:
-//            if rightEdgeReveal.animationState == .Closed {
-//                rightEdgeReveal.animateSelf(true)
-//            }
-//        default:
-//            break
-//        }
-//    }
     
     var wasFront = false
     var downBeganTime: NSTimeInterval = 0
     func onDown(sender: UILongPressGestureRecognizer) {
         
-//        let tapRadius: CGFloat = 3
-//        let maxTravelled: CGFloat = 8
-//        println("onDownz")
-        
         var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
-        
-//        println("\(sender.state.hashValue)")
         
         switch sender.state {
         case .Began:
-//            println("Began")
             wasFront = isFront
             didPan = false
             
-//            println(isFront)
             if  isFront &&
                 rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
                     
                 downBeganTime = NSDate.timeIntervalSinceReferenceDate()
-//                println(downBeganTime)
                 
                 progressBar.visible = true
                 progressBar.progress = 0
             }
-            
-//            UIView.animateWithDuration(interval,
-//                delay: 0,
-//                options: .CurveEaseOut,
-//                {
-//                    self.progressBar.progress = 1
-//                },
-            //                completion: nil)
-//        case .Changed:
-//            println("Changed")
-//        case .Cancelled:
-//            println("Cancelled")
-//        case .Failed:
-//            println("Failed")
-//        case .Possible:
-//            println("Possible")
         case .Ended:
-//            println("Ended")
-
             progressBar.visible = false
             if percent < 1 && !didPan && wasFront {
-//                println(percent)
                 downBeganTime = 0
                 answerCard(.Normal)
-                //advanceCardAndUpdateText()
             }
         default:
             break
@@ -414,7 +240,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 if distance > panDistance && !didPan {
                     didPan = true
-//                    println("didpan")
                     progressBar.visible = false
                 }
             }
@@ -424,118 +249,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         default:
             break
         }
-        
-//        return
-//        if rightEdgeReveal.animationState != AnimationState.Closed {
-//            return
-//        }
-//        
-////        println()
-//        
-////        if !canUndo && !canRedo {
-////            return
-////        }
-//        
-//        let transitionThreshold: CGFloat = 32
-//        var x = sender.translationInView(view).x
-//        
-////        if !canUndo {
-////            x = min(0, x)
-////        }
-////        
-////        if !canRedo {
-////            x = max(0, x)
-////        }
-//        
-//        x = max(0, abs(x) - 18) * sign(x)
-//        x = min(abs(x), leftSidebar.frame.width) * sign(x)
-//        
-//        contentsUpdate(x)
-//        sidebarUpdate(x)
-//        
-//        switch sender.state {
-//        case .Began:
-//            sidebarSetVisiblity(true)
-//        case .Ended:
-//            var contentsTargetX: CGFloat = 0
-//            var active = false
-//            var isRight = false
-//            
-//            if x > transitionThreshold {
-////                contentsTargetX = Globals.screenSize.width
-//                active = true
-//            } else if x < -transitionThreshold {
-////                contentsTargetX = -Globals.screenSize.width
-//                active = true
-//                isRight = true
-//            }
-//            
-////            println(active)
-//            
-//            UIView.animateWithDuration(0.16,
-//                delay: 0,
-//                options: .CurveEaseOut,
-//                {
-//                    self.sidebarUpdate(0)
-////                    if active {
-////                        self.contentsUpdate(contentsTargetX)
-////                    } else {
-////                    }
-//                    self.contentsUpdate(0)
-//                },
-//                completion: { (_) -> () in
-//                    
-//                    self.sidebarSetVisiblity(false)
-//                    
-//                    if active {
-//                        if isRight {
-//                            self.answerCard(.Hard)
-//                        } else {
-//                            self.answerCard(.Forgot)
-//                        }
-////                        if isRedo {
-////                            self.onRedo()
-////                        } else {
-////                            self.onUndo()
-////                        }
-//                        
-//                        self.contentsUpdate(-contentsTargetX)
-//                        UIView.animateWithDuration(0.16,
-//                            delay: 0,
-//                            options: .CurveEaseOut,
-//                            {
-//                                self.contentsUpdate(0)
-//    //                            self.contentsAlpha(1)
-//                            },
-//                            completion: nil
-//                        )
-//                    }
-//
-////                self.contentsUpdate(0)
-//            })
-//
-//        default:
-//            break
-//        }
     }
-    
-//    private func contentsSetVisiblity(visible: Bool) {
-//        
-//    }
-    //
-//    private func contentsAlpha(value: CGFloat) {
-//        outputText.alpha = value
-//        kanjiView.alpha = value
-//    }
     
     private func contentsUpdate(x: CGFloat) {
         outputText.frame.origin.x = x
         kanjiView.frame.origin.x = x
         
-//        var alpha: CGFloat = 1 - abs(x / Globals.screenSize.width)//1 - max(0, abs(x) - leftSidebar.frame.width) / (Globals.screenSize.width - leftSidebar.frame.width)
-//        alpha = alpha * alpha
-//        
-//        contentsAlpha(alpha)
     }
     
     private func sidebarSetVisiblity(visible: Bool) {
@@ -631,7 +350,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             
             saveContext()
             rightEdgeReveal.animateSelf(false)
-            
         }
     }
     
@@ -692,16 +410,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     self.clearCaches()
                     self.onUndo()
                 }
-//                println("processAdvanceCard \(self.processAdvanceCard)")
                 
                 if !visible && self.processAdvanceCard {
                     self.processAdvanceCard = false
                     self.isFront = false
                     self.advanceCardAndUpdateText()
                 }
-                
-//                self.setSelfShadow(visible)
-//                RootContainer.instance.setSelfShadow(visible)
         })
         
         cardPropertiesSidebar.onUndoButtonTap = {
@@ -712,36 +426,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         cardPropertiesSidebar.onPropertyButtonTap = {
             self.processAdvanceCard = true
         }
-        
-//        cardPropertiesSidebar.onKnownButtonTap = {
-//            self.processAdvanceCard = true
-//        }
-//        
-//        cardPropertiesSidebar.onRemoveButtonTap = {
-//            self.processAdvanceCard = true
-//        }
-        
-//        rightEdgeReveal.onTap = {(open: Bool) -> () in
-//            if self.rightEdgeReveal.animationState == .Closed {
-//                if !open && !self.isFront {
-//                    self.answerCard(.Hard)
-//                } else {
-//                    self.advanceCard()
-//                }
-//            }
-//        }
     }
-    
-    
-//    func setSelfShadow(visible: Bool) {
-//        if visible {
-//            self.outputText.layer.shadowOpacity = self.sidebarShadowOpacity
-//            self.kanjiView.layer.shadowOpacity = self.sidebarShadowOpacity
-//        } else {
-//            self.outputText.layer.shadowOpacity = 0
-//            self.kanjiView.layer.shadowOpacity = 0
-//        }
-//    }
     
     private func clearCaches() {
         backTextCache = nil
@@ -832,13 +517,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if due.count != 0 {
             isFront = !isFront
             
-//            if isBack {
-//                println("\(dueCard?.kanji) dueTime = \(dueCard?.interval)")
-//            }
-            
             if isBack {
                 if var path = dueCard?.embeddedData.soundWord {
-//                    playSound("invalidPath.mp3")
                     playSound(filterSoundPath(path))
                 }
                 
@@ -848,10 +528,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func filterSoundPath(path: String) -> String {
-//        println(settings.volume)
-//        
-//        println(Globals.audioDirectoryPath)
-//        println(path)
         var range: NSRange = NSRange(location: 7, length: countElements(path) - 12)
         return (path as NSString).substringWithRange(range)
     }
@@ -885,7 +561,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         
-//        println("audioPlayerDidFinishPlaying \(flag)")
         if var path = dueCard?.embeddedData.soundDefinition {
             if !isFront {
                 playSound(filterSoundPath(path), sendEvents: false)
@@ -897,78 +572,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         rightEdgeReveal.animateSelf(false)
     }
     
-//    func onInteract(interactType: InteractType, _ card: Card) {
-//        switch interactType {
-//        case .Tap:
-//            //            card.answerCard(.Normal)
-//            break
-//        case .SwipeRight:
-////            println("Swiped right \(card.kanji)")
-////            card.answerCard(.Hard)
-//            //            due.append(due[0])
-//            break
-//        case .SwipeLeft:
-////            println("Swiped Left \(card.kanji)")
-////            card.answerCard(.Forgot)
-//            //            due.append(due[0])
-//            break
-//        case .SwipeUp:
-//            break
-////            println("Swiped Up \(card.kanji)")
-////            card.answerCard(.Easy)
-//        case .SwipeDown:
-//            break
-////            println("Swipe Down \(card.kanji)")
-//        }
-//        advanceCard()
-//        saveContext()
-//    }
-    
-    
-//    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-//        
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-//            if !isFront {
-//                if let card = dueCard {
-//                    switch swipeGesture.direction {
-//                        
-//                    case UISwipeGestureRecognizerDirection.Right:
-//                        onInteract(.SwipeRight, card)
-//                        
-//                    case UISwipeGestureRecognizerDirection.Down:
-//                        onInteract(.SwipeDown, card)
-//                        
-//                    case UISwipeGestureRecognizerDirection.Up:
-//                        onInteract(.SwipeUp, card)
-//                        
-//                    case UISwipeGestureRecognizerDirection.Left:
-//                        onInteract(.SwipeLeft, card)
-//                        
-//                    default:
-//                        break
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
-//    func setupSwipeGestures() {
-////        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-////        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-////        self.view.addGestureRecognizer(swipeRight)
-////        
-////        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-////        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-////        self.view.addGestureRecognizer(swipeDown)
-////        
-////        var swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-////        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-////        self.view.addGestureRecognizer(swipeUp)
-////        
-////        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-////        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-////        self.view.addGestureRecognizer(swipeLeft)
-    //    }
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
         return true
     }
