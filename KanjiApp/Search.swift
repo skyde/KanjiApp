@@ -134,9 +134,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
 
     func onTap(gesture: UITapGestureRecognizer) {
-        
-        println("onTap")
-        
         closeKeyboardIfSearchIsEmpty()
         
         var tapLocation = gesture.locationInView(self.view)
