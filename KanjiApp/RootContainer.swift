@@ -36,7 +36,6 @@ class RootContainer: CustomUIViewController {
         
         rootContainerInstance = self
         
-        self.mainView.layer.rasterizationScale = Globals.retinaScale
         self.sidebar.layer.rasterizationScale = Globals.retinaScale
         
         sidebarEdgeReveal = EdgeReveal(
@@ -115,6 +114,17 @@ class RootContainer: CustomUIViewController {
                 self.backgroundImage.visible = visible
                 self.definitionOverlay.visible = visible
         })
+        
+        definitionEdgeReveal.onAnimationStarted = { (isNowOpen) in
+            self.mainView.layer.shouldRasterize = true
+        }
+        
+        definitionEdgeReveal.onAnimationCompleted = { (isNowOpen) in
+            if !isNowOpen {
+                self.mainView.layer.shouldRasterize = false
+            }
+        }
+        
         definitionEdgeReveal.maxRevealInteractInset = 13
         
         mainView.layer.shadowColor = UIColor.blackColor().CGColor
