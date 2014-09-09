@@ -76,16 +76,23 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         for i in 0 ..< numberOfLabels {
             var add = DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
             
-            add.onTouch = { (label) in println(label.kanji) }
+//            add.onTouch = { (label) in println(label.kanji) }
+            
+//            var gesture = UITapGestureRecognizer(target: self, action: "onLabelTap:")
+//            gesture.delegate = self
+//            add.addGestureRecognizer(gesture)
             
             labels.append(add)
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
-        var gesture = UILongPressGestureRecognizer(target: self, action: "respondToLongPressGesture:")
+        var gesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         gesture.minimumPressDuration = 0
         gesture.delegate = self
         discoverClickableArea.addGestureRecognizer(gesture)
+        
+        //        self.addGestureRecognizer(gesture)
+
 //        gesture.cancelsTouchesInView = false
 //        gesture.delaysTouchesBegan = false
 //        gesture.delaysTouchesEnded = false
@@ -99,12 +106,83 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         onTimerTick()
     }
     
+    var touchLocation: CGPoint = CGPoint()
+    func onDown(gesture: UILongPressGestureRecognizer) {
+        
+        closeKeyboard()
+        
+        switch gesture.state {
+        case .Began:
+            touchesDown = true
+            touchLocation = gesture.locationInView(self.view)
+            
+        case .Ended:
+            touchesDown = false
+            
+            touchLocation = gesture.locationInView(self.view)
+        default:
+            break
+        }
+        
+        var pan = Double(gesture.locationInView(self.view).y - touchLocation.y)
+        touchLocation = gesture.locationInView(self.view)
+        
+        pan /= 80
+        pan *= scrollSpeed
+        
+        scrollVelocity += pan
+    }
+
+    func onLabelTap(gesture: UITapGestureRecognizer) {
+        
+        println("onlabeltap")
+        
+        closeKeyboardIfSearchIsEmpty()
+        
+        var tapLocation = gesture.locationInView(self.view)
+        if Globals.notificationShowDefinition.value == "" {
+            var matches: [DiscoverLabel] = []
+            
+            for label in labels {
+                var frame = label.layer.presentationLayer()?.frame
+                
+                if let frame = frame {
+                    if CGRectContainsPoint(CGRectMake(frame.origin.x - 15, frame.origin.y, frame.width + 20, frame.height), tapLocation) {
+                        matches.append(label)
+                    }
+                }
+            }
+            
+            if matches.count > 0 {
+                var match = matches.sorted {
+                    CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
+                    }[0]
+                
+                var duration: NSTimeInterval = 0.4
+                var outset: CGFloat = 2
+                
+                UIView.animateWithDuration(duration,
+                    delay: NSTimeInterval(),
+                    options: UIViewAnimationOptions.CurveEaseOut,
+                    animations: {
+                        match.transform = CGAffineTransformMakeScale(outset, outset)
+                        match.alpha = 0
+                    },
+                    completion: {
+                        (_) -> Void in
+                        match.transform = CGAffineTransformMakeScale(1, 1)
+                        match.alpha = 1
+                })
+                Globals.notificationShowDefinition.postNotification(match.kanji)
+            }
+        }
+    }
+    
+
     override func addNotifications() {
         super.addNotifications()
         
         Globals.notificationShowDefinition.addObserver(self, selector: "onCloseKeyboard", object: nil)
-        
-        //        Globals.notificationTransitionToView.addObserver(self, selector: "onCloseKeyboard", object: nil)
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "onCloseKeyboard", object: nil)
     }
@@ -244,80 +322,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             closeKeyboard()
         }
     }
-    
-    func onLabelTouch(gesture: UIGestureRecognizer) {
-        
-//        switch gesture.state {
-//        case .Began:
-//            touchesDown = true
-//        case .Ended:
-//            touchesDown = false
-//        default:
-//            break
-//        }
-        closeKeyboardIfSearchIsEmpty()
-        
-        var tapLocation = gesture.locationInView(self.view)
-        if Globals.notificationShowDefinition.value == "" {
-            var matches: [DiscoverLabel] = []
-            
-            for label in labels {
-                var frame = label.layer.presentationLayer()?.frame
-                
-                if let frame = frame {
-                    if CGRectContainsPoint(CGRectMake(frame.origin.x - 15, frame.origin.y, frame.width + 20, frame.height), tapLocation) {
-                        matches.append(label)
-                    }
-                }
-            }
-            
-            if matches.count > 0 {
-                var match = matches.sorted {
-                    CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
-                    }[0]
-                
-                var duration: NSTimeInterval = 0.4
-                var outset: CGFloat = 2
-                
-                UIView.animateWithDuration(duration,
-                    delay: NSTimeInterval(),
-                    options: UIViewAnimationOptions.CurveEaseOut,
-                    animations: {
-                        match.transform = CGAffineTransformMakeScale(outset, outset)
-                        match.alpha = 0
-                    },
-                    completion: {
-                        (_) -> Void in
-                        match.transform = CGAffineTransformMakeScale(1, 1)
-                        match.alpha = 1
-                    })
-                Globals.notificationShowDefinition.postNotification(match.kanji)
-                
-//                Globals.currentDefinition =
-//                NSNotificationCenter.defaultCenter().postNotificationName(Globals.notificationShowDefinition, object: nil)
-            }
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+        override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         searchResults.hidden = true
-//        Globals.currentDefinition == ""
-        
-//        for var i: Double = 0; i < Double(numberOfColumns); i += spawnInterval {
-//            let life = 0.95 + i / Double(numberOfColumns) * 0.05
-//            spawnText(life, distributionRandom: true)
-//        }
-        
     }
     
-//    func resetSpawnColumns() {
-//        spawnedColumns = []
-//        for var i = 0; i < numberOfColumns; i++ {
-//            spawnedColumns += i
-//        }
-//    }
     func selectRandomOpenColumn() -> Int {
         var column: Int?
         var smallestValue: CGFloat = CGFloat.infinity
@@ -331,17 +341,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             }
         }
         
-//        columnFinishTime.sort()
-        
         return column!
-        
-//        var value = spawnedColumns[select]
-//        spawnedColumns.removeAtIndex(select)
-//        
-//        return value
     }
-    
-    
     
     override func viewDidAppear(animated: Bool) {
     }
@@ -373,126 +374,15 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
     }
     
-//    var startTouchLocation: CGPoint = CGPoint()
-    var touchLocation: CGPoint = CGPoint()
-    func respondToLongPressGesture(gesture: UILongPressGestureRecognizer) {
-        
-        closeKeyboard()
-        
-        switch gesture.state {
-        case .Began:
-            touchesDown = true
-            touchLocation = gesture.locationInView(self.view)
-//            startTouchLocation = touchLocation
-            
-        case .Ended:
-            touchesDown = false
-            
-//            let maxDistance: CGFloat = 3
-            
-            touchLocation = gesture.locationInView(self.view)
- 
-//            if (touchLocation.x - startTouchLocation.x) * (touchLocation.y - startTouchLocation.y) < maxDistance * maxDistance {
-//                onTouch(gesture)
-//            }
-        default:
-            break
-        }
-        
-        var pan = Double(gesture.locationInView(self.view).y - touchLocation.y)
-        touchLocation = gesture.locationInView(self.view)
-        
-        pan /= 80
-        pan *= scrollSpeed
-        
-        scrollVelocity += pan
-        
-//        currentTime = min(currentTime, maxTime)
-        
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-//            if !isFront {
-//                if let card = dueCard {
-//                    switch swipeGesture.direction {
-//                        
-//                    case UISwipeGestureRecognizerDirection.Right:
-//                        onInteract(.SwipeRight, card)
-//                        
-//                    case UISwipeGestureRecognizerDirection.Down:
-//                        onInteract(.SwipeDown, card)
-//                        
-//                    case UISwipeGestureRecognizerDirection.Up:
-//                        onInteract(.SwipeUp, card)
-//                        
-//                    case UISwipeGestureRecognizerDirection.Left:
-//                        onInteract(.SwipeLeft, card)
-//                        
-//                    default:
-//                        break
-//                    }
-//                }
-//            }
-//        }
-    }
-    
-//    func setupSwipeGestures() {
-////        println("add gestures")
-//        
-////        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToVerticalScrollGesture:")
-////        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-////        self.discoverClickableArea.addGestureRecognizer(swipeDown)
-//        
-////        var pan = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-////        pan.cancelsTouchesInView = false
-////        pan.delaysTouchesBegan = false
-////        pan.delaysTouchesEnded = false
-//////        pan.direction = UISwipeGestureRecognizerDirection.Up
-////        self.view.addGestureRecognizer(pan)
-//    }
-    
-//    func searchBarShouldBeginEditing(searchBar: UISearchBar!) -> Bool {
-//        println("searchBarShouldBeginEditing")
-//
-//        return true
-//    }
-//    
-//    func searchBarTextDidBeginEditing(searchBar: UISearchBar!) {
-//        println("open search")
-//        
-//        //        searchResults.hidden = false
-//        
-//        //        searchResults.frame = CGRectMake(searchResultsBaseFrame.origin.x, UIScreen.mainScreen().bounds.height, searchResultsBaseFrame.width, searchResultsBaseFrame.height)
-//    }
-    
-//    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-//        //        searchResults.hidden = true
-//        println("did end editing")
-////        searchBar.resignFirstResponder()
-//    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
-//        println("searchBarSearchButtonClicked")
         closeKeyboard()
     }
     
     func searchBarShouldEndEditing(searchBar: UISearchBar!) -> Bool {
-//        println("should end editing")
         closeKeyboard()
         
         return true
     }
-
-//    func searchBar(searchBar: UISearchBar!, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        println("selectedScopeButtonIndexDidChange = \(searchBar.text)")
-//    }
-    
-//    var searchBarTextChanged = false
-//    
-//    func searchBar(searchBar: UISearchBar!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
-//        
-//        searchBarTextChanged = true
-//        
-//        return true
-//    }
     
     func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!) {
         updateSearch(searchText)
@@ -534,10 +424,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             
             var predicate =
             "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)"
-            
-            
-            
-            //"\(CardProperties.kanji.description())==%@"
             
             var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, text, fromRomaji, text]), CardProperties.kanji)
             

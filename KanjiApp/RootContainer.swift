@@ -36,9 +36,8 @@ class RootContainer: CustomUIViewController {
         
         rootContainerInstance = self
         
-        self.mainView.layer.rasterizationScale = 0.5
-        
-        self.sidebar.layer.rasterizationScale = 0.5//Globals.retinaScale
+        self.mainView.layer.rasterizationScale = Globals.retinaScale
+        self.sidebar.layer.rasterizationScale = Globals.retinaScale
         
         sidebarEdgeReveal = EdgeReveal(
             parent: view,
