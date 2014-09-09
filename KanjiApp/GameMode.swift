@@ -494,6 +494,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             
             updateText()
         }
+        
+        self.frontBlocker.visible = true
     }
     
     private func onRedo() {
