@@ -22,6 +22,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     let frameRate: Double = 1 / 60
     let scrollSpeed: Double = 0.26
     let scrollDamping: Double = 0.9
+    @IBOutlet weak var searchResultsBackground: UIVisualEffectView!
     
     var columnFinishTime:[CGFloat] = []
     
@@ -61,6 +62,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchResultsBackground.visible = false
+        
         columnFinishTime = []
         
         for i in 0 ..< numberOfColumns {
@@ -89,7 +92,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         var onTap = UITapGestureRecognizer(target: self, action: "onTap:")
         onTap.delegate = self
-        view.addGestureRecognizer(onTap)
+        discoverClickableArea.addGestureRecognizer(onTap)
         
         //        self.addGestureRecognizer(gesture)
 
@@ -349,6 +352,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             
             cell.textLabel.attributedText = card.cellText
+            cell.textLabel.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clearColor()
         }
         
         return cell

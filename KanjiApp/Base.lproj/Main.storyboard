@@ -1554,9 +1554,17 @@ all due cards</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwr-Ex-b3e">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="B8E-hY-2Xf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-QC-lvn">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="cUj-3S-BQf" id="0Kz-nl-YSc"/>
                                     <outlet property="delegate" destination="cUj-3S-BQf" id="3mV-Of-tVW"/>
@@ -1602,15 +1610,19 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="z3B-70-MMs" secondAttribute="trailing" id="ARe-o4-JoB"/>
                             <constraint firstAttribute="trailing" secondItem="cEn-qY-4J5" secondAttribute="trailing" id="BEx-S9-K4q"/>
                             <constraint firstItem="NuM-Ed-cG9" firstAttribute="top" secondItem="UPW-QC-lvn" secondAttribute="bottom" id="IMm-ya-Yas"/>
+                            <constraint firstItem="fwr-Ex-b3e" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="MmF-Rr-iMn"/>
                             <constraint firstItem="r8K-4J-9f7" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="NE5-9N-E7k"/>
                             <constraint firstItem="UPW-QC-lvn" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="OD7-tH-V8q"/>
                             <constraint firstAttribute="trailing" secondItem="r8K-4J-9f7" secondAttribute="trailing" id="Qua-0D-9qP"/>
                             <constraint firstItem="UPW-QC-lvn" firstAttribute="top" secondItem="96a-eE-Ku8" secondAttribute="bottom" id="T1M-r9-Sdl"/>
                             <constraint firstAttribute="trailing" secondItem="ncB-um-Llw" secondAttribute="trailing" id="Ucj-hl-Ct3"/>
+                            <constraint firstAttribute="trailing" secondItem="fwr-Ex-b3e" secondAttribute="trailing" id="V6B-yV-u57"/>
                             <constraint firstItem="96a-eE-Ku8" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="Z1O-wJ-Xz7"/>
                             <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="ZZm-Rn-B2W"/>
+                            <constraint firstAttribute="bottom" secondItem="fwr-Ex-b3e" secondAttribute="bottom" id="a5T-8C-hqe"/>
                             <constraint firstAttribute="trailing" secondItem="bZK-bf-LBf" secondAttribute="trailing" id="g2Y-Tn-and"/>
                             <constraint firstItem="cEn-qY-4J5" firstAttribute="top" secondItem="ncB-um-Llw" secondAttribute="bottom" id="h7g-Ww-32A"/>
+                            <constraint firstItem="fwr-Ex-b3e" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="icW-h7-2a4"/>
                             <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="jpJ-kJ-scy"/>
                             <constraint firstItem="bZK-bf-LBf" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="qKh-jt-84z"/>
                             <constraint firstItem="cEn-qY-4J5" firstAttribute="top" secondItem="yru-gu-OpA" secondAttribute="bottom" id="tZa-P4-AN9"/>
@@ -1627,6 +1639,7 @@ all due cards</string>
                         <outlet property="navigationBarLabel" destination="cEn-qY-4J5" id="7k6-P0-8VX"/>
                         <outlet property="searchBar" destination="96a-eE-Ku8" id="Qw5-RY-Wlf"/>
                         <outlet property="searchResults" destination="UPW-QC-lvn" id="G0L-eI-5gs"/>
+                        <outlet property="searchResultsBackground" destination="fwr-Ex-b3e" id="owH-EJ-7El"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="7jX-Xq-vJx"/>
                     </connections>
                 </viewController>
@@ -1782,7 +1795,7 @@ all due cards</string>
     <inferredMetricsTieBreakers>
         <segue reference="NNU-PR-Fp5"/>
         <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="7jX-Xq-vJx"/>
         <segue reference="0Q0-aS-4tM"/>
     </inferredMetricsTieBreakers>
 </document>

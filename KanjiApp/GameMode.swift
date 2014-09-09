@@ -99,6 +99,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             if isFront {
                 if frontTextCache == nil {
                     frontTextCache = card.front
+                    println("create cache front")
                 }
                 kanjiView.attributedText = frontTextCache
                 outputText.text = ""
@@ -107,6 +108,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             else {
                 if backTextCache == nil {
                     backTextCache = card.back
+                    println("create cache back")
                 }
                 
                 kanjiView.text = ""
@@ -153,17 +155,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
         downGesture.delegate = self
         downGesture.minimumPressDuration = 0
-//        downGesture.allowableMovement = 0
-//        downGesture.delaysTouchesEnded = false
-//        downGesture.cancelsTouchesInView = false
         frontBlocker.addGestureRecognizer(downGesture)
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
         onTouchGesture.delegate = self
         outputText.addGestureRecognizer(onTouchGesture)
-        
-//        frontBlocker.addTarget(self, action: "", forControlEvents: UIControlEvents.)
-//        onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         
         var setCategoryError: NSError?
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.DuckOthers, error: &setCategoryError)
