@@ -6,6 +6,7 @@
     <customFonts key="customFonts">
         <mutableArray key="KozGoPr6N-Light.otf">
             <string>KozGoPr6N-Light</string>
+            <string>KozGoPr6N-Light</string>
         </mutableArray>
         <mutableArray key="mplus-2p-light.ttf">
             <string>mplus-2p-light</string>
@@ -442,12 +443,20 @@
                             </containerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18A-fs-33E" customClass="UILabelShadowed" customModule="Kanji" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Fdl-sW-v17"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="28"/>
                                 <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="-3"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LH8-dR-DdV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="28"/>
+                                <color key="textColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="-3"/>
                             </label>
@@ -482,7 +491,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -494,8 +503,9 @@
                             <constraint firstItem="ygW-So-qXB" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="7Bk-lG-Nlm"/>
                             <constraint firstAttribute="trailing" secondItem="18A-fs-33E" secondAttribute="trailing" id="AL5-bU-6lg"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="CBc-R1-wc8"/>
+                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" id="Cdv-Gs-wOq"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
-                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="F7O-PI-Ncl"/>
+                            <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="LH8-dR-DdV" secondAttribute="bottom" id="QRx-yL-2xh"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="RFT-pm-Duk"/>
                             <constraint firstAttribute="trailing" secondItem="bp7-V8-USh" secondAttribute="trailing" id="XMk-En-eVi"/>
                             <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" priority="750" id="amv-uz-xCa"/>
@@ -504,6 +514,9 @@
                             <constraint firstAttribute="bottom" secondItem="9C5-Qd-7TJ" secondAttribute="bottom" id="efb-tb-nfz"/>
                             <constraint firstAttribute="trailing" secondItem="9C5-Qd-7TJ" secondAttribute="trailing" constant="-202" id="faS-qF-ii9"/>
                             <constraint firstItem="ygW-So-qXB" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="hs2-VC-pt5"/>
+                            <constraint firstItem="LH8-dR-DdV" firstAttribute="top" secondItem="jx9-XZ-c6h" secondAttribute="top" id="lkx-Oi-Mhj"/>
+                            <constraint firstAttribute="trailing" secondItem="LH8-dR-DdV" secondAttribute="trailing" id="xn4-EI-fmx"/>
+                            <constraint firstItem="LH8-dR-DdV" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="y4w-YM-GPy"/>
                             <constraint firstAttribute="trailing" secondItem="7gV-aw-pxC" secondAttribute="trailing" id="z1Y-ec-1SZ"/>
                         </constraints>
                     </view>
@@ -561,9 +574,14 @@
                                     <action selector="sidebarButtonTouch:" destination="qjX-0f-FbU" eventType="touchDown" id="r9a-QZ-0Sa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vAe-X9-2Zb">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGD-Sd-HGo">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v8u-fR-3Qn">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHA-xR-qxM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
@@ -574,20 +592,20 @@
                         <color key="backgroundColor" red="0.21568627450980393" green="0.20784313725490194" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="0X0-uQ-823"/>
-                            <constraint firstAttribute="bottom" secondItem="vAe-X9-2Zb" secondAttribute="bottom" id="0bp-GF-ldO"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="hhY-XO-a6v" secondAttribute="bottom" id="3Wi-ds-v6s"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7hG-MW-zpD" secondAttribute="top" constant="20" id="CPg-ZT-4g9"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="au8-mm-pTk" secondAttribute="bottom" id="EdP-bQ-ksU"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="Fal-2r-3rj"/>
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" constant="2" id="HfT-s2-VLZ"/>
+                            <constraint firstItem="vGD-Sd-HGo" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="OEG-JW-Dn9"/>
+                            <constraint firstAttribute="bottom" secondItem="vGD-Sd-HGo" secondAttribute="bottom" id="Qim-Aa-cP8"/>
                             <constraint firstAttribute="trailing" secondItem="nHA-xR-qxM" secondAttribute="trailing" id="Tev-wY-sDY"/>
-                            <constraint firstItem="vAe-X9-2Zb" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="VgX-nN-UmE"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" priority="750" id="arP-bz-0cn"/>
-                            <constraint firstItem="vAe-X9-2Zb" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="fyz-8B-tqb"/>
+                            <constraint firstItem="vGD-Sd-HGo" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="cOI-ni-MPE"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="width" secondItem="nHA-xR-qxM" secondAttribute="width" id="mPb-F4-c0b"/>
-                            <constraint firstAttribute="trailing" secondItem="vAe-X9-2Zb" secondAttribute="trailing" id="qGl-R7-zop"/>
+                            <constraint firstAttribute="trailing" secondItem="vGD-Sd-HGo" secondAttribute="trailing" id="mhS-Xg-RTG"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="qDf-Jv-7yu" secondAttribute="trailing" constant="-52" id="rrJ-WA-SoZ"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
@@ -595,11 +613,11 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="backgroundImage" destination="vAe-X9-2Zb" id="Zha-bN-Ggn"/>
                         <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
                         <outlet property="definitionViewLeadingConstraint" destination="Fal-2r-3rj" id="ITm-RF-Nmq"/>
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
                         <outlet property="mainViewLeadingConstraint" destination="skC-5P-Usy" id="px4-mh-uKI"/>
+                        <outlet property="selfBlur" destination="vGD-Sd-HGo" id="EnW-Bo-d7F"/>
                         <outlet property="sidebar" destination="au8-mm-pTk" id="uRO-X6-ApP"/>
                         <outlet property="sidebarButton" destination="qDf-Jv-7yu" id="hD5-VT-qgS"/>
                     </connections>
@@ -1793,9 +1811,9 @@ all due cards</string>
         <image name="taskList" width="1309" height="1309"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NNU-PR-Fp5"/>
-        <segue reference="BpJ-Ou-mkl"/>
-        <segue reference="7jX-Xq-vJx"/>
+        <segue reference="daX-c3-wht"/>
         <segue reference="0Q0-aS-4tM"/>
+        <segue reference="o8I-8R-76U"/>
+        <segue reference="6pM-di-aOQ"/>
     </inferredMetricsTieBreakers>
 </document>

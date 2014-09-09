@@ -9,7 +9,8 @@ class RootContainer: CustomUIViewController {
     class var instance: RootContainer {
         get { return rootContainerInstance! }
     }
-    @IBOutlet weak var backgroundImage: UIImageView!
+//    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var selfBlur: UIVisualEffectView!
     @IBOutlet weak var sidebarButton: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var sidebar: UIView!
@@ -37,6 +38,8 @@ class RootContainer: CustomUIViewController {
         rootContainerInstance = self
         
         self.sidebar.layer.rasterizationScale = Globals.retinaScale
+        
+        selfBlur.hidden = true
         
         sidebarEdgeReveal = EdgeReveal(
             parent: view,
@@ -102,17 +105,18 @@ class RootContainer: CustomUIViewController {
             maxYTravel: 60,
             onUpdate: {(offset: CGFloat) -> () in
                 self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
-                self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal()
+                self.selfBlur.frame.origin.x = Globals.screenSize.width - offset
+//                self.selfBlur.alpha = offset / self.definitionEdgeReveal.maxReveal()
             },
             setVisible: {(visible, completed) in
                 if visible {
-                    self.backgroundImage.image = self.caculateSelfBlurImage()
+//                    self.backgroundImage.image = self.caculateSelfBlurImage()
                     DefinitionPopover.instance.updateState()
                 } else {
                     Globals.notificationShowDefinition.value = ""
                 }
                 
-                self.backgroundImage.visible = visible
+                self.selfBlur.visible = visible
                 self.definitionOverlay.visible = visible
         })
         
@@ -193,7 +197,7 @@ class RootContainer: CustomUIViewController {
         
         definitionOverlay.hidden = true
         sidebar.hidden = true
-        backgroundImage.hidden = true
+        selfBlur.hidden = true
     }
     
     override func addNotifications() {
@@ -271,28 +275,28 @@ class RootContainer: CustomUIViewController {
         return filteredImage
     }
     
-    func caculateSelfImage() -> UIImage {
-        var scale: CGFloat = 1
-        
-        scale *= Globals.retinaScale
-        let ciContext = CIContext(options: nil)
-        var size = CGSize(width: Globals.screenSize.width * scale, height: Globals.screenSize.height * scale)
-        var sizeRect = CGRectMake(0, 0, size.width, size.height)
-        
-        UIGraphicsBeginImageContext(size)
-        view.drawViewHierarchyInRect(sizeRect, afterScreenUpdates: false)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        var coreImage = CIImage(image: image)
-        
-        let filteredImageRef = ciContext.createCGImage(coreImage, fromRect: sizeRect)
-        let filteredImage = UIImage(CGImage: filteredImageRef)
-        
-        //        backgroundImage.image = filteredImage
-        UIGraphicsEndImageContext()
-        
-        return filteredImage
-    }
+//    func caculateSelfImage() -> UIImage {
+//        var scale: CGFloat = 1
+//        
+//        scale *= Globals.retinaScale
+//        let ciContext = CIContext(options: nil)
+//        var size = CGSize(width: Globals.screenSize.width * scale, height: Globals.screenSize.height * scale)
+//        var sizeRect = CGRectMake(0, 0, size.width, size.height)
+//        
+//        UIGraphicsBeginImageContext(size)
+//        view.drawViewHierarchyInRect(sizeRect, afterScreenUpdates: false)
+//        
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        var coreImage = CIImage(image: image)
+//        
+//        let filteredImageRef = ciContext.createCGImage(coreImage, fromRect: sizeRect)
+//        let filteredImage = UIImage(CGImage: filteredImageRef)
+//        
+//        //        backgroundImage.image = filteredImage
+//        UIGraphicsEndImageContext()
+//        
+//        return filteredImage
+//    }
     
     func onAddWordsFromList() {
         var cards: [Card] = []
