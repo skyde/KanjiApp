@@ -76,11 +76,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         for i in 0 ..< numberOfLabels {
             var add = DiscoverLabel(frame: CGRectMake(0, 0, 1, 1))
             
-//            add.onTouch = { (label) in println(label.kanji) }
-            
-//            var gesture = UITapGestureRecognizer(target: self, action: "onLabelTap:")
-//            gesture.delegate = self
-//            add.addGestureRecognizer(gesture)
+            add.onTouch = { (label) in println(label.kanji) }
             
             labels.append(add)
         }
@@ -90,6 +86,10 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         gesture.minimumPressDuration = 0
         gesture.delegate = self
         discoverClickableArea.addGestureRecognizer(gesture)
+        
+        var onTap = UITapGestureRecognizer(target: self, action: "onTap:")
+        onTap.delegate = self
+        view.addGestureRecognizer(onTap)
         
         //        self.addGestureRecognizer(gesture)
 
@@ -133,9 +133,9 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         scrollVelocity += pan
     }
 
-    func onLabelTap(gesture: UITapGestureRecognizer) {
+    func onTap(gesture: UITapGestureRecognizer) {
         
-        println("onlabeltap")
+        println("onTap")
         
         closeKeyboardIfSearchIsEmpty()
         
@@ -155,7 +155,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             
             if matches.count > 0 {
                 var match = matches.sorted {
-                    CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
+                    $0.depth < $1.depth
                     }[0]
                 
                 var duration: NSTimeInterval = 0.4
@@ -246,24 +246,14 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             
             if !data.visible {
                 data.visible = true
-                label.textColor = UIColor(
-                    red: CGFloat(data.distance * 0.4),
-                    green: CGFloat(data.distance * 0.85),
-                    blue: CGFloat(data.distance * 1),
-                    alpha: 1)
                 
-                label.kanji = data.kanji
-                label.attributedText = data.attributedText
-                
-                label.frame = CGRectMake(0, 0, width, data.height)
-                label.numberOfLines = 0
+                label.setupLabelFromData(data, width: 42)
                 
                 self.view.addSubview(label)
                 self.view.sendSubviewToBack(label)
                 
                 for label in (labels.sorted {
-                    CGColorGetComponents($0.textColor.CGColor)[0] < CGColorGetComponents($1.textColor.CGColor)[0]
-                    }) {
+                    $0.depth < $1.depth }) {
                         self.view.sendSubviewToBack(label)
                 }
                 

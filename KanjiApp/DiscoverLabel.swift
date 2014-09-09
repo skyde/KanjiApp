@@ -1,18 +1,39 @@
 import Foundation
 import UIKit
 
-class DiscoverLabel: UILabel {
-//    var index = 0
+class DiscoverLabel: UILabel, UIGestureRecognizerDelegate {
     var kanji = ""
-    var column = 0
+    var column: Int = 0
+    var depth: Double = 0
     
-//    var onTouch: ((label: DiscoverLabel) -> ())? = nil
+    var onTouch: ((label: DiscoverLabel) -> ())? = nil
     
-//    var animatedPosition: CGPoint? {
-//    get {
-//        return layer?.presentationLayer()?.frame?.origin
-//    }
-//    }
+    private func initSelf() {
+        
+        layer.rasterizationScale = Globals.retinaScale
+        
+//        backgroundColor = UIColor.clearColor()
+        numberOfLines = 0
+    }
+    
+    func setupLabelFromData(data: DiscoverLabelData, width: CGFloat) {
+        kanji = data.kanji
+        frame = CGRectMake(0, 0, width, data.height)
+        
+        depth = data.distance
+        
+//        setTitle("test", forState: .Normal)
+
+        attributedText = data.attributedText
+        
+        textColor = UIColor(
+            red: CGFloat(data.distance * 0.4),
+            green: CGFloat(data.distance * 0.85),
+            blue: CGFloat(data.distance * 1),
+            alpha: 1)
+        
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,22 +47,4 @@ class DiscoverLabel: UILabel {
         initSelf()
     }
     
-    private func initSelf() {
-        
-        layer.rasterizationScale = Globals.retinaScale
-        
-//        layer.shadowColor = UIColor.blackColor().CGColor
-//        layer.shadowOffset = CGSizeMake(0, 0)
-//        layer.masksToBounds = false
-//        layer.shadowRadius = 7
-//        layer.shadowOpacity = 0.2
-//        layer.shouldRasterize = true
-        
-    }
-    
-    
-//    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
-//        return true
-//    }
-    //override
 }
