@@ -89,10 +89,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-//        println("touchesBegan")
-//    }
-    
     private func scrollOutputTextToInset() {
         outputText.setContentOffset(CGPoint(x: 0, y: topInset), animated: false)
     }
@@ -131,11 +127,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-//        
-//        println("touchesBegan")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupEdgeReveal()
@@ -151,6 +142,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        println(timer.tolerance)
 //        println(frameRate)
         timer.tolerance = frameRate * 0.1
+        self.outputText.delegate = self
         
         outputText.decelerationRate = 0.92 //Default = 0.998
         
@@ -165,7 +157,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        downGesture.delaysTouchesEnded = false
 //        downGesture.cancelsTouchesInView = false
         frontBlocker.addGestureRecognizer(downGesture)
-//        self.outputText.delegate = self
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
         onTouchGesture.delegate = self
@@ -185,12 +176,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         case .Began:
             wasFront = isFront
             didPan = false
-//            isDown = true
             
             if isFront && rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
                 
-                downBeganTime = NSDate.timeIntervalSinceReferenceDate()
+                downTime = NSDate.timeIntervalSinceReferenceDate()
                 
                 progressBar.progress = 0
                 progressBar.visible = true
@@ -202,12 +192,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         default:
             break
         }
-//        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
     }
     
     var progressBarPercent: Double {
     get {
-        return (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
+        return (NSDate.timeIntervalSinceReferenceDate() - downTime) / downPressInterval
     }
     }
     
@@ -218,7 +207,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onTimerTick() {
-//        println(NSDate.timeIntervalSinceReferenceDate())
         updateProgressBar()
         
         if isFront {
@@ -233,23 +221,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 frontTextCache = card.front
             }
         }
-        
-//        if  frontBlocker.visible &&
-//            isDown &&
-//            progressBarPercent > 1 {
-//                
-//            onUp()
-//        }//onUp frontBlocker.visible = false
-        
     }
     
     func onTouch(sender: UITapGestureRecognizer) {
-        
         if rightEdgeReveal.animationState != AnimationState.Closed {
             return
         }
-        
-//        println("onTouch")
         
         if !wasFront {
             caculateAnswer(sender)
@@ -259,50 +236,23 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     var wasFront = false
-    var downBeganTime: NSTimeInterval = 0
-//    var isDown = false
-//    @IBAction func onDown(sender: UIButton) {
-//    }
-//    @IBAction func onBlockerUpInside(sender: UIButton) {
-////        println("onBlockerUpInside")
-//        
-//        onUp()
-//    }
-////    @IBAction func valueChanged(sender: AnyObject) {println("valueChanged")
-////    }
-//    
-////    @IBAction func onBlockerTouchCancel(sender: AnyObject) {
-////        println("onBlockerTouchCancel")
-////    }
-//    @IBAction func onBlockerTouchUpOutside(sender: UIButton) {
-//                println("onBlockerUpInside")
-//        onUp()
-//    }
+    var downTime: NSTimeInterval = 0
     func onUp() {
-//        isDown = false
-        
-        var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
+        var percent = (NSDate.timeIntervalSinceReferenceDate() - downTime) / downPressInterval
         
         progressBar.visible = false
         if percent < 1 && !didPan && wasFront {
-            // Advance
-            downBeganTime = 0
+            downTime = 0
             answerCard(.Normal)
         } else {
-//            println("hide blocker")
             frontBlocker.visible = false
         }
         
         wasFront = isFront
-        
-//        println("on up was front = \(wasFront)")
-        
     }
     
     var didPan = false
-    
     func onPan(sender: UIPanGestureRecognizer) {
-        
         switch sender.state {
         case .Changed:
             let distance = sender.translationInView(view).magnitude
@@ -315,28 +265,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         default:
             break
         }
-        //        panStart = sender.locationInView(view)
     }
     
     private func contentsUpdate(x: CGFloat) {
         outputText.frame.origin.x = x
         kanjiView.frame.origin.x = x
     }
-    
-//    private func sidebarSetVisiblity(visible: Bool) {
-////        leftSidebar.visible = visible
-////        rightSidebar.visible = visible
-//    }
-//    
-//    private func sidebarUpdate(var x: CGFloat) {
-//        
-//        if x != 0 {
-//            x = min(leftSidebar.frame.width, abs(x)) * sign(x)
-//        }
-//        
-//        leftSidebar.frame.origin.x = x - leftSidebar.frame.width
-//        rightSidebar.frame.origin.x = x + Globals.screenSize.width
-//    }
     
     private func caculateAnswer(sender: UIGestureRecognizer) {
         var x = sender.locationInView(self.view).x / Globals.screenSize.width
