@@ -599,13 +599,13 @@
                             <constraint firstItem="qDf-Jv-7yu" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" constant="2" id="HfT-s2-VLZ"/>
                             <constraint firstItem="vGD-Sd-HGo" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="OEG-JW-Dn9"/>
                             <constraint firstAttribute="bottom" secondItem="vGD-Sd-HGo" secondAttribute="bottom" id="Qim-Aa-cP8"/>
-                            <constraint firstAttribute="trailing" secondItem="nHA-xR-qxM" secondAttribute="trailing" id="Tev-wY-sDY"/>
                             <constraint firstItem="fqP-iv-vim" firstAttribute="top" secondItem="nHA-xR-qxM" secondAttribute="bottom" id="Whg-ny-b55"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="top" secondItem="Hg2-0J-WDM" secondAttribute="bottom" priority="750" id="arP-bz-0cn"/>
                             <constraint firstItem="vGD-Sd-HGo" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="cOI-ni-MPE"/>
                             <constraint firstItem="nHA-xR-qxM" firstAttribute="top" secondItem="7hG-MW-zpD" secondAttribute="top" id="isr-Zo-o0U"/>
-                            <constraint firstItem="hhY-XO-a6v" firstAttribute="width" secondItem="nHA-xR-qxM" secondAttribute="width" id="mPb-F4-c0b"/>
+                            <constraint firstItem="hhY-XO-a6v" firstAttribute="width" secondItem="nHA-xR-qxM" secondAttribute="width" priority="750" id="mPb-F4-c0b"/>
                             <constraint firstAttribute="trailing" secondItem="vGD-Sd-HGo" secondAttribute="trailing" id="mhS-Xg-RTG"/>
+                            <constraint firstAttribute="trailing" secondItem="hhY-XO-a6v" secondAttribute="trailing" id="qZA-Zk-Bkf"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="qDf-Jv-7yu" secondAttribute="trailing" constant="-52" id="rrJ-WA-SoZ"/>
                             <constraint firstItem="au8-mm-pTk" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="s3M-e4-vbQ"/>
                             <constraint firstItem="hhY-XO-a6v" firstAttribute="leading" secondItem="7hG-MW-zpD" secondAttribute="leading" id="skC-5P-Usy"/>
@@ -614,7 +614,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="definitionOverlay" destination="nHA-xR-qxM" id="sxA-tz-JBI"/>
-                        <outlet property="definitionViewLeadingConstraint" destination="Fal-2r-3rj" id="ITm-RF-Nmq"/>
+                        <outlet property="definitionViewLeadingConstraint" destination="Fal-2r-3rj" id="6z3-0K-wmb"/>
                         <outlet property="mainView" destination="hhY-XO-a6v" id="h8O-0A-IRv"/>
                         <outlet property="mainViewLeadingConstraint" destination="skC-5P-Usy" id="px4-mh-uKI"/>
                         <outlet property="selfBlur" destination="vGD-Sd-HGo" id="EnW-Bo-d7F"/>
@@ -1812,6 +1812,6 @@ all due cards</string>
         <segue reference="daX-c3-wht"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="7jX-Xq-vJx"/>
+        <segue reference="6pM-di-aOQ"/>
     </inferredMetricsTieBreakers>
 </document>

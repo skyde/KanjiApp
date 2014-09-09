@@ -135,6 +135,10 @@ class RootContainer: CustomUIViewController {
         
         mainView.layer.shadowColor = UIColor.blackColor().CGColor
         mainView.layer.shadowOffset = CGSizeMake(-2, 0)
+        
+        updateDefinitionViewConstraints()
+        
+//        definitionViewLeadingConstraint
     }
     
     func updateDefinitionViewConstraints() {
