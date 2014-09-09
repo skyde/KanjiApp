@@ -26,10 +26,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     @IBOutlet weak var propertiesSidebar: UIView!
     @IBOutlet weak var kanjiView: UILabel!
-    @IBOutlet weak var leftSidebar: UIButton!
-    @IBOutlet weak var rightSidebar: UIButton!
+//    @IBOutlet weak var leftSidebar: UIButton!
+//    @IBOutlet weak var rightSidebar: UIButton!
     
-    @IBOutlet weak var undoSidebar: UIButton!
+//    @IBOutlet weak var undoSidebar: UIButton!
     
     @IBOutlet weak var progressBar: UIProgressView!
     
@@ -81,13 +81,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var frontTextCache: NSAttributedString! = nil
     var nextFrontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
-        
         var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
         
         if scrollView.contentOffset.y != topInset && diff < 0.1 {
             scrollOutputTextToInset()
         }
     }
+    
+//    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+//        println("touchesBegan")
+//    }
     
     private func scrollOutputTextToInset() {
         outputText.setContentOffset(CGPoint(x: 0, y: topInset), animated: false)
@@ -133,9 +136,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         leftIndicator.hidden = true
         rightIndicator.hidden = true
-        leftSidebar.hidden = true
-        rightSidebar.hidden = true
-        undoSidebar.hidden = true
+//        leftSidebar.hidden = true
+//        rightSidebar.hidden = true
+//        undoSidebar.hidden = true
         progressBar.hidden = true
         
         timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
@@ -145,16 +148,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
         panGesture.delegate = self
         self.outputText.addGestureRecognizer(panGesture)
-        
+
         var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         downGesture.delegate = self
         downGesture.minimumPressDuration = 0
+        downGesture.allowableMovement = 0
+//        downGesture.delaysTouchesEnded = false
+//        downGesture.cancelsTouchesInView = false
         self.outputText.addGestureRecognizer(downGesture)
         self.outputText.delegate = self
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
         onTouchGesture.delegate = self
-        onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
+//        onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         outputText.addGestureRecognizer(onTouchGesture)
         
         var setCategoryError: NSError?
@@ -163,6 +169,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onTimerTick() {
+//        println(NSDate.timeIntervalSinceReferenceDate())
         if progressBar.visible {
             var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
             
@@ -184,6 +191,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onTouch(sender: UITapGestureRecognizer) {
+        println("ontouch")
+        
         if rightEdgeReveal.animationState != AnimationState.Closed {
             return
         }
@@ -193,6 +202,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             caculateAnswer(sender)
         }
     }
+    
     
     var wasFront = false
     var downBeganTime: NSTimeInterval = 0
@@ -205,8 +215,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             wasFront = isFront
             didPan = false
             
-            if  isFront &&
-                rightEdgeReveal.animationState == AnimationState.Closed {
+            if isFront && rightEdgeReveal.animationState == AnimationState.Closed {
                 advanceCard()
                     
                 downBeganTime = NSDate.timeIntervalSinceReferenceDate()
@@ -257,20 +266,20 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
     }
     
-    private func sidebarSetVisiblity(visible: Bool) {
-        leftSidebar.visible = visible
-        rightSidebar.visible = visible
-    }
-    
-    private func sidebarUpdate(var x: CGFloat) {
-        
-        if x != 0 {
-            x = min(leftSidebar.frame.width, abs(x)) * sign(x)
-        }
-        
-        leftSidebar.frame.origin.x = x - leftSidebar.frame.width
-        rightSidebar.frame.origin.x = x + Globals.screenSize.width
-    }
+//    private func sidebarSetVisiblity(visible: Bool) {
+////        leftSidebar.visible = visible
+////        rightSidebar.visible = visible
+//    }
+//    
+//    private func sidebarUpdate(var x: CGFloat) {
+//        
+//        if x != 0 {
+//            x = min(leftSidebar.frame.width, abs(x)) * sign(x)
+//        }
+//        
+//        leftSidebar.frame.origin.x = x - leftSidebar.frame.width
+//        rightSidebar.frame.origin.x = x + Globals.screenSize.width
+//    }
     
     private func caculateAnswer(sender: UIGestureRecognizer) {
         var x = sender.locationInView(self.view).x / Globals.screenSize.width
@@ -289,7 +298,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
-        
     }
     
     private func answerCard(answer: AnswerDifficulty) {
@@ -361,16 +369,18 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         leftEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Left,
-            maxOffset: { return self.undoSidebar.frame.width },
+            maxOffset: { return 100
+//                return self.undoSidebar.frame.width
+            },
             swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 
-                self.undoSidebar.frame.origin.x = offset - self.undoSidebar.frame.width
+//                self.undoSidebar.frame.origin.x = offset - self.undoSidebar.frame.width
                 self.outputText.frame.origin.x = offset
                 self.kanjiView.frame.origin.x = offset
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
-                self.undoSidebar.visible = visible
+//                self.undoSidebar.visible = visible
                 
                 if !visible && self.processUndo {
                     self.processUndo = false

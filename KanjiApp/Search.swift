@@ -222,7 +222,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         var last = first + numberOfLabels
         
         while last > labelsData.count + currentMinLabel {
-            labelsData.append(spawnLabelData(Double(labelsData.count + currentMinLabel) * spawnInterval - averageLife))
+            labelsData.append(spawnLabelData(Double(labelsData.count + currentMinLabel) *  spawnInterval - averageLife))
         }
         
         for i in 0 ..< labels.count {
