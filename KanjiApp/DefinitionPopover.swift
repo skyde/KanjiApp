@@ -154,9 +154,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     func setupGestures() {
         var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
         self.outputText.addGestureRecognizer(tapGesture)
-//        var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
-//        panGesture.delegate = self
-//        self.outputText.addGestureRecognizer(panGesture)
+        var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
+        panGesture.delegate = self
+        self.outputText.addGestureRecognizer(panGesture)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
@@ -167,15 +167,15 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //        updateText()
 //    }
     
-//    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-//        rightEdgeReveal.respondToPanGesture(gesture)
-////        switch gesture.state {
-////        case .Changed:
-////            println(gesture.translationInView(self.view))
-////        default:
-////            break
-////        }
-//    }
+    func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        RootContainer.instance.definitionEdgeReveal.respondToPanGesture(gesture)
+//        switch gesture.state {
+//        case .Changed:
+//            println(gesture.translationInView(self.view))
+//        default:
+//            break
+//        }
+    }
     
     func respondToTapGesture(gesture: UIGestureRecognizer) {
         var tapLocation = gesture.locationInView(self.view)

@@ -99,6 +99,7 @@ class RootContainer: CustomUIViewController {
             revealType: .Right,
             maxOffset: { return Globals.screenSize.width },
             swipeAreaWidth: 0,
+            maxYTravel: 60,
             onUpdate: {(offset: CGFloat) -> () in
                 self.definitionOverlay.frame.origin.x = Globals.screenSize.width - offset
                 self.backgroundImage.alpha = offset / self.definitionEdgeReveal.maxReveal()

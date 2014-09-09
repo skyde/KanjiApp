@@ -1467,6 +1467,16 @@ all due cards</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="146"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cja-ey-lDl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBlockerUpInside:" destination="nGt-Uz-nIp" eventType="touchUpInside" id="1EN-8p-BDE"/>
+                                    <action selector="onDown:" destination="nGt-Uz-nIp" eventType="touchDown" id="5xd-Wm-nLB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1479,15 +1489,19 @@ all due cards</string>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" constant="-202" id="84r-wt-vJO"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
+                            <constraint firstItem="cja-ey-lDl" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="LCf-1K-wvB"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
+                            <constraint firstAttribute="bottom" secondItem="cja-ey-lDl" secondAttribute="bottom" id="SQC-FY-y9u"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="UtM-qI-2fm"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
                             <constraint firstItem="5Rm-K1-JvN" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="bWX-He-sBo"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="cJG-hC-xSm"/>
                             <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
+                            <constraint firstAttribute="trailing" secondItem="cja-ey-lDl" secondAttribute="trailing" id="iMd-ay-WFp"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
+                            <constraint firstItem="cja-ey-lDl" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="ooF-Yf-CJ4"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="wmS-Ui-wV8"/>
@@ -1498,6 +1512,7 @@ all due cards</string>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="frontBlocker" destination="cja-ey-lDl" id="Ndr-qq-1Ir"/>
                         <outlet property="kanjiView" destination="PTp-ZI-4VH" id="1II-hK-YDu"/>
                         <outlet property="leftIndicator" destination="G9v-Dx-vuY" id="GnO-gq-du6"/>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
@@ -1510,7 +1525,7 @@ all due cards</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-342" y="1347"/>
+            <point key="canvasLocation" x="-342" y="1347.5"/>
         </scene>
         <!--Search-->
         <scene sceneID="ngR-aF-ckz">

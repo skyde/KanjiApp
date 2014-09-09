@@ -161,6 +161,20 @@ extension UIView {
         }
     }
 }
+
+extension CGPoint {
+    var magnitude: CGFloat {
+        get {
+            return sqrt(abs(x * y))
+        }
+    }
+    var magnitudeSqr: CGFloat {
+        get {
+            return abs(x * y)
+        }
+    }
+}
+
 //extension String {
 //    subscript (r: Range<Int>) -> String {
 //        get {
