@@ -93,14 +93,18 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         outputText.setContentOffset(CGPoint(x: 0, y: topInset), animated: false)
     }
     
+    private func tryGenerateFrontTextCache(card: Card) {
+        if frontTextCache == nil {
+            frontTextCache = Globals.screenOrientationVertical ? card.front : card.frontLandscape
+        }
+    }
+    
     var flipCardTime: NSTimeInterval = 0
     func updateText() {
         if let card = dueCard {
             if isFront {
-                if frontTextCache == nil {
-                    frontTextCache = card.front
-                    println("create cache front")
-                }
+                tryGenerateFrontTextCache(card)
+//                    println("create cache front")
                 kanjiView.attributedText = frontTextCache
                 outputText.text = ""
                 frontTextCache = nil
@@ -108,7 +112,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             else {
                 if backTextCache == nil {
                     backTextCache = card.back
-                    println("create cache back")
+//                    println("create cache back")
                 }
                 
                 kanjiView.text = ""
@@ -214,7 +218,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
         if frontTextCache == nil {
             if let card = nextCard {
-                frontTextCache = card.front
+                tryGenerateFrontTextCache(card)
             }
         }
     }
@@ -403,7 +407,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 if !visible && self.processUndo {
                     self.processUndo = false
-                    self.clearCaches()
+                    self.invalidateCaches()
                     self.onUndo()
                 }
                 
@@ -424,7 +428,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    private func clearCaches() {
+    private func invalidateCaches() {
         backTextCache = nil
         frontTextCache = nil
     }
@@ -469,7 +473,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        clearCaches()
+        invalidateCaches()
         fetchCards()
         updateText()
     }
@@ -568,6 +572,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func onSidebarInteract() {
         rightEdgeReveal.animateSelf(false)
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        invalidateCaches()
+        updateText()
+//        updateDefinitionViewConstraints()
+//        view.setNeedsLayout()
+//        DefinitionPopover.instance.view.setNeedsLayout()
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {

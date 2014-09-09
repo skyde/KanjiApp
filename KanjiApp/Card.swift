@@ -198,6 +198,34 @@ class Card: NSManagedObject {
     }
     }
     
+    var frontLandscape: NSAttributedString {
+        get {
+            let font = Globals.DefaultFont
+            var value = NSMutableAttributedString()
+            
+            value.beginEditing()
+            
+            let baseSize: CGFloat = 250
+            
+            var size = baseSize * 2 / CGFloat(countElements(kanji))
+            
+            if size > baseSize {
+                size = baseSize
+            }
+            
+            var paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .Center
+            
+            let fontPair: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
+            let paragraph: (String, AnyObject) = (NSParagraphStyleAttributeName, paragraphStyle)
+            
+            value.addAttributedText(kanji, [fontPair, paragraph])
+            value.endEditing()
+            
+            return value
+        }
+    }
+    
     var back: NSAttributedString {
     get {
         let font = Globals.JapaneseFont
