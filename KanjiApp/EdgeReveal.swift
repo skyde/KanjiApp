@@ -7,85 +7,6 @@ public enum EdgeRevealType {
     case Right
 }
 
-public enum AnimationState {
-    case Closed
-    case Opening
-    case Open
-    case Closing
-    case DraggingOpen
-    case DraggingClosed
-    
-    public func IsOpenOrClosed() -> Bool {
-        switch self {
-        case Open:
-            return true
-        case Closed:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    public func IsAnimating() -> Bool {
-        switch self {
-        case Opening:
-            return true
-        case Closing:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    public func IsDragging() -> Bool {
-        switch self {
-        case DraggingOpen:
-            return true
-        case DraggingClosed:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    public func AnyOpen() -> Bool {
-        switch self {
-        case Open:
-            return true
-        case Opening:
-            return true
-        case DraggingOpen:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    public static func GetFinished(isOpen: Bool) -> AnimationState {
-        if isOpen {
-            return AnimationState.Open
-        } else {
-            return AnimationState.Closed
-        }
-    }
-    
-    public static func GetAnimating(isOpen: Bool) -> AnimationState {
-        if isOpen {
-            return AnimationState.Opening
-        } else {
-            return AnimationState.Closing
-        }
-    }
-    
-    public static func GetDrag(isDraggingOpen: Bool) -> AnimationState {
-        if isDraggingOpen {
-            return AnimationState.DraggingOpen
-        } else {
-            return AnimationState.DraggingClosed
-        }
-    }
-}
-
 public class EdgeReveal: UIButton {
     
     let revealType: EdgeRevealType
@@ -214,7 +135,7 @@ public class EdgeReveal: UIButton {
         let viewVisibleWidth = Globals.screenSize.width - self.maxReveal()
         
         if open {
-            if lastAnimationState == .Closed {
+            if lastAnimationState == AnimationState.Closed {
                 setVisibility(true, completed: false)
             }
             

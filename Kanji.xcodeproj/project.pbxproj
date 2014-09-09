@@ -41,6 +41,7 @@
 		847B181E19A9AC0700F5A798 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */; };
 		847B181F19A9AC0700F5A798 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181B19A9AC0700F5A798 /* PaRomajiKanaConverter.m */; };
 		847B182019A9AC0700F5A798 /* PaRomajiKanaConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */; };
+		8494F3E119BF0F5200833ACE /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494F3E019BF0F5200833ACE /* AnimationState.swift */; };
 		8495BB89198B2C1C0077D8CE /* TextToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB88198B2C1C0077D8CE /* TextToken.swift */; };
 		8495BB8C1994F9D50077D8CE /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB8B1994F9D50077D8CE /* Container.swift */; };
 		8495BB8E1995B8700077D8CE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB8D1995B8700077D8CE /* Notification.swift */; };
@@ -137,6 +138,7 @@
 		847B181C19A9AC0700F5A798 /* PaRomajiKanaConverterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverterTest.h; path = External/PaRomajiKanaConverterTest.h; sourceTree = "<group>"; };
 		847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaRomajiKanaConverterTest.m; path = External/PaRomajiKanaConverterTest.m; sourceTree = "<group>"; };
 		847B182119A9AED400F5A798 /* Kanji-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kanji-Bridging-Header.h"; sourceTree = "<group>"; };
+		8494F3E019BF0F5200833ACE /* AnimationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationState.swift; sourceTree = "<group>"; };
 		8495BB88198B2C1C0077D8CE /* TextToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToken.swift; sourceTree = "<group>"; };
 		8495BB8B1994F9D50077D8CE /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		8495BB8D1995B8700077D8CE /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				841390BA1965D18C005958B9 /* InteractType.swift */,
 				84010BD6199F904700138572 /* CardPropertiesEdit.swift */,
 				84010BD8199F90C100138572 /* CardPropertiesType.swift */,
+				8494F3E019BF0F5200833ACE /* AnimationState.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				846C974B196A42A0001D013C /* CustomUIViewController.swift in Sources */,
 				84A5F6131974418D001B7404 /* NSManagedObjectContextExtension.swift in Sources */,
 				84DCA47F198884C0000EF0C4 /* AddRemoveButton.swift in Sources */,
+				8494F3E119BF0F5200833ACE /* AnimationState.swift in Sources */,
 				84EC7C1B19734A7800CA9054 /* SettingsProperties.swift in Sources */,
 				84603D6A19A088BC00F45A32 /* CustomUITextView.swift in Sources */,
 				847B181F19A9AC0700F5A798 /* PaRomajiKanaConverter.m in Sources */,

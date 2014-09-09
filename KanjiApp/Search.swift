@@ -252,8 +252,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 self.view.addSubview(label)
                 self.view.sendSubviewToBack(label)
                 
-                for label in (labels.sorted {
-                    $0.depth < $1.depth }) {
+                for label in (labels.sorted { $0.depth < $1.depth }) {
                         self.view.sendSubviewToBack(label)
                 }
                 
@@ -312,7 +311,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             closeKeyboard()
         }
     }
-        override func viewWillAppear(animated: Bool) {
+    
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         searchResults.hidden = true
@@ -342,7 +342,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-//        println(self.items.count)
         return self.items.count;
     }
     
@@ -382,33 +381,40 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     var lastSearchText = ""
     var romajiConverter = PaRomajiKanaConverter()
+    var searchAnim: AnimationState = AnimationState.Closed
+    
+    private func animateSearch(open: Bool) {
+        if searchAnim == AnimationState.GetAnimating(open) {
+            return
+        }
+        
+        searchAnim = AnimationState.GetAnimating(open)
+        
+        searchResults.hidden = false
+        searchResultsBackground.hidden = false
+        searchResults.alpha = open ? 0 : 1
+        searchResultsBackground.alpha = open ? 0 : 1
+        
+        UIView.animateWithDuration(0.3,
+            delay: NSTimeInterval(),
+            options: UIViewAnimationOptions.CurveEaseOut,
+            animations: {
+                self.searchResults.alpha = open ? 1 : 0
+                self.searchResultsBackground.alpha = open ? 1 : 0
+            },
+            completion: { (_) in
+                self.searchAnim = AnimationState.GetCompletion(open)
+                if !open {
+                    self.searchResults.hidden = true
+                    self.searchResultsBackground.hidden = true
+                }
+            })
+    }
     
     private func updateSearch(text: String) {
         lastSearchText = text
         
-        let fadeSpeed: NSTimeInterval = 0.3
-        
-        if text != "" && searchResults.hidden {
-            searchResults.hidden = false
-            searchResults.alpha = 0
-            
-            UIView.animateWithDuration(fadeSpeed,
-                delay: NSTimeInterval(),
-                options: UIViewAnimationOptions.CurveEaseOut,
-                animations: {
-                    self.searchResults.alpha = 1
-                },
-                completion: nil)
-        } else if text == "" && !searchResults.hidden {
-            
-            UIView.animateWithDuration(fadeSpeed,
-                delay: 0.5,
-                options: UIViewAnimationOptions.CurveEaseOut,
-                animations: {
-                    self.searchResults.alpha = 0
-                },
-                completion: { (_) -> Void in self.searchResults.hidden = true })
-        }
+        animateSearch(text != "")
         
         if text != "" {
             
