@@ -205,6 +205,12 @@ class RootContainer: CustomUIViewController {
         selfBlur.hidden = true
     }
     
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateDefinitionViewConstraints()
+        view.setNeedsLayout()
+        DefinitionPopover.instance.view.setNeedsLayout()
+    }
+    
     override func addNotifications() {
         super.addNotifications()
         
@@ -213,6 +219,9 @@ class RootContainer: CustomUIViewController {
         Globals.notificationAddWordsFromList.addObserver(self, selector: "onAddWordsFromList")
         
         Globals.notificationGameViewDidAppear.addObserver(self, selector: "onGameViewDidAppear")
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "", name: <#String!#>, object: nil)
+        //        NSNotificationCenter.defaultCenter().addObserver(observer, selector: selector, name: id, object: object)
     }
     
     func onGameViewDidAppear() {

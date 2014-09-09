@@ -281,7 +281,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 
     override func addNotifications() {
         super.addNotifications()
-        
         Globals.notificationEditCardProperties.addObserver(self, selector: "onEditCard", object: nil)
         
         Globals.notificationSidebarInteract.addObserver(self, selector: "onSidebarInteract", object: nil)
