@@ -158,23 +158,51 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         frontBlocker.addGestureRecognizer(panGesture)
         panGesture.delegate = self
 
-//        var downGesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
-//        downGesture.delegate = self
-//        downGesture.minimumPressDuration = 0
+        var downGesture = UILongPressGestureRecognizer(target: self, action: "onLongPress:")
+        downGesture.delegate = self
+        downGesture.minimumPressDuration = 0
 //        downGesture.allowableMovement = 0
 //        downGesture.delaysTouchesEnded = false
 //        downGesture.cancelsTouchesInView = false
-//        self.outputText.addGestureRecognizer(downGesture)
-        self.outputText.delegate = self
+        frontBlocker.addGestureRecognizer(downGesture)
+//        self.outputText.delegate = self
         
         var onTouchGesture = UITapGestureRecognizer(target: self, action: "onTouch:")
         onTouchGesture.delegate = self
         outputText.addGestureRecognizer(onTouchGesture)
+        
+//        frontBlocker.addTarget(self, action: "", forControlEvents: UIControlEvents.)
 //        onTouchGesture.requireGestureRecognizerToFail(outputText.panGestureRecognizer)
         
         var setCategoryError: NSError?
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.DuckOthers, error: &setCategoryError)
         //AVAudioSessionCategoryOptions.MixWithOthers
+    }
+    
+    func onLongPress(sender: UILongPressGestureRecognizer) {
+        
+        switch sender.state {
+        case .Began:
+            wasFront = isFront
+            didPan = false
+//            isDown = true
+            
+            if isFront && rightEdgeReveal.animationState == AnimationState.Closed {
+                advanceCard()
+                
+                downBeganTime = NSDate.timeIntervalSinceReferenceDate()
+                
+                progressBar.progress = 0
+                progressBar.visible = true
+            }
+
+        case .Ended:
+            onUp()
+            
+        default:
+            break
+        }
+//        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
     }
     
     var progressBarPercent: Double {
@@ -206,12 +234,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             }
         }
         
-        if  frontBlocker.visible &&
-            isDown &&
-            progressBarPercent > 1 {
-                
-            onUp()
-        }//onUp frontBlocker.visible = false
+//        if  frontBlocker.visible &&
+//            isDown &&
+//            progressBarPercent > 1 {
+//                
+//            onUp()
+//        }//onUp frontBlocker.visible = false
         
     }
     
@@ -232,30 +260,26 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var wasFront = false
     var downBeganTime: NSTimeInterval = 0
-    var isDown = false
-    @IBAction func onDown(sender: UIButton) {
-        wasFront = isFront
-        didPan = false
-        isDown = true
-        
-        if isFront && rightEdgeReveal.animationState == AnimationState.Closed {
-            advanceCard()
-            
-            downBeganTime = NSDate.timeIntervalSinceReferenceDate()
-            
-            progressBar.progress = 0
-            progressBar.visible = true
-        }
-
-    }
-    @IBAction func onBlockerUpInside(sender: UIButton) {
-//        println("onBlockerUpInside")
-        
-        onUp()
-    }
-    
+//    var isDown = false
+//    @IBAction func onDown(sender: UIButton) {
+//    }
+//    @IBAction func onBlockerUpInside(sender: UIButton) {
+////        println("onBlockerUpInside")
+//        
+//        onUp()
+//    }
+////    @IBAction func valueChanged(sender: AnyObject) {println("valueChanged")
+////    }
+//    
+////    @IBAction func onBlockerTouchCancel(sender: AnyObject) {
+////        println("onBlockerTouchCancel")
+////    }
+//    @IBAction func onBlockerTouchUpOutside(sender: UIButton) {
+//                println("onBlockerUpInside")
+//        onUp()
+//    }
     func onUp() {
-        isDown = false
+//        isDown = false
         
         var percent = (NSDate.timeIntervalSinceReferenceDate() - downBeganTime) / downPressInterval
         
