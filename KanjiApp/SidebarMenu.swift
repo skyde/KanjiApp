@@ -184,17 +184,17 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 displayAddButton: true,
                 sourceList: .MyWords,
                 enableOnAdd: false)
-        case 103:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsKnown().map { ($0 as Card).index }
-            
-            targetView = .Lists(
-                title: "Known",
-                color: Globals.colorKnown,
-                cards: cards,
-                displayConfirmButton: false,
-                displayAddButton: false,
-                sourceList: nil,
-                enableOnAdd: false)
+//        case 103:
+//            var cards = RootContainer.instance.managedObjectContext.fetchCardsKnown().map { ($0 as Card).index }
+//            
+//            targetView = .Lists(
+//                title: "Known",
+//                color: Globals.colorKnown,
+//                cards: cards,
+//                displayConfirmButton: false,
+//                displayAddButton: false,
+//                sourceList: nil,
+//                enableOnAdd: false)
         case 200:
             referencesOpen = !referencesOpen
             

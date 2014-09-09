@@ -20,7 +20,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let frameRate: Double = 1 / 60
     
     let downPressInterval: Double = 2.0
-    let panDistance: CGFloat = 3
+    let panDistance: CGFloat = 30
     @IBOutlet weak var leftIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
     

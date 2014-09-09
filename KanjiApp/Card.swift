@@ -47,6 +47,8 @@ class Card: NSManagedObject {
             if adjustInterval {
                 if interval.doubleValue >= 6 {
                     interval = interval.doubleValue - 0.5
+                } else if interval.doubleValue <= 4.5 {
+                    interval = interval.doubleValue + 0.4
                 }
             }
             
@@ -412,22 +414,18 @@ class Card: NSManagedObject {
     func listColor() -> UIColor {
         if suspended.boolValue {
             return Globals.colorLists
-        } else if known.boolValue {
+        } else if !enabled.boolValue {
             return Globals.colorKnown
         }
-        
         return Globals.colorMyWords
     }
     
     func listName() -> String {
         if suspended.boolValue {
-            return "Not Studied"
-        } else if known.boolValue {
-            return "Known"
-        } else if enabled.boolValue {
-            return "Studying"
+            return "Suspended"
+        } else if !enabled.boolValue {
+            return "Pending"
         }
-        
-        return "Will Study"
+        return "Studying"
     }
 }

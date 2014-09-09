@@ -25,9 +25,11 @@ public class CardPropertiesSidebar : UIViewController {
         case .Pending:
             card.suspended = false
             card.enabled = false
+            card.known = true
         case .Studying:
             card.suspended = false
             card.enabled = true
+            card.known = true
         }
     }
     
@@ -146,7 +148,7 @@ public class CardPropertiesSidebar : UIViewController {
         
         currentType = type
         
-        var suspendText = "Suspend\nCard"//"Will\nStudy"
+        var suspendText = "Suspend"//"Will\nStudy"
         var pendingText = "Set Pending"//"Will\nStudy"
 //        let knownText = "Known"
         let studyText = "Study"

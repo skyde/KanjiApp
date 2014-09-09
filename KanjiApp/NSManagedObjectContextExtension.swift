@@ -144,8 +144,8 @@ extension NSManagedObjectContext
     
     func fetchCardsDue(var fetchAheadAmount: Double = 0) -> [Card] {
         
-        var predicate = "(enabled==%@) AND (suspended==%@) AND (known==%@) AND (dueTime<%@)"
-        var values: [AnyObject] = [true, false, false, Globals.secondsSince1970 + fetchAheadAmount]
+        var predicate = "(enabled==%@) AND (suspended==%@) AND (dueTime<%@)"
+        var values: [AnyObject] = [true, false, Globals.secondsSince1970 + fetchAheadAmount]
         
         return fetchEntities(.Card, rawPredicate: (predicate, values), CardProperties.dueTime, sortAscending: true) as [Card]
     }
@@ -155,15 +155,15 @@ extension NSManagedObjectContext
     }
     
     func fetchCardsActive() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchEntities(.Card, [(CardProperties.enabled, true), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
     }
     
     func fetchCardsWillStudy() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false), (CardProperties.known, false)], CardProperties.interval, sortAscending: true) as [Card]
+        return fetchEntities(.Card, [(CardProperties.enabled, false), (CardProperties.suspended, false)], CardProperties.interval, sortAscending: true) as [Card]
     }
-    func fetchCardsKnown() -> [Card] {
-        return fetchEntities(.Card, [(CardProperties.suspended, false), (CardProperties.known, true)], CardProperties.interval, sortAscending: true) as [Card]
-    }
+//    func fetchCardsKnown() -> [Card] {
+//        return fetchEntities(.Card, [(CardProperties.suspended, false), (CardProperties.known, true)], CardProperties.interval, sortAscending: true) as [Card]
+//    }
     
     private func processJPLTListOrdering(values: [Card]) -> [Card] {
         
@@ -171,7 +171,7 @@ extension NSManagedObjectContext
         var last: [Card] = []
         
         for card in values {
-            if card.usageAmount < 2100 {
+            if card.usageAmount < 2100 || card.known.boolValue {
                 last.append(card)
             } else {
                 first.append(card)
