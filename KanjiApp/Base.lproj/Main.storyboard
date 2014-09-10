@@ -1441,15 +1441,6 @@ all due cards</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-K1-JvN">
-                                <rect key="frame" x="600" y="0.0" width="202" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="202" id="pb3-2f-C6Q"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
-                                </connections>
-                            </containerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="PTp-ZI-4VH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1502,6 +1493,15 @@ all due cards</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-K1-JvN">
+                                <rect key="frame" x="600" y="0.0" width="202" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="pb3-2f-C6Q"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>

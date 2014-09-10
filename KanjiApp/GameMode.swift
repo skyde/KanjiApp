@@ -7,7 +7,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var due: [NSNumber] = []
     var undoStack: [NSNumber] = []
-    var redoStackCount = 0
+//    var redoStackCount = 0
     var isFront: Bool = true
     var isBack: Bool {
     get {
@@ -19,7 +19,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var timer: NSTimer!
     let frameRate: Double = 1.0 / 60.0
     
-    let downPressInterval: Double = 2.0
+    let longPressTime: Double = 1.5
     let maxPan: CGFloat = 35
     @IBOutlet weak var leftIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
@@ -45,11 +45,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    var canRedo: Bool {
-        get {
-            return redoStackCount > 0
-        }
-    }
+//    var canRedo: Bool {
+//        get {
+//            return redoStackCount > 0
+//        }
+//    }
     
     var dueCard: Card? {
         get {
@@ -100,7 +100,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     var flipCardTime: NSTimeInterval = 0
-    func updateText() {
+    func updateText(invalidateCaches: Bool = false) {
+        if invalidateCaches {
+            backTextCache = nil
+            frontTextCache = nil
+        }
+        
         if let card = dueCard {
             if isFront {
                 tryGenerateFrontTextCache(card)
@@ -196,7 +201,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var progressBarPercent: Double {
     get {
-        return (NSDate.timeIntervalSinceReferenceDate() - downTime) / downPressInterval
+        return (NSDate.timeIntervalSinceReferenceDate() - downTime) / longPressTime
     }
     }
     
@@ -230,23 +235,22 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         if !wasFront {
             caculateAnswer(sender)
-            
-            frontBlocker.visible = true
         }
     }
     
     var wasFront = false
     var downTime: NSTimeInterval = 0
     func onUp() {
-        var percent = (NSDate.timeIntervalSinceReferenceDate() - downTime) / downPressInterval
+        var percent = (NSDate.timeIntervalSinceReferenceDate() - downTime) / longPressTime
         
         progressBar.visible = false
         if percent < 1 && !didPan && wasFront {
             downTime = 0
             answerCard(.Normal)
-        } else {
-            frontBlocker.visible = false
         }
+//        else {
+//            frontBlocker.visible = false
+//        }
         
         wasFront = isFront
     }
@@ -331,24 +335,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     completion: {
                         (_) -> () in
                         highlightLabel.hidden = true
-                        self.advanceCardAndUpdateText()
+                        self.advanceCard()
                 })
             } else {
-                self.advanceCardAndUpdateText()
+                self.advanceCard()
             }
             
             saveContext()
         }
         
     }    
-    private func advanceCardAndUpdateText() {
-        advanceCard()
-        updateText()
-        
-        if due.count == 0 {
-            Globals.notificationTransitionToView.postNotification(.CardsFinished)
-        }
-    }
+//    private func advanceCardAndUpdateText() {
+//        advanceCard()
+//        updateText()
+//        
+//    }
     
     func onEditCard() {
         if !view.hidden {
@@ -400,6 +401,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         rightEdgeReveal = EdgeReveal(
             parent: view,
             revealType: .Right,
+            animationTime: 0.1,
+            swipeAreaWidth: 20,
             //swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
@@ -417,17 +420,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 if !visible && self.processUndo {
                     self.processUndo = false
-                    self.invalidateCaches()
+//                    self.invalidateCaches()
                     self.onUndo()
                 }
                 
                 if !visible && self.processAdvance {
                     self.processAdvance = false
                     self.isFront = false
-                    self.frontBlocker.visible = true
-                    self.advanceCardAndUpdateText()
+//                    self.frontBlocker.visible = true
+                    self.advanceCard()
                 }
         })
+        
+//        rightEdgeReveal.onTap = { (open) in println("ontap")asdd }
         
         cardPropertiesSidebar.onUndoButtonTap = {
             self.rightEdgeReveal.animateSelf(false)
@@ -439,10 +444,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    private func invalidateCaches() {
-        backTextCache = nil
-        frontTextCache = nil
-    }
+//    private func invalidateCaches() {
+//    }
     
     private func onUndo() {
         if canUndo {
@@ -457,40 +460,40 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 isFront = true
                 
-                redoStackCount++
+//                redoStackCount++
             }
             
-            updateText()
+            updateText(invalidateCaches: true)
         }
         
-        self.frontBlocker.visible = true
+//        self.frontBlocker.visible = true
     }
     
-    private func onRedo() {
-        if due.count > 0 && canRedo {
-            var remove = due.removeAtIndex(0)
-            
-            undoStack.insert(remove, atIndex: undoStack.count)
-            
-            managedObjectContext.undoManager.redo()
-            
-            isFront = true
-            updateText()
-            
-            redoStackCount--
-        }
-    }
+//    private func onRedo() {
+//        if due.count > 0 && canRedo {
+//            var remove = due.removeAtIndex(0)
+//            
+//            undoStack.insert(remove, atIndex: undoStack.count)
+//            
+//            managedObjectContext.undoManager.redo()
+//            
+//            isFront = true
+//            updateText()
+//            
+//            redoStackCount--
+//        }
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        invalidateCaches()
+//        invalidateCaches()
         fetchCards()
-        updateText()
+        updateText(invalidateCaches: true)
     }
     
     private func fetchCards(clearUndoStack: Bool = true) {
-        redoStackCount = 0
+//        redoStackCount = 0
         
         var fetchAheadAmount: Double = 0
         
@@ -517,7 +520,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         soundEnabled = Globals.audioDirectoryExists
     }
     
-    func advanceCard() {        
+    func advanceCard() {
+        isFront = !isFront
+        
+        frontBlocker.visible = isFront
+        
         if isBack && due.count >= 1 {
             var remove = due.removeAtIndex(0)
             undoStack.append(remove)
@@ -527,16 +534,18 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             fetchCards(clearUndoStack: false)
         }
         
-        if due.count != 0 {
-            isFront = !isFront
-            
+        if due.count > 0 {
             if isBack {
                 if var path = dueCard?.embeddedData.soundWord {
                     playSound(filterSoundPath(path))
                 }
-                
-                updateText()
             }
+            
+            updateText()
+        }
+        
+        if due.count == 0 {
+            Globals.notificationTransitionToView.postNotification(.CardsFinished)
         }
     }
     
@@ -586,8 +595,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        invalidateCaches()
-        updateText()
+//        invalidateCaches()
+        updateText(invalidateCaches: true)
 //        updateDefinitionViewConstraints()
 //        view.setNeedsLayout()
 //        DefinitionPopover.instance.view.setNeedsLayout()

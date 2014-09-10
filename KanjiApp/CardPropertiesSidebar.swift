@@ -81,7 +81,6 @@ public class CardPropertiesSidebar : UIViewController {
     }
     
     private func onTap() {
-        
         Globals.notificationEditCardProperties.postNotification(currentType)
         
         if let callback = self.onPropertyButtonTap {
