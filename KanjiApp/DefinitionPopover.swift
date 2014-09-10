@@ -7,6 +7,7 @@ var definitionPopoverInstance: DefinitionPopover? = nil
 class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var outputText: UITextView!
 //    @IBOutlet weak var addRemoveButton: AddRemoveButton!
+    @IBOutlet weak var definitionLabelTopSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var addRemoveSidebar: UIView!
     @IBOutlet weak var definitionLabel: UILabel!
     
@@ -22,7 +23,9 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         return managedObjectContext.fetchCardByKanji(Globals.notificationShowDefinition.value)
     }
     }
-    
+//    
+//    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+//    }
 //    override var isGameView: Bool {
 //    get {
 //        return false

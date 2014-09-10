@@ -503,7 +503,7 @@
                             <constraint firstItem="ygW-So-qXB" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="7Bk-lG-Nlm"/>
                             <constraint firstAttribute="trailing" secondItem="18A-fs-33E" secondAttribute="trailing" id="AL5-bU-6lg"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="CBc-R1-wc8"/>
-                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" id="Cdv-Gs-wOq"/>
+                            <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" priority="750" id="Cdv-Gs-wOq"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="LH8-dR-DdV" secondAttribute="bottom" priority="750" id="QRx-yL-2xh"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="RFT-pm-Duk"/>
@@ -526,6 +526,7 @@
                         <outlet property="addRemoveSidebar" destination="9C5-Qd-7TJ" id="BpX-IX-PxH"/>
                         <outlet property="backButton" destination="ygW-So-qXB" id="gQs-D0-pQg"/>
                         <outlet property="definitionLabel" destination="18A-fs-33E" id="MLY-IG-5LF"/>
+                        <outlet property="definitionLabelTopSpaceConstraint" destination="RFT-pm-Duk" id="aPQ-SA-JQ0"/>
                         <outlet property="outputText" destination="7gV-aw-pxC" id="t4M-YM-T0C"/>
                         <outlet property="studyingButton" destination="bp7-V8-USh" id="eXj-bN-mec"/>
                     </connections>

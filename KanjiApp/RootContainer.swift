@@ -111,6 +111,9 @@ class RootContainer: CustomUIViewController {
             },
             setVisible: {(visible, completed) in
                 if visible {
+                    if self.definitionConstraintsNeedUpdating {
+                        self.layoutDefinitionConstraints()
+                    }
 //                    self.backgroundImage.image = self.caculateSelfBlurImage()
                     DefinitionPopover.instance.updateState()
                 } else {
@@ -205,10 +208,20 @@ class RootContainer: CustomUIViewController {
         selfBlur.hidden = true
     }
     
+    func layoutDefinitionConstraints() {
+        definitionConstraintsNeedUpdating = false
+        DefinitionPopover.instance.view.setNeedsLayout()
+    }
+    
+    var definitionConstraintsNeedUpdating: Bool = false
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateDefinitionViewConstraints()
         view.setNeedsLayout()
         DefinitionPopover.instance.view.setNeedsLayout()
+        
+        definitionConstraintsNeedUpdating = true
+//        DefinitionPopover.instance.definitionLabel.setNeedsUpdateConstraints()
+//        DefinitionPopover.instance.definitionLabel.setNeedsLayout()
     }
     
     override func addNotifications() {
