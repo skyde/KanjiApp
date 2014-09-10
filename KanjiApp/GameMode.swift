@@ -362,7 +362,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     private var processUndo: Bool = false
-    private var processAdvanceCard: Bool = false
+    private var processAdvance: Bool = false
     
     private func setupEdgeReveal() {
         
@@ -421,9 +421,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     self.onUndo()
                 }
                 
-                if !visible && self.processAdvanceCard {
-                    self.processAdvanceCard = false
+                if !visible && self.processAdvance {
+                    self.processAdvance = false
                     self.isFront = false
+                    self.frontBlocker.visible = true
                     self.advanceCardAndUpdateText()
                 }
         })
@@ -434,7 +435,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
         
         cardPropertiesSidebar.onPropertyButtonTap = {
-            self.processAdvanceCard = true
+            self.processAdvance = true
         }
     }
     
