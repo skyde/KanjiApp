@@ -39,4 +39,13 @@ class CardsFinished : CustomUIViewController {
         
         continueStudying.enabled = due.count != 0
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let cards = managedObjectContext.fetchCardsAllUser()
+        if cards.count == 0 {
+            Globals.notificationTransitionToView.postNotification(.AddWords(enableOnAdd: true))
+        }
+    }
 }

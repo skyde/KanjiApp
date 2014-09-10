@@ -21,7 +21,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        volume.value = settings.volume.floatValue
+//        volume.value = settings.volume.floatValue
     }
     
     func exportUserList() -> String {
