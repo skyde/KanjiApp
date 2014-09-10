@@ -1396,7 +1396,7 @@ all due cards</string>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qeS-vE-fbH">
                                                     <rect key="frame" x="28" y="12" width="544" height="31"/>
                                                     <connections>
-                                                        <action selector="onVolumeChanged:" destination="1Aq-z8-1P3" eventType="valueChanged" id="FMd-gb-w6V"/>
+                                                        <action selector="onVolumeChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="iLx-Sa-bDg"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -1434,6 +1434,9 @@ all due cards</string>
                                                         <segment title="10"/>
                                                         <segment title="20"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="studyAmountTapped:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="7mb-is-29n"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1462,7 +1465,7 @@ all due cards</string>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="onBackupTap:" destination="1Aq-z8-1P3" eventType="touchUpInside" id="ZY0-rF-mnG"/>
+                                                        <action selector="onBackupTapped:" destination="ymQ-UJ-hHR" eventType="touchUpInside" id="6af-xI-OGp"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1482,6 +1485,10 @@ all due cards</string>
                             <outlet property="delegate" destination="ymQ-UJ-hHR" id="X4V-9h-ecR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="numCardsToAdd" destination="roI-lb-1jI" id="POk-8D-ZVh"/>
+                        <outlet property="volume" destination="qeS-vE-fbH" id="Zmh-kV-nWi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ot-5y-Dz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1875,9 +1882,9 @@ all due cards</string>
         <image name="taskList" width="1309" height="1309"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vgr-gb-U0p"/>
         <segue reference="daX-c3-wht"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="yfD-aM-lZg"/>
     </inferredMetricsTieBreakers>
 </document>
