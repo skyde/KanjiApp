@@ -101,6 +101,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var flipCardTime: NSTimeInterval = 0
     func updateText(invalidateCaches: Bool = false) {
+        frontBlocker.visible = isFront
+        
         if invalidateCaches {
             backTextCache = nil
             frontTextCache = nil
@@ -522,8 +524,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func advanceCard() {
         isFront = !isFront
-        
-        frontBlocker.visible = isFront
         
         if isBack && due.count >= 1 {
             var remove = due.removeAtIndex(0)
