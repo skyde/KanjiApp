@@ -6,6 +6,7 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
 //    @IBOutletCollection var headersAndFooters: [UILabel]!
 //    @IBOutlet var headersAndFooters: Array<UILabel>!
     @IBOutlet weak var volume: UISlider!
+    @IBOutlet weak var numCardsToAdd: UISegmentedControl!
     @IBAction func onVolumeChanged(sender: UISlider) {
 //        println("onVolumeChanged")
 
@@ -18,6 +19,22 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
     }
     
     @IBAction func studyAmountTapped(sender: UISegmentedControl) {
+        
+        switch numCardsToAdd.selectedSegmentIndex {
+        case 1:
+            RootContainer.instance.settings.cardAddAmount = 0
+        case 3:
+            RootContainer.instance.settings.cardAddAmount = 1
+        case 5:
+            RootContainer.instance.settings.cardAddAmount = 2
+        case 10:
+            RootContainer.instance.settings.cardAddAmount = 3
+        case 20:
+            RootContainer.instance.settings.cardAddAmount = 4
+        default:
+            break
+        }
+
     }
     
     override func viewDidLoad() {
@@ -113,6 +130,24 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
         volume.value = RootContainer.instance.settings.volume.floatValue
         
         updateFonts()
+        
+        // 1, 3, 5, 10, 20
+        switch RootContainer.instance.settings.cardAddAmount {
+        case 1:
+            numCardsToAdd.selectedSegmentIndex = 0
+        case 3:
+            numCardsToAdd.selectedSegmentIndex = 1
+        case 5:
+            numCardsToAdd.selectedSegmentIndex = 2
+        case 10:
+            numCardsToAdd.selectedSegmentIndex = 3
+        case 20:
+            numCardsToAdd.selectedSegmentIndex = 4
+        default:
+            break
+        }
+        
+//        selectedSegmentIndex
     }
 //        super.viewDidAppear(animated)
 //        for i in 0 ..< table.numberOfSections() {

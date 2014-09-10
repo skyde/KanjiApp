@@ -1486,6 +1486,7 @@ all due cards</string>
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="numCardsToAdd" destination="roI-lb-1jI" id="POk-8D-ZVh"/>
                         <outlet property="volume" destination="qeS-vE-fbH" id="Zmh-kV-nWi"/>
                     </connections>
                 </tableViewController>
