@@ -185,7 +185,7 @@ class Card: NSManagedObject {
             
         let baseSize: CGFloat = 250
         
-        var size = baseSize * 2 / CGFloat(countElements(kanji))
+        var size = baseSize * 2 * 0.7 / CGFloat(countElements(kanji))
         
         if size > baseSize {
             size = baseSize
