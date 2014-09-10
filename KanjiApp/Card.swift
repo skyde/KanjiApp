@@ -320,9 +320,16 @@ class Card: NSManagedObject {
         addTo.addAttributedText("Due Time \(dueTime.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
         // End Debug
         
-//        var color = 
+//        var color =
         
         addTo.addAttribute(NSForegroundColorAttributeName, value: pitchAccentColor(), range: NSMakeRange(0, addTo.mutableString.length))
+        
+        var paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = NSTextAlignment.Center
+        
+        addTo.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSMakeRange(0, addTo.mutableString.length))
+        
+//        outputText.textAlignment = .Center
     }
     
     func addExampleSentences(addTo: NSMutableAttributedString, _ fontName: String) {

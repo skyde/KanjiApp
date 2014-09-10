@@ -102,6 +102,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var flipCardTime: NSTimeInterval = 0
     func updateText(invalidateCaches: Bool = false) {
         frontBlocker.visible = isFront
+        kanjiView.visible = isFront
+        outputText.visible = isBack
         
         if invalidateCaches {
             backTextCache = nil
@@ -111,33 +113,27 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if let card = dueCard {
             if isFront {
                 tryGenerateFrontTextCache(card)
-//                    println("create cache front")
                 kanjiView.attributedText = frontTextCache
-                outputText.text = ""
                 frontTextCache = nil
             }
             else {
                 if backTextCache == nil {
                     backTextCache = card.back
-//                    println("create cache back")
                 }
                 
-                kanjiView.text = ""
                 outputText.attributedText = backTextCache
-                outputText.textAlignment = .Center
                 flipCardTime = NSDate.timeIntervalSinceReferenceDate()
                 scrollOutputTextToInset()
                 backTextCache = nil
             }
-            kanjiView.hidden = !isFront
-            kanjiView.enabled = isFront
+//            kanjiView.enabled = isFront
         }
         
-        if canUndo {
-            leftEdgeReveal.frame.origin.x = 0
-        } else {
-            leftEdgeReveal.frame.origin.x = -leftEdgeReveal.frame.width
-        }
+//        if canUndo {
+//            leftEdgeReveal.frame.origin.x = 0
+//        } else {
+//            leftEdgeReveal.frame.origin.x = -leftEdgeReveal.frame.width
+//        }
     }
     
     override func viewDidLoad() {
