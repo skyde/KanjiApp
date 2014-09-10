@@ -20,7 +20,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     let frameRate: Double = 1.0 / 60.0
     
     let downPressInterval: Double = 2.0
-    let panDistance: CGFloat = 50
+    let maxPan: CGFloat = 35
     @IBOutlet weak var leftIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
     
@@ -252,15 +252,25 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     var didPan = false
+    var pan: (start: CGPoint, distance: CGFloat)?
     func onPan(sender: UIPanGestureRecognizer) {
         switch sender.state {
+        case .Began:
+            pan = (sender.locationInView(view), 0)
         case .Changed:
-            let distance = sender.translationInView(view).magnitude
-            
-            if distance > panDistance && !didPan {
-                didPan = true
-                onUp()
+            if let pan = pan {
+                var location = sender.locationInView(view)
+                var distance = distanceAmount(pan.start, location)
+                
+                self.pan = (location, pan.distance + distance)
+                
+                if pan.distance > maxPan && !didPan {
+                    didPan = true
+                    onUp()
+                }
             }
+        case .Ended:
+            pan = nil
 
         default:
             break

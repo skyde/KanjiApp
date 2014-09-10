@@ -1565,10 +1565,7 @@ all due cards</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBarFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="z3B-70-MMs">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="474"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="474" id="p2m-Xq-vkP"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverBottomFade.png" translatesAutoresizingMaskIntoConstraints="NO" id="r8K-4J-9f7">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
@@ -1652,6 +1649,7 @@ all due cards</string>
                             <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="jpJ-kJ-scy"/>
                             <constraint firstItem="bZK-bf-LBf" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="qKh-jt-84z"/>
                             <constraint firstItem="cEn-qY-4J5" firstAttribute="top" secondItem="yru-gu-OpA" secondAttribute="bottom" id="tZa-P4-AN9"/>
+                            <constraint firstAttribute="bottom" secondItem="z3B-70-MMs" secondAttribute="bottom" constant="-100" id="vCF-Qc-EzV"/>
                             <constraint firstItem="ncB-um-Llw" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="yUC-QI-iuG"/>
                             <constraint firstItem="z3B-70-MMs" firstAttribute="top" secondItem="3Yu-yV-REK" secondAttribute="top" id="ym8-hu-nbj"/>
                         </constraints>
@@ -1822,6 +1820,6 @@ all due cards</string>
         <segue reference="daX-c3-wht"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
-        <segue reference="6pM-di-aOQ"/>
+        <segue reference="7jX-Xq-vJx"/>
     </inferredMetricsTieBreakers>
 </document>
