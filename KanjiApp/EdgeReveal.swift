@@ -105,11 +105,11 @@ public class EdgeReveal: UIButton {
         }
     }
     
-    public func animateSelf(var open: Bool) {
-        if animationState.IsAnimating() {
+    public func animateSelf(var open: Bool, forceAnimation: Bool = false) {
+        if animationState.IsAnimating() && !forceAnimation {
             return
         }
-        if animationState.IsOpenOrClosed() && animationState.AnyOpen() == open {
+        if animationState.IsOpenOrClosed() && animationState.AnyOpen() == open && !forceAnimation {
             return
         }
         
@@ -130,7 +130,6 @@ public class EdgeReveal: UIButton {
                 callback(isNowOpen: false)
             }
         }
-        
         
         let viewVisibleWidth = Globals.screenSize.width - self.maxReveal()
         

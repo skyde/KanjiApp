@@ -1764,7 +1764,7 @@ all due cards</string>
                                     <action selector="leftTap:" destination="HHw-53-owD" eventType="touchUpInside" id="2k0-L0-PuM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50j-TG-1Sa">
                                 <rect key="frame" x="0.0" y="184" width="160" height="352"/>
                                 <color key="backgroundColor" red="0.99790024757385254" green="0.90225982666015625" blue="0.70449477434158325" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

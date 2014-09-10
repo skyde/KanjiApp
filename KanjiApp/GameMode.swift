@@ -597,6 +597,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
 //        invalidateCaches()
         updateText(invalidateCaches: true)
+        rightEdgeReveal.animateSelf(false, forceAnimation: true)
 //        updateDefinitionViewConstraints()
 //        view.setNeedsLayout()
 //        DefinitionPopover.instance.view.setNeedsLayout()
