@@ -36,9 +36,11 @@ class Card: NSManagedObject {
             embeddedData.answersKnown = embeddedData.answersKnown + 1
         case .Normal:
 //            println("Normal")
-            if adjustInterval {
-                if interval.doubleValue < 11 {
+            if interval.doubleValue < 11 {
+                if adjustInterval {
                     interval = interval.doubleValue + 1
+                } else {
+                    interval = interval.doubleValue + 0.1
                 }
             }
             
@@ -56,6 +58,8 @@ class Card: NSManagedObject {
         case .Forgot:
             if adjustInterval {
                 interval = interval.doubleValue - 4
+            } else {
+                interval = interval.doubleValue - 3
             }
             embeddedData.answersForgot = embeddedData.answersForgot + 1
         }
@@ -63,7 +67,9 @@ class Card: NSManagedObject {
         interval = min(11, interval.doubleValue)
         interval = max(0, interval.doubleValue)
         
-        dueTime = secondsSince1970 + timeForInterval()
+        if adjustInterval {
+            dueTime = secondsSince1970 + timeForInterval()
+        }
 //        dueTime = timeForInterval()
         
 //        println("newDueTime \(dueTime)")
