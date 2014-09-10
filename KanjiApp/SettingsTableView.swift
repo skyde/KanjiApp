@@ -5,7 +5,20 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
 //    @IBOutlet var table: UITableView!
 //    @IBOutletCollection var headersAndFooters: [UILabel]!
 //    @IBOutlet var headersAndFooters: Array<UILabel>!
+    @IBOutlet weak var volume: UISlider!
+    @IBAction func onVolumeChanged(sender: UISlider) {
+//        println("onVolumeChanged")
+
+        SettingsView.instance.onVolumeChanged(sender)
+
+    }
+    @IBAction func onBackupTapped(sender: AnyObject) {
+//        println("onBackupTapped")
+        SettingsView.instance.onBackupTap(sender)
+    }
     
+    @IBAction func studyAmountTapped(sender: UISegmentedControl) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,51 +73,45 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
 //        
 //    }
     
-//    var timer: NSTimer!
     var fontUpdated = false
     func updateFonts() {
         var success = false
         
-//        println(UIFont.fontNamesForFamilyName(Globals.EnglishFont))
-        
         for i in 0 ..< tableView.numberOfSections() {
             var header = tableView.headerViewForSection(i)
             var footer = tableView.footerViewForSection(i)
-            var font: UIFont!
+//            var font: UIFont!
             
             if header != nil || footer != nil {
                 var attribute = [
                     "NSFontNameAttribute" : Globals.EnglishFont,
                     "NSCTFontUIUsageAttribute" : UIFontTextStyleBody]
-//                var attributes: [(NSObject : AnyObject)] = 
                 var descriptor: UIFontDescriptor! = UIFontDescriptor(fontAttributes: attribute)
-                font = UIFont(descriptor: descriptor, size: 13)
-//                font = UIFont(name: Globals.EnglishFont, size: 13)
-//                [UIFont fontWithDescriptor:[UIFontDescriptor fontDescriptorWithFontAttributes:@{@"NSCTFontUIUsageAttribute" : UIFontTextStyleBody,
-//                    @"NSFontNameAttribute" : @"Avenir-Light"}] size:14.0]
-            }
-            
-            if let item = header {
-                item.textLabel.font = font
-                success = true
-            }
-            
-            if let item = footer {
-                item.textLabel.font = font
-                success = true
+                
+                if let item = header {
+                    item.textLabel.font = UIFont(descriptor: descriptor, size: item.textLabel.font.pointSize)
+                    success = true
+                }
+                
+                if let item = footer {
+                    item.textLabel.font = UIFont(descriptor: descriptor, size: item.textLabel.font.pointSize)
+                    item.textLabel.numberOfLines = 0
+                    var frame = item.textLabel.frame
+                    item.textLabel.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.width, frame.height + 20)
+                    success = true
+                }
             }
         }
         
-        println("run")
         if success {
-            println("success")
-            
             fontUpdated = true
         } else {
             var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateFonts", userInfo: nil, repeats: false)
         }
     }
     override func viewDidAppear(animated: Bool) {
+        volume.value = RootContainer.instance.settings.volume.floatValue
+        
         updateFonts()
     }
 //        super.viewDidAppear(animated)

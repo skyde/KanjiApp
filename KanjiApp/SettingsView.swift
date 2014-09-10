@@ -3,12 +3,18 @@ import UIKit
 import CoreData
 import MessageUI
 
+var rootSettingsViewInstance: SettingsView? = nil
+
 class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate {
     
-    @IBOutlet var volume: UISlider!
+    class var instance: SettingsView {
+        get { return rootSettingsViewInstance! }
+    }
     
-    @IBAction func onVolumeChanged(sender: AnyObject) {
-        settings.volume = volume.value
+//    @IBOutlet var volume: UISlider!
+    
+    @IBAction func onVolumeChanged(sender: UISlider) {
+        settings.volume = sender.value
         saveContext()
     }
     
@@ -22,6 +28,7 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         super.viewDidLoad()
         
 //        volume.value = settings.volume.floatValue
+        rootSettingsViewInstance = self
     }
     
     func exportUserList() -> String {
@@ -81,10 +88,6 @@ class SettingsView: CustomUIViewController, MFMailComposeViewControllerDelegate 
         var messageBody = "This is a backup of user data for the app Kanji"
         var toRecipents = []
         var mc: MFMailComposeViewController = MFMailComposeViewController()
-        
-//        println("Mail Text")
-//        println(pathString)
-//        println(value)
         
         var data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)//NSData(contentsOfFile: pathString)////
         //MFMailComposeViewControllerDelegate
