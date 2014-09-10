@@ -519,12 +519,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func advanceCard() {
-        isFront = !isFront
-        
         if isBack && due.count >= 1 {
             var remove = due.removeAtIndex(0)
             undoStack.append(remove)
         }
+        
+        isFront = !isFront
         
         if due.count == 0 {
             fetchCards(clearUndoStack: false)
