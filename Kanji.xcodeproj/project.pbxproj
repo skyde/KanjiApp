@@ -42,6 +42,7 @@
 		847B181F19A9AC0700F5A798 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181B19A9AC0700F5A798 /* PaRomajiKanaConverter.m */; };
 		847B182019A9AC0700F5A798 /* PaRomajiKanaConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */; };
 		8494F3E119BF0F5200833ACE /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494F3E019BF0F5200833ACE /* AnimationState.swift */; };
+		8494F3E319C0308000833ACE /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494F3E219C0308000833ACE /* SettingsTableView.swift */; };
 		8495BB89198B2C1C0077D8CE /* TextToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB88198B2C1C0077D8CE /* TextToken.swift */; };
 		8495BB8C1994F9D50077D8CE /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB8B1994F9D50077D8CE /* Container.swift */; };
 		8495BB8E1995B8700077D8CE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495BB8D1995B8700077D8CE /* Notification.swift */; };
@@ -139,6 +140,7 @@
 		847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaRomajiKanaConverterTest.m; path = External/PaRomajiKanaConverterTest.m; sourceTree = "<group>"; };
 		847B182119A9AED400F5A798 /* Kanji-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kanji-Bridging-Header.h"; sourceTree = "<group>"; };
 		8494F3E019BF0F5200833ACE /* AnimationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationState.swift; sourceTree = "<group>"; };
+		8494F3E219C0308000833ACE /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 		8495BB88198B2C1C0077D8CE /* TextToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToken.swift; sourceTree = "<group>"; };
 		8495BB8B1994F9D50077D8CE /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		8495BB8D1995B8700077D8CE /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				8456350F199F40E90033B2BD /* EdgeReveal.swift */,
 				84010BD4199F78A400138572 /* CardPropertiesSidebar.swift */,
 				84603D6919A088BC00F45A32 /* CustomUITextView.swift */,
+				8494F3E219C0308000833ACE /* SettingsTableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				84010BD9199F90C100138572 /* CardPropertiesType.swift in Sources */,
 				847B182019A9AC0700F5A798 /* PaRomajiKanaConverterTest.m in Sources */,
 				84DCE9F8197DF83100E4740A /* Globals.swift in Sources */,
+				8494F3E319C0308000833ACE /* SettingsTableView.swift in Sources */,
 				8495BB8C1994F9D50077D8CE /* Container.swift in Sources */,
 				84010BD5199F78A400138572 /* CardPropertiesSidebar.swift in Sources */,
 				842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */,
