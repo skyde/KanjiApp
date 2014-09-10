@@ -1448,7 +1448,7 @@ all due cards</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="BACKUP DATABASE" footerTitle="Send a copy of all your current words and their review state by email to yourself to back them up." id="sPS-eD-juT">
+                            <tableViewSection headerTitle="BACKUP DATABASE" footerTitle="Send a copy of all your current words and their review state by email to yourself to back them up" id="sPS-eD-juT">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="C7P-SZ-qPR">
                                         <autoresizingMask key="autoresizingMask"/>
