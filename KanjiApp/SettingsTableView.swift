@@ -20,75 +20,28 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
     
     @IBAction func studyAmountTapped(sender: UISegmentedControl) {
         
-        switch numCardsToAdd.selectedSegmentIndex {
-        case 1:
-            RootContainer.instance.settings.cardAddAmount = 0
-        case 3:
+        switch sender.selectedSegmentIndex {
+        case 0:
             RootContainer.instance.settings.cardAddAmount = 1
-        case 5:
-            RootContainer.instance.settings.cardAddAmount = 2
-        case 10:
+        case 1:
             RootContainer.instance.settings.cardAddAmount = 3
-        case 20:
-            RootContainer.instance.settings.cardAddAmount = 4
+        case 2:
+            RootContainer.instance.settings.cardAddAmount = 5
+        case 3:
+            RootContainer.instance.settings.cardAddAmount = 10
+        case 4:
+            RootContainer.instance.settings.cardAddAmount = 20
         default:
             break
         }
-
+        
+        RootContainer.instance.saveContext()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//    UITableViewHeaderFooterView.appearance().set
-//        UIBarButtonItem.appearance().setTitleTextAttributes(<#attributes: [NSObject : AnyObject]!#>, forState: <#UIControlState#>)
-//        UILabel.appearance().set
-//        UILabel.appearanceForTraitCollection(<#trait: UITraitCollection!#>)
-//        [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont boldSystemFontOfSize:28]];
     }
-    
-//    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
-//        
-////        var label = super.tableView(tableView, viewForHeaderInSection: section)
-////        
-////        println(label)
-////        
-////        for subView in label.subviews {
-////            println(subView)
-////        }
-//        
-//        var label = UILabel()
-//        label.frame = CGRectMake(20, 8, 320, 20)
-//        label.font = UIFont(name: Globals.EnglishFont, size: 16)
-//        label.text = tableView.headerViewForSection(<#section: Int#>)//self.tableView.headerViewForSection(0)
-////        UILabel *myLabel = [[UILabel alloc] init];
-////        myLabel.frame = CGRectMake(20, 8, 320, 20);
-////        myLabel.font = [UIFont boldSystemFontOfSize:18];
-////        myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-//
-//        var labelView = UIView()
-//        labelView.addSubview(labelView)
-//        
-//        return label
-////        
-////        UIView *headerView = [[UIView alloc] init];
-////        [headerView addSubview:myLabel];
-////        
-////        return headerView;
-//
-//    }
-//
-//    func func tableView(tableView: UITableView!, viewForFooterInSection section: Int) -> UIView! {
-////        <#code#>
-//    }
-    
-//    tablevi
-//    
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        
-//    }
     
     var fontUpdated = false
     func updateFonts() {
@@ -97,7 +50,6 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
         for i in 0 ..< tableView.numberOfSections() {
             var header = tableView.headerViewForSection(i)
             var footer = tableView.footerViewForSection(i)
-//            var font: UIFont!
             
             if header != nil || footer != nil {
                 var attribute = [

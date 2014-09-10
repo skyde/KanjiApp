@@ -1435,7 +1435,7 @@ all due cards</string>
                                                         <segment title="20"/>
                                                     </segments>
                                                     <connections>
-                                                        <action selector="studyAmountTapped:" destination="ymQ-UJ-hHR" eventType="touchUpInside" id="P2Z-Fo-PwK"/>
+                                                        <action selector="studyAmountTapped:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="7mb-is-29n"/>
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
