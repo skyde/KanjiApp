@@ -271,6 +271,19 @@ class Card: NSManagedObject {
 //        }
 //    }
     
+    var backScrollUpKanjiTextHeight: CGFloat {
+    get {
+        let baseSize: CGFloat = 80
+        
+        var size = baseSize * 3 / CGFloat(countElements(kanji))
+        
+        if size > baseSize {
+            size = baseSize
+        }
+        return size
+    }
+    }
+    
     var back: NSAttributedString {
     get {
         let font = Globals.JapaneseFont
@@ -279,15 +292,7 @@ class Card: NSManagedObject {
         value.beginEditing()
         
         // scroll up kanji
-        let baseSize: CGFloat = 80
-        
-        var size = baseSize * 3 / CGFloat(countElements(kanji))
-        
-        if size > baseSize {
-            size = baseSize
-        }
-        
-        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: size))])
+        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: backScrollUpKanjiTextHeight))])
         
         // main text
         value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50))])

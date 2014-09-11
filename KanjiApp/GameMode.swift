@@ -77,20 +77,24 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
     
-    let topInset: CGFloat = 100
+    let topInset: CGFloat = 30
     var backTextCache: NSAttributedString! = nil
     var frontTextCache: UIFont! = nil
     var nextFrontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
-        var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
-        
-        if scrollView.contentOffset.y != topInset && diff < 0.1 {
-            scrollOutputTextToInset()
+        if let dueCard = dueCard {
+            var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
+            
+            if scrollView.contentOffset.y != dueCard.backScrollUpKanjiTextHeight + topInset && diff < 0.1 {
+                scrollOutputTextToInset()
+            }
         }
     }
     
     private func scrollOutputTextToInset() {
-        outputText.setContentOffset(CGPoint(x: 0, y: topInset), animated: false)
+        if let dueCard = dueCard {
+            outputText.setContentOffset(CGPoint(x: 0, y: dueCard.backScrollUpKanjiTextHeight + topInset), animated: false)
+        }
     }
     
     private func tryGenerateFrontTextCache(card: Card) {
