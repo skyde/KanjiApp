@@ -77,7 +77,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         return self.childViewControllers[0] as CardPropertiesSidebar
     }
     
-    let topInset: CGFloat = 30
+    let topInset: CGFloat = 20
     var backTextCache: NSAttributedString! = nil
     var frontTextCache: UIFont! = nil
     var nextFrontTextCache: NSAttributedString! = nil
