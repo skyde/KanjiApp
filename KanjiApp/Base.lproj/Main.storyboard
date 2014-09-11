@@ -1882,9 +1882,9 @@ all due cards</string>
         <image name="taskList" width="1309" height="1309"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vgr-gb-U0p"/>
-        <segue reference="daX-c3-wht"/>
-        <segue reference="0Q0-aS-4tM"/>
+        <segue reference="ocT-bm-8xQ"/>
         <segue reference="o8I-8R-76U"/>
+        <segue reference="0Q0-aS-4tM"/>
+        <segue reference="NNU-PR-Fp5"/>
     </inferredMetricsTieBreakers>
 </document>

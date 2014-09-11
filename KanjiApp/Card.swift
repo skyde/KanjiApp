@@ -185,7 +185,8 @@ class Card: NSManagedObject {
             
         let baseSize: CGFloat = 250
         
-        var size = baseSize * 2 * 0.7 / CGFloat(countElements(kanji))
+        var size = baseSize / CGFloat(countElements(kanji))
+        size *=  (Globals.screenSize.height * Globals.retinaScale) / (1136.0 / 2.0)
         
         if size > baseSize {
             size = baseSize
