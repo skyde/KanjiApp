@@ -173,65 +173,103 @@ class Card: NSManagedObject {
     }
     
 //    func setFrontTextFont(label: UILabel) -> UIFont {
-//    }
-    
-    var front: NSAttributedString {
+    //    }
+    var frontText: String {
         get {
-        
+            return Globals.screenOrientationVertical ? verticalKanji : kanji
+        }
+    }
+    
+    var frontFont: UIFont {
+    get {
         let font = Globals.DefaultFont
-        var value = NSMutableAttributedString()
         
-        value.beginEditing()
-            
+//        var numChars: Int,
+        let desiredDistance = Globals.screenOrientationVertical ? Globals.screenSize.height : Globals.screenSize.width
+//        let numVerticalChars: Int = Globals.screenOrientationVertical ? countElements(kanji) : 1
+        
         let baseSize: CGFloat = 250
         
         var size = baseSize / CGFloat(countElements(kanji))
-        size *=  (Globals.screenSize.height * Globals.retinaScale) / (1136.0 / 2.0)
+        size *= desiredDistance / (568) * 2
         
         if size > baseSize {
             size = baseSize
         }
-            
-        var paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Center
-            
-        let fontPair: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
-        let paragraph: (String, AnyObject) = (NSParagraphStyleAttributeName, paragraphStyle)
-            
-        value.addAttributedText(verticalKanji, [fontPair, paragraph])
-        value.endEditing()
         
-        return value
+        return UIFont(name: font, size: size)
     }
     }
     
-    var frontLandscape: NSAttributedString {
-        get {
-            let font = Globals.DefaultFont
-            var value = NSMutableAttributedString()
-            
-            value.beginEditing()
-            
-            let baseSize: CGFloat = 250
-            
-            var size = baseSize * 2 / CGFloat(countElements(kanji))
-            
-            if size > baseSize {
-                size = baseSize
-            }
-            
-            var paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .Center
-            
-            let fontPair: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
-            let paragraph: (String, AnyObject) = (NSParagraphStyleAttributeName, paragraphStyle)
-            
-            value.addAttributedText(kanji, [fontPair, paragraph])
-            value.endEditing()
-            
-            return value
-        }
-    }
+//    private func generateFrontText(text: String, numChars: Int, desiredDistance: CGFloat, numVerticalChars: Int = 1) -> NSAttributedString {
+//        
+//        var value = NSMutableAttributedString()
+//        
+//        value.beginEditing()
+//        //        var height = size * CGFloat(numVerticalChars)// * (568.0 / 500.0)
+////        println(height)
+////        println(Globals.screenSize)
+////        let screenHeight = Globals.screenSize.height
+////        var offset = (screenHeight / 2 - (height / 2)) / 4
+//        println(Globals.retinaScale)
+//        value.addAttributedText(" ", [(NSFontAttributeName, UIFont(name: "Helvetica", size: offset))]);
+//        let baseSize: CGFloat = 250
+        
+//        var paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.alignment = .Center
+//        
+//        let fontPair: (String, AnyObject) = (NSFontAttributeName, )
+//        let paragraph: (String, AnyObject) = (NSParagraphStyleAttributeName, paragraphStyle)
+//        
+//        value.addAttributedText(text, [fontPair, paragraph])
+//        value.endEditing()
+//
+//        return value
+//    }
+//    
+//    var front: NSAttributedString {
+//        get {
+//            
+//        return generateFrontText(
+//            verticalKanji,
+//            numChars: countElements(kanji),
+//            desiredDistance: Globals.screenSize.height * Globals.retinaScale,
+//            numVerticalChars: countElements(kanji))
+//    }
+//    }
+//    
+//    var frontLandscape: NSAttributedString {
+//        get {
+//            return generateFrontText(
+//                kanji,
+//                numChars: countElements(kanji),
+//                desiredDistance: Globals.screenSize.width * Globals.retinaScale)
+//            
+////            let font = Globals.DefaultFont
+////            var value = NSMutableAttributedString()
+////            
+////            value.beginEditing()
+////            
+////            let baseSize: CGFloat = 250
+////            
+////            var size = baseSize * 2 / CGFloat(countElements(kanji))
+////            
+////            if size > baseSize {
+////                size = baseSize
+////            }
+////            
+////            var paragraphStyle = NSMutableParagraphStyle()
+////            paragraphStyle.alignment = .Center
+////            
+////            let fontPair: (String, AnyObject) = (NSFontAttributeName, UIFont(name: font, size: size))
+////            let paragraph: (String, AnyObject) = (NSParagraphStyleAttributeName, paragraphStyle)
+////            
+////            value.addAttributedText(kanji, [fontPair, paragraph])
+////            value.endEditing()
+////            
+////            return value
+//        }
+//    }
     
     var back: NSAttributedString {
     get {

@@ -79,7 +79,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     let topInset: CGFloat = 100
     var backTextCache: NSAttributedString! = nil
-    var frontTextCache: NSAttributedString! = nil
+    var frontTextCache: UIFont! = nil
     var nextFrontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
@@ -95,7 +95,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     private func tryGenerateFrontTextCache(card: Card) {
         if frontTextCache == nil {
-            frontTextCache = Globals.screenOrientationVertical ? card.front : card.frontLandscape
+//            println("Globals.screenOrientationVertical = \(Globals.screenOrientationVertical)")
+            
+            frontTextCache = card.frontFont
         }
     }
     
@@ -113,7 +115,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if let card = dueCard {
             if isFront {
                 tryGenerateFrontTextCache(card)
-                kanjiView.attributedText = frontTextCache
+                kanjiView.text = card.frontText
+                kanjiView.font = frontTextCache
                 frontTextCache = nil
             }
             else {
@@ -139,6 +142,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     override func viewDidLoad() {
         super.viewDidLoad()
         setupEdgeReveal()
+        
+//        kanjiView.contenth
         
         leftIndicator.hidden = true
         rightIndicator.hidden = true

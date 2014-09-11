@@ -46,8 +46,21 @@ struct Globals
         get {
             var size = UIScreen.mainScreen().bounds.size
             return CGRectMake(0, 0, size.width, size.height)
+        }
     }
+    
+    static var screenSize: CGSize {
+        get {
+            return UIScreen.mainScreen().bounds.size
+        }
     }
+
+//    static var screenSizeRetinaIndependent: CGSize {
+//        get {
+//            var size = UIScreen.mainScreen().bounds.size
+//            return CGSize(width: size.width * retinaScale, height: size.height * retinaScale)
+//        }
+//    }
     
     static var screenOrientationVertical: Bool {
     get {
@@ -63,73 +76,73 @@ struct Globals
     }
     }
     
-    static var screenSize: CGSize {
+//    static var screenSize: CGSize {
+//        get {
+//            return UIScreen.mainScreen().bounds.size
+//    }
+//    }
+    
+    static var secondsSince1970: Double {
         get {
-            return UIScreen.mainScreen().bounds.size
-    }
-}
-    
-static var secondsSince1970: Double {
-    get {
-        return NSDate().timeIntervalSince1970
-    }
-}
-
-private static var cachedRetinaScale: CGFloat! = nil
-static var retinaScale: CGFloat {
-    get {
-        if cachedRetinaScale == nil {
-            cachedRetinaScale = UIScreen.mainScreen().scale
+            return NSDate().timeIntervalSince1970
         }
-        
-        return cachedRetinaScale
     }
-}
 
-private static var _audioDirectoryPath: NSString?
-
-private static func initAudioDirectoryPath() {
-    if _audioDirectoryPath == nil {
-    let filemgr = NSFileManager.defaultManager()
-    
-    var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
-    
-    var documentsDirectory = paths.objectAtIndex(0) as NSString
-    var audioPath = documentsDirectory.stringByAppendingPathComponent("Audio")
-    _audioDirectoryPath = audioPath
+    private static var cachedRetinaScale: CGFloat! = nil
+    static var retinaScale: CGFloat {
+        get {
+            if cachedRetinaScale == nil {
+                cachedRetinaScale = UIScreen.mainScreen().scale
+            }
+            
+            return cachedRetinaScale
+        }
     }
-}
 
-static var audioDirectoryPath: NSString {
-get {
-    initAudioDirectoryPath()
+    private static var _audioDirectoryPath: NSString?
+
+    private static func initAudioDirectoryPath() {
+        if _audioDirectoryPath == nil {
+        let filemgr = NSFileManager.defaultManager()
         
-    return _audioDirectoryPath!
-}
-}
+        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray
+        
+        var documentsDirectory = paths.objectAtIndex(0) as NSString
+        var audioPath = documentsDirectory.stringByAppendingPathComponent("Audio")
+        _audioDirectoryPath = audioPath
+        }
+    }
 
-static var audioDirectoryExists: Bool {
+    static var audioDirectoryPath: NSString {
     get {
         initAudioDirectoryPath()
-        
-        let filemgr = NSFileManager.defaultManager()
-//            var boolPointer: UnsafeMutablePointer<ObjCBool> = nil
-//            var trueBool = true
-//            boolPointer = &trueBool
-        
-//            println(filemgr.fileExistsAtPath(audioDirectoryPath))
-        
-        return filemgr.fileExistsAtPath(audioDirectoryPath)
-//        filemgr.
-//        var dirFiles = filemgr.contentsOfDirectoryAtPath(audioPath, error: nil) as NSArray
-//
-//        for file in dirFiles {
-//
-//            println(file)
-//        }
-//        return true
-}
-}
+            
+        return _audioDirectoryPath!
+    }
+    }
+
+    static var audioDirectoryExists: Bool {
+        get {
+            initAudioDirectoryPath()
+            
+            let filemgr = NSFileManager.defaultManager()
+    //            var boolPointer: UnsafeMutablePointer<ObjCBool> = nil
+    //            var trueBool = true
+    //            boolPointer = &trueBool
+            
+    //            println(filemgr.fileExistsAtPath(audioDirectoryPath))
+            
+            return filemgr.fileExistsAtPath(audioDirectoryPath)
+    //        filemgr.
+    //        var dirFiles = filemgr.contentsOfDirectoryAtPath(audioPath, error: nil) as NSArray
+    //
+    //        for file in dirFiles {
+    //
+    //            println(file)
+    //        }
+    //        return true
+    }
+    }
 }
 
 func randomRange(min: Double, max: Double) -> Double {
