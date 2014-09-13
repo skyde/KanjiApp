@@ -4,13 +4,13 @@ import AVFoundation
 
 enum GameTutorialState {
     case Disabled
-    case HoldToViewBack
-    case HoldUntilTimerReachesEnd
-    case HoldUntilTimerReachesEndMistake
+    case LongPressFront
+    case LongPressBack
+    case LongPressMistake
     case CardBackExplain
-    case PressReleaseQuicklyFront
-    case PressReleaseQuicklyBack
-    case PressReleaseQuicklyFrontMistake
+    case AutoAdvanceFront
+    case AutoAdvanceBack
+    case AutoAdvanceMistake
     case Finished
     
     var enabled: Bool {
@@ -206,6 +206,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func onLongPress(sender: UILongPressGestureRecognizer) {
+        if tutorialState == .Finished {
+            switch sender.state {
+            case .Began:
+                didPan = true
+            case .Ended:
+                didPan = false
+                tutorialState = .Disabled
+                updateTutorialDisplay(forceUpdate: true)
+            default:
+                break
+            }
+            return
+        }
         
         switch sender.state {
         case .Began:
@@ -280,17 +293,24 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         
         var percent = (NSDate.timeIntervalSinceReferenceDate() - downTime) / longPressTime
         
+        var autoAdvanced = false
+        
         progressBar.visible = false
         if percent < 1 && !didPan && wasFront {
             downTime = 0
             answerCard(.Normal)
-        } else {
-            if  tutorialState == .HoldUntilTimerReachesEnd ||
-                tutorialState == .HoldUntilTimerReachesEndMistake {
-                tutorialState = .CardBackExplain
-                updateTutorialDisplay()
-            }
+            
+            autoAdvanced = true
         }
+        
+        updateTutorialOnUp(autoAdvanced)
+//        else {
+//            if  tutorialState == .HoldUntilTimerReachesEnd ||
+//                tutorialState == .HoldUntilTimerReachesEndMistake {
+//                tutorialState = .CardBackExplain
+//                updateTutorialDisplay()
+//            }
+//        }
 //        else {
 //            frontBlocker.visible = false
 //        }
@@ -537,24 +557,28 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     private func setupTutorial() {
-        tutorialState = .HoldToViewBack
+        // TODO: setup from start tutorial button press
+        tutorialState = .LongPressFront
         
         if tutorialState != .Disabled {
-            tutorialState = .HoldToViewBack
+            tutorialState = .LongPressFront
         }
         
-        updateTutorialDisplay()
+        updateTutorialDisplay(forceUpdate: true)
     }
     
-    
-    private func updateTutorialDisplay() {
-        tutorialHoldToViewBack.visible = tutorialState == .HoldToViewBack
-        tutorialHoldUntilTimerReachesEnd.visible = tutorialState == .HoldUntilTimerReachesEnd
-        tutorialHoldUntilTimerReachesEndMistake.visible = tutorialState == .HoldUntilTimerReachesEndMistake
+    private func updateTutorialDisplay(forceUpdate: Bool = false) {
+        if tutorialState == .Disabled && !forceUpdate {
+            return
+        }
+        
+        tutorialHoldToViewBack.visible = tutorialState == .LongPressFront
+        tutorialHoldUntilTimerReachesEnd.visible = tutorialState == .LongPressBack
+        tutorialHoldUntilTimerReachesEndMistake.visible = tutorialState == .LongPressMistake
         tutorialCardBackExplain.visible = tutorialState == .CardBackExplain
-        tutorialPressReleaseQuicklyFront.visible = tutorialState == .PressReleaseQuicklyFront
-        tutorialPressReleaseQuicklyBack.visible = tutorialState == .PressReleaseQuicklyBack
-        tutorialPressReleaseQuicklyFrontMistake.visible = tutorialState == .PressReleaseQuicklyFrontMistake
+        tutorialPressReleaseQuicklyFront.visible = tutorialState == .AutoAdvanceFront
+        tutorialPressReleaseQuicklyBack.visible = tutorialState == .AutoAdvanceBack
+        tutorialPressReleaseQuicklyFrontMistake.visible = tutorialState == .AutoAdvanceMistake
         tutorialFinished.visible = tutorialState == .Finished
     }
     
@@ -595,15 +619,56 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    tutorialHoldUntilTimerReachesEndMistake.visible = false
 //    tutorialCardBackExplain.visible = false
     
+    private func updateTutorialOnUp(autoAdvanced: Bool) {
+        
+//        println("updateTutorialOnUp, autoAdvanced = \(autoAdvanced), \(tutorialState.hashValue)")
+//        println("updateTutorialOnUp, autoAdvanced = \(autoAdvanced)")
+        
+        switch tutorialState {
+        case .LongPressBack:
+            if autoAdvanced {
+                tutorialState = .LongPressMistake
+            } else {
+                tutorialState = .CardBackExplain
+            }
+        case .AutoAdvanceBack:
+            if !autoAdvanced {
+                tutorialState = .AutoAdvanceMistake
+            } else {
+                tutorialState = .Finished
+            }
+        default:
+            break
+        }
+        
+        updateTutorialDisplay()
+    }
     
     private func stepTutorial() {
-        if  isBack &&
-            (tutorialState == .HoldToViewBack || tutorialState == .HoldUntilTimerReachesEndMistake ) {
-                tutorialState = .HoldUntilTimerReachesEnd
-        }
-        if  isFront &&
-            (tutorialState == .HoldUntilTimerReachesEnd) {
-                tutorialState = .HoldUntilTimerReachesEndMistake
+        
+        if isBack {
+            switch tutorialState {
+            case .LongPressFront:
+                tutorialState = .LongPressBack
+            case .LongPressMistake:
+                tutorialState = .LongPressBack
+                
+            case .AutoAdvanceFront:
+                tutorialState = .AutoAdvanceBack
+            case .AutoAdvanceMistake:
+                tutorialState = .AutoAdvanceBack
+            default:
+                break
+            }
+        } else {
+            switch tutorialState {
+            case .CardBackExplain:
+                tutorialState = .AutoAdvanceFront
+            case .AutoAdvanceMistake:
+                tutorialState = .AutoAdvanceFront
+            default:
+                break
+            }
         }
         
         updateTutorialDisplay()
