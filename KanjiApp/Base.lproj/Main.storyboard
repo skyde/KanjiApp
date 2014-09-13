@@ -1719,7 +1719,7 @@ all due cards</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="TUTORIAL BUTTON" footerTitle="Toggle a button at the top right of study mode which activates a tutorial" id="r1j-KL-5aN">
+                            <tableViewSection headerTitle="TUTORIAL BUTTON" footerTitle="Toggles a button at the top right of study mode which activates a tutorial" id="r1j-KL-5aN">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="naX-G0-HVn">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1750,7 +1750,7 @@ all due cards</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="SIDEBAR BUTTON" footerTitle="Toggle a button at the top left of study mode which opens the main navigation menu" id="N48-Yy-Ut0">
+                            <tableViewSection headerTitle="SIDEBAR BUTTON" footerTitle="Toggles a button at the top left of study mode which opens the main navigation menu" id="N48-Yy-Ut0">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="qpr-Pd-HNt">
                                         <autoresizingMask key="autoresizingMask"/>
