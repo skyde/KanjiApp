@@ -101,6 +101,15 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
         
 //        selectedSegmentIndex
     }
+    @IBAction func showTutorialButtonValueChanged(sender: UISwitch)
+    {
+        RootContainer.instance.settings.hideTutorialButton = !sender.on
+        RootContainer.instance.saveContext()
+    }
+    @IBAction func showSidebarButtonValueChanged(sender: UISwitch) {
+        RootContainer.instance.settings.hideSidebarButton = !sender.on
+        RootContainer.instance.saveContext()
+    }
 //        super.viewDidAppear(animated)
 //        for i in 0 ..< table.numberOfSections() {
 //            if let header = table.headerViewForSection(i) {

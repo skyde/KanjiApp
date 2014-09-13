@@ -1734,6 +1734,9 @@ all due cards</string>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-VU-WnS">
                                                     <rect key="frame" x="531" y="11" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="showTutorialButtonValueChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="SOo-2L-9Rw"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1762,6 +1765,9 @@ all due cards</string>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbm-di-3Ib">
                                                     <rect key="frame" x="531" y="11" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="showSidebarButtonValueChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="6as-H8-2jf"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
