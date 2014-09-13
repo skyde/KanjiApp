@@ -94,12 +94,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         return value
     }
     
+//    func timeForIntervalSimple(time: Double) -> Double {
+//        
+//        let min: Double = 60.0
+//        let hour: Double = 60.0 * 60.0
+//        let day: Double = hour * 24.0
+//        let month: Double = day * (365.0 / 12.0)
+//        let year: Double = day * 365.0
+//        
+//        if time < 0 {
+//            return 0
+//        } else if time < 5 {
+//            return 1
+//        } else if time < 25 {
+//            return 2
+//        } else if time < 2 * min {
+//            return 3
+//        } else if time < 10 * min {
+//            return 4
+//        } else if time < 60 * min {
+//            return 5
+//        } else if time < 5 * hour {
+//            return 6
+//        } else if time < day {
+//            return 7
+//        } else if time < 5 * day {
+//            return 8
+//        } else if time < 25 * day {
+//            return 9
+//        } else if time < 4 * month {
+//            return 10
+//        } else if time < 2 * year {
+//            return 11
+//        }
+//        
+//        return 11
+//    }
     func additiveImportList(source: String, delimiter: String, column: Int, fallbackColumn: Int) {
         managedObjectContext.undoManager.beginUndoGrouping()
         
         var values = source.componentsSeparatedByString("\n")
         for value in values {
             let splits = value.componentsSeparatedByString(delimiter)
+            
+            // Load from Anki custom code
+            
+//            if splits.count < 2 {
+//                continue
+//            }
+//            
+//            var definition = splits[1]
+//            var due = splits[0]
+//            
+//            definition = definition.removeFromString(definition, " ")
+//            definition = definition.removeFromString(definition, "/n")
+//            definition = definition.removeFromString(definition, "\\n")
+//            definition = definition[0..<countElements(definition) - 1]
+//            
+//            //2014-09-16
+//            var formatter = NSDateFormatter()
+//            formatter.dateFormat = "yyyy-MM-dd"
+//            
+//            var date = formatter.dateFromString(due)
+//            
+//            if let date = date {
+//                if let card = managedObjectContext.fetchCardByKanji(definition) {
+//                    if card.suspended.boolValue {
+//                        card.suspended = false
+//                        card.enabled = true
+//                        card.dueTime = date.timeIntervalSince1970
+//                        card.interval = timeForIntervalSimple(date.timeIntervalSinceNow)
+//                    }
+//                    
+//                }
+//            }
+//            
+//            continue
+            
+            // End load from anki code
             
             var testColumn = column
             
