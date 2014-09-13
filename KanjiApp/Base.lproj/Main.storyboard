@@ -1808,13 +1808,13 @@ all due cards</string>
                                 </connections>
                             </containerView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-QW-c25">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MuS-qs-f6w">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="RHa-Sr-2X6">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Press and hold">
                                                     <attributes>
@@ -1852,18 +1852,18 @@ Cg
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="3D0-5E-2FO"/>
+                                    <constraint firstAttribute="height" constant="200" id="3D0-5E-2FO"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDE-k4-Jaw">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XNg-sg-JBI">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="3RS-tp-Jdn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Hold an extended time">
                                                     <attributes>
@@ -1901,18 +1901,18 @@ Cg
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="1y3-sh-dSw"/>
+                                    <constraint firstAttribute="height" constant="200" id="1y3-sh-dSw"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-js-bbv">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vMJ-09-bqC">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="itD-g9-iou">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
                                                     <string key="content">Press and hold for an
@@ -1952,18 +1952,18 @@ Cg
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="BGa-kU-O1q"/>
+                                    <constraint firstAttribute="height" constant="200" id="BGa-kU-O1q"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7hm-MO-JIl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="eT3-ue-d2k">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Tap the left side of the screen">
@@ -1983,7 +1983,7 @@ Cg
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="if you forgot this card">
+                                                <fragment content="if you forgot a card">
                                                     <attributes>
                                                         <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="16" name="AvenirNext-Regular"/>
@@ -1995,7 +1995,7 @@ Cg
                                             <color key="shadowColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="uOz-S7-Df6">
-                                            <rect key="frame" x="160" y="0.0" width="160" height="150"/>
+                                            <rect key="frame" x="160" y="0.0" width="160" height="200"/>
                                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Tap the right side of the screen">
@@ -2015,7 +2015,7 @@ Cg
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="if you could to remember this card">
+                                                <fragment content="if remember a card">
                                                     <attributes>
                                                         <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="16" name="AvenirNext-Regular"/>
@@ -2039,18 +2039,18 @@ Cg
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="nKz-lt-GiD"/>
+                                    <constraint firstAttribute="height" constant="200" id="nKz-lt-GiD"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-aR-Wbk">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="whW-gG-d1Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="RY1-MU-q9N">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
                                                     <string key="content">Press and release quickly
@@ -2080,18 +2080,18 @@ Cg
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Qfj-88-7Qa"/>
+                                    <constraint firstAttribute="height" constant="200" id="Qfj-88-7Qa"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asu-W3-f4i">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lRw-9K-CCz">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-lq-N72">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
                                                     <string key="content">Release quickly
@@ -2121,18 +2121,18 @@ Cg
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="DrF-zr-WJp"/>
+                                    <constraint firstAttribute="height" constant="200" id="DrF-zr-WJp"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92L-RA-Rk1">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Srg-My-fxg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-Y0-XFs">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
                                                     <string key="content">Release your press more quickly
@@ -2163,12 +2163,12 @@ Cg
                                 </view>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="z3e-KX-oco"/>
+                                    <constraint firstAttribute="height" constant="200" id="z3e-KX-oco"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joN-QO-4Cs">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="209" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IiG-oQ-IGy">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2208,6 +2208,55 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gS-aE-NLn">
+                                <rect key="frame" x="0.0" y="209" width="320" height="150"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="EKN-DN-AWE">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-Vb-fSi">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Congratulations!">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="You are now ready to study Good luck : D">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5eg-Vb-fSi" firstAttribute="leading" secondItem="EKN-DN-AWE" secondAttribute="leading" id="D1H-io-dHk"/>
+                                        <constraint firstAttribute="bottom" secondItem="5eg-Vb-fSi" secondAttribute="bottom" id="asU-vW-jfz"/>
+                                        <constraint firstAttribute="trailing" secondItem="5eg-Vb-fSi" secondAttribute="trailing" id="mHp-r4-mM6"/>
+                                        <constraint firstItem="5eg-Vb-fSi" firstAttribute="top" secondItem="EKN-DN-AWE" secondAttribute="top" id="s9e-aA-dvt"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Shg-u0-28f"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -2217,36 +2266,34 @@ Cg
                             <constraint firstAttribute="trailing" secondItem="92L-RA-Rk1" secondAttribute="trailing" id="3jJ-YL-2pP"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="leading" secondItem="G9v-Dx-vuY" secondAttribute="trailing" id="43s-UO-dWe"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="5Bk-Ri-6bF"/>
+                            <constraint firstAttribute="centerY" secondItem="4HM-pc-ian" secondAttribute="centerY" id="611-Nf-imI"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" constant="-202" id="84r-wt-vJO"/>
                             <constraint firstItem="Kni-js-bbv" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="9r9-5l-6Ek"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
                             <constraint firstAttribute="trailing" secondItem="rDE-k4-Jaw" secondAttribute="trailing" id="EAy-mn-d4S"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
-                            <constraint firstAttribute="bottom" secondItem="joN-QO-4Cs" secondAttribute="bottom" id="Jbh-Sr-7Vo"/>
+                            <constraint firstAttribute="centerY" secondItem="Ywv-QW-c25" secondAttribute="centerY" id="J65-lS-jr6"/>
                             <constraint firstAttribute="trailing" secondItem="Ywv-QW-c25" secondAttribute="trailing" id="KgE-gK-LmP"/>
                             <constraint firstItem="cja-ey-lDl" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="LCf-1K-wvB"/>
                             <constraint firstItem="92L-RA-Rk1" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="MZg-C8-wZW"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
-                            <constraint firstAttribute="bottom" secondItem="4HM-pc-ian" secondAttribute="bottom" id="QlD-DE-ewg"/>
                             <constraint firstAttribute="trailing" secondItem="asu-W3-f4i" secondAttribute="trailing" id="RJI-On-eiz"/>
                             <constraint firstAttribute="bottom" secondItem="cja-ey-lDl" secondAttribute="bottom" id="SQC-FY-y9u"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="UtM-qI-2fm"/>
                             <constraint firstItem="rDE-k4-Jaw" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="VJL-q8-RDZ"/>
                             <constraint firstAttribute="trailing" secondItem="joN-QO-4Cs" secondAttribute="trailing" id="YPe-Oy-ZcG"/>
-                            <constraint firstAttribute="bottom" secondItem="Ywv-QW-c25" secondAttribute="bottom" id="YZa-Ml-Ibs"/>
+                            <constraint firstAttribute="centerY" secondItem="Kni-js-bbv" secondAttribute="centerY" id="ZOu-C4-bQh"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
+                            <constraint firstAttribute="centerY" secondItem="joN-QO-4Cs" secondAttribute="centerY" id="aUI-Uo-Ycd"/>
                             <constraint firstAttribute="trailing" secondItem="H0R-aR-Wbk" secondAttribute="trailing" id="bNO-E6-Jet"/>
                             <constraint firstItem="5Rm-K1-JvN" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="bWX-He-sBo"/>
-                            <constraint firstAttribute="bottom" secondItem="Kni-js-bbv" secondAttribute="bottom" id="c4h-IV-WCh"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="cJG-hC-xSm"/>
                             <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
-                            <constraint firstAttribute="bottom" secondItem="92L-RA-Rk1" secondAttribute="bottom" id="eTn-cO-M2K"/>
-                            <constraint firstAttribute="bottom" secondItem="H0R-aR-Wbk" secondAttribute="bottom" id="gPu-i0-Fwm"/>
+                            <constraint firstAttribute="centerY" secondItem="H0R-aR-Wbk" secondAttribute="centerY" id="glB-7C-U4v"/>
                             <constraint firstItem="4HM-pc-ian" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hFu-ru-bKJ"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
                             <constraint firstAttribute="trailing" secondItem="cja-ey-lDl" secondAttribute="trailing" id="iMd-ay-WFp"/>
-                            <constraint firstAttribute="bottom" secondItem="asu-W3-f4i" secondAttribute="bottom" id="iey-nA-8ce"/>
                             <constraint firstItem="H0R-aR-Wbk" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="jRS-jr-MnW"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
@@ -2255,10 +2302,12 @@ Cg
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
                             <constraint firstItem="Ywv-QW-c25" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="t57-5q-zOT"/>
                             <constraint firstItem="asu-W3-f4i" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="tQ2-QV-yMT"/>
+                            <constraint firstAttribute="centerY" secondItem="92L-RA-Rk1" secondAttribute="centerY" id="tn3-ax-BdM"/>
                             <constraint firstAttribute="trailing" secondItem="Kni-js-bbv" secondAttribute="trailing" id="u6c-l7-wlD"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="wmS-Ui-wV8"/>
+                            <constraint firstAttribute="centerY" secondItem="rDE-k4-Jaw" secondAttribute="centerY" id="woj-3c-KPm"/>
                             <constraint firstAttribute="trailing" secondItem="vow-0B-FuC" secondAttribute="trailing" id="xYW-mx-GnI"/>
-                            <constraint firstAttribute="bottom" secondItem="rDE-k4-Jaw" secondAttribute="bottom" id="xdD-W6-hPp"/>
+                            <constraint firstAttribute="centerY" secondItem="asu-W3-f4i" secondAttribute="centerY" id="xqn-qx-rpw"/>
                             <constraint firstItem="joN-QO-4Cs" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="yFN-g1-UXC"/>
                             <constraint firstAttribute="trailing" secondItem="09R-SB-r3f" secondAttribute="trailing" id="ypA-gB-3GN"/>
                             <constraint firstAttribute="trailing" secondItem="4HM-pc-ian" secondAttribute="trailing" id="zMv-bV-eqk"/>
@@ -2273,6 +2322,7 @@ Cg
                         <outlet property="kanjiView" destination="PTp-ZI-4VH" id="1II-hK-YDu"/>
                         <outlet property="leftIndicator" destination="G9v-Dx-vuY" id="GnO-gq-du6"/>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
+                        <outlet property="postTutorialFinished" destination="1gS-aE-NLn" id="zaz-jL-r19"/>
                         <outlet property="progressBar" destination="09R-SB-r3f" id="JRL-dQ-GLD"/>
                         <outlet property="propertiesSidebar" destination="5Rm-K1-JvN" id="bKl-UT-2ev"/>
                         <outlet property="rightIndicator" destination="vow-0B-FuC" id="Wc0-lS-48l"/>

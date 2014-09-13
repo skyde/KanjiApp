@@ -12,6 +12,7 @@ enum GameTutorialState {
     case AutoAdvanceBack
     case AutoAdvanceMistake
     case Finished
+    case PostFinished
     
     var enabled: Bool {
     get {
@@ -37,7 +38,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var timer: NSTimer!
     let frameRate: Double = 1.0 / 60.0
     
-    let longPressTime: Double = 1.5
+    var baseLongPressTime: Double!
+    var longPressTime: Double = 1.5
+    var tutorialLongPressTime: Double = 2.5
     let maxPan: CGFloat = 35
     @IBOutlet weak var leftIndicator: UILabel!
     @IBOutlet weak var rightIndicator: UILabel!
@@ -74,6 +77,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     @IBOutlet weak var tutorialPressReleaseQuicklyFrontMistake: UIVisualEffectView!
     @IBOutlet weak var tutorialFinished: UIVisualEffectView!
     
+    @IBOutlet weak var postTutorialFinished: UIVisualEffectView!
 //    @IBOutlet weak var tutorialCardExplain2: UIVisualEffectView!
     
     var dueCard: Card? {
@@ -170,6 +174,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        baseLongPressTime = longPressTime
         setupEdgeReveal()
         
 //        kanjiView.contenth
@@ -212,20 +217,33 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             switch sender.state {
             case .Began:
                 didPan = true
-                tutorialFinished.alpha = 1
+            case .Ended:
+                didPan = false
+                tutorialState = .PostFinished
+                updateTutorialDisplay(forceUpdate: true)
+            default:
+                break
+            }
+            return
+        } else if tutorialState == .PostFinished {
+            switch sender.state {
+            case .Began:
+                didPan = true
+                postTutorialFinished.alpha = 1
                 UIView.animateWithDuration(1.0,
                     delay: 0,
                     options: UIViewAnimationOptions.CurveEaseOut,
                     {
-                        self.tutorialFinished.alpha = 0
+                        self.postTutorialFinished.alpha = 0
                     },
                     completion: { (_) in
-                        self.tutorialFinished.hidden = true
-                        self.tutorialFinished.alpha = 1
+                        self.postTutorialFinished.hidden = true
+                        self.postTutorialFinished.alpha = 1
                 })
             case .Ended:
                 didPan = false
                 tutorialState = .Disabled
+                longPressTime = baseLongPressTime
                 
                 settings.seenTutorial = true
                 saveContext()
@@ -581,6 +599,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        }
 //        
         tutorialState = enabled ? .LongPressFront : .Disabled
+        longPressTime = enabled ? tutorialLongPressTime : baseLongPressTime
         
         updateTutorialDisplay(forceUpdate: true)
     }
@@ -599,6 +618,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         tutorialPressReleaseQuicklyBack.visible = tutorialState == .AutoAdvanceBack
         tutorialPressReleaseQuicklyFrontMistake.visible = tutorialState == .AutoAdvanceMistake
         tutorialFinished.visible = tutorialState == .Finished
+        postTutorialFinished.visible = tutorialState == .PostFinished
     }
     
     private func fetchCards(clearUndoStack: Bool = true) {
