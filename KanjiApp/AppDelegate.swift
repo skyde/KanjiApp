@@ -238,7 +238,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             let answersNormal = splits[2].toInt()
             let answersHard = splits[3].toInt()
             let answersForgot = splits[4].toInt()
-            let interval = splits[5].toInt()
+            let interval = (splits[5] as NSString).doubleValue
             let dueTime = (splits[6] as NSString).doubleValue
             let enabled = splits[7].toInt()
             let suspended = splits[8].toInt()
@@ -249,7 +249,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                 card.embeddedData.answersNormal = answersNormal!
                 card.embeddedData.answersHard = answersForgot!
                 card.embeddedData.answersForgot = answersKnown!
-                card.interval = interval!
+                card.interval = interval
                 card.dueTime = dueTime
                 card.enabled = enabled!
                 card.suspended = suspended!

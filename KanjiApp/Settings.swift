@@ -10,4 +10,8 @@ class Settings: NSManagedObject {
     @NSManaged var volume: NSNumber
     @NSManaged var generatedCards: NSNumber
     @NSManaged var readerText: String
+    @NSManaged var romajiEnabled: NSNumber
+    @NSManaged var seenTutorial: NSNumber
+    @NSManaged var textSize: NSNumber
+    @NSManaged var furiganaEnabled: NSNumber
 }

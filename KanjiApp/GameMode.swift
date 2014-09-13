@@ -224,6 +224,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             case .Ended:
                 didPan = false
                 tutorialState = .Disabled
+                
+                settings.seenTutorial = true
+                saveContext()
 //                updateTutorialDisplay(forceUpdate: true)
             default:
                 break
@@ -604,7 +607,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         case .GameMode(let studyAheadAmount, let runTutorial):
             fetchAheadAmount = studyAheadAmount
             
-            setupTutorial(runTutorial)
+            if !settings.seenTutorial {
+                setupTutorial(true)
+            } else {
+                setupTutorial(runTutorial)
+            }
+            
         default:
             break
         }
