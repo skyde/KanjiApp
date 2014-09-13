@@ -1882,10 +1882,36 @@ Cg
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="to stay on back of card">
+                                                <fragment>
+                                                    <string key="content">to stay on back of card
+</string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="4" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="(dragging also has the same effect)">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -1933,10 +1959,36 @@ Cg
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="to stay on back of card">
+                                                <fragment>
+                                                    <string key="content">to stay on back of card
+</string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="4" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="(dragging also has the same effect)">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -1956,20 +2008,19 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7hm-MO-JIl">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="eT3-ue-d2k">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="eT3-ue-d2k">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Tap the left side of the screen">
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -1979,62 +2030,39 @@ Cg
 </string>
                                                     <attributes>
                                                         <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="if you forgot a card">
+                                                <fragment content="for cards which you forgot, otherwise">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                            <color key="shadowColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="uOz-S7-Df6">
-                                            <rect key="frame" x="160" y="0.0" width="160" height="200"/>
-                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Tap the right side of the screen">
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="tap the right">
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="16" name="AvenirNext-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                                    <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="16" name="AvenirNext-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="if remember a card">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                        <font key="NSFont" size="24" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
-                                            <color key="shadowColor" red="0.0" green="1" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="uOz-S7-Df6" firstAttribute="top" secondItem="7hm-MO-JIl" secondAttribute="top" id="4dY-xf-zjB"/>
-                                        <constraint firstItem="uOz-S7-Df6" firstAttribute="leading" secondItem="eT3-ue-d2k" secondAttribute="trailing" id="CB0-2e-3r1"/>
-                                        <constraint firstAttribute="trailing" secondItem="uOz-S7-Df6" secondAttribute="trailing" id="E4x-IW-CP0"/>
                                         <constraint firstItem="eT3-ue-d2k" firstAttribute="top" secondItem="7hm-MO-JIl" secondAttribute="top" id="Ec6-Qc-NuF"/>
                                         <constraint firstItem="eT3-ue-d2k" firstAttribute="leading" secondItem="7hm-MO-JIl" secondAttribute="leading" id="HZc-Ki-UYS"/>
-                                        <constraint firstItem="uOz-S7-Df6" firstAttribute="width" secondItem="eT3-ue-d2k" secondAttribute="width" id="VuP-Ig-PnP"/>
-                                        <constraint firstAttribute="bottom" secondItem="uOz-S7-Df6" secondAttribute="bottom" id="oSV-8g-7ha"/>
+                                        <constraint firstAttribute="trailing" secondItem="eT3-ue-d2k" secondAttribute="trailing" id="W1f-Cq-oe7"/>
                                         <constraint firstAttribute="bottom" secondItem="eT3-ue-d2k" secondAttribute="bottom" id="twN-Ly-cjg"/>
                                     </constraints>
                                 </view>
@@ -2135,18 +2163,35 @@ Cg
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
-                                                    <string key="content">Release your press more quickly
+                                                    <string key="content">You did not release your press quickly enough
 </string>
                                                     <attributes>
-                                                        <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="NSColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="to auto advance to next card">
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="4" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="(It is also possible that you dragged too far)">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -2161,7 +2206,6 @@ Cg
                                         <constraint firstAttribute="bottom" secondItem="lJ7-Y0-XFs" secondAttribute="bottom" id="iih-qU-m7u"/>
                                     </constraints>
                                 </view>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="z3e-KX-oco"/>
                                 </constraints>
@@ -2177,7 +2221,7 @@ Cg
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
-                                                    <string key="content">Press the button at the top right of the screen
+                                                    <string key="content">Tap the button at the top right of the screen
 </string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2208,19 +2252,28 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gS-aE-NLn">
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67m-fg-J3X">
                                 <rect key="frame" x="0.0" y="209" width="320" height="150"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="EKN-DN-AWE">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8Xu-9Q-cIr">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-Vb-fSi">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="rxm-20-WPS">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="Congratulations!">
+                                                <fragment>
+                                                    <string key="content">Congratulations!
+</string>
                                                     <attributes>
                                                         <color key="NSColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="24" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="4" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -2234,7 +2287,9 @@ Cg
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="You are now ready to study Good luck : D">
+                                                <fragment>
+                                                    <string key="content">You are now ready
+to study : D</string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="24" name="AvenirNext-Regular"/>
@@ -2246,21 +2301,31 @@ Cg
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5eg-Vb-fSi" firstAttribute="leading" secondItem="EKN-DN-AWE" secondAttribute="leading" id="D1H-io-dHk"/>
-                                        <constraint firstAttribute="bottom" secondItem="5eg-Vb-fSi" secondAttribute="bottom" id="asU-vW-jfz"/>
-                                        <constraint firstAttribute="trailing" secondItem="5eg-Vb-fSi" secondAttribute="trailing" id="mHp-r4-mM6"/>
-                                        <constraint firstItem="5eg-Vb-fSi" firstAttribute="top" secondItem="EKN-DN-AWE" secondAttribute="top" id="s9e-aA-dvt"/>
+                                        <constraint firstItem="rxm-20-WPS" firstAttribute="top" secondItem="8Xu-9Q-cIr" secondAttribute="top" id="GzV-3f-hIH"/>
+                                        <constraint firstItem="rxm-20-WPS" firstAttribute="leading" secondItem="8Xu-9Q-cIr" secondAttribute="leading" id="Uyu-eN-nDw"/>
+                                        <constraint firstAttribute="bottom" secondItem="rxm-20-WPS" secondAttribute="bottom" id="a31-D3-Idn"/>
+                                        <constraint firstAttribute="trailing" secondItem="rxm-20-WPS" secondAttribute="trailing" id="gNd-f1-qAb"/>
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Shg-u0-28f"/>
+                                    <constraint firstAttribute="height" constant="150" id="xtB-z6-EJf"/>
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYR-BB-8zQ">
+                                <rect key="frame" x="287" y="11" width="22" height="22"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tutorialButtonTap:" destination="nGt-Uz-nIp" eventType="touchUpInside" id="ZkR-3V-N7X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="bYR-BB-8zQ" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" constant="11" id="0mZ-sd-z2e"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="width" secondItem="G9v-Dx-vuY" secondAttribute="width" id="3hB-uz-1L1"/>
                             <constraint firstAttribute="trailing" secondItem="92L-RA-Rk1" secondAttribute="trailing" id="3jJ-YL-2pP"/>
@@ -2268,6 +2333,7 @@ Cg
                             <constraint firstItem="09R-SB-r3f" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="5Bk-Ri-6bF"/>
                             <constraint firstAttribute="centerY" secondItem="4HM-pc-ian" secondAttribute="centerY" id="611-Nf-imI"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
+                            <constraint firstAttribute="trailing" secondItem="bYR-BB-8zQ" secondAttribute="trailing" constant="11" id="7Oa-AW-u0a"/>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" constant="-202" id="84r-wt-vJO"/>
                             <constraint firstItem="Kni-js-bbv" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="9r9-5l-6Ek"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
@@ -2278,6 +2344,7 @@ Cg
                             <constraint firstItem="cja-ey-lDl" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="LCf-1K-wvB"/>
                             <constraint firstItem="92L-RA-Rk1" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="MZg-C8-wZW"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
+                            <constraint firstItem="67m-fg-J3X" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="QGV-C2-nkl"/>
                             <constraint firstAttribute="trailing" secondItem="asu-W3-f4i" secondAttribute="trailing" id="RJI-On-eiz"/>
                             <constraint firstAttribute="bottom" secondItem="cja-ey-lDl" secondAttribute="bottom" id="SQC-FY-y9u"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="UtM-qI-2fm"/>
@@ -2296,8 +2363,10 @@ Cg
                             <constraint firstAttribute="trailing" secondItem="cja-ey-lDl" secondAttribute="trailing" id="iMd-ay-WFp"/>
                             <constraint firstItem="H0R-aR-Wbk" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="jRS-jr-MnW"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
+                            <constraint firstAttribute="trailing" secondItem="67m-fg-J3X" secondAttribute="trailing" id="nLg-c9-a97"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
                             <constraint firstItem="cja-ey-lDl" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="ooF-Yf-CJ4"/>
+                            <constraint firstAttribute="centerY" secondItem="67m-fg-J3X" secondAttribute="centerY" id="rXr-nK-WHe"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
                             <constraint firstItem="Ywv-QW-c25" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="t57-5q-zOT"/>
@@ -2322,10 +2391,11 @@ Cg
                         <outlet property="kanjiView" destination="PTp-ZI-4VH" id="1II-hK-YDu"/>
                         <outlet property="leftIndicator" destination="G9v-Dx-vuY" id="GnO-gq-du6"/>
                         <outlet property="outputText" destination="EiW-HB-SOh" id="CGU-bH-Ikd"/>
-                        <outlet property="postTutorialFinished" destination="1gS-aE-NLn" id="zaz-jL-r19"/>
+                        <outlet property="postTutorialFinished" destination="67m-fg-J3X" id="Tf0-f3-KAy"/>
                         <outlet property="progressBar" destination="09R-SB-r3f" id="JRL-dQ-GLD"/>
                         <outlet property="propertiesSidebar" destination="5Rm-K1-JvN" id="bKl-UT-2ev"/>
                         <outlet property="rightIndicator" destination="vow-0B-FuC" id="Wc0-lS-48l"/>
+                        <outlet property="tutorialButton" destination="bYR-BB-8zQ" id="lMe-La-l50"/>
                         <outlet property="tutorialCardBackExplain" destination="4HM-pc-ian" id="DBc-Zz-idg"/>
                         <outlet property="tutorialFinished" destination="joN-QO-4Cs" id="BZf-ha-o2P"/>
                         <outlet property="tutorialHoldToViewBack" destination="Ywv-QW-c25" id="OR5-Bo-IjQ"/>
@@ -2340,7 +2410,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sag-mm-e2A" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-342" y="1347.5"/>
+            <point key="canvasLocation" x="-342" y="1347"/>
         </scene>
         <!--Search-->
         <scene sceneID="ngR-aF-ckz">

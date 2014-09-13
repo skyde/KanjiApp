@@ -79,6 +79,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     @IBOutlet weak var postTutorialFinished: UIVisualEffectView!
 //    @IBOutlet weak var tutorialCardExplain2: UIVisualEffectView!
+    @IBOutlet weak var tutorialButton: UIButton!
     
     var dueCard: Card? {
         get {
@@ -176,6 +177,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         super.viewDidLoad()
         baseLongPressTime = longPressTime
         setupEdgeReveal()
+        
+//        tutorialButton.butt = .UIButtonTypeDetail
         
 //        kanjiView.contenth
         
@@ -805,5 +808,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
         return true
+    }
+    
+    @IBAction func tutorialButtonTap(sender: AnyObject) {
+        
+        if tutorialState == .Disabled {
+            Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: 0, runTutorial: true))
+        }
     }
 }

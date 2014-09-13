@@ -38,6 +38,7 @@
 		846E80F019B59FF20028EDB8 /* soccerball.png in Resources */ = {isa = PBXBuildFile; fileRef = 846E80EB19B59FEF0028EDB8 /* soccerball.png */; };
 		846E80F119B59FF20028EDB8 /* taskList in Resources */ = {isa = PBXBuildFile; fileRef = 846E80EC19B59FF00028EDB8 /* taskList */; };
 		846E80F319B5A6140028EDB8 /* listBox in Resources */ = {isa = PBXBuildFile; fileRef = 846E80F219B5A6130028EDB8 /* listBox */; };
+		8478FBD719C485EC00A826C8 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBD619C485EC00A826C8 /* infoButton.png */; };
 		847B181E19A9AC0700F5A798 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */; };
 		847B181F19A9AC0700F5A798 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181B19A9AC0700F5A798 /* PaRomajiKanaConverter.m */; };
 		847B182019A9AC0700F5A798 /* PaRomajiKanaConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */; };
@@ -132,6 +133,7 @@
 		846E80EB19B59FEF0028EDB8 /* soccerball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soccerball.png; path = Images/soccerball.png; sourceTree = "<group>"; };
 		846E80EC19B59FF00028EDB8 /* taskList */ = {isa = PBXFileReference; lastKnownFileType = file; name = taskList; path = Images/taskList; sourceTree = "<group>"; };
 		846E80F219B5A6130028EDB8 /* listBox */ = {isa = PBXFileReference; lastKnownFileType = file; name = listBox; path = Images/listBox; sourceTree = "<group>"; };
+		8478FBD619C485EC00A826C8 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = infoButton.png; path = Images/infoButton.png; sourceTree = "<group>"; };
 		847B181819A9AC0700F5A798 /* NSString+RomajiKanaConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RomajiKanaConvert.h"; path = "External/NSString+RomajiKanaConvert.h"; sourceTree = "<group>"; };
 		847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RomajiKanaConvert.m"; path = "External/NSString+RomajiKanaConvert.m"; sourceTree = "<group>"; };
 		847B181A19A9AC0700F5A798 /* PaRomajiKanaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverter.h; path = External/PaRomajiKanaConverter.h; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8478FBD619C485EC00A826C8 /* infoButton.png */,
 				846E80F219B5A6130028EDB8 /* listBox */,
 				846E80E819B59FEC0028EDB8 /* goverment.png */,
 				846E80E919B59FED0028EDB8 /* pencil.png */,
@@ -460,6 +463,7 @@
 				84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */,
 				84CA558219847DCA00F62A68 /* KozGoPr6N-Medium.otf in Resources */,
 				84CA558019847DCA00F62A68 /* KozGoPr6N-Heavy.otf in Resources */,
+				8478FBD719C485EC00A826C8 /* infoButton.png in Resources */,
 				846E80F019B59FF20028EDB8 /* soccerball.png in Resources */,
 				84DCE9F5197DC7C600E4740A /* mplus-2p-light.ttf in Resources */,
 				84CA558319847DCA00F62A68 /* KozGoPr6N-Regular.otf in Resources */,
