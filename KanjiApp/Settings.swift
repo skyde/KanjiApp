@@ -14,4 +14,6 @@ class Settings: NSManagedObject {
     @NSManaged var seenTutorial: NSNumber
     @NSManaged var textSize: NSNumber
     @NSManaged var furiganaEnabled: NSNumber
+    @NSManaged var hideTutorialButton: NSNumber
+    @NSManaged var hideSidebarButton: NSNumber
 }

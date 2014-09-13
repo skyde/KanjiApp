@@ -198,6 +198,8 @@ class RootContainer: CustomUIViewController {
         }
         
         sidebarEdgeReveal.animateSelf(false)
+        
+        sidebarButton.visible = isGameMode ? !settings.hideSidebarButton : true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -389,6 +391,12 @@ class RootContainer: CustomUIViewController {
         return UIStatusBarStyle.BlackOpaque
     }
     
+    private var isGameMode: Bool {
+    get {
+        return View.GameMode(studyAheadAmount: 0, runTutorial: false).description() == Globals.notificationTransitionToView.value.description()
+    }
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         
         var orientationPass = true
@@ -401,7 +409,6 @@ class RootContainer: CustomUIViewController {
             break
         }
         
-        let isGameMode = View.GameMode(studyAheadAmount: 0, runTutorial: false).description() == Globals.notificationTransitionToView.value.description()
         var isSidebarClosed = true
         
         if sidebarEdgeReveal != nil {

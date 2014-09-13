@@ -601,6 +601,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //            tutorialState = .LongPressFront
 //        }
 //        
+        tutorialButton.hidden = settings.hideTutorialButton
+        
         tutorialState = enabled ? .LongPressFront : .Disabled
         longPressTime = enabled ? tutorialLongPressTime : baseLongPressTime
         
