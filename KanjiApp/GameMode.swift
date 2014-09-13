@@ -726,7 +726,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     func advanceCard() {
         if isBack && due.count >= 1 {
             var remove = due.removeAtIndex(0)
+            
             undoStack.append(remove)
+            
+            if tutorialState != .Disabled {
+                due.append(remove)
+            }
         }
         
         isFront = !isFront
