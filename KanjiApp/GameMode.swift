@@ -74,6 +74,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     @IBOutlet weak var tutorialPressReleaseQuicklyFrontMistake: UIVisualEffectView!
     @IBOutlet weak var tutorialFinished: UIVisualEffectView!
     
+//    @IBOutlet weak var tutorialCardExplain2: UIVisualEffectView!
+    
     var dueCard: Card? {
         get {
             if due.count > 0 {
@@ -592,6 +594,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         tutorialHoldUntilTimerReachesEnd.visible = tutorialState == .LongPressBack
         tutorialHoldUntilTimerReachesEndMistake.visible = tutorialState == .LongPressMistake
         tutorialCardBackExplain.visible = tutorialState == .CardBackExplain
+//        tutorialCardExplain2.visible = tutorialState == .CardBackExplain
         tutorialPressReleaseQuicklyFront.visible = tutorialState == .AutoAdvanceFront
         tutorialPressReleaseQuicklyBack.visible = tutorialState == .AutoAdvanceBack
         tutorialPressReleaseQuicklyFrontMistake.visible = tutorialState == .AutoAdvanceMistake
