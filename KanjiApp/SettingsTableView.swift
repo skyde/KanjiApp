@@ -17,6 +17,10 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
 //        println("onBackupTapped")
         SettingsView.instance.onBackupTap(sender)
     }
+    @IBOutlet weak var tutorialButtonSwitch: UISwitch!
+    
+    @IBOutlet weak var sidebarButtonSwitch: UISwitch!
+    
     
     @IBAction func studyAmountTapped(sender: UISegmentedControl) {
         
@@ -99,7 +103,10 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
             break
         }
         
-//        selectedSegmentIndex
+        tutorialButtonSwitch.on = !RootContainer.instance.settings.hideTutorialButton.boolValue
+        
+        sidebarButtonSwitch.on = !RootContainer.instance.settings.hideSidebarButton.boolValue
+        //        selectedSegmentIndex
     }
     @IBAction func showTutorialButtonValueChanged(sender: UISwitch)
     {

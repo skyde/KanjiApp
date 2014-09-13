@@ -1789,6 +1789,8 @@ all due cards</string>
                     </tableView>
                     <connections>
                         <outlet property="numCardsToAdd" destination="roI-lb-1jI" id="POk-8D-ZVh"/>
+                        <outlet property="sidebarButtonSwitch" destination="Vbm-di-3Ib" id="ABs-Qk-fCV"/>
+                        <outlet property="tutorialButtonSwitch" destination="xMe-VU-WnS" id="0YE-9j-CMR"/>
                         <outlet property="volume" destination="LBr-oD-8Bx" id="aKg-Ms-Kjt"/>
                     </connections>
                 </tableViewController>
