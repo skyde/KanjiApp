@@ -1626,24 +1626,24 @@ all due cards</string>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="VOLUME" id="r1j-KL-5aN">
+                            <tableViewSection headerTitle="VOLUME" id="k1E-o0-Q1F">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="naX-G0-HVn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="voo-av-UTc">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="naX-G0-HVn" id="s72-Cs-09X">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="voo-av-UTc" id="XoO-hl-f8W">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qeS-vE-fbH">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LBr-oD-8Bx">
                                                     <rect key="frame" x="28" y="12" width="544" height="31"/>
                                                     <connections>
-                                                        <action selector="onVolumeChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="iLx-Sa-bDg"/>
+                                                        <action selector="onVolumeChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="blU-pJ-JuB"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qeS-vE-fbH" firstAttribute="leading" secondItem="s72-Cs-09X" secondAttribute="leading" constant="30" id="4K9-iT-wCv"/>
-                                                <constraint firstAttribute="centerY" secondItem="qeS-vE-fbH" secondAttribute="centerY" id="DlN-AI-0Zh"/>
-                                                <constraint firstAttribute="trailing" secondItem="qeS-vE-fbH" secondAttribute="trailing" constant="30" id="bD3-3z-PeN"/>
+                                                <constraint firstAttribute="trailing" secondItem="LBr-oD-8Bx" secondAttribute="trailing" constant="30" id="k1C-8P-sex"/>
+                                                <constraint firstAttribute="centerY" secondItem="LBr-oD-8Bx" secondAttribute="centerY" id="kXa-G7-9Qy"/>
+                                                <constraint firstItem="LBr-oD-8Bx" firstAttribute="leading" secondItem="XoO-hl-f8W" secondAttribute="leading" constant="30" id="mzF-Xi-wtv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1719,6 +1719,34 @@ all due cards</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="TUTORIAL BUTTON" footerTitle="Toggle a button at the top right of study mode which activates a tutorial" id="r1j-KL-5aN">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="naX-G0-HVn">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="naX-G0-HVn" id="s72-Cs-09X">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Tutorial Button" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smd-vP-bGT">
+                                                    <rect key="frame" x="20" y="0.0" width="188" height="53.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-VU-WnS">
+                                                    <rect key="frame" x="531" y="11" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="smd-vP-bGT" secondAttribute="bottom" id="G1D-pG-2Lu"/>
+                                                <constraint firstItem="smd-vP-bGT" firstAttribute="top" secondItem="s72-Cs-09X" secondAttribute="top" id="HJq-z3-3s7"/>
+                                                <constraint firstAttribute="centerY" secondItem="xMe-VU-WnS" secondAttribute="centerY" id="IzI-5V-7bf"/>
+                                                <constraint firstAttribute="trailing" secondItem="xMe-VU-WnS" secondAttribute="trailing" constant="20" id="nEi-N6-cM1"/>
+                                                <constraint firstItem="smd-vP-bGT" firstAttribute="leading" secondItem="s72-Cs-09X" secondAttribute="leading" constant="20" id="oTl-N9-mEl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="ymQ-UJ-hHR" id="6JW-J5-FEB"/>
@@ -1727,7 +1755,7 @@ all due cards</string>
                     </tableView>
                     <connections>
                         <outlet property="numCardsToAdd" destination="roI-lb-1jI" id="POk-8D-ZVh"/>
-                        <outlet property="volume" destination="qeS-vE-fbH" id="Zmh-kV-nWi"/>
+                        <outlet property="volume" destination="LBr-oD-8Bx" id="aKg-Ms-Kjt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ot-5y-Dz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
