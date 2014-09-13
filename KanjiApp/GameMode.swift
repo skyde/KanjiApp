@@ -210,10 +210,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             switch sender.state {
             case .Began:
                 didPan = true
+                tutorialFinished.alpha = 1
+                UIView.animateWithDuration(1.0,
+                    delay: 0,
+                    options: UIViewAnimationOptions.CurveEaseOut,
+                    {
+                        self.tutorialFinished.alpha = 0
+                    },
+                    completion: { (_) in
+                        self.tutorialFinished.hidden = true
+                        self.tutorialFinished.alpha = 1
+                })
             case .Ended:
                 didPan = false
                 tutorialState = .Disabled
-                updateTutorialDisplay(forceUpdate: true)
+//                updateTutorialDisplay(forceUpdate: true)
             default:
                 break
             }
@@ -553,16 +564,18 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        invalidateCaches()
         fetchCards()
         updateText(invalidateCaches: true)
-        setupTutorial()
+//        setupTutorial()
     }
     
-    private func setupTutorial() {
+    private func setupTutorial(enabled: Bool) {
         // TODO: setup from start tutorial button press
-        tutorialState = .LongPressFront
-        
-        if tutorialState != .Disabled {
-            tutorialState = .LongPressFront
-        }
+//        tutorialState = .LongPressFront
+//        
+//        if tutorialState != .Disabled {
+//            tutorialState = .LongPressFront
+//        }
+//        
+        tutorialState = enabled ? .LongPressFront : .Disabled
         
         updateTutorialDisplay(forceUpdate: true)
     }
@@ -588,8 +601,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         var fetchAheadAmount: Double = 0
         
         switch Globals.notificationTransitionToView.value {
-        case .GameMode(let studyAheadAmount):
+        case .GameMode(let studyAheadAmount, let runTutorial):
             fetchAheadAmount = studyAheadAmount
+            
+            setupTutorial(runTutorial)
         default:
             break
         }

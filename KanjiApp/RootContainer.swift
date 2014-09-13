@@ -401,7 +401,7 @@ class RootContainer: CustomUIViewController {
             break
         }
         
-        let isGameMode = View.GameMode(studyAheadAmount: 0).description() == Globals.notificationTransitionToView.value.description()
+        let isGameMode = View.GameMode(studyAheadAmount: 0, runTutorial: false).description() == Globals.notificationTransitionToView.value.description()
         var isSidebarClosed = true
         
         if sidebarEdgeReveal != nil {

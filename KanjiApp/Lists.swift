@@ -31,8 +31,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         
         saveContext()
         
-        Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: 0))
-        
+        Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: 0, runTutorial: false))
     }
     
     @IBAction func onAddWordsButtonDown(sender: AnyObject) {

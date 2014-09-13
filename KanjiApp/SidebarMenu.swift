@@ -14,6 +14,13 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         Globals.notificationSidebarInteract.addObserver(self, selector: "refreshDisplay")
     }
     @IBOutlet weak var studyLabel: UILabel!
+    
+    override func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
+        if indexPath == NSIndexPath(forRow: 1, inSection: 0) {
+//            println("tutorial")
+            Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: 0, runTutorial: true))
+        }
+    }
 
 //    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
 //        
@@ -143,7 +150,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
         switch indexPath.section * 100 + indexPath.row {
         case 1:
-            targetView = .GameMode(studyAheadAmount: 0)
+            targetView = .GameMode(studyAheadAmount: 0, runTutorial: false)
         case 2:
             targetView = .Search
         case 3:

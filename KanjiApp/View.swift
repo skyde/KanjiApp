@@ -3,7 +3,7 @@ import UIKit
 
 enum View {
     case Search
-    case GameMode(studyAheadAmount: Double)
+    case GameMode(studyAheadAmount: Double, runTutorial: Bool)
     case Reader
     case CardsFinished
     case AddWords(enableOnAdd: Bool)
