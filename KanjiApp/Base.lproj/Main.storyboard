@@ -1807,8 +1807,8 @@ all due cards</string>
                                     <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
                                 </connections>
                             </containerView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-QW-c25">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-QW-c25">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MuS-qs-f6w">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1856,8 +1856,8 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDE-k4-Jaw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDE-k4-Jaw">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XNg-sg-JBI">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1905,15 +1905,14 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-js-bbv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-js-bbv">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vMJ-09-bqC">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="itD-g9-iou">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
                                                     <string key="content">Press and hold for an
@@ -1958,13 +1957,14 @@ Cg
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
-                                <rect key="frame" x="0.0" y="209" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7hm-MO-JIl">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="eT3-ue-d2k">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="150"/>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Tap the left side of the screen">
                                                     <attributes>
@@ -1996,6 +1996,7 @@ Cg
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="uOz-S7-Df6">
                                             <rect key="frame" x="160" y="0.0" width="160" height="150"/>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Tap the right side of the screen">
                                                     <attributes>
@@ -2042,8 +2043,8 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-aR-Wbk">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-aR-Wbk">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="whW-gG-d1Q">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2083,8 +2084,8 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asu-W3-f4i">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asu-W3-f4i">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lRw-9K-CCz">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2124,8 +2125,8 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="92L-RA-Rk1">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92L-RA-Rk1">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Srg-My-fxg">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2166,8 +2167,8 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joN-QO-4Cs">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joN-QO-4Cs">
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IiG-oQ-IGy">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2211,7 +2212,6 @@ Cg
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="4HM-pc-ian" secondAttribute="centerY" id="0we-Au-j6O"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="width" secondItem="G9v-Dx-vuY" secondAttribute="width" id="3hB-uz-1L1"/>
                             <constraint firstAttribute="trailing" secondItem="92L-RA-Rk1" secondAttribute="trailing" id="3jJ-YL-2pP"/>
@@ -2219,48 +2219,49 @@ Cg
                             <constraint firstItem="09R-SB-r3f" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="5Bk-Ri-6bF"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" constant="-202" id="84r-wt-vJO"/>
-                            <constraint firstAttribute="centerY" secondItem="Kni-js-bbv" secondAttribute="centerY" id="9dQ-sC-Y1e"/>
                             <constraint firstItem="Kni-js-bbv" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="9r9-5l-6Ek"/>
-                            <constraint firstAttribute="centerY" secondItem="H0R-aR-Wbk" secondAttribute="centerY" id="BSl-Uo-1w5"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
                             <constraint firstAttribute="trailing" secondItem="rDE-k4-Jaw" secondAttribute="trailing" id="EAy-mn-d4S"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
+                            <constraint firstAttribute="bottom" secondItem="joN-QO-4Cs" secondAttribute="bottom" id="Jbh-Sr-7Vo"/>
                             <constraint firstAttribute="trailing" secondItem="Ywv-QW-c25" secondAttribute="trailing" id="KgE-gK-LmP"/>
                             <constraint firstItem="cja-ey-lDl" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="LCf-1K-wvB"/>
                             <constraint firstItem="92L-RA-Rk1" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="MZg-C8-wZW"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
+                            <constraint firstAttribute="bottom" secondItem="4HM-pc-ian" secondAttribute="bottom" id="QlD-DE-ewg"/>
                             <constraint firstAttribute="trailing" secondItem="asu-W3-f4i" secondAttribute="trailing" id="RJI-On-eiz"/>
                             <constraint firstAttribute="bottom" secondItem="cja-ey-lDl" secondAttribute="bottom" id="SQC-FY-y9u"/>
-                            <constraint firstAttribute="centerY" secondItem="rDE-k4-Jaw" secondAttribute="centerY" id="UBi-Oa-02q"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="UtM-qI-2fm"/>
                             <constraint firstItem="rDE-k4-Jaw" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="VJL-q8-RDZ"/>
                             <constraint firstAttribute="trailing" secondItem="joN-QO-4Cs" secondAttribute="trailing" id="YPe-Oy-ZcG"/>
+                            <constraint firstAttribute="bottom" secondItem="Ywv-QW-c25" secondAttribute="bottom" id="YZa-Ml-Ibs"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
                             <constraint firstAttribute="trailing" secondItem="H0R-aR-Wbk" secondAttribute="trailing" id="bNO-E6-Jet"/>
                             <constraint firstItem="5Rm-K1-JvN" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="bWX-He-sBo"/>
+                            <constraint firstAttribute="bottom" secondItem="Kni-js-bbv" secondAttribute="bottom" id="c4h-IV-WCh"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="cJG-hC-xSm"/>
                             <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
+                            <constraint firstAttribute="bottom" secondItem="92L-RA-Rk1" secondAttribute="bottom" id="eTn-cO-M2K"/>
+                            <constraint firstAttribute="bottom" secondItem="H0R-aR-Wbk" secondAttribute="bottom" id="gPu-i0-Fwm"/>
                             <constraint firstItem="4HM-pc-ian" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hFu-ru-bKJ"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
                             <constraint firstAttribute="trailing" secondItem="cja-ey-lDl" secondAttribute="trailing" id="iMd-ay-WFp"/>
+                            <constraint firstAttribute="bottom" secondItem="asu-W3-f4i" secondAttribute="bottom" id="iey-nA-8ce"/>
                             <constraint firstItem="H0R-aR-Wbk" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="jRS-jr-MnW"/>
-                            <constraint firstAttribute="centerY" secondItem="joN-QO-4Cs" secondAttribute="centerY" id="lXR-lE-tdg"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
                             <constraint firstItem="cja-ey-lDl" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="ooF-Yf-CJ4"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
-                            <constraint firstAttribute="centerY" secondItem="92L-RA-Rk1" secondAttribute="centerY" id="sdb-Ae-Gse"/>
                             <constraint firstItem="Ywv-QW-c25" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="t57-5q-zOT"/>
                             <constraint firstItem="asu-W3-f4i" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="tQ2-QV-yMT"/>
                             <constraint firstAttribute="trailing" secondItem="Kni-js-bbv" secondAttribute="trailing" id="u6c-l7-wlD"/>
-                            <constraint firstAttribute="centerY" secondItem="asu-W3-f4i" secondAttribute="centerY" id="vBW-47-2Iy"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="wmS-Ui-wV8"/>
                             <constraint firstAttribute="trailing" secondItem="vow-0B-FuC" secondAttribute="trailing" id="xYW-mx-GnI"/>
+                            <constraint firstAttribute="bottom" secondItem="rDE-k4-Jaw" secondAttribute="bottom" id="xdD-W6-hPp"/>
                             <constraint firstItem="joN-QO-4Cs" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="yFN-g1-UXC"/>
                             <constraint firstAttribute="trailing" secondItem="09R-SB-r3f" secondAttribute="trailing" id="ypA-gB-3GN"/>
                             <constraint firstAttribute="trailing" secondItem="4HM-pc-ian" secondAttribute="trailing" id="zMv-bV-eqk"/>
-                            <constraint firstAttribute="centerY" secondItem="Ywv-QW-c25" secondAttribute="centerY" id="zmc-bC-hvw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w35-vl-oJI"/>
