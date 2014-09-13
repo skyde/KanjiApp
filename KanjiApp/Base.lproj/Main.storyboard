@@ -1807,7 +1807,7 @@ all due cards</string>
                                     <segue destination="HHw-53-owD" kind="embed" id="NNU-PR-Fp5"/>
                                 </connections>
                             </containerView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-QW-c25">
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywv-QW-c25">
                                 <rect key="frame" x="0.0" y="225" width="600" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MuS-qs-f6w">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
@@ -1856,7 +1856,7 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDE-k4-Jaw">
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDE-k4-Jaw">
                                 <rect key="frame" x="0.0" y="225" width="600" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XNg-sg-JBI">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
@@ -1865,16 +1865,16 @@ Cg
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="3RS-tp-Jdn">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <attributedString key="attributedText">
-                                                <fragment>
-                                                    <string key="content">Hold until the timer at the top
-</string>
+                                                <fragment content="Hold for an">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="Reaches the end">
+                                                <fragment>
+                                                    <string key="content">
+extended period</string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
@@ -1914,7 +1914,7 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-js-bbv">
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-js-bbv">
                                 <rect key="frame" x="0.0" y="225" width="600" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vMJ-09-bqC">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
@@ -1923,8 +1923,15 @@ Cg
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="itD-g9-iou">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <attributedString key="attributedText">
+                                                <fragment content="Oops, press and hold f">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
                                                 <fragment>
-                                                    <string key="content">Oops, try pressing and holding for a
+                                                    <string key="content">or a
 </string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -1932,7 +1939,7 @@ Cg
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="Longer time">
+                                                <fragment content="longer time">
                                                     <attributes>
                                                         <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="26" name="AvenirNext-Regular"/>
@@ -1972,13 +1979,13 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-pc-ian">
                                 <rect key="frame" x="0.0" y="225" width="600" height="150"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="7hm-MO-JIl">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7hm-MO-JIl">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="uOz-S7-Df6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="uOz-S7-Df6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <attributedString key="attributedText">
                                                 <fragment>
@@ -2037,43 +2044,247 @@ Cg
                                 </constraints>
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-aR-Wbk">
+                                <rect key="frame" x="0.0" y="225" width="600" height="150"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="whW-gG-d1Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="RY1-MU-q9N">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">Press and
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content">release quickly
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="to quick review a card">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="RY1-MU-q9N" secondAttribute="trailing" id="9QH-JY-ZVG"/>
+                                        <constraint firstItem="RY1-MU-q9N" firstAttribute="leading" secondItem="whW-gG-d1Q" secondAttribute="leading" id="IVy-aa-2zs"/>
+                                        <constraint firstAttribute="bottom" secondItem="RY1-MU-q9N" secondAttribute="bottom" id="Ukk-eT-wvJ"/>
+                                        <constraint firstItem="RY1-MU-q9N" firstAttribute="top" secondItem="whW-gG-d1Q" secondAttribute="top" id="yZJ-G0-AkM"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Qfj-88-7Qa"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asu-W3-f4i">
+                                <rect key="frame" x="0.0" y="225" width="600" height="150"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lRw-9K-CCz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-lq-N72">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">Release quickly
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="to quick review this card">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Jmh-lq-N72" secondAttribute="bottom" id="jDA-OU-1LQ"/>
+                                        <constraint firstItem="Jmh-lq-N72" firstAttribute="top" secondItem="lRw-9K-CCz" secondAttribute="top" id="ryg-bU-mCh"/>
+                                        <constraint firstItem="Jmh-lq-N72" firstAttribute="leading" secondItem="lRw-9K-CCz" secondAttribute="leading" id="yCB-vz-22F"/>
+                                        <constraint firstAttribute="trailing" secondItem="Jmh-lq-N72" secondAttribute="trailing" id="ync-fd-5al"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="DrF-zr-WJp"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92L-RA-Rk1">
+                                <rect key="frame" x="0.0" y="225" width="600" height="150"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Srg-My-fxg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-Y0-XFs">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">Oops, release your press
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content">more quickly
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="to quick review this card">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lJ7-Y0-XFs" firstAttribute="leading" secondItem="Srg-My-fxg" secondAttribute="leading" id="0R7-tF-RDM"/>
+                                        <constraint firstAttribute="trailing" secondItem="lJ7-Y0-XFs" secondAttribute="trailing" id="Uoh-Gk-nEw"/>
+                                        <constraint firstItem="lJ7-Y0-XFs" firstAttribute="top" secondItem="Srg-My-fxg" secondAttribute="top" id="hgo-zV-SgJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="lJ7-Y0-XFs" secondAttribute="bottom" id="iih-qU-m7u"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="z3e-KX-oco"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joN-QO-4Cs">
+                                <rect key="frame" x="0.0" y="225" width="600" height="150"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IiG-oQ-IGy">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="600" translatesAutoresizingMaskIntoConstraints="NO" id="hN1-Dl-ba3">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Congratulations!">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content">
+You have finished the tutorial, you can access it again at any time by </string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="pressing the icon at the top right of the screen">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="26" name="AvenirNext-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="hN1-Dl-ba3" secondAttribute="bottom" id="6zp-iW-Rhr"/>
+                                        <constraint firstItem="hN1-Dl-ba3" firstAttribute="leading" secondItem="IiG-oQ-IGy" secondAttribute="leading" id="7HU-Lg-z17"/>
+                                        <constraint firstItem="hN1-Dl-ba3" firstAttribute="top" secondItem="IiG-oQ-IGy" secondAttribute="top" id="SHJ-mP-yS9"/>
+                                        <constraint firstAttribute="trailing" secondItem="hN1-Dl-ba3" secondAttribute="trailing" id="mv4-Wa-5Mh"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="uzS-rp-dxu"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="4HM-pc-ian" secondAttribute="centerY" id="0we-Au-j6O"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="1ax-JG-iU1"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="width" secondItem="G9v-Dx-vuY" secondAttribute="width" id="3hB-uz-1L1"/>
+                            <constraint firstAttribute="trailing" secondItem="92L-RA-Rk1" secondAttribute="trailing" id="3jJ-YL-2pP"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="leading" secondItem="G9v-Dx-vuY" secondAttribute="trailing" id="43s-UO-dWe"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="5Bk-Ri-6bF"/>
                             <constraint firstAttribute="bottom" secondItem="G9v-Dx-vuY" secondAttribute="bottom" id="6AF-il-7dg"/>
                             <constraint firstAttribute="trailing" secondItem="5Rm-K1-JvN" secondAttribute="trailing" constant="-202" id="84r-wt-vJO"/>
                             <constraint firstAttribute="centerY" secondItem="Kni-js-bbv" secondAttribute="centerY" id="9dQ-sC-Y1e"/>
                             <constraint firstItem="Kni-js-bbv" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="9r9-5l-6Ek"/>
+                            <constraint firstAttribute="centerY" secondItem="H0R-aR-Wbk" secondAttribute="centerY" id="BSl-Uo-1w5"/>
                             <constraint firstAttribute="trailing" secondItem="EiW-HB-SOh" secondAttribute="trailing" id="Cg4-PM-t4y"/>
                             <constraint firstAttribute="trailing" secondItem="rDE-k4-Jaw" secondAttribute="trailing" id="EAy-mn-d4S"/>
                             <constraint firstItem="vow-0B-FuC" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="GQP-BW-Rre"/>
+                            <constraint firstItem="4HM-pc-ian" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="JDo-0m-zwh"/>
                             <constraint firstAttribute="trailing" secondItem="Ywv-QW-c25" secondAttribute="trailing" id="KgE-gK-LmP"/>
                             <constraint firstItem="cja-ey-lDl" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="LCf-1K-wvB"/>
+                            <constraint firstItem="92L-RA-Rk1" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="MZg-C8-wZW"/>
                             <constraint firstItem="PTp-ZI-4VH" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="Mng-s4-8Lv"/>
+                            <constraint firstAttribute="trailing" secondItem="asu-W3-f4i" secondAttribute="trailing" id="RJI-On-eiz"/>
                             <constraint firstAttribute="bottom" secondItem="cja-ey-lDl" secondAttribute="bottom" id="SQC-FY-y9u"/>
                             <constraint firstAttribute="centerY" secondItem="rDE-k4-Jaw" secondAttribute="centerY" id="UBi-Oa-02q"/>
                             <constraint firstItem="09R-SB-r3f" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="UtM-qI-2fm"/>
                             <constraint firstItem="rDE-k4-Jaw" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="VJL-q8-RDZ"/>
+                            <constraint firstAttribute="trailing" secondItem="joN-QO-4Cs" secondAttribute="trailing" id="YPe-Oy-ZcG"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="ZQu-7M-kbO"/>
+                            <constraint firstAttribute="trailing" secondItem="4HM-pc-ian" secondAttribute="trailing" id="afd-E4-1hP"/>
+                            <constraint firstAttribute="trailing" secondItem="H0R-aR-Wbk" secondAttribute="trailing" id="bNO-E6-Jet"/>
                             <constraint firstItem="5Rm-K1-JvN" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="bWX-He-sBo"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="top" secondItem="ZhP-H3-adN" secondAttribute="top" id="cJG-hC-xSm"/>
                             <constraint firstItem="4Ob-f4-4wS" firstAttribute="top" secondItem="PTp-ZI-4VH" secondAttribute="bottom" id="eMJ-nV-su9"/>
                             <constraint firstItem="EiW-HB-SOh" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="hji-zt-qCK"/>
                             <constraint firstAttribute="trailing" secondItem="cja-ey-lDl" secondAttribute="trailing" id="iMd-ay-WFp"/>
+                            <constraint firstItem="H0R-aR-Wbk" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="jRS-jr-MnW"/>
+                            <constraint firstAttribute="centerY" secondItem="joN-QO-4Cs" secondAttribute="centerY" id="lXR-lE-tdg"/>
                             <constraint firstAttribute="bottom" secondItem="EiW-HB-SOh" secondAttribute="bottom" id="n7w-cU-oSA"/>
                             <constraint firstAttribute="bottom" secondItem="vow-0B-FuC" secondAttribute="bottom" id="oJG-tl-UCE"/>
                             <constraint firstItem="cja-ey-lDl" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="ooF-Yf-CJ4"/>
                             <constraint firstAttribute="trailing" secondItem="PTp-ZI-4VH" secondAttribute="trailing" id="rfm-q3-Auy"/>
                             <constraint firstAttribute="bottom" secondItem="5Rm-K1-JvN" secondAttribute="bottom" id="sPV-rv-LPe"/>
+                            <constraint firstAttribute="centerY" secondItem="92L-RA-Rk1" secondAttribute="centerY" id="sdb-Ae-Gse"/>
                             <constraint firstItem="Ywv-QW-c25" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="t57-5q-zOT"/>
+                            <constraint firstItem="asu-W3-f4i" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="tQ2-QV-yMT"/>
                             <constraint firstAttribute="trailing" secondItem="Kni-js-bbv" secondAttribute="trailing" id="u6c-l7-wlD"/>
+                            <constraint firstAttribute="centerY" secondItem="asu-W3-f4i" secondAttribute="centerY" id="vBW-47-2Iy"/>
                             <constraint firstItem="G9v-Dx-vuY" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="wmS-Ui-wV8"/>
                             <constraint firstAttribute="trailing" secondItem="vow-0B-FuC" secondAttribute="trailing" id="xYW-mx-GnI"/>
+                            <constraint firstItem="joN-QO-4Cs" firstAttribute="leading" secondItem="ZhP-H3-adN" secondAttribute="leading" id="yFN-g1-UXC"/>
                             <constraint firstAttribute="trailing" secondItem="09R-SB-r3f" secondAttribute="trailing" id="ypA-gB-3GN"/>
                             <constraint firstAttribute="centerY" secondItem="Ywv-QW-c25" secondAttribute="centerY" id="zmc-bC-hvw"/>
                         </constraints>
@@ -2088,6 +2299,14 @@ Cg
                         <outlet property="progressBar" destination="09R-SB-r3f" id="JRL-dQ-GLD"/>
                         <outlet property="propertiesSidebar" destination="5Rm-K1-JvN" id="bKl-UT-2ev"/>
                         <outlet property="rightIndicator" destination="vow-0B-FuC" id="Wc0-lS-48l"/>
+                        <outlet property="tutorialCardBackExplain" destination="4HM-pc-ian" id="DBc-Zz-idg"/>
+                        <outlet property="tutorialFinished" destination="joN-QO-4Cs" id="BZf-ha-o2P"/>
+                        <outlet property="tutorialHoldToViewBack" destination="Ywv-QW-c25" id="OR5-Bo-IjQ"/>
+                        <outlet property="tutorialHoldUntilTimerReachesEnd" destination="rDE-k4-Jaw" id="DyC-Rp-W7r"/>
+                        <outlet property="tutorialHoldUntilTimerReachesEndMistake" destination="Kni-js-bbv" id="dvB-sb-PAZ"/>
+                        <outlet property="tutorialPressReleaseQuicklyBack" destination="asu-W3-f4i" id="KUK-pZ-836"/>
+                        <outlet property="tutorialPressReleaseQuicklyFront" destination="H0R-aR-Wbk" id="gYG-fX-6Py"/>
+                        <outlet property="tutorialPressReleaseQuicklyFrontMistake" destination="92L-RA-Rk1" id="KNT-BZ-iPe"/>
                         <segue destination="vil-on-bL0" kind="show" identifier="RootMenu" id="ocT-bm-8xQ"/>
                         <segue destination="MSR-R2-cbT" kind="show" identifier="AddWords" id="0Q0-aS-4tM"/>
                     </connections>

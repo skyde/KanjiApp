@@ -2,6 +2,24 @@ import UIKit
 import CoreData
 import AVFoundation
 
+enum GameTutorialState {
+    case Disabled
+    case HoldToViewBack
+    case HoldUntilTimerReachesEnd
+    case HoldUntilTimerReachesEndMistake
+    case CardBackExplain
+    case PressReleaseQuicklyFront
+    case PressReleaseQuicklyBack
+    case PressReleaseQuicklyFrontMistake
+    case Finished
+    
+    var enabled: Bool {
+    get {
+        return !(self == .Disabled)
+    }
+    }
+}
+
 class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate {
     @IBOutlet var outputText: UITextView!
     
@@ -45,11 +63,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-//    var canRedo: Bool {
-//        get {
-//            return redoStackCount > 0
-//        }
-//    }
+    var tutorialState: GameTutorialState = .Disabled
+    
+    @IBOutlet weak var tutorialHoldToViewBack: UIVisualEffectView!
+    @IBOutlet weak var tutorialHoldUntilTimerReachesEnd: UIVisualEffectView!
+    @IBOutlet weak var tutorialHoldUntilTimerReachesEndMistake: UIVisualEffectView!
+    @IBOutlet weak var tutorialCardBackExplain: UIVisualEffectView!
+    @IBOutlet weak var tutorialPressReleaseQuicklyFront: UIVisualEffectView!
+    @IBOutlet weak var tutorialPressReleaseQuicklyBack: UIVisualEffectView!
+    @IBOutlet weak var tutorialPressReleaseQuicklyFrontMistake: UIVisualEffectView!
+    @IBOutlet weak var tutorialFinished: UIVisualEffectView!
     
     var dueCard: Card? {
         get {
@@ -215,6 +238,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     private func updateProgressBar() {
         if progressBar.visible {
             progressBar.progress = Float(progressBarPercent)
+            
+            if progressBarPercent >= 1 {
+                progressBar.visible = false
+                
+                onUp()
+            }
         }
     }
     
@@ -248,12 +277,19 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var wasFront = false
     var downTime: NSTimeInterval = 0
     func onUp() {
+        
         var percent = (NSDate.timeIntervalSinceReferenceDate() - downTime) / longPressTime
         
         progressBar.visible = false
         if percent < 1 && !didPan && wasFront {
             downTime = 0
             answerCard(.Normal)
+        } else {
+            if  tutorialState == .HoldUntilTimerReachesEnd ||
+                tutorialState == .HoldUntilTimerReachesEndMistake {
+                tutorialState = .CardBackExplain
+                updateTutorialDisplay()
+            }
         }
 //        else {
 //            frontBlocker.visible = false
@@ -497,6 +533,29 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        invalidateCaches()
         fetchCards()
         updateText(invalidateCaches: true)
+        setupTutorial()
+    }
+    
+    private func setupTutorial() {
+        tutorialState = .HoldToViewBack
+        
+        if tutorialState != .Disabled {
+            tutorialState = .HoldToViewBack
+        }
+        
+        updateTutorialDisplay()
+    }
+    
+    
+    private func updateTutorialDisplay() {
+        tutorialHoldToViewBack.visible = tutorialState == .HoldToViewBack
+        tutorialHoldUntilTimerReachesEnd.visible = tutorialState == .HoldUntilTimerReachesEnd
+        tutorialHoldUntilTimerReachesEndMistake.visible = tutorialState == .HoldUntilTimerReachesEndMistake
+        tutorialCardBackExplain.visible = tutorialState == .CardBackExplain
+        tutorialPressReleaseQuicklyFront.visible = tutorialState == .PressReleaseQuicklyFront
+        tutorialPressReleaseQuicklyBack.visible = tutorialState == .PressReleaseQuicklyBack
+        tutorialPressReleaseQuicklyFrontMistake.visible = tutorialState == .PressReleaseQuicklyFrontMistake
+        tutorialFinished.visible = tutorialState == .Finished
     }
     
     private func fetchCards(clearUndoStack: Bool = true) {
@@ -527,6 +586,29 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         soundEnabled = Globals.audioDirectoryExists
     }
     
+//    if tutorialState != .Disabled {
+//    tutorialState = .HoldToViewBack
+//    }
+//    
+//    tutorialHoldToViewBack.visible = tutorialState != .HoldToViewBack ? true : false
+//    tutorialHoldUntilTimerReachesEnd.visible = false
+//    tutorialHoldUntilTimerReachesEndMistake.visible = false
+//    tutorialCardBackExplain.visible = false
+    
+    
+    private func stepTutorial() {
+        if  isBack &&
+            (tutorialState == .HoldToViewBack || tutorialState == .HoldUntilTimerReachesEndMistake ) {
+                tutorialState = .HoldUntilTimerReachesEnd
+        }
+        if  isFront &&
+            (tutorialState == .HoldUntilTimerReachesEnd) {
+                tutorialState = .HoldUntilTimerReachesEndMistake
+        }
+        
+        updateTutorialDisplay()
+    }
+    
     func advanceCard() {
         if isBack && due.count >= 1 {
             var remove = due.removeAtIndex(0)
@@ -534,6 +616,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
         
         isFront = !isFront
+        
+        stepTutorial()
         
         if due.count == 0 {
             fetchCards(clearUndoStack: false)
