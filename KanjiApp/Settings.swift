@@ -16,4 +16,5 @@ class Settings: NSManagedObject {
     @NSManaged var furiganaEnabled: NSNumber
     @NSManaged var hideTutorialButton: NSNumber
     @NSManaged var hideSidebarButton: NSNumber
+    @NSManaged var undoSwipeEnabled: NSNumber
 }

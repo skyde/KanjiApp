@@ -52,6 +52,20 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         studyLabel.text = due.count == 0 ? "Study" : "Study (\(due.count))"
     }
     
+    override func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
+//        UIImage *pattern = [UIImage imageNamed:@"image.png"];
+//        [cell setBackgroundColor:[UIColor colorWithPatternImage:pattern]];
+        
+//        var image = UIImage(named: "")
+//        println(image)
+        cell.backgroundColor = UIColor(patternImage: UIImage(named:"sidebarBk"))
+//        cell.imageView.image = image
+//        cell.imageView.re
+    }
+//        //cell.contentView.backgroundColor = UIColor(red: 55, green: 53, blue: 58, alpha: 1)
+//
+//    }
+    
     override func viewDidAppear(animated: Bool) {
 //        println("viewdidappear")
         refreshDisplay()
@@ -61,10 +75,20 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
 //        
         //        println(root.mainView.subviews[0] as UINavigationController)
         var bkColor = UIColor(red: 55, green: 53, blue: 58, alpha: 1)
+        
+        
         //        table.headerViewForSection(0).textLabel.backgroundColor = bkColor
         //        table.headerViewForSection(0).contentView.backgroundColor = bkColor
 //        println("did appear")
         for i in 0 ..< table.numberOfSections() {
+//            let rows = table.numberOfRowsInSection(i)
+//            
+//            for x in 0..<rows {
+//                let cell = table.cellForRowAtIndexPath(NSIndexPath(forRow: x, inSection: i))
+//                cell.backgroundColor = UIColor.clearColor()
+//                cell.contentView.backgroundColor = bkColor
+//            }
+            
             if let header = table.headerViewForSection(i) {
                 header.textLabel.font = UIFont(name: Globals.JapaneseFont, size: 16)
                 header.textLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0, alpha: 1)

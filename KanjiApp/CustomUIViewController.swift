@@ -65,15 +65,6 @@ class CustomUIViewController : UIViewController {
         if !alwaysReceiveNotifications && !notificationsActive {
             addNotifications()
         }
-        
-//        if isGameView {
-//            println(self)
-//            if RootContainer.instance != nil {
-//                println(RootContainer.instance)
-//                println(RootContainer.instance.sidebarEdgeReveal)
-//                RootContainer.instance.sidebarEdgeReveal.visible = sidebarEnabled
-//            }
-//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -82,19 +73,11 @@ class CustomUIViewController : UIViewController {
             addNotifications()
         }
         
-//        println(self)
-        
-//        println(self)
-//        
-//        println(isGameView)
-        
-//        if isGameView {
         Globals.notificationGameViewDidAppear.postNotification(self)
-//        }
+//
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-//        println("viewWillDisappear")
         if !alwaysReceiveNotifications && notificationsActive {
             removeNotifications()
         }
@@ -102,7 +85,6 @@ class CustomUIViewController : UIViewController {
     
     
     override func viewDidDisappear(animated: Bool) {
-//        println("viewDidDisappear")
         super.viewWillAppear(animated)
         if !alwaysReceiveNotifications && notificationsActive {
             removeNotifications()
@@ -111,14 +93,12 @@ class CustomUIViewController : UIViewController {
     
     func addNotifications() {
         notificationsActive = true
-//        println("addNotifications \(self)")
         
         Globals.notificationTransitionToView.addObserver(self, selector: "onTransitionToView")
     }
     
     func removeNotifications() {
         notificationsActive = false
-//        println("removeNotifications \(self)")
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
