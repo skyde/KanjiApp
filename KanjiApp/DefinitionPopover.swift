@@ -171,7 +171,10 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //    }
     
     func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        RootContainer.instance.definitionEdgeReveal.respondToPanGesture(gesture)
+        var translation = gesture.translationInView(view)
+        translation.x = (max(0, abs(translation.x) - 40)) * sign(translation.x)
+        
+        RootContainer.instance.definitionEdgeReveal.pan(gesture.state, translation)
 //        switch gesture.state {
 //        case .Changed:
 //            println(gesture.translationInView(self.view))

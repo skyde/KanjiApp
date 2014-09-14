@@ -193,6 +193,10 @@ public class EdgeReveal: UIButton {
     }
     
     func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        pan(gesture.state, gesture.translationInView(superview))
+    }
+    
+    func pan(state: UIGestureRecognizerState, _ translation: CGPoint) {
         if animationState.IsAnimating() {
             return
         }
@@ -202,7 +206,7 @@ public class EdgeReveal: UIButton {
             xSign = -1
         }
         
-        switch gesture.state {
+        switch state {
         case .Began:
             if animationState == .Closed {
                 animationState = .DraggingOpen
@@ -218,7 +222,7 @@ public class EdgeReveal: UIButton {
             break
         }
         
-        var xOffset = gesture.translationInView(superview).x * xSign
+        var xOffset = translation.x * xSign
         
         if !animationState.AnyOpen() {
             xOffset += maxReveal()
@@ -240,22 +244,14 @@ public class EdgeReveal: UIButton {
             frame.origin.x = x
         }
         
-        switch gesture.state {
+        switch state {
         case .Ended:
-            let translation = gesture.translationInView(superview)
             var xDelta = translation.x
             
             if revealType == EdgeRevealType.Right {
                 xDelta = -xDelta
             }
             
-//            if immediatelyClose {
-//                
-//                
-//                
-//                animateSelf(false)
-//            }
-//            else {
             if abs(translation.y) < maxYTravel {
                 if xDelta > transitionThreshold {
                     animateSelf(true)
@@ -268,7 +264,6 @@ public class EdgeReveal: UIButton {
             else {
                 animateSelf(!animationState.AnyOpen())
             }
-//            }
         default:
             break
         }
