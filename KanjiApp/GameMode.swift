@@ -210,9 +210,22 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         onTouchGesture.delegate = self
         outputText.addGestureRecognizer(onTouchGesture)
         
+        var swipeToRight = UISwipeGestureRecognizer(target: self, action: "onSwipeToRight")
+        swipeToRight.delegate = self
+        view.addGestureRecognizer(swipeToRight)
+        
         var setCategoryError: NSError?
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.DuckOthers, error: &setCategoryError)
         //AVAudioSessionCategoryOptions.MixWithOthers
+    }
+    
+    var undoSwiping: Bool = false
+    func onSwipeToRight() {
+        if undoStack.count > 0 && settings.undoSwipeEnabled.boolValue {
+            isFront = true
+            undoSwiping = true
+            onUndo()
+        }
     }
     
     func onLongPress(sender: UILongPressGestureRecognizer) {
@@ -272,7 +285,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             }
 
         case .Ended:
-            onUp()
+            if !undoSwiping {
+                onUp()
+            }
+            
+            undoSwiping = false
             
         default:
             break
