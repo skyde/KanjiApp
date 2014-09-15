@@ -17,4 +17,7 @@ class Settings: NSManagedObject {
     @NSManaged var hideTutorialButton: NSNumber
     @NSManaged var hideSidebarButton: NSNumber
     @NSManaged var undoSwipeEnabled: NSNumber
+    @NSManaged var reviewAheadAmount: NSNumber
+    @NSManaged var todayTime: NSNumber
+    @NSManaged var todayTotalStudied: NSNumber
 }

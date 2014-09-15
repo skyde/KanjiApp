@@ -48,7 +48,7 @@ class Card: NSManagedObject {
         case .Hard:
             if adjustInterval {
                 if interval.doubleValue >= 6 {
-                    interval = interval.doubleValue - 0.5
+                    interval = interval.doubleValue + 0.3
                 } else if interval.doubleValue <= 4.5 {
                     interval = interval.doubleValue + 0.4
                 }

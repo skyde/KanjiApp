@@ -18,4 +18,5 @@ class CardData: NSManagedObject {
     @NSManaged var answersNormal: NSNumber
     @NSManaged var answersHard: NSNumber
     @NSManaged var answersForgot: NSNumber
+    @NSManaged var displayFrontAsHiragana: NSNumber
 }

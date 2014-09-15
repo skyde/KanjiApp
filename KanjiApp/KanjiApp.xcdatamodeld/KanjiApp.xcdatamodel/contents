@@ -21,6 +21,7 @@
         <attribute name="answersKnown" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="answersNormal" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="definitionOther" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayFrontAsHiragana" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="exampleEnglish" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exampleJapanese" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="otherExampleSentences" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,24 +32,27 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Card" inverseName="embeddedData" inverseEntity="Card" syncable="YES"/>
     </entity>
     <entity name="Settings" syncable="YES">
-        <attribute name="cardAddAmount" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="cardAddAmount" optional="YES" attributeType="Double" defaultValueString="5" syncable="YES"/>
         <attribute name="furiganaEnabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="generatedCards" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="generatedCards" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="hideSidebarButton" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="hideTutorialButton" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="jlptLevel" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <attribute name="onlyStudyKanji" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="jlptLevel" optional="YES" attributeType="Double" defaultValueString="4" syncable="YES"/>
+        <attribute name="onlyStudyKanji" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="readerText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviewAheadAmount" optional="YES" attributeType="Double" defaultValueString="3" syncable="YES"/>
         <attribute name="romajiEnabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="seenTutorial" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="textSize" optional="YES" attributeType="Double" defaultValueString="1" syncable="YES"/>
-        <attribute name="undoSwipeEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="todayTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="todayTotalStudied" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="undoSwipeEnabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="volume" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="volume" optional="YES" attributeType="Double" defaultValueString="0.5" syncable="YES"/>
     </entity>
     <elements>
         <element name="Card" positionX="-83" positionY="-39" width="128" height="238"/>
-        <element name="CardData" positionX="142" positionY="216" width="128" height="238"/>
-        <element name="Settings" positionX="-306" positionY="234" width="128" height="255"/>
+        <element name="CardData" positionX="142" positionY="216" width="128" height="253"/>
+        <element name="Settings" positionX="-306" positionY="234" width="128" height="298"/>
     </elements>
 </model>
