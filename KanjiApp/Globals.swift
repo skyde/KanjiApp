@@ -54,7 +54,8 @@ struct Globals
             return UIScreen.mainScreen().bounds.size
         }
     }
-
+    
+    static var romajiConverter = PaRomajiKanaConverter()
 //    static var screenSizeRetinaIndependent: CGSize {
 //        get {
 //            var size = UIScreen.mainScreen().bounds.size
@@ -143,6 +144,26 @@ struct Globals
     //        return true
     }
     }
+    
+    static var kanjiCharacterSet = NSCharacterSet(range:
+        NSRange(location: 0x4e00, length: 0x9fbf-0x4e00))
+    
+    static var hiraganaCharacterSet = NSCharacterSet(range:
+        NSRange(location: 0x3040, length: 0x309f-0x3040))
+    
+    static var katakanaCharacter = NSCharacterSet(range:
+        NSRange(location: 0x30a0, length: 0x30ff-0x30a0))
+    
+    static var youonCharacterSet = NSCharacterSet(charactersInString: "ゃゅょャュョ ")
+    
+    static var allKanaCharacterSet: NSCharacterSet = {
+        var set = NSMutableCharacterSet()
+        set.formUnionWithCharacterSet(hiraganaCharacterSet)
+        set.formUnionWithCharacterSet(katakanaCharacter)
+        set.formUnionWithCharacterSet(youonCharacterSet)
+        
+        return set
+    }()
 }
 
 func randomRange(min: Double, max: Double) -> Double {

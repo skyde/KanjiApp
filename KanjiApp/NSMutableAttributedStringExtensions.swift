@@ -10,7 +10,7 @@ extension NSMutableAttributedString {
         }
     }
     
-    func addAttributedText(var text: String, var _ attributeAndValues: [(String, AnyObject)], breakLine: Bool = true, processAttributes: Bool = false, removeSpaces: Bool = false)
+    func addAttributedText(var text: String, var _ attributeAndValues: [(String, AnyObject)], breakLine: Bool = true, processAttributes: Bool = false, removeSpaces: Bool = false, removeFurigana: Bool? = nil)
     {
         var bolds: [NSRange] = []
         
@@ -26,8 +26,7 @@ extension NSMutableAttributedString {
         
         if processAttributes
         {
-            
-            text = text.removeTagsFromString(text)
+            text = text.removeTagsFromString(text, removeFurigana: removeFurigana ?? processAttributes)
         }
         
         var existingLength: Int = self.mutableString.length

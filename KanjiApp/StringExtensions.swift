@@ -14,19 +14,45 @@ extension String
     
     func isPrimarilyKanji() -> Bool
     {        
-        var validChars = NSCharacterSet(range: NSRange(location: 0x4e00, length: 0x9fbf-0x4e00))
+//        var validChars = NSCharacterSet(range: NSRange(location: 0x4e00, length: 0x9fbf-0x4e00))
 
-        return componentsSeparatedByCharactersInSet(validChars).count > 1
+        return componentsSeparatedByCharactersInSet(Globals.kanjiCharacterSet).count > 1
     }
     
-    func removeTagsFromString(var text: String) -> String
-    {
-        var furiganaOpen = text.componentsSeparatedByString("]")
+    func asKana() -> String {
+        var returnValue: String = ""
         
-        text = ""
-        for item in furiganaOpen
-        {
-            text += item.componentsSeparatedByString("[")[0]
+        var addedSpace = true
+        for item in self.componentsSeparatedByCharactersInSet(Globals.allKanaCharacterSet.invertedSet) {
+//            if item == " " {
+//                continue
+//            }
+            var add = item//replaceInString(item, " ", "aaa")
+            
+            if !addedSpace {
+//                returnValue += " "
+                addedSpace = true
+            }
+            
+            if countElements(add) > 0 {
+                addedSpace = false
+            }
+            returnValue += add
+        }
+        
+        return returnValue
+    }
+    
+    func removeTagsFromString(var text: String, removeFurigana: Bool = true) -> String
+    {
+        if removeFurigana {
+            var furiganaOpen = text.componentsSeparatedByString("]")
+            
+            text = ""
+            for item in furiganaOpen
+            {
+                text += item.componentsSeparatedByString("[")[0]
+            }
         }
         
         text = removeFromString(text, "<b>")

@@ -380,7 +380,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     var lastSearchText = ""
-    var romajiConverter = PaRomajiKanaConverter()
     var searchAnim: AnimationState = AnimationState.Closed
     
     private func animateSearch(open: Bool) {
@@ -421,7 +420,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if text != "" {
             
-            var fromRomaji = romajiConverter.convertToHiraganaFromRomaji(text)
+            var fromRomaji = Globals.romajiConverter.convertToHiraganaFromRomaji(text)
             
             var predicate =
             "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)"

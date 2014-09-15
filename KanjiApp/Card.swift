@@ -334,6 +334,12 @@ class Card: NSManagedObject {
         
         addTo.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
         
+        if settings.romajiEnabled.boolValue {
+            var romaji = Globals.romajiConverter.convertToRomajiFromKana(embeddedData.exampleJapanese.asKana())
+            
+            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 18))], processAttributes: true, removeSpaces: false)
+        }
+        
         addTo.addBreak(5)
         
         addTo.addAttributedText(embeddedData.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
@@ -512,5 +518,11 @@ class Card: NSManagedObject {
             return Globals.textPending
         }
         return Globals.textStudying
+    }
+    
+    private var settings: Settings {
+        get {
+            return RootContainer.instance.settings
+        }
     }
 }
