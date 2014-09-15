@@ -224,6 +224,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if undoStack.count > 0 && settings.undoSwipeEnabled.boolValue {
             isFront = true
             undoSwiping = true
+            progressBar.hidden = true
             onUndo()
         }
     }
