@@ -41,7 +41,7 @@
         <attribute name="onlyStudyKanji" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="readerText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reviewAheadAmount" optional="YES" attributeType="Double" defaultValueString="3" syncable="YES"/>
-        <attribute name="romajiEnabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="romajiEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="seenTutorial" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="textSize" optional="YES" attributeType="Double" defaultValueString="1" syncable="YES"/>
         <attribute name="todayTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>

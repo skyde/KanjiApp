@@ -2,19 +2,29 @@ import Foundation
 import UIKit
 
 class SettingsTableView: UITableViewController, UITableViewDelegate {
-//    @IBOutlet var table: UITableView!
-//    @IBOutletCollection var headersAndFooters: [UILabel]!
-//    @IBOutlet var headersAndFooters: Array<UILabel>!
+    
     @IBOutlet weak var volume: UISlider!
     @IBOutlet weak var numCardsToAdd: UISegmentedControl!
+    
+    @IBOutlet weak var displayRomaji: UISwitch!
+    
+    @IBOutlet weak var undoShortcut: UISwitch!
+    
+    private var settings: Settings {
+    get {
+        return RootContainer.instance.settings
+    }
+    }
+    
+    private func saveContext() {
+        RootContainer.instance.saveContext()
+    }
+    
     @IBAction func onVolumeChanged(sender: UISlider) {
-//        println("onVolumeChanged")
-
         SettingsView.instance.onVolumeChanged(sender)
 
     }
     @IBAction func onBackupTapped(sender: AnyObject) {
-//        println("onBackupTapped")
         SettingsView.instance.onBackupTap(sender)
     }
     @IBOutlet weak var tutorialButtonSwitch: UISwitch!
@@ -26,20 +36,20 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
         
         switch sender.selectedSegmentIndex {
         case 0:
-            RootContainer.instance.settings.cardAddAmount = 1
+            settings.cardAddAmount = 1
         case 1:
-            RootContainer.instance.settings.cardAddAmount = 3
+            settings.cardAddAmount = 3
         case 2:
-            RootContainer.instance.settings.cardAddAmount = 5
+            settings.cardAddAmount = 5
         case 3:
-            RootContainer.instance.settings.cardAddAmount = 10
+            settings.cardAddAmount = 10
         case 4:
-            RootContainer.instance.settings.cardAddAmount = 20
+            settings.cardAddAmount = 20
         default:
             break
         }
         
-        RootContainer.instance.saveContext()
+        saveContext()
     }
     
     override func viewDidLoad() {
@@ -83,12 +93,12 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
         }
     }
     override func viewDidAppear(animated: Bool) {
-        volume.value = RootContainer.instance.settings.volume.floatValue
+        volume.value = settings.volume.floatValue
         
         updateFonts()
         
         // 1, 3, 5, 10, 20
-        switch RootContainer.instance.settings.cardAddAmount {
+        switch settings.cardAddAmount {
         case 1:
             numCardsToAdd.selectedSegmentIndex = 0
         case 3:
@@ -103,40 +113,26 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
             break
         }
         
-        tutorialButtonSwitch.on = !RootContainer.instance.settings.hideTutorialButton.boolValue
-        
-        sidebarButtonSwitch.on = !RootContainer.instance.settings.hideSidebarButton.boolValue
-        //        selectedSegmentIndex
+        tutorialButtonSwitch.on = !settings.hideTutorialButton.boolValue
+        sidebarButtonSwitch.on = !settings.hideSidebarButton.boolValue
+        undoShortcut.on = settings.undoSwipeEnabled.boolValue
+        displayRomaji.on = settings.romajiEnabled.boolValue
     }
     @IBAction func showTutorialButtonValueChanged(sender: UISwitch)
     {
-        RootContainer.instance.settings.hideTutorialButton = !sender.on
-        RootContainer.instance.saveContext()
+        settings.hideTutorialButton = !sender.on
+        saveContext()
     }
     @IBAction func showSidebarButtonValueChanged(sender: UISwitch) {
-        RootContainer.instance.settings.hideSidebarButton = !sender.on
-        RootContainer.instance.saveContext()
+        settings.hideSidebarButton = !sender.on
+        saveContext()
     }
-//        super.viewDidAppear(animated)
-//        for i in 0 ..< table.numberOfSections() {
-//            if let header = table.headerViewForSection(i) {
-//                header.textLabel.font = UIFont(name: Globals.JapaneseFont, size: 16)
-//                header.textLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0, alpha: 1)
-//                //                header.textLabel.textAlignment = NSTextAlignment.Left
-//                header.backgroundView.backgroundColor = bkColor
-//                
-//                //                header.frame = CGRectMake(header.frame.origin.x, header.frame.origin.y, header.frame.width, 10)
-//            }
-//        }    }
-//
-//        println(table)
-//        println(table.numberOfSections())
-//        
-//        for i in 0 ..< table.numberOfSections() {
-//            if let header = table.footerViewForSection(i) {
-//                println(header)
-//            }
-//        }
-////        table.headerViewForSection(0).textLabel.font = UIFont(name: Globals.EnglishFont, size: 16)
-//    }
+    @IBAction func undoShortcutValueChanged(sender: UISwitch) {
+        settings.undoSwipeEnabled = sender.on
+        saveContext()
+    }
+    @IBAction func displayRomajiValueChanged(sender: UISwitch) {
+        settings.romajiEnabled = sender.on
+        saveContext()
+    }
 }
