@@ -337,7 +337,7 @@ class Card: NSManagedObject {
         if settings.romajiEnabled.boolValue {
             var romaji = Globals.romajiConverter.convertToRomajiFromKana(embeddedData.exampleJapanese.asKana())
             
-            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 18))], processAttributes: true, removeSpaces: false)
+            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14))], processAttributes: true, removeSpaces: false)
         }
         
         addTo.addBreak(5)
@@ -387,11 +387,16 @@ class Card: NSManagedObject {
         var isJapanese = true
         var text = ""
         
-        var examples: String  = embeddedData.otherExampleSentences.removeTagsFromString(embeddedData.otherExampleSentences)
+        var examples: String  = embeddedData.otherExampleSentences.removeTagsFromString(embeddedData.otherExampleSentences, removeFurigana: false)
+        var passBlock = false
         
         for item in examples {
             var test = String(item).componentsSeparatedByCharactersInSet(validChars)[0]
             var isCurrentJapanese = test != ""
+            
+            if item == "[" {
+                passBlock = true
+            }
             
             if isJapanese != isCurrentJapanese &&
                 text != "" &&
@@ -409,7 +414,8 @@ class Card: NSManagedObject {
                 item != "6" &&
                 item != "7" &&
                 item != "8" &&
-                item != "9" {
+                item != "9" &&
+                !passBlock{
                     if countElements(text) > 1 {
                         var size: CGFloat = isJapanese ? 24 : 16
                         var removeSpaces = isJapanese ? true : false
@@ -417,9 +423,19 @@ class Card: NSManagedObject {
                         
                         addTo.addAttributedText(text + "\n" + extraSpace, [(NSFontAttributeName, UIFont(name: fontName, size: size))], processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
                         
+                        if settings.romajiEnabled.boolValue && isJapanese {
+                            var romaji = Globals.romajiConverter.convertToRomajiFromKana(text.asKana())
+                            
+                            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14))], processAttributes: true, removeSpaces: false)
+                        }
+                        
                         text = ""
                     }
                     isJapanese = !isJapanese
+            }
+            
+            if item == "]" {
+                passBlock = false
             }
             
             if !(text == "" && item == ".") {
