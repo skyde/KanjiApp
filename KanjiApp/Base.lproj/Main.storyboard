@@ -1887,6 +1887,7 @@ all due cards</string>
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="120" name="HiraKakuProN-W3"/>
+                                            <font key="NSOriginalFont" size="120" name="HiraKakuProN-W3"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
@@ -2881,6 +2882,6 @@ Cg
         <segue reference="ocT-bm-8xQ"/>
         <segue reference="o8I-8R-76U"/>
         <segue reference="0Q0-aS-4tM"/>
-        <segue reference="daX-c3-wht"/>
+        <segue reference="NNU-PR-Fp5"/>
     </inferredMetricsTieBreakers>
 </document>

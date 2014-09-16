@@ -337,6 +337,8 @@ class Card: NSManagedObject {
         if settings.romajiEnabled.boolValue {
             var romaji = Globals.romajiConverter.convertToRomajiFromKana(embeddedData.exampleJapanese.asKana())
             
+            addTo.addBreak(5)
+            
             addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14))], processAttributes: true, removeSpaces: false)
         }
         
@@ -425,6 +427,8 @@ class Card: NSManagedObject {
                         
                         if settings.romajiEnabled.boolValue && isJapanese {
                             var romaji = Globals.romajiConverter.convertToRomajiFromKana(text.asKana())
+                            
+                            addTo.addBreak(5)
                             
                             addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14))], processAttributes: true, removeSpaces: false)
                         }
