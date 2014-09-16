@@ -221,6 +221,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var undoSwiping: Bool = false
     func onSwipeToRight() {
+        if  tutorialState != .Disabled ||
+            !settings.undoSwipeEnabled.boolValue {
+            return
+        }
+        
         if undoStack.count > 0 && settings.undoSwipeEnabled.boolValue {
             if wasFront {
                 undoSwiping = true
