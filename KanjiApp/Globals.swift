@@ -3,6 +3,8 @@ import UIKit
 
 struct Globals
 {
+    static var loadDatabaseFromDisk = false
+    
     static let notificationSidebarInteract = Notification<Bool>("notificationSidebarInteract", false)
     static let notificationShowDefinition = Notification<String>("showDefinitionNotification", "")
     static let notificationTransitionToView = Notification<View>("transitionToViewNotification", .Search)

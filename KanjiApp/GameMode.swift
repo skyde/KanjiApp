@@ -222,10 +222,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var undoSwiping: Bool = false
     func onSwipeToRight() {
         if undoStack.count > 0 && settings.undoSwipeEnabled.boolValue {
-            isFront = true
-            undoSwiping = true
+            if wasFront {
+                undoSwiping = true
+                isFront = true
+            }
             progressBar.hidden = true
             onUndo()
+//            wasFront = isFront
+//            didPan = false
         }
     }
     

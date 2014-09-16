@@ -102,7 +102,20 @@ class CustomUIViewController : UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    func loadDatabaseFromDisk() {
+        let fileNames = [("KanjiApp", "sqlite"), ("KanjiApp", "sqlite-shm"), ("KanjiApp", "sqlite-wal")]
+        
+        for (name, type) in fileNames {
+            let path = NSBundle.mainBundle().pathForResource(name, ofType: type)
+        }
+    }
+    
     func createDatabase(filename: String) {
+        if Globals.loadDatabaseFromDisk {
+            loadDatabaseFromDisk()
+            return
+        }
+        
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
