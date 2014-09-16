@@ -3,7 +3,8 @@ import UIKit
 
 struct Globals
 {
-    static var loadDatabaseFromDisk = false
+    static var loadDatabaseFromDisk = true
+    static let databaseFiles = [("KanjiApp", "sqlite"), ("KanjiApp", "sqlite-shm"), ("KanjiApp", "sqlite-wal")]
     
     static let notificationSidebarInteract = Notification<Bool>("notificationSidebarInteract", false)
     static let notificationShowDefinition = Notification<String>("showDefinitionNotification", "")
@@ -153,16 +154,16 @@ struct Globals
     }
     }
     
-    static var kanjiCharacterSet = NSCharacterSet(range:
+    static let kanjiCharacterSet = NSCharacterSet(range:
         NSRange(location: 0x4e00, length: 0x9fbf-0x4e00))
     
-    static var hiraganaCharacterSet = NSCharacterSet(range:
+    static let hiraganaCharacterSet = NSCharacterSet(range:
         NSRange(location: 0x3040, length: 0x309f-0x3040))
     
-    static var katakanaCharacter = NSCharacterSet(range:
+    static let katakanaCharacter = NSCharacterSet(range:
         NSRange(location: 0x30a0, length: 0x30ff-0x30a0))
     
-    static var youonCharacterSet = NSCharacterSet(charactersInString: "ゃゅょャュョ ")
+    static let youonCharacterSet = NSCharacterSet(charactersInString: "ゃゅょャュョ ")
     
     static var allKanaCharacterSet: NSCharacterSet = {
         var set = NSMutableCharacterSet()

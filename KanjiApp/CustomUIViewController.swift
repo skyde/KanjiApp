@@ -45,13 +45,9 @@ class CustomUIViewController : UIViewController {
         settings.userName = "default"
         
         if !settings.generatedCards.boolValue {
-            settings.generatedCards = true
-            settings.cardAddAmount = 5
-            settings.onlyStudyKanji = true
-            settings.volume = 0.5
-            settings.readerText = ""
-            
             createDatabase("AllCards copy")
+            
+            settings.generatedCards = true
         }
         
         saveContext()
@@ -102,20 +98,12 @@ class CustomUIViewController : UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func loadDatabaseFromDisk() {
-        let fileNames = [("KanjiApp", "sqlite"), ("KanjiApp", "sqlite-shm"), ("KanjiApp", "sqlite-wal")]
-        
-        for (name, type) in fileNames {
-            let path = NSBundle.mainBundle().pathForResource(name, ofType: type)
-        }
+    var applicationDocumentsDirectory: NSURL {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+            return urls[urls.endIndex-1] as NSURL
     }
     
     func createDatabase(filename: String) {
-        if Globals.loadDatabaseFromDisk {
-            loadDatabaseFromDisk()
-            return
-        }
-        
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")

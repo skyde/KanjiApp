@@ -40,6 +40,9 @@
 		846E80F319B5A6140028EDB8 /* listBox in Resources */ = {isa = PBXBuildFile; fileRef = 846E80F219B5A6130028EDB8 /* listBox */; };
 		8478FBD719C485EC00A826C8 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBD619C485EC00A826C8 /* infoButton.png */; };
 		8478FBDB19C546E700A826C8 /* sidebarBk in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBDA19C546E700A826C8 /* sidebarBk */; };
+		8478FBDF19C8643600A826C8 /* KanjiApp.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBDC19C8643600A826C8 /* KanjiApp.sqlite */; };
+		8478FBE019C8643600A826C8 /* KanjiApp.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBDD19C8643600A826C8 /* KanjiApp.sqlite-shm */; };
+		8478FBE119C8643600A826C8 /* KanjiApp.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBDE19C8643600A826C8 /* KanjiApp.sqlite-wal */; };
 		847B181E19A9AC0700F5A798 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */; };
 		847B181F19A9AC0700F5A798 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181B19A9AC0700F5A798 /* PaRomajiKanaConverter.m */; };
 		847B182019A9AC0700F5A798 /* PaRomajiKanaConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */; };
@@ -136,6 +139,9 @@
 		846E80F219B5A6130028EDB8 /* listBox */ = {isa = PBXFileReference; lastKnownFileType = file; name = listBox; path = Images/listBox; sourceTree = "<group>"; };
 		8478FBD619C485EC00A826C8 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = infoButton.png; path = Images/infoButton.png; sourceTree = "<group>"; };
 		8478FBDA19C546E700A826C8 /* sidebarBk */ = {isa = PBXFileReference; lastKnownFileType = file; name = sidebarBk; path = Images/sidebarBk; sourceTree = "<group>"; };
+		8478FBDC19C8643600A826C8 /* KanjiApp.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = KanjiApp.sqlite; path = Database/KanjiApp.sqlite; sourceTree = "<group>"; };
+		8478FBDD19C8643600A826C8 /* KanjiApp.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KanjiApp.sqlite-shm"; path = "Database/KanjiApp.sqlite-shm"; sourceTree = "<group>"; };
+		8478FBDE19C8643600A826C8 /* KanjiApp.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KanjiApp.sqlite-wal"; path = "Database/KanjiApp.sqlite-wal"; sourceTree = "<group>"; };
 		847B181819A9AC0700F5A798 /* NSString+RomajiKanaConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RomajiKanaConvert.h"; path = "External/NSString+RomajiKanaConvert.h"; sourceTree = "<group>"; };
 		847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RomajiKanaConvert.m"; path = "External/NSString+RomajiKanaConvert.m"; sourceTree = "<group>"; };
 		847B181A19A9AC0700F5A798 /* PaRomajiKanaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverter.h; path = External/PaRomajiKanaConverter.h; sourceTree = "<group>"; };
@@ -251,6 +257,9 @@
 		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8478FBDC19C8643600A826C8 /* KanjiApp.sqlite */,
+				8478FBDD19C8643600A826C8 /* KanjiApp.sqlite-shm */,
+				8478FBDE19C8643600A826C8 /* KanjiApp.sqlite-wal */,
 				8478FBDA19C546E700A826C8 /* sidebarBk */,
 				8478FBD619C485EC00A826C8 /* infoButton.png */,
 				846E80F219B5A6130028EDB8 /* listBox */,
@@ -463,15 +472,18 @@
 				84CA557F19847DCA00F62A68 /* KozGoPr6N-ExtraLight.otf in Resources */,
 				842B02101981D6B600B5F533 /* discoverBarFade.png in Resources */,
 				8478FBDB19C546E700A826C8 /* sidebarBk in Resources */,
+				8478FBDF19C8643600A826C8 /* KanjiApp.sqlite in Resources */,
 				842B020A1980D9ED00B5F533 /* mplus-2p-regular.ttf in Resources */,
 				84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */,
 				84CA558219847DCA00F62A68 /* KozGoPr6N-Medium.otf in Resources */,
 				84CA558019847DCA00F62A68 /* KozGoPr6N-Heavy.otf in Resources */,
 				8478FBD719C485EC00A826C8 /* infoButton.png in Resources */,
 				846E80F019B59FF20028EDB8 /* soccerball.png in Resources */,
+				8478FBE019C8643600A826C8 /* KanjiApp.sqlite-shm in Resources */,
 				84DCE9F5197DC7C600E4740A /* mplus-2p-light.ttf in Resources */,
 				84CA558319847DCA00F62A68 /* KozGoPr6N-Regular.otf in Resources */,
 				84DCA47D1988228E000EF0C4 /* minusIcon.png in Resources */,
+				8478FBE119C8643600A826C8 /* KanjiApp.sqlite-wal in Resources */,
 				846E80F119B59FF20028EDB8 /* taskList in Resources */,
 				84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */,
 				842878ED196341B10060BDD1 /* Main.storyboard in Resources */,

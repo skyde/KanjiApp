@@ -334,10 +334,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         return _managedObjectModel!
     }
     var _managedObjectModel: NSManagedObjectModel? = nil
-
+    
+    
+    func loadDatabaseFromDisk() {
+//        let fileNames = 
+        
+        for (name, type) in Globals.databaseFiles {
+            let fileManager = NSFileManager.defaultManager()
+            var error: NSError? = nil
+            
+            let source = NSBundle.mainBundle().URLForResource(name, withExtension: type)
+            
+            let targetTemp = self.applicationDocumentsDirectory.URLByAppendingPathComponent("\(name)TempFile.\(type)")
+            let target = self.applicationDocumentsDirectory.URLByAppendingPathComponent("\(name).\(type)")
+            
+            if fileManager.fileExistsAtPath(target.path) {
+                continue
+            }
+            
+            fileManager.copyItemAtPath(source.path, toPath: targetTemp.path, error: &error)
+            println(error)
+            fileManager.moveItemAtPath(targetTemp.path, toPath: target.path, error: &error)
+            println(error)
+        }
+    }
     // Returns the persistent store coordinator for the application.
     // If the coordinator doesn't already exist, it is created and the application's store added to it.
     var persistentStoreCoordinator: NSPersistentStoreCoordinator {
+        if Globals.loadDatabaseFromDisk {
+            loadDatabaseFromDisk()
+        }
+            
         if _persistentStoreCoordinator == nil {
             let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("KanjiApp.sqlite")
             var error: NSError? = nil
