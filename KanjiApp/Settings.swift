@@ -20,4 +20,5 @@ class Settings: NSManagedObject {
     @NSManaged var reviewAheadAmount: NSNumber
     @NSManaged var todayTime: NSNumber
     @NSManaged var todayTotalStudied: NSNumber
+    @NSManaged var cardFrontAsHiragana: NSNumber
 }

@@ -23,11 +23,17 @@ struct Globals
     static let textStudying = "Studying"
     static let textPending = "Pending"
     static let textSuspended = "Suspended"
+    static let textAddWord = "Add Word"
     
     static let textStudy = "Study"
     static let textPend = "Pend"
     static let textSuspend = "Suspend"
     
+    static var colorAddWords: UIColor! = UIColor(
+        red: 255 / 255.0,
+        green: 204.0 / 255.0,
+        blue: 102 / 255.0,
+        alpha: 1)
     static var colorFunctions: UIColor! = UIColor(white: 170.0 / 255.0, alpha: 1)
     static var colorMyWords: UIColor! = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
     static var colorKnown: UIColor! = UIColor(

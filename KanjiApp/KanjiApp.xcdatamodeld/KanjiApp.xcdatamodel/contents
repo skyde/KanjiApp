@@ -33,6 +33,7 @@
     </entity>
     <entity name="Settings" syncable="YES">
         <attribute name="cardAddAmount" optional="YES" attributeType="Double" defaultValueString="5" syncable="YES"/>
+        <attribute name="cardFrontAsHiragana" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="furiganaEnabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="generatedCards" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="hideSidebarButton" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -53,6 +54,6 @@
     <elements>
         <element name="Card" positionX="-83" positionY="-39" width="128" height="238"/>
         <element name="CardData" positionX="142" positionY="216" width="128" height="253"/>
-        <element name="Settings" positionX="-306" positionY="234" width="128" height="298"/>
+        <element name="Settings" positionX="-306" positionY="234" width="128" height="313"/>
     </elements>
 </model>

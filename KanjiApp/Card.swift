@@ -520,7 +520,11 @@ class Card: NSManagedObject {
     
     func listColor() -> UIColor {
         if suspended.boolValue {
-            return Globals.colorLists
+            if known.boolValue {
+                return Globals.colorLists
+            } else {
+                return Globals.colorAddWords
+            }
         } else if !enabled.boolValue {
             return Globals.colorKnown
         }
@@ -529,7 +533,12 @@ class Card: NSManagedObject {
     
     func listName() -> String {
         if suspended.boolValue {
-            return Globals.textSuspended
+            if known.boolValue {
+                return Globals.textSuspended
+            } else {
+                return Globals.textAddWord
+            }
+//            return Globals.textSuspended
         } else if !enabled.boolValue {
             return Globals.textPending
         }

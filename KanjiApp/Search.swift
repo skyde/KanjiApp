@@ -420,12 +420,20 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if text != "" {
             
-            var fromRomaji = Globals.romajiConverter.convertToHiraganaFromRomaji(text)
+            let fromRomaji = Globals.romajiConverter.convertToHiraganaFromRomaji(text)
+            
+            var textAsHiragana = text
+            
+            if fromRomaji != textAsHiragana {
+                textAsHiragana = fromRomaji
+            }
+            
+            println(textAsHiragana)
             
             var predicate =
             "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)"
             
-            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, text, fromRomaji, text]), CardProperties.kanji)
+            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, textAsHiragana, fromRomaji, text]), CardProperties.kanji)
             
             items = cards.map { ($0 as Card).index }
             
