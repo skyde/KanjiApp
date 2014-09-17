@@ -427,7 +427,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
                 textAsHiragana = fromRomaji
             }
             
-            println(textAsHiragana)
+//            println(textAsHiragana)
             
             var predicate =
             "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)"
