@@ -35,7 +35,7 @@ class CustomUIViewController : UIViewController {
     }
     }
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         loadContext()
@@ -107,7 +107,7 @@ class CustomUIViewController : UIViewController {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
-        var possibleContent = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+        var possibleContent = String.stringWithContentsOfFile(path!, encoding: NSUTF8StringEncoding, error: nil)
         
         var values: [Card] = []
         
@@ -140,7 +140,7 @@ class CustomUIViewController : UIViewController {
                 
                 var dataDesc = NSEntityDescription.entityForName("CardData", inManagedObjectContext: managedObjectContext)
                 
-                card.embeddedData = CardData(entity: dataDesc, insertIntoManagedObjectContext: managedObjectContext)
+                card.embeddedData = CardData(entity: dataDesc!, insertIntoManagedObjectContext: managedObjectContext)
                 
                 card.index = index
                 card.hiragana = items[2]

@@ -36,7 +36,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
         get { return definitionPopoverInstance! }
     }
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         definitionPopoverInstance = self

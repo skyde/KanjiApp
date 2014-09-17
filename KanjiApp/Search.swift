@@ -37,7 +37,23 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     var scrollVelocity: Double = 0
     var touchesDown = false
 //    var currentMinTime: Double = 0
-
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.items.count;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = searchResults.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        
+        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+            
+            cell.textLabel?.attributedText = card.cellText
+            cell.textLabel?.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clearColor()
+        }
+        
+        return cell
+    }
     var averageLife: Double {
     get {
         return baseLife + randomLife / 2
@@ -55,7 +71,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     }
 
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -339,23 +355,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
         closeKeyboard()
-    }
-    
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
-    }
-    
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell = searchResults.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        
-        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            
-            cell.textLabel.attributedText = card.cellText
-            cell.textLabel.backgroundColor = UIColor.clearColor()
-            cell.backgroundColor = UIColor.clearColor()
-        }
-        
-        return cell
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {

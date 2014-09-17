@@ -65,6 +65,7 @@
 		84D6074D19706907007706DE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6074C19706907007706DE /* StringExtensions.swift */; };
 		84D6074F1970693C007706DE /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6074E1970693C007706DE /* NSMutableAttributedStringExtensions.swift */; };
 		84D6075119707A31007706DE /* AddWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6075019707A31007706DE /* AddWords.swift */; };
+		84D88DB019C926FC0079ED8B /* mplus-2p-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D88DAF19C926FC0079ED8B /* mplus-2p-regular.ttf */; };
 		84DCA47B19882275000EF0C4 /* plusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DCA47A19882274000EF0C4 /* plusIcon.png */; };
 		84DCA47D1988228E000EF0C4 /* minusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DCA47C1988228D000EF0C4 /* minusIcon.png */; };
 		84DCA47F198884C0000EF0C4 /* AddRemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCA47E198884C0000EF0C4 /* AddRemoveButton.swift */; };
@@ -159,6 +160,7 @@
 		84D6074C19706907007706DE /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		84D6074E1970693C007706DE /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		84D6075019707A31007706DE /* AddWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWords.swift; sourceTree = "<group>"; };
+		84D88DAF19C926FC0079ED8B /* mplus-2p-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mplus-2p-regular.ttf"; path = "Fonts/mplus-2p-regular.ttf"; sourceTree = "<group>"; };
 		84DCA47A19882274000EF0C4 /* plusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plusIcon.png; path = Images/plusIcon.png; sourceTree = "<group>"; };
 		84DCA47C1988228D000EF0C4 /* minusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minusIcon.png; path = Images/minusIcon.png; sourceTree = "<group>"; };
 		84DCA47E198884C0000EF0C4 /* AddRemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRemoveButton.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84D88DAF19C926FC0079ED8B /* mplus-2p-regular.ttf */,
 				8478FBDC19C8643600A826C8 /* KanjiApp.sqlite */,
 				8478FBDD19C8643600A826C8 /* KanjiApp.sqlite-shm */,
 				8478FBDE19C8643600A826C8 /* KanjiApp.sqlite-wal */,
@@ -465,6 +468,7 @@
 				846E80EF19B59FF20028EDB8 /* search.png in Resources */,
 				846E80F319B5A6140028EDB8 /* listBox in Resources */,
 				842B02121981F56700B5F533 /* discoverBottomFade.png in Resources */,
+				84D88DB019C926FC0079ED8B /* mplus-2p-regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

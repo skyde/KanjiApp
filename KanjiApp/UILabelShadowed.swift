@@ -11,7 +11,7 @@ import UIKit
 import QuartzCore
 
 public class UILabelShadowed : UILabel {
-    public required init(coder aDecoder: NSCoder!) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         initSelf()

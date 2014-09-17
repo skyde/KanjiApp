@@ -99,7 +99,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -583,7 +583,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 
                 due.insert(remove, atIndex: 0)
                 
-                managedObjectContext.undoManager.undo()
+                managedObjectContext.undoManager!.undo()
                 
                 isFront = true
                 
@@ -800,7 +800,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)
             resourcePath = "\(resourcePath).mp3"
             
-            if let resourcePath = resourcePath {
+//            if let resourcePath = resourcePath {
                 var url = NSURL(fileURLWithPath: resourcePath)
                                 var error:NSError?
                 audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
@@ -813,7 +813,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                     }
                     audioPlayer.prepareToPlay()
                     audioPlayer.play()
-                }
+//                }
             }
         }
     }

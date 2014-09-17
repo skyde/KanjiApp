@@ -20,7 +20,7 @@ class Card: NSManagedObject {
     func answerCard(difficulty: AnswerDifficulty) {
         
 //        managedObjectContext.undoManager. = "answer card"
-        managedObjectContext.undoManager.beginUndoGrouping()
+        managedObjectContext.undoManager?.beginUndoGrouping()
         
         let secondsSince1970 = Globals.secondsSince1970
         let adjustInterval = dueTime < secondsSince1970
@@ -77,7 +77,7 @@ class Card: NSManagedObject {
 //        println("timeForInterval \(timeForInterval())")
 //        println("dueTime \(dueTime)")
         //        println("secondsSince1970 \(secondsSince1970)")
-        managedObjectContext.undoManager.endUndoGrouping()
+        managedObjectContext.undoManager?.endUndoGrouping()
     }
     
     /// In seconds
@@ -387,7 +387,7 @@ class Card: NSManagedObject {
     func addExampleSentences(addTo: NSMutableAttributedString, _ fontName: String) {
         var validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
         var isJapanese = true
-        var text = ""
+        var text: String = ""
         
         var examples: String  = embeddedData.otherExampleSentences.removeTagsFromString(embeddedData.otherExampleSentences, removeFurigana: false)
         var passBlock = false
@@ -407,7 +407,8 @@ class Card: NSManagedObject {
                 item != "-" &&
                 item != "(" &&
                 item != ")" &&
-                item != "0" &&
+                !passBlock {
+            if  item != "0" &&
                 item != "1" &&
                 item != "2" &&
                 item != "3" &&
@@ -416,9 +417,8 @@ class Card: NSManagedObject {
                 item != "6" &&
                 item != "7" &&
                 item != "8" &&
-                item != "9" &&
-                !passBlock{
-                    if countElements(text) > 1 {
+                item != "9" {
+                        if countElements(text) > 1 {
                         var size: CGFloat = isJapanese ? 24 : 16
                         var removeSpaces = isJapanese ? true : false
                         var extraSpace: String = isJapanese ? "" : "\n"
@@ -435,6 +435,7 @@ class Card: NSManagedObject {
                         
                         text = ""
                     }
+                    }
                     isJapanese = !isJapanese
             }
             
@@ -443,7 +444,7 @@ class Card: NSManagedObject {
             }
             
             if !(text == "" && item == ".") {
-                text += item
+                text.append(item)
             }
         }
     }

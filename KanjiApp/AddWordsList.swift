@@ -14,11 +14,11 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
         
         myWordsEnabled = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().count > 0
         
-        table.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)).textLabel.enabled = myWordsEnabled
+        table.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))?.textLabel?.enabled = myWordsEnabled
         
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
         var sourceList: WordList?

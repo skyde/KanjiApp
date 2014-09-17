@@ -17,7 +17,7 @@ extension NSManagedObjectContext
         
         var error: NSError? = nil
         
-        var matches: NSArray = self.executeFetchRequest(request, error: &error)
+        var matches: NSArray = self.executeFetchRequest(request, error: &error)!
         
         if matches.count > 0 {
             return matches[0] as? T
@@ -29,7 +29,7 @@ extension NSManagedObjectContext
         
         let entityDescription = NSEntityDescription.entityForName(entity.description(), inManagedObjectContext: self)
         
-        var value = T(entity: entityDescription, insertIntoManagedObjectContext: self)
+        var value = T(entity: entityDescription!, insertIntoManagedObjectContext: self)
         
         //            switch property {
         //            case .kanji:
@@ -95,10 +95,10 @@ extension NSManagedObjectContext
         let sortDescriptor : NSSortDescriptor = NSSortDescriptor(key: sortProperty.description(), ascending: true)
         request.sortDescriptors = [sortDescriptor]
         var error: NSError? = nil
-        var matches: NSArray = self.executeFetchRequest(request, error: &error)
+        var matches: NSArray = self.executeFetchRequest(request, error: &error)!
         
         if matches.count > 0 {
-            return matches as [NSManagedObject]
+            return matches as? [NSManagedObject]
         }
         else {
             return nil

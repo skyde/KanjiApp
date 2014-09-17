@@ -6,7 +6,9 @@ extension NSMutableAttributedString {
     {
         if(size > 0)
         {
-            self.addAttributedText(" ", [(NSFontAttributeName, UIFont(name: "Helvetica", size: size))]);
+            var tuple: (String, AnyObject) = (NSFontAttributeName, UIFont(name: "Helvetica", size: size))
+            
+            self.addAttributedText(" ", [tuple]);
         }
     }
     

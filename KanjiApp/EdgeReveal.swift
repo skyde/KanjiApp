@@ -33,7 +33,7 @@ public class EdgeReveal: UIButton {
     public init(
         parent: UIView,
         revealType: EdgeRevealType,
-        maxOffset: (() -> (value: CGFloat)) = {() in return 202 },
+        maxOffset: (() -> (CGFloat)) = {() in return 202 },
         autoAddToParent: Bool = true,
         swipeAreaWidth: CGFloat = 13,
         transitionThreshold: CGFloat = 30,
@@ -193,7 +193,7 @@ public class EdgeReveal: UIButton {
     }
     
     func respondToPanGesture(gesture: UIPanGestureRecognizer) {
-        pan(gesture.state, gesture.translationInView(superview))
+        pan(gesture.state, gesture.translationInView(superview!))
     }
     
     func pan(state: UIGestureRecognizerState, _ translation: CGPoint) {

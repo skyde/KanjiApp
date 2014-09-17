@@ -15,7 +15,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     }
     @IBOutlet weak var studyLabel: UILabel!
     
-    override func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath  indexPath: NSIndexPath) {
         if indexPath == NSIndexPath(forRow: 1, inSection: 0) {
 //            println("tutorial")
             Globals.notificationTransitionToView.postNotification(.GameMode(studyAheadAmount: 0, runTutorial: true))
@@ -52,7 +52,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         studyLabel.text = due.count == 0 ? "Study" : "Study (\(due.count))"
     }
     
-    override func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 //        UIImage *pattern = [UIImage imageNamed:@"image.png"];
 //        [cell setBackgroundColor:[UIColor colorWithPatternImage:pattern]];
         
@@ -93,7 +93,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 header.textLabel.font = UIFont(name: Globals.JapaneseFont, size: 16)
                 header.textLabel.textColor = UIColor(red: 1, green: 0.5, blue: 0, alpha: 1)
 //                header.textLabel.textAlignment = NSTextAlignment.Left
-                header.backgroundView.backgroundColor = bkColor
+                header.backgroundView?.backgroundColor = bkColor
                 
 //                header.frame = CGRectMake(header.frame.origin.x, header.frame.origin.y, header.frame.width, 10)
             }
@@ -122,7 +122,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     var listsOpen = false
     var referencesOpen = false
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView,heightForRowAtIndexPath indexPath: NSIndexPath)-> CGFloat {
         
         let baseHeight: CGFloat = 44
         var listsHeight: CGFloat = baseHeight
@@ -162,12 +162,12 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
     
     private func reorderItems() {
         var cell1 = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))
-        cell1?.superview?.bringSubviewToFront(cell1)
+        cell1?.superview?.bringSubviewToFront(cell1!)
         var cell2 = table.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3))
-        cell2?.superview?.bringSubviewToFront(cell2)
+        cell2?.superview?.bringSubviewToFront(cell2!)
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         
         var targetView: View?
@@ -191,7 +191,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 100:
             listsOpen = !listsOpen
             
-            table.cellForRowAtIndexPath(indexPath).accessoryType = listsOpen ? .None : .DisclosureIndicator
+            table.cellForRowAtIndexPath(indexPath)?.accessoryType = listsOpen ? .None : .DisclosureIndicator
             refreshHeights()
         case 101:
             var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
@@ -229,7 +229,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         case 200:
             referencesOpen = !referencesOpen
             
-            table.cellForRowAtIndexPath(indexPath).accessoryType = referencesOpen ? .None : .DisclosureIndicator
+            table.cellForRowAtIndexPath(indexPath)?.accessoryType = referencesOpen ? .None : .DisclosureIndicator
             
             refreshHeights()
         case 201:

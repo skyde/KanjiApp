@@ -9,11 +9,19 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var confirmButton: UIButton!
     
     @IBOutlet weak var addWordsButton: UIButton!
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         items = []
     }
+    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return items.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        return tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+//    }
     
     @IBAction func onConfirmButtonDown(sender: AnyObject) {
         for index in items {
@@ -85,15 +93,15 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
 
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count;
     }
     
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            cell.textLabel.attributedText = card.cellText
+            cell.textLabel!.attributedText = card.cellText
         }
 //        cell.detailTextLabel.text = card.definition
         

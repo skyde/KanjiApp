@@ -131,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 //        return 11
 //    }
     func additiveImportList(source: String, delimiter: String, column: Int, fallbackColumn: Int) {
-        managedObjectContext.undoManager.beginUndoGrouping()
+        managedObjectContext.undoManager?.beginUndoGrouping()
         
         var values = source.componentsSeparatedByString("\n")
         for value in values {
@@ -200,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             }
         }
         
-        managedObjectContext.undoManager.endUndoGrouping()
+        managedObjectContext.undoManager?.endUndoGrouping()
         saveContext()
     }
     
@@ -219,7 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     }
     
     func importKanjiDatabase(source: String) {
-        managedObjectContext.undoManager.beginUndoGrouping()
+        managedObjectContext.undoManager?.beginUndoGrouping()
         resetDatabase()
         
         var values = source.componentsSeparatedByString("\n")
@@ -257,7 +257,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             }
         }
         
-        managedObjectContext.undoManager.endUndoGrouping()
+        managedObjectContext.undoManager?.endUndoGrouping()
         saveContext()
     }
                             
@@ -294,15 +294,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 
     func saveContext () {
         var error: NSError? = nil
-        let managedObjectContext = self.managedObjectContext
-        if managedObjectContext != nil {
+//        let managedObjectContext = self.managedObjectContext
+//        if managedObjectContext != nil {
             if managedObjectContext.hasChanges && !managedObjectContext.save(&error) {
                 // Replace this implementation with code to handle the error appropriately.
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 //println("Unresolved error \(error), \(error.userInfo)")
                 abort()
             }
-        }
+//        }
     }
 
     // #pragma mark - Core Data stack
@@ -312,13 +312,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     var managedObjectContext: NSManagedObjectContext {
         if _managedObjectContext == nil {
             let coordinator = self.persistentStoreCoordinator
-            if coordinator != nil {
+//            if coordinator != nil {
                 _managedObjectContext = NSManagedObjectContext()
                 _managedObjectContext!.persistentStoreCoordinator = coordinator
                 _managedObjectContext!.undoManager = NSUndoManager()
                 
 //                println("undo manager \(_managedObjectContext?.undoManager)")
-            }
+//            }
         }
         return _managedObjectContext!
     }
@@ -329,7 +329,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     var managedObjectModel: NSManagedObjectModel {
         if _managedObjectModel == nil {
             let modelURL = NSBundle.mainBundle().URLForResource("KanjiApp", withExtension: "momd")
-            _managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL)
+            _managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL!)
         }
         return _managedObjectModel!
     }
@@ -348,13 +348,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             let targetTemp = self.applicationDocumentsDirectory.URLByAppendingPathComponent("\(name)TempFile.\(type)")
             let target = self.applicationDocumentsDirectory.URLByAppendingPathComponent("\(name).\(type)")
             
-            if fileManager.fileExistsAtPath(target.path) {
+            if fileManager.fileExistsAtPath(target.path!) {
                 continue
             }
             
-            fileManager.copyItemAtPath(source.path, toPath: targetTemp.path, error: &error)
+            fileManager.copyItemAtPath(source!.path!, toPath: targetTemp.path!, error: &error)
             println(error)
-            fileManager.moveItemAtPath(targetTemp.path, toPath: target.path, error: &error)
+            fileManager.moveItemAtPath(targetTemp.path!, toPath: target.path!, error: &error)
             println(error)
         }
     }
