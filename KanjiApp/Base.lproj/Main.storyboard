@@ -1390,99 +1390,6 @@ all due cards</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="VOLUME" id="k1E-o0-Q1F">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="voo-av-UTc">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="voo-av-UTc" id="XoO-hl-f8W">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LBr-oD-8Bx">
-                                                    <rect key="frame" x="28" y="12" width="544" height="31"/>
-                                                    <connections>
-                                                        <action selector="onVolumeChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="blU-pJ-JuB"/>
-                                                    </connections>
-                                                </slider>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="LBr-oD-8Bx" secondAttribute="trailing" constant="30" id="k1C-8P-sex"/>
-                                                <constraint firstAttribute="centerY" secondItem="LBr-oD-8Bx" secondAttribute="centerY" id="kXa-G7-9Qy"/>
-                                                <constraint firstItem="LBr-oD-8Bx" firstAttribute="leading" secondItem="XoO-hl-f8W" secondAttribute="leading" constant="30" id="mzF-Xi-wtv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="ADD WORDS" footerTitle="The number of words to add when adding cards from Pending to Studied" id="QRe-sf-5l7">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="SkR-dy-BeH">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SkR-dy-BeH" id="FMQ-N9-zEA">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Up0-kl-DlA">
-                                                    <rect key="frame" x="20" y="0.0" width="140" height="53.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="140" id="YdG-ky-oFN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="roI-lb-1jI">
-                                                    <rect key="frame" x="160" y="13" width="420" height="29"/>
-                                                    <segments>
-                                                        <segment title="1"/>
-                                                        <segment title="3"/>
-                                                        <segment title="5"/>
-                                                        <segment title="10"/>
-                                                        <segment title="20"/>
-                                                    </segments>
-                                                    <connections>
-                                                        <action selector="studyAmountTapped:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="7mb-is-29n"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Up0-kl-DlA" secondAttribute="bottom" id="55l-7c-ZVt"/>
-                                                <constraint firstAttribute="trailing" secondItem="roI-lb-1jI" secondAttribute="trailing" constant="20" id="KnA-4A-KeV"/>
-                                                <constraint firstItem="Up0-kl-DlA" firstAttribute="top" secondItem="FMQ-N9-zEA" secondAttribute="top" id="MTA-z5-zd6"/>
-                                                <constraint firstItem="roI-lb-1jI" firstAttribute="leading" secondItem="Up0-kl-DlA" secondAttribute="trailing" id="PaE-jM-rUc"/>
-                                                <constraint firstAttribute="centerY" secondItem="roI-lb-1jI" secondAttribute="centerY" id="iC3-zd-pza"/>
-                                                <constraint firstItem="Up0-kl-DlA" firstAttribute="leading" secondItem="FMQ-N9-zEA" secondAttribute="leading" constant="20" id="iwD-cU-1tv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="BACKUP DATABASE" footerTitle="Send a copy of all your current words and their review state by email to yourself to back them up" id="sPS-eD-juT">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="C7P-SZ-qPR">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C7P-SZ-qPR" id="LbL-cI-Rxg">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu0-af-HFk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="53.5"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                                    <state key="normal" title="Backup Database">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="onBackupTapped:" destination="ymQ-UJ-hHR" eventType="touchUpInside" id="6af-xI-OGp"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nu0-af-HFk" firstAttribute="leading" secondItem="LbL-cI-Rxg" secondAttribute="leading" id="Efy-fc-ywQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="nu0-af-HFk" secondAttribute="bottom" id="Xev-Td-R9e"/>
-                                                <constraint firstItem="nu0-af-HFk" firstAttribute="top" secondItem="LbL-cI-Rxg" secondAttribute="top" id="va5-qi-hxE"/>
-                                                <constraint firstAttribute="trailing" secondItem="nu0-af-HFk" secondAttribute="trailing" id="yHK-hl-No9"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="TUTORIAL BUTTON" footerTitle="Toggles a button at the top right of study mode which activates a tutorial" id="r1j-KL-5aN">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="naX-G0-HVn">
@@ -1571,6 +1478,99 @@ all due cards</string>
                                                 <constraint firstItem="CyQ-9a-U7A" firstAttribute="top" secondItem="clY-eC-esJ" secondAttribute="top" id="coR-jy-3bO"/>
                                                 <constraint firstItem="CyQ-9a-U7A" firstAttribute="leading" secondItem="clY-eC-esJ" secondAttribute="leading" constant="20" id="hYg-Qj-wOx"/>
                                                 <constraint firstAttribute="trailing" secondItem="NCJ-xu-HnE" secondAttribute="trailing" constant="20" id="o4U-vA-Ggb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="ADD WORDS" footerTitle="The number of words to add when adding cards from Pending to Studied" id="QRe-sf-5l7">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="SkR-dy-BeH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SkR-dy-BeH" id="FMQ-N9-zEA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Up0-kl-DlA">
+                                                    <rect key="frame" x="20" y="0.0" width="140" height="53.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="YdG-ky-oFN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="roI-lb-1jI">
+                                                    <rect key="frame" x="160" y="13" width="420" height="29"/>
+                                                    <segments>
+                                                        <segment title="1"/>
+                                                        <segment title="3"/>
+                                                        <segment title="5"/>
+                                                        <segment title="10"/>
+                                                        <segment title="20"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="studyAmountTapped:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="7mb-is-29n"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Up0-kl-DlA" secondAttribute="bottom" id="55l-7c-ZVt"/>
+                                                <constraint firstAttribute="trailing" secondItem="roI-lb-1jI" secondAttribute="trailing" constant="20" id="KnA-4A-KeV"/>
+                                                <constraint firstItem="Up0-kl-DlA" firstAttribute="top" secondItem="FMQ-N9-zEA" secondAttribute="top" id="MTA-z5-zd6"/>
+                                                <constraint firstItem="roI-lb-1jI" firstAttribute="leading" secondItem="Up0-kl-DlA" secondAttribute="trailing" id="PaE-jM-rUc"/>
+                                                <constraint firstAttribute="centerY" secondItem="roI-lb-1jI" secondAttribute="centerY" id="iC3-zd-pza"/>
+                                                <constraint firstItem="Up0-kl-DlA" firstAttribute="leading" secondItem="FMQ-N9-zEA" secondAttribute="leading" constant="20" id="iwD-cU-1tv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="VOLUME" id="k1E-o0-Q1F">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="voo-av-UTc">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="voo-av-UTc" id="XoO-hl-f8W">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LBr-oD-8Bx">
+                                                    <rect key="frame" x="28" y="12" width="544" height="31"/>
+                                                    <connections>
+                                                        <action selector="onVolumeChanged:" destination="ymQ-UJ-hHR" eventType="valueChanged" id="blU-pJ-JuB"/>
+                                                    </connections>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="LBr-oD-8Bx" secondAttribute="trailing" constant="30" id="k1C-8P-sex"/>
+                                                <constraint firstAttribute="centerY" secondItem="LBr-oD-8Bx" secondAttribute="centerY" id="kXa-G7-9Qy"/>
+                                                <constraint firstItem="LBr-oD-8Bx" firstAttribute="leading" secondItem="XoO-hl-f8W" secondAttribute="leading" constant="30" id="mzF-Xi-wtv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="BACKUP DATABASE" footerTitle="Send a copy of all your current words and their review state by email to yourself to back them up" id="sPS-eD-juT">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="C7P-SZ-qPR">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C7P-SZ-qPR" id="LbL-cI-Rxg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu0-af-HFk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="53.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <state key="normal" title="Backup Database">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onBackupTapped:" destination="ymQ-UJ-hHR" eventType="touchUpInside" id="6af-xI-OGp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nu0-af-HFk" firstAttribute="leading" secondItem="LbL-cI-Rxg" secondAttribute="leading" id="Efy-fc-ywQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="nu0-af-HFk" secondAttribute="bottom" id="Xev-Td-R9e"/>
+                                                <constraint firstItem="nu0-af-HFk" firstAttribute="top" secondItem="LbL-cI-Rxg" secondAttribute="top" id="va5-qi-hxE"/>
+                                                <constraint firstAttribute="trailing" secondItem="nu0-af-HFk" secondAttribute="trailing" id="yHK-hl-No9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

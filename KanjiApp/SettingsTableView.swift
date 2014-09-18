@@ -3,6 +3,8 @@ import UIKit
 
 class SettingsTableView: UITableViewController, UITableViewDelegate {
     
+//    @IBOutlet weak var volumeSection: UITableViewSection!
+    
     @IBOutlet weak var volume: UISlider!
     @IBOutlet weak var numCardsToAdd: UISegmentedControl!
     
@@ -117,6 +119,8 @@ class SettingsTableView: UITableViewController, UITableViewDelegate {
         sidebarButtonSwitch.on = !settings.hideSidebarButton.boolValue
         undoShortcut.on = settings.undoSwipeEnabled.boolValue
         displayRomaji.on = settings.romajiEnabled.boolValue
+        
+//        tableView. Globals.audioDirectoryExists
     }
     @IBAction func showTutorialButtonValueChanged(sender: UISwitch)
     {
