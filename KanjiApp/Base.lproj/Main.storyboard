@@ -461,7 +461,7 @@
                                 <size key="shadowOffset" width="0.0" height="-3"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LH8-dR-DdV">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
                                 <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="KozGoPr6N-Light" family="Kozuka Gothic Pr6N" pointSize="28"/>
                                 <color key="textColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -514,7 +514,7 @@
                             <constraint firstItem="18A-fs-33E" firstAttribute="leading" secondItem="jx9-XZ-c6h" secondAttribute="leading" id="CBc-R1-wc8"/>
                             <constraint firstItem="7gV-aw-pxC" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" priority="750" id="Cdv-Gs-wOq"/>
                             <constraint firstItem="mHs-7n-6qZ" firstAttribute="top" secondItem="7gV-aw-pxC" secondAttribute="bottom" id="DMz-ao-KVr"/>
-                            <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="LH8-dR-DdV" secondAttribute="bottom" priority="750" id="QRx-yL-2xh"/>
+                            <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="LH8-dR-DdV" secondAttribute="bottom" priority="750" constant="-2" id="QRx-yL-2xh"/>
                             <constraint firstItem="18A-fs-33E" firstAttribute="top" secondItem="M8V-25-2rZ" secondAttribute="bottom" id="RFT-pm-Duk"/>
                             <constraint firstAttribute="trailing" secondItem="bp7-V8-USh" secondAttribute="trailing" id="XMk-En-eVi"/>
                             <constraint firstItem="9C5-Qd-7TJ" firstAttribute="top" secondItem="18A-fs-33E" secondAttribute="bottom" priority="750" id="amv-uz-xCa"/>
@@ -685,7 +685,7 @@
                                 <color key="highlightedColor" red="0.80612244899999996" green="0.80612244899999996" blue="0.80612244899999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uO-Hc-A8e">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
                                 <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -743,7 +743,7 @@
                             <constraint firstAttribute="trailing" secondItem="CDn-cS-WZM" secondAttribute="trailing" id="Ixe-Wr-FgP"/>
                             <constraint firstItem="YLe-Is-Vnb" firstAttribute="leading" secondItem="exu-bT-Vaz" secondAttribute="leading" id="KMf-QI-zug"/>
                             <constraint firstItem="1uO-Hc-A8e" firstAttribute="top" secondItem="exu-bT-Vaz" secondAttribute="top" id="RU1-Vu-SSh"/>
-                            <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="1uO-Hc-A8e" secondAttribute="bottom" id="Wis-V6-mHl"/>
+                            <constraint firstItem="CDn-cS-WZM" firstAttribute="top" secondItem="1uO-Hc-A8e" secondAttribute="bottom" constant="-2" id="Wis-V6-mHl"/>
                             <constraint firstItem="kKG-g3-byS" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="XO4-Cq-8Tk"/>
                             <constraint firstAttribute="trailing" secondItem="1uO-Hc-A8e" secondAttribute="trailing" id="buN-NE-UFD"/>
                             <constraint firstItem="NWY-kj-wHd" firstAttribute="top" secondItem="NQP-zl-NMR" secondAttribute="bottom" id="bzo-rm-wPG"/>
@@ -2339,7 +2339,7 @@ to study</string>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-um-Llw">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
                                 <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="mplus-2p-regular" family="M+ 2p" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2369,7 +2369,7 @@ to study</string>
                             <constraint firstAttribute="trailing" secondItem="96a-eE-Ku8" secondAttribute="trailing" id="ZZm-Rn-B2W"/>
                             <constraint firstAttribute="bottom" secondItem="fwr-Ex-b3e" secondAttribute="bottom" id="a5T-8C-hqe"/>
                             <constraint firstAttribute="trailing" secondItem="bZK-bf-LBf" secondAttribute="trailing" id="g2Y-Tn-and"/>
-                            <constraint firstItem="cEn-qY-4J5" firstAttribute="top" secondItem="ncB-um-Llw" secondAttribute="bottom" id="h7g-Ww-32A"/>
+                            <constraint firstItem="cEn-qY-4J5" firstAttribute="top" secondItem="ncB-um-Llw" secondAttribute="bottom" constant="-2" id="h7g-Ww-32A"/>
                             <constraint firstItem="fwr-Ex-b3e" firstAttribute="top" secondItem="cEn-qY-4J5" secondAttribute="bottom" id="icW-h7-2a4"/>
                             <constraint firstItem="96a-eE-Ku8" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="jpJ-kJ-scy"/>
                             <constraint firstItem="bZK-bf-LBf" firstAttribute="leading" secondItem="3Yu-yV-REK" secondAttribute="leading" id="qKh-jt-84z"/>
@@ -2542,9 +2542,9 @@ to study</string>
         <image name="taskList" width="1309" height="1309"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7jX-Xq-vJx"/>
-        <segue reference="daX-c3-wht"/>
-        <segue reference="o8I-8R-76U"/>
+        <segue reference="vgr-gb-U0p"/>
         <segue reference="0Q0-aS-4tM"/>
+        <segue reference="o8I-8R-76U"/>
+        <segue reference="daX-c3-wht"/>
     </inferredMetricsTieBreakers>
 </document>
