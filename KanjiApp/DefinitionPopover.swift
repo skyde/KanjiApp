@@ -69,7 +69,7 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
             outputText.scrollRangeToVisible(NSRange(location: 0, length: 1))
             outputText.attributedText = card.definitionAttributedText
             outputText.textAlignment = .Center
-            outputText.textContainerInset.top = 40
+            outputText.textContainerInset.top = 10
             outputText.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
             
             updateDefinitionLabel(card)
