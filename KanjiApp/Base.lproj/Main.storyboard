@@ -2334,7 +2334,7 @@ to study</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="RND-Vb-f7w"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
                                 <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
@@ -2542,7 +2542,7 @@ to study</string>
         <image name="taskList" width="1309" height="1309"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vgr-gb-U0p"/>
+        <segue reference="7jX-Xq-vJx"/>
         <segue reference="0Q0-aS-4tM"/>
         <segue reference="o8I-8R-76U"/>
         <segue reference="daX-c3-wht"/>

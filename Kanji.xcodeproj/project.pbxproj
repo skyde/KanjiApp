@@ -43,6 +43,7 @@
 		8478FBE019C8643600A826C8 /* KanjiApp.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBDD19C8643600A826C8 /* KanjiApp.sqlite-shm */; };
 		8478FBE119C8643600A826C8 /* KanjiApp.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 8478FBDE19C8643600A826C8 /* KanjiApp.sqlite-wal */; };
 		847AF0FD19CB3F3400CCAFC0 /* mplus-2p-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 847AF0FC19CB3F3400CCAFC0 /* mplus-2p-regular.ttf */; };
+		847AF0FF19CB40FD00CCAFC0 /* mplus-2p-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 847AF0FE19CB40FD00CCAFC0 /* mplus-2p-light.ttf */; };
 		847B181E19A9AC0700F5A798 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */; };
 		847B181F19A9AC0700F5A798 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181B19A9AC0700F5A798 /* PaRomajiKanaConverter.m */; };
 		847B182019A9AC0700F5A798 /* PaRomajiKanaConverterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B181D19A9AC0700F5A798 /* PaRomajiKanaConverterTest.m */; };
@@ -152,6 +153,7 @@
 		8478FBDD19C8643600A826C8 /* KanjiApp.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KanjiApp.sqlite-shm"; path = "Database/KanjiApp.sqlite-shm"; sourceTree = "<group>"; };
 		8478FBDE19C8643600A826C8 /* KanjiApp.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KanjiApp.sqlite-wal"; path = "Database/KanjiApp.sqlite-wal"; sourceTree = "<group>"; };
 		847AF0FC19CB3F3400CCAFC0 /* mplus-2p-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mplus-2p-regular.ttf"; path = "Fonts/mplus-2p-regular.ttf"; sourceTree = "<group>"; };
+		847AF0FE19CB40FD00CCAFC0 /* mplus-2p-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mplus-2p-light.ttf"; path = "Fonts/mplus-2p-light.ttf"; sourceTree = "<group>"; };
 		847B181819A9AC0700F5A798 /* NSString+RomajiKanaConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RomajiKanaConvert.h"; path = "External/NSString+RomajiKanaConvert.h"; sourceTree = "<group>"; };
 		847B181919A9AC0700F5A798 /* NSString+RomajiKanaConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RomajiKanaConvert.m"; path = "External/NSString+RomajiKanaConvert.m"; sourceTree = "<group>"; };
 		847B181A19A9AC0700F5A798 /* PaRomajiKanaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverter.h; path = External/PaRomajiKanaConverter.h; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				847AF0FE19CB40FD00CCAFC0 /* mplus-2p-light.ttf */,
 				847AF0FC19CB3F3400CCAFC0 /* mplus-2p-regular.ttf */,
 				84D88DD919C9673D0079ED8B /* launchImage-IPhoneTopBar-640x960.png */,
 				84D88DD719C9655C0079ED8B /* launchImage-iPhone5s-x2.png */,
@@ -506,6 +509,7 @@
 				8478FBDB19C546E700A826C8 /* sidebarBk in Resources */,
 				84D88DBB19C95DBD0079ED8B /* icon-29x1.png in Resources */,
 				84D88DC419C95DBD0079ED8B /* icon-1024x1.png in Resources */,
+				847AF0FF19CB40FD00CCAFC0 /* mplus-2p-light.ttf in Resources */,
 				8478FBDF19C8643600A826C8 /* KanjiApp.sqlite in Resources */,
 				84D88DD119C9642A0079ED8B /* launchImage-768x1024.png in Resources */,
 				84D88DBF19C95DBD0079ED8B /* icon-40x2.png in Resources */,

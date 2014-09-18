@@ -152,7 +152,7 @@ class Card: NSManagedObject {
     }
     
     func animatedLabelText(size: CGFloat) -> NSAttributedString {
-    let font = Globals.JapaneseFont
+    let font = Globals.JapaneseFontLight
         var value = NSMutableAttributedString()
         
         value.beginEditing()
