@@ -255,7 +255,7 @@ public class EdgeReveal: UIButton {
             if abs(translation.y) < maxYTravel {
                 if xDelta > transitionThreshold {
                     animateSelf(true)
-                } else if xDelta < transitionThreshold {
+                } else if xDelta < -transitionThreshold {
                     animateSelf(false)
                 } else {
                     animateSelf(!animationState.AnyOpen())
