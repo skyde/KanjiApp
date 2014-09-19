@@ -155,8 +155,8 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //    }
     
     func setupGestures() {
-//        var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
-//        self.outputText.addGestureRecognizer(tapGesture)
+        var tapGesture = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
+        self.outputText.addGestureRecognizer(tapGesture)
         var panGesture = UIPanGestureRecognizer(target: self, action: "respondToPanGesture:")
         panGesture.delegate = self
         self.outputText.addGestureRecognizer(panGesture)
@@ -183,11 +183,11 @@ class DefinitionPopover : CustomUIViewController, UIGestureRecognizerDelegate {
 //        }
     }
     
-//    func respondToTapGesture(gesture: UIGestureRecognizer) {
+    func respondToTapGesture(gesture: UIGestureRecognizer) {
 //        var tapLocation = gesture.locationInView(self.view)
 //        
 //        if Globals.notificationShowDefinition.value != "" && CGRectContainsPoint(self.view.layer.presentationLayer().frame, tapLocation) {
 //            Globals.notificationShowDefinition.postNotification("")
 //        }
-//    }
+    }
 }
