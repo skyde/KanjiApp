@@ -29,7 +29,6 @@
 		84603D6A19A088BC00F45A32 /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84603D6919A088BC00F45A32 /* CustomUITextView.swift */; };
 		846C9749196A4243001D013C /* TextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C9748196A4243001D013C /* TextReader.swift */; };
 		846C974B196A42A0001D013C /* CustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C974A196A42A0001D013C /* CustomUIViewController.swift */; };
-		846E80E319B454590028EDB8 /* studyIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 846E80E219B454580028EDB8 /* studyIcon.png */; };
 		846E80E519B58D7E0028EDB8 /* hamburgerIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 846E80E419B58D7D0028EDB8 /* hamburgerIcon2.png */; };
 		846E80ED19B59FF20028EDB8 /* goverment.png in Resources */ = {isa = PBXBuildFile; fileRef = 846E80E819B59FEC0028EDB8 /* goverment.png */; };
 		846E80EE19B59FF20028EDB8 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 846E80E919B59FED0028EDB8 /* pencil.png */; };
@@ -85,8 +84,6 @@
 		84D88DD619C964BD0079ED8B /* launchImage-640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D88DD519C964BD0079ED8B /* launchImage-640x1136.png */; };
 		84D88DD819C9655C0079ED8B /* launchImage-iPhone5s-x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D88DD719C9655C0079ED8B /* launchImage-iPhone5s-x2.png */; };
 		84D88DDA19C9673D0079ED8B /* launchImage-IPhoneTopBar-640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D88DD919C9673D0079ED8B /* launchImage-IPhoneTopBar-640x960.png */; };
-		84DCA47B19882275000EF0C4 /* plusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DCA47A19882274000EF0C4 /* plusIcon.png */; };
-		84DCA47D1988228E000EF0C4 /* minusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DCA47C1988228D000EF0C4 /* minusIcon.png */; };
 		84DCA47F198884C0000EF0C4 /* AddRemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCA47E198884C0000EF0C4 /* AddRemoveButton.swift */; };
 		84DCE9F8197DF83100E4740A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCE9F7197DF83100E4740A /* Globals.swift */; };
 		84DD98F619A0F3C9001CA2C5 /* kanjiAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DD98F519A0F3C8001CA2C5 /* kanjiAppIcon.png */; };
@@ -96,8 +93,6 @@
 		84EC7C1719732B7D00CA9054 /* CardProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC7C1619732B7D00CA9054 /* CardProperties.swift */; };
 		84EC7C1B19734A7800CA9054 /* SettingsProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC7C1A19734A7800CA9054 /* SettingsProperties.swift */; };
 		84F050A619B36A4D00FB7FBC /* UILabelShadowed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F050A519B36A4D00FB7FBC /* UILabelShadowed.swift */; };
-		84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */; };
-		84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F3AA2C196350E200FB7FEF /* AllCards.txt */; };
 		84F3AA33196351E300FB7FEF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AA32196351E300FB7FEF /* Card.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,7 +134,6 @@
 		84603D6919A088BC00F45A32 /* CustomUITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		846C9748196A4243001D013C /* TextReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextReader.swift; sourceTree = "<group>"; };
 		846C974A196A42A0001D013C /* CustomUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIViewController.swift; sourceTree = "<group>"; };
-		846E80E219B454580028EDB8 /* studyIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = studyIcon.png; path = Images/studyIcon.png; sourceTree = "<group>"; };
 		846E80E419B58D7D0028EDB8 /* hamburgerIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hamburgerIcon2.png; path = Images/hamburgerIcon2.png; sourceTree = "<group>"; };
 		846E80E819B59FEC0028EDB8 /* goverment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goverment.png; path = Images/goverment.png; sourceTree = "<group>"; };
 		846E80E919B59FED0028EDB8 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = Images/pencil.png; sourceTree = "<group>"; };
@@ -199,8 +193,6 @@
 		84D88DD519C964BD0079ED8B /* launchImage-640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launchImage-640x1136.png"; path = "Images/launchImage-640x1136.png"; sourceTree = "<group>"; };
 		84D88DD719C9655C0079ED8B /* launchImage-iPhone5s-x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launchImage-iPhone5s-x2.png"; path = "Images/launchImage-iPhone5s-x2.png"; sourceTree = "<group>"; };
 		84D88DD919C9673D0079ED8B /* launchImage-IPhoneTopBar-640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launchImage-IPhoneTopBar-640x960.png"; path = "Images/launchImage-IPhoneTopBar-640x960.png"; sourceTree = "<group>"; };
-		84DCA47A19882274000EF0C4 /* plusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plusIcon.png; path = Images/plusIcon.png; sourceTree = "<group>"; };
-		84DCA47C1988228D000EF0C4 /* minusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minusIcon.png; path = Images/minusIcon.png; sourceTree = "<group>"; };
 		84DCA47E198884C0000EF0C4 /* AddRemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRemoveButton.swift; sourceTree = "<group>"; };
 		84DCE9F7197DF83100E4740A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		84DD98F519A0F3C8001CA2C5 /* kanjiAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kanjiAppIcon.png; path = Images/kanjiAppIcon.png; sourceTree = "<group>"; };
@@ -210,8 +202,6 @@
 		84EC7C1619732B7D00CA9054 /* CardProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProperties.swift; sourceTree = "<group>"; };
 		84EC7C1A19734A7800CA9054 /* SettingsProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProperties.swift; sourceTree = "<group>"; };
 		84F050A519B36A4D00FB7FBC /* UILabelShadowed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelShadowed.swift; sourceTree = "<group>"; };
-		84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AllCards copy.txt"; sourceTree = "<group>"; };
-		84F3AA2C196350E200FB7FEF /* AllCards.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllCards.txt; sourceTree = "<group>"; };
 		84F3AA32196351E300FB7FEF /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,8 +250,6 @@
 				84EC7C1919734A0700CA9054 /* ManagedObject */,
 				84EC7C181973495200CA9054 /* Views */,
 				846C974C196A435B001D013C /* Enums */,
-				84F3AA2C196350E200FB7FEF /* AllCards.txt */,
-				84F3AA2A196350DB00FB7FEF /* AllCards copy.txt */,
 				842878E4196341B10060BDD1 /* AppDelegate.swift */,
 				8416E4DC1969EDB00014B478 /* MyPlayground.playground */,
 				842878EB196341B10060BDD1 /* Main.storyboard */,
@@ -312,10 +300,7 @@
 				846E80EB19B59FEF0028EDB8 /* soccerball.png */,
 				846E80EC19B59FF00028EDB8 /* taskList */,
 				846E80E419B58D7D0028EDB8 /* hamburgerIcon2.png */,
-				846E80E219B454580028EDB8 /* studyIcon.png */,
 				84DD98F519A0F3C8001CA2C5 /* kanjiAppIcon.png */,
-				84DCA47C1988228D000EF0C4 /* minusIcon.png */,
-				84DCA47A19882274000EF0C4 /* plusIcon.png */,
 				842B02111981F56400B5F533 /* discoverBottomFade.png */,
 				842B020F1981D6B200B5F533 /* discoverBarFade.png */,
 				84E71D30197F63C5002B6F13 /* hamburgerIcon.png */,
@@ -513,7 +498,6 @@
 				8478FBDF19C8643600A826C8 /* KanjiApp.sqlite in Resources */,
 				84D88DD119C9642A0079ED8B /* launchImage-768x1024.png in Resources */,
 				84D88DBF19C95DBD0079ED8B /* icon-40x2.png in Resources */,
-				84F3AA2D196350E200FB7FEF /* AllCards.txt in Resources */,
 				84D88DC019C95DBD0079ED8B /* icon-60x3.png in Resources */,
 				84D88DC119C95DBD0079ED8B /* icon-76x1.png in Resources */,
 				8478FBD719C485EC00A826C8 /* infoButton.png in Resources */,
@@ -522,19 +506,15 @@
 				8478FBE019C8643600A826C8 /* KanjiApp.sqlite-shm in Resources */,
 				84D88DC219C95DBD0079ED8B /* icon-76x2.png in Resources */,
 				847AF0FD19CB3F3400CCAFC0 /* mplus-2p-regular.ttf in Resources */,
-				84DCA47D1988228E000EF0C4 /* minusIcon.png in Resources */,
 				8478FBE119C8643600A826C8 /* KanjiApp.sqlite-wal in Resources */,
 				846E80F119B59FF20028EDB8 /* taskList in Resources */,
 				84D88DD819C9655C0079ED8B /* launchImage-iPhone5s-x2.png in Resources */,
-				84F3AA2B196350DB00FB7FEF /* AllCards copy.txt in Resources */,
 				84D88DC319C95DBD0079ED8B /* icon-512x1.png in Resources */,
 				84D88DBD19C95DBD0079ED8B /* icon-30x1.png in Resources */,
 				842878ED196341B10060BDD1 /* Main.storyboard in Resources */,
 				84D88DD319C9642A0079ED8B /* launchImage-1536x2048.png in Resources */,
 				84D88DD619C964BD0079ED8B /* launchImage-640x1136.png in Resources */,
-				84DCA47B19882275000EF0C4 /* plusIcon.png in Resources */,
 				84E71D31197F63C6002B6F13 /* hamburgerIcon.png in Resources */,
-				846E80E319B454590028EDB8 /* studyIcon.png in Resources */,
 				84D88DBE19C95DBD0079ED8B /* icon-40x1.png in Resources */,
 				84D88DD419C9642A0079ED8B /* launchImage-2048x1536.png in Resources */,
 				84DD98F619A0F3C9001CA2C5 /* kanjiAppIcon.png in Resources */,

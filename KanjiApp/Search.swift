@@ -294,7 +294,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func spawnLabelData(var time: Double) -> DiscoverLabelData {
         let value = DiscoverLabelData()
         
-        var textSize: CGFloat = 30
+        var textSize: CGFloat = 35
         
         let card = fetchRandomCard()
         var random = randomRange(0.0, 1.0)
