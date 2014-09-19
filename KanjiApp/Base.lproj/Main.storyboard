@@ -420,14 +420,6 @@
             </objects>
             <point key="canvasLocation" x="-2616" y="629"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="0Ee-IR-GK5">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="nNB-Tn-0Ai" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KyP-0j-C1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1980" y="-32"/>
-        </scene>
         <!--Title-->
         <scene sceneID="5Ej-YB-gya">
             <objects>
@@ -501,6 +493,7 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-aw-pxC">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="tintColor" red="0.0" green="0.64227874090000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -2542,9 +2535,9 @@ to study</string>
         <image name="taskList" width="1309" height="1309"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7jX-Xq-vJx"/>
+        <segue reference="ocT-bm-8xQ"/>
+        <segue reference="BpJ-Ou-mkl"/>
         <segue reference="0Q0-aS-4tM"/>
-        <segue reference="o8I-8R-76U"/>
-        <segue reference="daX-c3-wht"/>
+        <segue reference="NNU-PR-Fp5"/>
     </inferredMetricsTieBreakers>
 </document>
