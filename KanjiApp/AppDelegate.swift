@@ -353,8 +353,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             }
             
             fileManager.copyItemAtPath(source!.path!, toPath: targetTemp.path!, error: &error)
-            println(error)
             fileManager.moveItemAtPath(targetTemp.path!, toPath: target.path!, error: &error)
+            
+            targetTemp.setResourceValue(NSNumber(bool: true), forKey: NSURLIsExcludedFromBackupKey, error: &error)
             println(error)
         }
     }
