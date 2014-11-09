@@ -158,11 +158,11 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
         while CFStringTokenizerAdvanceToNextToken(tokenizer) != .None {
             
             let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
-            var subString = CFStringCreateWithSubstring(nil, textCF, range).__conversion() as String
+            var subString = CFStringCreateWithSubstring(nil, textCF, range) as String
             
             if lastRangeMax < range.location {
                 var r = CFRangeMake(lastRangeMax, range.location - lastRangeMax)
-                var s = CFStringCreateWithSubstring(nil, textCF, r).__conversion() as String
+                var s = CFStringCreateWithSubstring(nil, textCF, r) as String
                 
                 tokens.append(TextToken(s, hasDefinition: false))
             }
@@ -173,10 +173,10 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
             {
                 if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
-                    tokens.append(TextToken(
-                        subString,
-                        hasDefinition: true,
-                        index: card.index))
+                    let indexValue = Int(card.index.intValue)
+                    let add = TextToken(subString, hasDefinition: true, index: indexValue)
+                        
+                    tokens.append(add)
                     
                     subString = ""
                 }

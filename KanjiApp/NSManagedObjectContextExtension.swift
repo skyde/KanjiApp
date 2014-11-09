@@ -171,7 +171,7 @@ extension NSManagedObjectContext
         var last: [Card] = []
         
         for card in values {
-            if card.usageAmount < 2100 || card.known.boolValue {
+            if card.usageAmount.intValue < 2100 || card.known.boolValue {
                 last.append(card)
             } else {
                 first.append(card)

@@ -16,7 +16,7 @@ public class CustomUITextView : UITextView, UITextViewDelegate {
             return text
         }
     }
-    var internalTextFont: UIFont = UIFont(name: Globals.JapaneseFontLight, size: 24)
+    var internalTextFont: UIFont = UIFont(name: Globals.JapaneseFontLight, size: 24)!
     var internalTextColor: UIColor = UIColor(white: 65.0 / 255.0, alpha: 1)
     
     public var defaultTextShown = true

@@ -58,7 +58,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
         
 //        var image = UIImage(named: "")
 //        println(image)
-        cell.backgroundColor = UIColor(patternImage: UIImage(named:"sidebarBk"))
+        cell.backgroundColor = UIColor(patternImage: UIImage(named:"sidebarBk")!)
 //        cell.imageView.image = image
 //        cell.imageView.re
     }

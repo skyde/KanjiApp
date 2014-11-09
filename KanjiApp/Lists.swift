@@ -26,7 +26,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBAction func onConfirmButtonDown(sender: AnyObject) {
         for index in items {
             if let card = managedObjectContext.fetchCardByIndex(index) {
-                if !card.known {
+                if !card.known.boolValue {
                     card.suspended = false
                 }
                 
@@ -101,7 +101,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            cell.textLabel!.attributedText = card.cellText
+            cell.textLabel.attributedText = card.cellText
         }
 //        cell.detailTextLabel.text = card.definition
         

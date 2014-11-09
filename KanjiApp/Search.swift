@@ -47,8 +47,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             
-            cell.textLabel?.attributedText = card.cellText
-            cell.textLabel?.backgroundColor = UIColor.clearColor()
+            cell.textLabel.attributedText = card.cellText
+            cell.textLabel.backgroundColor = UIColor.clearColor()
             cell.backgroundColor = UIColor.clearColor()
         }
         

@@ -199,7 +199,7 @@ class RootContainer: CustomUIViewController {
         
         sidebarEdgeReveal.animateSelf(false)
         
-        sidebarButton.visible = isGameMode ? !settings.hideSidebarButton : true
+        sidebarButton.visible = isGameMode ? !settings.hideSidebarButton.boolValue : true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -301,7 +301,7 @@ class RootContainer: CustomUIViewController {
         //        backgroundImage.image = filteredImage
         UIGraphicsEndImageContext()
         
-        return filteredImage
+        return filteredImage!
     }
     
 //    func caculateSelfImage() -> UIImage {

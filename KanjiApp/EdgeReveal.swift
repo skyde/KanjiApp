@@ -52,9 +52,10 @@ public class EdgeReveal: UIButton {
         self.transitionThreshold = transitionThreshold
         self.animationTime = animationTime
             
+        super.init(frame: CGRectMake(0, 0, 1, 1))
+        frame = getSwipeAreaFrame(false)
 //        var t =
             
-        super.init(frame: getSwipeAreaFrame(false))
             
 //        swipeArea = UIButton(frame: )
         

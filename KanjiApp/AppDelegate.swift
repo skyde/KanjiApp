@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         
         if filetype != nil {
             var error: NSErrorPointer = nil
-            fileContents = NSString.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: error)
+            fileContents = NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding, error: error)!
         }
         
         if let filetype = filetype {

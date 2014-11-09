@@ -20,10 +20,10 @@ class Card: NSManagedObject {
     func answerCard(difficulty: AnswerDifficulty) {
         
 //        managedObjectContext.undoManager. = "answer card"
-        managedObjectContext.undoManager?.beginUndoGrouping()
+        managedObjectContext?.undoManager?.beginUndoGrouping()
         
         let secondsSince1970 = Globals.secondsSince1970
-        let adjustInterval = dueTime < secondsSince1970
+        let adjustInterval = dueTime.doubleValue < secondsSince1970
         
 //        println("dueTime \(dueTime)")
         
@@ -33,7 +33,7 @@ class Card: NSManagedObject {
             if adjustInterval {
                 interval = 10
             }
-            embeddedData.answersKnown = embeddedData.answersKnown + 1
+            embeddedData.answersKnown = NSNumber(int: embeddedData.answersKnown.intValue + 1)
         case .Normal:
 //            println("Normal")
             if interval.doubleValue < 11 {
@@ -44,7 +44,7 @@ class Card: NSManagedObject {
                 }
             }
             
-            embeddedData.answersNormal = embeddedData.answersNormal + 1
+            embeddedData.answersNormal = NSNumber(int: embeddedData.answersNormal.intValue + 1)
         case .Hard:
             if adjustInterval {
                 if interval.doubleValue >= 6 {
@@ -54,14 +54,14 @@ class Card: NSManagedObject {
                 }
             }
             
-            embeddedData.answersHard = embeddedData.answersHard + 1
+            embeddedData.answersHard = NSNumber(int: embeddedData.answersHard.intValue + 1)
         case .Forgot:
             if adjustInterval {
                 interval = interval.doubleValue - 4
             } else {
                 interval = interval.doubleValue - 3
             }
-            embeddedData.answersForgot = embeddedData.answersForgot + 1
+            embeddedData.answersForgot = NSNumber(int: embeddedData.answersForgot.intValue + 1)
         }
         
         interval = min(11, interval.doubleValue)
@@ -77,7 +77,7 @@ class Card: NSManagedObject {
 //        println("timeForInterval \(timeForInterval())")
 //        println("dueTime \(dueTime)")
         //        println("secondsSince1970 \(secondsSince1970)")
-        managedObjectContext.undoManager?.endUndoGrouping()
+        managedObjectContext?.undoManager?.endUndoGrouping()
     }
     
     /// In seconds
@@ -159,7 +159,7 @@ class Card: NSManagedObject {
         
 //        let size: CGFloat = 30
     
-        value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: font, size: size))])
+        value.addAttributedText(verticalKanji, [(NSFontAttributeName, UIFont(name: font, size: size)!)])
         value.endEditing()
         
         var paragraphStyle = NSMutableParagraphStyle()
@@ -197,7 +197,7 @@ class Card: NSManagedObject {
             size = baseSize
         }
         
-        return UIFont(name: font, size: size)
+        return UIFont(name: font, size: size)!
     }
     }
     
@@ -292,10 +292,10 @@ class Card: NSManagedObject {
         value.beginEditing()
         
         // scroll up kanji
-        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: backScrollUpKanjiTextHeight))])
+        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: backScrollUpKanjiTextHeight)!)])
         
         // main text
-        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50))])
+        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 50)!)])
         value.endEditing()
         
         addBody(value, font)
@@ -311,9 +311,9 @@ class Card: NSManagedObject {
         
         value.beginEditing()
         
-        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: font, size: 50))])
+        value.addAttributedText(kanji, [(NSFontAttributeName, UIFont(name: font, size: 50)!)])
         value.endEditing()
-        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 30))])
+        value.addAttributedText(hiragana, [(NSFontAttributeName, UIFont(name: font, size: 30)!)])
         value.endEditing()
         
         addBody(value, font)
@@ -326,25 +326,25 @@ class Card: NSManagedObject {
         
         addTo.addBreak(5)
         
-        var entity = managedObjectContext.fetchCardByIndex(index)
+        var entity = managedObjectContext!.fetchCardByIndex(index)
         
-        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22))])
+        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22)!)])
         
         addTo.addBreak(20)
         
-        addTo.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24))], processAttributes: true, removeSpaces: true)
+        addTo.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24)!)], processAttributes: true, removeSpaces: true)
         
         if settings.romajiEnabled.boolValue {
             var romaji = Globals.romajiConverter.convertToRomajiFromKana(embeddedData.exampleJapanese.asKana())
             
             addTo.addBreak(5)
             
-            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14))], processAttributes: true, removeSpaces: false)
+            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14)!)], processAttributes: true, removeSpaces: false)
         }
         
         addTo.addBreak(5)
         
-        addTo.addAttributedText(embeddedData.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText(embeddedData.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
         addTo.addBreak(30)
         
@@ -352,24 +352,24 @@ class Card: NSManagedObject {
         
         addTo.addBreak(10)
         
-        addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         addTo.addBreak(10)
         
-        addTo.addAttributedText("JLPT \(jlptLevel)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("JLPT \(jlptLevel)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
         // Debug
         
         addTo.addBreak(10)
         
-        addTo.addAttributedText("Interval \(interval.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Interval \(interval.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
-        addTo.addAttributedText("Answers Normal  \(embeddedData.answersNormal.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Answers Normal  \(embeddedData.answersNormal.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
-        addTo.addAttributedText("Answers Hard \(embeddedData.answersHard.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Answers Hard \(embeddedData.answersHard.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
-        addTo.addAttributedText("Answers Forgot \(embeddedData.answersForgot.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Answers Forgot \(embeddedData.answersForgot.integerValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
-        addTo.addAttributedText("Due Time \(dueTime.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16))])
+        addTo.addAttributedText("Due Time \(dueTime.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         // End Debug
         
 //        var color =
@@ -423,14 +423,14 @@ class Card: NSManagedObject {
                         var removeSpaces = isJapanese ? true : false
                         var extraSpace: String = isJapanese ? "" : "\n"
                         
-                        addTo.addAttributedText(text + "\n" + extraSpace, [(NSFontAttributeName, UIFont(name: fontName, size: size))], processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
+                        addTo.addAttributedText(text + "\n" + extraSpace, [(NSFontAttributeName, UIFont(name: fontName, size: size)!)], processAttributes: true, removeSpaces: removeSpaces, breakLine: false)
                         
                         if settings.romajiEnabled.boolValue && isJapanese {
                             var romaji = Globals.romajiConverter.convertToRomajiFromKana(text.asKana())
                             
                             addTo.addBreak(5)
                             
-                            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14))], processAttributes: true, removeSpaces: false)
+                            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14)!)], processAttributes: true, removeSpaces: false)
                         }
                         
                         text = ""
@@ -457,15 +457,15 @@ class Card: NSManagedObject {
         
         value.beginEditing()
         
-        value.addAttributedText(kanji + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(25)))], breakLine: false)
+        value.addAttributedText(kanji + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(25))!)], breakLine: false)
         
         var hiraganaColor = UIColor(red: 0.8125, green: 0, blue: 0.375, alpha: 1)
         
-        value.addAttributedText(hiragana + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(16))), (NSForegroundColorAttributeName, hiraganaColor)], breakLine: false)
+        value.addAttributedText(hiragana + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(16))!), (NSForegroundColorAttributeName, hiraganaColor)], breakLine: false)
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 //        
-        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
+        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))!), (NSForegroundColorAttributeName, definitionColor)])
         
 //        value.addAttributedText("\(usageAmount)", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         

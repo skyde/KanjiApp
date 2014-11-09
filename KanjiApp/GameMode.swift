@@ -36,7 +36,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var audioPlayer: AVAudioPlayer?
     
     var timer: NSTimer!
-    let frameRate: Double = 1.0 / 60.0
+    let frameRate: Double = 1.0 / 10.0
     
     var baseLongPressTime: Double!
     var longPressTime: Double = 1.5
@@ -628,7 +628,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //            tutorialState = .LongPressFront
 //        }
 //        
-        tutorialButton.hidden = settings.hideTutorialButton
+        tutorialButton.hidden = settings.hideTutorialButton.boolValue
         
         tutorialState = enabled ? .LongPressFront : .Disabled
         longPressTime = enabled ? tutorialLongPressTime : baseLongPressTime
@@ -662,7 +662,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         case .GameMode(let studyAheadAmount, let runTutorial):
             fetchAheadAmount = studyAheadAmount
             
-            if !settings.seenTutorial {
+            if settings.seenTutorial.boolValue {
                 setupTutorial(true)
             } else {
                 setupTutorial(runTutorial)
@@ -774,7 +774,9 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         if due.count > 0 {
             if isBack {
                 if var path = dueCard?.embeddedData.soundWord {
-                    playSound(filterSoundPath(path))
+                    if soundEnabled {
+                        playSound(filterSoundPath(path))
+                    }
                 }
             }
             
@@ -792,9 +794,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true) {
-        if !soundEnabled {
-            return
-        }
         
         if settings.volume.doubleValue != 0 {
             var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)

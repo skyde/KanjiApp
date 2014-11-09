@@ -107,7 +107,7 @@ class CustomUIViewController : UIViewController {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
-        var possibleContent = String.stringWithContentsOfFile(path!, encoding: NSUTF8StringEncoding, error: nil)
+        var possibleContent = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
         
         var values: [Card] = []
         
