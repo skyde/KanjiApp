@@ -174,32 +174,32 @@ class Card: NSManagedObject {
     
 //    func setFrontTextFont(label: UILabel) -> UIFont {
     //    }
-    var frontText: String {
-        get {
-            return Globals.screenOrientationVertical ? verticalKanji : kanji
-        }
-    }
+//    var frontText: String {
+//        get {
+//            return Globals.screenOrientationVertical ? verticalKanji : kanji
+//        }
+//    }
     
-    var frontFont: UIFont {
-    get {
-        let font = Globals.DefaultFont
-        
-//        var numChars: Int,
-        let desiredDistance = Globals.screenOrientationVertical ? Globals.screenSize.height : Globals.screenSize.width
-//        let numVerticalChars: Int = Globals.screenOrientationVertical ? countElements(kanji) : 1
-        
-        let baseSize: CGFloat = 250
-        
-        var size = baseSize / CGFloat(countElements(kanji))
-        size *= desiredDistance / (568) * 2
-        
-        if size > baseSize {
-            size = baseSize
-        }
-        
-        return UIFont(name: font, size: size)!
-    }
-    }
+//    var frontFont: UIFont {
+//    get {
+//        let font = Globals.DefaultFont
+//        
+////        var numChars: Int,
+//        let desiredDistance = Globals.screenOrientationVertical ? Globals.screenSize.height : Globals.screenSize.width
+////        let numVerticalChars: Int = Globals.screenOrientationVertical ? countElements(kanji) : 1
+//        
+//        let baseSize: CGFloat = 250
+//        
+//        var size = baseSize / CGFloat(countElements(kanji))
+//        size *= desiredDistance / (568) * 2
+//        
+//        if size > baseSize {
+//            size = baseSize
+//        }
+//        
+//        return UIFont(name: font, size: size)!
+//    }
+//    }
     
 //    private func generateFrontText(text: String, numChars: Int, desiredDistance: CGFloat, numVerticalChars: Int = 1) -> NSAttributedString {
 //        
@@ -271,17 +271,41 @@ class Card: NSManagedObject {
 //        }
 //    }
     
-    var backScrollUpKanjiTextHeight: CGFloat {
-    get {
-        let baseSize: CGFloat = 80
-        
-        var size = baseSize * 3 / CGFloat(countElements(kanji))
-        
-        if size > baseSize {
-            size = baseSize
+    
+    var front: NSAttributedString {
+        get {
+            let baseSize: CGFloat = 102
+            
+            var size = baseSize * 3 / CGFloat(countElements(kanji))
+            
+            if size > baseSize * 2 {
+                size = baseSize * 2
+            }
+            
+            let font = Globals.JapaneseFont
+            var value = NSMutableAttributedString()
+            
+            value.beginEditing()
+            
+            var paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = NSTextAlignment.Center
+            
+            value.addBreak(Globals.screenSize.height / 2 - size * 0.5 - 190)
+            
+            value.addAttributedText(kanji,
+                [
+                    (NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: size)!),
+                    (NSParagraphStyleAttributeName, paragraphStyle)
+                ])
+            
+//            value.addBreak(10)
+            
+            value.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: 36)!)], processAttributes: true, removeSpaces: true)
+            
+            value.endEditing()
+            
+            return value
         }
-        return size
-    }
     }
     
     var back: NSAttributedString {
@@ -302,6 +326,19 @@ class Card: NSManagedObject {
         
         return value
     }
+    }
+    
+    var backScrollUpKanjiTextHeight: CGFloat {
+        get {
+            let baseSize: CGFloat = 80
+            
+            var size = baseSize * 3 / CGFloat(countElements(kanji))
+            
+            if size > baseSize {
+                size = baseSize
+            }
+            return size
+        }
     }
     
     var definitionAttributedText: NSAttributedString {
@@ -326,7 +363,7 @@ class Card: NSManagedObject {
         
         addTo.addBreak(5)
         
-        var entity = managedObjectContext!.fetchCardByIndex(index)
+//        var entity = managedObjectContext!.fetchCardByIndex(index)
         
         addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22)!)])
         

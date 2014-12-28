@@ -101,7 +101,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
-            cell.textLabel.attributedText = card.cellText
+            cell.textLabel?.attributedText = card.cellText
         }
 //        cell.detailTextLabel.text = card.definition
         

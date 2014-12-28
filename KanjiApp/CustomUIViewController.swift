@@ -45,7 +45,8 @@ class CustomUIViewController : UIViewController {
         settings.userName = "default"
         
         if !settings.generatedCards.boolValue {
-            createDatabase("AllCards copy")
+//            createDatabase("AllCards copy")
+            createDatabaseV2("jdictPartial")
             
             settings.generatedCards = true
         }
@@ -101,6 +102,80 @@ class CustomUIViewController : UIViewController {
     var applicationDocumentsDirectory: NSURL {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
             return urls[urls.endIndex-1] as NSURL
+    }
+    
+    func createDatabaseV2(filename: String) {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
+        var possibleContent = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
+        
+        var values: [Card] = []
+        
+        if let content = possibleContent {
+            var deck = content.componentsSeparatedByString("\n")
+            var i = 100000;
+            for deckItem in deck {
+                var items = deckItem.componentsSeparatedByString("\t")
+                
+                var index: Int = items[1].toInt()!
+                var pitchAccent = 0
+                if var p = items[12].toInt() {
+                    pitchAccent = p
+                }
+                
+                var usageAmount = 0
+                if var u = items[9].toInt() {
+                    usageAmount = u
+                }
+                
+                var jlptLevel = 0
+                if var j = items[10].toInt() {
+                    jlptLevel = j
+                }
+                
+                let kanji = items[0]
+                
+                var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji, createIfNil: true)! as Card
+                
+                card.kanji = kanji
+                
+                var dataDesc = NSEntityDescription.entityForName("CardData", inManagedObjectContext: managedObjectContext)
+                
+                card.embeddedData = CardData(entity: dataDesc!, insertIntoManagedObjectContext: managedObjectContext)
+                
+                card.index = i
+                card.hiragana = items[2]
+                card.definition = items[3]
+                card.embeddedData.exampleEnglish = items[4]
+                card.embeddedData.exampleJapanese = items[5]
+                card.embeddedData.soundWord = items[6]
+                card.embeddedData.soundDefinition = items[7]
+                card.embeddedData.definitionOther = items[8]
+                card.usageAmount = usageAmount
+                card.jlptLevel = jlptLevel
+                card.embeddedData.pitchAccentText = items[11]
+                card.embeddedData.pitchAccent = pitchAccent
+                card.embeddedData.otherExampleSentences = items[13]
+                card.embeddedData.answersKnown = 0
+                card.embeddedData.answersNormal = 0
+                card.embeddedData.answersHard = 0
+                card.embeddedData.answersForgot = 0
+                card.interval = 0
+                card.dueTime = 0
+                card.enabled = false
+                card.suspended = true
+                card.known = false
+                card.isKanji = kanji.isPrimarilyKanji()
+                
+                values.append(card)
+                
+                i++
+            }
+        }
+        
+        
+        saveContext()
     }
     
     func createDatabase(filename: String) {

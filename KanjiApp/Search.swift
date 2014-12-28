@@ -47,8 +47,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             
-            cell.textLabel.attributedText = card.cellText
-            cell.textLabel.backgroundColor = UIColor.clearColor()
+            cell.textLabel?.attributedText = card.cellText
+            cell.textLabel?.backgroundColor = UIColor.clearColor()
             cell.backgroundColor = UIColor.clearColor()
         }
         
@@ -78,6 +78,8 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        println(searchBar.layer.bounds.width)
+        
         searchResultsBackground.visible = false
         
         columnFinishTime = []
@@ -99,8 +101,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
             
             labels.append(add)
         }
-        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
-        
         var gesture = UILongPressGestureRecognizer(target: self, action: "onDown:")
         gesture.minimumPressDuration = 0
         gesture.delegate = self
@@ -194,7 +194,6 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         }
     }
     
-
     override func addNotifications() {
         super.addNotifications()
         
@@ -208,6 +207,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     func onTimerTick() {
+        
         if searchBar.text != lastSearchText {
             updateSearch(searchBar.text)
         }
@@ -351,6 +351,15 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timer?.invalidate()
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView!) {

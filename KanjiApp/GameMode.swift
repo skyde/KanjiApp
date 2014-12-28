@@ -109,13 +109,15 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     let topInset: CGFloat = 20
     var backTextCache: NSAttributedString! = nil
-    var frontTextCache: UIFont! = nil
-    var nextFrontTextCache: NSAttributedString! = nil
+//    var frontTextCache: NSAttributedString! = nil
+//    var nextFrontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
         if let dueCard = dueCard {
             var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
             
-            if scrollView.contentOffset.y != dueCard.backScrollUpKanjiTextHeight + topInset && diff < 0.1 {
+            var target = isFront ? 0 : dueCard.backScrollUpKanjiTextHeight + topInset
+            
+            if scrollView.contentOffset.y != target && diff < 0.1 {
                 scrollOutputTextToInset()
             }
         }
@@ -127,31 +129,33 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    private func tryGenerateFrontTextCache(card: Card) {
-        if frontTextCache == nil {
-//            println("Globals.screenOrientationVertical = \(Globals.screenOrientationVertical)")
-            
-            frontTextCache = card.frontFont
-        }
-    }
+//    private func tryGenerateFrontTextCache(card: Card) {
+////        if frontTextCache == nil {
+////            println("Globals.screenOrientationVertical = \(Globals.screenOrientationVertical)")
+//            
+////            frontTextCache = card.frontFont
+////        }
+//    }
     
     var flipCardTime: NSTimeInterval = 0
     func updateText(invalidateCaches: Bool = false) {
         frontBlocker.visible = isFront
-        kanjiView.visible = isFront
-        outputText.visible = isBack
+        kanjiView.visible = false
+        outputText.visible = true
         
         if invalidateCaches {
             backTextCache = nil
-            frontTextCache = nil
+//            frontTextCache = nil
         }
         
         if let card = dueCard {
             if isFront {
-                tryGenerateFrontTextCache(card)
-                kanjiView.text = card.frontText
-                kanjiView.font = frontTextCache
-                frontTextCache = nil
+//                tryGenerateFrontTextCache(card)
+//                kanjiView.text = card.frontText
+//                kanjiView.font = frontTextCache
+//                frontTextCache = nil
+                outputText.attributedText = card.front
+//                outputText.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             }
             else {
                 if backTextCache == nil {
@@ -189,10 +193,10 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        undoSidebar.hidden = true
         progressBar.hidden = true
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
+//        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
 //        println(timer.tolerance)
 //        println(frameRate)
-        timer.tolerance = frameRate * 0.1
+//        timer.tolerance = frameRate * 0.1
         self.outputText.delegate = self
         
         outputText.decelerationRate = 0.92 //Default = 0.998
@@ -238,7 +242,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    func onLongPress(sender: UILongPressGestureRecognizer) {
+    func onLongPress(sender: UILongPressGestureRecognizer){
         if tutorialState == .Finished {
             switch sender.state {
             case .Began:
@@ -324,9 +328,8 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
-    func onTimerTick() {
-        updateProgressBar()
-        
+    func updateTextCache()
+    {
         if isFront {
             if backTextCache == nil {
                 if let card = dueCard {
@@ -334,11 +337,16 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 }
             }
         }
-        if frontTextCache == nil {
-            if let card = nextCard {
-                tryGenerateFrontTextCache(card)
-            }
-        }
+//        if frontTextCache == nil {
+//            if let card = nextCard {
+//                tryGenerateFrontTextCache(card)
+//            }
+//        }
+    }
+    
+    func onTimerTick() {
+        updateProgressBar()
+        updateTextCache()
     }
     
     func onTouch(sender: UITapGestureRecognizer) {
@@ -498,17 +506,14 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             parent: view,
             revealType: .Left,
             maxOffset: { return 100
-//                return self.undoSidebar.frame.width
             },
             swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 
-//                self.undoSidebar.frame.origin.x = offset - self.undoSidebar.frame.width
                 self.outputText.frame.origin.x = offset
                 self.kanjiView.frame.origin.x = offset
             },
             setVisible: {(visible: Bool, completed: Bool) -> () in
-//                self.undoSidebar.visible = visible
                 
                 if !visible && self.processUndo {
                     self.processUndo = false
@@ -530,7 +535,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             revealType: .Right,
             animationTime: 0.1,
             swipeAreaWidth: 20,
-            //swipeAreaWidth: 0,
             onUpdate: {(offset: CGFloat) -> () in
                 self.outputText.frame.origin.x = -offset
                 self.propertiesSidebar.frame.origin.x = Globals.screenSize.width - offset
@@ -678,8 +682,15 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
         
         if due.count == 0 {
             Globals.notificationTransitionToView.postNotification(.CardsFinished)
@@ -688,19 +699,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         soundEnabled = Globals.audioDirectoryExists
     }
     
-//    if tutorialState != .Disabled {
-//    tutorialState = .HoldToViewBack
-//    }
-//    
-//    tutorialHoldToViewBack.visible = tutorialState != .HoldToViewBack ? true : false
-//    tutorialHoldUntilTimerReachesEnd.visible = false
-//    tutorialHoldUntilTimerReachesEndMistake.visible = false
-//    tutorialCardBackExplain.visible = false
-    
     private func updateTutorialOnUp(autoAdvanced: Bool) {
-        
-//        println("updateTutorialOnUp, autoAdvanced = \(autoAdvanced), \(tutorialState.hashValue)")
-//        println("updateTutorialOnUp, autoAdvanced = \(autoAdvanced)")
         
         switch tutorialState {
         case .LongPressBack:

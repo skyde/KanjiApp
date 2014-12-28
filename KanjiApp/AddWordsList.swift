@@ -14,7 +14,7 @@ class AddWordsList: UITableViewController, UITableViewDelegate {
         
         myWordsEnabled = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().count > 0
         
-        table.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))?.textLabel.enabled = myWordsEnabled
+        table.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))?.textLabel?.enabled = myWordsEnabled
         
     }
     
