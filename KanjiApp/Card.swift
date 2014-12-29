@@ -389,6 +389,10 @@ class Card: NSManagedObject {
         
         addTo.addBreak(10)
         
+        addTo.addAttributedText(embeddedData.exampleJapanese.asKana(), [(NSFontAttributeName, UIFont(name: fontName, size: 24)!)], processAttributes: false, removeSpaces: false)
+        
+        addTo.addBreak(10)
+        
         addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         addTo.addBreak(10)
         

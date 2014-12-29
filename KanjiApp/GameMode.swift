@@ -162,14 +162,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 scrollOutputTextToInset()
                 backTextCache = nil
             }
-//            kanjiView.enabled = isFront
         }
-        
-//        if canUndo {
-//            leftEdgeReveal.frame.origin.x = 0
-//        } else {
-//            leftEdgeReveal.frame.origin.x = -leftEdgeReveal.frame.width
-//        }
     }
     
     override func viewDidLoad() {
@@ -177,24 +170,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         baseLongPressTime = longPressTime
         setupEdgeReveal()
         
-//        tutorialButton.butt = .UIButtonTypeDetail
-        
-//        kanjiView.contenth
-        
         leftIndicator.hidden = true
         rightIndicator.hidden = true
-//        leftSidebar.hidden = true
-//        rightSidebar.hidden = true
-//        undoSidebar.hidden = true
         progressBar.hidden = true
         
-//        timer = NSTimer.scheduledTimerWithTimeInterval(frameRate, target: self, selector: "onTimerTick", userInfo: nil, repeats: true)
-//        println(timer.tolerance)
-//        println(frameRate)
-//        timer.tolerance = frameRate * 0.1
         self.outputText.delegate = self
         
-        outputText.decelerationRate = 0.92 //Default = 0.998
+        outputText.decelerationRate = 0.92
         
         var panGesture = UIPanGestureRecognizer(target: self, action: "onPan:")
         frontBlocker.addGestureRecognizer(panGesture)
@@ -214,7 +196,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         view.addGestureRecognizer(swipeToRight)
         
         var setCategoryError: NSError?
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.DuckOthers, error: &setCategoryError)
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.MixWithOthers, error: &setCategoryError)
         //AVAudioSessionCategoryOptions.MixWithOthers
     }
     
@@ -270,14 +252,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 tutorialState = .Disabled
                 longPressTime = baseLongPressTime
                 
-//                println("seenTutorial = true")
-//                
-//                settings.seenTutorial = true
-                
-//                println("settings.seenTutorial = \(settings.seenTutorial.boolValue)")
-//                 = true
                 saveContext()
-//                updateTutorialDisplay(forceUpdate: true)
             default:
                 break
             }
