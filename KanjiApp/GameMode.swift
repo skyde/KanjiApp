@@ -275,7 +275,12 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
                 tutorialState = .Disabled
                 longPressTime = baseLongPressTime
                 
-                settings.seenTutorial = true
+//                println("seenTutorial = true")
+//                
+//                settings.seenTutorial = true
+                
+//                println("settings.seenTutorial = \(settings.seenTutorial.boolValue)")
+//                 = true
                 saveContext()
 //                updateTutorialDisplay(forceUpdate: true)
             default:
@@ -631,7 +636,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //        if tutorialState != .Disabled {
 //            tutorialState = .LongPressFront
 //        }
-//        
+        
         tutorialButton.hidden = settings.hideTutorialButton.boolValue
         
         tutorialState = enabled ? .LongPressFront : .Disabled
@@ -660,17 +665,22 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     private func fetchCards(clearUndoStack: Bool = true) {
 //        redoStackCount = 0
         
+//        println("settings.seenTutorial = \(settings.seenTutorial.boolValue)")
+        
+        
         var fetchAheadAmount: Double = 0
         
         switch Globals.notificationTransitionToView.value {
         case .GameMode(let studyAheadAmount, let runTutorial):
+//            println("runTutorial = \(runTutorial)")
+
             fetchAheadAmount = studyAheadAmount
             
-            if settings.seenTutorial.boolValue {
-                setupTutorial(true)
-            } else {
+//            if settings.seenTutorial.boolValue {
+//                setupTutorial(false)
+//            } else {
                 setupTutorial(runTutorial)
-            }
+//            }
             
         default:
             break

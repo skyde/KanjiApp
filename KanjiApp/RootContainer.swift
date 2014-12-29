@@ -254,55 +254,55 @@ class RootContainer: CustomUIViewController {
 ////        presentViewController(alert, animated: true, completion: nil)
 //    }
     
-    func caculateSelfBlurImage() -> UIImage {
-        var scale: CGFloat = 0.125 / 2
-        var inputRadius:CGFloat = 20
-        
-        scale *= Globals.retinaScale
-        inputRadius *= scale
-        let ciContext = CIContext(options: nil)
-        var size = CGSize(width: Globals.screenSize.width * scale, height: Globals.screenSize.height * scale)
-        var sizeRect = CGRectMake(0, 0, size.width, size.height)
-        
-        UIGraphicsBeginImageContext(size)
-        view.drawViewHierarchyInRect(sizeRect, afterScreenUpdates: false)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        var coreImage = CIImage(image: image)
-        
-        var imageExtent = coreImage.extent()
-        
-        var transform: CGAffineTransform = CGAffineTransformIdentity
-        var clampFilter = CIFilter(name: "CIAffineClamp")
-        clampFilter.setValue(coreImage, forKey: kCIInputImageKey)
-        clampFilter.setValue(NSValue(CGAffineTransform: transform), forKey:"inputTransform")
-        
-        //        let colorFilter = CIFilter(name: "CIColorClamp")
-        //        colorFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
-        //        colorFilter.setValue(CIVector(CGRect: CGRectMake(0.7, 0.7, 0.7, 0)), forKey: "inputMinComponents")
-        //
-        //        let secondColorFilter = CIFilter(name: "CIColorControls")
-        //        secondColorFilter.setValue(colorFilter.outputImage, forKey: kCIInputImageKey)
-        //        secondColorFilter.setValue(3, forKey: "inputSaturation")
-        //        secondColorFilter.setValue(0, forKey: "inputBrightness")
-        //        secondColorFilter.setValue(1, forKey: "inputContrast")
-        
-        
-        let gaussianFilter = CIFilter(name: "CIGaussianBlur")
-        gaussianFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
-        gaussianFilter.setValue(inputRadius, forKey: "inputRadius")
-        
-        
-        let filteredImageData = gaussianFilter.valueForKey(kCIOutputImageKey) as CIImage
-        
-        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: sizeRect)
-        let filteredImage = UIImage(CGImage: filteredImageRef)
-        
-        //        backgroundImage.image = filteredImage
-        UIGraphicsEndImageContext()
-        
-        return filteredImage!
-    }
+//    func caculateSelfBlurImage() -> UIImage {
+//        var scale: CGFloat = 0.125 / 2
+//        var inputRadius:CGFloat = 20
+//        
+//        scale *= Globals.retinaScale
+//        inputRadius *= scale
+//        let ciContext = CIContext(options: nil)
+//        var size = CGSize(width: Globals.screenSize.width * scale, height: Globals.screenSize.height * scale)
+//        var sizeRect = CGRectMake(0, 0, size.width, size.height)
+//        
+//        UIGraphicsBeginImageContext(size)
+//        view.drawViewHierarchyInRect(sizeRect, afterScreenUpdates: false)
+//        
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        var coreImage = CIImage(image: image)
+//        
+//        var imageExtent = coreImage.extent()
+//        
+//        var transform: CGAffineTransform = CGAffineTransformIdentity
+//        var clampFilter = CIFilter(name: "CIAffineClamp")
+//        clampFilter.setValue(coreImage, forKey: kCIInputImageKey)
+//        clampFilter.setValue(NSValue(CGAffineTransform: transform), forKey:"inputTransform")
+//        
+//        //        let colorFilter = CIFilter(name: "CIColorClamp")
+//        //        colorFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
+//        //        colorFilter.setValue(CIVector(CGRect: CGRectMake(0.7, 0.7, 0.7, 0)), forKey: "inputMinComponents")
+//        //
+//        //        let secondColorFilter = CIFilter(name: "CIColorControls")
+//        //        secondColorFilter.setValue(colorFilter.outputImage, forKey: kCIInputImageKey)
+//        //        secondColorFilter.setValue(3, forKey: "inputSaturation")
+//        //        secondColorFilter.setValue(0, forKey: "inputBrightness")
+//        //        secondColorFilter.setValue(1, forKey: "inputContrast")
+//        
+//        
+//        let gaussianFilter = CIFilter(name: "CIGaussianBlur")
+//        gaussianFilter.setValue(clampFilter.outputImage, forKey: kCIInputImageKey)
+//        gaussianFilter.setValue(inputRadius, forKey: "inputRadius")
+//        
+//        
+//        let filteredImageData = gaussianFilter.valueForKey(kCIOutputImageKey) as CIImage
+//        
+//        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: sizeRect)
+//        let filteredImage = UIImage(CGImage: filteredImageRef)
+//        
+//        //        backgroundImage.image = filteredImage
+//        UIGraphicsEndImageContext()
+//        
+//        return filteredImage!
+//    }
     
 //    func caculateSelfImage() -> UIImage {
 //        var scale: CGFloat = 1
