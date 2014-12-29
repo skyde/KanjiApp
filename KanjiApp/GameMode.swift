@@ -26,7 +26,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     var due: [NSNumber] = []
     var undoStack: [NSNumber] = []
-//    var redoStackCount = 0
     var isFront: Bool = true
     var isBack: Bool {
     get {
@@ -36,7 +35,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var audioPlayer: AVAudioPlayer?
     
     var timer: NSTimer!
-    let frameRate: Double = 1.0 / 10.0
+    let frameRate: Double = 1.0 / 60.0
     
     var baseLongPressTime: Double!
     var longPressTime: Double = 1.5
@@ -47,10 +46,6 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     
     @IBOutlet weak var propertiesSidebar: UIView!
     @IBOutlet weak var kanjiView: UILabel!
-//    @IBOutlet weak var leftSidebar: UIButton!
-//    @IBOutlet weak var rightSidebar: UIButton!
-    
-//    @IBOutlet weak var undoSidebar: UIButton!
     @IBOutlet weak var frontBlocker: UIButton!
     
     @IBOutlet weak var progressBar: UIProgressView!
@@ -663,16 +658,11 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     private func fetchCards(clearUndoStack: Bool = true) {
-//        redoStackCount = 0
-        
-//        println("settings.seenTutorial = \(settings.seenTutorial.boolValue)")
-        
         
         var fetchAheadAmount: Double = 0
         
         switch Globals.notificationTransitionToView.value {
         case .GameMode(let studyAheadAmount, let runTutorial):
-//            println("runTutorial = \(runTutorial)")
 
             fetchAheadAmount = studyAheadAmount
             
