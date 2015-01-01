@@ -63,6 +63,7 @@ extension String
         text = replaceInString(text, "&#39;", "'")
         text = replaceInString(text, "&quot;", "\"")
         text = replaceInString(text, "&nbsp;", "\"")
+        text = replaceInString(text, "<br />", "\n")
         
         return text
     }

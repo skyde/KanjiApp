@@ -365,42 +365,60 @@ class Card: NSManagedObject {
         
 //        var entity = managedObjectContext!.fetchCardByIndex(index)
         
-        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22)!)])
+        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22)!)], processAttributes: true)
         
         addTo.addBreak(20)
         
-        addTo.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24)!)], processAttributes: true, removeSpaces: true)
-        
-        if settings.romajiEnabled.boolValue {
-            var romaji = Globals.romajiConverter.convertToRomajiFromKana(embeddedData.exampleJapanese.asKana())
+        if(embeddedData.exampleJapanese != "")
+        {
+            addTo.addAttributedText(embeddedData.exampleJapanese, [(NSFontAttributeName, UIFont(name: fontName, size: 24)!)], processAttributes: true, removeSpaces: true)
+            
+            if settings.romajiEnabled.boolValue {
+                var romaji = Globals.romajiConverter.convertToRomajiFromKana(embeddedData.exampleJapanese.asKana())
+                
+                addTo.addBreak(5)
+                
+                addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14)!)], processAttributes: true, removeSpaces: false)
+            }
             
             addTo.addBreak(5)
             
-            addTo.addAttributedText(romaji, [(NSFontAttributeName, UIFont(name: fontName, size: 14)!)], processAttributes: true, removeSpaces: false)
+            addTo.addAttributedText(embeddedData.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
+            
+            addTo.addBreak(30)
         }
         
-        addTo.addBreak(5)
+        if(embeddedData.otherExampleSentences != "")
+        {
+            addExampleSentences(addTo, fontName)
+            
+            addTo.addBreak(10)
+        }
         
-        addTo.addAttributedText(embeddedData.exampleEnglish, [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
+        if(embeddedData.exampleJapanese != "")
+        {
+            addTo.addAttributedText(embeddedData.exampleJapanese.asKana(), [(NSFontAttributeName, UIFont(name: fontName, size: 24)!)], processAttributes: false, removeSpaces: false)
+            
+            addTo.addBreak(10)
+        }
         
-        addTo.addBreak(30)
+        if(embeddedData.pitchAccent != 0)
+        {
+            addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
+            addTo.addBreak(10)
+        }
         
-        addExampleSentences(addTo, fontName)
-        
-        addTo.addBreak(10)
-        
-        addTo.addAttributedText(embeddedData.exampleJapanese.asKana(), [(NSFontAttributeName, UIFont(name: fontName, size: 24)!)], processAttributes: false, removeSpaces: false)
-        
-        addTo.addBreak(10)
-        
-        addTo.addAttributedText("\(embeddedData.pitchAccent)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
-        addTo.addBreak(10)
-        
-        addTo.addAttributedText("JLPT \(jlptLevel)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
-        
+        if(jlptLevel != 0)
+        {
+            addTo.addAttributedText("JLPT \(jlptLevel)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
+            
+            addTo.addBreak(10)
+        }
+        else
+        {
+            addTo.addBreak(320)
+        }
         // Debug
-        
-        addTo.addBreak(10)
         
         addTo.addAttributedText("Interval \(interval.doubleValue)", [(NSFontAttributeName, UIFont(name: fontName, size: 16)!)])
         
@@ -505,8 +523,12 @@ class Card: NSManagedObject {
         value.addAttributedText(hiragana + " ", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(16))!), (NSForegroundColorAttributeName, hiraganaColor)], breakLine: false)
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        var def = definition
+        
+        def = replaceInString(def, "<br />", " ")
 //        
-        value.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))!), (NSForegroundColorAttributeName, definitionColor)])
+        value.addAttributedText(def, [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))!), (NSForegroundColorAttributeName, definitionColor)])
         
 //        value.addAttributedText("\(usageAmount)", [(NSFontAttributeName, UIFont(name: font, size: CGFloat(12))), (NSForegroundColorAttributeName, definitionColor)])
         
@@ -515,7 +537,22 @@ class Card: NSManagedObject {
         return value
     }
     }
-
+    
+    internal func replaceInString(var value: String, _ remove: String, _ newValue: String) -> String
+    {
+        var items = value.componentsSeparatedByString(remove)
+        
+        value = ""
+        var spacer = ""
+        for item in items
+        {
+            value += spacer + item
+            spacer = newValue
+        }
+        
+        return value
+    }
+    
 //    func getAsciiCharacterSet() -> NSCharacterSet
 //    {
 //        return NSCharacterSet.alphanumericCharacterSet()

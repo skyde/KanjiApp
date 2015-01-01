@@ -3,7 +3,7 @@ import UIKit
 
 struct Globals
 {
-    static var loadDatabaseFromDisk = true
+    static var loadDatabaseFromDisk = false
     static let databaseFiles = [("KanjiApp", "sqlite"), ("KanjiApp", "sqlite-shm"), ("KanjiApp", "sqlite-wal")]
     
     static let notificationSidebarInteract = Notification<Bool>("notificationSidebarInteract", false)

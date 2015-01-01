@@ -105,6 +105,7 @@ class CustomUIViewController : UIViewController {
     }
     
     func createDatabaseV2(filename: String) {
+        
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         let path = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
@@ -114,27 +115,29 @@ class CustomUIViewController : UIViewController {
         
         if let content = possibleContent {
             var deck = content.componentsSeparatedByString("\n")
-            var i = 100000;
+            var i = 1000;
             for deckItem in deck {
                 var items = deckItem.componentsSeparatedByString("\t")
                 
-                var index: Int = items[1].toInt()!
-                var pitchAccent = 0
-                if var p = items[12].toInt() {
-                    pitchAccent = p
-                }
+//                var index: Int = items[1].toInt()!
+//                var pitchAccent = 0
+//                if var p = items[12].toInt() {
+//                    pitchAccent = p
+//                }
                 
-                var usageAmount = 0
-                if var u = items[9].toInt() {
-                    usageAmount = u
-                }
-                
-                var jlptLevel = 0
-                if var j = items[10].toInt() {
-                    jlptLevel = j
-                }
+//                var usageAmount = 0
+//                if var u = items[9].toInt() {
+//                    usageAmount = u
+//                }
+//                
+//                var jlptLevel = 0
+//                if var j = items[10].toInt() {
+//                    jlptLevel = j
+//                }
                 
                 let kanji = items[0]
+                
+                println(kanji)
                 
                 var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji, createIfNil: true)! as Card
                 
@@ -145,18 +148,20 @@ class CustomUIViewController : UIViewController {
                 card.embeddedData = CardData(entity: dataDesc!, insertIntoManagedObjectContext: managedObjectContext)
                 
                 card.index = i
-                card.hiragana = items[2]
-                card.definition = items[3]
-                card.embeddedData.exampleEnglish = items[4]
-                card.embeddedData.exampleJapanese = items[5]
-                card.embeddedData.soundWord = items[6]
-                card.embeddedData.soundDefinition = items[7]
-                card.embeddedData.definitionOther = items[8]
-                card.usageAmount = usageAmount
-                card.jlptLevel = jlptLevel
-                card.embeddedData.pitchAccentText = items[11]
-                card.embeddedData.pitchAccent = pitchAccent
-                card.embeddedData.otherExampleSentences = items[13]
+                card.hiragana = items[1]
+                card.definition = items[2]
+                
+                card.embeddedData.exampleEnglish = ""
+                card.embeddedData.exampleJapanese = ""
+                card.embeddedData.soundWord = ""
+                card.embeddedData.soundDefinition = ""
+                card.embeddedData.definitionOther = ""
+                card.usageAmount = 0
+                card.jlptLevel = 0
+                card.embeddedData.pitchAccentText = ""
+                card.embeddedData.pitchAccent = 0
+                
+                card.embeddedData.otherExampleSentences = items[3]
                 card.embeddedData.answersKnown = 0
                 card.embeddedData.answersNormal = 0
                 card.embeddedData.answersHard = 0
