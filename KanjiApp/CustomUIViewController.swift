@@ -104,6 +104,50 @@ class CustomUIViewController : UIViewController {
             return urls[urls.endIndex-1] as NSURL
     }
     
+    let validChars = NSCharacterSet(range: NSRange(location: 32, length: 127))
+    func isJapaneseCharacter(var item: String) -> Bool? {
+        
+        if  item == "[" ||
+            item == "]" ||
+            item == "" {
+            return nil
+        }
+        
+        if item == " " ||
+            item == "   " ||
+            item == "　" ||
+            item == "-" ||
+            item == "(" ||
+            item == ")" {
+            return nil
+        }
+        
+        if  item == "0" ||
+            item == "1" ||
+            item == "2" ||
+            item == "3" ||
+            item == "4" ||
+            item == "5" ||
+            item == "6" ||
+            item == "7" ||
+            item == "8" ||
+            item == "9"
+        {
+            return false
+        }
+        
+        var splitOnAlphabet = item.componentsSeparatedByCharactersInSet(validChars)[0]
+//        
+//        println("splitOnAlphabet.count \(countElements(splitOnAlphabet))");
+//        println("splitOnAlphabet \(splitOnAlphabet)");
+        
+        if countElements(splitOnAlphabet) == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
     func createDatabaseV2(filename: String) {
         
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -137,7 +181,7 @@ class CustomUIViewController : UIViewController {
                 
                 let kanji = items[0]
                 
-                println(kanji)
+//                println(kanji)
                 
                 var card = managedObjectContext.fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji, createIfNil: true)! as Card
                 
@@ -153,6 +197,51 @@ class CustomUIViewController : UIViewController {
                 
                 card.embeddedData.exampleEnglish = ""
                 card.embeddedData.exampleJapanese = ""
+                
+                var otherExamples = items[3]
+                
+                card.embeddedData.otherExampleSentences = otherExamples
+                
+                if(otherExamples != "")
+                {
+                    var split = otherExamples.componentsSeparatedByString("<br />")
+                    
+                    var j = ""
+                    var e = ""
+                    
+                    if(split.count > 0 && split[0] != "" && split[0] != " ")
+                    {
+                        var first = split[0]
+                        println("first \(first)")
+                        
+                        for var i = 0; i < countElements(first); i++
+                        {
+                            var t = first[i..<i+1]
+                            println("t = \(t)")
+                            var test = isJapaneseCharacter(t)
+                            if test == true || test == nil
+                            {
+                                j += t
+                            }
+                            else
+                            {
+                                println("BREAK")
+                                break
+                            }
+                        }
+                        
+                        e = first[countElements(j)..<countElements(first)]
+                        
+                        println("e = \(e)")
+                        println("j = \(j)")
+                        card.embeddedData.exampleEnglish = e
+                        card.embeddedData.exampleJapanese = j
+                        card.embeddedData.otherExampleSentences = otherExamples[countElements(first)..<countElements(otherExamples)]
+                        println("END WORD")
+                    }
+                    
+                }
+                
                 card.embeddedData.soundWord = ""
                 card.embeddedData.soundDefinition = ""
                 card.embeddedData.definitionOther = ""
@@ -161,7 +250,6 @@ class CustomUIViewController : UIViewController {
                 card.embeddedData.pitchAccentText = ""
                 card.embeddedData.pitchAccent = 0
                 
-                card.embeddedData.otherExampleSentences = items[3]
                 card.embeddedData.answersKnown = 0
                 card.embeddedData.answersNormal = 0
                 card.embeddedData.answersHard = 0
