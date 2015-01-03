@@ -194,7 +194,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             table.cellForRowAtIndexPath(indexPath)?.accessoryType = listsOpen ? .None : .DisclosureIndicator
             refreshHeights()
         case 101:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsActive().map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsActive()
             
             targetView = .Lists(
                 title: Globals.textStudying,
@@ -205,7 +205,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 sourceList: nil,
                 enableOnAdd: false)
         case 102:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy().map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsWillStudy()
             
             targetView = .Lists(
                 title: Globals.textPending,
@@ -233,7 +233,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
             
             refreshHeights()
         case 201:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended().map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT4Suspended()
             
             targetView = .Lists(
                 title: "JLPT 4",
@@ -244,7 +244,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 sourceList: .Jlpt4,
                 enableOnAdd: false)
         case 202:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended().map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT3Suspended()
              
             targetView = .Lists(
                 title: "JLPT 3",
@@ -255,7 +255,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 sourceList: .Jlpt3,
                 enableOnAdd: false)
         case 203:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT2Suspended().map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT2Suspended()
             
             targetView = .Lists(
                 title: "JLPT 2",
@@ -266,7 +266,7 @@ class SidebarMenu: UITableViewController, UITableViewDelegate {
                 sourceList: .Jlpt2,
                 enableOnAdd: false)
         case 204:
-            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT1Suspended().map { ($0 as Card).index }
+            var cards = RootContainer.instance.managedObjectContext.fetchCardsJLPT1Suspended()
             
             targetView = .Lists(
                 title: "JLPT 1",

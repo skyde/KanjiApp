@@ -4,7 +4,7 @@ import CoreData
 
 class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
-    var items: [NSNumber] = []
+    var items: [NSManagedObject] = []
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -25,7 +25,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBAction func onConfirmButtonDown(sender: AnyObject) {
         for index in items {
-            if let card = managedObjectContext.fetchCardByIndex(index) {
+            if let card = index as? Card {//managedObjectContext.fetchCardByIndex(index) {
                 if !card.known.boolValue {
                     card.suspended = false
                 }
@@ -100,7 +100,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+        if var card = self.items[indexPath.row] as? Card {//managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             cell.textLabel?.attributedText = card.cellText
         }
 //        cell.detailTextLabel.text = card.definition
@@ -110,7 +110,7 @@ class Lists: CustomUIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
-        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+        if var card = self.items[indexPath.row] as? Card {//managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             
             Globals.notificationShowDefinition.postNotification(card.kanji)
             

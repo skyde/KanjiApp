@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SpriteKit
+import CoreData
 //import PaRomajiKanaConverter
 //import PaRomajiKanaConverter
 //#import "UCTypingPhraseManager.h"
@@ -31,7 +32,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     @IBOutlet weak var navigationBarLabel: UILabel!
     var searchResultsBaseFrame: CGRect = CGRect()
     @IBOutlet weak var discoverClickableArea: UIButton!
-    var items: [NSNumber] = []
+    var items: [NSManagedObject] = []
     var labels: [DiscoverLabel] = []
     var labelsData: [DiscoverLabelData] = []
     var scrollVelocity: Double = 0
@@ -45,7 +46,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = searchResults.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+        if var card = self.items[indexPath.row] as? Card {//managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
             
             cell.textLabel?.attributedText = card.cellText
             cell.textLabel?.backgroundColor = UIColor.clearColor()
@@ -368,7 +369,7 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
-        if var card = managedObjectContext.fetchCardByIndex(self.items[indexPath.row]) {
+        if var card = self.items[indexPath.row] as? Card {
             Globals.notificationShowDefinition.postNotification(card.kanji)
         }
     }
@@ -439,11 +440,12 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
 //            println(textAsHiragana)
             
             var predicate =
-            "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)"
+            "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)"
+            //OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)
+            //, textAsHiragana, fromRomaji, text
+            items = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text]), CardProperties.kanji)
             
-            var cards = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text, textAsHiragana, fromRomaji, text]), CardProperties.kanji)
-            
-            items = cards.map { ($0 as Card).index }
+//            items = cards.map { ($0 as Card).index }
             
             searchResults.reloadData()
         }

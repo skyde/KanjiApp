@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import CoreData
 
 enum View {
     case Search
@@ -10,7 +11,7 @@ enum View {
     case Lists(
         title: String,
         color: UIColor,
-        cards: [NSNumber],
+        cards: [NSManagedObject],
         displayConfirmButton: Bool,
         displayAddButton: Bool,
         sourceList: WordList?,

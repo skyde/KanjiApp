@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import QuartzCore
+import CoreData
 
 var rootContainerInstance: RootContainer? = nil
 
@@ -358,7 +359,7 @@ class RootContainer: CustomUIViewController {
             break;
         }
         
-        var addCards: [NSNumber] = []
+        var addCards: [NSManagedObject] = []
         
         var added = 0
         
@@ -369,7 +370,7 @@ class RootContainer: CustomUIViewController {
             (onlyStudyKanji && card.kanji.isPrimarilyKanji()) ||
             Globals.notificationAddWordsFromList.value.description() == WordList.MyWords.description() {
                 added++
-                addCards.append(card.index)
+                addCards.append(card)
             }
             
             if added >= settings.cardAddAmount.integerValue {

@@ -59,7 +59,7 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
     }
     
     @IBAction func addAllTap(sender: AnyObject) {
-        var add: [Int] = []
+        var add: [NSManagedObject] = []
         
         for token in tokens {
             if token.hasDefinition {
@@ -89,7 +89,7 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
     
     @IBAction func addAll(sender: AnyObject) {
         for token in tokens {
-            if var card = managedObjectContext.fetchCardByIndex(token.index) {
+            if var card = token.index as? Card {//managedObjectContext.fetchCardByIndex(token.index) {
                 card.enabled = true
             }
         }
@@ -173,8 +173,8 @@ class TextReader: CustomUIViewController, UITextViewDelegate {
             {
                 if let card = managedObjectContext.fetchCardByKanji(subString)
                 {
-                    let indexValue = Int(card.index.intValue)
-                    let add = TextToken(subString, hasDefinition: true, index: indexValue)
+//                    let indexValue = Int(card.index.intValue)
+                    let add = TextToken(subString, hasDefinition: true, index: card)
                         
                     tokens.append(add)
                     
