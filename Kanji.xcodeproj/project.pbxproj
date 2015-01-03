@@ -14,6 +14,7 @@
 		841390B91965074D005958B9 /* AnswerDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841390B81965074D005958B9 /* AnswerDifficulty.swift */; };
 		841390BB1965D18C005958B9 /* InteractType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841390BA1965D18C005958B9 /* InteractType.swift */; };
 		841D07D919804ACA00FBDB18 /* RootMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D07D819804ACA00FBDB18 /* RootMenu.swift */; };
+		8421F7341A55479200DC9043 /* AllCards copy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8421F7331A55479200DC9043 /* AllCards copy.txt */; };
 		842878E5196341B10060BDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878E4196341B10060BDD1 /* AppDelegate.swift */; };
 		842878E8196341B10060BDD1 /* KanjiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842878E6196341B10060BDD1 /* KanjiApp.xcdatamodeld */; };
 		842878EA196341B10060BDD1 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842878E9196341B10060BDD1 /* GameMode.swift */; };
@@ -117,6 +118,7 @@
 		841390BA1965D18C005958B9 /* InteractType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractType.swift; sourceTree = "<group>"; };
 		8416E4DC1969EDB00014B478 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		841D07D819804ACA00FBDB18 /* RootMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMenu.swift; sourceTree = "<group>"; };
+		8421F7331A55479200DC9043 /* AllCards copy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AllCards copy.txt"; sourceTree = "<group>"; };
 		842878DF196341B10060BDD1 /* Kanji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kanji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842878E3196341B10060BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842878E4196341B10060BDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		842878E2196341B10060BDD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8421F7331A55479200DC9043 /* AllCards copy.txt */,
 				844846511A466BFA0075CEEE /* jdictPartial.txt */,
 				8448464F1A466A370075CEEE /* jdict.txt */,
 				847AF0FE19CB40FD00CCAFC0 /* mplus-2p-light.ttf */,
@@ -520,6 +523,7 @@
 				84D88DBD19C95DBD0079ED8B /* icon-30x1.png in Resources */,
 				844846521A466BFA0075CEEE /* jdictPartial.txt in Resources */,
 				842878ED196341B10060BDD1 /* Main.storyboard in Resources */,
+				8421F7341A55479200DC9043 /* AllCards copy.txt in Resources */,
 				84D88DD319C9642A0079ED8B /* launchImage-1536x2048.png in Resources */,
 				84D88DD619C964BD0079ED8B /* launchImage-640x1136.png in Resources */,
 				84E71D31197F63C6002B6F13 /* hamburgerIcon.png in Resources */,

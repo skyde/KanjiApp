@@ -45,10 +45,11 @@ class CustomUIViewController : UIViewController {
         settings.userName = "default"
         
         if !settings.generatedCards.boolValue {
-//            createDatabase("AllCards copy")
-            createDatabaseV2("jdictPartial")
+            createDatabaseV2("jdict")
+            createDatabase("AllCards copy")
             
             settings.generatedCards = true
+            settings.readerText = ""
         }
         
         saveContext()
@@ -159,9 +160,14 @@ class CustomUIViewController : UIViewController {
         
         if let content = possibleContent {
             var deck = content.componentsSeparatedByString("\n")
-            var i = 1000;
+            var i = 100000;
             for deckItem in deck {
                 var items = deckItem.componentsSeparatedByString("\t")
+                
+                if(items.count < 4)
+                {
+                    continue
+                }
                 
 //                var index: Int = items[1].toInt()!
 //                var pitchAccent = 0
@@ -212,12 +218,12 @@ class CustomUIViewController : UIViewController {
                     if(split.count > 0 && split[0] != "" && split[0] != " ")
                     {
                         var first = split[0]
-                        println("first \(first)")
+//                        println("first \(first)")
                         
                         for var i = 0; i < countElements(first); i++
                         {
                             var t = first[i..<i+1]
-                            println("t = \(t)")
+//                            println("t = \(t)")
                             var test = isJapaneseCharacter(t)
                             if test == true || test == nil
                             {
@@ -225,19 +231,19 @@ class CustomUIViewController : UIViewController {
                             }
                             else
                             {
-                                println("BREAK")
+//                                println("BREAK")
                                 break
                             }
                         }
                         
                         e = first[countElements(j)..<countElements(first)]
                         
-                        println("e = \(e)")
-                        println("j = \(j)")
+//                        println("e = \(e)")
+//                        println("j = \(j)")
                         card.embeddedData.exampleEnglish = e
                         card.embeddedData.exampleJapanese = j
                         card.embeddedData.otherExampleSentences = otherExamples[countElements(first)..<countElements(otherExamples)]
-                        println("END WORD")
+//                        println("END WORD")
                     }
                     
                 }

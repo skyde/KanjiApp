@@ -763,11 +763,21 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     }
     
     func filterSoundPath(path: String) -> String {
+        if(path == "")
+        {
+            return ""
+        }
+        
         var range: NSRange = NSRange(location: 7, length: countElements(path) - 12)
         return (path as NSString).substringWithRange(range)
     }
     
     func playSound(name: String, fileType: String = "mp3", var sendEvents: Bool = true) {
+        
+        if(name == "")
+        {
+            return
+        }
         
         if settings.volume.doubleValue != 0 {
             var resourcePath = Globals.audioDirectoryPath.stringByAppendingPathComponent(name)
