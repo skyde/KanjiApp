@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Card" representedClassName="Card" syncable="YES">
         <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dueTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -42,7 +42,7 @@
         <attribute name="onlyStudyKanji" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="readerText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reviewAheadAmount" optional="YES" attributeType="Double" defaultValueString="3" syncable="YES"/>
-        <attribute name="romajiEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="romajiEnabled" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="seenTutorial" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="textSize" optional="YES" attributeType="Double" defaultValueString="1" syncable="YES"/>
         <attribute name="todayTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -54,6 +54,6 @@
     <elements>
         <element name="Card" positionX="-83" positionY="-39" width="128" height="238"/>
         <element name="CardData" positionX="142" positionY="216" width="128" height="253"/>
-        <element name="Settings" positionX="-306" positionY="234" width="128" height="313"/>
+        <element name="Settings" positionX="-306" positionY="234" width="128" height="315"/>
     </elements>
 </model>

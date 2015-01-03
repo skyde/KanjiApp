@@ -107,12 +107,17 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
 //    var frontTextCache: NSAttributedString! = nil
 //    var nextFrontTextCache: NSAttributedString! = nil
     func scrollViewDidScroll(scrollView: UIScrollView!) {
+        
+        if NSDate.timeIntervalSinceReferenceDate() - flipCardTime > 0.1
+        {
+            return
+        }
+        
         if let dueCard = dueCard {
-            var diff = NSDate.timeIntervalSinceReferenceDate() - flipCardTime
             
             var target = isFront ? 0 : dueCard.backScrollUpKanjiTextHeight + topInset
             
-            if scrollView.contentOffset.y != target && diff < 0.1 {
+            if scrollView.contentOffset.y != target {
                 scrollOutputTextToInset()
             }
         }
