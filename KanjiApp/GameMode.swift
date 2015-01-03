@@ -24,8 +24,8 @@ enum GameTutorialState {
 class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecognizerDelegate, UITextViewDelegate {
     @IBOutlet var outputText: UITextView!
     
-    var due: [NSNumber] = []
-    var undoStack: [NSNumber] = []
+    var due: [NSManagedObject] = []
+    var undoStack: [NSManagedObject] = []
     var isFront: Bool = true
     var isBack: Bool {
     get {
@@ -79,7 +79,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var dueCard: Card? {
         get {
             if due.count > 0 {
-                return managedObjectContext.fetchCardByIndex(due[0])
+                return due[0] as? Card
             }
             return nil
         }
@@ -88,7 +88,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
     var nextCard: Card? {
         get {
             if due.count > 1 {
-                return managedObjectContext.fetchCardByIndex(due[1])
+                return due[1] as? Card
             }
             return nil
         }
@@ -656,7 +656,7 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
             break
         }
         
-        due = managedObjectContext.fetchCardsDue(fetchAheadAmount: fetchAheadAmount).map { ($0 as Card).index }
+        due = managedObjectContext.fetchCardsDue(fetchAheadAmount: fetchAheadAmount)
         if clearUndoStack {
             undoStack = []
         }

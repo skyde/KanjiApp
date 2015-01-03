@@ -17,6 +17,8 @@ extension NSManagedObjectContext
         
         var error: NSError? = nil
         
+//        self.existingObjectWithID(, error: <#NSErrorPointer#>)
+        
         var matches: NSArray = self.executeFetchRequest(request, error: &error)!
         
         if matches.count > 0 {
