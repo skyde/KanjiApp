@@ -429,21 +429,24 @@ class Search : CustomUIViewController, UISearchBarDelegate, UITableViewDelegate,
         
         if text != "" {
             
-            let fromRomaji = Globals.romajiConverter.convertToHiraganaFromRomaji(text)
+            var lookup = text
             
-            var textAsHiragana = text
+            var predicate = "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)"
             
-            if fromRomaji != textAsHiragana {
-                textAsHiragana = fromRomaji
+            if !lookup.isPrimarilyKanji() {
+                predicate = "(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)"
+                
+                let fromRomaji = Globals.romajiConverter.convertToHiraganaFromRomaji(text)
+                
+                if fromRomaji != lookup {
+                    lookup = fromRomaji
+                }
             }
             
-//            println(textAsHiragana)
-            
-            var predicate =
-            "(\(CardProperties.kanji.description()) BEGINSWITH[c] %@)"
+//            isPrimarilyKanji
             //OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.hiragana.description()) BEGINSWITH[c] %@)OR(\(CardProperties.definition.description()) CONTAINS[c] %@)
             //, textAsHiragana, fromRomaji, text
-            items = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [text]), CardProperties.kanji)
+            items = managedObjectContext.fetchEntities(CoreDataEntities.Card, rawPredicate: (predicate, [lookup]), CardProperties.kanji)
             
 //            items = cards.map { ($0 as Card).index }
             

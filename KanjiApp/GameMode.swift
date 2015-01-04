@@ -553,6 +553,13 @@ class GameMode: CustomUIViewController, AVAudioPlayerDelegate, UIGestureRecogniz
         cardPropertiesSidebar.onPropertyButtonTap = {
             self.processAdvance = true
         }
+        
+        cardPropertiesSidebar.onCloseSidebar = {
+            self.rightEdgeReveal.animateSelf(false)
+            self.updateText(invalidateCaches: false)
+            self.saveContext()
+        }
+        
     }
     
 //    private func invalidateCaches() {

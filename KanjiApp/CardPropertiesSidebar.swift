@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-public class CardPropertiesSidebar : UIViewController {
+public class CardPropertiesSidebar : UIViewController, UIActionSheetDelegate {
     
     @IBOutlet weak var leftButton: UIButton!
 //    @IBOutlet weak var rightButton: UIButton!
@@ -13,9 +13,38 @@ public class CardPropertiesSidebar : UIViewController {
     var baseUndoHeight: CGFloat? = nil
     
     var onUndoButtonTap: (() -> ())?
-//    var onKnownButtonTap: (() -> ())?
+    //    var onKnownButtonTap: (() -> ())?
     var onPropertyButtonTap: (() -> ())?
+    var onCloseSidebar: (() -> ())?
+    var currentCard: Card?
     
+    @IBAction func onOptionsPress(sender: AnyObject) {
+        println("options")
+        
+        var hiraganaText = ""
+        
+        if let card = currentCard
+        {
+            hiraganaText = card.isKanji.boolValue ? "Display as Hiragana" : "Display as Kanji"
+        }
+        
+        var sheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: hiraganaText)
+        
+        sheet.showInView(view)
+    }
+    
+    public func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int)
+    {
+        if buttonIndex == 1 {
+            if let card = currentCard {
+                card.isKanji = !card.isKanji.boolValue
+            }
+        }
+        
+        if let callback = onCloseSidebar {
+            callback()
+        }
+    }
     /// Note that this method does not save the context
     class func editCardProperties(card: Card, _ value: CardPropertiesType) {
         switch value {
@@ -48,6 +77,8 @@ public class CardPropertiesSidebar : UIViewController {
     }
     
     func updateContents(card: Card?, var showUndoButton: Bool) {
+        
+        currentCard = card
         
         if baseUndoHeight == nil {
             baseUndoHeight = undoHeight.constant

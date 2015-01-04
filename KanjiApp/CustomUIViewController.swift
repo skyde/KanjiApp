@@ -199,7 +199,7 @@ class CustomUIViewController : UIViewController {
                 
                 card.index = i
                 card.hiragana = items[1]
-                card.definition = items[2]
+                card.embeddedData.definition = items[2]
                 
                 card.embeddedData.exampleEnglish = ""
                 card.embeddedData.exampleJapanese = ""
@@ -318,7 +318,7 @@ class CustomUIViewController : UIViewController {
                 
                 card.index = index
                 card.hiragana = items[2]
-                card.definition = items[3]
+                card.embeddedData.definition = items[3]
                 card.embeddedData.exampleEnglish = items[4]
                 card.embeddedData.exampleJapanese = items[5]
                 card.embeddedData.soundWord = items[6]

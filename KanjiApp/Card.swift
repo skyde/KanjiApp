@@ -12,7 +12,6 @@ class Card: NSManagedObject {
     @NSManaged var enabled: NSNumber
     @NSManaged var suspended: NSNumber
     @NSManaged var known: NSNumber
-    @NSManaged var definition: String
     @NSManaged var usageAmount: NSNumber
     @NSManaged var isKanji: NSNumber
     @NSManaged var embeddedData: CardData
@@ -274,9 +273,15 @@ class Card: NSManagedObject {
     
     var front: NSAttributedString {
         get {
+            var text = kanji
+            
+            if !isKanji.boolValue {
+                text = hiragana
+            }
+            
             let baseSize: CGFloat = 102
             
-            var size = baseSize * 3 / CGFloat(countElements(kanji))
+            var size = baseSize * 3 / CGFloat(countElements(text))
             
             if size > baseSize * 2 {
                 size = baseSize * 2
@@ -292,7 +297,7 @@ class Card: NSManagedObject {
             
             value.addBreak(Globals.screenSize.height / 2 - size * 0.5 - 190)
             
-            value.addAttributedText(kanji,
+            value.addAttributedText(text,
                 [
                     (NSFontAttributeName, UIFont(name: Globals.DefaultFont, size: size)!),
                     (NSParagraphStyleAttributeName, paragraphStyle)
@@ -365,7 +370,7 @@ class Card: NSManagedObject {
         
 //        var entity = managedObjectContext!.fetchCardByIndex(index)
         
-        addTo.addAttributedText(definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22)!)], processAttributes: true)
+        addTo.addAttributedText(embeddedData.definition, [(NSFontAttributeName, UIFont(name: fontName, size: 22)!)], processAttributes: true)
         
         addTo.addBreak(20)
         
@@ -524,7 +529,7 @@ class Card: NSManagedObject {
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
-        var def = definition
+        var def = embeddedData.definition
         
         def = replaceInString(def, "<br />", " ")
 //        
