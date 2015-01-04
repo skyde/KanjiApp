@@ -109,8 +109,8 @@ extension NSManagedObjectContext
 
     // Helpers
     
-    func fetchCardByKanji(kanji: String) -> Card? {
-        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji)
+    func fetchCardByKanji(kanji: String, var createIfNil: Bool = false) -> Card? {
+        var value : AnyObject? = fetchEntity(CoreDataEntities.Card, CardProperties.kanji, kanji, createIfNil: createIfNil)
         
         return value as Card?
     }

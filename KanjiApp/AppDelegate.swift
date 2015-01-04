@@ -25,9 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                 case .Kanji:
                     importKanjiDatabase(fileContents)
                 case .CSV:
-                    additiveImportList(fileContents, delimiter: ",", column: 1, fallbackColumn: 0)
+                    additiveImportList(fileContents, delimiter: ",", column: 0, fallbackColumn: 1)
                 case .TSV:
-                    additiveImportList(fileContents, delimiter: "\t", column: 1, fallbackColumn: 0)
+                    additiveImportList(fileContents, delimiter: "\t", column: 0, fallbackColumn: 1)
                 }
             }
             
@@ -82,12 +82,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             return value
         }
         
-        let length = countElements(value)
+        var length = countElements(value)
         
         if length >= 2 {
             if  value[0..<1] == "\"" &&
                 value[length - 1..<length] == "\"" {
-                value = value[1..<length-1]
+                    value = value[1..<length-1]
+            }
+        }
+        
+        length = countElements(value)
+        
+        if length >= 2 {
+            if  value[0..<1] == "【" &&
+                value[length - 1..<length] == "】" {
+                    value = value[1..<length-1]
             }
         }
         
@@ -197,6 +206,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             
             if let card = managedObjectContext.fetchCardByKanji(entry) {
                 card.suspended = false
+            } else
+            {
+                var card = managedObjectContext.fetchCardByKanji(entry, createIfNil: true)
+                
+                if let card = card {
+                    var dataDesc = NSEntityDescription.entityForName("CardData", inManagedObjectContext: managedObjectContext)
+                    
+                    card.embeddedData = CardData(entity: dataDesc!, insertIntoManagedObjectContext: managedObjectContext)
+                    
+                    card.suspended = false
+                    
+                    card.kanji = entry
+                    card.hiragana = ""
+                    card.embeddedData.definition = ""
+                    card.index = -1
+                    card.embeddedData.exampleEnglish = ""
+                    card.embeddedData.exampleJapanese = ""
+                    card.embeddedData.soundWord = ""
+                    card.embeddedData.soundDefinition = ""
+                    card.embeddedData.definitionOther = ""
+                    card.usageAmount = 0
+                    card.jlptLevel = 0
+                    card.embeddedData.pitchAccentText = ""
+                    card.embeddedData.pitchAccent = 0
+                    card.embeddedData.otherExampleSentences = ""
+                    card.embeddedData.answersKnown = 0
+                    card.embeddedData.answersNormal = 0
+                    card.embeddedData.answersHard = 0
+                    card.embeddedData.answersForgot = 0
+                    card.interval = 0
+                    card.dueTime = 0
+                    card.enabled = false
+                    card.known = false
+                    card.isKanji = entry.isPrimarilyKanji()
+                    
+                    if splits.count >= 2 {
+                        card.hiragana = trimEntryExcess(splits[1])
+                    }
+                    if splits.count >= 3 {
+                        card.embeddedData.definition = trimEntryExcess(splits[2])
+                    }
+                }
             }
         }
         
