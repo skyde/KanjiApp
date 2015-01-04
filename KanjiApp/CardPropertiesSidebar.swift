@@ -19,7 +19,6 @@ public class CardPropertiesSidebar : UIViewController, UIActionSheetDelegate {
     var currentCard: Card?
     
     @IBAction func onOptionsPress(sender: AnyObject) {
-        println("options")
         
         var hiraganaText = ""
         
