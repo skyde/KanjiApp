@@ -529,9 +529,9 @@ class Card: NSManagedObject {
         
         var definitionColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
-        println(kanji)
-//        println(embeddedData)
-        println(embeddedData.definition)
+//        println(kanji)
+////        println(embeddedData)
+//        println(embeddedData.definition)
         
         var def = embeddedData.definition
         

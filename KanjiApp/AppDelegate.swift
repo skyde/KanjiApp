@@ -296,6 +296,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             let known = splits[9].toInt()
             
             if let card = managedObjectContext.fetchCardByIndex(index!) {
+                println(card.kanji)
+                
                 card.embeddedData.answersKnown = answersKnown!
                 card.embeddedData.answersNormal = answersNormal!
                 card.embeddedData.answersHard = answersForgot!
